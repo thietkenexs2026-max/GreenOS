@@ -91,7 +91,7 @@ Mở trình duyệt truy cập: **`http://localhost:8080`**
 
 ## 🌿 Lộ Trình Phát Triển Tiếp Theo
 
-- [x] **Persona 1 — Hộ Nông Dân (Bác Ba)**: Đăng bán bằng giọng nói, chia sẻ Zalo, sổ đơn hàng & doanh thu.
-- [ ] **Persona 2 — Hợp Tác Xã (HTX Đồng Cát)**: Đóng gói số lượng lớn, chiết khấu bán sỉ, kết nối xưởng bao bì địa phương.
+- [x] **Persona 1 — Hộ Nông Dân (Bác Ba)**: Đăng bán bằng giọng nói, chia sẻ Zalo, sổ đơn hàng & doanh thu (`index.html`).
+- [x] **Persona 2 — Hợp Tác Xã (HTX Đồng Cát)**: Dashboard Quản lý Web PC (`htx-dashboard.html`), duyệt nông sản Bác Ba (đối chiếu ảnh thật & giọng nói), Order Hub gom đơn sỉ B2B WinMart, kết nối xưởng bao bì & AI Content Studio.
 - [ ] **Persona 3 — Hub Xã & Đoàn Thanh Niên**: Hỗ trợ trực tiếp bà con số hóa, thẩm định OCOP, quản lý điểm gom hàng.
 - [ ] **Persona 4 — Lãnh Đạo Xã**: Bảng chỉ số điều hành kinh tế số nông nghiệp toàn xã theo thời gian thực.

@@ -1224,10 +1224,16 @@
 </head>
 <body class="has-bottom-nav">
 
-  <!-- Nhãn định vị bên ngoài thiết bị -->
-  <div class="device-caption-bar">
-    <div class="status-dot"></div>
-    <span>GreenVillageOS · Giao diện di động Hộ Nông Dân</span>
+  <!-- Nhãn định vị bên ngoài thiết bị & Nút chuyển đổi vai trò -->
+  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; justify-content: center;">
+    <div class="device-caption-bar" style="margin-bottom: 0;">
+      <div class="status-dot"></div>
+      <span>GreenVillageOS · Giao diện di động Hộ Nông Dân (Bác Ba)</span>
+    </div>
+    <a href="htx-dashboard.html" style="display: inline-flex; align-items: center; gap: 6px; background: #059669; color: white; padding: 8px 16px; border-radius: var(--radius-pill); text-decoration: none; font-size: 13.5px; font-weight: 700; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3); transition: all 0.2s;" onmouseover="this.style.background='#065F46'" onmouseout="this.style.background='#059669'">
+      <span>👨‍💼 Mở Dashboard HTX (Web PC)</span>
+      <span>↗</span>
+    </a>
   </div>
 
   <div class="phone-device" id="phoneDevice">

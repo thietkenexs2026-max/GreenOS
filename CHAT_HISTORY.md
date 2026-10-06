@@ -53,6 +53,22 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 5: Hiện thực hóa Persona 2 — Quản Lý Hợp Tác Xã (HTX Đồng Cát) trên Web PC
+- **Yêu cầu 34**: "giờ triển khai làm dashboard cho hợp tác xã nhé, build trên web pc"
+  - *Giải pháp*:
+    - Xây dựng file `htx-dashboard.html` chuẩn Desktop SaaS Web (1440px+ responsive).
+    - **Header & Chỉ số đồng bộ**: Kết nối trực tiếp Shopee Mall, TikTok Shop, Zalo OA Nông Sản Xã, Cổng điều hành Xã Yên Bình.
+    - **Hệ thống 6 Tab điều hành**:
+      1. *Tổng quan chỉ số*: 4 KPI Card (Doanh thu đa kênh 148tr, Sản lượng 12.4 tấn, Hồ sơ chờ duyệt, 685 đơn xuất kho).
+      2. *Duyệt nông sản xã viên (Product Approval)*: Xem ảnh chụp thực tế từ vườn của Bác Ba (`banana_front.jpg`, `banana_plate.jpg`, `banana_back.jpg`), đối chiếu đoạn ghi âm giọng nói giá bán (Voice-First), cấu hình tỷ lệ chiết khấu HTX, phê duyệt 1-chạm đẩy thẳng lên sàn TMĐT.
+      3. *Order Hub đa kênh*: Gom đơn sỉ B2B WinMart 1.200 túi + đơn lẻ Shopee/TikTok/Zalo, in phiếu vận đơn kèm mã QR Trace.
+      4. *Kho hàng & Bao bì*: Theo dõi tồn kho thực tế, kết nối và đặt in 3.000 túi zipper màng nhôm với xưởng in bao bì Tân Á Hưng Yên.
+      5. *AI Content & Livestream Studio*: Trợ lý AI tạo kịch bản Livestream TikTok, caption Zalo OA và mô tả Shopee Mall chuẩn SEO & OCOP.
+      6. *Báo cáo BLĐ Xã*: Mẫu báo cáo định kỳ kinh tế số, xuất file Excel và PDF gửi UBND Xã Yên Bình.
+    - **Liên kết 2 chiều**: Tích hợp nút chuyển đổi nhanh giữa App Mobile Bác Ba (`index.html`) và Dashboard Quản lý HTX (`htx-dashboard.html`).
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Người Lớn Tuổi
 
 1. **Voice-First thay thế bàn phím**: Người già tay run, mắt kém, ngại gõ bàn phím ảo. Nút micro to bản kèm trích dẫn văn bản trực quan giúp họ làm chủ ứng dụng ngay lần đầu.

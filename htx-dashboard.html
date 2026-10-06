@@ -6,48 +6,51 @@
   <title>GreenVillageOS — Trang Quản Trị Hợp Tác Xã Đồng Cát</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
   <style>
     /* =========================================================================
-       1. THIẾT KẾ CHUẨN DESIGN SYSTEM GREENVILLAGEOS & TRỢ NĂNG NGƯỜI CAO TUỔI
-       - Toàn bộ màu sắc lấy từ tokens.css (Brand Emerald, Scout Blue, Amber, Slate)
-       - KHÔNG DÙNG POPUP: Chuyển đổi trực tiếp nội dung trên màn hình Dashboard
-       - Font chữ TO (16px - 28px), giãn dòng thoáng, chữ đậm rõ ràng, vừa vặn màn hình (Fit Screen)
-       - Đầy đủ tính năng quản trị Xã Viên: Thống kê + Biểu đồ + Sản phẩm bài đăng + Cài đặt tài khoản
+       1. COURSUE DESIGN SYSTEM VIBE (1:1 FIDELITY WITH DRIBBLE REFERENCE)
+       - Floating rounded window (radius: 36px) on soft grey canvas
+       - Clean 3-column layout without harsh vertical border lines
+       - Rich Emerald Forest Hero Gradient with sparkle accents & dark capsule CTA
+       - 3 Pastel Mini Stat Cards with icon squares
+       - Photographic product cards with category pills and floating action icons
+       - Right Statistic Column: Circular progress ring with avatar, greeting 🔥,
+         sleek pill bar chart with dashed Y-axis, and "Your mentor" directory
+       - In-Page Member Management: Maintains 100% of this design language!
        ========================================================================= */
     :root {
-      --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      
-      /* Brand Emerald Green (Chuẩn tokens.css) */
+      --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      /* GreenVillageOS Design Tokens */
       --brand-950: #022C22;
       --brand-900: #064E3B;
       --brand-800: #065F46;
       --brand-700: #047857;
       --brand-600: #059669;
       --brand-500: #10B981;
-      --brand-300: #6EE7B7;
+      --brand-400: #34D399;
       --brand-200: #A7F3D0;
       --brand-100: #D1FAE5;
       --brand-50:  #ECFDF5;
 
-      /* Scout AI Blue & Zalo (Chuẩn tokens.css) */
+      /* Scout AI Blue & Accents */
       --blue-700: #1D4ED8;
       --blue-600: #2563EB;
       --blue-500: #3B82F6;
       --blue-100: #DBEAFE;
       --blue-50:  #EFF6FF;
-      --zalo-blue: #0068FF;
-      --shopee-orange: #EE4D2D;
 
-      /* Amber Alert / Tô Vàng (Chuẩn tokens.css) */
+      /* Amber Alert */
       --amber-700: #B45309;
       --amber-600: #D97706;
       --amber-500: #F59E0B;
       --amber-100: #FEF3C7;
       --amber-50:  #FFFBEB;
 
-      /* Slate & Whites */
+      /* Neutral Slates */
       --slate-900: #0F172A;
       --slate-800: #1E293B;
       --slate-700: #334155;
@@ -60,16 +63,15 @@
       --slate-50:  #F8FAFC;
       --white:     #FFFFFF;
 
-      /* Radii */
-      --radius-shell: 32px;
-      --radius-card: 20px;
-      --radius-sub: 14px;
+      /* Shape & Elevation */
+      --radius-shell: 36px;
+      --radius-card: 22px;
+      --radius-sub: 16px;
       --radius-pill: 9999px;
 
-      /* Shadows */
-      --shadow-shell: 0 25px 65px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.9);
-      --shadow-card: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
-      --shadow-hover: 0 8px 24px -4px rgba(6, 95, 70, 0.12);
+      --shadow-window: 0 30px 65px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.7);
+      --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+      --shadow-hover: 0 10px 28px -4px rgba(6, 78, 59, 0.12);
     }
 
     * {
@@ -83,20 +85,18 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      font-family: var(--font-inter);
-      background-color: #E2E8F0;
-      background-image: radial-gradient(at 10% 10%, #CBD5E1 0px, transparent 50%),
-                        radial-gradient(at 90% 90%, #CBD5E1 0px, transparent 50%);
+      font-family: var(--font-body);
+      background-color: #EBF0F5;
       color: var(--slate-900);
-      font-size: 16px; /* FONT TO RÕ CHO NGƯỜI LỚN TUỔI */
+      font-size: 15.5px; /* Chữ to rõ, dễ đọc cho người lớn tuổi */
       line-height: 1.5;
     }
 
-    /* FULLSCREEN APP SHELL VỪA KHÍT MÀN HÌNH (FITSCREEN) */
+    /* FULLSCREEN FLOATING CONTAINER */
     .app-viewport-wrapper {
       width: 100vw;
       height: 100vh;
-      padding: 16px 20px;
+      padding: 16px 22px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -104,92 +104,98 @@
 
     .app-dashboard-window {
       width: 100%;
-      max-width: 1620px;
+      max-width: 1640px;
       height: calc(100vh - 32px);
       background: #FFFFFF;
       border-radius: var(--radius-shell);
-      box-shadow: var(--shadow-shell);
+      box-shadow: var(--shadow-window);
       display: grid;
-      grid-template-columns: 220px 1fr 350px;
-      gap: 20px;
-      padding: 22px;
+      grid-template-columns: 210px 1fr 340px;
+      gap: 26px;
+      padding: 26px 30px;
       overflow: hidden;
       position: relative;
     }
 
     /* =========================================================================
-       2. CỘT 1: SIDEBAR TRÁI (Chuẩn Vibe Mẫu 1 + Màu Design System)
+       2. CỘT 1: SIDEBAR TRÁI (Chuẩn Coursue: Không có đường viền cứng, thanh thoát)
        ========================================================================= */
     .app-sidebar {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border-right: 1px solid var(--slate-200);
-      padding-right: 16px;
       height: 100%;
       overflow-y: auto;
+      padding-right: 6px;
     }
 
-    .sidebar-brand-link {
+    .app-sidebar::-webkit-scrollbar { width: 4px; }
+    .app-sidebar::-webkit-scrollbar-thumb { background: var(--slate-200); border-radius: 4px; }
+
+    /* Brand Logo */
+    .sidebar-brand-box {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 30px;
       text-decoration: none;
+      color: inherit;
     }
 
-    .brand-logo-badge {
+    .brand-logo-circle {
       width: 42px;
       height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--brand-700) 0%, var(--brand-900) 100%);
+      border-radius: 14px;
+      background: linear-gradient(135deg, #059669 0%, #064E3B 100%);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      box-shadow: 0 4px 10px rgba(6, 78, 59, 0.28);
+      box-shadow: 0 6px 14px rgba(6, 78, 59, 0.25);
     }
 
-    .brand-title-text h1 {
-      font-size: 17px;
+    .brand-title-wrap h1 {
+      font-family: var(--font-display);
+      font-size: 19px;
       font-weight: 800;
       color: var(--slate-900);
-      line-height: 1.2;
       letter-spacing: -0.4px;
+      line-height: 1.1;
     }
 
-    .brand-title-text span {
+    .brand-title-wrap span {
       font-size: 12px;
       color: var(--brand-600);
       font-weight: 700;
     }
 
-    .sidebar-label {
-      font-size: 12px;
+    /* Menu Sections */
+    .sidebar-section-title {
+      font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
       color: var(--slate-400);
-      margin-bottom: 8px;
-      padding-left: 8px;
+      margin-bottom: 12px;
+      padding-left: 10px;
     }
 
-    .nav-btn-list {
+    .sidebar-menu-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      margin-bottom: 22px;
+      gap: 5px;
+      margin-bottom: 28px;
     }
 
-    .sidebar-nav-item {
+    .sidebar-menu-btn {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 13px;
       padding: 11px 14px;
       border-radius: var(--radius-sub);
-      color: var(--slate-700);
-      font-size: 15.5px;
+      color: var(--slate-600);
+      font-size: 15px;
       font-weight: 700;
       border: none;
       background: transparent;
@@ -199,77 +205,80 @@
       transition: all 0.15s ease;
     }
 
-    .sidebar-nav-item svg {
+    .sidebar-menu-btn svg {
       width: 20px;
       height: 20px;
       stroke-width: 2.2;
-      stroke: var(--slate-500);
+      stroke: var(--slate-400);
       flex-shrink: 0;
+      transition: stroke 0.15s;
     }
 
-    .sidebar-nav-item:hover {
+    .sidebar-menu-btn:hover {
       background: var(--slate-100);
       color: var(--slate-900);
     }
 
-    .sidebar-nav-item.active {
+    .sidebar-menu-btn:hover svg {
+      stroke: var(--slate-700);
+    }
+
+    .sidebar-menu-btn.active {
       background: var(--brand-50);
       color: var(--brand-900);
       font-weight: 800;
     }
 
-    .sidebar-nav-item.active svg {
+    .sidebar-menu-btn.active svg {
       stroke: var(--brand-600);
     }
 
-    /* Danh sách xã viên nhanh ở sidebar */
-    .sidebar-farmers-list {
+    /* Danh sách Friends (Xã viên) ở sidebar */
+    .sidebar-farmers-group {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
-    .sidebar-farmer-row {
+    .sidebar-farmer-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 6px 8px;
-      border-radius: 10px;
+      gap: 12px;
+      padding: 7px 10px;
+      border-radius: 12px;
       cursor: pointer;
       transition: background 0.15s;
     }
 
-    .sidebar-farmer-row:hover, .sidebar-farmer-row.active {
+    .sidebar-farmer-item:hover, .sidebar-farmer-item.active {
       background: var(--brand-50);
     }
 
-    .sidebar-farmer-avatar {
-      width: 34px;
-      height: 34px;
+    .sidebar-farmer-thumb {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid var(--slate-200);
+      border: 1.5px solid var(--slate-200);
       flex-shrink: 0;
     }
 
-    .sidebar-farmer-avatar.fallback {
+    .sidebar-farmer-thumb.initials {
       background: #E2E8F0;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--slate-700);
     }
 
     .sidebar-farmer-name {
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 800;
       color: var(--slate-900);
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      line-height: 1.2;
     }
 
     .sidebar-farmer-role {
@@ -277,236 +286,266 @@
       color: var(--slate-500);
     }
 
-    .sidebar-footer-box {
-      border-top: 1px solid var(--slate-200);
+    /* Footer Switcher */
+    .sidebar-footer-action {
       padding-top: 14px;
+      border-top: 1px solid var(--slate-100);
     }
 
-    .btn-switch-mobile {
+    .btn-mobile-preview {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px;
+      padding: 11px;
       border-radius: var(--radius-sub);
       background: var(--slate-50);
-      border: 1px dashed var(--brand-600);
+      border: 1px dashed var(--brand-500);
       color: var(--brand-900);
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 13.5px;
+      font-weight: 800;
       text-decoration: none;
       transition: all 0.15s;
     }
 
-    .btn-switch-mobile:hover {
+    .btn-mobile-preview:hover {
       background: var(--brand-50);
-      border-style: solid;
     }
 
     /* =========================================================================
-       3. CỘT 2: KHU VỰC TRUNG TÂM (CHUYỂN ĐỔI NỘI DUNG TRỰC TIẾP TRÊN MÀN HÌNH)
-       - View A: Tổng Quan Chung HTX (Hero Banner, 3 Mini Cards, Nông Sản, Đơn Hàng)
-       - View B: Trang Quản Trị Chi Tiết Xã Viên (Thống Kê, Biểu Đồ, Bài Đăng, Cài Đặt Tài Khoản)
+       3. CỘT 2: TRUNG TÂM (MAIN CONTENT & HERO BANNER & CAROUSEL & TABLES)
        ========================================================================= */
     .app-center-content {
       height: 100%;
       overflow-y: auto;
-      padding-right: 8px;
+      padding-right: 6px;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Top Search & Admin Profile Chip */
+    .app-center-content::-webkit-scrollbar { width: 5px; }
+    .app-center-content::-webkit-scrollbar-thumb { background: var(--slate-200); border-radius: 5px; }
+
+    /* Top Search Bar & Header Controls */
     .center-top-bar {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
+      flex-shrink: 0;
     }
 
-    .search-pill-box {
+    .search-capsule-input {
       flex: 1;
       display: flex;
       align-items: center;
-      gap: 10px;
-      background: var(--slate-100);
+      gap: 12px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
       border-radius: var(--radius-pill);
-      padding: 12px 20px;
-      border: 1px solid transparent;
-      transition: all 0.2s ease;
-    }
-
-    .search-pill-box:focus-within {
-      background: #FFFFFF;
-      border-color: var(--brand-600);
-      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
-    }
-
-    .search-pill-box input {
-      border: none;
-      background: transparent;
-      outline: none;
-      font-family: var(--font-inter);
-      font-size: 15.5px; /* CHỮ TO */
-      color: var(--slate-900);
-      width: 100%;
-    }
-
-    .icon-round-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--slate-100);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--slate-700);
+      padding: 11px 20px;
       transition: all 0.15s;
     }
 
-    .icon-round-btn:hover {
-      background: var(--slate-200);
-      color: var(--slate-900);
+    .search-capsule-input:focus-within {
+      background: #FFFFFF;
+      border-color: var(--brand-600);
+      box-shadow: 0 0 0 3px var(--brand-100);
     }
 
-    .admin-chip {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .search-capsule-input input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--slate-800);
     }
 
-    .admin-avatar {
-      width: 42px;
-      height: 42px;
+    .search-capsule-input input::placeholder {
+      color: var(--slate-400);
+      font-size: 14.5px;
+    }
+
+    .top-action-btn {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: var(--brand-gradient);
-      color: white;
-      font-weight: 800;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      color: var(--slate-700);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.15s;
+      flex-shrink: 0;
     }
 
-    .admin-name {
-      font-size: 15px;
+    .top-action-btn:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    .top-badge-dot {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #EF4444;
+      border: 2px solid white;
+    }
+
+    .top-user-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 14px 4px 5px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .top-user-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--brand-700);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .top-user-name {
+      font-size: 14.5px;
       font-weight: 800;
       color: var(--slate-900);
     }
 
     /* -------------------------------------------------------------------------
-       VIEW A: TỔNG QUAN CHUNG HTX
+       HERO BANNER (VIBE CHUẨN COURSUE NHƯNG MÀU EMERALD CHỢ XANH)
        ------------------------------------------------------------------------- */
-    #view-overview {
-      display: block;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Hero Banner Chuẩn Emerald Green */
-    .hero-emerald-banner {
-      background: var(--brand-gradient);
-      border-radius: var(--radius-card);
+    .hero-coursue-banner {
+      background: linear-gradient(135deg, #059669 0%, #064E3B 100%);
+      border-radius: 26px;
       padding: 30px 36px;
       color: white;
       position: relative;
       overflow: hidden;
       margin-bottom: 22px;
-      box-shadow: 0 12px 30px -5px rgba(6, 95, 70, 0.35);
+      box-shadow: 0 14px 34px -8px rgba(6, 78, 59, 0.28);
+      flex-shrink: 0;
     }
 
-    .hero-tag {
+    /* Subtle Sparkle Motif */
+    .banner-sparkle {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.25);
+      pointer-events: none;
+    }
+
+    .banner-tag-pill {
       display: inline-block;
-      font-size: 12.5px;
+      font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1.2px;
       color: #A7F3D0;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .hero-title {
-      font-size: 26px; /* TO VÀ ĐẬM */
+    .banner-heading-text {
+      font-family: var(--font-display);
+      font-size: 26px;
       font-weight: 800;
       line-height: 1.25;
-      letter-spacing: -0.5px;
-      margin-bottom: 18px;
-      max-width: 600px;
+      max-width: 580px;
+      letter-spacing: -0.4px;
+      margin-bottom: 20px;
     }
 
-    .hero-btn-dark {
+    .banner-cta-button {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: var(--slate-900);
-      color: white;
-      font-size: 15.5px;
-      font-weight: 800;
-      padding: 12px 24px;
-      border-radius: var(--radius-pill);
+      padding: 10px 22px;
+      background: #0F172A;
+      color: #FFFFFF;
       border: none;
+      border-radius: var(--radius-pill);
+      font-size: 14.5px;
+      font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-      transition: all 0.2s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+      transition: all 0.15s ease;
     }
 
-    .hero-btn-dark:hover {
-      background: #020617;
+    .banner-cta-button:hover {
       transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+      background: #1E293B;
     }
 
-    .arrow-circ {
+    .banner-cta-arrow {
       width: 24px;
       height: 24px;
       border-radius: 50%;
       background: white;
-      color: var(--slate-900);
+      color: #0F172A;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 12px;
+      font-weight: 900;
     }
 
-    /* Sparkles */
-    .hero-sparkle {
-      position: absolute;
-      color: rgba(255, 255, 255, 0.2);
-      pointer-events: none;
-    }
-
-    /* 3 Mini Stat Cards */
-    .mini-stat-grid {
+    /* -------------------------------------------------------------------------
+       ROW OF 3 MINI STAT CARDS (CHUẨN COURSUE VỚI ICON VUÔNG PASTEL)
+       ------------------------------------------------------------------------- */
+    .mini-stat-trio {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-bottom: 24px;
+      flex-shrink: 0;
     }
 
-    .mini-card {
+    .mini-stat-card {
       background: #FFFFFF;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-sub);
-      padding: 16px;
+      border: 1px solid var(--slate-100);
+      border-radius: 18px;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      box-shadow: var(--shadow-card);
-      transition: transform 0.15s;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+      transition: all 0.2s ease;
     }
 
-    .mini-card:hover {
+    .mini-stat-card:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-hover);
     }
 
-    .mini-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
+    .mini-left-content {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mini-pastel-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -514,97 +553,164 @@
       flex-shrink: 0;
     }
 
-    .mini-icon.green { background: var(--brand-50); color: var(--brand-700); }
-    .mini-icon.amber { background: var(--amber-50); color: var(--amber-600); }
-    .mini-icon.blue  { background: var(--blue-50); color: var(--blue-600); }
+    .mini-pastel-icon.mint  { background: #ECFDF5; color: #059669; }
+    .mini-pastel-icon.amber { background: #FFFBEB; color: #D97706; }
+    .mini-pastel-icon.blue  { background: #EFF6FF; color: #2563EB; }
 
-    .mini-ratio {
-      font-size: 13px;
+    .mini-stat-ratio {
+      font-size: 12.5px;
       font-weight: 700;
-      color: var(--slate-500);
+      color: var(--slate-400);
+      margin-bottom: 2px;
     }
 
-    .mini-name {
+    .mini-stat-title {
       font-size: 16px;
       font-weight: 800;
       color: var(--slate-900);
-      margin-top: 1px;
     }
 
-    /* Continue Watching Carousel */
-    .section-head-bar {
+    .mini-more-dots {
+      color: var(--slate-400);
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* -------------------------------------------------------------------------
+       SECTION: "CONTINUE WATCHING" -> NÔNG SẢN & BÀI ĐĂNG CHỜ DUYỆT
+       ------------------------------------------------------------------------- */
+    .section-headline-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 14px;
     }
 
-    .section-head-bar h3 {
-      font-size: 19px;
+    .section-headline-bar h3 {
+      font-family: var(--font-display);
+      font-size: 19.5px;
       font-weight: 800;
       color: var(--slate-900);
       letter-spacing: -0.3px;
     }
 
-    .carousel-grid {
+    .nav-arrow-circles {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-arrow-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--slate-200);
+      background: #FFFFFF;
+      color: var(--slate-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.15s;
+    }
+
+    .nav-arrow-btn:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    .nav-arrow-btn.active-primary {
+      background: var(--brand-600);
+      border-color: var(--brand-600);
+      color: white;
+    }
+
+    .cards-coursue-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-bottom: 24px;
     }
 
-    .product-box-card {
+    .coursue-item-card {
       background: #FFFFFF;
       border: 1px solid var(--slate-200);
-      border-radius: var(--radius-sub);
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: var(--shadow-card);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
       cursor: pointer;
     }
 
-    .product-box-card:hover {
+    .coursue-item-card:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-hover);
-      border-color: var(--brand-500);
+      border-color: var(--brand-400);
     }
 
-    .product-thumb-area {
-      height: 140px;
-      background: var(--slate-100);
+    .coursue-img-wrapper {
+      position: relative;
+      height: 145px;
       overflow: hidden;
+      background: var(--slate-100);
     }
 
-    .product-thumb-area img {
+    .coursue-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
     }
 
-    .product-body-area {
-      padding: 14px 16px;
+    .coursue-item-card:hover .coursue-img-wrapper img {
+      transform: scale(1.04);
+    }
+
+    .floating-heart-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(4px);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate-700);
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .coursue-card-body {
+      padding: 14px 16px 16px;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
 
-    .tag-badge-ocop {
+    .pill-category-badge {
       display: inline-block;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.6px;
-      padding: 3px 8px;
+      padding: 3px 9px;
       border-radius: 6px;
       margin-bottom: 8px;
       align-self: flex-start;
-      background: var(--amber-100);
-      color: var(--amber-700);
     }
 
-    .product-card-title {
+    .pill-category-badge.cyan  { background: #EFF6FF; color: #2563EB; }
+    .pill-category-badge.mint  { background: #ECFDF5; color: #059669; }
+    .pill-category-badge.amber { background: #FFFBEB; color: #D97706; }
+
+    .coursue-card-title {
       font-size: 15.5px;
       font-weight: 800;
       color: var(--slate-900);
@@ -617,7 +723,7 @@
       height: 42px;
     }
 
-    .product-farmer-bottom {
+    .coursue-author-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -626,7 +732,13 @@
       border-top: 1px solid var(--slate-100);
     }
 
-    .farmer-avatar-s {
+    .author-info-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .author-thumb-sm {
       width: 32px;
       height: 32px;
       border-radius: 50%;
@@ -634,97 +746,131 @@
       border: 1px solid var(--slate-200);
     }
 
-    /* Your Lesson Table */
-    .table-container-card {
-      background: #FFFFFF;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-sub);
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
+    .author-name-text {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--slate-900);
     }
 
-    .table-header-row {
-      padding: 16px 20px;
+    .author-sub-text {
+      font-size: 11.5px;
+      color: var(--slate-500);
+    }
+
+    .coursue-price-tag {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--brand-700);
+    }
+
+    /* -------------------------------------------------------------------------
+       SECTION: "YOUR LESSON" -> NHẬT KÝ & ĐƠN HÀNG GẦN ĐÂY
+       ------------------------------------------------------------------------- */
+    .coursue-table-card {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-200);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+      margin-bottom: 20px;
+    }
+
+    .coursue-table-head-row {
+      padding: 16px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--slate-100);
     }
 
-    .table-header-row h4 {
-      font-size: 17px;
+    .coursue-table-head-row h4 {
+      font-family: var(--font-display);
+      font-size: 17.5px;
       font-weight: 800;
       color: var(--slate-900);
     }
 
-    .dashboard-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 15px; /* CHỮ TO */
+    .see-all-link {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--brand-700);
+      cursor: pointer;
+      text-decoration: none;
     }
 
-    .dashboard-table th {
+    .coursue-clean-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+    }
+
+    .coursue-clean-table th {
       text-align: left;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: var(--slate-400);
-      padding: 12px 18px;
+      padding: 12px 22px;
       background: var(--slate-50);
       border-bottom: 1px solid var(--slate-200);
     }
 
-    .dashboard-table td {
-      padding: 14px 18px;
+    .coursue-clean-table td {
+      padding: 14px 22px;
       border-bottom: 1px solid var(--slate-100);
       vertical-align: middle;
     }
 
-    .dashboard-table tr:hover td {
+    .coursue-clean-table tr:hover td {
       background: var(--slate-50);
     }
 
-    .round-action-arrow {
+    .circle-arrow-action {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: var(--slate-100);
-      border: none;
+      border: 1px solid var(--slate-200);
+      background: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--slate-600);
       cursor: pointer;
-      color: var(--slate-700);
-      font-size: 14px;
       transition: all 0.15s;
     }
 
-    .round-action-arrow:hover {
+    .circle-arrow-action:hover {
       background: var(--brand-600);
+      border-color: var(--brand-600);
       color: white;
     }
 
-    /* -------------------------------------------------------------------------
-       VIEW B: TRANG QUẢN TRỊ CHI TIẾT TỪNG XÃ VIÊN (IN-PAGE MANAGEMENT VIEW)
-       - Không dùng popup: thay thế trực tiếp vào màn hình Dashboard
-       - Thống kê doanh thu + Biểu đồ của riêng user đó
-       - Danh sách bài đăng & nông sản (xóa/sửa chữ trực tiếp)
-       - Cài đặt tài khoản của user đó (SĐT Zalo, Ngân hàng, Chiết khấu)
-       ------------------------------------------------------------------------- */
+    /* =========================================================================
+       4. IN-PAGE MEMBER MANAGEMENT SUITE (BÁC BA / CÔ LAN / ANH TUẤN)
+       - Giữ 100% style Coursue: Banner bo cong Emerald, 3 Mini Cards,
+         Lưới bài đăng có nút [✕] xóa chữ trực tiếp, Thống kê & Cài đặt!
+       ========================================================================= */
     #view-member-admin {
       display: none;
       animation: fadeIn 0.2s ease;
     }
 
-    .back-nav-bar {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Back Nav */
+    .member-top-nav-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 18px;
+      flex-shrink: 0;
     }
 
-    .btn-back-overview {
+    .btn-coursue-back {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -739,415 +885,423 @@
       transition: all 0.15s;
     }
 
-    .btn-back-overview:hover {
+    .btn-coursue-back:hover {
       background: var(--brand-50);
       color: var(--brand-900);
       border-color: var(--brand-300);
     }
 
-    /* Header Profile Xã Viên */
-    .member-admin-hero {
-      background: #FFFFFF;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-card);
-      padding: 22px 26px;
+    .member-breadcrumb {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--slate-500);
+    }
+
+    .member-breadcrumb strong {
+      color: var(--brand-700);
+      font-weight: 800;
+    }
+
+    /* Member Hero Banner (Style chuẩn Coursue Hero Banner!) */
+    .member-coursue-hero {
+      background: linear-gradient(135deg, #064E3B 0%, #059669 100%);
+      border-radius: 26px;
+      padding: 26px 32px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 22px;
+      box-shadow: 0 14px 34px -8px rgba(6, 78, 59, 0.28);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-card);
+      flex-shrink: 0;
     }
 
-    .member-hero-left {
+    .member-hero-left-profile {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 20px;
     }
 
-    .member-hero-avatar {
-      width: 72px;
-      height: 72px;
+    .member-hero-avatar-ring {
+      width: 76px;
+      height: 76px;
       border-radius: 50%;
+      border: 3.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
       object-fit: cover;
-      border: 3px solid var(--brand-100);
-      box-shadow: 0 4px 12px rgba(6, 95, 70, 0.15);
     }
 
-    .member-hero-info h2 {
-      font-size: 22px;
+    .member-hero-text h2 {
+      font-family: var(--font-display);
+      font-size: 23px;
       font-weight: 800;
-      color: var(--slate-900);
+      line-height: 1.2;
     }
 
-    .member-hero-info p {
+    .member-hero-text p {
       font-size: 14px;
-      color: var(--slate-500);
-      margin-top: 3px;
-    }
-
-    /* 4 Thống kê của riêng Xã Viên */
-    .member-kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 22px;
-    }
-
-    .member-kpi-card {
-      background: #FFFFFF;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-sub);
-      padding: 16px 18px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .member-kpi-card .label {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--slate-500);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
-
-    .member-kpi-card .value {
-      font-size: 24px;
-      font-weight: 900;
-      color: var(--slate-900);
+      color: #D1FAE5;
       margin-top: 4px;
     }
 
-    .member-kpi-card .sub {
-      font-size: 12.5px;
-      color: var(--brand-700);
-      font-weight: 700;
-      margin-top: 2px;
+    .member-hero-badges {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
     }
 
-    /* Biểu Đồ Doanh Thu 6 Tháng Của Riêng Hộ Nông Dân */
-    .member-chart-box {
+    .hero-mini-pill {
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      color: white;
+    }
+
+    .member-hero-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .hero-pill-btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #FFFFFF;
+      color: var(--slate-900);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.15s;
+    }
+
+    .hero-pill-btn-white:hover {
+      background: var(--brand-50);
+      color: var(--brand-900);
+    }
+
+    .hero-pill-btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: #0F172A;
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.15s;
+    }
+
+    .hero-pill-btn-dark:hover {
+      background: #1E293B;
+    }
+
+    /* Quản Trị & Duyệt Bài Đăng (Style Card Coursue Sang Trọng + Nút Xóa Chữ) */
+    .member-card-container {
       background: #FFFFFF;
       border: 1px solid var(--slate-200);
-      border-radius: var(--radius-card);
-      padding: 22px;
+      border-radius: 22px;
+      padding: 22px 24px;
       margin-bottom: 22px;
-      box-shadow: var(--shadow-card);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .chart-head-title {
+    .member-card-title-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      justify-content: space-between;
+      margin-bottom: 18px;
     }
 
-    .chart-head-title h3 {
-      font-size: 17.5px;
+    .member-card-title-row h3 {
+      font-family: var(--font-display);
+      font-size: 18.5px;
       font-weight: 800;
       color: var(--slate-900);
     }
 
-    .member-bar-chart-row {
+    .input-clear-wrapper {
+      position: relative;
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      height: 120px;
-      padding: 0 20px 10px;
-      border-bottom: 1px dashed var(--slate-300);
-    }
-
-    .member-chart-col {
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 8px;
-      width: 50px;
     }
 
-    .member-bar-rect {
-      width: 32px;
-      border-radius: 8px 8px 4px 4px;
-      background: var(--brand-100);
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-
-    .member-bar-rect:hover {
-      background: var(--brand-300);
-    }
-
-    .member-bar-rect.active {
-      background: var(--brand-600);
-      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
-    }
-
-    .member-month-labels {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 16px 0;
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--slate-500);
-    }
-
-    /* Bảng Quản Trị Sản Phẩm / Bài Đăng Của User (CÓ NÚT XÓA/SỬA CHỮ TRỰC TIẾP) */
-    .member-posts-box {
-      background: #FFFFFF;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-card);
-      padding: 22px;
-      margin-bottom: 22px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .editable-input-field {
+    .form-input-stylish {
       width: 100%;
-      padding: 10px 36px 10px 14px;
-      border: 1px solid var(--slate-300);
-      border-radius: var(--radius-sub);
-      font-family: var(--font-inter);
-      font-size: 15px; /* CHỮ TO */
+      padding: 12px 44px 12px 16px;
+      border: 1.5px solid var(--slate-200);
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 15.5px;
       font-weight: 700;
       color: var(--slate-900);
-    }
-
-    .editable-input-field:focus {
       outline: none;
-      border-color: var(--brand-600);
-      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+      transition: all 0.15s;
     }
 
-    .btn-clear-text {
+    .form-input-stylish:focus {
+      border-color: var(--brand-600);
+      box-shadow: 0 0 0 3px var(--brand-100);
+    }
+
+    .btn-clear-symbol {
       position: absolute;
       right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 22px;
-      height: 22px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      background: var(--slate-200);
+      background: #FEE2E2;
       border: none;
-      color: var(--slate-600);
-      font-size: 12px;
-      cursor: pointer;
+      color: #DC2626;
+      font-weight: 900;
+      font-size: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
     }
 
-    .btn-clear-text:hover {
-      background: var(--slate-300);
-      color: var(--slate-900);
+    .btn-clear-symbol:hover {
+      background: #DC2626;
+      color: white;
     }
 
-    /* Cài Đặt Tài Khoản Xã Viên */
-    .member-settings-box {
-      background: #FFFFFF;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-card);
-      padding: 22px;
-      box-shadow: var(--shadow-card);
+    /* Audio wave bar */
+    .audio-voice-wave-bar {
+      background: #EFF6FF;
+      border: 1px solid #DBEAFE;
+      border-radius: 14px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
     }
 
-    .settings-grid-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    .form-group-block label {
-      display: block;
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--slate-700);
-      margin-bottom: 6px;
-    }
-
-    .form-group-block input, .form-group-block select {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1px solid var(--slate-300);
-      border-radius: var(--radius-sub);
-      font-family: var(--font-inter);
+    .audio-play-round {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #2563EB;
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 15px;
-      font-weight: 600;
-      color: var(--slate-900);
+      cursor: pointer;
+      flex-shrink: 0;
     }
 
     /* =========================================================================
-       4. CỘT 3: STATISTIC & USER DIRECTORY (Hiển thị cố định trên Dashboard)
+       5. CỘT 3: STATISTIC & USER DIRECTORY (CHUẨN 100% COURSUE SCREENSHOT)
        ========================================================================= */
     .app-right-rail {
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 4px;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      overflow-y: auto;
-      border-left: 1px solid var(--slate-200);
-      padding-left: 18px;
     }
+
+    .app-right-rail::-webkit-scrollbar { width: 4px; }
+    .app-right-rail::-webkit-scrollbar-thumb { background: var(--slate-200); border-radius: 4px; }
 
     .rail-widget-card {
       background: #FFFFFF;
-      border: 1px solid var(--slate-200);
-      border-radius: var(--radius-card);
-      padding: 20px;
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--slate-100);
+      border-radius: 22px;
+      padding: 22px 20px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
     .rail-widget-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
 
     .rail-widget-head h4 {
-      font-size: 17px;
+      font-family: var(--font-display);
+      font-size: 18px;
       font-weight: 800;
       color: var(--slate-900);
     }
 
-    /* Avatar Ring Widget Mẫu 1 nhưng màu Brand Green */
-    .user-statistic-box {
+    /* Circular Progress Ring Widget */
+    .statistic-ring-box {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
-    .avatar-ring-frame {
+    .ring-frame-center {
       position: relative;
-      width: 106px;
-      height: 106px;
+      width: 114px;
+      height: 114px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .avatar-ring-frame svg {
+    .ring-frame-center svg {
       width: 100%;
       height: 100%;
       transform: rotate(-90deg);
     }
 
-    .avatar-face-center {
+    .ring-avatar-face {
       position: absolute;
-      width: 72px;
-      height: 72px;
+      width: 78px;
+      height: 78px;
       border-radius: 50%;
-      background: var(--brand-50);
-      color: var(--brand-900);
-      font-size: 26px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
+      object-fit: cover;
       border: 3px solid white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
     }
 
-    .ring-badge-percent {
+    .ring-badge-tag {
       position: absolute;
-      top: 2px;
-      right: 2px;
-      background: var(--brand-600);
+      top: 0px;
+      right: 0px;
+      background: #5844ED; /* Purple accent từ Coursue hoặc Emerald */
+      background: linear-gradient(135deg, #059669 0%, #10B981 100%);
       color: white;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 800;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: var(--radius-pill);
       border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    .stat-greeting {
-      font-size: 16px;
+    .stat-greeting-title {
+      font-family: var(--font-display);
+      font-size: 17px;
       font-weight: 800;
       color: var(--slate-900);
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
-    .stat-subtext {
+    .stat-subtext-note {
       font-size: 13px;
       color: var(--slate-500);
+      max-width: 240px;
+      line-height: 1.4;
     }
 
-    /* 5 Cột Bo Tròn (Mẫu 1) */
-    .bar-chart-coursue {
-      background: var(--slate-50);
-      border-radius: var(--radius-sub);
-      padding: 14px 12px;
+    /* Sleek Coursue Bar Chart Widget */
+    .coursue-bar-chart-card {
+      background: #F8FAFC;
       border: 1px solid var(--slate-200);
-      margin-bottom: 16px;
+      border-radius: 16px;
+      padding: 16px 14px;
+      margin-bottom: 18px;
     }
 
-    .bar-chart-coursue-bars {
+    .chart-y-axis-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+
+    .chart-bars-wrap {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      height: 74px;
-      padding: 0 8px 6px;
-      border-bottom: 1px dashed var(--slate-300);
+      height: 82px;
+      padding: 0 10px 4px;
+      border-bottom: 1px dashed #CBD5E1;
+      position: relative;
     }
 
-    .bar-coursue-item {
-      width: 24px;
+    .pill-bar-column {
+      width: 22px;
       border-radius: 6px 6px 3px 3px;
-      background: var(--brand-200);
-      transition: all 0.2s;
+      background: #E2E8F0;
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
 
-    .bar-coursue-item.active {
-      background: var(--brand-600);
-      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.35);
+    .pill-bar-column:hover {
+      background: var(--brand-300);
     }
 
-    .bar-coursue-dates {
+    .pill-bar-column.active {
+      background: #059669;
+      box-shadow: 0 6px 14px rgba(5, 150, 105, 0.35);
+    }
+
+    .chart-x-labels {
       display: flex;
       justify-content: space-between;
-      padding: 6px 2px 0;
+      padding: 6px 4px 0;
       font-size: 11px;
       font-weight: 700;
       color: var(--slate-400);
     }
 
-    /* XÃ VIÊN HTX (YOUR MENTOR) */
-    .mentor-item-row {
+    /* "YOUR MENTOR" / DANH BẠ XÃ VIÊN */
+    .mentor-list-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mentor-single-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 0;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--slate-100);
     }
 
-    .mentor-item-row:last-child {
+    .mentor-single-row:last-child {
       border-bottom: none;
+      padding-bottom: 0;
     }
 
-    .mentor-click-area {
+    .mentor-clickable-profile {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
       cursor: pointer;
       min-width: 0;
     }
 
-    .mentor-click-area:hover .mentor-name-text {
+    .mentor-clickable-profile:hover .mentor-name-bold {
       color: var(--brand-700);
-      text-decoration: underline;
     }
 
-    .mentor-row-img {
-      width: 40px;
-      height: 40px;
+    .mentor-avatar-round {
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid var(--slate-200);
+      border: 1.5px solid var(--slate-200);
       flex-shrink: 0;
     }
 
-    .mentor-name-text {
+    .mentor-name-bold {
       font-size: 14.5px;
       font-weight: 800;
       color: var(--slate-900);
@@ -1156,49 +1310,50 @@
       overflow: hidden;
     }
 
-    .mentor-sub-text {
+    .mentor-spec-sub {
       font-size: 12px;
       color: var(--slate-500);
     }
 
-    .btn-mentor-action {
+    .btn-mentor-follow {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      background: transparent;
+      gap: 5px;
+      background: #FFFFFF;
       border: 1px solid var(--slate-300);
       color: var(--slate-700);
       font-size: 12.5px;
-      font-weight: 700;
-      padding: 6px 12px;
+      font-weight: 800;
+      padding: 6px 13px;
       border-radius: var(--radius-pill);
       cursor: pointer;
       transition: all 0.15s;
       white-space: nowrap;
     }
 
-    .btn-mentor-action:hover {
+    .btn-mentor-follow:hover {
       background: var(--brand-50);
       border-color: var(--brand-600);
       color: var(--brand-800);
     }
 
-    .btn-see-all-full {
+    .btn-see-all-coursue {
       width: 100%;
       padding: 12px;
-      background: var(--brand-50);
-      color: var(--brand-800);
+      background: #F1F5F9;
+      color: var(--slate-700);
       font-size: 14px;
       font-weight: 800;
-      border: 1px solid var(--brand-200);
+      border: none;
       border-radius: var(--radius-pill);
       cursor: pointer;
       transition: background 0.15s;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
-    .btn-see-all-full:hover {
-      background: var(--brand-100);
+    .btn-see-all-coursue:hover {
+      background: #E2E8F0;
+      color: var(--slate-900);
     }
 
     /* Toast */
@@ -1206,16 +1361,16 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      z-index: 200;
+      z-index: 999;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .toast-card {
+    .toast-pill {
       background: var(--slate-900);
       color: white;
-      padding: 12px 20px;
+      padding: 12px 22px;
       border-radius: var(--radius-pill);
       font-size: 14.5px;
       font-weight: 700;
@@ -1234,54 +1389,54 @@
 </head>
 <body>
 
-  <!-- FULLSCREEN APP SHELL VỪA KHÍT MÀN HÌNH -->
+  <!-- FULLSCREEN VIEWPORT VỪA KHÍT MÀN HÌNH -->
   <div class="app-viewport-wrapper">
     <div class="app-dashboard-window">
 
       <!-- =====================================================================
-           CỘT 1: SIDEBAR TRÁI
+           CỘT 1: SIDEBAR TRÁI (Chuẩn Vibe Coursue Mẫu 1: Thoáng đãng, không chia ô thô)
            ===================================================================== -->
       <aside class="app-sidebar">
         <div>
           <!-- Brand Logo -->
-          <a href="index.html" class="sidebar-brand-link" title="Xem ứng dụng di động Bác Ba">
-            <div class="brand-logo-badge">🌾</div>
-            <div class="brand-title-text">
+          <a href="index.html" class="sidebar-brand-box" title="Chuyển sang ứng dụng di động Bác Ba">
+            <div class="brand-logo-circle">🌾</div>
+            <div class="brand-title-wrap">
               <h1>HTX ĐỒNG CÁT</h1>
               <span>OCOP 4★ Yên Bình</span>
             </div>
           </a>
 
           <!-- Menu điều hành chính -->
-          <div class="sidebar-label">ĐIỀU HÀNH HTX</div>
-          <div class="nav-btn-list">
-            <button class="sidebar-nav-item active" id="nav-dashboard-btn" onclick="showOverviewView()">
+          <div class="sidebar-section-title">OVERVIEW</div>
+          <div class="sidebar-menu-list">
+            <button class="sidebar-menu-btn active" id="nav-btn-dashboard" onclick="showOverviewView()">
               <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
               Dashboard
             </button>
 
-            <button class="sidebar-nav-item" onclick="switchToMemberAdmin('bacba')">
+            <button class="sidebar-menu-btn" onclick="switchToMemberAdmin('bacba')">
               <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
               Quản Trị Xã Viên
             </button>
 
-            <button class="sidebar-nav-item" onclick="showToast('Order Hub: Đang gom 1.200 túi chuối sấy WinMart...')">
+            <button class="sidebar-menu-btn" onclick="showToast('Order Hub: Đang gom 1.200 túi chuối sấy WinMart...')">
               <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-              Order Hub B2B
+              Đơn Buôn B2B
             </button>
 
-            <button class="sidebar-nav-item" onclick="showToast('AI Content: Kịch bản Livestream TikTok Shop đã tạo xong!')">
+            <button class="sidebar-menu-btn" onclick="showToast('AI Content: Kịch bản Livestream TikTok Shop đã sẵn sàng!')">
               <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               Kịch Bản AI
             </button>
           </div>
 
-          <!-- Danh sách Xã Viên nhanh ở sidebar -->
-          <div class="sidebar-label">XÃ VIÊN TIÊU BIỂU</div>
-          <div class="sidebar-farmers-list">
+          <!-- Section Xã Viên (Friends) -->
+          <div class="sidebar-section-title">BÀ CON XÃ VIÊN</div>
+          <div class="sidebar-farmers-group">
             <!-- Bác Ba -->
-            <div class="sidebar-farmer-row" onclick="switchToMemberAdmin('bacba')">
-              <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="sidebar-farmer-avatar">
+            <div class="sidebar-farmer-item" onclick="switchToMemberAdmin('bacba')">
+              <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="sidebar-farmer-thumb">
               <div>
                 <div class="sidebar-farmer-name">Bác Ba (Hộ 04)</div>
                 <div class="sidebar-farmer-role">Chuối sấy OCOP</div>
@@ -1289,8 +1444,8 @@
             </div>
 
             <!-- Cô Lan -->
-            <div class="sidebar-farmer-row" onclick="switchToMemberAdmin('lan')">
-              <div class="sidebar-farmer-avatar fallback">CL</div>
+            <div class="sidebar-farmer-item" onclick="switchToMemberAdmin('lan')">
+              <div class="sidebar-farmer-thumb initials">CL</div>
               <div>
                 <div class="sidebar-farmer-name">Cô Lan (Hộ 09)</div>
                 <div class="sidebar-farmer-role">Trà Bát Tiên</div>
@@ -1298,46 +1453,47 @@
             </div>
 
             <!-- Anh Tuấn -->
-            <div class="sidebar-farmer-row" onclick="switchToMemberAdmin('tuan')">
-              <div class="sidebar-farmer-avatar fallback">AT</div>
+            <div class="sidebar-farmer-item" onclick="switchToMemberAdmin('tuan')">
+              <div class="sidebar-farmer-thumb initials">AT</div>
               <div>
                 <div class="sidebar-farmer-name">Anh Tuấn (Hộ 12)</div>
-                <div class="sidebar-farmer-role">Mật ong hoa rừng</div>
+                <div class="sidebar-farmer-role">Mật ong rừng</div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Footer -->
-        <div class="sidebar-footer-box">
-          <a href="index.html" class="btn-switch-mobile" title="Chuyển sang app mobile của Bác Ba">
+        <div class="sidebar-footer-action">
+          <a href="index.html" class="btn-mobile-preview" title="Xem ứng dụng Bác Ba trên điện thoại">
             <span>📱</span> Xem App Mobile Bác Ba
           </a>
         </div>
       </aside>
 
       <!-- =====================================================================
-           CỘT 2: KHU VỰC TRUNG TÂM (CHUYỂN ĐỔI TRỰC TIẾP TRÊN MÀN HÌNH - NO POPUP)
+           CỘT 2: TRUNG TÂM (CHUYỂN ĐỔI TRỰC TIẾP TRÊN MÀN HÌNH - NO POPUP)
            ===================================================================== -->
       <main class="app-center-content">
-        <!-- Top Search Bar -->
+        <!-- Top Search Bar & Header Controls -->
         <div class="center-top-bar">
-          <div class="search-pill-box">
+          <div class="search-capsule-input">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" style="color: var(--slate-400);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" placeholder="Tìm kiếm nông sản, hộ nông dân, đơn hàng B2B WinMart...">
+            <input type="text" placeholder="Tìm kiếm nông sản, xã viên, đơn hàng WinMart...">
           </div>
 
-          <button class="icon-round-btn" title="Hộp thư Zalo OA" onclick="showToast('💬 Zalo OA: 142 xã viên và 4.820 khách hàng đang kết nối')">
+          <button class="top-action-btn" title="Zalo OA" onclick="showToast('💬 Zalo OA: 142 xã viên và 4.820 khách hàng đang online')">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </button>
 
-          <button class="icon-round-btn" title="Thông báo hệ thống" onclick="showToast('🔔 Có 1 lô chuối sấy mới từ Bác Ba đang chờ duyệt!')">
+          <button class="top-action-btn" title="Thông báo mới" onclick="showToast('🔔 Có 1 lô chuối sấy mới từ Bác Ba đang chờ duyệt!')">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <span class="top-badge-dot"></span>
           </button>
 
-          <div class="admin-chip">
-            <div class="admin-avatar">VH</div>
-            <span class="admin-name">Nguyễn Văn Hùng</span>
+          <div class="top-user-pill" title="Tài khoản chủ nhiệm HTX">
+            <div class="top-user-avatar">VH</div>
+            <span class="top-user-name">Chủ nhiệm Hùng</span>
           </div>
         </div>
 
@@ -1345,114 +1501,127 @@
              VIEW A: TỔNG QUAN CHUNG HTX (OVERVIEW)
              ------------------------------------------------------------------- -->
         <div id="view-overview">
-          <!-- Hero Emerald Banner -->
-          <section class="hero-emerald-banner">
-            <svg class="hero-sparkle" style="top: 20px; right: 80px; width: 70px; height: 70px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/></svg>
-            <span class="hero-tag">CHIẾN DỊCH OCOP & QUÀ TẾT BÍNH NGỌ 2026</span>
-            <h2 class="hero-title">Số Hóa Nông Sản Xã Đồng Cát Lên Sàn Đa Kênh</h2>
+          <!-- Hero Emerald Banner (Chuẩn Coursue Mẫu 1) -->
+          <section class="hero-coursue-banner">
+            <svg class="banner-sparkle" style="top: 15px; right: 90px; width: 65px; height: 65px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/></svg>
+            <span class="banner-tag-pill">CHIẾN DỊCH OCOP & QUÀ TẾT BÍNH NGỌ 2026</span>
+            <h2 class="banner-heading-text">Số Hóa Nông Sản Xã Đồng Cát Lên Sàn Đa Kênh</h2>
             
-            <button class="hero-btn-dark" onclick="switchToMemberAdmin('bacba')">
+            <button class="banner-cta-button" onclick="switchToMemberAdmin('bacba')">
               <span>Quản Trị & Duyệt Lô Hàng Bác Ba</span>
-              <div class="arrow-circ">➔</div>
+              <div class="banner-cta-arrow">➔</div>
             </button>
           </section>
 
-          <!-- 3 Thẻ Mini Stat Cards -->
-          <section class="mini-stat-grid">
-            <div class="mini-card">
-              <div class="mini-icon green">🍌</div>
-              <div>
-                <div class="mini-ratio">1.200 / 1.500 túi đã gom</div>
-                <div class="mini-name">Chuối Sấy Giòn OCOP</div>
+          <!-- 3 Mini Stat Cards (Chuẩn Coursue: Icon vuông pastel + ratio) -->
+          <section class="mini-stat-trio">
+            <div class="mini-stat-card">
+              <div class="mini-left-content">
+                <div class="mini-pastel-icon mint">🍌</div>
+                <div>
+                  <div class="mini-stat-ratio">1.200 / 1.500 túi đã gom</div>
+                  <div class="mini-stat-title">Chuối Sấy Giòn OCOP</div>
+                </div>
               </div>
+              <div class="mini-more-dots">⋮</div>
             </div>
 
-            <div class="mini-card">
-              <div class="mini-icon amber">🍵</div>
-              <div>
-                <div class="mini-ratio">320 / 500 hộp hút chân không</div>
-                <div class="mini-name">Trà Bát Tiên Sao Lửa</div>
+            <div class="mini-stat-card">
+              <div class="mini-left-content">
+                <div class="mini-pastel-icon amber">🍵</div>
+                <div>
+                  <div class="mini-stat-ratio">320 / 500 hộp hút chân không</div>
+                  <div class="mini-stat-title">Trà Bát Tiên Sao Lửa</div>
+                </div>
               </div>
+              <div class="mini-more-dots">⋮</div>
             </div>
 
-            <div class="mini-card">
-              <div class="mini-icon blue">🍯</div>
-              <div>
-                <div class="mini-ratio">85 / 150 chai đóng hũ</div>
-                <div class="mini-name">Mật Ong Hoa Rừng</div>
+            <div class="mini-stat-card">
+              <div class="mini-left-content">
+                <div class="mini-pastel-icon blue">🍯</div>
+                <div>
+                  <div class="mini-stat-ratio">85 / 150 chai đóng hũ</div>
+                  <div class="mini-stat-title">Mật Ong Hoa Rừng</div>
+                </div>
               </div>
+              <div class="mini-more-dots">⋮</div>
             </div>
           </section>
 
           <!-- Continue Watching: Lưới 3 Card Nông Sản Xã Viên Gửi Duyệt -->
           <section style="margin-bottom: 24px;">
-            <div class="section-head-bar">
+            <div class="section-headline-bar">
               <h3>Nông Sản Xã Viên Gửi Duyệt Lên Sàn</h3>
-              <div style="font-size: 14px; font-weight: 700; color: var(--brand-700); cursor: pointer;" onclick="switchToMemberAdmin('bacba')">
-                Bấm vào để vào trang quản trị ➔
+              <div class="nav-arrow-circles">
+                <button class="nav-arrow-btn">‹</button>
+                <button class="nav-arrow-btn active-primary" onclick="switchToMemberAdmin('bacba')">›</button>
               </div>
             </div>
 
-            <div class="carousel-grid">
+            <div class="cards-coursue-grid">
               <!-- Card 1: Bác Ba -->
-              <div class="product-box-card" onclick="switchToMemberAdmin('bacba')">
-                <div class="product-thumb-area">
+              <div class="coursue-item-card" onclick="switchToMemberAdmin('bacba')">
+                <div class="coursue-img-wrapper">
                   <img src="banana_front.jpg" alt="Chuối sấy Bác Ba">
+                  <button class="floating-heart-btn" title="Lưu trữ">♡</button>
                 </div>
-                <div class="product-body-area">
-                  <span class="tag-badge-ocop">⭐ OCOP 4 SAO</span>
-                  <h4 class="product-card-title">Chuối Sấy Giòn Yên Bình — Túi 250g Khóa Zip</h4>
-                  <div class="product-farmer-bottom">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="farmer-avatar-s">
+                <div class="coursue-card-body">
+                  <span class="pill-category-badge amber">⭐ OCOP 4 SAO</span>
+                  <h4 class="coursue-card-title">Chuối Sấy Giòn Yên Bình — Túi 250g Khóa Zip</h4>
+                  <div class="coursue-author-row">
+                    <div class="author-info-left">
+                      <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="author-thumb-sm">
                       <div>
-                        <div style="font-size: 13.5px; font-weight: 800; color: var(--slate-900);">Bác Ba (Hộ 04)</div>
-                        <div style="font-size: 12px; color: var(--slate-500);">Xã viên 62 tuổi</div>
+                        <div class="author-name-text">Bác Ba (Hộ 04)</div>
+                        <div class="author-sub-text">Xã viên 62 tuổi</div>
                       </div>
                     </div>
-                    <div style="font-size: 16px; font-weight: 800; color: var(--brand-700);">55.000 đ</div>
+                    <div class="coursue-price-tag">55.000 đ</div>
                   </div>
                 </div>
               </div>
 
               <!-- Card 2: Cô Lan -->
-              <div class="product-box-card" onclick="switchToMemberAdmin('lan')">
-                <div class="product-thumb-area">
+              <div class="coursue-item-card" onclick="switchToMemberAdmin('lan')">
+                <div class="coursue-img-wrapper">
                   <img src="tea_front.jpg" alt="Trà Bát Tiên">
+                  <button class="floating-heart-btn" title="Lưu trữ">♡</button>
                 </div>
-                <div class="product-body-area">
-                  <span class="tag-badge-ocop" style="background: var(--brand-50); color: var(--brand-800);">VIETGAP TỈNH</span>
-                  <h4 class="product-card-title">Trà Bát Tiên Sao Lửa — Hộp Thiếc Cao Cấp 200g</h4>
-                  <div class="product-farmer-bottom">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <div class="farmer-avatar-s" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px;">CL</div>
+                <div class="coursue-card-body">
+                  <span class="pill-category-badge mint">VIETGAP TỈNH</span>
+                  <h4 class="coursue-card-title">Trà Bát Tiên Sao Lửa — Hộp Thiếc Cao Cấp 200g</h4>
+                  <div class="coursue-author-row">
+                    <div class="author-info-left">
+                      <div class="author-thumb-sm" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px;">CL</div>
                       <div>
-                        <div style="font-size: 13.5px; font-weight: 800; color: var(--slate-900);">Cô Lan (Hộ 09)</div>
-                        <div style="font-size: 12px; color: var(--slate-500);">Thôn Đồi Chè</div>
+                        <div class="author-name-text">Cô Lan (Hộ 09)</div>
+                        <div class="author-sub-text">Thôn Đồi Chè</div>
                       </div>
                     </div>
-                    <div style="font-size: 16px; font-weight: 800; color: var(--brand-700);">180.000 đ</div>
+                    <div class="coursue-price-tag">180.000 đ</div>
                   </div>
                 </div>
               </div>
 
               <!-- Card 3: Anh Tuấn -->
-              <div class="product-box-card" onclick="switchToMemberAdmin('tuan')">
-                <div class="product-thumb-area">
+              <div class="coursue-item-card" onclick="switchToMemberAdmin('tuan')">
+                <div class="coursue-img-wrapper">
                   <img src="honey_front.jpg" alt="Mật ong hoa rừng">
+                  <button class="floating-heart-btn" title="Lưu trữ">♡</button>
                 </div>
-                <div class="product-body-area">
-                  <span class="tag-badge-ocop" style="background: var(--blue-50); color: var(--blue-700);">MẬT ONG RỪNG</span>
-                  <h4 class="product-card-title">Mật Ong Hoa Rừng Tự Nhiên — Chai 500ml</h4>
-                  <div class="product-farmer-bottom">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <div class="farmer-avatar-s" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px;">AT</div>
+                <div class="coursue-card-body">
+                  <span class="pill-category-badge cyan">MẬT ONG RỪNG</span>
+                  <h4 class="coursue-card-title">Mật Ong Hoa Rừng Tự Nhiên — Chai 500ml</h4>
+                  <div class="coursue-author-row">
+                    <div class="author-info-left">
+                      <div class="author-thumb-sm" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px;">AT</div>
                       <div>
-                        <div style="font-size: 13.5px; font-weight: 800; color: var(--slate-900);">Anh Tuấn (Hộ 12)</div>
-                        <div style="font-size: 12px; color: var(--slate-500);">Thôn Suối Rừng</div>
+                        <div class="author-name-text">Anh Tuấn (Hộ 12)</div>
+                        <div class="author-sub-text">Thôn Suối Rừng</div>
                       </div>
                     </div>
-                    <div style="font-size: 16px; font-weight: 800; color: var(--brand-700);">220.000 đ</div>
+                    <div class="coursue-price-tag">220.000 đ</div>
                   </div>
                 </div>
               </div>
@@ -1460,13 +1629,13 @@
           </section>
 
           <!-- Your Lesson: Bảng Đơn Hàng Gần Đây Cần Xử Lý -->
-          <section class="table-container-card">
-            <div class="table-header-row">
+          <section class="coursue-table-card">
+            <div class="coursue-table-head-row">
               <h4>Đơn Hàng Gần Đây Cần Xử Lý</h4>
-              <span style="font-size: 14px; font-weight: 700; color: var(--brand-700); cursor: pointer;" onclick="showToast('Xem toàn bộ đơn hàng...')">See all ➔</span>
+              <span class="see-all-link" onclick="showToast('Xem toàn bộ đơn hàng...')">See all ➔</span>
             </div>
 
-            <table class="dashboard-table">
+            <table class="coursue-clean-table">
               <thead>
                 <tr>
                   <th>ĐỐI TÁC / KHÁCH MUA</th>
@@ -1480,26 +1649,26 @@
                 <tr>
                   <td>
                     <div style="font-weight: 800; color: var(--slate-900);">WinMart Miền Bắc</div>
-                    <div style="font-size: 13px; color: var(--slate-500);">Hợp đồng sỉ #B2B-9821</div>
+                    <div style="font-size: 12.5px; color: var(--slate-500);">Hợp đồng sỉ #B2B-9821</div>
                   </td>
-                  <td><strong style="color: var(--brand-700);">B2B Siêu Thị</strong></td>
+                  <td><span class="pill-category-badge mint">B2B Siêu Thị</span></td>
                   <td>1.200 túi Chuối Sấy Giòn Yên Bình</td>
                   <td><strong style="color: var(--brand-700); font-size: 16px;">54.000.000 đ</strong></td>
                   <td>
-                    <button class="round-action-arrow" title="In phiếu đóng gói" onclick="showToast('In phiếu đóng gói 1.200 túi WinMart...')">↗</button>
+                    <button class="circle-arrow-action" title="In phiếu đóng gói" onclick="showToast('In phiếu đóng gói 1.200 túi WinMart...')">↗</button>
                   </td>
                 </tr>
 
                 <tr>
                   <td>
                     <div style="font-weight: 800; color: var(--slate-900);">Trần Mai Phương</div>
-                    <div style="font-size: 13px; color: var(--slate-500);">Hà Nội · #SHP-8821</div>
+                    <div style="font-size: 12.5px; color: var(--slate-500);">Hà Nội · #SHP-8821</div>
                   </td>
-                  <td><strong style="color: var(--shopee-orange);">Shopee Mall</strong></td>
+                  <td><span class="pill-category-badge amber">Shopee Mall</span></td>
                   <td>3 túi Chuối Sấy + 1 hộp Trà Bát Tiên</td>
                   <td><strong style="color: var(--slate-900); font-size: 16px;">345.000 đ</strong></td>
                   <td>
-                    <button class="round-action-arrow" title="Xem vận đơn" onclick="showToast('Xem vận đơn Shopee #SHP-8821')">↗</button>
+                    <button class="circle-arrow-action" title="Xem vận đơn" onclick="showToast('Xem vận đơn Shopee #SHP-8821')">↗</button>
                   </td>
                 </tr>
               </tbody>
@@ -1509,159 +1678,128 @@
 
         <!-- -------------------------------------------------------------------
              VIEW B: TRANG QUẢN TRỊ CHI TIẾT TỪNG XÃ VIÊN (IN-PAGE MANAGEMENT SUITE)
-             - Không dùng popup: Thay đổi trực tiếp nội dung trên màn hình
-             - Bảng thống kê + Biểu đồ doanh thu của riêng hộ đó
-             - Quản lý & duyệt sản phẩm bài đăng (XÓA/SỬA CHỮ TRỰC TIẾP)
-             - Cài đặt tài khoản xã viên (SĐT Zalo, Ngân hàng, Chiết khấu)
+             - Giữ 100% style Coursue: Banner bo cong Emerald, 3 Mini Cards,
+               Kiểm tra bài đăng + Xóa chữ [✕] nhanh, Cài đặt & Doanh thu!
              ------------------------------------------------------------------- -->
         <div id="view-member-admin">
           <!-- Navigation Bar Quay Lại -->
-          <div class="back-nav-bar">
-            <button class="btn-back-overview" onclick="showOverviewView()">
+          <div class="member-top-nav-bar">
+            <button class="btn-coursue-back" onclick="showOverviewView()">
               <span>←</span> Quay lại Tổng quan HTX
             </button>
-            <div style="font-size: 14.5px; font-weight: 700; color: var(--slate-600);">
-              Đang quản trị: <strong id="admin-view-breadcrumb" style="color: var(--brand-700);">Bác Ba (Hộ 04)</strong>
+            <div class="member-breadcrumb">
+              Đang quản trị: <strong id="admin-view-breadcrumb">Bác Ba (Hộ 04)</strong>
             </div>
           </div>
 
-          <!-- Hero Profile Của Riêng Xã Viên -->
-          <div class="member-admin-hero">
-            <div class="member-hero-left">
-              <img id="admin-user-avatar" src="bac_ba_avatar.jpg" alt="Avatar" class="member-hero-avatar">
-              <div class="member-hero-info">
+          <!-- Hero Profile Xã Viên (Style Coursue Hero Banner!) -->
+          <div class="member-coursue-hero">
+            <div class="member-hero-left-profile">
+              <img id="admin-user-avatar" src="bac_ba_avatar.jpg" alt="Avatar" class="member-hero-avatar-ring">
+              <div class="member-hero-text">
                 <h2 id="admin-user-fullname">Bác Ba (Nguyễn Văn Ba)</h2>
                 <p id="admin-user-meta">Mã: HTX-YB-04 · 62 tuổi · Thôn Đồng Cát, Xã Yên Bình</p>
-                <div style="display: flex; gap: 8px; margin-top: 8px;">
-                  <span class="tag-badge-ocop" id="admin-user-badge">⭐ OCOP 4 SAO TỈNH</span>
-                  <span class="tag-badge-ocop" style="background: var(--brand-50); color: var(--brand-800);">1.4 Hecta Chuối Tiêu Hồng</span>
+                <div class="member-hero-badges">
+                  <span class="hero-mini-pill" id="admin-user-badge">⭐ OCOP 4 SAO TỈNH</span>
+                  <span class="hero-mini-pill">1.4 Hecta Chuối Tiêu Hồng</span>
                 </div>
               </div>
             </div>
 
-            <div style="display: flex; gap: 10px;">
-              <button class="btn-back-overview" style="background: var(--blue-50); color: var(--blue-700); border-color: var(--blue-100);" onclick="showToast('Đang gọi Zalo cho Bác Ba (0912.456.789)...')">
-                📞 Gọi Zalo Hộ Dân
+            <div class="member-hero-actions">
+              <button class="hero-pill-btn-white" onclick="showToast('Đang kết nối Zalo gọi Bác Ba...')">
+                📞 Gọi Zalo
               </button>
-              <button class="hero-btn-dark" style="padding: 10px 20px; font-size: 14.5px;" onclick="saveMemberSettings()">
-                💾 Lưu Thay Đổi Cài Đặt
+              <button class="hero-pill-btn-dark" onclick="saveMemberSettings()">
+                💾 Lưu Cài Đặt
               </button>
             </div>
           </div>
 
-          <!-- Bảng 4 Thống Kê Riêng Của Xã Viên Đó -->
-          <div class="member-kpi-grid">
-            <div class="member-kpi-card">
-              <div class="label">TỔNG DOANH THU HỘ</div>
-              <div class="value" id="kpi-user-revenue" style="color: var(--brand-700);">18.450.000 đ</div>
-              <div class="sub">↑ Tăng 32% so với tháng trước</div>
-            </div>
-
-            <div class="member-kpi-card">
-              <div class="label">SẢN LƯỢNG ĐÃ GOM</div>
-              <div class="value" id="kpi-user-yield">1.8 Tấn</div>
-              <div class="sub">12 đợt sấy lạnh đạt chuẩn</div>
-            </div>
-
-            <div class="member-kpi-card">
-              <div class="label">ĐƠN HÀNG HOÀN THÀNH</div>
-              <div class="value" id="kpi-user-orders">48 Đơn</div>
-              <div class="sub">Đánh giá 4.9★ trên sàn</div>
-            </div>
-
-            <div class="member-kpi-card">
-              <div class="label">TIỀN HTX ĐÃ GIẢI NGÂN</div>
-              <div class="value" id="kpi-user-payout" style="color: var(--blue-600);">16.605.000 đ</div>
-              <div class="sub">Đã chiết khấu 10% vận hành</div>
-            </div>
-          </div>
-
-          <!-- Biểu Đồ Doanh Thu 6 Tháng Của Riêng Hộ Nông Dân Này -->
-          <div class="member-chart-box">
-            <div class="chart-head-title">
-              <h3>Biểu Đồ Doanh Thu Thu Hoạch (6 Tháng Qua)</h3>
-              <span style="font-size: 13.5px; font-weight: 700; color: var(--slate-500);">Đơn vị: Triệu VNĐ</span>
-            </div>
-
-            <div class="member-bar-chart-row">
-              <div class="member-chart-col">
-                <div class="member-bar-rect" style="height: 45px;" title="Tháng 5: 6.8 Tr"></div>
+          <!-- 3 Thẻ Mini Stat Của Riêng Xã Viên (Style chuẩn Coursue) -->
+          <section class="mini-stat-trio">
+            <div class="mini-stat-card">
+              <div class="mini-left-content">
+                <div class="mini-pastel-icon mint">💰</div>
+                <div>
+                  <div class="mini-stat-ratio">TỔNG DOANH THU 2026</div>
+                  <div class="mini-stat-title" id="kpi-user-revenue" style="color: var(--brand-700);">18.450.000 đ</div>
+                </div>
               </div>
-              <div class="member-chart-col">
-                <div class="member-bar-rect" style="height: 60px;" title="Tháng 6: 9.2 Tr"></div>
-              </div>
-              <div class="member-chart-col">
-                <div class="member-bar-rect" style="height: 52px;" title="Tháng 7: 8.0 Tr"></div>
-              </div>
-              <div class="member-chart-col">
-                <div class="member-bar-rect" style="height: 78px;" title="Tháng 8: 12.5 Tr"></div>
-              </div>
-              <div class="member-chart-col">
-                <div class="member-bar-rect" style="height: 92px;" title="Tháng 9: 15.0 Tr"></div>
-              </div>
-              <div class="member-chart-col">
-                <div class="member-bar-rect active" style="height: 110px;" title="Tháng 10 (Hiện tại): 18.45 Tr (Vụ chuối chín)"></div>
-              </div>
+              <div class="mini-more-dots">⋮</div>
             </div>
 
-            <div class="member-month-labels">
-              <span>Tháng 5</span>
-              <span>Tháng 6</span>
-              <span>Tháng 7</span>
-              <span>Tháng 8</span>
-              <span>Tháng 9</span>
-              <span style="font-weight: 800; color: var(--brand-700);">Tháng 10 (Nay)</span>
+            <div class="mini-stat-card">
+              <div class="mini-left-content">
+                <div class="mini-pastel-icon amber">🍌</div>
+                <div>
+                  <div class="mini-stat-ratio">SẢN LƯỢNG THU HOẠCH</div>
+                  <div class="mini-stat-title" id="kpi-user-yield">1.8 Tấn</div>
+                </div>
+              </div>
+              <div class="mini-more-dots">⋮</div>
             </div>
-          </div>
 
-          <!-- Bảng Quản Trị & Duyệt Sản Phẩm / Bài Đăng Của User (CÓ NÚT XÓA/SỬA CHỮ TRỰC TIẾP) -->
-          <div class="member-posts-box">
-            <div class="chart-head-title">
+            <div class="mini-stat-card">
+              <div class="mini-left-content">
+                <div class="mini-pastel-icon blue">📦</div>
+                <div>
+                  <div class="mini-stat-ratio">ĐƠN HÀNG HOÀN TẤT</div>
+                  <div class="mini-stat-title" id="kpi-user-orders">48 Đơn sỉ</div>
+                </div>
+              </div>
+              <div class="mini-more-dots">⋮</div>
+            </div>
+          </section>
+
+          <!-- Bảng Quản Trị & Duyệt Sản Phẩm Của User (CÓ NÚT XÓA/SỬA CHỮ TRỰC TIẾP) -->
+          <div class="member-card-container">
+            <div class="member-card-title-row">
               <div>
-                <h3>Kiểm Tra Sản Phẩm & Bài Đăng Chờ Duyệt Lên Sàn</h3>
+                <h3>Kiểm Tra & Phê Duyệt Nông Sản Lên Sàn</h3>
                 <p style="font-size: 13.5px; color: var(--slate-500); margin-top: 2px;">
-                  Quản trị viên có thể gõ sửa trực tiếp hoặc bấm ✕ để xóa nhanh chữ trước khi phê duyệt
+                  Bấm nút ✕ màu đỏ bên phải mỗi ô để xóa nhanh toàn bộ chữ trước khi sửa
                 </p>
               </div>
-              <span class="tag-badge-ocop" id="admin-post-status">⏳ CẦN DUYỆT 1 BÀI ĐĂNG</span>
+              <span class="pill-category-badge mint" id="admin-post-status">⏳ CẦN DUYỆT 1 BÀI ĐĂNG</span>
             </div>
 
-            <!-- 3 Ảnh thực tế của user -->
+            <!-- 3 Ảnh thực tế -->
             <div style="margin-bottom: 18px;">
-              <label style="font-size: 14px; font-weight: 800; color: var(--slate-700); text-transform: uppercase; margin-bottom: 8px; display: block;">
-                1. Ảnh Chụp Thực Tế Hộ Dân Tải Lên Từ Vườn & Lò Sấy:
+              <label style="font-size: 13.5px; font-weight: 800; color: var(--slate-700); text-transform: uppercase; margin-bottom: 8px; display: block;">
+                1. Ảnh Chụp Thực Tế Hộ Dân Tải Lên:
               </label>
-              <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px;">
-                <img src="banana_front.jpg" alt="Mặt trước bao bì" style="width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius-sub); border: 1px solid var(--slate-200);">
-                <img src="banana_plate.jpg" alt="Đĩa chuối sấy thật" style="width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius-sub); border: 1px solid var(--slate-200);">
-                <img src="banana_back.jpg" alt="Bảng dinh dưỡng" style="width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius-sub); border: 1px solid var(--slate-200);">
+              <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px;">
+                <img src="banana_front.jpg" alt="Mặt trước bao bì" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
+                <img src="banana_plate.jpg" alt="Đĩa chuối sấy thật" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
+                <img src="banana_back.jpg" alt="Bảng dinh dưỡng" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
               </div>
             </div>
 
-            <!-- Đối soát ghi âm giọng nói giá bán -->
-            <div style="background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: var(--radius-sub); padding: 14px 18px; display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
-              <button style="width: 44px; height: 44px; border-radius: 50%; background: var(--blue-600); color: white; border: none; font-size: 16px; cursor: pointer;" onclick="showToast('🔊 Đang phát giọng nói gốc của Bác Ba: Chuối sấy giòn bán năm mươi lăm nghìn một gói...')">▶</button>
+            <!-- Đối soát ghi âm giọng nói -->
+            <div class="audio-voice-wave-bar">
+              <button class="audio-play-round" onclick="showToast('🔊 Đang phát giọng nói Bác Ba: Chuối sấy giòn bán năm mươi lăm nghìn một gói...')">▶</button>
               <div>
-                <div style="font-size: 15px; color: var(--slate-900);">
-                  <strong>Đoạn ghi âm giọng nói phát giá của hộ dân:</strong> <em>"Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen..."</em>
+                <div style="font-size: 14.5px; color: var(--slate-900);">
+                  <strong>Giọng nói gốc hộ dân:</strong> <em>"Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen..."</em>
                 </div>
-                <div style="font-size: 13px; color: var(--blue-700); font-weight: 700; margin-top: 2px;">
+                <div style="font-size: 12.5px; color: var(--blue-700); font-weight: 700; margin-top: 2px;">
                   ✓ AI bóc tách thông số: Giá 55.000 VNĐ · Túi 250g · Lô sấy ngày 06/10
                 </div>
               </div>
             </div>
 
             <!-- CÁC Ô NHẬP LIỆU CÓ THỂ XÓA/SỬA CHỮ TRỰC TIẾP -->
-            <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
               <!-- Tên sản phẩm -->
               <div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
                   <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Tên Nông Sản Niêm Yết Sàn:</label>
-                  <span style="font-size: 13px; color: var(--slate-500);">(Bấm ✕ bên phải ô để xóa nhanh chữ)</span>
+                  <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('admin-edit-prod-name')">Bấm ✕ để xóa chữ</span>
                 </div>
-                <div style="position: relative;">
-                  <input type="text" id="admin-edit-prod-name" class="editable-input-field" value="Chuối Sấy Giòn Yên Bình — Chuẩn OCOP 4 Sao (Túi Màng Nhôm 250g)">
-                  <button class="btn-clear-text" onclick="clearAdminInput('admin-edit-prod-name')" title="Xóa chữ">✕</button>
+                <div class="input-clear-wrapper">
+                  <input type="text" id="admin-edit-prod-name" class="form-input-stylish" value="Chuối Sấy Giòn Yên Bình — Chuẩn OCOP 4 Sao (Túi Màng Nhôm 250g)">
+                  <button class="btn-clear-symbol" onclick="clearAdminInput('admin-edit-prod-name')" title="Xóa chữ trong ô">✕</button>
                 </div>
               </div>
 
@@ -1672,17 +1810,17 @@
                     <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Giá Bán Niêm Yết (VNĐ):</label>
                     <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('admin-edit-prod-price')">Xóa giá</span>
                   </div>
-                  <div style="position: relative;">
-                    <input type="text" id="admin-edit-prod-price" class="editable-input-field" value="55.000" style="color: var(--brand-700); font-weight: 800; font-size: 18px;">
-                    <button class="btn-clear-text" onclick="clearAdminInput('admin-edit-prod-price')" title="Xóa giá">✕</button>
+                  <div class="input-clear-wrapper">
+                    <input type="text" id="admin-edit-prod-price" class="form-input-stylish" value="55.000" style="color: var(--brand-700); font-weight: 800; font-size: 18px;">
+                    <button class="btn-clear-symbol" onclick="clearAdminInput('admin-edit-prod-price')" title="Xóa giá">✕</button>
                   </div>
                 </div>
 
                 <div>
-                  <label style="font-weight: 800; font-size: 15px; color: var(--slate-800); display: block; margin-bottom: 6px;">Chiết Khấu HTX Thu Gom:</label>
-                  <select style="width: 100%; padding: 11px 14px; border: 1px solid var(--slate-300); border-radius: var(--radius-sub); font-family: var(--font-inter); font-size: 15px; font-weight: 700;">
+                  <label style="font-weight: 800; font-size: 15px; color: var(--slate-800); display: block; margin-bottom: 6px;">Chiết Khấu HTX Gom Hàng:</label>
+                  <select class="form-input-stylish" style="padding-right: 16px;">
                     <option value="10">10% (5.500 đ / túi) — Chuẩn Xã Viên</option>
-                    <option value="8">8% (4.400 đ / túi) — Ưu Đãi Hộ Người Cao Tuổi</option>
+                    <option value="8">8% (4.400 đ / túi) — Ưu Đãi Người Cao Tuổi</option>
                     <option value="15">15% — Kênh Bán Lẻ Shopee Mall & Siêu Thị</option>
                   </select>
                 </div>
@@ -1694,60 +1832,61 @@
                   <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Ghi Chú Đóng Dấu Thẩm Định HTX:</label>
                   <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('admin-edit-prod-notes')">Xóa ghi chú</span>
                 </div>
-                <div style="position: relative;">
-                  <input type="text" id="admin-edit-prod-notes" class="editable-input-field" value="Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%. Cấp quyền dán tem QR Trace.">
-                  <button class="btn-clear-text" onclick="clearAdminInput('admin-edit-prod-notes')" title="Xóa ghi chú">✕</button>
+                <div class="input-clear-wrapper">
+                  <input type="text" id="admin-edit-prod-notes" class="form-input-stylish" value="Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%. Cấp quyền dán tem QR Trace.">
+                  <button class="btn-clear-symbol" onclick="clearAdminInput('admin-edit-prod-notes')" title="Xóa ghi chú">✕</button>
                 </div>
               </div>
 
               <!-- Nút Thao Tác Duyệt Trực Tiếp -->
               <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px;">
-                <button class="btn-back-overview" onclick="rejectPost()">
+                <button class="btn-coursue-back" style="color: #DC2626;" onclick="rejectPost()">
                   ✕ Từ Chối & Yêu Cầu Chụp Lại
                 </button>
-                <button class="hero-btn-dark" style="background: var(--brand-600); font-size: 15.5px;" onclick="approvePost()">
-                  ✓ Phê Duyệt Nông Sản & Đồng Bộ Lên Sàn
+                <button class="banner-cta-button" style="background: var(--brand-600); font-size: 15px;" onclick="approvePost()">
+                  <span>✓ Phê Duyệt Nông Sản Lên Sàn</span>
+                  <div class="banner-cta-arrow">➔</div>
                 </button>
               </div>
             </div>
           </div>
 
-          <!-- Cài Đặt Tài Khoản Xã Viên (User Account Settings) -->
-          <div class="member-settings-box">
-            <div class="chart-head-title">
-              <h3>Cài Đặt Tài Khoản & Thông Tin Chi Trả Của Xã Viên</h3>
-              <span class="tag-badge-ocop" style="background: var(--brand-50); color: var(--brand-800);">Đang Hoạt Động</span>
+          <!-- Cài Đặt Tài Khoản & Thông Tin Chi Trả Của Xã Viên -->
+          <div class="member-card-container">
+            <div class="member-card-title-row">
+              <h3>Cài Đặt Tài Khoản & Thông Tin Chi Trả Hộ Dân</h3>
+              <span class="pill-category-badge mint">Đang Hoạt Động</span>
             </div>
 
-            <div class="settings-grid-form">
-              <div class="form-group-block">
-                <label>Số Điện Thoại Zalo (Nhận đơn & thông báo):</label>
-                <input type="text" id="set-user-phone" value="0912.456.789">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <label style="font-size: 14px; font-weight: 800; color: var(--slate-800); display: block; margin-bottom: 6px;">Số Điện Thoại Zalo:</label>
+                <input type="text" id="set-user-phone" class="form-input-stylish" value="0912.456.789">
               </div>
 
-              <div class="form-group-block">
-                <label>Tài Khoản Ngân Hàng Chi Trả Tiền Bán:</label>
-                <input type="text" id="set-user-bank" value="Agribank Chi Nhánh Yên Bình - 8800.205.123456">
+              <div>
+                <label style="font-size: 14px; font-weight: 800; color: var(--slate-800); display: block; margin-bottom: 6px;">Tài Khoản Ngân Hàng Chi Trả:</label>
+                <input type="text" id="set-user-bank" class="form-input-stylish" value="Agribank Yên Bình - 8800.205.123456">
               </div>
 
-              <div class="form-group-block">
-                <label>Địa Chỉ Vườn & Lò Sấy Của Hộ:</label>
-                <input type="text" id="set-user-address" value="Cụm 2, Thôn Đồng Cát, Xã Yên Bình">
+              <div>
+                <label style="font-size: 14px; font-weight: 800; color: var(--slate-800); display: block; margin-bottom: 6px;">Địa Chỉ Vườn & Lò Sấy:</label>
+                <input type="text" id="set-user-address" class="form-input-stylish" value="Cụm 2, Thôn Đồng Cát, Xã Yên Bình">
               </div>
 
-              <div class="form-group-block">
-                <label>Trạng Thái Thành Viên HTX:</label>
-                <select id="set-user-status">
+              <div>
+                <label style="font-size: 14px; font-weight: 800; color: var(--slate-800); display: block; margin-bottom: 6px;">Trạng Thái Xã Viên:</label>
+                <select class="form-input-stylish">
                   <option value="active">Đang hoạt động (Được quyền đăng bán)</option>
                   <option value="pause">Tạm ngưng nhận hàng đợt này</option>
-                  <option value="lock">Khóa tài khoản xã viên</option>
+                  <option value="lock">Khóa tài khoản</option>
                 </select>
               </div>
             </div>
 
             <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
-              <button class="hero-btn-dark" style="padding: 11px 24px; font-size: 15px;" onclick="saveMemberSettings()">
-                💾 Lưu Thay Đổi Cài Đặt Hộ Dân
+              <button class="hero-pill-btn-dark" onclick="saveMemberSettings()">
+                💾 Lưu Thay Đổi Cài Đặt
               </button>
             </div>
           </div>
@@ -1760,7 +1899,7 @@
            ===================================================================== -->
       <aside class="app-right-rail">
         
-        <!-- Statistic Card Chuẩn Mẫu 1 nhưng màu Brand Emerald -->
+        <!-- Statistic Card Chuẩn Mẫu 1 Coursue -->
         <div class="rail-widget-card">
           <div class="rail-widget-head">
             <h4>Statistic</h4>
@@ -1768,91 +1907,95 @@
           </div>
 
           <!-- Avatar Ring Widget -->
-          <div class="user-statistic-box">
-            <div class="avatar-ring-frame">
+          <div class="statistic-ring-box">
+            <div class="ring-frame-center">
               <svg viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="42" fill="none" stroke="#E2E8F0" stroke-width="5"/>
-                <circle cx="50" cy="50" r="42" fill="none" stroke="#059669" stroke-width="5" stroke-dasharray="264" stroke-dashoffset="65" stroke-linecap="round"/>
+                <circle id="right-ring-progress" cx="50" cy="50" r="42" fill="none" stroke="#059669" stroke-width="5" stroke-dasharray="264" stroke-dashoffset="65" stroke-linecap="round"/>
               </svg>
-              <div class="avatar-face-center">👨‍💼</div>
-              <span class="ring-badge-percent">78%</span>
+              <img id="right-ring-avatar" src="bac_ba_avatar.jpg" alt="Avatar" class="ring-avatar-face">
+              <span id="right-ring-badge" class="ring-badge-tag">94%</span>
             </div>
 
-            <div class="stat-greeting">Good Morning Jason 🔥</div>
-            <div class="stat-subtext">Đã hoàn thành 78% kế hoạch OCOP xã tháng này!</div>
+            <div class="stat-greeting-title" id="right-stat-greeting">Xin chào, Bác Ba 🔥</div>
+            <div class="stat-subtext-note" id="right-stat-subtext">Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!</div>
           </div>
 
-          <!-- 5 Cột Bo Tròn Chuẩn Mẫu 1 (1-10 Aug, 11-20 Aug, 21-30 Aug...) -->
-          <div class="bar-chart-coursue">
-            <div class="bar-chart-coursue-bars">
-              <div class="bar-coursue-item" style="height: 35px;" title="1-10 Aug: 18 đơn"></div>
-              <div class="bar-coursue-item" style="height: 52px;" title="11-20 Aug: 36 đơn"></div>
-              <div class="bar-coursue-item" style="height: 28px;" title="Tồn kho an toàn"></div>
-              <div class="bar-coursue-item active" style="height: 74px;" title="21-30 Aug: 68 đơn (Đỉnh điểm vụ chuối sấy)"></div>
-              <div class="bar-coursue-item" style="height: 42px;" title="Tuần tới"></div>
+          <!-- Biểu Đồ Cột Bo Tròn Chuẩn Coursue (Tháng 5 -> Tháng 10) -->
+          <div class="coursue-bar-chart-card">
+            <div class="chart-bars-wrap">
+              <div class="pill-bar-column" style="height: 38px;" title="Tháng 5: 6.8 Tr"></div>
+              <div class="pill-bar-column" style="height: 52px;" title="Tháng 6: 9.2 Tr"></div>
+              <div class="pill-bar-column" style="height: 44px;" title="Tháng 7: 8.0 Tr"></div>
+              <div class="pill-bar-column" style="height: 68px;" title="Tháng 8: 12.5 Tr"></div>
+              <div class="pill-bar-column active" style="height: 82px;" title="Tháng 9: 15.0 Tr"></div>
+              <div class="pill-bar-column" style="height: 58px;" title="Tháng 10: 18.45 Tr"></div>
             </div>
 
-            <div class="bar-coursue-dates">
-              <span>1-10 Aug</span>
-              <span>11-20 Aug</span>
-              <span style="font-weight: 800; color: var(--brand-700);">21-30 Aug</span>
+            <div class="chart-x-labels">
+              <span>T.5</span>
+              <span>T.6</span>
+              <span>T.7</span>
+              <span>T.8</span>
+              <span style="font-weight: 800; color: var(--brand-700);">T.9</span>
+              <span>T.10</span>
             </div>
           </div>
         </div>
 
-        <!-- Your Mentor: XÃ VIÊN TIÊU BIỂU (Bấm vào là đổi nội dung Dashboard sang Quản trị hộ đó) -->
+        <!-- "Your Mentor" -> DANH SÁCH BÀ CON XÃ VIÊN -->
         <div class="rail-widget-card">
           <div class="rail-widget-head">
             <h4>Your mentor</h4>
             <span style="font-size: 20px; font-weight: 800; color: var(--brand-700); cursor: pointer;" title="Thêm xã viên mới">+</span>
           </div>
 
-          <div>
+          <div class="mentor-list-wrap">
             <!-- Mentor 1: Bác Ba -->
-            <div class="mentor-item-row">
-              <div class="mentor-click-area" onclick="switchToMemberAdmin('bacba')">
-                <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="mentor-row-img">
+            <div class="mentor-single-row">
+              <div class="mentor-clickable-profile" onclick="switchToMemberAdmin('bacba')">
+                <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="mentor-avatar-round">
                 <div>
-                  <div class="mentor-name-text">Bác Ba (Hộ 04)</div>
-                  <div class="mentor-sub-text">Chuối sấy OCOP · 62 tuổi</div>
+                  <div class="mentor-name-bold">Bác Ba (Hộ 04)</div>
+                  <div class="mentor-spec-sub">Chuối sấy OCOP · 62t</div>
                 </div>
               </div>
-              <button class="btn-mentor-action" onclick="switchToMemberAdmin('bacba')">
-                Quản trị ➔
+              <button class="btn-mentor-follow" onclick="switchToMemberAdmin('bacba')">
+                & Follow
               </button>
             </div>
 
             <!-- Mentor 2: Cô Lan -->
-            <div class="mentor-item-row">
-              <div class="mentor-click-area" onclick="switchToMemberAdmin('lan')">
-                <div class="mentor-row-img" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:var(--slate-700);">CL</div>
+            <div class="mentor-single-row">
+              <div class="mentor-clickable-profile" onclick="switchToMemberAdmin('lan')">
+                <div class="mentor-avatar-round" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:var(--slate-700);">CL</div>
                 <div>
-                  <div class="mentor-name-text">Cô Lan (Hộ 09)</div>
-                  <div class="mentor-sub-text">Đồi chè Bát Tiên · 54 tuổi</div>
+                  <div class="mentor-name-bold">Cô Lan (Hộ 09)</div>
+                  <div class="mentor-spec-sub">Đồi chè Bát Tiên · 54t</div>
                 </div>
               </div>
-              <button class="btn-mentor-action" onclick="switchToMemberAdmin('lan')">
-                Quản trị ➔
+              <button class="btn-mentor-follow" onclick="switchToMemberAdmin('lan')">
+                & Follow
               </button>
             </div>
 
             <!-- Mentor 3: Anh Tuấn -->
-            <div class="mentor-item-row">
-              <div class="mentor-click-area" onclick="switchToMemberAdmin('tuan')">
-                <div class="mentor-row-img" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:var(--slate-700);">AT</div>
+            <div class="mentor-single-row">
+              <div class="mentor-clickable-profile" onclick="switchToMemberAdmin('tuan')">
+                <div class="mentor-avatar-round" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:var(--slate-700);">AT</div>
                 <div>
-                  <div class="mentor-name-text">Anh Tuấn (Hộ 12)</div>
-                  <div class="mentor-sub-text">Trại mật ong rừng · 39 tuổi</div>
+                  <div class="mentor-name-bold">Anh Tuấn (Hộ 12)</div>
+                  <div class="mentor-spec-sub">Trại mật ong · 39t</div>
                 </div>
               </div>
-              <button class="btn-mentor-action" onclick="switchToMemberAdmin('tuan')">
-                Quản trị ➔
+              <button class="btn-mentor-follow" onclick="switchToMemberAdmin('tuan')">
+                & Follow
               </button>
             </div>
 
-            <!-- See All Button -->
-            <button class="btn-see-all-full" onclick="showToast('Danh bạ HTX: 142 hộ nông dân thuộc 5 thôn Xã Yên Bình.')">
-              Xem Toàn Bộ 142 Xã Viên
+            <!-- See All Button Chuẩn Coursue -->
+            <button class="btn-see-all-coursue" onclick="showToast('Danh bạ HTX: 142 hộ nông dân thuộc 5 thôn Xã Yên Bình.')">
+              See All
             </button>
           </div>
         </div>
@@ -1877,13 +2020,14 @@
         revenue: '18.450.000 đ',
         yield: '1.8 Tấn',
         orders: '48 Đơn',
-        payout: '16.605.000 đ',
         prodName: 'Chuối Sấy Giòn Yên Bình — Chuẩn OCOP 4 Sao (Túi Màng Nhôm 250g)',
         prodPrice: '55.000',
         prodNotes: 'Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%. Cấp quyền dán tem QR Trace.',
         phone: '0912.456.789',
         bank: 'Agribank Chi Nhánh Yên Bình - 8800.205.123456',
-        address: 'Cụm 2, Thôn Đồng Cát, Xã Yên Bình'
+        address: 'Cụm 2, Thôn Đồng Cát, Xã Yên Bình',
+        progress: '94%',
+        subtext: 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!'
       },
       'lan': {
         name: 'Cô Lan (Trần Thị Lan)',
@@ -1893,13 +2037,14 @@
         revenue: '32.600.000 đ',
         yield: '2.4 Tấn',
         orders: '65 Đơn',
-        payout: '28.688.000 đ',
         prodName: 'Trà Bát Tiên Sao Lửa — Hộp Thiếc Cao Cấp 200g Hút Chân Không',
         prodPrice: '180.000',
         prodNotes: 'Đạt tiêu chuẩn an toàn VietGAP VG-2026-YB09. Sao chè theo phương pháp thủ công truyền thống.',
         phone: '0982.112.334',
         bank: 'Agribank Yên Bình - 8800.334.888999',
-        address: 'Xóm Đồi Chè 1, Xã Yên Bình'
+        address: 'Xóm Đồi Chè 1, Xã Yên Bình',
+        progress: '88%',
+        subtext: 'Đạt 88% sản lượng chè búp sao lửa xuất khẩu!'
       },
       'tuan': {
         name: 'Anh Tuấn (Hoàng Văn Tuấn)',
@@ -1909,13 +2054,14 @@
         revenue: '24.200.000 đ',
         yield: '420 Chai',
         orders: '38 Đơn',
-        payout: '21.780.000 đ',
         prodName: 'Mật Ong Hoa Rừng Tự Nhiên — Chai Thủy Tinh 500ml',
         prodPrice: '220.000',
         prodNotes: 'Thủy phần < 18.5%, khai thác từ hoa vải và hoa rừng tự nhiên.',
         phone: '0973.998.776',
         bank: 'BIDV Yên Bình - 4501.998.776',
-        address: 'Bìa rừng tự nhiên Xã Yên Bình'
+        address: 'Bìa rừng tự nhiên Xã Yên Bình',
+        progress: '76%',
+        subtext: 'Đạt 76% kế hoạch quay mật ong hoa rừng vụ hè!'
       }
     };
 
@@ -1926,7 +2072,7 @@
       document.getElementById('view-overview').style.display = 'none';
       document.getElementById('view-member-admin').style.display = 'block';
 
-      // Nạp dữ liệu
+      // Nạp dữ liệu vào form quản trị
       document.getElementById('admin-view-breadcrumb').innerText = data.name;
       document.getElementById('admin-user-fullname').innerText = data.name;
       document.getElementById('admin-user-meta').innerText = data.meta;
@@ -1936,7 +2082,6 @@
       document.getElementById('kpi-user-revenue').innerText = data.revenue;
       document.getElementById('kpi-user-yield').innerText = data.yield;
       document.getElementById('kpi-user-orders').innerText = data.orders;
-      document.getElementById('kpi-user-payout').innerText = data.payout;
 
       document.getElementById('admin-edit-prod-name').value = data.prodName;
       document.getElementById('admin-edit-prod-price').value = data.prodPrice;
@@ -1946,8 +2091,14 @@
       document.getElementById('set-user-bank').value = data.bank;
       document.getElementById('set-user-address').value = data.address;
 
+      // Cập nhật Cột Right Statistic đồng bộ theo đúng xã viên đang chọn!
+      document.getElementById('right-ring-avatar').src = data.avatar;
+      document.getElementById('right-ring-badge').innerText = data.progress;
+      document.getElementById('right-stat-greeting').innerText = 'Xin chào, ' + data.name.split(' (')[0] + ' 🔥';
+      document.getElementById('right-stat-subtext').innerText = data.subtext;
+
       // Update sidebar active state
-      document.getElementById('nav-dashboard-btn').classList.remove('active');
+      document.getElementById('nav-btn-dashboard').classList.remove('active');
 
       showToast('👤 Đã chuyển sang màn hình Quản Trị Chi Tiết: ' + data.name);
     }
@@ -1956,16 +2107,22 @@
     function showOverviewView() {
       document.getElementById('view-member-admin').style.display = 'none';
       document.getElementById('view-overview').style.display = 'block';
-      document.getElementById('nav-dashboard-btn').classList.add('active');
+      document.getElementById('nav-btn-dashboard').classList.add('active');
+
+      // Reset right column về Chủ nhiệm Minh
+      document.getElementById('right-ring-avatar').src = 'bac_ba_avatar.jpg';
+      document.getElementById('right-ring-badge').innerText = '94%';
+      document.getElementById('right-stat-greeting').innerText = 'Xin chào, Bác Ba 🔥';
+      document.getElementById('right-stat-subtext').innerText = 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!';
     }
 
-    // XÓA CHỮ TRỰC TIẾP TRONG Ô NHẬP LIỆU (THEO YÊU CẦU NGƯỜI DÙNG)
+    // XÓA CHỮ TRỰC TIẾP TRONG Ô NHẬP LIỆU (NÚT ✕ ĐỎ)
     function clearAdminInput(elementId) {
       const el = document.getElementById(elementId);
       if (el) {
         el.value = '';
         el.focus();
-        showToast('✓ Đã xóa sạch chữ trong ô nhập liệu!');
+        showToast('✓ Đã xóa sạch chữ trong ô!');
       }
     }
 
@@ -1979,29 +2136,29 @@
         return;
       }
 
-      document.getElementById('admin-post-status').innerText = '✅ ĐÃ DUYỆT & ĐANG BÁN TRÊN SÀN';
+      document.getElementById('admin-post-status').innerText = '✅ ĐÃ DUYỆT LÊN SÀN CHỢ XANH';
       document.getElementById('admin-post-status').style.background = '#DCFCE7';
       document.getElementById('admin-post-status').style.color = '#15803D';
 
-      showToast('🎉 ĐÃ PHÊ DUYỆT THÀNH CÔNG! ' + name + ' (' + price + ' đ) đã được xuất bản lên Shopee, TikTok Shop & Zalo OA.');
+      showToast('🎉 PHÊ DUYỆT THÀNH CÔNG! ' + name + ' (' + price + ' đ) đã được xuất bản lên Shopee & Zalo OA.');
     }
 
     function rejectPost() {
       document.getElementById('admin-post-status').innerText = '❌ ĐÃ YÊU CẦU CHỤP LẠI ẢNH';
       document.getElementById('admin-post-status').style.background = '#FEE2E2';
       document.getElementById('admin-post-status').style.color = '#991B1B';
-      showToast('Đã gửi thông báo Zalo yêu cầu hộ dân kiểm tra lại ảnh sản phẩm.');
+      showToast('Đã gửi thông báo Zalo yêu cầu hộ dân chụp lại ảnh rõ nét hơn.');
     }
 
     function saveMemberSettings() {
-      showToast('💾 Đã lưu thành công cài đặt tài khoản xã viên & thông tin thanh toán ngân hàng!');
+      showToast('💾 Đã lưu thành công cài đặt tài khoản & STK ngân hàng của xã viên!');
     }
 
     // Toast Utility
     function showToast(msg) {
       const tray = document.getElementById('toast-tray');
       const toast = document.createElement('div');
-      toast.className = 'toast-card';
+      toast.className = 'toast-pill';
       toast.innerHTML = `<span>✦</span> <span>${msg}</span>`;
       tray.appendChild(toast);
       setTimeout(() => {
@@ -2009,7 +2166,7 @@
         toast.style.transform = 'translateY(10px)';
         toast.style.transition = 'all 0.2s ease';
         setTimeout(() => toast.remove(), 250);
-      }, 3200);
+      }, 3000);
     }
   </script>
 </body>

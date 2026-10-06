@@ -11,12 +11,11 @@
   <style>
     /* =========================================================================
        1. COURSUE DESIGN SYSTEM VIBE (1:1 FIDELITY WITH DRIBBBLE REFERENCE)
-       - Toàn bộ chữ chuẩn FONT INTER (font-family: 'Inter', sans-serif)
-       - Floating rounded window (radius: 36px) trên nền canvas xám sáng (#EBF0F5)
-       - Bảng sản phẩm: MỖI SẢN PHẨM 1 DÒNG DUY NHẤT (white-space: nowrap)
-       - Thanh Menu Filter đặt NGAY TRÊN CÙNG BẢNG (tích hợp trong header bảng)
-       - Phân trang chuẩn 10 sản phẩm / trang, có nút số trang + select nhảy trang
-       - Demo đầy đủ 50 sản phẩm nông sản thực tế với 4 trạng thái
+       - 100% FONT INTER XUYÊN SUỐT TOÀN BỘ ỨNG DỤNG
+       - Floating rounded window (radius: 36px) trên nền canvas xám (#EBF0F5)
+       - BỎ TOÀN BỘ ICON TRONG CÁC TRẠNG THÁI (Chữ thuần túy, sạch sẽ)
+       - POPUP THẨM ĐỊNH & PHÊ DUYỆT (hiện khi bấm vào dòng sản phẩm trong bảng)
+       - Đầy đủ 4 màn hình: Dashboard, Quản Trị Xã Viên, Đơn Buôn B2B, Kịch Bản AI
        ========================================================================= */
     :root {
       --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -116,7 +115,7 @@
     }
 
     /* =========================================================================
-       2. CỘT 1: SIDEBAR TRÁI (Chuẩn Coursue: Liền mạch, không đường kẻ thô)
+       2. CỘT 1: SIDEBAR TRÁI
        ========================================================================= */
     .app-sidebar {
       display: flex;
@@ -310,7 +309,7 @@
     }
 
     /* =========================================================================
-       3. CỘT 2: TRUNG TÂM (MAIN CONTENT & HERO BANNER & CAROUSEL & TABLES)
+       3. CỘT 2: TRUNG TÂM (CHỨA 4 MÀN HÌNH CHÍNH)
        ========================================================================= */
     .app-center-content {
       height: 100%;
@@ -689,7 +688,7 @@
 
     .pill-category-badge {
       display: inline-block;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.6px;
@@ -760,39 +759,8 @@
     }
 
     /* -------------------------------------------------------------------------
-       SECTION: "YOUR LESSON"
+       BẢNG SẠCH SẼ COURSUE (1 DÒNG DUY NHẤT)
        ------------------------------------------------------------------------- */
-    .coursue-table-card {
-      background: #FFFFFF;
-      border: 1px solid var(--slate-200);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
-      margin-bottom: 20px;
-    }
-
-    .coursue-table-head-row {
-      padding: 16px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--slate-100);
-    }
-
-    .coursue-table-head-row h4 {
-      font-size: 17.5px;
-      font-weight: 800;
-      color: var(--slate-900);
-    }
-
-    .see-all-link {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--brand-700);
-      cursor: pointer;
-      text-decoration: none;
-    }
-
     .coursue-clean-table {
       width: 100%;
       border-collapse: collapse;
@@ -819,8 +787,13 @@
       white-space: nowrap; /* MỖI SẢN PHẨM TRÊN 1 DÒNG KHÔNG XUỐNG DÒNG */
     }
 
-    .coursue-clean-table tr:hover td {
-      background: var(--slate-50);
+    .coursue-clean-table tr.clickable-row {
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .coursue-clean-table tr.clickable-row:hover td {
+      background: #F8FAFC;
     }
 
     .circle-arrow-action {
@@ -844,9 +817,9 @@
     }
 
     /* =========================================================================
-       4. IN-PAGE MEMBER MANAGEMENT SUITE (BÁC BA / CÔ LAN / ANH TUẤN)
+       4. QUẢN TRỊ XÃ VIÊN & BẢNG SẢN PHẨM CÓ POPUP
        ========================================================================= */
-    #view-member-admin {
+    #view-member-admin, #view-b2b-orders, #view-ai-content {
       display: none;
       animation: fadeIn 0.2s ease;
     }
@@ -856,7 +829,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Back Nav */
     .member-top-nav-bar {
       display: flex;
       align-items: center;
@@ -897,7 +869,6 @@
       font-weight: 800;
     }
 
-    /* Member Hero Banner */
     .member-coursue-hero {
       background: linear-gradient(135deg, #064E3B 0%, #059669 100%);
       border-radius: 26px;
@@ -1002,9 +973,7 @@
       background: #1E293B;
     }
 
-    /* -------------------------------------------------------------------------
-       MỤC: BẢNG SẢN PHẨM 1 DÒNG VỚI THANH MENU FILTER TRÊN CÙNG BẢNG
-       ------------------------------------------------------------------------- */
+    /* Container Card chung */
     .member-card-container {
       background: #FFFFFF;
       border: 1px solid var(--slate-200);
@@ -1014,7 +983,7 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    /* THANH HEADER TÍCH HỢP TRÊN CÙNG BẢNG */
+    /* THANH TOOLBAR FILTER ĐẶT NGAY TRÊN CÙNG BẢNG */
     .table-top-toolbar-header {
       display: flex;
       align-items: center;
@@ -1038,7 +1007,7 @@
       color: var(--slate-900);
     }
 
-    /* THANH MENU FILTER TRẠNG THÁI NGAY TRÊN CÙNG BẢNG */
+    /* THANH MENU FILTER TRẠNG THÁI (KHÔNG DÙNG ICON) */
     .table-filter-side {
       display: flex;
       align-items: center;
@@ -1095,6 +1064,7 @@
 
     .status-count-tag.amber { background: #FEF3C7; color: #B45309; }
     .status-count-tag.green { background: #DCFCE7; color: #15803D; }
+    .status-count-tag.blue  { background: #EFF6FF; color: #1D4ED8; }
     .status-count-tag.red   { background: #FEE2E2; color: #B91C1C; }
     .status-count-tag.gray  { background: #E2E8F0; color: #475569; }
 
@@ -1117,13 +1087,13 @@
 
     /* MỖI SẢN PHẨM 1 DÒNG DUY NHẤT */
     .table-prod-name-cell {
-      max-width: 260px;
+      max-width: 250px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       font-weight: 800;
       color: var(--slate-900);
-      font-size: 14.5px;
+      font-size: 14px;
       display: inline-block;
       vertical-align: middle;
     }
@@ -1139,79 +1109,39 @@
       margin-right: 8px;
     }
 
-    .row-status-select {
-      padding: 5px 11px;
+    /* Badge trạng thái KHÔNG CÓ ICON */
+    .status-badge-clean {
+      display: inline-block;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
       font-size: 12.5px;
       font-weight: 800;
-      border: 1.5px solid transparent;
-      cursor: pointer;
-      outline: none;
-      transition: all 0.15s;
       white-space: nowrap;
     }
 
-    .row-status-select.pending {
-      background: #FFFBEB;
-      color: #B45309;
-      border-color: #FDE68A;
-    }
+    .status-badge-clean.pending  { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+    .status-badge-clean.approved { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+    .status-badge-clean.paused   { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .status-badge-clean.rejected { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+    .status-badge-clean.deleted  { background: #F1F5F9; color: #64748B; border: 1px solid #CBD5E1; }
 
-    .row-status-select.approved {
-      background: #ECFDF5;
-      color: #065F46;
-      border-color: #A7F3D0;
-    }
-
-    .row-status-select.rejected {
-      background: #FEF2F2;
-      color: #B91C1C;
-      border-color: #FECACA;
-    }
-
-    .row-status-select.deleted {
-      background: #F1F5F9;
-      color: #64748B;
-      border-color: #CBD5E1;
-    }
-
-    .btn-table-action-edit {
-      padding: 5px 12px;
+    .btn-table-action-view {
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
-      background: var(--slate-100);
-      border: 1px solid var(--slate-200);
-      color: var(--slate-700);
-      font-size: 12.5px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-
-    .btn-table-action-edit:hover {
       background: var(--brand-50);
-      border-color: var(--brand-500);
+      border: 1px solid var(--brand-300);
       color: var(--brand-900);
-    }
-
-    .btn-table-action-del {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--slate-100);
-      border: 1px solid var(--slate-200);
-      color: #DC2626;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
+      font-size: 12.5px;
+      font-weight: 800;
       cursor: pointer;
       transition: all 0.15s;
+      white-space: nowrap;
     }
 
-    .btn-table-action-del:hover {
-      background: #FEE2E2;
-      border-color: #FCA5A5;
+    .btn-table-action-view:hover {
+      background: var(--brand-600);
+      color: white;
+      border-color: var(--brand-600);
     }
 
     /* THANH PHÂN TRANG (PAGINATION FOOTER) */
@@ -1321,11 +1251,91 @@
       outline: none;
     }
 
-    .select-jump-control:focus {
-      border-color: var(--brand-600);
+    /* =========================================================================
+       5. POPUP MODAL THẨM ĐỊNH & PHÊ DUYỆT (MATCHING 100% ẢNH USER GỬI)
+       ========================================================================= */
+    .modal-backdrop-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
     }
 
-    /* Các ô nhập liệu có nút xóa chữ [✕] */
+    .modal-backdrop-overlay.active {
+      display: flex;
+    }
+
+    .modal-content-container {
+      background: #FFFFFF;
+      border-radius: 26px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      position: relative;
+    }
+
+    .modal-content-container::-webkit-scrollbar { width: 5px; }
+    .modal-content-container::-webkit-scrollbar-thumb { background: var(--slate-200); border-radius: 5px; }
+
+    .modal-header-toolbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 16px;
+    }
+
+    .modal-header-title-box h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.25;
+    }
+
+    .modal-header-title-box p {
+      font-size: 13.5px;
+      color: var(--slate-500);
+      margin-top: 4px;
+    }
+
+    .modal-header-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .btn-close-modal {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      color: var(--slate-700);
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-close-modal:hover {
+      background: #FEE2E2;
+      color: #DC2626;
+      border-color: #FCA5A5;
+    }
+
     .input-clear-wrapper {
       position: relative;
       display: flex;
@@ -1372,35 +1382,8 @@
       color: white;
     }
 
-    /* Audio wave bar */
-    .audio-voice-wave-bar {
-      background: #EFF6FF;
-      border: 1px solid #DBEAFE;
-      border-radius: 14px;
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .audio-play-round {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #2563EB;
-      color: white;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
     /* =========================================================================
-       5. CỘT 3: STATISTIC & USER DIRECTORY
+       6. CỘT 3: STATISTIC & USER DIRECTORY
        ========================================================================= */
     .app-right-rail {
       height: 100%;
@@ -1644,7 +1627,7 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      z-index: 999;
+      z-index: 1200;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -1698,17 +1681,17 @@
               Dashboard
             </button>
 
-            <button class="sidebar-menu-btn" onclick="switchToMemberAdmin('bacba')">
+            <button class="sidebar-menu-btn" id="nav-btn-members" onclick="switchToMemberAdmin('bacba')">
               <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
               Quản Trị Xã Viên
             </button>
 
-            <button class="sidebar-menu-btn" onclick="showToast('Order Hub: Đang gom 1.200 túi chuối sấy WinMart...')">
+            <button class="sidebar-menu-btn" id="nav-btn-b2b" onclick="showB2BOrdersView()">
               <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
               Đơn Buôn B2B
             </button>
 
-            <button class="sidebar-menu-btn" onclick="showToast('AI Content: Kịch bản Livestream TikTok Shop đã sẵn sàng!')">
+            <button class="sidebar-menu-btn" id="nav-btn-ai" onclick="showAIContentView()">
               <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               Kịch Bản AI
             </button>
@@ -1755,7 +1738,7 @@
       </aside>
 
       <!-- =====================================================================
-           CỘT 2: TRUNG TÂM (CHUYỂN ĐỔI TRỰC TIẾP TRÊN MÀN HÌNH - NO POPUP)
+           CỘT 2: TRUNG TÂM (CÁC MÀN HÌNH CHÍNH)
            ===================================================================== -->
       <main class="app-center-content">
         <!-- Top Search Bar & Header Controls -->
@@ -1765,11 +1748,11 @@
             <input type="text" placeholder="Tìm kiếm nông sản, xã viên, đơn hàng WinMart...">
           </div>
 
-          <button class="top-action-btn" title="Zalo OA" onclick="showToast('💬 Zalo OA: 142 xã viên và 4.820 khách hàng đang online')">
+          <button class="top-action-btn" title="Zalo OA" onclick="showToast('Zalo OA: 142 xã viên và 4.820 khách hàng đang online')">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </button>
 
-          <button class="top-action-btn" title="Thông báo mới" onclick="showToast('🔔 Có 1 lô chuối sấy mới từ Bác Ba đang chờ duyệt!')">
+          <button class="top-action-btn" title="Thông báo mới" onclick="showToast('Có lô hàng chuối sấy mới từ Bác Ba cần thẩm định!')">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
             <span class="top-badge-dot"></span>
           </button>
@@ -1781,17 +1764,17 @@
         </div>
 
         <!-- -------------------------------------------------------------------
-             VIEW A: TỔNG QUAN CHUNG HTX (OVERVIEW)
+             VIEW 1: TỔNG QUAN CHUNG HTX (OVERVIEW)
              ------------------------------------------------------------------- -->
         <div id="view-overview">
-          <!-- Hero Emerald Banner (Chuẩn Coursue Mẫu 1) -->
+          <!-- Hero Emerald Banner -->
           <section class="hero-coursue-banner">
             <svg class="banner-sparkle" style="top: 15px; right: 90px; width: 65px; height: 65px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/></svg>
             <span class="banner-tag-pill">CHIẾN DỊCH OCOP & QUÀ TẾT BÍNH NGỌ 2026</span>
             <h2 class="banner-heading-text">Số Hóa Nông Sản Xã Đồng Cát Lên Sàn Đa Kênh</h2>
             
             <button class="banner-cta-button" onclick="switchToMemberAdmin('bacba')">
-              <span>Quản Trị & Duyệt Lô Hàng Bác Ba</span>
+              <span>Quản Trị Danh Mục & Sản Phẩm Bác Ba</span>
               <div class="banner-cta-arrow">➔</div>
             </button>
           </section>
@@ -1844,13 +1827,13 @@
 
             <div class="cards-coursue-grid">
               <!-- Card 1: Bác Ba -->
-              <div class="coursue-item-card" onclick="switchToMemberAdmin('bacba')">
+              <div class="coursue-item-card" onclick="openProductModal('sp_01')">
                 <div class="coursue-img-wrapper">
                   <img src="banana_front.jpg" alt="Chuối sấy Bác Ba">
                   <button class="floating-heart-btn" title="Lưu trữ">♡</button>
                 </div>
                 <div class="coursue-card-body">
-                  <span class="pill-category-badge amber">⭐ OCOP 4 SAO</span>
+                  <span class="pill-category-badge amber">OCOP 4 SAO</span>
                   <h4 class="coursue-card-title">Chuối Sấy Giòn Yên Bình — Túi 250g Khóa Zip</h4>
                   <div class="coursue-author-row">
                     <div class="author-info-left">
@@ -1866,7 +1849,7 @@
               </div>
 
               <!-- Card 2: Cô Lan -->
-              <div class="coursue-item-card" onclick="switchToMemberAdmin('lan')">
+              <div class="coursue-item-card" onclick="openProductModal('cl_01')">
                 <div class="coursue-img-wrapper">
                   <img src="tea_front.jpg" alt="Trà Bát Tiên">
                   <button class="floating-heart-btn" title="Lưu trữ">♡</button>
@@ -1888,7 +1871,7 @@
               </div>
 
               <!-- Card 3: Anh Tuấn -->
-              <div class="coursue-item-card" onclick="switchToMemberAdmin('tuan')">
+              <div class="coursue-item-card" onclick="openProductModal('at_01')">
                 <div class="coursue-img-wrapper">
                   <img src="honey_front.jpg" alt="Mật ong hoa rừng">
                   <button class="floating-heart-btn" title="Lưu trữ">♡</button>
@@ -1915,7 +1898,7 @@
           <section class="coursue-table-card">
             <div class="coursue-table-head-row">
               <h4>Đơn Hàng Gần Đây Cần Xử Lý</h4>
-              <span class="see-all-link" onclick="showToast('Xem toàn bộ đơn hàng...')">See all ➔</span>
+              <span class="see-all-link" onclick="showB2BOrdersView()">Xem toàn bộ đơn buôn B2B ➔</span>
             </div>
 
             <table class="coursue-clean-table">
@@ -1960,11 +1943,7 @@
         </div>
 
         <!-- -------------------------------------------------------------------
-             VIEW B: TRANG QUẢN TRỊ CHI TIẾT TỪNG XÃ VIÊN (IN-PAGE MANAGEMENT SUITE)
-             - Bảng sản phẩm: 1 sản phẩm 1 dòng (white-space: nowrap)
-             - Thanh Menu Filter đặt ngay trên cùng bảng (tích hợp)
-             - Phân trang 10 sản phẩm/trang, có chọn trang kế
-             - Demo 50 sản phẩm
+             VIEW 2: TRANG QUẢN TRỊ XÃ VIÊN & BẢNG SẢN PHẨM CÓ POPUP PHÊ DUYỆT
              ------------------------------------------------------------------- -->
         <div id="view-member-admin">
           <!-- Navigation Bar Quay Lại -->
@@ -1985,14 +1964,14 @@
                 <h2 id="admin-user-fullname">Bác Ba (Nguyễn Văn Ba)</h2>
                 <p id="admin-user-meta">Mã: HTX-YB-04 · 62 tuổi · Thôn Đồng Cát, Xã Yên Bình</p>
                 <div class="member-hero-badges">
-                  <span class="hero-mini-pill" id="admin-user-badge">⭐ OCOP 4 SAO TỈNH</span>
+                  <span class="hero-mini-pill" id="admin-user-badge">OCOP 4 SAO TỈNH</span>
                   <span class="hero-mini-pill">1.4 Hecta Chuối Tiêu Hồng</span>
                 </div>
               </div>
             </div>
 
             <div class="member-hero-actions">
-              <button class="hero-pill-btn-white" onclick="showToast('Đang kết nối Zalo gọi Bác Ba...')">
+              <button class="hero-pill-btn-white" onclick="showToast('Đang kết nối gọi Zalo cho hộ dân...')">
                 📞 Gọi Zalo
               </button>
               <button class="hero-pill-btn-dark" onclick="saveMemberSettings()">
@@ -2038,47 +2017,51 @@
           </section>
 
           <!-- =================================================================
-               BẢNG LIỆT KÊ SẢN PHẨM (1 DÒNG / SP, FILTER TRÊN CÙNG BẢNG, PHÂN TRANG 10 SP)
+               BẢNG LIỆT KÊ SẢN PHẨM: 1 DÒNG DUY NHẤT, MENU FILTER TRÊN CÙNG BẢNG
                ================================================================= -->
           <div class="member-card-container">
-            <!-- THANH TOOLBAR FILTER ĐẶT NGAY TRÊN CÙNG BẢNG -->
+            <!-- THANH TOOLBAR FILTER ĐẶT NGAY TRÊN CÙNG BẢNG (BỎ HOÀN TOÀN ICON) -->
             <div class="table-top-toolbar-header">
               <div class="table-title-side">
                 <h3>Bảng Danh Sách Nông Sản Của Hộ Dân</h3>
                 <span class="pill-category-badge mint" id="admin-user-total-badge">50 Sản Phẩm</span>
               </div>
 
-              <!-- THANH MENU FILTER NẰM NGAY TRÊN CÙNG BẢNG -->
+              <!-- THANH MENU FILTER (KHÔNG CÓ ICON) -->
               <div class="table-filter-side">
                 <div class="status-tabs-pill-group">
                   <button class="status-tab-btn active" id="tab-status-all" onclick="filterMemberProducts('all')">
                     Tất cả <span class="status-count-tag" id="count-all">50</span>
                   </button>
                   <button class="status-tab-btn" id="tab-status-pending" onclick="filterMemberProducts('pending')">
-                    ⏳ Đang chờ duyệt <span class="status-count-tag amber" id="count-pending">12</span>
+                    Đang chờ duyệt <span class="status-count-tag amber" id="count-pending">12</span>
                   </button>
                   <button class="status-tab-btn" id="tab-status-approved" onclick="filterMemberProducts('approved')">
-                    ✅ Đã duyệt <span class="status-count-tag green" id="count-approved">24</span>
+                    Đã duyệt <span class="status-count-tag green" id="count-approved">24</span>
+                  </button>
+                  <button class="status-tab-btn" id="tab-status-paused" onclick="filterMemberProducts('paused')">
+                    Tạm dừng <span class="status-count-tag blue" id="count-paused">2</span>
                   </button>
                   <button class="status-tab-btn" id="tab-status-rejected" onclick="filterMemberProducts('rejected')">
-                    ❌ Không được duyệt <span class="status-count-tag red" id="count-rejected">8</span>
+                    Không được duyệt <span class="status-count-tag red" id="count-rejected">6</span>
                   </button>
                   <button class="status-tab-btn" id="tab-status-deleted" onclick="filterMemberProducts('deleted')">
-                    🗑️ Đã xóa <span class="status-count-tag gray" id="count-deleted">6</span>
+                    Đã xóa <span class="status-count-tag gray" id="count-deleted">6</span>
                   </button>
                 </div>
 
                 <select id="select-status-filter" class="header-select-status-filter" onchange="filterMemberProducts(this.value)">
                   <option value="all">Tất cả (50)</option>
-                  <option value="pending">⏳ Đang chờ duyệt (12)</option>
-                  <option value="approved">✅ Đã duyệt (24)</option>
-                  <option value="rejected">❌ Không được duyệt (8)</option>
-                  <option value="deleted">🗑️ Đã xóa (6)</option>
+                  <option value="pending">Đang chờ duyệt (12)</option>
+                  <option value="approved">Đã duyệt (24)</option>
+                  <option value="paused">Tạm dừng (2)</option>
+                  <option value="rejected">Không được duyệt (6)</option>
+                  <option value="deleted">Đã xóa (6)</option>
                 </select>
               </div>
             </div>
 
-            <!-- BẢNG LIỆT KÊ SẢN PHẨM: 1 DÒNG DUY NHẤT -->
+            <!-- BẢNG LIỆT KÊ SẢN PHẨM: 1 DÒNG DUY NHẤT (CLICK DÒNG MỞ POPUP) -->
             <div style="overflow-x: auto;">
               <table class="coursue-clean-table">
                 <thead>
@@ -2094,7 +2077,7 @@
                   </tr>
                 </thead>
                 <tbody id="member-products-table-body">
-                  <!-- Được render tự động qua JavaScript (10 sản phẩm / trang) -->
+                  <!-- Được nạp tự động qua JavaScript (10 SP/trang) -->
                 </tbody>
               </table>
             </div>
@@ -2107,116 +2090,14 @@
 
               <div class="pagination-controls-wrap">
                 <button class="btn-page-nav" id="btn-prev-page" onclick="goToPage(currentPage - 1)">‹ Trước</button>
-                <div class="page-number-buttons" id="page-number-buttons">
-                  <!-- Tự động sinh các nút trang [1] [2] [3] [4] [5] -->
-                </div>
+                <div class="page-number-buttons" id="page-number-buttons"></div>
                 <button class="btn-page-nav" id="btn-next-page" onclick="goToPage(currentPage + 1)">Sau ›</button>
 
                 <div class="page-jump-select-wrap">
                   <span>Trang:</span>
                   <select id="select-jump-page" class="select-jump-control" onchange="goToPage(parseInt(this.value))">
-                    <!-- Tự động sinh options -->
                   </select>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bảng Quản Trị & Duyệt Sản Phẩm Của User (CÓ NÚT XÓA/SỬA CHỮ TRỰC TIẾP) -->
-          <div class="member-card-container" id="box-inspect-editor">
-            <div class="table-top-toolbar-header" style="margin-bottom: 16px;">
-              <div>
-                <h3>Kiểm Tra & Phê Duyệt Nông Sản Lên Sàn (Lô Đang Chọn)</h3>
-                <p style="font-size: 13.5px; color: var(--slate-500); margin-top: 2px;">
-                  Bấm nút ✕ màu đỏ bên phải mỗi ô để xóa nhanh toàn bộ chữ trước khi sửa
-                </p>
-              </div>
-              <span class="pill-category-badge mint" id="admin-post-status">⏳ CẦN DUYỆT 1 BÀI ĐĂNG</span>
-            </div>
-
-            <!-- 3 Ảnh thực tế -->
-            <div style="margin-bottom: 18px;">
-              <label style="font-size: 13.5px; font-weight: 800; color: var(--slate-700); text-transform: uppercase; margin-bottom: 8px; display: block;">
-                1. Ảnh Chụp Thực Tế Hộ Dân Tải Lên:
-              </label>
-              <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px;">
-                <img id="edit-img-main" src="banana_front.jpg" alt="Mặt trước bao bì" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
-                <img id="edit-img-sub1" src="banana_plate.jpg" alt="Đĩa chuối sấy thật" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
-                <img id="edit-img-sub2" src="banana_back.jpg" alt="Bảng dinh dưỡng" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
-              </div>
-            </div>
-
-            <!-- Đối soát ghi âm giọng nói -->
-            <div class="audio-voice-wave-bar">
-              <button class="audio-play-round" onclick="showToast('🔊 Đang phát giọng nói đối soát giá của hộ dân...')">▶</button>
-              <div>
-                <div style="font-size: 14.5px; color: var(--slate-900);">
-                  <strong>Giọng nói gốc hộ dân:</strong> <em id="edit-voice-quote">"Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen..."</em>
-                </div>
-                <div style="font-size: 12.5px; color: var(--blue-700); font-weight: 700; margin-top: 2px;">
-                  ✓ AI bóc tách thông số: Giá <span id="edit-voice-price">55.000</span> VNĐ · Lô thu hoạch ngày 06/10
-                </div>
-              </div>
-            </div>
-
-            <!-- CÁC Ô NHẬP LIỆU CÓ THỂ XÓA/SỬA CHỮ TRỰC TIẾP -->
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              <!-- Tên sản phẩm -->
-              <div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                  <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Tên Nông Sản Niêm Yết Sàn:</label>
-                  <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('admin-edit-prod-name')">Bấm ✕ để xóa nhanh chữ</span>
-                </div>
-                <div class="input-clear-wrapper">
-                  <input type="text" id="admin-edit-prod-name" class="form-input-stylish" value="Chuối Sấy Giòn Yên Bình — Chuẩn OCOP 4 Sao (Túi Màng Nhôm 250g)">
-                  <button class="btn-clear-symbol" onclick="clearAdminInput('admin-edit-prod-name')" title="Xóa chữ trong ô">✕</button>
-                </div>
-              </div>
-
-              <!-- Giá tiền & Chiết khấu -->
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                <div>
-                  <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                    <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Giá Bán Niêm Yết (VNĐ):</label>
-                    <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('admin-edit-prod-price')">Xóa giá</span>
-                  </div>
-                  <div class="input-clear-wrapper">
-                    <input type="text" id="admin-edit-prod-price" class="form-input-stylish" value="55.000" style="color: var(--brand-700); font-weight: 800; font-size: 18px;">
-                    <button class="btn-clear-symbol" onclick="clearAdminInput('admin-edit-prod-price')" title="Xóa giá">✕</button>
-                  </div>
-                </div>
-
-                <div>
-                  <label style="font-weight: 800; font-size: 15px; color: var(--slate-800); display: block; margin-bottom: 6px;">Chiết Khấu HTX Gom Hàng:</label>
-                  <select class="form-input-stylish" style="padding-right: 16px;">
-                    <option value="10">10% (Chuẩn Xã Viên)</option>
-                    <option value="8">8% (Ưu Đãi Người Cao Tuổi)</option>
-                    <option value="15">15% (Kênh Siêu Thị WinMart & Shopee Mall)</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Ghi chú thẩm định OCOP -->
-              <div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                  <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Ghi Chú Đóng Dấu Thẩm Định HTX:</label>
-                  <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('admin-edit-prod-notes')">Xóa ghi chú</span>
-                </div>
-                <div class="input-clear-wrapper">
-                  <input type="text" id="admin-edit-prod-notes" class="form-input-stylish" value="Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%. Cấp quyền dán tem QR Trace.">
-                  <button class="btn-clear-symbol" onclick="clearAdminInput('admin-edit-prod-notes')" title="Xóa ghi chú">✕</button>
-                </div>
-              </div>
-
-              <!-- Nút Thao Tác Duyệt Trực Tiếp -->
-              <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px;">
-                <button class="btn-coursue-back" style="color: #DC2626;" onclick="rejectPost()">
-                  ✕ Không Được Duyệt (Trả Về)
-                </button>
-                <button class="banner-cta-button" style="background: var(--brand-600); font-size: 15px;" onclick="approvePost()">
-                  <span>✓ Phê Duyệt Nông Sản Lên Sàn</span>
-                  <div class="banner-cta-arrow">➔</div>
-                </button>
               </div>
             </div>
           </div>
@@ -2258,6 +2139,118 @@
               <button class="hero-pill-btn-dark" onclick="saveMemberSettings()">
                 💾 Lưu Thay Đổi Cài Đặt
               </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- -------------------------------------------------------------------
+             VIEW 3: MÀN HÌNH ĐƠN BUÔN B2B (ORDER HUB CHO SIÊU THỊ WINMART, MM MEGA...)
+             ------------------------------------------------------------------- -->
+        <div id="view-b2b-orders">
+          <div class="member-top-nav-bar">
+            <button class="btn-coursue-back" onclick="showOverviewView()">
+              <span>←</span> Quay lại Dashboard
+            </button>
+            <div class="member-breadcrumb">
+              Phân hệ: <strong>Order Hub B2B — Điều Phối Nông Sản Siêu Thị & Đại Lý</strong>
+            </div>
+          </div>
+
+          <div class="member-card-container">
+            <div class="table-top-toolbar-header">
+              <div class="table-title-side">
+                <h3>Danh Sách Hợp Đồng & Đơn Buôn Sỉ B2B</h3>
+                <span class="pill-category-badge mint">4 Hợp Đồng Đang Gom</span>
+              </div>
+              <div class="table-filter-side">
+                <button class="btn-table-action-view" onclick="showToast('Đang kết nối hệ thống EDI WinMart...')">+ Thêm Hợp Đồng Mới</button>
+              </div>
+            </div>
+
+            <table class="coursue-clean-table">
+              <thead>
+                <tr>
+                  <th>MÃ ĐƠN HÀNG</th>
+                  <th>ĐỐI TÁC B2B</th>
+                  <th>NÔNG SẢN THU GOM</th>
+                  <th>SỐ LƯỢNG</th>
+                  <th>GIÁ TRỊ</th>
+                  <th>TRẠNG THÁI</th>
+                  <th style="text-align: right;">THAO TÁC</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="clickable-row" onclick="showToast('Xem chi tiết đơn B2B-9821 WinMart')">
+                  <td><strong>#B2B-9821</strong></td>
+                  <td>WinMart Miền Bắc (Kho Mê Linh)</td>
+                  <td>Chuối Sấy Giòn Yên Bình</td>
+                  <td>1.200 túi (250g)</td>
+                  <td><strong style="color: var(--brand-700);">54.000.000 đ</strong></td>
+                  <td><span class="status-badge-clean approved">Đang đóng gói</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn-table-action-view" onclick="event.stopPropagation(); showToast('In phiếu xuất kho 1.200 túi WinMart')">In Phiếu Kho</button>
+                  </td>
+                </tr>
+                <tr class="clickable-row" onclick="showToast('Xem chi tiết đơn B2B-9822 MM Mega')">
+                  <td><strong>#B2B-9822</strong></td>
+                  <td>MM Mega Market Thăng Long</td>
+                  <td>Trà Bát Tiên Sao Lửa Hộp Thiếc</td>
+                  <td>300 hộp (200g)</td>
+                  <td><strong style="color: var(--brand-700);">48.600.000 đ</strong></td>
+                  <td><span class="status-badge-clean pending">Đang chờ gom</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn-table-action-view" onclick="event.stopPropagation(); showToast('Gửi thông báo gom trà tới Cô Lan')">Gom Hàng</button>
+                  </td>
+                </tr>
+                <tr class="clickable-row" onclick="showToast('Xem chi tiết đơn B2B-9823 BigC')">
+                  <td><strong>#B2B-9823</strong></td>
+                  <td>GO! / BigC Long Biên</td>
+                  <td>Mật Ong Rừng Tự Nhiên</td>
+                  <td>150 chai (500ml)</td>
+                  <td><strong style="color: var(--brand-700);">30.000.000 đ</strong></td>
+                  <td><span class="status-badge-clean paused">Tạm dừng giao</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn-table-action-view" onclick="event.stopPropagation(); showToast('Kiểm tra kho trữ mật ong')">Kiểm Tra</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- -------------------------------------------------------------------
+             VIEW 4: MÀN HÌNH KỊCH BẢN AI & MARKETING
+             ------------------------------------------------------------------- -->
+        <div id="view-ai-content">
+          <div class="member-top-nav-bar">
+            <button class="btn-coursue-back" onclick="showOverviewView()">
+              <span>←</span> Quay lại Dashboard
+            </button>
+            <div class="member-breadcrumb">
+              Phân hệ: <strong>AI Studio — Kịch Bản Livestream & Tiếp Thị Nông Sản Đa Kênh</strong>
+            </div>
+          </div>
+
+          <div class="member-card-container">
+            <div class="table-top-toolbar-header">
+              <div class="table-title-side">
+                <h3>Kịch Bản Livestream TikTok Shop & Video Ngắn</h3>
+                <span class="pill-category-badge amber">Tự Động Sinh Bằng Gemini AI</span>
+              </div>
+              <button class="hero-pill-btn-dark" onclick="showToast('Gemini AI đang sinh thêm kịch bản mới cho Trà Bát Tiên...')">✨ Sinh Kịch Bản Mới</button>
+            </div>
+
+            <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 20px; margin-bottom: 18px;">
+              <h4 style="font-size: 16px; font-weight: 800; color: var(--brand-900); margin-bottom: 8px;">🎬 Kịch Bản TikTok: Bác Ba 62 Tuổi Sấy Chuối Ngự Đón Tết</h4>
+              <p style="font-size: 14.5px; color: var(--slate-700); line-height: 1.6; margin-bottom: 14px;">
+                <strong>[00:00 - 00:05] Hook:</strong> Cầm buồng chuối chín vàng óng: "Bà con ơi, chuối vườn nhà Ba quả đẫy đà thế này mà không làm chuối sấy giòn thì tiếc lắm!".<br>
+                <strong>[00:06 - 00:20] Thân bài:</strong> Quay cận cảnh lát chuối vàng ruộm rơi vào khay sấy lạnh, tiếng giòn tan rụm rụm không dầu mỡ.<br>
+                <strong>[00:21 - 00:30] CTA:</strong> "Hôm nay HTX trợ giá combo 3 gói miễn phí ship tận nhà, bấm ngay giỏ hàng góc trái nghen!".
+              </p>
+              <div style="display: flex; gap: 10px;">
+                <button class="hero-pill-btn-white" onclick="showToast('Đã sao chép kịch bản vào clipboard!')">📋 Sao Chép Kịch Bản</button>
+                <button class="btn-table-action-view" onclick="showToast('Đang phát kịch bản thử giọng nói AI...')">🔊 Nghe Đọc Thử Giọng AI</button>
+              </div>
             </div>
           </div>
         </div>
@@ -2331,7 +2324,7 @@
                 </div>
               </div>
               <button class="btn-mentor-follow" onclick="switchToMemberAdmin('bacba')">
-                & Follow
+                Chi tiết
               </button>
             </div>
 
@@ -2345,7 +2338,7 @@
                 </div>
               </div>
               <button class="btn-mentor-follow" onclick="switchToMemberAdmin('lan')">
-                & Follow
+                Chi tiết
               </button>
             </div>
 
@@ -2359,13 +2352,12 @@
                 </div>
               </div>
               <button class="btn-mentor-follow" onclick="switchToMemberAdmin('tuan')">
-                & Follow
+                Chi tiết
               </button>
             </div>
 
-            <!-- See All Button Chuẩn Coursue -->
             <button class="btn-see-all-coursue" onclick="showToast('Danh bạ HTX: 142 hộ nông dân thuộc 5 thôn Xã Yên Bình.')">
-              See All
+              Xem Toàn Bộ 142 Xã Viên
             </button>
           </div>
         </div>
@@ -2375,16 +2367,132 @@
     </div>
   </div>
 
+  <!-- =========================================================================
+       7. POPUP MODAL THẨM ĐỊNH & PHÊ DUYỆT (CHÍNH XÁC THEO ẢNH USER GỬI)
+       ========================================================================= -->
+  <div id="product-inspect-modal" class="modal-backdrop-overlay" onclick="closeProductModalOnBackdrop(event)">
+    <div class="modal-content-container">
+      
+      <!-- Top Header Toolbar -->
+      <div class="modal-header-toolbar">
+        <div class="modal-header-title-box">
+          <h3 id="modal-title-heading">Kiểm Tra & Phê Duyệt Nông Sản Lên Sàn (Lô Đang Chọn)</h3>
+          <p>Bấm nút ✕ màu đỏ bên phải mỗi ô để xóa nhanh toàn bộ chữ trước khi sửa</p>
+        </div>
+
+        <div class="modal-header-right-actions">
+          <span id="modal-status-badge" class="status-badge-clean pending">Đang chờ duyệt</span>
+          <button class="btn-close-modal" onclick="closeProductModal()" title="Đóng cửa sổ">✕</button>
+        </div>
+      </div>
+
+      <!-- 1. Ảnh Chụp Thực Tế Hộ Dân Tải Lên (3 ảnh nằm ngang) -->
+      <div style="margin-bottom: 20px;">
+        <label style="font-size: 13.5px; font-weight: 800; color: var(--slate-700); text-transform: uppercase; margin-bottom: 10px; display: block;">
+          1. Ảnh Chụp Thực Tế Hộ Dân Tải Lên:
+        </label>
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px;">
+          <img id="modal-img-main" src="banana_front.jpg" alt="Mặt trước bao bì" style="width: 100%; height: 180px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
+          <img id="modal-img-sub1" src="banana_plate.jpg" alt="Đĩa chuối sấy thật" style="width: 100%; height: 180px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
+          <img id="modal-img-sub2" src="banana_back.jpg" alt="Bảng dinh dưỡng" style="width: 100%; height: 180px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
+        </div>
+      </div>
+
+      <!-- Băng phát âm thanh giọng nói gốc -->
+      <div class="audio-voice-wave-bar">
+        <button class="audio-play-round" onclick="showToast('🔊 Đang phát giọng nói đối soát giá của hộ dân...')">▶</button>
+        <div>
+          <div style="font-size: 14.5px; color: var(--slate-900);">
+            <strong>Giọng nói gốc hộ dân:</strong> <em id="modal-voice-quote">"Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen..."</em>
+          </div>
+          <div style="font-size: 12.5px; color: var(--blue-700); font-weight: 700; margin-top: 2px;">
+            ✓ AI bóc tách thông số: Giá <span id="modal-voice-price">55.000</span> VNĐ · Lô thu hoạch ngày 06/10
+          </div>
+        </div>
+      </div>
+
+      <!-- CÁC Ô NHẬP LIỆU CÓ THỂ XÓA/SỬA CHỮ TRỰC TIẾP -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        
+        <!-- Tên sản phẩm -->
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Tên Nông Sản Niêm Yết Sàn:</label>
+            <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('modal-edit-prod-name')">Bấm ✕ để xóa nhanh chữ</span>
+          </div>
+          <div class="input-clear-wrapper">
+            <input type="text" id="modal-edit-prod-name" class="form-input-stylish" value="Chuối Sấy Giòn Yên Bình (Túi 250g Zip)">
+            <button class="btn-clear-symbol" onclick="clearAdminInput('modal-edit-prod-name')" title="Xóa chữ trong ô">✕</button>
+          </div>
+        </div>
+
+        <!-- Giá tiền & Chiết khấu -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Giá Bán Niêm Yết (VNĐ):</label>
+              <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('modal-edit-prod-price')">Xóa giá</span>
+            </div>
+            <div class="input-clear-wrapper">
+              <input type="text" id="modal-edit-prod-price" class="form-input-stylish" value="55.000" style="color: var(--brand-700); font-weight: 800; font-size: 18px;">
+              <button class="btn-clear-symbol" onclick="clearAdminInput('modal-edit-prod-price')" title="Xóa giá">✕</button>
+            </div>
+          </div>
+
+          <div>
+            <label style="font-weight: 800; font-size: 15px; color: var(--slate-800); display: block; margin-bottom: 6px;">Chiết Khấu HTX Gom Hàng:</label>
+            <select class="form-input-stylish" style="padding-right: 16px;">
+              <option value="10">10% (Chuẩn Xã Viên)</option>
+              <option value="8">8% (Ưu Đãi Người Cao Tuổi)</option>
+              <option value="15">15% (Kênh Siêu Thị WinMart & Shopee Mall)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Ghi chú thẩm định OCOP -->
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Ghi Chú Đóng Dấu Thẩm Định HTX:</label>
+            <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('modal-edit-prod-notes')">Xóa ghi chú</span>
+          </div>
+          <div class="input-clear-wrapper">
+            <input type="text" id="modal-edit-prod-notes" class="form-input-stylish" value="Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%.">
+            <button class="btn-clear-symbol" onclick="clearAdminInput('modal-edit-prod-notes')" title="Xóa ghi chú">✕</button>
+          </div>
+        </div>
+
+        <!-- CÁC NÚT THAO TÁC DUYỆT / TẠM DỪNG / TỪ CHỐI / XÓA -->
+        <div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+          <button class="btn-coursue-back" style="color: #64748B;" onclick="setModalProductStatus('deleted')">
+            Xóa Vào Lưu Trữ
+          </button>
+          <button class="btn-coursue-back" style="color: #1D4ED8;" onclick="setModalProductStatus('paused')">
+            Tạm Dừng Bán
+          </button>
+          <button class="btn-coursue-back" style="color: #DC2626;" onclick="setModalProductStatus('rejected')">
+            ✕ Không Được Duyệt (Trả Về)
+          </button>
+          <button class="banner-cta-button" style="background: var(--brand-600); font-size: 15px;" onclick="setModalProductStatus('approved')">
+            <span>✓ Phê Duyệt Nông Sản Lên Sàn</span>
+            <div class="banner-cta-arrow">➔</div>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
   <!-- TOAST TRAY -->
   <div id="toast-tray" class="toast-tray"></div>
 
-  <!-- JAVASCRIPT LOGIC QUẢN TRỊ TRỰC TIẾP (NO POPUP) -->
+  <!-- JAVASCRIPT LOGIC QUẢN TRỊ & POPUP -->
   <script>
-    // Dữ liệu quản trị chi tiết của các xã viên & 50 sản phẩm demo
     let currentFarmerKey = 'bacba';
     let currentStatusFilter = 'all';
     let currentPage = 1;
     const pageSize = 10;
+    let activeInspectingProductId = null;
 
     // Sinh 50 sản phẩm nông sản thực tế cho Bác Ba
     const bacBaProductsDemo = [
@@ -2395,7 +2503,7 @@
       { id: 'sp_05', name: 'Bột Chuối Xanh Sấy Lạnh Hòa Tan (Hũ 400g)', sku: 'SP-04-05', standard: 'OCOP 4★', stdClass: 'amber', price: '120.000', stock: '50 hũ', status: 'deleted', img: 'banana_plate.jpg', notes: 'Đã xuất hết đợt 1, tạm lưu trữ để bổ sung mẻ sấy mới.', voiceQuote: 'Bột chuối xanh này bán một trăm hai mươi ngàn...', voicePrice: '120.000' },
       { id: 'sp_06', name: 'Rượu Men Lá Chuối Hột Rừng (Chai 500ml)', sku: 'SP-04-06', standard: 'TRUYỀN THỐNG', stdClass: 'mint', price: '150.000', stock: '80 chai', status: 'approved', img: 'banana_front.jpg', notes: 'Men lá rừng thảo dược ngâm chuối hột sao vàng.', voiceQuote: 'Rượu chuối hột men lá bán một trăm năm mươi ngàn...', voicePrice: '150.000' },
       { id: 'sp_07', name: 'Chuối Sấy Giòn Tẩm Mật Ong Hoa Rừng (Hộp 300g)', sku: 'SP-04-07', standard: 'OCOP 4★', stdClass: 'amber', price: '75.000', stock: '450 hộp', status: 'pending', img: 'banana_plate.jpg', notes: 'Phủ mật ong tự nhiên, sấy giòn rụm không ngấy.', voiceQuote: 'Chuối sấy mật ong bán bảy mươi lăm nghìn một hộp...', voicePrice: '75.000' },
-      { id: 'sp_08', name: 'Giấm Chuối Lên Men Tự Nhiên Thủ Công (Chai 500ml)', sku: 'SP-04-08', standard: 'HỮU CƠ', stdClass: 'mint', price: '60.000', stock: '120 chai', status: 'approved', img: 'banana_back.jpg', notes: 'Lên men từ chuối chín tự nhiên, độ chua thanh dịu.', voiceQuote: 'Giấm chuối nuôi bán sáu mươi ngàn...', voicePrice: '60.000' },
+      { id: 'sp_08', name: 'Giấm Chuối Lên Men Tự Nhiên Thủ Công (Chai 500ml)', sku: 'SP-04-08', standard: 'HỮU CƠ', stdClass: 'mint', price: '60.000', stock: '120 chai', status: 'paused', img: 'banana_back.jpg', notes: 'Đang tạm dừng để ủ men thêm đợt 2.', voiceQuote: 'Giấm chuối nuôi bán sáu mươi ngàn...', voicePrice: '60.000' },
       { id: 'sp_09', name: 'Chuối Sấy Dẻo Nguyên Trái Xuất Khẩu (Túi 500g)', sku: 'SP-04-09', standard: 'GLOBALGAP', stdClass: 'mint', price: '110.000', stock: '600 túi', status: 'approved', img: 'banana_front.jpg', notes: 'Đóng gói màng nhôm hút chân không đạt chuẩn xuất khẩu.', voiceQuote: 'Chuối dẻo nguyên trái xuất khẩu bán một trăm mười ngàn...', voicePrice: '110.000' },
       { id: 'sp_10', name: 'Trà Hoa Chuối Rừng Sấy Lạnh Hút Ẩm (Gói 150g)', sku: 'SP-04-10', standard: 'OCOP 3★', stdClass: 'amber', price: '85.000', stock: '70 gói', status: 'pending', img: 'banana_plate.jpg', notes: 'Chứa nhiều chất xơ hòa tan và vitamin nhóm B.', voiceQuote: 'Trà hoa chuối rừng sấy bán tám mươi lăm ngàn...', voicePrice: '85.000' },
       { id: 'sp_11', name: 'Snack Chuối Lắc Phô Mai Trẻ Em (Túi 100g)', sku: 'SP-04-11', standard: 'VIETGAP', stdClass: 'mint', price: '28.000', stock: '900 túi', status: 'approved', img: 'banana_back.jpg', notes: 'Chuối thái lát mỏng lắc bột phô mai béo ngậy.', voiceQuote: 'Snack chuối trẻ con thích lắm, hai mươi tám ngàn...', voicePrice: '28.000' },
@@ -2419,7 +2527,7 @@
       { id: 'sp_29', name: 'Chuối Ngự Sấy Giòn Mè Trắng (Túi Zip 250g)', sku: 'SP-04-29', standard: 'OCOP 4★', stdClass: 'amber', price: '58.000', stock: '280 túi', status: 'approved', img: 'banana_back.jpg', notes: 'Mè rang thơm kết hợp vị ngọt thanh của chuối ngự.', voiceQuote: 'Chuối sấy mè trắng năm mươi tám ngàn...', voicePrice: '58.000' },
       { id: 'sp_30', name: 'Rượu Chuối Hột Chum Sành 3 Năm (Bình 2L)', sku: 'SP-04-30', standard: 'OCOP 4★', stdClass: 'amber', price: '450.000', stock: '25 bình', status: 'approved', img: 'banana_front.jpg', notes: 'Ủ chum sành hạ thổ khử hoàn toàn andehit, êm dịu.', voiceQuote: 'Bình rượu chuối chum sành bốn trăm năm mươi...', voicePrice: '450.000' },
       { id: 'sp_31', name: 'Bánh Quy Bơ Chuối Nướng Lò Củi (Hộp Thiếc 350g)', sku: 'SP-04-31', standard: 'OCOP 4★', stdClass: 'amber', price: '115.000', stock: '160 hộp', status: 'pending', img: 'banana_plate.jpg', notes: 'Thơm lừng mùi bơ Pháp và chuối ngự chín mọng.', voiceQuote: 'Bánh quy bơ chuối một trăm mười lăm ngàn...', voicePrice: '115.000' },
-      { id: 'sp_32', name: 'Siro Chuối Ngự Tự Nhiên Pha Chế (Chai 650ml)', sku: 'SP-04-32', standard: 'VIETGAP', stdClass: 'mint', price: '85.000', stock: '190 chai', status: 'approved', img: 'banana_back.jpg', notes: 'Dùng pha trà hoa quả, cà phê chuối và làm bánh.', voiceQuote: 'Chai siro chuối tám mươi lăm ngàn...', voicePrice: '85.000' },
+      { id: 'sp_32', name: 'Siro Chuối Ngự Tự Nhiên Pha Chế (Chai 650ml)', sku: 'SP-04-32', standard: 'VIETGAP', stdClass: 'mint', price: '85.000', stock: '190 chai', status: 'paused', img: 'banana_back.jpg', notes: 'Tạm dừng gom hàng đợt 1 để chuẩn bị nhãn mác mới.', voiceQuote: 'Chai siro chuối tám mươi lăm ngàn...', voicePrice: '85.000' },
       { id: 'sp_33', name: 'Chuối Laba Sấy Giòn Vani (Túi 250g)', sku: 'SP-04-33', standard: 'VIETGAP', stdClass: 'mint', price: '62.000', stock: '340 túi', status: 'approved', img: 'banana_front.jpg', notes: 'Hương thơm ngọt ngào, giòn rụm không gắt cổ.', voiceQuote: 'Chuối Laba sấy giòn sáu mươi hai ngàn...', voicePrice: '62.000' },
       { id: 'sp_34', name: 'Kem Chuối Que Cốt Dừa Lạc (Hộp 6 que)', sku: 'SP-04-34', standard: 'LẠNH', stdClass: 'red', price: '45.000', stock: '120 hộp', status: 'rejected', img: 'banana_plate.jpg', notes: 'Vận chuyển chuỗi cung ứng lạnh chưa đạt chuẩn -18 độ C.', voiceQuote: 'Hộp kem chuối bốn lăm ngàn...', voicePrice: '45.000' },
       { id: 'sp_35', name: 'Bột Vỏ Chuối Sấy Tẩy Tế Bào Chết (Hũ 200g)', sku: 'SP-04-35', standard: 'MỸ PHẨM', stdClass: 'gray', price: '70.000', stock: '40 hũ', status: 'deleted', img: 'banana_back.jpg', notes: 'Ngưng kinh doanh để tập trung nông sản thực phẩm OCOP.', voiceQuote: 'Bột vỏ chuối bảy mươi ngàn...', voicePrice: '70.000' },
@@ -2444,7 +2552,7 @@
       'bacba': {
         name: 'Bác Ba (Nguyễn Văn Ba)',
         meta: 'Mã: HTX-YB-04 · 62 tuổi · Thôn Đồng Cát, Xã Yên Bình',
-        badge: '⭐ OCOP 4 SAO TỈNH',
+        badge: 'OCOP 4 SAO TỈNH',
         avatar: 'bac_ba_avatar.jpg',
         revenue: '18.450.000 đ',
         yield: '1.8 Tấn',
@@ -2479,7 +2587,7 @@
       'tuan': {
         name: 'Anh Tuấn (Hoàng Văn Tuấn)',
         meta: 'Mã: HTX-YB-12 · 39 tuổi · Thôn Suối Rừng, Xã Yên Bình',
-        badge: '⭐ OCOP 4 SAO TỈNH',
+        badge: 'OCOP 4 SAO TỈNH',
         avatar: 'honey_front.jpg',
         revenue: '24.200.000 đ',
         yield: '420 Chai',
@@ -2497,14 +2605,16 @@
       }
     };
 
+    // Label thuần túy KHÔNG CÓ ICON
     const statusMeta = {
-      'pending':  { label: '⏳ Đang chờ duyệt', class: 'pending' },
-      'approved': { label: '✅ Đã duyệt',       class: 'approved' },
-      'rejected': { label: '❌ Không được duyệt', class: 'rejected' },
-      'deleted':  { label: '🗑️ Đã xóa',         class: 'deleted' }
+      'pending':  { label: 'Đang chờ duyệt', class: 'pending' },
+      'approved': { label: 'Đã duyệt',       class: 'approved' },
+      'paused':   { label: 'Tạm dừng',       class: 'paused' },
+      'rejected': { label: 'Không được duyệt', class: 'rejected' },
+      'deleted':  { label: 'Đã xóa',         class: 'deleted' }
     };
 
-    // CHUYỂN NỘI DUNG SANG QUẢN TRỊ XÃ VIÊN TRỰC TIẾP TRÊN DASHBOARD (NO POPUP)
+    // CHUYỂN NỘI DUNG SANG QUẢN TRỊ XÃ VIÊN TRỰC TIẾP TRÊN DASHBOARD
     function switchToMemberAdmin(farmerKey) {
       currentFarmerKey = farmerKey;
       currentStatusFilter = 'all';
@@ -2512,7 +2622,7 @@
 
       const data = farmersDatabase[farmerKey] || farmersDatabase['bacba'];
 
-      document.getElementById('view-overview').style.display = 'none';
+      hideAllMainViews();
       document.getElementById('view-member-admin').style.display = 'block';
 
       // Nạp profile
@@ -2539,12 +2649,7 @@
       // Render Bảng sản phẩm & phân trang
       renderMemberProductsTable();
 
-      // Nạp sản phẩm đầu tiên lên khung kiểm tra
-      if (data.products && data.products.length > 0) {
-        loadProductToInspect(data.products[0].id);
-      }
-
-      document.getElementById('nav-btn-dashboard').classList.remove('active');
+      setActiveNav('nav-btn-members');
       showToast('👤 Quản Trị Chi Tiết: ' + data.name + ' (' + data.products.length + ' sản phẩm)');
     }
 
@@ -2556,13 +2661,13 @@
       return products.filter(p => p.status === currentStatusFilter);
     }
 
-    // RENDER BẢNG SẢN PHẨM (1 DÒNG / SP, PHÂN TRANG 10 SP, MENU FILTER TRÊN CÙNG BẢNG)
+    // RENDER BẢNG SẢN PHẨM (1 DÒNG DUY NHẤT, MENU FILTER TRÊN CÙNG BẢNG, PHÂN TRANG 10 SP)
     function renderMemberProductsTable() {
       const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
       const allProducts = farmer.products || [];
 
       // Đếm số lượng theo trạng thái
-      const counts = { all: allProducts.length, pending: 0, approved: 0, rejected: 0, deleted: 0 };
+      const counts = { all: allProducts.length, pending: 0, approved: 0, paused: 0, rejected: 0, deleted: 0 };
       allProducts.forEach(p => {
         if (counts[p.status] !== undefined) counts[p.status]++;
       });
@@ -2571,12 +2676,13 @@
       document.getElementById('count-all').innerText = counts.all;
       document.getElementById('count-pending').innerText = counts.pending;
       document.getElementById('count-approved').innerText = counts.approved;
+      document.getElementById('count-paused').innerText = counts.paused;
       document.getElementById('count-rejected').innerText = counts.rejected;
       document.getElementById('count-deleted').innerText = counts.deleted;
       document.getElementById('admin-user-total-badge').innerText = counts.all + ' Sản Phẩm';
 
       // Cập nhật nút active trên tab filter & select dropdown
-      ['all', 'pending', 'approved', 'rejected', 'deleted'].forEach(st => {
+      ['all', 'pending', 'approved', 'paused', 'rejected', 'deleted'].forEach(st => {
         const btn = document.getElementById('tab-status-' + st);
         if (btn) {
           if (st === currentStatusFilter) btn.classList.add('active');
@@ -2590,7 +2696,6 @@
       const totalItems = filtered.length;
       const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
 
-      // Đảm bảo currentPage hợp lệ
       if (currentPage > totalPages) currentPage = totalPages;
       if (currentPage < 1) currentPage = 1;
 
@@ -2605,7 +2710,6 @@
       document.getElementById('page-current-num').innerText = currentPage;
       document.getElementById('page-total-pages').innerText = totalPages;
 
-      // Nút Prev/Next
       document.getElementById('btn-prev-page').disabled = (currentPage <= 1);
       document.getElementById('btn-next-page').disabled = (currentPage >= totalPages);
 
@@ -2631,7 +2735,7 @@
         selectJump.appendChild(opt);
       }
 
-      // Render các dòng (1 DÒNG DUY NHẤT CHO MỖI SẢN PHẨM)
+      // Render các dòng (1 DÒNG DUY NHẤT CHO MỖI SẢN PHẨM - CLICK ĐỂ MỞ POPUP)
       const tbody = document.getElementById('member-products-table-body');
       tbody.innerHTML = '';
 
@@ -2650,7 +2754,9 @@
         const rowNumber = startIndex + idx + 1;
         const meta = statusMeta[p.status] || statusMeta['pending'];
         const tr = document.createElement('tr');
-        tr.id = 'row-' + p.id;
+        tr.className = 'clickable-row';
+        tr.onclick = () => openProductModal(p.id);
+        tr.title = 'Bấm vào để mở popup thẩm định & phê duyệt';
         tr.innerHTML = `
           <td style="font-weight: 800; color: var(--slate-400); font-size: 13px;">
             #${String(rowNumber).padStart(2, '0')}
@@ -2680,23 +2786,14 @@
             <span style="font-weight: 700; color: var(--slate-700);">${p.stock}</span>
           </td>
           <td>
-            <!-- Menu select trực tiếp đổi trạng thái cho sản phẩm -->
-            <select class="row-status-select ${meta.class}" onchange="changeProductStatus('${p.id}', this.value)">
-              <option value="pending" ${p.status === 'pending' ? 'selected' : ''}>⏳ Đang chờ duyệt</option>
-              <option value="approved" ${p.status === 'approved' ? 'selected' : ''}>✅ Đã duyệt</option>
-              <option value="rejected" ${p.status === 'rejected' ? 'selected' : ''}>❌ Không được duyệt</option>
-              <option value="deleted" ${p.status === 'deleted' ? 'selected' : ''}>🗑️ Đã xóa</option>
-            </select>
+            <span class="status-badge-clean ${meta.class}">
+              ${meta.label}
+            </span>
           </td>
           <td style="text-align: right;">
-            <div style="display: inline-flex; align-items: center; gap: 6px;">
-              <button class="btn-table-action-edit" onclick="loadProductToInspect('${p.id}')" title="Kiểm tra ảnh & sửa chữ trực tiếp">
-                ✏️ Sửa / Duyệt
-              </button>
-              <button class="btn-table-action-del" onclick="quickDeleteProduct('${p.id}')" title="Đưa vào danh mục Đã xóa">
-                🗑️
-              </button>
-            </div>
+            <button class="btn-table-action-view" onclick="event.stopPropagation(); openProductModal('${p.id}')">
+              Xem & Duyệt
+            </button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -2712,96 +2809,106 @@
     // LỌC SẢN PHẨM BẰNG MENU FILTER
     function filterMemberProducts(status) {
       currentStatusFilter = status;
-      currentPage = 1; // Reset về trang 1 khi lọc
+      currentPage = 1;
       renderMemberProductsTable();
       const statusNames = {
         'all': 'Tất cả sản phẩm',
         'pending': 'Đang chờ duyệt',
         'approved': 'Đã duyệt',
+        'paused': 'Tạm dừng',
         'rejected': 'Không được duyệt',
         'deleted': 'Đã xóa'
       };
       showToast('Đang lọc: ' + (statusNames[status] || status));
     }
 
-    // ĐỔI TRẠNG THÁI TRỰC TIẾP TỪ MENU SELECT TRÊN DÒNG
-    function changeProductStatus(productId, newStatus) {
-      const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
-      const prod = farmer.products.find(p => p.id === productId);
+    // =========================================================================
+    // POPUP MODAL THẨM ĐỊNH & PHÊ DUYỆT (CHÍNH XÁC THEO ẢNH USER GỬI)
+    // =========================================================================
+    function openProductModal(productId) {
+      // Tìm sản phẩm trong farmer hiện tại hoặc toàn bộ database
+      let prod = null;
+      let foundFarmer = null;
+
+      for (const [key, f] of Object.entries(farmersDatabase)) {
+        const p = f.products.find(x => x.id === productId);
+        if (p) {
+          prod = p;
+          foundFarmer = f;
+          break;
+        }
+      }
+
+      if (!prod) return;
+
+      activeInspectingProductId = productId;
+
+      document.getElementById('modal-title-heading').innerText = 'Kiểm Tra & Phê Duyệt Nông Sản Lên Sàn (Lô Đang Chọn)';
+      document.getElementById('modal-img-main').src = prod.img;
+      document.getElementById('modal-img-sub1').src = prod.img;
+      document.getElementById('modal-img-sub2').src = prod.img;
+
+      document.getElementById('modal-voice-quote').innerText = '"' + prod.voiceQuote + '"';
+      document.getElementById('modal-voice-price').innerText = prod.voicePrice;
+
+      document.getElementById('modal-edit-prod-name').value = prod.name;
+      document.getElementById('modal-edit-prod-price').value = prod.price;
+      document.getElementById('modal-edit-prod-notes').value = prod.notes;
+
+      // Cập nhật badge trong modal
+      const meta = statusMeta[prod.status] || statusMeta['pending'];
+      const badge = document.getElementById('modal-status-badge');
+      badge.className = 'status-badge-clean ' + meta.class;
+      badge.innerText = meta.label;
+
+      document.getElementById('product-inspect-modal').classList.add('active');
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-inspect-modal').classList.remove('active');
+    }
+
+    function closeProductModalOnBackdrop(e) {
+      if (e.target.id === 'product-inspect-modal') {
+        closeProductModal();
+      }
+    }
+
+    // THAY ĐỔI TRẠNG THÁI SẢN PHẨM TỪ POPUP
+    function setModalProductStatus(newStatus) {
+      if (!activeInspectingProductId) return;
+
+      let prod = null;
+      for (const [key, f] of Object.entries(farmersDatabase)) {
+        const p = f.products.find(x => x.id === activeInspectingProductId);
+        if (p) {
+          prod = p;
+          break;
+        }
+      }
 
       if (prod) {
         prod.status = newStatus;
+        prod.name = document.getElementById('modal-edit-prod-name').value;
+        prod.price = document.getElementById('modal-edit-prod-price').value;
+        prod.notes = document.getElementById('modal-edit-prod-notes').value;
+
+        // Cập nhật lại badge modal
+        const meta = statusMeta[newStatus];
+        const badge = document.getElementById('modal-status-badge');
+        badge.className = 'status-badge-clean ' + meta.class;
+        badge.innerText = meta.label;
+
+        // Re-render bảng
         renderMemberProductsTable();
 
-        const meta = statusMeta[newStatus];
-        showToast('✓ Đã cập nhật "' + prod.name.substring(0, 24) + '..." sang ' + meta.label);
+        showToast('✓ Đã cập nhật sản phẩm sang trạng thái: ' + meta.label);
 
-        if (currentInspectingProdId === productId) {
-          updateInspectBadge(newStatus);
-        }
+        // Đóng popup sau 600ms
+        setTimeout(() => {
+          closeProductModal();
+        }, 600);
       }
-    }
-
-    // XÓA NHANH SẢN PHẨM VÀO TRẠNG THÁI ĐÃ XÓA
-    function quickDeleteProduct(productId) {
-      changeProductStatus(productId, 'deleted');
-    }
-
-    // NẠP SẢN PHẨM LÊN THẺ KIỂM TRA ĐỐI SOÁT & SỬA CHỮ [✕]
-    let currentInspectingProdId = null;
-
-    function loadProductToInspect(productId) {
-      const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
-      const prod = farmer.products.find(p => p.id === productId);
-      if (!prod) return;
-
-      currentInspectingProdId = productId;
-
-      document.getElementById('edit-img-main').src = prod.img;
-      document.getElementById('edit-img-sub1').src = prod.img;
-      document.getElementById('edit-img-sub2').src = prod.img;
-
-      document.getElementById('edit-voice-quote').innerText = '"' + prod.voiceQuote + '"';
-      document.getElementById('edit-voice-price').innerText = prod.voicePrice;
-
-      document.getElementById('admin-edit-prod-name').value = prod.name;
-      document.getElementById('admin-edit-prod-price').value = prod.price;
-      document.getElementById('admin-edit-prod-notes').value = prod.notes;
-
-      updateInspectBadge(prod.status);
-
-      document.getElementById('box-inspect-editor').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      showToast('📋 Đã nạp sản phẩm "' + prod.name.substring(0, 24) + '..." lên khung thẩm định!');
-    }
-
-    function updateInspectBadge(status) {
-      const badge = document.getElementById('admin-post-status');
-      if (status === 'approved') {
-        badge.innerText = '✅ ĐÃ DUYỆT & ĐANG BÁN';
-        badge.className = 'pill-category-badge mint';
-      } else if (status === 'rejected') {
-        badge.innerText = '❌ KHÔNG ĐƯỢC DUYỆT (TRẢ VỀ)';
-        badge.className = 'pill-category-badge red';
-      } else if (status === 'deleted') {
-        badge.innerText = '🗑️ ĐÃ XÓA VÀO LƯU TRỮ';
-        badge.className = 'pill-category-badge gray';
-      } else {
-        badge.innerText = '⏳ CẦN DUYỆT 1 BÀI ĐĂNG';
-        badge.className = 'pill-category-badge amber';
-      }
-    }
-
-    // QUAY LẠI MÀN HÌNH TỔNG QUAN
-    function showOverviewView() {
-      document.getElementById('view-member-admin').style.display = 'none';
-      document.getElementById('view-overview').style.display = 'block';
-      document.getElementById('nav-btn-dashboard').classList.add('active');
-
-      // Reset right column
-      document.getElementById('right-ring-avatar').src = 'bac_ba_avatar.jpg';
-      document.getElementById('right-ring-badge').innerText = '94%';
-      document.getElementById('right-stat-greeting').innerText = 'Xin chào, Bác Ba 🔥';
-      document.getElementById('right-stat-subtext').innerText = 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!';
     }
 
     // XÓA CHỮ TRỰC TIẾP TRONG Ô NHẬP LIỆU (NÚT ✕ ĐỎ)
@@ -2814,35 +2921,46 @@
       }
     }
 
-    // DUYỆT SẢN PHẨM CỦA HỘ
-    function approvePost() {
-      const name = document.getElementById('admin-edit-prod-name').value;
-      const price = document.getElementById('admin-edit-prod-price').value;
-
-      if (!name || !price) {
-        showToast('⚠️ Vui lòng không để trống tên sản phẩm hoặc giá bán!');
-        return;
-      }
-
-      if (currentInspectingProdId) {
-        const farmer = farmersDatabase[currentFarmerKey];
-        const prod = farmer.products.find(p => p.id === currentInspectingProdId);
-        if (prod) {
-          prod.name = name;
-          prod.price = price;
-          prod.notes = document.getElementById('admin-edit-prod-notes').value;
-          changeProductStatus(currentInspectingProdId, 'approved');
-        }
-      }
-
-      showToast('🎉 PHÊ DUYỆT THÀNH CÔNG! ' + name + ' (' + price + ' đ) đã được xuất bản lên sàn.');
+    // =========================================================================
+    // ĐIỀU HƯỚNG CÁC MÀN HÌNH (DASHBOARD, THÀNH VIÊN, ORDER HUB B2B, AI STUDIO)
+    // =========================================================================
+    function hideAllMainViews() {
+      document.getElementById('view-overview').style.display = 'none';
+      document.getElementById('view-member-admin').style.display = 'none';
+      document.getElementById('view-b2b-orders').style.display = 'none';
+      document.getElementById('view-ai-content').style.display = 'none';
     }
 
-    function rejectPost() {
-      if (currentInspectingProdId) {
-        changeProductStatus(currentInspectingProdId, 'rejected');
-      }
-      showToast('❌ Đã chuyển sang trạng thái: Không được duyệt (yêu cầu hộ dân kiểm tra lại).');
+    function setActiveNav(navId) {
+      document.querySelectorAll('.sidebar-menu-btn').forEach(btn => btn.classList.remove('active'));
+      const target = document.getElementById(navId);
+      if (target) target.classList.add('active');
+    }
+
+    function showOverviewView() {
+      hideAllMainViews();
+      document.getElementById('view-overview').style.display = 'block';
+      setActiveNav('nav-btn-dashboard');
+
+      // Reset right column
+      document.getElementById('right-ring-avatar').src = 'bac_ba_avatar.jpg';
+      document.getElementById('right-ring-badge').innerText = '94%';
+      document.getElementById('right-stat-greeting').innerText = 'Xin chào, Bác Ba 🔥';
+      document.getElementById('right-stat-subtext').innerText = 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!';
+    }
+
+    function showB2BOrdersView() {
+      hideAllMainViews();
+      document.getElementById('view-b2b-orders').style.display = 'block';
+      setActiveNav('nav-btn-b2b');
+      showToast('📦 Đang xem Phân hệ Order Hub B2B (Đơn hàng siêu thị & đại lý)');
+    }
+
+    function showAIContentView() {
+      hideAllMainViews();
+      document.getElementById('view-ai-content').style.display = 'block';
+      setActiveNav('nav-btn-ai');
+      showToast('✨ Đang xem AI Studio (Kịch bản Livestream TikTok & Marketing)');
     }
 
     function saveMemberSettings() {

@@ -38,6 +38,10 @@ GreenOS/
 ├── design-system/          # Các tài liệu thành phần design system chi tiết
 ├── README.md               # Giới thiệu & hướng dẫn dự án
 ├── CHAT_HISTORY.md         # Toàn bộ lịch sử thảo luận, yêu cầu và tiến trình phát triển
+├── chat_history.html       # Web App xem lại toàn bộ 65+ tin nhắn chat & code syntax
+├── chat_session_742f8079.zip # Bản sao lưu đầy đủ session Antigravity (logs, artifacts, transcripts)
+├── restore.sh              # Script 1-click khôi phục session trên macOS / Linux
+├── restore.bat             # Script 1-click khôi phục session trên Windows
 ├── bac_ba_avatar.jpg       # Chân dung thực tế Bác Ba (Hộ nông dân)
 ├── tet_banner.jpg          # Banner panoramic Hội Chợ Tết 2024
 ├── ocop_banner.jpg         # Banner panoramic Hội Chợ OCOP
@@ -47,6 +51,25 @@ GreenOS/
 ├── honey_front.jpg         # Ảnh Hũ mật ong hoa rừng tự nhiên OCOP 4 sao
 └── tea_front.jpg           # Ảnh Túi Trà Bát Tiên Thái Nguyên OCOP 4 sao
 ```
+
+---
+
+## 💬 Xem Lại Lịch Sử Đoạn Chat & Khôi Phục Session Antigravity
+
+Repository này lưu trữ đầy đủ 100% cuộc trao đổi và tiến trình xây dựng GreenOS:
+
+### 1. Xem trực tiếp trên trình duyệt (Không cần cài đặt)
+Mở file **`chat_history.html`** bằng trình duyệt bất kỳ (Chrome, Safari, Edge) để đọc lại toàn bộ 65+ lượt trao đổi, prompt engineering và code changes.
+
+### 2. Khôi phục phiên làm việc vào Antigravity (1-Click Restore)
+Để mở tiếp phiên làm việc này trên máy tính khác trong ứng dụng Antigravity:
+- **macOS / Linux:**
+  ```bash
+  ./restore.sh
+  ```
+- **Windows:**
+  Chạy file `restore.bat`.
+- Khởi động lại Antigravity, phiên chat `742f8079` sẽ hiển thị đầy đủ trong lịch sử.
 
 ---
 

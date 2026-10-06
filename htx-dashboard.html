@@ -10,15 +10,16 @@
   <link rel="stylesheet" href="tokens.css">
   <style>
     /* =========================================================================
-       1. COURSUE DESIGN SYSTEM VIBE (1:1 FIDELITY WITH DRIBBLE REFERENCE)
-       - Floating rounded window (radius: 36px) on soft grey canvas
+       1. COURSUE DESIGN SYSTEM VIBE (1:1 FIDELITY WITH DRIBBBLE REFERENCE)
+       - Floating rounded window (radius: 36px) on soft grey canvas (#EBF0F5)
        - Clean 3-column layout without harsh vertical border lines
        - Rich Emerald Forest Hero Gradient with sparkle accents & dark capsule CTA
        - 3 Pastel Mini Stat Cards with icon squares
        - Photographic product cards with category pills and floating action icons
        - Right Statistic Column: Circular progress ring with avatar, greeting 🔥,
          sleek pill bar chart with dashed Y-axis, and "Your mentor" directory
-       - In-Page Member Management: Maintains 100% of this design language!
+       - In-Page Member Management: Bảng liệt kê sản phẩm với Thanh menu select
+         trạng thái (Đang chờ duyệt, Đã duyệt, Không được duyệt, Đã xóa)
        ========================================================================= */
     :root {
       --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
@@ -88,7 +89,7 @@
       font-family: var(--font-body);
       background-color: #EBF0F5;
       color: var(--slate-900);
-      font-size: 15.5px; /* Chữ to rõ, dễ đọc cho người lớn tuổi */
+      font-size: 15.5px;
       line-height: 1.5;
     }
 
@@ -118,7 +119,7 @@
     }
 
     /* =========================================================================
-       2. CỘT 1: SIDEBAR TRÁI (Chuẩn Coursue: Không có đường viền cứng, thanh thoát)
+       2. CỘT 1: SIDEBAR TRÁI (Chuẩn Coursue: Liền mạch, không đường kẻ thô)
        ========================================================================= */
     .app-sidebar {
       display: flex;
@@ -233,7 +234,7 @@
       stroke: var(--brand-600);
     }
 
-    /* Danh sách Friends (Xã viên) ở sidebar */
+    /* Section Xã Viên */
     .sidebar-farmers-group {
       display: flex;
       flex-direction: column;
@@ -446,7 +447,6 @@
       flex-shrink: 0;
     }
 
-    /* Subtle Sparkle Motif */
     .banner-sparkle {
       position: absolute;
       color: rgba(255, 255, 255, 0.25);
@@ -709,6 +709,8 @@
     .pill-category-badge.cyan  { background: #EFF6FF; color: #2563EB; }
     .pill-category-badge.mint  { background: #ECFDF5; color: #059669; }
     .pill-category-badge.amber { background: #FFFBEB; color: #D97706; }
+    .pill-category-badge.red   { background: #FEF2F2; color: #DC2626; }
+    .pill-category-badge.gray  { background: #F1F5F9; color: #64748B; }
 
     .coursue-card-title {
       font-size: 15.5px;
@@ -764,7 +766,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       SECTION: "YOUR LESSON" -> NHẬT KÝ & ĐƠN HÀNG GẦN ĐÂY
+       SECTION: "YOUR LESSON" -> BẢNG ĐƠN HÀNG GẦN ĐÂY
        ------------------------------------------------------------------------- */
     .coursue-table-card {
       background: #FFFFFF;
@@ -848,8 +850,6 @@
 
     /* =========================================================================
        4. IN-PAGE MEMBER MANAGEMENT SUITE (BÁC BA / CÔ LAN / ANH TUẤN)
-       - Giữ 100% style Coursue: Banner bo cong Emerald, 3 Mini Cards,
-         Lưới bài đăng có nút [✕] xóa chữ trực tiếp, Thống kê & Cài đặt!
        ========================================================================= */
     #view-member-admin {
       display: none;
@@ -902,7 +902,7 @@
       font-weight: 800;
     }
 
-    /* Member Hero Banner (Style chuẩn Coursue Hero Banner!) */
+    /* Member Hero Banner (Style chuẩn Coursue) */
     .member-coursue-hero {
       background: linear-gradient(135deg, #064E3B 0%, #059669 100%);
       border-radius: 26px;
@@ -1008,7 +1008,9 @@
       background: #1E293B;
     }
 
-    /* Quản Trị & Duyệt Bài Đăng (Style Card Coursue Sang Trọng + Nút Xóa Chữ) */
+    /* -------------------------------------------------------------------------
+       THANH MENU SELECT CÁC TRẠNG THÁI & BẢNG LIỆT KÊ SẢN PHẨM CỦA USER
+       ------------------------------------------------------------------------- */
     .member-card-container {
       background: #FFFFFF;
       border: 1px solid var(--slate-200);
@@ -1023,6 +1025,8 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .member-card-title-row h3 {
@@ -1032,6 +1036,182 @@
       color: var(--slate-900);
     }
 
+    /* Thanh Menu Select Trạng Thái (Status Bar) */
+    .product-status-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 14px;
+      background: var(--slate-50);
+      padding: 10px 14px;
+      border-radius: var(--radius-sub);
+      border: 1px solid var(--slate-200);
+    }
+
+    .status-tabs-pill-group {
+      display: inline-flex;
+      align-items: center;
+      background: var(--slate-100);
+      padding: 4px;
+      border-radius: var(--radius-pill);
+      gap: 3px;
+      border: 1px solid var(--slate-200);
+    }
+
+    .status-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 15px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      color: var(--slate-600);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .status-tab-btn:hover {
+      color: var(--slate-900);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .status-tab-btn.active {
+      background: #FFFFFF;
+      color: var(--slate-900);
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    .status-count-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: var(--radius-pill);
+      background: var(--slate-200);
+      color: var(--slate-700);
+    }
+
+    .status-count-tag.amber { background: #FEF3C7; color: #B45309; }
+    .status-count-tag.green { background: #DCFCE7; color: #15803D; }
+    .status-count-tag.red   { background: #FEE2E2; color: #B91C1C; }
+    .status-count-tag.gray  { background: #E2E8F0; color: #475569; }
+
+    /* Dropdown select lọc trạng thái nhanh */
+    .status-select-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-select-control {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--slate-200);
+      background: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--slate-800);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .status-select-control:focus {
+      border-color: var(--brand-600);
+      box-shadow: 0 0 0 3px var(--brand-100);
+    }
+
+    /* Menu select trạng thái trực tiếp trong từng dòng sản phẩm */
+    .row-status-select {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 800;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.15s;
+    }
+
+    .row-status-select.pending {
+      background: #FFFBEB;
+      color: #B45309;
+      border-color: #FDE68A;
+    }
+
+    .row-status-select.approved {
+      background: #ECFDF5;
+      color: #065F46;
+      border-color: #A7F3D0;
+    }
+
+    .row-status-select.rejected {
+      background: #FEF2F2;
+      color: #B91C1C;
+      border-color: #FECACA;
+    }
+
+    .row-status-select.deleted {
+      background: #F1F5F9;
+      color: #64748B;
+      border-color: #CBD5E1;
+    }
+
+    .table-prod-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--slate-200);
+      flex-shrink: 0;
+    }
+
+    .btn-table-action-edit {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      color: var(--slate-700);
+      font-size: 12.5px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-table-action-edit:hover {
+      background: var(--brand-50);
+      border-color: var(--brand-500);
+      color: var(--brand-900);
+    }
+
+    .btn-table-action-del {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      color: #DC2626;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-table-action-del:hover {
+      background: #FEE2E2;
+      border-color: #FCA5A5;
+    }
+
+    /* Các ô nhập liệu có nút xóa chữ [✕] */
     .input-clear-wrapper {
       position: relative;
       display: flex;
@@ -1182,7 +1362,6 @@
       position: absolute;
       top: 0px;
       right: 0px;
-      background: #5844ED; /* Purple accent từ Coursue hoặc Emerald */
       background: linear-gradient(135deg, #059669 0%, #10B981 100%);
       color: white;
       font-size: 11.5px;
@@ -1215,13 +1394,6 @@
       border-radius: 16px;
       padding: 16px 14px;
       margin-bottom: 18px;
-    }
-
-    .chart-y-axis-row {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      position: relative;
     }
 
     .chart-bars-wrap {
@@ -1394,7 +1566,7 @@
     <div class="app-dashboard-window">
 
       <!-- =====================================================================
-           CỘT 1: SIDEBAR TRÁI (Chuẩn Vibe Coursue Mẫu 1: Thoáng đãng, không chia ô thô)
+           CỘT 1: SIDEBAR TRÁI
            ===================================================================== -->
       <aside class="app-sidebar">
         <div>
@@ -1678,8 +1850,10 @@
 
         <!-- -------------------------------------------------------------------
              VIEW B: TRANG QUẢN TRỊ CHI TIẾT TỪNG XÃ VIÊN (IN-PAGE MANAGEMENT SUITE)
-             - Giữ 100% style Coursue: Banner bo cong Emerald, 3 Mini Cards,
-               Kiểm tra bài đăng + Xóa chữ [✕] nhanh, Cài đặt & Doanh thu!
+             - Có Bảng liệt kê toàn bộ sản phẩm của user
+             - Có Thanh menu select trạng thái: Đang chờ duyệt, Đã duyệt, Đã xóa, Không được duyệt
+             - Có Thẻ kiểm tra & xóa/sửa chữ [✕] trực tiếp
+             - Có Cài đặt tài khoản & STK ngân hàng
              ------------------------------------------------------------------- -->
         <div id="view-member-admin">
           <!-- Navigation Bar Quay Lại -->
@@ -1752,11 +1926,79 @@
             </div>
           </section>
 
-          <!-- Bảng Quản Trị & Duyệt Sản Phẩm Của User (CÓ NÚT XÓA/SỬA CHỮ TRỰC TIẾP) -->
+          <!-- =================================================================
+               MỤC YÊU CẦU: BẢNG LIỆT KÊ CÁC SẢN PHẨM CỦA USER & THANH MENU SELECT TRẠNG THÁI
+               ================================================================= -->
           <div class="member-card-container">
             <div class="member-card-title-row">
               <div>
-                <h3>Kiểm Tra & Phê Duyệt Nông Sản Lên Sàn</h3>
+                <h3>Bảng Danh Sách Nông Sản & Bài Đăng Của Hộ Dân</h3>
+                <p style="font-size: 13.5px; color: var(--slate-500); margin-top: 2px;">
+                  Bấm thanh menu hoặc dropdown để lọc theo từng trạng thái. Có thể đổi trạng thái trực tiếp trong từng dòng!
+                </p>
+              </div>
+              <span class="pill-category-badge mint" id="admin-user-total-badge">5 Sản Phẩm</span>
+            </div>
+
+            <!-- THANH MENU SELECT CÁC TRẠNG THÁI (STATUS TABS & DROPDOWN) -->
+            <div class="product-status-nav-bar">
+              <!-- Tabs menu dạng viên thuốc (Pill tabs) -->
+              <div class="status-tabs-pill-group">
+                <button class="status-tab-btn active" id="tab-status-all" onclick="filterMemberProducts('all')">
+                  Tất cả <span class="status-count-tag" id="count-all">5</span>
+                </button>
+                <button class="status-tab-btn" id="tab-status-pending" onclick="filterMemberProducts('pending')">
+                  ⏳ Đang chờ duyệt <span class="status-count-tag amber" id="count-pending">1</span>
+                </button>
+                <button class="status-tab-btn" id="tab-status-approved" onclick="filterMemberProducts('approved')">
+                  ✅ Đã duyệt <span class="status-count-tag green" id="count-approved">2</span>
+                </button>
+                <button class="status-tab-btn" id="tab-status-rejected" onclick="filterMemberProducts('rejected')">
+                  ❌ Không được duyệt <span class="status-count-tag red" id="count-rejected">1</span>
+                </button>
+                <button class="status-tab-btn" id="tab-status-deleted" onclick="filterMemberProducts('deleted')">
+                  🗑️ Đã xóa <span class="status-count-tag gray" id="count-deleted">1</span>
+                </button>
+              </div>
+
+              <!-- Thanh menu select dropdown tương ứng -->
+              <div class="status-select-wrap">
+                <label style="font-size: 13.5px; font-weight: 700; color: var(--slate-600);">Menu lọc nhanh:</label>
+                <select id="select-status-filter" class="status-select-control" onchange="filterMemberProducts(this.value)">
+                  <option value="all">-- Xem tất cả trạng thái --</option>
+                  <option value="pending">⏳ Đang chờ duyệt</option>
+                  <option value="approved">✅ Đã duyệt</option>
+                  <option value="rejected">❌ Không được duyệt</option>
+                  <option value="deleted">🗑️ Đã xóa</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- BẢNG LIỆT KÊ SẢN PHẨM -->
+            <div style="overflow-x: auto;">
+              <table class="coursue-clean-table">
+                <thead>
+                  <tr>
+                    <th>SẢN PHẨM & MÃ LÔ</th>
+                    <th>TIÊU CHUẨN</th>
+                    <th>GIÁ NIÊM YẾT</th>
+                    <th>SẢN LƯỢNG / TỒN</th>
+                    <th>MENU TRẠNG THÁI</th>
+                    <th>THAO TÁC</th>
+                  </tr>
+                </thead>
+                <tbody id="member-products-table-body">
+                  <!-- Được nạp tự động qua JavaScript theo từng xã viên -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Bảng Quản Trị & Duyệt Sản Phẩm Của User (CÓ NÚT XÓA/SỬA CHỮ TRỰC TIẾP) -->
+          <div class="member-card-container" id="box-inspect-editor">
+            <div class="member-card-title-row">
+              <div>
+                <h3>Kiểm Tra & Phê Duyệt Nông Sản Lên Sàn (Chi Tiết Lô Đang Chọn)</h3>
                 <p style="font-size: 13.5px; color: var(--slate-500); margin-top: 2px;">
                   Bấm nút ✕ màu đỏ bên phải mỗi ô để xóa nhanh toàn bộ chữ trước khi sửa
                 </p>
@@ -1770,21 +2012,21 @@
                 1. Ảnh Chụp Thực Tế Hộ Dân Tải Lên:
               </label>
               <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px;">
-                <img src="banana_front.jpg" alt="Mặt trước bao bì" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
-                <img src="banana_plate.jpg" alt="Đĩa chuối sấy thật" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
-                <img src="banana_back.jpg" alt="Bảng dinh dưỡng" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
+                <img id="edit-img-main" src="banana_front.jpg" alt="Mặt trước bao bì" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
+                <img id="edit-img-sub1" src="banana_plate.jpg" alt="Đĩa chuối sấy thật" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
+                <img id="edit-img-sub2" src="banana_back.jpg" alt="Bảng dinh dưỡng" style="width: 100%; height: 160px; object-fit: cover; border-radius: 16px; border: 1px solid var(--slate-200);">
               </div>
             </div>
 
             <!-- Đối soát ghi âm giọng nói -->
             <div class="audio-voice-wave-bar">
-              <button class="audio-play-round" onclick="showToast('🔊 Đang phát giọng nói Bác Ba: Chuối sấy giòn bán năm mươi lăm nghìn một gói...')">▶</button>
+              <button class="audio-play-round" onclick="showToast('🔊 Đang phát giọng nói đối soát giá của hộ dân...')">▶</button>
               <div>
                 <div style="font-size: 14.5px; color: var(--slate-900);">
-                  <strong>Giọng nói gốc hộ dân:</strong> <em>"Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen..."</em>
+                  <strong>Giọng nói gốc hộ dân:</strong> <em id="edit-voice-quote">"Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen..."</em>
                 </div>
                 <div style="font-size: 12.5px; color: var(--blue-700); font-weight: 700; margin-top: 2px;">
-                  ✓ AI bóc tách thông số: Giá 55.000 VNĐ · Túi 250g · Lô sấy ngày 06/10
+                  ✓ AI bóc tách thông số: Giá <span id="edit-voice-price">55.000</span> VNĐ · Lô thu hoạch ngày 06/10
                 </div>
               </div>
             </div>
@@ -1795,7 +2037,7 @@
               <div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
                   <label style="font-weight: 800; font-size: 15px; color: var(--slate-800);">Tên Nông Sản Niêm Yết Sàn:</label>
-                  <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('admin-edit-prod-name')">Bấm ✕ để xóa chữ</span>
+                  <span style="font-size: 12.5px; color: #EF4444; font-weight: 700; cursor: pointer;" onclick="clearAdminInput('admin-edit-prod-name')">Bấm ✕ để xóa nhanh chữ</span>
                 </div>
                 <div class="input-clear-wrapper">
                   <input type="text" id="admin-edit-prod-name" class="form-input-stylish" value="Chuối Sấy Giòn Yên Bình — Chuẩn OCOP 4 Sao (Túi Màng Nhôm 250g)">
@@ -1819,9 +2061,9 @@
                 <div>
                   <label style="font-weight: 800; font-size: 15px; color: var(--slate-800); display: block; margin-bottom: 6px;">Chiết Khấu HTX Gom Hàng:</label>
                   <select class="form-input-stylish" style="padding-right: 16px;">
-                    <option value="10">10% (5.500 đ / túi) — Chuẩn Xã Viên</option>
-                    <option value="8">8% (4.400 đ / túi) — Ưu Đãi Người Cao Tuổi</option>
-                    <option value="15">15% — Kênh Bán Lẻ Shopee Mall & Siêu Thị</option>
+                    <option value="10">10% (Chuẩn Xã Viên)</option>
+                    <option value="8">8% (Ưu Đãi Người Cao Tuổi)</option>
+                    <option value="15">15% (Kênh Siêu Thị WinMart & Shopee Mall)</option>
                   </select>
                 </div>
               </div>
@@ -1841,7 +2083,7 @@
               <!-- Nút Thao Tác Duyệt Trực Tiếp -->
               <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px;">
                 <button class="btn-coursue-back" style="color: #DC2626;" onclick="rejectPost()">
-                  ✕ Từ Chối & Yêu Cầu Chụp Lại
+                  ✕ Không Được Duyệt (Trả Về)
                 </button>
                 <button class="banner-cta-button" style="background: var(--brand-600); font-size: 15px;" onclick="approvePost()">
                   <span>✓ Phê Duyệt Nông Sản Lên Sàn</span>
@@ -2010,7 +2252,10 @@
 
   <!-- JAVASCRIPT LOGIC QUẢN TRỊ TRỰC TIẾP (NO POPUP) -->
   <script>
-    // Dữ liệu quản trị chi tiết của các xã viên
+    // Dữ liệu quản trị chi tiết của các xã viên & Danh sách sản phẩm đầy đủ trạng thái
+    let currentFarmerKey = 'bacba';
+    let currentStatusFilter = 'all';
+
     const farmersDatabase = {
       'bacba': {
         name: 'Bác Ba (Nguyễn Văn Ba)',
@@ -2020,14 +2265,93 @@
         revenue: '18.450.000 đ',
         yield: '1.8 Tấn',
         orders: '48 Đơn',
-        prodName: 'Chuối Sấy Giòn Yên Bình — Chuẩn OCOP 4 Sao (Túi Màng Nhôm 250g)',
-        prodPrice: '55.000',
-        prodNotes: 'Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%. Cấp quyền dán tem QR Trace.',
         phone: '0912.456.789',
         bank: 'Agribank Chi Nhánh Yên Bình - 8800.205.123456',
         address: 'Cụm 2, Thôn Đồng Cát, Xã Yên Bình',
         progress: '94%',
-        subtext: 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!'
+        subtext: 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!',
+        products: [
+          {
+            id: 'bb_prod_1',
+            name: 'Chuối Sấy Giòn Yên Bình — Túi Màng Nhôm 250g',
+            sku: 'SP-04-CSG',
+            standard: 'OCOP 4 SAO',
+            standardClass: 'amber',
+            price: '55.000',
+            stock: '1.200 túi',
+            status: 'pending', // Đang chờ duyệt
+            img: 'banana_front.jpg',
+            subImg1: 'banana_plate.jpg',
+            subImg2: 'banana_back.jpg',
+            notes: 'Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%. Cấp quyền dán tem QR Trace.',
+            voiceQuote: 'Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen...',
+            voicePrice: '55.000'
+          },
+          {
+            id: 'bb_prod_2',
+            name: 'Chuối Ngự Tiêu Hồng Chín Cây — Buồng 15-18kg',
+            sku: 'SP-04-CNU',
+            standard: 'VIETGAP',
+            standardClass: 'mint',
+            price: '240.000',
+            stock: '45 buồng',
+            status: 'approved', // Đã duyệt
+            img: 'banana_plate.jpg',
+            subImg1: 'banana_front.jpg',
+            subImg2: 'banana_back.jpg',
+            notes: 'Thu hoạch đạt độ ngọt Brix > 21%. Chuối già quả đẫy đà, cuống tươi xanh.',
+            voiceQuote: 'Chuối buồng đẫy quả, mỗi buồng từ mười lăm đến mười tám ký, giá hai trăm bốn mươi ngàn...',
+            voicePrice: '240.000'
+          },
+          {
+            id: 'bb_prod_3',
+            name: 'Chuối Dẻo Sấy Lạnh Đóng Hộp 500g Khóa Khí',
+            sku: 'SP-04-CDL',
+            standard: 'OCOP 3 SAO',
+            standardClass: 'amber',
+            price: '95.000',
+            stock: '300 hộp',
+            status: 'approved', // Đã duyệt
+            img: 'banana_back.jpg',
+            subImg1: 'banana_front.jpg',
+            subImg2: 'banana_plate.jpg',
+            notes: 'Sấy lạnh công nghệ chân không giữ nguyên mật ngọt tự nhiên và màu vàng ươm.',
+            voiceQuote: 'Chuối dẻo đóng hộp nửa ký, ăn dẻo dẻo ngọt thơm bán chín mươi lăm ngàn...',
+            voicePrice: '95.000'
+          },
+          {
+            id: 'bb_prod_4',
+            name: 'Kẹo Chuối Phồng Đậu Phộng Gừng Vụn',
+            sku: 'SP-04-KCP',
+            standard: 'LÀNG NGHỀ',
+            standardClass: 'gray',
+            price: '45.000',
+            stock: '150 gói',
+            status: 'rejected', // Không được duyệt
+            img: 'banana_front.jpg',
+            subImg1: 'banana_plate.jpg',
+            subImg2: 'banana_back.jpg',
+            notes: 'Bao bì thủ công chưa in mã QR Trace và chưa dán nhãn hạn sử dụng rõ ràng. Trả về yêu cầu in lại bao bì.',
+            voiceQuote: 'Kẹo chuối phồng gừng đậu phộng bán bốn lăm ngàn một bọc...',
+            voicePrice: '45.000'
+          },
+          {
+            id: 'bb_prod_5',
+            name: 'Bột Chuối Xanh Sấy Lạnh Hòa Tan (Hũ 400g)',
+            sku: 'SP-04-BCX',
+            standard: 'THỬ NGHIỆM',
+            standardClass: 'red',
+            price: '120.000',
+            stock: '50 hũ',
+            status: 'deleted', // Đã xóa
+            img: 'banana_plate.jpg',
+            subImg1: 'banana_front.jpg',
+            subImg2: 'banana_back.jpg',
+            notes: 'Mẻ thử nghiệm đã bán hết đợt 1, tạm xóa để chờ thu hoạch vụ chuối xanh tiếp theo.',
+            voiceQuote: 'Bột chuối xanh này dùng hỗ trợ dạ dày, giá một trăm hai mươi ngàn...',
+            voicePrice: '120.000'
+          }
+        ]
       },
       'lan': {
         name: 'Cô Lan (Trần Thị Lan)',
@@ -2037,14 +2361,77 @@
         revenue: '32.600.000 đ',
         yield: '2.4 Tấn',
         orders: '65 Đơn',
-        prodName: 'Trà Bát Tiên Sao Lửa — Hộp Thiếc Cao Cấp 200g Hút Chân Không',
-        prodPrice: '180.000',
-        prodNotes: 'Đạt tiêu chuẩn an toàn VietGAP VG-2026-YB09. Sao chè theo phương pháp thủ công truyền thống.',
         phone: '0982.112.334',
         bank: 'Agribank Yên Bình - 8800.334.888999',
         address: 'Xóm Đồi Chè 1, Xã Yên Bình',
         progress: '88%',
-        subtext: 'Đạt 88% sản lượng chè búp sao lửa xuất khẩu!'
+        subtext: 'Đạt 88% sản lượng chè búp sao lửa xuất khẩu!',
+        products: [
+          {
+            id: 'cl_prod_1',
+            name: 'Trà Bát Tiên Sao Lửa — Hộp Thiếc Cao Cấp 200g',
+            sku: 'SP-09-TBT',
+            standard: 'VIETGAP TỈNH',
+            standardClass: 'mint',
+            price: '180.000',
+            stock: '500 hộp',
+            status: 'pending', // Đang chờ duyệt
+            img: 'tea_front.jpg',
+            subImg1: 'tea_front.jpg',
+            subImg2: 'tea_front.jpg',
+            notes: 'Đạt tiêu chuẩn an toàn VietGAP VG-2026-YB09. Sao chè theo phương pháp thủ công truyền thống.',
+            voiceQuote: 'Trà Bát Tiên sao củi thơm lừng, hộp hai trăm gam bán một trăm tám mươi nghìn nghen...',
+            voicePrice: '180.000'
+          },
+          {
+            id: 'cl_prod_2',
+            name: 'Trà Búp Đinh Cổ Thụ Yên Bình (Gói 100g Hút Chân Không)',
+            sku: 'SP-09-TBD',
+            standard: 'OCOP 4 SAO',
+            standardClass: 'amber',
+            price: '350.000',
+            stock: '120 gói',
+            status: 'approved', // Đã duyệt
+            img: 'tea_front.jpg',
+            subImg1: 'tea_front.jpg',
+            subImg2: 'tea_front.jpg',
+            notes: 'Thu hái 1 tôm 1 lá lúc sáng sớm, nước trà xanh sánh như mật ong.',
+            voiceQuote: 'Chè búp đinh đặc sản gói một lạng bán ba trăm rưởi...',
+            voicePrice: '350.000'
+          },
+          {
+            id: 'cl_prod_3',
+            name: 'Trà Bát Tiên Túi Lọc Tiện Lợi (30 Túi Lọc/Hộp)',
+            sku: 'SP-09-TTL',
+            standard: 'OCOP 3 SAO',
+            standardClass: 'amber',
+            price: '85.000',
+            stock: '400 túi',
+            status: 'approved', // Đã duyệt
+            img: 'tea_front.jpg',
+            subImg1: 'tea_front.jpg',
+            subImg2: 'tea_front.jpg',
+            notes: 'Trà nghiền vụn loại 1 giữ trọn hương vị cho văn phòng.',
+            voiceQuote: 'Hộp trà túi lọc bán tám mươi lăm nghìn...',
+            voicePrice: '85.000'
+          },
+          {
+            id: 'cl_prod_4',
+            name: 'Bã Trà Làm Phân Hữu Cơ Đóng Bao 25kg',
+            sku: 'SP-09-BTR',
+            standard: 'HỮU CƠ',
+            standardClass: 'gray',
+            price: '45.000',
+            stock: '60 bao',
+            status: 'deleted', // Đã xóa
+            img: 'tea_front.jpg',
+            subImg1: 'tea_front.jpg',
+            subImg2: 'tea_front.jpg',
+            notes: 'Sản phẩm phụ phẩm nông nghiệp, đã lưu trữ xuất cho trại rau sạch.',
+            voiceQuote: 'Bao bã chè ủ men vi sinh bán bốn mươi lăm nghìn...',
+            voicePrice: '45.000'
+          }
+        ]
       },
       'tuan': {
         name: 'Anh Tuấn (Hoàng Văn Tuấn)',
@@ -2054,25 +2441,82 @@
         revenue: '24.200.000 đ',
         yield: '420 Chai',
         orders: '38 Đơn',
-        prodName: 'Mật Ong Hoa Rừng Tự Nhiên — Chai Thủy Tinh 500ml',
-        prodPrice: '220.000',
-        prodNotes: 'Thủy phần < 18.5%, khai thác từ hoa vải và hoa rừng tự nhiên.',
         phone: '0973.998.776',
         bank: 'BIDV Yên Bình - 4501.998.776',
         address: 'Bìa rừng tự nhiên Xã Yên Bình',
         progress: '76%',
-        subtext: 'Đạt 76% kế hoạch quay mật ong hoa rừng vụ hè!'
+        subtext: 'Đạt 76% kế hoạch quay mật ong hoa rừng vụ hè!',
+        products: [
+          {
+            id: 'at_prod_1',
+            name: 'Mật Ong Hoa Rừng Tự Nhiên — Chai Thủy Tinh 500ml',
+            sku: 'SP-12-MOR',
+            standard: 'OCOP 4 SAO',
+            standardClass: 'amber',
+            price: '220.000',
+            stock: '150 chai',
+            status: 'pending', // Đang chờ duyệt
+            img: 'honey_front.jpg',
+            subImg1: 'honey_front.jpg',
+            subImg2: 'honey_front.jpg',
+            notes: 'Thủy phần < 18.5%, khai thác từ hoa vải và hoa rừng tự nhiên không pha đường.',
+            voiceQuote: 'Mật ong rừng chai nửa lít tự nhiên bán hai trăm hai chục ngàn một chai...',
+            voicePrice: '220.000'
+          },
+          {
+            id: 'at_prod_2',
+            name: 'Sữa Ong Chúa Tươi Nguyên Chất (Hũ 100g Bảo Quản Đông)',
+            sku: 'SP-12-SOC',
+            standard: 'OCOP 4 SAO',
+            standardClass: 'amber',
+            price: '280.000',
+            stock: '85 hũ',
+            status: 'approved', // Đã duyệt
+            img: 'honey_front.jpg',
+            subImg1: 'honey_front.jpg',
+            subImg2: 'honey_front.jpg',
+            notes: 'Sữa ong chúa tươi khai thác trực tiếp từ tổ ong chúa, vận chuyển tủ đá lạnh.',
+            voiceQuote: 'Sữa ong chúa tươi hũ một lạng bán hai trăm tám...',
+            voicePrice: '280.000'
+          },
+          {
+            id: 'at_prod_3',
+            name: 'Sáp Ong Rừng Tự Nhiên Chưa Tinh Lọc Thô',
+            sku: 'SP-12-SOR',
+            standard: 'NGUYÊN LIỆU',
+            standardClass: 'red',
+            price: '70.000',
+            stock: '25 kg',
+            status: 'rejected', // Không được duyệt
+            img: 'honey_front.jpg',
+            subImg1: 'honey_front.jpg',
+            subImg2: 'honey_front.jpg',
+            notes: 'Sáp lẫn tạp chất vỏ cây, chưa đạt chuẩn vệ sinh an toàn để đưa lên sàn bán lẻ. Cần lọc sạch.',
+            voiceQuote: 'Sáp ong bánh thô chưa lọc giá bảy mươi ngàn một cân...',
+            voicePrice: '70.000'
+          }
+        ]
       }
+    };
+
+    // Label và màu hiển thị của các trạng thái
+    const statusMeta = {
+      'pending':  { label: '⏳ Đang chờ duyệt', class: 'pending',  badgeBg: '#FFFBEB', badgeText: '#B45309' },
+      'approved': { label: '✅ Đã duyệt',       class: 'approved', badgeBg: '#ECFDF5', badgeText: '#065F46' },
+      'rejected': { label: '❌ Không được duyệt', class: 'rejected', badgeBg: '#FEF2F2', badgeText: '#B91C1C' },
+      'deleted':  { label: '🗑️ Đã xóa',         class: 'deleted',  badgeBg: '#F1F5F9', badgeText: '#64748B' }
     };
 
     // CHUYỂN NỘI DUNG SANG QUẢN TRỊ XÃ VIÊN TRỰC TIẾP TRÊN DASHBOARD (NO POPUP)
     function switchToMemberAdmin(farmerKey) {
+      currentFarmerKey = farmerKey;
+      currentStatusFilter = 'all';
       const data = farmersDatabase[farmerKey] || farmersDatabase['bacba'];
 
       document.getElementById('view-overview').style.display = 'none';
       document.getElementById('view-member-admin').style.display = 'block';
 
-      // Nạp dữ liệu vào form quản trị
+      // Nạp thông tin profile
       document.getElementById('admin-view-breadcrumb').innerText = data.name;
       document.getElementById('admin-user-fullname').innerText = data.name;
       document.getElementById('admin-user-meta').innerText = data.meta;
@@ -2082,10 +2526,6 @@
       document.getElementById('kpi-user-revenue').innerText = data.revenue;
       document.getElementById('kpi-user-yield').innerText = data.yield;
       document.getElementById('kpi-user-orders').innerText = data.orders;
-
-      document.getElementById('admin-edit-prod-name').value = data.prodName;
-      document.getElementById('admin-edit-prod-price').value = data.prodPrice;
-      document.getElementById('admin-edit-prod-notes').value = data.prodNotes;
 
       document.getElementById('set-user-phone').value = data.phone;
       document.getElementById('set-user-bank').value = data.bank;
@@ -2097,10 +2537,196 @@
       document.getElementById('right-stat-greeting').innerText = 'Xin chào, ' + data.name.split(' (')[0] + ' 🔥';
       document.getElementById('right-stat-subtext').innerText = data.subtext;
 
+      // Render Bảng sản phẩm & Thanh menu select trạng thái
+      renderMemberProductsTable();
+
+      // Nạp sản phẩm đầu tiên lên khung kiểm tra
+      if (data.products && data.products.length > 0) {
+        loadProductToInspect(data.products[0].id);
+      }
+
       // Update sidebar active state
       document.getElementById('nav-btn-dashboard').classList.remove('active');
 
       showToast('👤 Đã chuyển sang màn hình Quản Trị Chi Tiết: ' + data.name);
+    }
+
+    // RENDER BẢNG SẢN PHẨM & CẬP NHẬT THANH MENU SELECT TRẠNG THÁI
+    function renderMemberProductsTable() {
+      const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
+      const products = farmer.products || [];
+
+      // Tính số lượng từng trạng thái
+      const counts = { all: products.length, pending: 0, approved: 0, rejected: 0, deleted: 0 };
+      products.forEach(p => {
+        if (counts[p.status] !== undefined) counts[p.status]++;
+      });
+
+      // Cập nhật số đếm lên thanh Tab Menu
+      document.getElementById('count-all').innerText = counts.all;
+      document.getElementById('count-pending').innerText = counts.pending;
+      document.getElementById('count-approved').innerText = counts.approved;
+      document.getElementById('count-rejected').innerText = counts.rejected;
+      document.getElementById('count-deleted').innerText = counts.deleted;
+      document.getElementById('admin-user-total-badge').innerText = counts.all + ' Sản Phẩm';
+
+      // Cập nhật trạng thái active trên thanh tab và dropdown
+      ['all', 'pending', 'approved', 'rejected', 'deleted'].forEach(st => {
+        const btn = document.getElementById('tab-status-' + st);
+        if (btn) {
+          if (st === currentStatusFilter) btn.classList.add('active');
+          else btn.classList.remove('active');
+        }
+      });
+      document.getElementById('select-status-filter').value = currentStatusFilter;
+
+      // Lọc danh sách hiển thị
+      const filtered = currentStatusFilter === 'all' 
+        ? products 
+        : products.filter(p => p.status === currentStatusFilter);
+
+      const tbody = document.getElementById('member-products-table-body');
+      tbody.innerHTML = '';
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 28px; color: var(--slate-400); font-weight: 700;">
+              Không có sản phẩm nào thuộc trạng thái này!
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      filtered.forEach(p => {
+        const meta = statusMeta[p.status] || statusMeta['pending'];
+        const tr = document.createElement('tr');
+        tr.id = 'row-' + p.id;
+        tr.innerHTML = `
+          <td>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="${p.img}" alt="${p.name}" class="table-prod-thumb">
+              <div>
+                <div style="font-weight: 800; color: var(--slate-900); font-size: 14.5px;">${p.name}</div>
+                <div style="font-size: 12px; color: var(--slate-500); margin-top: 1px;">Mã: ${p.sku}</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="pill-category-badge ${p.standardClass}">${p.standard}</span>
+          </td>
+          <td>
+            <strong style="color: var(--brand-700); font-size: 15.5px;">${p.price} đ</strong>
+          </td>
+          <td>
+            <span style="font-weight: 700; color: var(--slate-700);">${p.stock}</span>
+          </td>
+          <td>
+            <!-- Menu select trực tiếp trạng thái cho sản phẩm này -->
+            <select class="row-status-select ${meta.class}" onchange="changeProductStatus('${p.id}', this.value)">
+              <option value="pending" ${p.status === 'pending' ? 'selected' : ''}>⏳ Đang chờ duyệt</option>
+              <option value="approved" ${p.status === 'approved' ? 'selected' : ''}>✅ Đã duyệt</option>
+              <option value="rejected" ${p.status === 'rejected' ? 'selected' : ''}>❌ Không được duyệt</option>
+              <option value="deleted" ${p.status === 'deleted' ? 'selected' : ''}>🗑️ Đã xóa</option>
+            </select>
+          </td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <button class="btn-table-action-edit" onclick="loadProductToInspect('${p.id}')" title="Kiểm tra ảnh & sửa chữ trực tiếp">
+                ✏️ Kiểm tra / Sửa
+              </button>
+              <button class="btn-table-action-del" onclick="quickDeleteProduct('${p.id}')" title="Đưa vào danh mục Đã xóa">
+                🗑️
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // LỌC SẢN PHẨM THEO THANH MENU SELECT TRẠNG THÁI
+    function filterMemberProducts(status) {
+      currentStatusFilter = status;
+      renderMemberProductsTable();
+      const statusNames = {
+        'all': 'Tất cả sản phẩm',
+        'pending': 'Đang chờ duyệt',
+        'approved': 'Đã duyệt',
+        'rejected': 'Không được duyệt',
+        'deleted': 'Đã xóa'
+      };
+      showToast('Đang lọc danh sách: ' + (statusNames[status] || status));
+    }
+
+    // THAY ĐỔI TRẠNG THÁI TRỰC TIẾP TỪ MENU SELECT TRONG TỪNG DÒNG
+    function changeProductStatus(productId, newStatus) {
+      const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
+      const prod = farmer.products.find(p => p.id === productId);
+
+      if (prod) {
+        prod.status = newStatus;
+        renderMemberProductsTable();
+
+        const meta = statusMeta[newStatus];
+        showToast('✓ Đã cập nhật sản phẩm "' + prod.name.substring(0, 30) + '..." sang trạng thái: ' + meta.label);
+
+        // Nếu sản phẩm này đang nạp ở khung kiểm tra phía dưới thì cập nhật luôn badge
+        if (currentInspectingProdId === productId) {
+          updateInspectBadge(newStatus);
+        }
+      }
+    }
+
+    // XÓA NHANH VÀO TRẠNG THÁI ĐÃ XÓA
+    function quickDeleteProduct(productId) {
+      changeProductStatus(productId, 'deleted');
+    }
+
+    // NẠP SẢN PHẨM LÊN THẺ KIỂM TRA ĐỐI SOÁT & SỬA CHỮ [✕]
+    let currentInspectingProdId = null;
+
+    function loadProductToInspect(productId) {
+      const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
+      const prod = farmer.products.find(p => p.id === productId);
+      if (!prod) return;
+
+      currentInspectingProdId = productId;
+
+      document.getElementById('edit-img-main').src = prod.img;
+      document.getElementById('edit-img-sub1').src = prod.subImg1;
+      document.getElementById('edit-img-sub2').src = prod.subImg2;
+
+      document.getElementById('edit-voice-quote').innerText = '"' + prod.voiceQuote + '"';
+      document.getElementById('edit-voice-price').innerText = prod.voicePrice;
+
+      document.getElementById('admin-edit-prod-name').value = prod.name;
+      document.getElementById('admin-edit-prod-price').value = prod.price;
+      document.getElementById('admin-edit-prod-notes').value = prod.notes;
+
+      updateInspectBadge(prod.status);
+
+      // Cuộn nhẹ tới khung kiểm tra nếu gọi từ bảng
+      document.getElementById('box-inspect-editor').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      showToast('📋 Đã nạp sản phẩm "' + prod.name.substring(0, 28) + '..." vào khung thẩm định & sửa chữ!');
+    }
+
+    function updateInspectBadge(status) {
+      const badge = document.getElementById('admin-post-status');
+      if (status === 'approved') {
+        badge.innerText = '✅ ĐÃ DUYỆT & ĐANG BÁN';
+        badge.className = 'pill-category-badge mint';
+      } else if (status === 'rejected') {
+        badge.innerText = '❌ KHÔNG ĐƯỢC DUYỆT (TRẢ VỀ)';
+        badge.className = 'pill-category-badge red';
+      } else if (status === 'deleted') {
+        badge.innerText = '🗑️ ĐÃ XÓA VÀO LƯU TRỮ';
+        badge.className = 'pill-category-badge gray';
+      } else {
+        badge.innerText = '⏳ CẦN DUYỆT 1 BÀI ĐĂNG';
+        badge.className = 'pill-category-badge amber';
+      }
     }
 
     // QUAY LẠI MÀN HÌNH TỔNG QUAN
@@ -2136,18 +2762,25 @@
         return;
       }
 
-      document.getElementById('admin-post-status').innerText = '✅ ĐÃ DUYỆT LÊN SÀN CHỢ XANH';
-      document.getElementById('admin-post-status').style.background = '#DCFCE7';
-      document.getElementById('admin-post-status').style.color = '#15803D';
+      if (currentInspectingProdId) {
+        const farmer = farmersDatabase[currentFarmerKey];
+        const prod = farmer.products.find(p => p.id === currentInspectingProdId);
+        if (prod) {
+          prod.name = name;
+          prod.price = price;
+          prod.notes = document.getElementById('admin-edit-prod-notes').value;
+          changeProductStatus(currentInspectingProdId, 'approved');
+        }
+      }
 
       showToast('🎉 PHÊ DUYỆT THÀNH CÔNG! ' + name + ' (' + price + ' đ) đã được xuất bản lên Shopee & Zalo OA.');
     }
 
     function rejectPost() {
-      document.getElementById('admin-post-status').innerText = '❌ ĐÃ YÊU CẦU CHỤP LẠI ẢNH';
-      document.getElementById('admin-post-status').style.background = '#FEE2E2';
-      document.getElementById('admin-post-status').style.color = '#991B1B';
-      showToast('Đã gửi thông báo Zalo yêu cầu hộ dân chụp lại ảnh rõ nét hơn.');
+      if (currentInspectingProdId) {
+        changeProductStatus(currentInspectingProdId, 'rejected');
+      }
+      showToast('❌ Đã chuyển sang trạng thái: Không được duyệt (yêu cầu hộ dân kiểm tra lại).');
     }
 
     function saveMemberSettings() {

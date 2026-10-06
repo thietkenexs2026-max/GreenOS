@@ -6,24 +6,20 @@
   <title>GreenVillageOS — Trang Quản Trị Hợp Tác Xã Đồng Cát</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
   <style>
     /* =========================================================================
        1. COURSUE DESIGN SYSTEM VIBE (1:1 FIDELITY WITH DRIBBBLE REFERENCE)
-       - Floating rounded window (radius: 36px) on soft grey canvas (#EBF0F5)
-       - Clean 3-column layout without harsh vertical border lines
-       - Rich Emerald Forest Hero Gradient with sparkle accents & dark capsule CTA
-       - 3 Pastel Mini Stat Cards with icon squares
-       - Photographic product cards with category pills and floating action icons
-       - Right Statistic Column: Circular progress ring with avatar, greeting 🔥,
-         sleek pill bar chart with dashed Y-axis, and "Your mentor" directory
-       - In-Page Member Management: Bảng liệt kê sản phẩm với Thanh menu select
-         trạng thái (Đang chờ duyệt, Đã duyệt, Không được duyệt, Đã xóa)
+       - Toàn bộ chữ chuẩn FONT INTER (font-family: 'Inter', sans-serif)
+       - Floating rounded window (radius: 36px) trên nền canvas xám sáng (#EBF0F5)
+       - Bảng sản phẩm: MỖI SẢN PHẨM 1 DÒNG DUY NHẤT (white-space: nowrap)
+       - Thanh Menu Filter đặt NGAY TRÊN CÙNG BẢNG (tích hợp trong header bảng)
+       - Phân trang chuẩn 10 sản phẩm / trang, có nút số trang + select nhảy trang
+       - Demo đầy đủ 50 sản phẩm nông sản thực tế với 4 trạng thái
        ========================================================================= */
     :root {
-      --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
       /* GreenVillageOS Design Tokens */
       --brand-950: #022C22;
@@ -79,6 +75,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: var(--font-inter) !important;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -86,10 +83,10 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      font-family: var(--font-body);
+      font-family: var(--font-inter);
       background-color: #EBF0F5;
       color: var(--slate-900);
-      font-size: 15.5px;
+      font-size: 15px;
       line-height: 1.5;
     }
 
@@ -157,7 +154,6 @@
     }
 
     .brand-title-wrap h1 {
-      font-family: var(--font-display);
       font-size: 19px;
       font-weight: 800;
       color: var(--slate-900);
@@ -359,7 +355,6 @@
       background: transparent;
       outline: none;
       width: 100%;
-      font-family: var(--font-body);
       font-size: 15px;
       color: var(--slate-800);
     }
@@ -433,7 +428,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       HERO BANNER (VIBE CHUẨN COURSUE NHƯNG MÀU EMERALD CHỢ XANH)
+       HERO BANNER
        ------------------------------------------------------------------------- */
     .hero-coursue-banner {
       background: linear-gradient(135deg, #059669 0%, #064E3B 100%);
@@ -464,7 +459,6 @@
     }
 
     .banner-heading-text {
-      font-family: var(--font-display);
       font-size: 26px;
       font-weight: 800;
       line-height: 1.25;
@@ -509,7 +503,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       ROW OF 3 MINI STAT CARDS (CHUẨN COURSUE VỚI ICON VUÔNG PASTEL)
+       3 MINI STAT CARDS
        ------------------------------------------------------------------------- */
     .mini-stat-trio {
       display: grid;
@@ -587,7 +581,6 @@
     }
 
     .section-headline-bar h3 {
-      font-family: var(--font-display);
       font-size: 19.5px;
       font-weight: 800;
       color: var(--slate-900);
@@ -704,6 +697,7 @@
       border-radius: 6px;
       margin-bottom: 8px;
       align-self: flex-start;
+      white-space: nowrap;
     }
 
     .pill-category-badge.cyan  { background: #EFF6FF; color: #2563EB; }
@@ -766,7 +760,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       SECTION: "YOUR LESSON" -> BẢNG ĐƠN HÀNG GẦN ĐÂY
+       SECTION: "YOUR LESSON"
        ------------------------------------------------------------------------- */
     .coursue-table-card {
       background: #FFFFFF;
@@ -786,7 +780,6 @@
     }
 
     .coursue-table-head-row h4 {
-      font-family: var(--font-display);
       font-size: 17.5px;
       font-weight: 800;
       color: var(--slate-900);
@@ -803,7 +796,7 @@
     .coursue-clean-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 14.5px;
+      font-size: 14px;
     }
 
     .coursue-clean-table th {
@@ -813,15 +806,17 @@
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: var(--slate-400);
-      padding: 12px 22px;
+      padding: 12px 18px;
       background: var(--slate-50);
       border-bottom: 1px solid var(--slate-200);
+      white-space: nowrap;
     }
 
     .coursue-clean-table td {
-      padding: 14px 22px;
+      padding: 12px 18px;
       border-bottom: 1px solid var(--slate-100);
       vertical-align: middle;
+      white-space: nowrap; /* MỖI SẢN PHẨM TRÊN 1 DÒNG KHÔNG XUỐNG DÒNG */
     }
 
     .coursue-clean-table tr:hover td {
@@ -902,7 +897,7 @@
       font-weight: 800;
     }
 
-    /* Member Hero Banner (Style chuẩn Coursue) */
+    /* Member Hero Banner */
     .member-coursue-hero {
       background: linear-gradient(135deg, #064E3B 0%, #059669 100%);
       border-radius: 26px;
@@ -934,7 +929,6 @@
     }
 
     .member-hero-text h2 {
-      font-family: var(--font-display);
       font-size: 23px;
       font-weight: 800;
       line-height: 1.2;
@@ -1009,7 +1003,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       THANH MENU SELECT CÁC TRẠNG THÁI & BẢNG LIỆT KÊ SẢN PHẨM CỦA USER
+       MỤC: BẢNG SẢN PHẨM 1 DÒNG VỚI THANH MENU FILTER TRÊN CÙNG BẢNG
        ------------------------------------------------------------------------- */
     .member-card-container {
       background: #FFFFFF;
@@ -1020,34 +1014,36 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .member-card-title-row {
+    /* THANH HEADER TÍCH HỢP TRÊN CÙNG BẢNG */
+    .table-top-toolbar-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 18px;
+      padding-bottom: 16px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--slate-100);
       flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .table-title-side {
+      display: flex;
+      align-items: center;
       gap: 12px;
     }
 
-    .member-card-title-row h3 {
-      font-family: var(--font-display);
-      font-size: 18.5px;
+    .table-title-side h3 {
+      font-size: 18px;
       font-weight: 800;
       color: var(--slate-900);
     }
 
-    /* Thanh Menu Select Trạng Thái (Status Bar) */
-    .product-status-nav-bar {
+    /* THANH MENU FILTER TRẠNG THÁI NGAY TRÊN CÙNG BẢNG */
+    .table-filter-side {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
+      gap: 10px;
       flex-wrap: wrap;
-      gap: 14px;
-      background: var(--slate-50);
-      padding: 10px 14px;
-      border-radius: var(--radius-sub);
-      border: 1px solid var(--slate-200);
     }
 
     .status-tabs-pill-group {
@@ -1064,15 +1060,16 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 15px;
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
       border: none;
       background: transparent;
       color: var(--slate-600);
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
 
     .status-tab-btn:hover {
@@ -1101,42 +1098,57 @@
     .status-count-tag.red   { background: #FEE2E2; color: #B91C1C; }
     .status-count-tag.gray  { background: #E2E8F0; color: #475569; }
 
-    /* Dropdown select lọc trạng thái nhanh */
-    .status-select-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .status-select-control {
-      padding: 8px 14px;
+    .header-select-status-filter {
+      padding: 7px 12px;
       border-radius: var(--radius-pill);
       border: 1.5px solid var(--slate-200);
       background: #FFFFFF;
-      font-family: var(--font-body);
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--slate-800);
       outline: none;
       cursor: pointer;
     }
 
-    .status-select-control:focus {
+    .header-select-status-filter:focus {
       border-color: var(--brand-600);
       box-shadow: 0 0 0 3px var(--brand-100);
     }
 
-    /* Menu select trạng thái trực tiếp trong từng dòng sản phẩm */
+    /* MỖI SẢN PHẨM 1 DÒNG DUY NHẤT */
+    .table-prod-name-cell {
+      max-width: 260px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: 800;
+      color: var(--slate-900);
+      font-size: 14.5px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .table-prod-thumb-mini {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--slate-200);
+      flex-shrink: 0;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
     .row-status-select {
-      padding: 6px 12px;
+      padding: 5px 11px;
       border-radius: var(--radius-pill);
-      font-family: var(--font-body);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       border: 1.5px solid transparent;
       cursor: pointer;
       outline: none;
       transition: all 0.15s;
+      white-space: nowrap;
     }
 
     .row-status-select.pending {
@@ -1163,17 +1175,8 @@
       border-color: #CBD5E1;
     }
 
-    .table-prod-thumb {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 1px solid var(--slate-200);
-      flex-shrink: 0;
-    }
-
     .btn-table-action-edit {
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: var(--radius-pill);
       background: var(--slate-100);
       border: 1px solid var(--slate-200);
@@ -1192,8 +1195,8 @@
     }
 
     .btn-table-action-del {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background: var(--slate-100);
       border: 1px solid var(--slate-200);
@@ -1201,7 +1204,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 12px;
       cursor: pointer;
       transition: all 0.15s;
     }
@@ -1209,6 +1212,117 @@
     .btn-table-action-del:hover {
       background: #FEE2E2;
       border-color: #FCA5A5;
+    }
+
+    /* THANH PHÂN TRANG (PAGINATION FOOTER) */
+    .table-pagination-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      margin-top: 10px;
+      border-top: 1px solid var(--slate-100);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pagination-info-text {
+      font-size: 13.5px;
+      color: var(--slate-500);
+      font-weight: 600;
+    }
+
+    .pagination-info-text strong {
+      color: var(--slate-900);
+      font-weight: 800;
+    }
+
+    .pagination-controls-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-page-nav {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--slate-200);
+      background: #FFFFFF;
+      color: var(--slate-700);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-page-nav:hover:not(:disabled) {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    .btn-page-nav:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .page-number-buttons {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-page-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--slate-200);
+      background: #FFFFFF;
+      color: var(--slate-700);
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-page-num:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    .btn-page-num.active {
+      background: var(--brand-600);
+      border-color: var(--brand-600);
+      color: white;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.35);
+    }
+
+    .page-jump-select-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate-600);
+    }
+
+    .select-jump-control {
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--slate-200);
+      background: #FFFFFF;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--slate-800);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .select-jump-control:focus {
+      border-color: var(--brand-600);
     }
 
     /* Các ô nhập liệu có nút xóa chữ [✕] */
@@ -1223,8 +1337,7 @@
       padding: 12px 44px 12px 16px;
       border: 1.5px solid var(--slate-200);
       border-radius: 12px;
-      font-family: var(--font-body);
-      font-size: 15.5px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--slate-900);
       outline: none;
@@ -1287,7 +1400,7 @@
     }
 
     /* =========================================================================
-       5. CỘT 3: STATISTIC & USER DIRECTORY (CHUẨN 100% COURSUE SCREENSHOT)
+       5. CỘT 3: STATISTIC & USER DIRECTORY
        ========================================================================= */
     .app-right-rail {
       height: 100%;
@@ -1317,7 +1430,6 @@
     }
 
     .rail-widget-head h4 {
-      font-family: var(--font-display);
       font-size: 18px;
       font-weight: 800;
       color: var(--slate-900);
@@ -1373,7 +1485,6 @@
     }
 
     .stat-greeting-title {
-      font-family: var(--font-display);
       font-size: 17px;
       font-weight: 800;
       color: var(--slate-900);
@@ -1685,7 +1796,7 @@
             </button>
           </section>
 
-          <!-- 3 Mini Stat Cards (Chuẩn Coursue: Icon vuông pastel + ratio) -->
+          <!-- 3 Mini Stat Cards -->
           <section class="mini-stat-trio">
             <div class="mini-stat-card">
               <div class="mini-left-content">
@@ -1850,10 +1961,10 @@
 
         <!-- -------------------------------------------------------------------
              VIEW B: TRANG QUẢN TRỊ CHI TIẾT TỪNG XÃ VIÊN (IN-PAGE MANAGEMENT SUITE)
-             - Có Bảng liệt kê toàn bộ sản phẩm của user
-             - Có Thanh menu select trạng thái: Đang chờ duyệt, Đã duyệt, Đã xóa, Không được duyệt
-             - Có Thẻ kiểm tra & xóa/sửa chữ [✕] trực tiếp
-             - Có Cài đặt tài khoản & STK ngân hàng
+             - Bảng sản phẩm: 1 sản phẩm 1 dòng (white-space: nowrap)
+             - Thanh Menu Filter đặt ngay trên cùng bảng (tích hợp)
+             - Phân trang 10 sản phẩm/trang, có chọn trang kế
+             - Demo 50 sản phẩm
              ------------------------------------------------------------------- -->
         <div id="view-member-admin">
           <!-- Navigation Bar Quay Lại -->
@@ -1866,7 +1977,7 @@
             </div>
           </div>
 
-          <!-- Hero Profile Xã Viên (Style Coursue Hero Banner!) -->
+          <!-- Hero Profile Xã Viên -->
           <div class="member-coursue-hero">
             <div class="member-hero-left-profile">
               <img id="admin-user-avatar" src="bac_ba_avatar.jpg" alt="Avatar" class="member-hero-avatar-ring">
@@ -1890,7 +2001,7 @@
             </div>
           </div>
 
-          <!-- 3 Thẻ Mini Stat Của Riêng Xã Viên (Style chuẩn Coursue) -->
+          <!-- 3 Thẻ Mini Stat Của Riêng Xã Viên -->
           <section class="mini-stat-trio">
             <div class="mini-stat-card">
               <div class="mini-left-content">
@@ -1927,78 +2038,95 @@
           </section>
 
           <!-- =================================================================
-               MỤC YÊU CẦU: BẢNG LIỆT KÊ CÁC SẢN PHẨM CỦA USER & THANH MENU SELECT TRẠNG THÁI
+               BẢNG LIỆT KÊ SẢN PHẨM (1 DÒNG / SP, FILTER TRÊN CÙNG BẢNG, PHÂN TRANG 10 SP)
                ================================================================= -->
           <div class="member-card-container">
-            <div class="member-card-title-row">
-              <div>
-                <h3>Bảng Danh Sách Nông Sản & Bài Đăng Của Hộ Dân</h3>
-                <p style="font-size: 13.5px; color: var(--slate-500); margin-top: 2px;">
-                  Bấm thanh menu hoặc dropdown để lọc theo từng trạng thái. Có thể đổi trạng thái trực tiếp trong từng dòng!
-                </p>
-              </div>
-              <span class="pill-category-badge mint" id="admin-user-total-badge">5 Sản Phẩm</span>
-            </div>
-
-            <!-- THANH MENU SELECT CÁC TRẠNG THÁI (STATUS TABS & DROPDOWN) -->
-            <div class="product-status-nav-bar">
-              <!-- Tabs menu dạng viên thuốc (Pill tabs) -->
-              <div class="status-tabs-pill-group">
-                <button class="status-tab-btn active" id="tab-status-all" onclick="filterMemberProducts('all')">
-                  Tất cả <span class="status-count-tag" id="count-all">5</span>
-                </button>
-                <button class="status-tab-btn" id="tab-status-pending" onclick="filterMemberProducts('pending')">
-                  ⏳ Đang chờ duyệt <span class="status-count-tag amber" id="count-pending">1</span>
-                </button>
-                <button class="status-tab-btn" id="tab-status-approved" onclick="filterMemberProducts('approved')">
-                  ✅ Đã duyệt <span class="status-count-tag green" id="count-approved">2</span>
-                </button>
-                <button class="status-tab-btn" id="tab-status-rejected" onclick="filterMemberProducts('rejected')">
-                  ❌ Không được duyệt <span class="status-count-tag red" id="count-rejected">1</span>
-                </button>
-                <button class="status-tab-btn" id="tab-status-deleted" onclick="filterMemberProducts('deleted')">
-                  🗑️ Đã xóa <span class="status-count-tag gray" id="count-deleted">1</span>
-                </button>
+            <!-- THANH TOOLBAR FILTER ĐẶT NGAY TRÊN CÙNG BẢNG -->
+            <div class="table-top-toolbar-header">
+              <div class="table-title-side">
+                <h3>Bảng Danh Sách Nông Sản Của Hộ Dân</h3>
+                <span class="pill-category-badge mint" id="admin-user-total-badge">50 Sản Phẩm</span>
               </div>
 
-              <!-- Thanh menu select dropdown tương ứng -->
-              <div class="status-select-wrap">
-                <label style="font-size: 13.5px; font-weight: 700; color: var(--slate-600);">Menu lọc nhanh:</label>
-                <select id="select-status-filter" class="status-select-control" onchange="filterMemberProducts(this.value)">
-                  <option value="all">-- Xem tất cả trạng thái --</option>
-                  <option value="pending">⏳ Đang chờ duyệt</option>
-                  <option value="approved">✅ Đã duyệt</option>
-                  <option value="rejected">❌ Không được duyệt</option>
-                  <option value="deleted">🗑️ Đã xóa</option>
+              <!-- THANH MENU FILTER NẰM NGAY TRÊN CÙNG BẢNG -->
+              <div class="table-filter-side">
+                <div class="status-tabs-pill-group">
+                  <button class="status-tab-btn active" id="tab-status-all" onclick="filterMemberProducts('all')">
+                    Tất cả <span class="status-count-tag" id="count-all">50</span>
+                  </button>
+                  <button class="status-tab-btn" id="tab-status-pending" onclick="filterMemberProducts('pending')">
+                    ⏳ Đang chờ duyệt <span class="status-count-tag amber" id="count-pending">12</span>
+                  </button>
+                  <button class="status-tab-btn" id="tab-status-approved" onclick="filterMemberProducts('approved')">
+                    ✅ Đã duyệt <span class="status-count-tag green" id="count-approved">24</span>
+                  </button>
+                  <button class="status-tab-btn" id="tab-status-rejected" onclick="filterMemberProducts('rejected')">
+                    ❌ Không được duyệt <span class="status-count-tag red" id="count-rejected">8</span>
+                  </button>
+                  <button class="status-tab-btn" id="tab-status-deleted" onclick="filterMemberProducts('deleted')">
+                    🗑️ Đã xóa <span class="status-count-tag gray" id="count-deleted">6</span>
+                  </button>
+                </div>
+
+                <select id="select-status-filter" class="header-select-status-filter" onchange="filterMemberProducts(this.value)">
+                  <option value="all">Tất cả (50)</option>
+                  <option value="pending">⏳ Đang chờ duyệt (12)</option>
+                  <option value="approved">✅ Đã duyệt (24)</option>
+                  <option value="rejected">❌ Không được duyệt (8)</option>
+                  <option value="deleted">🗑️ Đã xóa (6)</option>
                 </select>
               </div>
             </div>
 
-            <!-- BẢNG LIỆT KÊ SẢN PHẨM -->
+            <!-- BẢNG LIỆT KÊ SẢN PHẨM: 1 DÒNG DUY NHẤT -->
             <div style="overflow-x: auto;">
               <table class="coursue-clean-table">
                 <thead>
                   <tr>
-                    <th>SẢN PHẨM & MÃ LÔ</th>
+                    <th style="width: 50px;">#STT</th>
+                    <th>SẢN PHẨM NÔNG SẢN</th>
+                    <th>MÃ LÔ</th>
                     <th>TIÊU CHUẨN</th>
-                    <th>GIÁ NIÊM YẾT</th>
-                    <th>SẢN LƯỢNG / TỒN</th>
-                    <th>MENU TRẠNG THÁI</th>
-                    <th>THAO TÁC</th>
+                    <th>GIÁ BÁN</th>
+                    <th>TỒN KHO / SẢN LƯỢNG</th>
+                    <th>TRẠNG THÁI</th>
+                    <th style="text-align: right;">THAO TÁC</th>
                   </tr>
                 </thead>
                 <tbody id="member-products-table-body">
-                  <!-- Được nạp tự động qua JavaScript theo từng xã viên -->
+                  <!-- Được render tự động qua JavaScript (10 sản phẩm / trang) -->
                 </tbody>
               </table>
+            </div>
+
+            <!-- THANH PHÂN TRANG (PAGINATION FOOTER: 10 SP / TRANG, SELECT TRANG KẾ) -->
+            <div class="table-pagination-footer">
+              <div class="pagination-info-text">
+                Hiển thị <strong id="page-start-num">1</strong> - <strong id="page-end-num">10</strong> trong số <strong id="page-total-num">50</strong> sản phẩm (Trang <strong id="page-current-num">1</strong>/<span id="page-total-pages">5</span>)
+              </div>
+
+              <div class="pagination-controls-wrap">
+                <button class="btn-page-nav" id="btn-prev-page" onclick="goToPage(currentPage - 1)">‹ Trước</button>
+                <div class="page-number-buttons" id="page-number-buttons">
+                  <!-- Tự động sinh các nút trang [1] [2] [3] [4] [5] -->
+                </div>
+                <button class="btn-page-nav" id="btn-next-page" onclick="goToPage(currentPage + 1)">Sau ›</button>
+
+                <div class="page-jump-select-wrap">
+                  <span>Trang:</span>
+                  <select id="select-jump-page" class="select-jump-control" onchange="goToPage(parseInt(this.value))">
+                    <!-- Tự động sinh options -->
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Bảng Quản Trị & Duyệt Sản Phẩm Của User (CÓ NÚT XÓA/SỬA CHỮ TRỰC TIẾP) -->
           <div class="member-card-container" id="box-inspect-editor">
-            <div class="member-card-title-row">
+            <div class="table-top-toolbar-header" style="margin-bottom: 16px;">
               <div>
-                <h3>Kiểm Tra & Phê Duyệt Nông Sản Lên Sàn (Chi Tiết Lô Đang Chọn)</h3>
+                <h3>Kiểm Tra & Phê Duyệt Nông Sản Lên Sàn (Lô Đang Chọn)</h3>
                 <p style="font-size: 13.5px; color: var(--slate-500); margin-top: 2px;">
                   Bấm nút ✕ màu đỏ bên phải mỗi ô để xóa nhanh toàn bộ chữ trước khi sửa
                 </p>
@@ -2095,7 +2223,7 @@
 
           <!-- Cài Đặt Tài Khoản & Thông Tin Chi Trả Của Xã Viên -->
           <div class="member-card-container">
-            <div class="member-card-title-row">
+            <div class="table-top-toolbar-header" style="margin-bottom: 16px;">
               <h3>Cài Đặt Tài Khoản & Thông Tin Chi Trả Hộ Dân</h3>
               <span class="pill-category-badge mint">Đang Hoạt Động</span>
             </div>
@@ -2137,7 +2265,7 @@
       </main>
 
       <!-- =====================================================================
-           CỘT 3: STATISTIC & USER DIRECTORY (Hiển thị cố định trên Dashboard)
+           CỘT 3: STATISTIC & USER DIRECTORY
            ===================================================================== -->
       <aside class="app-right-rail">
         
@@ -2252,9 +2380,65 @@
 
   <!-- JAVASCRIPT LOGIC QUẢN TRỊ TRỰC TIẾP (NO POPUP) -->
   <script>
-    // Dữ liệu quản trị chi tiết của các xã viên & Danh sách sản phẩm đầy đủ trạng thái
+    // Dữ liệu quản trị chi tiết của các xã viên & 50 sản phẩm demo
     let currentFarmerKey = 'bacba';
     let currentStatusFilter = 'all';
+    let currentPage = 1;
+    const pageSize = 10;
+
+    // Sinh 50 sản phẩm nông sản thực tế cho Bác Ba
+    const bacBaProductsDemo = [
+      { id: 'sp_01', name: 'Chuối Sấy Giòn Yên Bình (Túi 250g Zip)', sku: 'SP-04-01', standard: 'OCOP 4★', stdClass: 'amber', price: '55.000', stock: '1.200 túi', status: 'pending', img: 'banana_front.jpg', notes: 'Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%.', voiceQuote: 'Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn...', voicePrice: '55.000' },
+      { id: 'sp_02', name: 'Chuối Ngự Tiêu Hồng Chín Cây (Buồng 15-18kg)', sku: 'SP-04-02', standard: 'VIETGAP', stdClass: 'mint', price: '240.000', stock: '45 buồng', status: 'approved', img: 'banana_plate.jpg', notes: 'Thu hoạch đạt độ ngọt Brix > 21%. Chuối già quả đẫy đà.', voiceQuote: 'Chuối buồng đẫy quả giá hai trăm bốn mươi ngàn...', voicePrice: '240.000' },
+      { id: 'sp_03', name: 'Chuối Dẻo Sấy Lạnh Không Đường (Hộp 500g)', sku: 'SP-04-03', standard: 'OCOP 3★', stdClass: 'amber', price: '95.000', stock: '300 hộp', status: 'approved', img: 'banana_back.jpg', notes: 'Sấy lạnh chân không giữ nguyên mật ngọt tự nhiên.', voiceQuote: 'Chuối dẻo đóng hộp bán chín mươi lăm ngàn...', voicePrice: '95.000' },
+      { id: 'sp_04', name: 'Kẹo Chuối Phồng Đậu Phộng Gừng Mè (Gói 200g)', sku: 'SP-04-04', standard: 'LÀNG NGHỀ', stdClass: 'gray', price: '45.000', stock: '150 gói', status: 'rejected', img: 'banana_front.jpg', notes: 'Bao bì thiếu mã QR Trace và hạn sử dụng. Yêu cầu in lại.', voiceQuote: 'Kẹo chuối phồng gừng bán bốn lăm ngàn một bọc...', voicePrice: '45.000' },
+      { id: 'sp_05', name: 'Bột Chuối Xanh Sấy Lạnh Hòa Tan (Hũ 400g)', sku: 'SP-04-05', standard: 'OCOP 4★', stdClass: 'amber', price: '120.000', stock: '50 hũ', status: 'deleted', img: 'banana_plate.jpg', notes: 'Đã xuất hết đợt 1, tạm lưu trữ để bổ sung mẻ sấy mới.', voiceQuote: 'Bột chuối xanh này bán một trăm hai mươi ngàn...', voicePrice: '120.000' },
+      { id: 'sp_06', name: 'Rượu Men Lá Chuối Hột Rừng (Chai 500ml)', sku: 'SP-04-06', standard: 'TRUYỀN THỐNG', stdClass: 'mint', price: '150.000', stock: '80 chai', status: 'approved', img: 'banana_front.jpg', notes: 'Men lá rừng thảo dược ngâm chuối hột sao vàng.', voiceQuote: 'Rượu chuối hột men lá bán một trăm năm mươi ngàn...', voicePrice: '150.000' },
+      { id: 'sp_07', name: 'Chuối Sấy Giòn Tẩm Mật Ong Hoa Rừng (Hộp 300g)', sku: 'SP-04-07', standard: 'OCOP 4★', stdClass: 'amber', price: '75.000', stock: '450 hộp', status: 'pending', img: 'banana_plate.jpg', notes: 'Phủ mật ong tự nhiên, sấy giòn rụm không ngấy.', voiceQuote: 'Chuối sấy mật ong bán bảy mươi lăm nghìn một hộp...', voicePrice: '75.000' },
+      { id: 'sp_08', name: 'Giấm Chuối Lên Men Tự Nhiên Thủ Công (Chai 500ml)', sku: 'SP-04-08', standard: 'HỮU CƠ', stdClass: 'mint', price: '60.000', stock: '120 chai', status: 'approved', img: 'banana_back.jpg', notes: 'Lên men từ chuối chín tự nhiên, độ chua thanh dịu.', voiceQuote: 'Giấm chuối nuôi bán sáu mươi ngàn...', voicePrice: '60.000' },
+      { id: 'sp_09', name: 'Chuối Sấy Dẻo Nguyên Trái Xuất Khẩu (Túi 500g)', sku: 'SP-04-09', standard: 'GLOBALGAP', stdClass: 'mint', price: '110.000', stock: '600 túi', status: 'approved', img: 'banana_front.jpg', notes: 'Đóng gói màng nhôm hút chân không đạt chuẩn xuất khẩu.', voiceQuote: 'Chuối dẻo nguyên trái xuất khẩu bán một trăm mười ngàn...', voicePrice: '110.000' },
+      { id: 'sp_10', name: 'Trà Hoa Chuối Rừng Sấy Lạnh Hút Ẩm (Gói 150g)', sku: 'SP-04-10', standard: 'OCOP 3★', stdClass: 'amber', price: '85.000', stock: '70 gói', status: 'pending', img: 'banana_plate.jpg', notes: 'Chứa nhiều chất xơ hòa tan và vitamin nhóm B.', voiceQuote: 'Trà hoa chuối rừng sấy bán tám mươi lăm ngàn...', voicePrice: '85.000' },
+      { id: 'sp_11', name: 'Snack Chuối Lắc Phô Mai Trẻ Em (Túi 100g)', sku: 'SP-04-11', standard: 'VIETGAP', stdClass: 'mint', price: '28.000', stock: '900 túi', status: 'approved', img: 'banana_back.jpg', notes: 'Chuối thái lát mỏng lắc bột phô mai béo ngậy.', voiceQuote: 'Snack chuối trẻ con thích lắm, hai mươi tám ngàn...', voicePrice: '28.000' },
+      { id: 'sp_12', name: 'Bánh Tráng Chuối Nướng Mè Đen (Tệp 10 cái)', sku: 'SP-04-12', standard: 'DÂN GIAN', stdClass: 'gray', price: '35.000', stock: '250 tệp', status: 'approved', img: 'banana_front.jpg', notes: 'Nướng than hoa truyền thống, giòn tan thơm mùi gừng mè.', voiceQuote: 'Bánh tráng chuối mè đen ba mươi lăm nghìn...', voicePrice: '35.000' },
+      { id: 'sp_13', name: 'Chuối Ngự Tiến Vua Đặc Sản Hạng 1 (Thùng 10kg)', sku: 'SP-04-13', standard: 'OCOP 4★', stdClass: 'amber', price: '320.000', stock: '30 thùng', status: 'pending', img: 'banana_plate.jpg', notes: 'Quả tròn căng mọng, vỏ mỏng vàng óng, tiến vua.', voiceQuote: 'Chuối ngự tiến vua thùng mười ký ba trăm hai chục...', voicePrice: '320.000' },
+      { id: 'sp_14', name: 'Mứt Chuối Gừng Dẻo Quà Tết Bính Ngọ (Hộp 400g)', sku: 'SP-04-14', standard: 'OCOP 4★', stdClass: 'amber', price: '80.000', stock: '350 hộp', status: 'approved', img: 'banana_back.jpg', notes: 'Sản phẩm phục vụ giỏ quà Tết cổ truyền 2026.', voiceQuote: 'Mứt chuối gừng dẻo bán tám mươi ngàn một hộp...', voicePrice: '80.000' },
+      { id: 'sp_15', name: 'Bột Dinh Dưỡng Chuối Mầm Ngũ Cốc (Hộp 500g)', sku: 'SP-04-15', standard: 'HỮU CƠ', stdClass: 'mint', price: '135.000', stock: '140 hộp', status: 'pending', img: 'banana_front.jpg', notes: 'Kết hợp chuối ngự và mầm đậu xanh, yến mạch.', voiceQuote: 'Bột chuối mầm ngũ cốc một trăm ba lăm ngàn...', voicePrice: '135.000' },
+      { id: 'sp_16', name: 'Chuối Sấy Thăng Hoa Freeze-Dried (Hũ 120g)', sku: 'SP-04-16', standard: 'CÔNG NGHỆ CAO', stdClass: 'mint', price: '160.000', stock: '90 hũ', status: 'approved', img: 'banana_plate.jpg', notes: 'Công nghệ đông khô giữ 98% hàm lượng dinh dưỡng.', voiceQuote: 'Chuối đông khô cao cấp bán một trăm sáu mươi ngàn...', voicePrice: '160.000' },
+      { id: 'sp_17', name: 'Nước Cốt Chuối Lên Men Men Sống Probiotic', sku: 'SP-04-17', standard: 'THỬ NGHIỆM', stdClass: 'red', price: '48.000', stock: '180 chai', status: 'rejected', img: 'banana_back.jpg', notes: 'Chưa hoàn tất kiểm định chỉ tiêu vi sinh vật lên men. Trả về.', voiceQuote: 'Nước cốt men sống bán bốn mươi tám nghìn...', voicePrice: '48.000' },
+      { id: 'sp_18', name: 'Chuối Sứ Xanh Hầm Thảo Mộc (Túi 1kg)', sku: 'SP-04-18', standard: 'VIETGAP', stdClass: 'mint', price: '42.000', stock: '200 túi', status: 'approved', img: 'banana_front.jpg', notes: 'Dùng cho các quán ăn thực dưỡng và nấu canh dưỡng sinh.', voiceQuote: 'Chuối sứ xanh hầm thảo mộc bốn mươi hai ngàn...', voicePrice: '42.000' },
+      { id: 'sp_19', name: 'Xơ Vỏ Chuối Hữu Cơ Ủ Vi Sinh (Bao 20kg)', sku: 'SP-04-19', standard: 'PHỤ PHẨM', stdClass: 'gray', price: '50.000', stock: '110 bao', status: 'deleted', img: 'banana_plate.jpg', notes: 'Phụ phẩm nông nghiệp đã chuyển giao cho hợp tác xã hoa màu.', voiceQuote: 'Bao phân bón vi sinh vỏ chuối năm mươi ngàn...', voicePrice: '50.000' },
+      { id: 'sp_20', name: 'Giống Chuối Tiêu Hồng Cấy Mô F1 (Bầu 5 cây)', sku: 'SP-04-20', standard: 'CÂY GIỐNG', stdClass: 'mint', price: '75.000', stock: '300 bầu', status: 'approved', img: 'banana_back.jpg', notes: 'Giống cấy mô sạch bệnh, sinh trưởng khỏe, quả to đều.', voiceQuote: 'Bầu năm cây giống chuối bảy mươi lăm nghìn...', voicePrice: '75.000' },
+      { id: 'sp_21', name: 'Chuối Hột Rừng Sao Vàng Hạ Thổ (Túi 1kg)', sku: 'SP-04-21', standard: 'DƯỢC LIỆU', stdClass: 'mint', price: '130.000', stock: '65 túi', status: 'approved', img: 'banana_front.jpg', notes: 'Dùng ngâm rượu hoặc sắc nước uống hỗ trợ sỏi thận.', voiceQuote: 'Chuối hột rừng hạ thổ một trăm ba mươi ngàn...', voicePrice: '130.000' },
+      { id: 'sp_22', name: 'Chuối Sấy Dẻo Nhúng Sô-cô-la Đen (Hộp 250g)', sku: 'SP-04-22', standard: 'OCOP 4★', stdClass: 'amber', price: '125.000', stock: '180 hộp', status: 'pending', img: 'banana_plate.jpg', notes: 'Sô-cô-la nguyên chất 70% kết hợp chuối dẻo thơm lừng.', voiceQuote: 'Chuối nhúng socola bán một trăm hai lăm ngàn...', voicePrice: '125.000' },
+      { id: 'sp_23', name: 'Thạch Rau Câu Vị Chuối Ngự (Hộp 12 cái)', sku: 'SP-04-23', standard: 'VIETGAP', stdClass: 'mint', price: '38.000', stock: '400 hộp', status: 'approved', img: 'banana_back.jpg', notes: 'Thạch thanh mát tự nhiên, làm từ nước cốt chuối ngự tươi.', voiceQuote: 'Hộp thạch chuối ba mươi tám ngàn...', voicePrice: '38.000' },
+      { id: 'sp_24', name: 'Chuối Sấy Muối Ớt Cay Nồng Vị Tây Bắc (Túi 200g)', sku: 'SP-04-24', standard: 'OCOP 3★', stdClass: 'amber', price: '40.000', stock: '320 túi', status: 'approved', img: 'banana_front.jpg', notes: 'Vị giòn mặn ngọt cay hòa quyện rất bắt miệng.', voiceQuote: 'Chuối sấy muối ớt bán bốn mươi ngàn một túi...', voicePrice: '40.000' },
+      { id: 'sp_25', name: 'Trà Vỏ Chuối Lên Men Giàu Magie (Hộp 20 túi)', sku: 'SP-04-25', standard: 'THỬ NGHIỆM', stdClass: 'red', price: '65.000', stock: '85 hộp', status: 'rejected', img: 'banana_plate.jpg', notes: 'Mẫu thử nghiệm bao bì chưa đạt độ kín khí. Trả về.', voiceQuote: 'Trà vỏ chuối bán sáu mươi lăm nghìn...', voicePrice: '65.000' },
+      { id: 'sp_26', name: 'Chuối Ép Bánh Tròn Phơi Sương (Túi 500g)', sku: 'SP-04-26', standard: 'DÂN GIAN', stdClass: 'gray', price: '65.000', stock: '210 túi', status: 'approved', img: 'banana_back.jpg', notes: 'Chuối chín ép mỏng phơi sương đêm dẻo quánh.', voiceQuote: 'Chuối ép phơi sương sáu mươi lăm nghìn...', voicePrice: '65.000' },
+      { id: 'sp_27', name: 'Bột Tinh Chuối Kháng Ăn Kiêng (Hũ 300g)', sku: 'SP-04-27', standard: 'OCOP 4★', stdClass: 'amber', price: '190.000', stock: '45 hũ', status: 'pending', img: 'banana_front.jpg', notes: 'Chỉ số GI thấp, hỗ trợ người tiểu đường và giảm cân.', voiceQuote: 'Bột tinh chuối ăn kiêng một trăm chín mươi ngàn...', voicePrice: '190.000' },
+      { id: 'sp_28', name: 'Chè Chuối Nếp Nướng Đóng Lon Tiệt Trùng', sku: 'SP-04-28', standard: 'ĐỒ HỘP', stdClass: 'gray', price: '32.000', stock: '500 lon', status: 'deleted', img: 'banana_plate.jpg', notes: 'Dòng sản phẩm đã bán hết mùa hè, chuyển sang mùa lạnh.', voiceQuote: 'Lon chè chuối ba mươi hai ngàn...', voicePrice: '32.000' },
+      { id: 'sp_29', name: 'Chuối Ngự Sấy Giòn Mè Trắng (Túi Zip 250g)', sku: 'SP-04-29', standard: 'OCOP 4★', stdClass: 'amber', price: '58.000', stock: '280 túi', status: 'approved', img: 'banana_back.jpg', notes: 'Mè rang thơm kết hợp vị ngọt thanh của chuối ngự.', voiceQuote: 'Chuối sấy mè trắng năm mươi tám ngàn...', voicePrice: '58.000' },
+      { id: 'sp_30', name: 'Rượu Chuối Hột Chum Sành 3 Năm (Bình 2L)', sku: 'SP-04-30', standard: 'OCOP 4★', stdClass: 'amber', price: '450.000', stock: '25 bình', status: 'approved', img: 'banana_front.jpg', notes: 'Ủ chum sành hạ thổ khử hoàn toàn andehit, êm dịu.', voiceQuote: 'Bình rượu chuối chum sành bốn trăm năm mươi...', voicePrice: '450.000' },
+      { id: 'sp_31', name: 'Bánh Quy Bơ Chuối Nướng Lò Củi (Hộp Thiếc 350g)', sku: 'SP-04-31', standard: 'OCOP 4★', stdClass: 'amber', price: '115.000', stock: '160 hộp', status: 'pending', img: 'banana_plate.jpg', notes: 'Thơm lừng mùi bơ Pháp và chuối ngự chín mọng.', voiceQuote: 'Bánh quy bơ chuối một trăm mười lăm ngàn...', voicePrice: '115.000' },
+      { id: 'sp_32', name: 'Siro Chuối Ngự Tự Nhiên Pha Chế (Chai 650ml)', sku: 'SP-04-32', standard: 'VIETGAP', stdClass: 'mint', price: '85.000', stock: '190 chai', status: 'approved', img: 'banana_back.jpg', notes: 'Dùng pha trà hoa quả, cà phê chuối và làm bánh.', voiceQuote: 'Chai siro chuối tám mươi lăm ngàn...', voicePrice: '85.000' },
+      { id: 'sp_33', name: 'Chuối Laba Sấy Giòn Vani (Túi 250g)', sku: 'SP-04-33', standard: 'VIETGAP', stdClass: 'mint', price: '62.000', stock: '340 túi', status: 'approved', img: 'banana_front.jpg', notes: 'Hương thơm ngọt ngào, giòn rụm không gắt cổ.', voiceQuote: 'Chuối Laba sấy giòn sáu mươi hai ngàn...', voicePrice: '62.000' },
+      { id: 'sp_34', name: 'Kem Chuối Que Cốt Dừa Lạc (Hộp 6 que)', sku: 'SP-04-34', standard: 'LẠNH', stdClass: 'red', price: '45.000', stock: '120 hộp', status: 'rejected', img: 'banana_plate.jpg', notes: 'Vận chuyển chuỗi cung ứng lạnh chưa đạt chuẩn -18 độ C.', voiceQuote: 'Hộp kem chuối bốn lăm ngàn...', voicePrice: '45.000' },
+      { id: 'sp_35', name: 'Bột Vỏ Chuối Sấy Tẩy Tế Bào Chết (Hũ 200g)', sku: 'SP-04-35', standard: 'MỸ PHẨM', stdClass: 'gray', price: '70.000', stock: '40 hũ', status: 'deleted', img: 'banana_back.jpg', notes: 'Ngưng kinh doanh để tập trung nông sản thực phẩm OCOP.', voiceQuote: 'Bột vỏ chuối bảy mươi ngàn...', voicePrice: '70.000' },
+      { id: 'sp_36', name: 'Chuối Sấy Giòn Rụm Air-Fried (Túi 200g)', sku: 'SP-04-36', standard: 'OCOP 4★', stdClass: 'amber', price: '68.000', stock: '410 túi', status: 'pending', img: 'banana_front.jpg', notes: 'Sấy khí nóng không dầu mỡ, cực kỳ tốt cho sức khỏe.', voiceQuote: 'Chuối sấy không dầu sáu mươi tám ngàn...', voicePrice: '68.000' },
+      { id: 'sp_37', name: 'Hạt Giống Chuối Rừng Bản Địa (Gói 50 hạt)', sku: 'SP-04-37', standard: 'GIỐNG CÂY', stdClass: 'mint', price: '55.000', stock: '95 gói', status: 'approved', img: 'banana_plate.jpg', notes: 'Tỷ lệ nảy mầm > 85%, cây thuần chủng vùng núi cao.', voiceQuote: 'Gói hạt giống chuối năm lăm ngàn...', voicePrice: '55.000' },
+      { id: 'sp_38', name: 'Bánh Phồng Tôm Vị Chuối Cay (Gói 150g)', sku: 'SP-04-38', standard: 'OCOP 3★', stdClass: 'amber', price: '30.000', stock: '550 gói', status: 'approved', img: 'banana_back.jpg', notes: 'Chiên phồng giòn xốp thơm ngậy vị chuối và tiêu rừng.', voiceQuote: 'Bánh phồng chuối ba mươi ngàn...', voicePrice: '30.000' },
+      { id: 'sp_39', name: 'Tinh Dầu Chuối Chưng Cất Nguyên Chất (30ml)', sku: 'SP-04-39', standard: 'THỬ NGHIỆM', stdClass: 'red', price: '95.000', stock: '75 lọ', status: 'rejected', img: 'banana_front.jpg', notes: 'Hồ sơ công bố tiêu chuẩn chất lượng chưa đầy đủ.', voiceQuote: 'Tinh dầu chuối chín mươi lăm nghìn...', voicePrice: '95.000' },
+      { id: 'sp_40', name: 'Mứt Chuối Dẻo Cuộn Bánh Tráng Mè (Hộp 300g)', sku: 'SP-04-40', standard: 'OCOP 4★', stdClass: 'amber', price: '68.000', stock: '230 hộp', status: 'approved', img: 'banana_plate.jpg', notes: 'Chuối dẻo cuộn bánh tráng nướng ăn dẻo dai thơm bùi.', voiceQuote: 'Mứt chuối cuộn sáu mươi tám ngàn...', voicePrice: '68.000' },
+      { id: 'sp_41', name: 'Chuối Tiêu Hồng Tẩm Trà Bát Tiên (Hộp 250g)', sku: 'SP-04-41', standard: 'OCOP 4★', stdClass: 'amber', price: '88.000', stock: '150 hộp', status: 'pending', img: 'banana_back.jpg', notes: 'Sự kết hợp độc đáo giữa chuối Bác Ba và trà Cô Lan.', voiceQuote: 'Chuối tẩm vị trà tám mươi tám ngàn...', voicePrice: '88.000' },
+      { id: 'sp_42', name: 'Rượu Chuối Ngự Men Gạo Truyền Thống (750ml)', sku: 'SP-04-42', standard: 'TRUYỀN THỐNG', stdClass: 'mint', price: '180.000', stock: '60 chai', status: 'approved', img: 'banana_front.jpg', notes: 'Nấu thủ công bằng nồi đồng, ủ men Bắc truyền thống.', voiceQuote: 'Rượu chuối ngự men gạo một trăm tám mươi ngàn...', voicePrice: '180.000' },
+      { id: 'sp_43', name: 'Chuối Khô Nấu Canh Xương Dưỡng Sinh (Gói 500g)', sku: 'SP-04-43', standard: 'DÂN GIAN', stdClass: 'gray', price: '45.000', stock: '140 gói', status: 'approved', img: 'banana_plate.jpg', notes: 'Chuối xanh cắt khúc sấy khô dùng hầm sườn heo bùi ngọt.', voiceQuote: 'Chuối khô nấu canh bốn lăm ngàn...', voicePrice: '45.000' },
+      { id: 'sp_44', name: 'Snack Chuối Rong Biển Cháy Tỏi (Túi 180g)', sku: 'SP-04-44', standard: 'OCOP 3★', stdClass: 'amber', price: '42.000', stock: '380 túi', status: 'pending', img: 'banana_back.jpg', notes: 'Vị mặn mòi của rong biển hòa quyện tỏi phi giòn rụm.', voiceQuote: 'Snack chuối rong biển bốn mươi hai nghìn...', voicePrice: '42.000' },
+      { id: 'sp_45', name: 'Bột Chuối Cháo Dinh Dưỡng Trẻ Em (Hộp 400g)', sku: 'SP-04-45', standard: 'HỮU CƠ', stdClass: 'mint', price: '98.000', stock: '110 hộp', status: 'approved', img: 'banana_front.jpg', notes: 'Giàu kali và chất xơ, kích thích hệ tiêu hóa trẻ nhỏ.', voiceQuote: 'Bột chuối cháo em bé chín mươi tám ngàn...', voicePrice: '98.000' },
+      { id: 'sp_46', name: 'Chuối Sấy Dẻo Cắt Lát Mini (Hũ 350g)', sku: 'SP-04-46', standard: 'OCOP 4★', stdClass: 'amber', price: '72.000', stock: '260 hũ', status: 'approved', img: 'banana_plate.jpg', notes: 'Lát mỏng vừa miệng, tiện mang theo ăn nhẹ văn phòng.', voiceQuote: 'Hũ chuối sấy dẻo mini bảy mươi hai ngàn...', voicePrice: '72.000' },
+      { id: 'sp_47', name: 'Mật Chuối Lên Men Tự Nhiên (Chai 250ml)', sku: 'SP-04-47', standard: 'THỬ NGHIỆM', stdClass: 'red', price: '85.000', stock: '90 chai', status: 'rejected', img: 'banana_back.jpg', notes: 'Độ ngọt và nồng độ đường chưa đồng nhất giữa các mẻ.', voiceQuote: 'Chai mật chuối tám lăm ngàn...', voicePrice: '85.000' },
+      { id: 'sp_48', name: 'Phôi Men Giấm Chuối Sinh Học (Lọ 100ml)', sku: 'SP-04-48', standard: 'VI SINH', stdClass: 'gray', price: '35.000', stock: '130 lọ', status: 'deleted', img: 'banana_front.jpg', notes: 'Chuyển sang kênh cung ứng nội bộ các lò ủ giấm HTX.', voiceQuote: 'Lọ con giấm giống ba mươi lăm nghìn...', voicePrice: '35.000' },
+      { id: 'sp_49', name: 'Chuối Tiêu Hồng GlobalGAP (Thùng 13kg)', sku: 'SP-04-49', standard: 'GLOBALGAP', stdClass: 'mint', price: '290.000', stock: '50 thùng', status: 'pending', img: 'banana_plate.jpg', notes: 'Trái đều tăm tắp, không tì vết, đóng thùng xốp xuất khẩu.', voiceQuote: 'Thùng chuối xuất khẩu hai trăm chín mươi ngàn...', voicePrice: '290.000' },
+      { id: 'sp_50', name: 'Hộp Quà Tết Chuối Ngự Hoàng Gia (Combo 4 món)', sku: 'SP-04-50', standard: 'OCOP 4★ VIP', stdClass: 'amber', price: '450.000', stock: '85 hộp', status: 'approved', img: 'banana_back.jpg', notes: 'Gồm Chuối sấy thăng hoa, Rượu chum sành, Mứt chuối gừng, Trà hoa chuối.', voiceQuote: 'Hộp quà tết VIP bốn trăm năm mươi ngàn...', voicePrice: '450.000' }
+    ];
 
     const farmersDatabase = {
       'bacba': {
@@ -2270,88 +2454,7 @@
         address: 'Cụm 2, Thôn Đồng Cát, Xã Yên Bình',
         progress: '94%',
         subtext: 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!',
-        products: [
-          {
-            id: 'bb_prod_1',
-            name: 'Chuối Sấy Giòn Yên Bình — Túi Màng Nhôm 250g',
-            sku: 'SP-04-CSG',
-            standard: 'OCOP 4 SAO',
-            standardClass: 'amber',
-            price: '55.000',
-            stock: '1.200 túi',
-            status: 'pending', // Đang chờ duyệt
-            img: 'banana_front.jpg',
-            subImg1: 'banana_plate.jpg',
-            subImg2: 'banana_back.jpg',
-            notes: 'Đạt chuẩn OCOP 4 sao tỉnh theo QĐ 142/QĐ-UBND. Mẫu sấy đạt độ ẩm 4.8%. Cấp quyền dán tem QR Trace.',
-            voiceQuote: 'Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen...',
-            voicePrice: '55.000'
-          },
-          {
-            id: 'bb_prod_2',
-            name: 'Chuối Ngự Tiêu Hồng Chín Cây — Buồng 15-18kg',
-            sku: 'SP-04-CNU',
-            standard: 'VIETGAP',
-            standardClass: 'mint',
-            price: '240.000',
-            stock: '45 buồng',
-            status: 'approved', // Đã duyệt
-            img: 'banana_plate.jpg',
-            subImg1: 'banana_front.jpg',
-            subImg2: 'banana_back.jpg',
-            notes: 'Thu hoạch đạt độ ngọt Brix > 21%. Chuối già quả đẫy đà, cuống tươi xanh.',
-            voiceQuote: 'Chuối buồng đẫy quả, mỗi buồng từ mười lăm đến mười tám ký, giá hai trăm bốn mươi ngàn...',
-            voicePrice: '240.000'
-          },
-          {
-            id: 'bb_prod_3',
-            name: 'Chuối Dẻo Sấy Lạnh Đóng Hộp 500g Khóa Khí',
-            sku: 'SP-04-CDL',
-            standard: 'OCOP 3 SAO',
-            standardClass: 'amber',
-            price: '95.000',
-            stock: '300 hộp',
-            status: 'approved', // Đã duyệt
-            img: 'banana_back.jpg',
-            subImg1: 'banana_front.jpg',
-            subImg2: 'banana_plate.jpg',
-            notes: 'Sấy lạnh công nghệ chân không giữ nguyên mật ngọt tự nhiên và màu vàng ươm.',
-            voiceQuote: 'Chuối dẻo đóng hộp nửa ký, ăn dẻo dẻo ngọt thơm bán chín mươi lăm ngàn...',
-            voicePrice: '95.000'
-          },
-          {
-            id: 'bb_prod_4',
-            name: 'Kẹo Chuối Phồng Đậu Phộng Gừng Vụn',
-            sku: 'SP-04-KCP',
-            standard: 'LÀNG NGHỀ',
-            standardClass: 'gray',
-            price: '45.000',
-            stock: '150 gói',
-            status: 'rejected', // Không được duyệt
-            img: 'banana_front.jpg',
-            subImg1: 'banana_plate.jpg',
-            subImg2: 'banana_back.jpg',
-            notes: 'Bao bì thủ công chưa in mã QR Trace và chưa dán nhãn hạn sử dụng rõ ràng. Trả về yêu cầu in lại bao bì.',
-            voiceQuote: 'Kẹo chuối phồng gừng đậu phộng bán bốn lăm ngàn một bọc...',
-            voicePrice: '45.000'
-          },
-          {
-            id: 'bb_prod_5',
-            name: 'Bột Chuối Xanh Sấy Lạnh Hòa Tan (Hũ 400g)',
-            sku: 'SP-04-BCX',
-            standard: 'THỬ NGHIỆM',
-            standardClass: 'red',
-            price: '120.000',
-            stock: '50 hũ',
-            status: 'deleted', // Đã xóa
-            img: 'banana_plate.jpg',
-            subImg1: 'banana_front.jpg',
-            subImg2: 'banana_back.jpg',
-            notes: 'Mẻ thử nghiệm đã bán hết đợt 1, tạm xóa để chờ thu hoạch vụ chuối xanh tiếp theo.',
-            voiceQuote: 'Bột chuối xanh này dùng hỗ trợ dạ dày, giá một trăm hai mươi ngàn...',
-            voicePrice: '120.000'
-          }
-        ]
+        products: bacBaProductsDemo
       },
       'lan': {
         name: 'Cô Lan (Trần Thị Lan)',
@@ -2367,70 +2470,10 @@
         progress: '88%',
         subtext: 'Đạt 88% sản lượng chè búp sao lửa xuất khẩu!',
         products: [
-          {
-            id: 'cl_prod_1',
-            name: 'Trà Bát Tiên Sao Lửa — Hộp Thiếc Cao Cấp 200g',
-            sku: 'SP-09-TBT',
-            standard: 'VIETGAP TỈNH',
-            standardClass: 'mint',
-            price: '180.000',
-            stock: '500 hộp',
-            status: 'pending', // Đang chờ duyệt
-            img: 'tea_front.jpg',
-            subImg1: 'tea_front.jpg',
-            subImg2: 'tea_front.jpg',
-            notes: 'Đạt tiêu chuẩn an toàn VietGAP VG-2026-YB09. Sao chè theo phương pháp thủ công truyền thống.',
-            voiceQuote: 'Trà Bát Tiên sao củi thơm lừng, hộp hai trăm gam bán một trăm tám mươi nghìn nghen...',
-            voicePrice: '180.000'
-          },
-          {
-            id: 'cl_prod_2',
-            name: 'Trà Búp Đinh Cổ Thụ Yên Bình (Gói 100g Hút Chân Không)',
-            sku: 'SP-09-TBD',
-            standard: 'OCOP 4 SAO',
-            standardClass: 'amber',
-            price: '350.000',
-            stock: '120 gói',
-            status: 'approved', // Đã duyệt
-            img: 'tea_front.jpg',
-            subImg1: 'tea_front.jpg',
-            subImg2: 'tea_front.jpg',
-            notes: 'Thu hái 1 tôm 1 lá lúc sáng sớm, nước trà xanh sánh như mật ong.',
-            voiceQuote: 'Chè búp đinh đặc sản gói một lạng bán ba trăm rưởi...',
-            voicePrice: '350.000'
-          },
-          {
-            id: 'cl_prod_3',
-            name: 'Trà Bát Tiên Túi Lọc Tiện Lợi (30 Túi Lọc/Hộp)',
-            sku: 'SP-09-TTL',
-            standard: 'OCOP 3 SAO',
-            standardClass: 'amber',
-            price: '85.000',
-            stock: '400 túi',
-            status: 'approved', // Đã duyệt
-            img: 'tea_front.jpg',
-            subImg1: 'tea_front.jpg',
-            subImg2: 'tea_front.jpg',
-            notes: 'Trà nghiền vụn loại 1 giữ trọn hương vị cho văn phòng.',
-            voiceQuote: 'Hộp trà túi lọc bán tám mươi lăm nghìn...',
-            voicePrice: '85.000'
-          },
-          {
-            id: 'cl_prod_4',
-            name: 'Bã Trà Làm Phân Hữu Cơ Đóng Bao 25kg',
-            sku: 'SP-09-BTR',
-            standard: 'HỮU CƠ',
-            standardClass: 'gray',
-            price: '45.000',
-            stock: '60 bao',
-            status: 'deleted', // Đã xóa
-            img: 'tea_front.jpg',
-            subImg1: 'tea_front.jpg',
-            subImg2: 'tea_front.jpg',
-            notes: 'Sản phẩm phụ phẩm nông nghiệp, đã lưu trữ xuất cho trại rau sạch.',
-            voiceQuote: 'Bao bã chè ủ men vi sinh bán bốn mươi lăm nghìn...',
-            voicePrice: '45.000'
-          }
+          { id: 'cl_01', name: 'Trà Bát Tiên Sao Lửa (Hộp Thiếc 200g)', sku: 'SP-09-01', standard: 'VIETGAP', stdClass: 'mint', price: '180.000', stock: '500 hộp', status: 'pending', img: 'tea_front.jpg', notes: 'Tiêu chuẩn VietGAP VG-2026-YB09. Sao chè thủ công.', voiceQuote: 'Trà Bát Tiên một trăm tám mươi nghìn...', voicePrice: '180.000' },
+          { id: 'cl_02', name: 'Trà Búp Đinh Cổ Thụ (Gói 100g Chân Không)', sku: 'SP-09-02', standard: 'OCOP 4★', stdClass: 'amber', price: '350.000', stock: '120 gói', status: 'approved', img: 'tea_front.jpg', notes: 'Hái 1 tôm 1 lá sáng sớm, nước xanh trong sánh.', voiceQuote: 'Chè búp đinh ba trăm rưởi...', voicePrice: '350.000' },
+          { id: 'cl_03', name: 'Trà Bát Tiên Túi Lọc (30 Túi Lọc/Hộp)', sku: 'SP-09-03', standard: 'OCOP 3★', stdClass: 'amber', price: '85.000', stock: '400 túi', status: 'approved', img: 'tea_front.jpg', notes: 'Tiện lợi cho văn phòng, hương thơm dịu mát.', voiceQuote: 'Trà túi lọc tám mươi lăm nghìn...', voicePrice: '85.000' },
+          { id: 'cl_04', name: 'Bã Trà Làm Phân Hữu Cơ Đóng Bao 25kg', sku: 'SP-09-04', standard: 'HỮU CƠ', stdClass: 'gray', price: '45.000', stock: '60 bao', status: 'deleted', img: 'tea_front.jpg', notes: 'Phụ phẩm nông nghiệp ủ men trichoderma.', voiceQuote: 'Bao bã chè bốn lăm ngàn...', voicePrice: '45.000' }
         ]
       },
       'tuan': {
@@ -2447,76 +2490,32 @@
         progress: '76%',
         subtext: 'Đạt 76% kế hoạch quay mật ong hoa rừng vụ hè!',
         products: [
-          {
-            id: 'at_prod_1',
-            name: 'Mật Ong Hoa Rừng Tự Nhiên — Chai Thủy Tinh 500ml',
-            sku: 'SP-12-MOR',
-            standard: 'OCOP 4 SAO',
-            standardClass: 'amber',
-            price: '220.000',
-            stock: '150 chai',
-            status: 'pending', // Đang chờ duyệt
-            img: 'honey_front.jpg',
-            subImg1: 'honey_front.jpg',
-            subImg2: 'honey_front.jpg',
-            notes: 'Thủy phần < 18.5%, khai thác từ hoa vải và hoa rừng tự nhiên không pha đường.',
-            voiceQuote: 'Mật ong rừng chai nửa lít tự nhiên bán hai trăm hai chục ngàn một chai...',
-            voicePrice: '220.000'
-          },
-          {
-            id: 'at_prod_2',
-            name: 'Sữa Ong Chúa Tươi Nguyên Chất (Hũ 100g Bảo Quản Đông)',
-            sku: 'SP-12-SOC',
-            standard: 'OCOP 4 SAO',
-            standardClass: 'amber',
-            price: '280.000',
-            stock: '85 hũ',
-            status: 'approved', // Đã duyệt
-            img: 'honey_front.jpg',
-            subImg1: 'honey_front.jpg',
-            subImg2: 'honey_front.jpg',
-            notes: 'Sữa ong chúa tươi khai thác trực tiếp từ tổ ong chúa, vận chuyển tủ đá lạnh.',
-            voiceQuote: 'Sữa ong chúa tươi hũ một lạng bán hai trăm tám...',
-            voicePrice: '280.000'
-          },
-          {
-            id: 'at_prod_3',
-            name: 'Sáp Ong Rừng Tự Nhiên Chưa Tinh Lọc Thô',
-            sku: 'SP-12-SOR',
-            standard: 'NGUYÊN LIỆU',
-            standardClass: 'red',
-            price: '70.000',
-            stock: '25 kg',
-            status: 'rejected', // Không được duyệt
-            img: 'honey_front.jpg',
-            subImg1: 'honey_front.jpg',
-            subImg2: 'honey_front.jpg',
-            notes: 'Sáp lẫn tạp chất vỏ cây, chưa đạt chuẩn vệ sinh an toàn để đưa lên sàn bán lẻ. Cần lọc sạch.',
-            voiceQuote: 'Sáp ong bánh thô chưa lọc giá bảy mươi ngàn một cân...',
-            voicePrice: '70.000'
-          }
+          { id: 'at_01', name: 'Mật Ong Hoa Rừng Tự Nhiên (Chai 500ml)', sku: 'SP-12-01', standard: 'OCOP 4★', stdClass: 'amber', price: '220.000', stock: '150 chai', status: 'pending', img: 'honey_front.jpg', notes: 'Thủy phần < 18.5%, tự nhiên 100% không pha đường.', voiceQuote: 'Mật ong rừng chai nửa lít hai trăm hai chục...', voicePrice: '220.000' },
+          { id: 'at_02', name: 'Sữa Ong Chúa Tươi Nguyên Chất (Hũ 100g)', sku: 'SP-12-02', standard: 'OCOP 4★', stdClass: 'amber', price: '280.000', stock: '85 hũ', status: 'approved', img: 'honey_front.jpg', notes: 'Khai thác trực tiếp từ tổ chúa, bảo quản đông sâu.', voiceQuote: 'Sữa ong chúa tươi hai trăm tám...', voicePrice: '280.000' },
+          { id: 'at_03', name: 'Sáp Ong Rừng Tự Nhiên Thô Chưa Lọc', sku: 'SP-12-03', standard: 'NGUYÊN LIỆU', stdClass: 'red', price: '70.000', stock: '25 kg', status: 'rejected', img: 'honey_front.jpg', notes: 'Lẫn vụn vỏ cây, chưa lọc cặn đạt chuẩn đưa lên sàn.', voiceQuote: 'Sáp ong thô bảy mươi ngàn một cân...', voicePrice: '70.000' }
         ]
       }
     };
 
-    // Label và màu hiển thị của các trạng thái
     const statusMeta = {
-      'pending':  { label: '⏳ Đang chờ duyệt', class: 'pending',  badgeBg: '#FFFBEB', badgeText: '#B45309' },
-      'approved': { label: '✅ Đã duyệt',       class: 'approved', badgeBg: '#ECFDF5', badgeText: '#065F46' },
-      'rejected': { label: '❌ Không được duyệt', class: 'rejected', badgeBg: '#FEF2F2', badgeText: '#B91C1C' },
-      'deleted':  { label: '🗑️ Đã xóa',         class: 'deleted',  badgeBg: '#F1F5F9', badgeText: '#64748B' }
+      'pending':  { label: '⏳ Đang chờ duyệt', class: 'pending' },
+      'approved': { label: '✅ Đã duyệt',       class: 'approved' },
+      'rejected': { label: '❌ Không được duyệt', class: 'rejected' },
+      'deleted':  { label: '🗑️ Đã xóa',         class: 'deleted' }
     };
 
     // CHUYỂN NỘI DUNG SANG QUẢN TRỊ XÃ VIÊN TRỰC TIẾP TRÊN DASHBOARD (NO POPUP)
     function switchToMemberAdmin(farmerKey) {
       currentFarmerKey = farmerKey;
       currentStatusFilter = 'all';
+      currentPage = 1;
+
       const data = farmersDatabase[farmerKey] || farmersDatabase['bacba'];
 
       document.getElementById('view-overview').style.display = 'none';
       document.getElementById('view-member-admin').style.display = 'block';
 
-      // Nạp thông tin profile
+      // Nạp profile
       document.getElementById('admin-view-breadcrumb').innerText = data.name;
       document.getElementById('admin-user-fullname').innerText = data.name;
       document.getElementById('admin-user-meta').innerText = data.meta;
@@ -2531,13 +2530,13 @@
       document.getElementById('set-user-bank').value = data.bank;
       document.getElementById('set-user-address').value = data.address;
 
-      // Cập nhật Cột Right Statistic đồng bộ theo đúng xã viên đang chọn!
+      // Cập nhật Cột Right Statistic
       document.getElementById('right-ring-avatar').src = data.avatar;
       document.getElementById('right-ring-badge').innerText = data.progress;
       document.getElementById('right-stat-greeting').innerText = 'Xin chào, ' + data.name.split(' (')[0] + ' 🔥';
       document.getElementById('right-stat-subtext').innerText = data.subtext;
 
-      // Render Bảng sản phẩm & Thanh menu select trạng thái
+      // Render Bảng sản phẩm & phân trang
       renderMemberProductsTable();
 
       // Nạp sản phẩm đầu tiên lên khung kiểm tra
@@ -2545,24 +2544,30 @@
         loadProductToInspect(data.products[0].id);
       }
 
-      // Update sidebar active state
       document.getElementById('nav-btn-dashboard').classList.remove('active');
-
-      showToast('👤 Đã chuyển sang màn hình Quản Trị Chi Tiết: ' + data.name);
+      showToast('👤 Quản Trị Chi Tiết: ' + data.name + ' (' + data.products.length + ' sản phẩm)');
     }
 
-    // RENDER BẢNG SẢN PHẨM & CẬP NHẬT THANH MENU SELECT TRẠNG THÁI
-    function renderMemberProductsTable() {
+    // LẤY DANH SÁCH SẢN PHẨM ĐÃ LỌC
+    function getFilteredProducts() {
       const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
       const products = farmer.products || [];
+      if (currentStatusFilter === 'all') return products;
+      return products.filter(p => p.status === currentStatusFilter);
+    }
 
-      // Tính số lượng từng trạng thái
-      const counts = { all: products.length, pending: 0, approved: 0, rejected: 0, deleted: 0 };
-      products.forEach(p => {
+    // RENDER BẢNG SẢN PHẨM (1 DÒNG / SP, PHÂN TRANG 10 SP, MENU FILTER TRÊN CÙNG BẢNG)
+    function renderMemberProductsTable() {
+      const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
+      const allProducts = farmer.products || [];
+
+      // Đếm số lượng theo trạng thái
+      const counts = { all: allProducts.length, pending: 0, approved: 0, rejected: 0, deleted: 0 };
+      allProducts.forEach(p => {
         if (counts[p.status] !== undefined) counts[p.status]++;
       });
 
-      // Cập nhật số đếm lên thanh Tab Menu
+      // Cập nhật số lượng lên thanh Menu Filter trên cùng bảng
       document.getElementById('count-all').innerText = counts.all;
       document.getElementById('count-pending').innerText = counts.pending;
       document.getElementById('count-approved').innerText = counts.approved;
@@ -2570,7 +2575,7 @@
       document.getElementById('count-deleted').innerText = counts.deleted;
       document.getElementById('admin-user-total-badge').innerText = counts.all + ' Sản Phẩm';
 
-      // Cập nhật trạng thái active trên thanh tab và dropdown
+      // Cập nhật nút active trên tab filter & select dropdown
       ['all', 'pending', 'approved', 'rejected', 'deleted'].forEach(st => {
         const btn = document.getElementById('tab-status-' + st);
         if (btn) {
@@ -2580,50 +2585,102 @@
       });
       document.getElementById('select-status-filter').value = currentStatusFilter;
 
-      // Lọc danh sách hiển thị
-      const filtered = currentStatusFilter === 'all' 
-        ? products 
-        : products.filter(p => p.status === currentStatusFilter);
+      // Danh sách sau khi lọc
+      const filtered = getFilteredProducts();
+      const totalItems = filtered.length;
+      const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
 
+      // Đảm bảo currentPage hợp lệ
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = Math.min(startIndex + pageSize, totalItems);
+      const pageItems = filtered.slice(startIndex, endIndex);
+
+      // Cập nhật thông tin phân trang
+      document.getElementById('page-start-num').innerText = totalItems === 0 ? 0 : startIndex + 1;
+      document.getElementById('page-end-num').innerText = endIndex;
+      document.getElementById('page-total-num').innerText = totalItems;
+      document.getElementById('page-current-num').innerText = currentPage;
+      document.getElementById('page-total-pages').innerText = totalPages;
+
+      // Nút Prev/Next
+      document.getElementById('btn-prev-page').disabled = (currentPage <= 1);
+      document.getElementById('btn-next-page').disabled = (currentPage >= totalPages);
+
+      // Sinh nút số trang [1] [2] [3]...
+      const numWrap = document.getElementById('page-number-buttons');
+      numWrap.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'btn-page-num' + (i === currentPage ? ' active' : '');
+        btn.innerText = i;
+        btn.onclick = () => goToPage(i);
+        numWrap.appendChild(btn);
+      }
+
+      // Sinh select nhảy trang
+      const selectJump = document.getElementById('select-jump-page');
+      selectJump.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.innerText = 'Trang ' + i;
+        if (i === currentPage) opt.selected = true;
+        selectJump.appendChild(opt);
+      }
+
+      // Render các dòng (1 DÒNG DUY NHẤT CHO MỖI SẢN PHẨM)
       const tbody = document.getElementById('member-products-table-body');
       tbody.innerHTML = '';
 
-      if (filtered.length === 0) {
+      if (pageItems.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" style="text-align: center; padding: 28px; color: var(--slate-400); font-weight: 700;">
-              Không có sản phẩm nào thuộc trạng thái này!
+            <td colspan="8" style="text-align: center; padding: 32px; color: var(--slate-400); font-weight: 700;">
+              Không tìm thấy sản phẩm nào trong trạng thái này!
             </td>
           </tr>
         `;
         return;
       }
 
-      filtered.forEach(p => {
+      pageItems.forEach((p, idx) => {
+        const rowNumber = startIndex + idx + 1;
         const meta = statusMeta[p.status] || statusMeta['pending'];
         const tr = document.createElement('tr');
         tr.id = 'row-' + p.id;
         tr.innerHTML = `
+          <td style="font-weight: 800; color: var(--slate-400); font-size: 13px;">
+            #${String(rowNumber).padStart(2, '0')}
+          </td>
           <td>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <img src="${p.img}" alt="${p.name}" class="table-prod-thumb">
-              <div>
-                <div style="font-weight: 800; color: var(--slate-900); font-size: 14.5px;">${p.name}</div>
-                <div style="font-size: 12px; color: var(--slate-500); margin-top: 1px;">Mã: ${p.sku}</div>
-              </div>
+            <div style="display: flex; align-items: center;">
+              <img src="${p.img}" alt="${p.name}" class="table-prod-thumb-mini">
+              <span class="table-prod-name-cell" title="${p.name}">
+                ${p.name}
+              </span>
             </div>
           </td>
           <td>
-            <span class="pill-category-badge ${p.standardClass}">${p.standard}</span>
+            <span style="font-weight: 700; color: var(--slate-600); font-size: 12.5px; background: var(--slate-100); padding: 3px 8px; border-radius: 6px;">
+              ${p.sku}
+            </span>
           </td>
           <td>
-            <strong style="color: var(--brand-700); font-size: 15.5px;">${p.price} đ</strong>
+            <span class="pill-category-badge ${p.stdClass}" style="margin-bottom: 0;">
+              ${p.standard}
+            </span>
+          </td>
+          <td>
+            <strong style="color: var(--brand-700); font-size: 15px;">${p.price} đ</strong>
           </td>
           <td>
             <span style="font-weight: 700; color: var(--slate-700);">${p.stock}</span>
           </td>
           <td>
-            <!-- Menu select trực tiếp trạng thái cho sản phẩm này -->
+            <!-- Menu select trực tiếp đổi trạng thái cho sản phẩm -->
             <select class="row-status-select ${meta.class}" onchange="changeProductStatus('${p.id}', this.value)">
               <option value="pending" ${p.status === 'pending' ? 'selected' : ''}>⏳ Đang chờ duyệt</option>
               <option value="approved" ${p.status === 'approved' ? 'selected' : ''}>✅ Đã duyệt</option>
@@ -2631,10 +2688,10 @@
               <option value="deleted" ${p.status === 'deleted' ? 'selected' : ''}>🗑️ Đã xóa</option>
             </select>
           </td>
-          <td>
-            <div style="display: flex; align-items: center; gap: 6px;">
+          <td style="text-align: right;">
+            <div style="display: inline-flex; align-items: center; gap: 6px;">
               <button class="btn-table-action-edit" onclick="loadProductToInspect('${p.id}')" title="Kiểm tra ảnh & sửa chữ trực tiếp">
-                ✏️ Kiểm tra / Sửa
+                ✏️ Sửa / Duyệt
               </button>
               <button class="btn-table-action-del" onclick="quickDeleteProduct('${p.id}')" title="Đưa vào danh mục Đã xóa">
                 🗑️
@@ -2646,9 +2703,16 @@
       });
     }
 
-    // LỌC SẢN PHẨM THEO THANH MENU SELECT TRẠNG THÁI
+    // CHUYỂN TRANG (PAGINATION)
+    function goToPage(page) {
+      currentPage = page;
+      renderMemberProductsTable();
+    }
+
+    // LỌC SẢN PHẨM BẰNG MENU FILTER
     function filterMemberProducts(status) {
       currentStatusFilter = status;
+      currentPage = 1; // Reset về trang 1 khi lọc
       renderMemberProductsTable();
       const statusNames = {
         'all': 'Tất cả sản phẩm',
@@ -2657,10 +2721,10 @@
         'rejected': 'Không được duyệt',
         'deleted': 'Đã xóa'
       };
-      showToast('Đang lọc danh sách: ' + (statusNames[status] || status));
+      showToast('Đang lọc: ' + (statusNames[status] || status));
     }
 
-    // THAY ĐỔI TRẠNG THÁI TRỰC TIẾP TỪ MENU SELECT TRONG TỪNG DÒNG
+    // ĐỔI TRẠNG THÁI TRỰC TIẾP TỪ MENU SELECT TRÊN DÒNG
     function changeProductStatus(productId, newStatus) {
       const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
       const prod = farmer.products.find(p => p.id === productId);
@@ -2670,16 +2734,15 @@
         renderMemberProductsTable();
 
         const meta = statusMeta[newStatus];
-        showToast('✓ Đã cập nhật sản phẩm "' + prod.name.substring(0, 30) + '..." sang trạng thái: ' + meta.label);
+        showToast('✓ Đã cập nhật "' + prod.name.substring(0, 24) + '..." sang ' + meta.label);
 
-        // Nếu sản phẩm này đang nạp ở khung kiểm tra phía dưới thì cập nhật luôn badge
         if (currentInspectingProdId === productId) {
           updateInspectBadge(newStatus);
         }
       }
     }
 
-    // XÓA NHANH VÀO TRẠNG THÁI ĐÃ XÓA
+    // XÓA NHANH SẢN PHẨM VÀO TRẠNG THÁI ĐÃ XÓA
     function quickDeleteProduct(productId) {
       changeProductStatus(productId, 'deleted');
     }
@@ -2695,8 +2758,8 @@
       currentInspectingProdId = productId;
 
       document.getElementById('edit-img-main').src = prod.img;
-      document.getElementById('edit-img-sub1').src = prod.subImg1;
-      document.getElementById('edit-img-sub2').src = prod.subImg2;
+      document.getElementById('edit-img-sub1').src = prod.img;
+      document.getElementById('edit-img-sub2').src = prod.img;
 
       document.getElementById('edit-voice-quote').innerText = '"' + prod.voiceQuote + '"';
       document.getElementById('edit-voice-price').innerText = prod.voicePrice;
@@ -2707,9 +2770,8 @@
 
       updateInspectBadge(prod.status);
 
-      // Cuộn nhẹ tới khung kiểm tra nếu gọi từ bảng
       document.getElementById('box-inspect-editor').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      showToast('📋 Đã nạp sản phẩm "' + prod.name.substring(0, 28) + '..." vào khung thẩm định & sửa chữ!');
+      showToast('📋 Đã nạp sản phẩm "' + prod.name.substring(0, 24) + '..." lên khung thẩm định!');
     }
 
     function updateInspectBadge(status) {
@@ -2735,7 +2797,7 @@
       document.getElementById('view-overview').style.display = 'block';
       document.getElementById('nav-btn-dashboard').classList.add('active');
 
-      // Reset right column về Chủ nhiệm Minh
+      // Reset right column
       document.getElementById('right-ring-avatar').src = 'bac_ba_avatar.jpg';
       document.getElementById('right-ring-badge').innerText = '94%';
       document.getElementById('right-stat-greeting').innerText = 'Xin chào, Bác Ba 🔥';
@@ -2773,7 +2835,7 @@
         }
       }
 
-      showToast('🎉 PHÊ DUYỆT THÀNH CÔNG! ' + name + ' (' + price + ' đ) đã được xuất bản lên Shopee & Zalo OA.');
+      showToast('🎉 PHÊ DUYỆT THÀNH CÔNG! ' + name + ' (' + price + ' đ) đã được xuất bản lên sàn.');
     }
 
     function rejectPost() {

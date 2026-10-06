@@ -1,0 +1,122 @@
+/**
+ * GreenVillageOS Design Tokens
+ * Architecture: 3-Layer Structure (Primitive -> Semantic -> Component)
+ * Referenced from: Scout Voice-First UI & GreenVillageOS v2.1
+ */
+
+:root {
+  /* ==========================================================================
+     1. PRIMITIVE TOKENS (Giá trị thô)
+     ========================================================================== */
+  
+  /* Grayscale & Slate */
+  --gvos-color-slate-950: #020617;
+  --gvos-color-slate-900: #0F172A;
+  --gvos-color-slate-800: #1E293B;
+  --gvos-color-slate-700: #334155;
+  --gvos-color-slate-600: #475569;
+  --gvos-color-slate-500: #64748B;
+  --gvos-color-slate-400: #94A3B8;
+  --gvos-color-slate-300: #CBD5E1;
+  --gvos-color-slate-200: #E2E8F0;
+  --gvos-color-slate-100: #F1F5F9;
+  --gvos-color-slate-50:  #F8FAFC;
+  --gvos-color-white:     #FFFFFF;
+
+  /* Brand Emerald (Nông nghiệp & Xã xanh) */
+  --gvos-color-green-900: #064E3B;
+  --gvos-color-green-800: #065F46;
+  --gvos-color-green-700: #047857;
+  --gvos-color-green-600: #059669;
+  --gvos-color-green-500: #10B981;
+  --gvos-color-green-100: #D1FAE5;
+  --gvos-color-green-50:  #ECFDF5;
+
+  /* Scout AI Blue (Giọng nói & Thực thể AI) */
+  --gvos-color-blue-700:  #1D4ED8;
+  --gvos-color-blue-600:  #2563EB;
+  --gvos-color-blue-500:  #3B82F6;
+  --gvos-color-blue-100:  #DBEAFE;
+  --gvos-color-blue-50:   #EFF6FF;
+
+  /* Amber (Cơ chế "Tô Vàng" khi nhãn mờ/cần đối soát) */
+  --gvos-color-amber-700: #B45309;
+  --gvos-color-amber-600: #D97706;
+  --gvos-color-amber-500: #F59E0B;
+  --gvos-color-amber-100: #FEF3C7;
+  --gvos-color-amber-50:  #FFFBEB;
+
+  /* Kênh xuất bán hàng (Zalo & Shopee) */
+  --gvos-color-zalo-blue:     #0068FF;
+  --gvos-color-zalo-blue-dark:#0052CC;
+  --gvos-color-shopee-orange: #EE4D2D;
+
+  /* Typography Scale */
+  --gvos-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --gvos-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Spacing Scale (Hệ 4px) */
+  --gvos-space-1: 4px;
+  --gvos-space-2: 8px;
+  --gvos-space-3: 12px;
+  --gvos-space-4: 16px;
+  --gvos-space-5: 20px;
+  --gvos-space-6: 24px;
+  --gvos-space-8: 32px;
+  --gvos-space-10: 40px;
+
+  /* Radius Scale */
+  --gvos-radius-sm: 8px;
+  --gvos-radius-md: 14px;
+  --gvos-radius-lg: 18px;
+  --gvos-radius-xl: 24px;
+  --gvos-radius-pill: 9999px;
+
+  /* ==========================================================================
+     2. SEMANTIC TOKENS (Ý nghĩa giao diện)
+     ========================================================================== */
+
+  /* Nền & Bề mặt */
+  --surface-canvas:       var(--gvos-color-slate-50);
+  --surface-card:         var(--gvos-color-white);
+  --surface-subtle:       var(--gvos-color-slate-100);
+  --surface-dark-card:    var(--gvos-color-slate-900);
+
+  /* Chữ & Độ tương phản cao */
+  --text-primary:         var(--gvos-color-slate-900);
+  --text-secondary:       var(--gvos-color-slate-600);
+  --text-muted:           var(--gvos-color-slate-400);
+  --text-inverse:         var(--gvos-color-white);
+
+  /* Viền */
+  --border-subtle:        var(--gvos-color-slate-200);
+  --border-focused:       var(--gvos-color-slate-900);
+
+  /* Nghiệp vụ đặc thù: Tô Vàng */
+  --to-vang-bg:           var(--gvos-color-amber-100);
+  --to-vang-border:       var(--gvos-color-amber-500);
+  --to-vang-text:         var(--gvos-color-amber-700);
+
+  /* ==========================================================================
+     3. COMPONENT TOKENS (Quy cách thành phần)
+     ========================================================================== */
+
+  /* Thanh Voice Bar nổi ở đáy */
+  --voice-bar-bg:         rgba(255, 255, 255, 0.92);
+  --voice-bar-border:     var(--border-subtle);
+  --voice-bar-shadow:     0 12px 32px rgba(15, 23, 42, 0.12);
+  --voice-bar-height:     64px;
+  --voice-bar-radius:     var(--gvos-radius-pill);
+
+  /* Entity Pill Chip */
+  --chip-bg:              var(--gvos-color-white);
+  --chip-border:          var(--border-subtle);
+  --chip-text:            var(--text-primary);
+  --chip-radius:          var(--gvos-radius-pill);
+  --chip-height:          34px;
+
+  /* Senior Friendly Primary Action Button */
+  --btn-primary-h:        58px;
+  --btn-primary-radius:   var(--gvos-radius-pill);
+  --btn-primary-font-sz:  17px;
+}

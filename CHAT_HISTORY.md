@@ -122,10 +122,87 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 ### Giai đoạn 11: Đóng Gói Lịch Sử Trao Đổi, Sao Lưu Session & Đồng Bộ GitHub Toàn Diện
 - **Yêu cầu 42**: "push hết thông tin chat và code lên git nhé".
   - *Giải pháp*:
-    - Trích xuất toàn bộ 82 tin nhắn trao đổi xuyên suốt dự án từ `transcript_full.jsonl` vào file [chat_history.html](file:///Users/hoangminhduc/Downloads/GreenOS/chat_history.html).
-    - Cập nhật đầy đủ tài liệu tiến trình [CHAT_HISTORY.md](file:///Users/hoangminhduc/Downloads/GreenOS/CHAT_HISTORY.md).
+    - Trích xuất toàn bộ 82 tin nhắn trao đổi xuyên suốt dự án từ `transcript_full.jsonl` vào file [chat_history_742f8079.html](chat_history_742f8079.html).
+    - Cập nhật đầy đủ tài liệu tiến trình [CHAT_HISTORY.md](CHAT_HISTORY.md).
     - Tạo gói nén sao lưu phiên làm việc hoàn chỉnh `chat_session_742f8079.zip`.
     - Đẩy toàn bộ mã nguồn, tài liệu và lịch sử lên GitHub repository `git@github.com:thietkenexs2026-max/GreenOS.git` (nhánh `main`).
+
+---
+
+### Giai đoạn 12: Bảng Sản Phẩm 1 Dòng (Nowrap), Bộ Lọc Trạng Thái Header, Demo 50 Nông Sản & Phân Trang Động
+- **Yêu cầu 43**: "trong bảng dasboard của user thì có bảng liệt kê các sản phẩm sau đó sẽ có thanh menu select các trạng thái, đang chờ duyệt, đã duyệt, đã xóa, không được duyệt", "cái bảng là menu là filter ở trên cùng bảng thôi ai lại để như kia, mà chỉnh hết chữ về font inter đi, ngoài ra căn chỉnh lại bảng mỗi 1 sản phẩm để 1 dòng thôi không xuống dòng, bảng có thể thiển thị được 10 sản phẩm và select trang kế, demo 50 sản phẩm đi".
+  - *Giải pháp*:
+    - **Tích hợp thanh lọc trạng thái (Filter Toolbar) ngay trên Header bảng**: Loại bỏ khối lọc rời, đặt gọn gàng cạnh tiêu đề: Tất cả (50), Đang chờ duyệt (12), Đã duyệt (24), Không được duyệt (8), Đã xóa (6) kèm dropdown select nhanh trạng thái.
+    - **Căn chỉnh bảng chuẩn 1 dòng tuyệt đối (White-space: nowrap)**: Áp dụng `nowrap` cho toàn bộ các ô trong bảng, đảm bảo mỗi sản phẩm nằm trọn vẹn trên đúng 1 dòng duy nhất, không rớt dòng.
+    - **Cơ sở dữ liệu 50 sản phẩm nông sản thực tế**: Nạp đầy đủ 50 sản phẩm nông sản chế biến OCOP/VietGAP phong phú của Bác Ba (chuối sấy giòn, chuối dẻo, kẹo chuối gừng, rượu chuối hột, bột chuối xanh, chuối sấy thăng hoa...).
+    - **Phân trang động chuyên nghiệp (Dynamic Pagination)**: Hiển thị 10 sản phẩm/trang, bộ nút chuyển trang ‹ Trước, 1..5, Sau › kèm menu dropdown [Trang 1 ▼] chuyển trang tức thì. Tự động chia lại trang khi áp dụng bộ lọc trạng thái.
+
+---
+
+### Giai đoạn 13: Bỏ Icon Trong Trạng Thái, Modal Popup Duyệt/Kiểm Định & Tư Duy Đồng Bộ Các Màn
+- **Yêu cầu 44**: "bỏ icon trong các trạng thái đi, với cả sửa duyệt thì làm gì, Phần trong ảnh thì khi click vào sản phẩm trong bảng sẽ hiện lên popup để duyệt hoặc hiển thị các trạng thái đã duyệt hoặc tạm dừng, xóa ... . Tư duy các màn khác nhé".
+  - *Giải pháp*:
+    - **Loại bỏ toàn bộ emoji icon trong trạng thái**: Các nhãn và tab lọc chỉ dùng chữ thuần khiết, thanh lịch (Tất cả, Đang chờ duyệt, Đã duyệt, Tạm dừng, Không được duyệt, Đã xóa).
+    - **Modal Popup Kiểm Định & Phê Duyệt Nông Sản (Chuẩn 100% theo ảnh mẫu `media_1791305122429.png`)**: Bỏ phần sửa inline phía dưới trang, khi click vào bất kỳ dòng sản phẩm nào trong bảng sẽ mở popup:
+      - 3 ảnh thực địa sắc nét (Mặt trước bao bì, Mặt sau thành phần & HSD, Tem OCOP/Mã vạch).
+      - Trình mô phỏng nghe file ghi âm giọng nói nông dân kèm thanh tiến trình và hiển thị thời lượng (0:18 / 0:42).
+      - Các ô nhập liệu có nút [✕] đỏ xóa nhanh toàn bộ nội dung chỉ bằng 1 chạm.
+      - 4 nút tác vụ trạng thái: `Xóa Vào Lưu Trữ`, `Tạm Dừng Bán`, `✕ Không Được Duyệt (Trả Về)`, `✓ Phê Duyệt Nông Sản Lên Sàn ➔`.
+    - **Tư duy đồng bộ các màn hình trên Sidebar**:
+      - 📊 Dashboard Tổng Quan: 3 thẻ KPI nhanh, danh sách nông sản chờ duyệt, bảng đơn hàng mới.
+      - 👥 Quản Trị Xã Viên: Hồ sơ chi tiết từng xã viên, biểu đồ 6 tháng, bảng 50 sản phẩm và thiết lập tài khoản.
+      - 📦 Đơn Buôn B2B (Order Hub): Quản lý hợp đồng sỉ lớn (WinMart, MM Mega Market, Bách Hóa Xanh), mã vận đơn, phiếu đóng gói QR code.
+      - ⚡ Kịch Bản AI (AI Content Studio): Tự động tạo kịch bản Livestream TikTok Shop cho HTX với nút sao chép 1-click.
+
+---
+
+### Giai đoạn 14: Rà Soát Toàn Diện Hệ Thống, Đồng Bộ 100% Font Inter & Chuẩn Hóa Căn Chỉnh 13 Bảng Dữ Liệu
+- **Yêu cầu 45**: "kiểm tra rà soát lại toàn bộ, đồng bộ font Inter, kiếm tra tất cả các bảng căn chỉnh lại nội dung".
+  - *Giải pháp*:
+    - **Đồng bộ hóa 100% Font Inter**: Loại bỏ hoàn toàn các phông chữ khác, áp dụng font Inter đồng nhất trên mọi thẻ HTML, form nhập liệu, tiêu đề, nút bấm, nhãn và bảng số liệu.
+    - **Chuẩn hóa toàn bộ 13 bảng dữ liệu trong hệ thống**:
+      1. Bảng Nông Sản Chờ Duyệt (Dashboard)
+      2. Bảng Đơn Hàng Mới (Dashboard)
+      3. Bảng Sản Phẩm Của Xã Viên (Chi tiết xã viên)
+      4. Bảng Danh Sách 50 Xã Viên (Thư mục xã viên)
+      5. Bảng Hợp Đồng Đơn Buôn B2B (Order Hub)
+      6. Bảng Quản Lý Hộ Trồng Chuối (Vùng trồng)
+      7. Bảng Lô Đất Canh Tác (Vùng trồng)
+      8. Bảng Kế Hoạch Thu Hoạch Dự Kiến (Vùng trồng)
+      9. Bảng Radar Giá Thị Trường (Thị trường 3 miền)
+      10. Bảng Quản Lý Kho Bao Bì & Vật Tư Mua Chung
+      11. Bảng Sổ Cái Ghi Nợ / Khấu Trừ Xã Viên
+      12. Bảng Phân Bổ Đơn Xe Gom Hàng Liên Thôn
+      13. Bảng Đội Xe & Tài Xế HTX
+    - Mỗi bảng đều được bọc trong `.table-responsive-box` với `min-width` tối thiểu từ 900px đến 1420px, đệm ô rộng rãi 14px–18px, căn lề chuẩn mực (Cột text/tên căn trái, Badge/Mã lô/Ngày tháng căn giữa, Giá bán/Số lượng/Doanh thu căn phải).
+
+---
+
+### Giai đoạn 15: Khắc Phục Lỗi Hiển Thị Radar Giá & Kho Bao Bì, Hồ Sơ Hội Viên Động Kèm Số Liệu Riêng Biệt
+- **Yêu cầu 46**: "bảng ở rada thị trường không xem được nội dung, bảng ở kho bao bì cũng vậy, bấm xem hồ sơ của hội viên thì ra thông tin của hội viên như doanh thu, đơn hàng, số lượng sản phẩm,...".
+  - *Giải pháp*:
+    - **Sửa triệt để lỗi không xem được nội dung bảng Radar và Kho bao bì**:
+      - Tìm ra nguyên nhân gốc rễ: Lỗi JavaScript TDZ (Temporal Dead Zone - `ReferenceError: Cannot access 'farmersDatabase' before initialization`) do `farmersDirectory50Data.forEach` truy cập `farmersDatabase` trước khi đối tượng này được khai báo ở dòng dưới.
+      - Chuyển `farmersDatabase` lên trước dòng duyệt và bọc `min-width: 1100px - 1200px` với thanh cuộn mượt cho cả 2 bảng.
+      - Bổ sung 10 dòng dữ liệu thực tế cho bảng Radar giá (so sánh giá sàn vs giá thương lái, biên lợi nhuận +25% đến +38%, khuyến nghị AI) và bảng Kho vật tư bao bì (tồn kho, cảnh báo đặt mua chung, sổ ghi nợ khấu trừ).
+    - **Hiện thực hóa Hồ sơ Hội viên Động (Dynamic Member Profile)**:
+      - Khi click "Xem hồ sơ" bất kỳ ai trong 50 xã viên ở `view-members-directory`:
+        - Tiêu đề & Hero Profile đổi ngay sang tên, ảnh đại diện, số điện thoại, thôn xóm, loại cây trồng của xã viên đó.
+        - 4 thẻ KPI thống kê tự động tính toán lại riêng cho xã viên đó: 💰 Doanh thu năm 2026, 📦 Đơn hàng hoàn tất, 🏷️ Tổng số sản phẩm/lô hàng, 🌾 Sản lượng & Tiến độ vụ mùa.
+        - Biểu đồ Doanh thu & Sản lượng 6 tháng tự động render tương ứng.
+        - Bảng sản phẩm tự động sinh ra danh mục nông sản riêng biệt chuẩn theo cây trồng chủ lực của xã viên đó (ví dụ Bác Ba: các sản phẩm chuối; Bác Sáu: Bưởi da xanh; Chú Năm: Xoài Cát Hòa Lộc; Cô Bảy: Vú sữa Lò Rèn...).
+        - Khu vực Thiết lập tài khoản ở cuối trang tự động hiển thị số Zalo, tài khoản ngân hàng và địa chỉ thực địa của đúng xã viên đó.
+
+---
+
+### Giai đoạn 16: Đóng Gói Toàn Bộ Lịch Sử Chat, Đồng Bộ File & Đẩy Lên Git Remote
+- **Yêu cầu 47**: "push hết chat với nội dung lên git nhé mai tôi làm tiếp trên công ty".
+  - *Giải pháp*:
+    - Cập nhật đầy đủ tài liệu tiến trình phát triển dự án [CHAT_HISTORY.md](CHAT_HISTORY.md).
+    - Trích xuất toàn bộ 47 tin nhắn thảo luận phiên làm việc mới nhất vào [chat_history.html](chat_history.html) và [chat_history_26eb1c8c.html](chat_history_26eb1c8c.html) với bộ giao diện dark mode hiện đại, typography Inter và thanh chuyển đổi 3 phiên làm việc mượt mà.
+    - Đóng gói file nén sao lưu session `chat_session_26eb1c8c.zip`.
+    - Đồng bộ hóa toàn bộ mã nguồn và tài liệu giữa 2 thư mục làm việc `c:\Users\pc\Desktop\Chợ xanh` và `C:\Users\pc\Desktop\greenOS`.
+    - Commit và `git push origin main` lên GitHub repository `git@github.com:thietkenexs2026-max/GreenOS.git` để người dùng tiếp tục làm việc liền mạch tại văn phòng công ty.
 
 ---
 

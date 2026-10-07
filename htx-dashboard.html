@@ -2851,7 +2851,7 @@
                 <p id="admin-user-meta">Mã: HTX-YB-04 · 62 tuổi · Thôn Đồng Cát, Xã Yên Bình</p>
                 <div class="member-hero-badges">
                   <span class="hero-mini-pill" id="admin-user-badge">OCOP 4 SAO TỈNH</span>
-                  <span class="hero-mini-pill">1.4 Hecta Chuối Tiêu Hồng</span>
+                  <span class="hero-mini-pill" id="admin-user-crop-badge">1.4 Hecta Chuối Tiêu Hồng</span>
                 </div>
               </div>
             </div>
@@ -2866,8 +2866,8 @@
             </div>
           </div>
 
-          <!-- 3 Thẻ Mini Stat Của Riêng Xã Viên -->
-          <section class="mini-stat-trio">
+          <!-- 4 Thẻ Mini Stat Của Riêng Xã Viên (Doanh thu, Đơn hàng, Số lượng sản phẩm, Sản lượng) -->
+          <section class="mini-stat-trio" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
             <div class="mini-stat-card">
               <div class="mini-left-content">
                 <div class="mini-pastel-icon mint">💰</div>
@@ -2881,10 +2881,10 @@
 
             <div class="mini-stat-card">
               <div class="mini-left-content">
-                <div class="mini-pastel-icon amber">🍌</div>
+                <div class="mini-pastel-icon blue">📦</div>
                 <div>
-                  <div class="mini-stat-ratio">SẢN LƯỢNG THU HOẠCH</div>
-                  <div class="mini-stat-title" id="kpi-user-yield">1.8 Tấn</div>
+                  <div class="mini-stat-ratio">ĐƠN HÀNG HOÀN TẤT</div>
+                  <div class="mini-stat-title" id="kpi-user-orders" style="color: #2563EB;">48 Đơn sỉ</div>
                 </div>
               </div>
               <div class="mini-more-dots">⋮</div>
@@ -2892,15 +2892,89 @@
 
             <div class="mini-stat-card">
               <div class="mini-left-content">
-                <div class="mini-pastel-icon blue">📦</div>
+                <div class="mini-pastel-icon mint">🏷️</div>
                 <div>
-                  <div class="mini-stat-ratio">ĐƠN HÀNG HOÀN TẤT</div>
-                  <div class="mini-stat-title" id="kpi-user-orders">48 Đơn sỉ</div>
+                  <div class="mini-stat-ratio">TỔNG SẢN PHẨM / LÔ HÀNG</div>
+                  <div class="mini-stat-title" id="kpi-user-products" style="color: var(--slate-900);">50 Sản Phẩm</div>
+                </div>
+              </div>
+              <div class="mini-more-dots">⋮</div>
+            </div>
+
+            <div class="mini-stat-card">
+              <div class="mini-left-content">
+                <div class="mini-pastel-icon amber">🌾</div>
+                <div>
+                  <div class="mini-stat-ratio">SẢN LƯỢNG & TIẾN ĐỘ</div>
+                  <div class="mini-stat-title" id="kpi-user-yield" style="color: #D97706;">1.8 Tấn (94%)</div>
                 </div>
               </div>
               <div class="mini-more-dots">⋮</div>
             </div>
           </section>
+
+          <!-- Biểu Đồ Doanh Thu & Thu Hoạch 6 Tháng Của Xã Viên -->
+          <div class="member-card-container" style="margin-bottom: 24px;">
+            <div class="table-top-toolbar-header" style="border-bottom: none; margin-bottom: 8px; padding-bottom: 0;">
+              <div class="table-title-side">
+                <h3>Biểu Đồ Doanh Thu & Sản Lượng 6 Tháng Gần Nhất</h3>
+                <span class="pill-category-badge mint" id="admin-user-chart-trend">↗ Tăng trưởng 18.5%</span>
+              </div>
+              <div style="font-size: 13px; color: var(--slate-500); font-weight: 600;">
+                Kỳ đối soát: <strong style="color: var(--slate-800);">Tháng 5 - Tháng 10/2026</strong>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; margin-top: 14px;">
+              <!-- Cột các thanh biểu đồ -->
+              <div class="coursue-bar-chart-card" style="margin: 0; background: #F8FAFC; border: 1px solid var(--slate-200); border-radius: 16px; padding: 20px;">
+                <div class="chart-bars-wrap" style="height: 120px; align-items: flex-end; justify-content: space-around;">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: var(--slate-500);">3.2 Tr</span>
+                    <div class="pill-bar-column" style="height: 40px; width: 36px; background: #CBD5E1; border-radius: 8px;" title="Tháng 5"></div>
+                    <span style="font-size: 12px; font-weight: 700; color: var(--slate-600);">T.5</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: var(--slate-500);">4.5 Tr</span>
+                    <div class="pill-bar-column" style="height: 55px; width: 36px; background: #CBD5E1; border-radius: 8px;" title="Tháng 6"></div>
+                    <span style="font-size: 12px; font-weight: 700; color: var(--slate-600);">T.6</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: var(--slate-500);">4.0 Tr</span>
+                    <div class="pill-bar-column" style="height: 48px; width: 36px; background: #CBD5E1; border-radius: 8px;" title="Tháng 7"></div>
+                    <span style="font-size: 12px; font-weight: 700; color: var(--slate-600);">T.7</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: var(--slate-500);">6.8 Tr</span>
+                    <div class="pill-bar-column" style="height: 75px; width: 36px; background: #CBD5E1; border-radius: 8px;" title="Tháng 8"></div>
+                    <span style="font-size: 12px; font-weight: 700; color: var(--slate-600);">T.8</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: var(--slate-500);">8.2 Tr</span>
+                    <div class="pill-bar-column" style="height: 90px; width: 36px; background: #CBD5E1; border-radius: 8px;" title="Tháng 9"></div>
+                    <span style="font-size: 12px; font-weight: 700; color: var(--slate-600);">T.9</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <span id="chart-user-peak-val" style="font-size: 12px; font-weight: 800; color: #059669;">18.4 Tr</span>
+                    <div class="pill-bar-column active" style="height: 110px; width: 36px; background: #059669; border-radius: 8px; box-shadow: 0 4px 12px rgba(5,150,105,0.3);" title="Tháng 10"></div>
+                    <span style="font-size: 12px; font-weight: 800; color: #059669;">T.10</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Thống kê phụ bên cạnh biểu đồ -->
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="background: #F1F5F9; border-radius: 12px; padding: 14px 16px;">
+                  <div style="font-size: 12px; color: var(--slate-500); font-weight: 700; text-transform: uppercase;">Doanh Thu Đạt Đỉnh / Tháng</div>
+                  <div id="chart-user-avg-rev" style="font-size: 18px; font-weight: 800; color: #0F172A; margin-top: 4px;">18.450.000 đ</div>
+                </div>
+                <div style="background: #ECFDF5; border-radius: 12px; padding: 14px 16px; border: 1px solid #A7F3D0;">
+                  <div style="font-size: 12px; color: #047857; font-weight: 700; text-transform: uppercase;">Tỷ Lệ Hoàn Thành Chỉ Tiêu HTX</div>
+                  <div id="chart-user-completion-rate" style="font-size: 18px; font-weight: 800; color: #059669; margin-top: 4px;">94% Đạt Kế Hoạch</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- =================================================================
                BẢNG LIỆT KÊ SẢN PHẨM: 1 DÒNG DUY NHẤT, MENU FILTER TRÊN CÙNG BẢNG
@@ -3550,43 +3624,117 @@
             <div class="table-top-toolbar-header">
               <div class="table-title-side">
                 <h3>Sổ Theo Dõi Ứng Vật Tư Nông Nghiệp Cho Xã Viên (Vụ Mùa 2026)</h3>
-                <span class="pill-category-badge amber">Tự động trừ công nợ khi bán chuối, lãi suất 0%</span>
+                <span class="pill-category-badge amber">Tự động trừ công nợ khi bán chuối & nông sản, lãi suất 0%</span>
               </div>
             </div>
 
-            <table class="member-product-table">
-              <thead>
-                <tr>
-                  <th style="text-align: left;">XÃ VIÊN</th>
-                  <th style="text-align: left;">LOẠI VẬT TƯ ĐÃ NHẬN</th>
-                  <th style="text-align: center;">SỐ LƯỢNG</th>
-                  <th style="text-align: right;">GIÁ TRỊ CẤP ỨNG</th>
-                  <th style="text-align: right;">ĐÃ CẤN TRỪ VỤ GẶT</th>
-                  <th style="text-align: center;">CÔNG NỢ CÒN LẠI</th>
-                  <th style="text-align: right;">HÀNH ĐỘNG</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align: left;"><strong>Bác Ba (Hộ 04)</strong></td>
-                  <td style="text-align: left;">Phân hữu cơ vi sinh Sông Gianh + Túi bọc buồng</td>
-                  <td style="text-align: center; font-weight: 700;">8 Bao (400kg) + 200 Túi</td>
-                  <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">3.200.000 đ</td>
-                  <td style="text-align: right; color: var(--brand-700); font-weight: 700; font-variant-numeric: tabular-nums;">-3.200.000 đ (Đã trừ hết)</td>
-                  <td style="text-align: center;"><span class="status-badge-clean approved">0 đ (Hoàn tất)</span></td>
-                  <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyHandoverModal('Bác Ba (Hộ 04)')">Xem Biên Bản</button></td>
-                </tr>
-                <tr>
-                  <td style="text-align: left;"><strong>Chú Tư (Hộ 31)</strong></td>
-                  <td style="text-align: left;">Phân NPK Đầu Trâu chuyên Trà hữu cơ</td>
-                  <td style="text-align: center; font-weight: 700;">10 Bao (500kg)</td>
-                  <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">4.500.000 đ</td>
-                  <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-2.000.000 đ</td>
-                  <td style="text-align: center;"><span style="color: #D97706; font-weight: 800; font-variant-numeric: tabular-nums;">2.500.000 đ</span></td>
-                  <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyDeductionModal('Chú Tư (Hộ 31)', '2.500.000')">Lập Lệnh Trừ</button></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive-box">
+              <table class="member-product-table" style="min-width: 1100px;">
+                <thead>
+                  <tr>
+                    <th style="width: 220px; text-align: left;">XÃ VIÊN</th>
+                    <th style="min-width: 320px; text-align: left;">LOẠI VẬT TƯ ĐÃ NHẬN</th>
+                    <th style="width: 160px; text-align: center;">SỐ LƯỢNG</th>
+                    <th style="width: 140px; text-align: right;">GIÁ TRỊ CẤP ỨNG</th>
+                    <th style="width: 180px; text-align: right;">ĐÃ CẤN TRỪ VỤ GẶT</th>
+                    <th style="width: 160px; text-align: center;">CÔNG NỢ CÒN LẠI</th>
+                    <th style="width: 130px; text-align: right;">HÀNH ĐỘNG</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align: left;"><strong>Bác Ba (Hộ 04 - Đồng Cát)</strong></td>
+                    <td style="text-align: left;">Phân hữu cơ vi sinh Sông Gianh + Túi bọc buồng chuối</td>
+                    <td style="text-align: center; font-weight: 700;">8 Bao (400kg) + 200 Túi</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">3.200.000 đ</td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 700; font-variant-numeric: tabular-nums;">-3.200.000 đ (Đã trừ hết)</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">0 đ (Hoàn tất)</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyHandoverModal('Bác Ba (Hộ 04)')">Xem Biên Bản</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Cô Lan (Hộ 09 - Đồi Mơ)</strong></td>
+                    <td style="text-align: left;">Phân bón vi sinh Đầu Trâu TE-02 cho chè + Bao bì OCOP</td>
+                    <td style="text-align: center; font-weight: 700;">12 Bao (600kg) + 300 Túi</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">5.400.000 đ</td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 700; font-variant-numeric: tabular-nums;">-5.400.000 đ (Đã trừ hết)</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">0 đ (Hoàn tất)</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyHandoverModal('Cô Lan (Hộ 09)')">Xem Biên Bản</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Anh Tuấn (Hộ 12 - Suối Hai)</strong></td>
+                    <td style="text-align: left;">Thùng gỗ nuôi ong chuẩn Ý + 500 Hũ thủy tinh lục giác OCOP</td>
+                    <td style="text-align: center; font-weight: 700;">30 Thùng + 500 Hũ</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">6.800.000 đ</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-4.000.000 đ</td>
+                    <td style="text-align: center;"><span style="color: #D97706; font-weight: 800; font-variant-numeric: tabular-nums;">2.800.000 đ</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyDeductionModal('Anh Tuấn (Hộ 12)', '2.800.000')">Lập Lệnh Trừ</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Chú Tư (Hộ 31 - Đồi Mơ)</strong></td>
+                    <td style="text-align: left;">Phân NPK Đầu Trâu chuyên Trà hữu cơ + Túi zip hút chân không</td>
+                    <td style="text-align: center; font-weight: 700;">10 Bao (500kg) + 200 Túi</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">4.500.000 đ</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-2.000.000 đ</td>
+                    <td style="text-align: center;"><span style="color: #D97706; font-weight: 800; font-variant-numeric: tabular-nums;">2.500.000 đ</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyDeductionModal('Chú Tư (Hộ 31)', '2.500.000')">Lập Lệnh Trừ</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Cô Sáu (Hộ 18 - Suối Hai)</strong></td>
+                    <td style="text-align: left;">Tem QR truy xuất nguồn gốc + Chai thủy tinh 500ml nắp nhôm</td>
+                    <td style="text-align: center; font-weight: 700;">1.000 Tem + 350 Chai</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">2.950.000 đ</td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 700; font-variant-numeric: tabular-nums;">-2.950.000 đ (Đã trừ hết)</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">0 đ (Hoàn tất)</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyHandoverModal('Cô Sáu (Hộ 18)')">Xem Biên Bản</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Anh Thắng (Hộ 52 - Bãi Giữa)</strong></td>
+                    <td style="text-align: left;">Túi bao trái bưởi da xanh chống rám + Chế phẩm Trichoderma</td>
+                    <td style="text-align: center; font-weight: 700;">1.500 Túi + 15 Gói</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">3.600.000 đ</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-1.800.000 đ</td>
+                    <td style="text-align: center;"><span style="color: #D97706; font-weight: 800; font-variant-numeric: tabular-nums;">1.800.000 đ</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyDeductionModal('Anh Thắng (Hộ 52)', '1.800.000')">Lập Lệnh Trừ</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Bác Tám (Hộ 07 - Đồng Cát)</strong></td>
+                    <td style="text-align: left;">Cây giống chuối cấy mô F1 sạch bệnh + Màng phủ nông nghiệp</td>
+                    <td style="text-align: center; font-weight: 700;">250 Cây + 4 Cuộn</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">4.200.000 đ</td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 700; font-variant-numeric: tabular-nums;">-4.200.000 đ (Đã trừ hết)</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">0 đ (Hoàn tất)</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyHandoverModal('Bác Tám (Hộ 07)')">Xem Biên Bản</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Chú Năm (Hộ 08 - Đồng Cát)</strong></td>
+                    <td style="text-align: left;">Phân gà hữu cơ vi sinh Nhật Bản + Men ủ rơm rạ Trichoderma</td>
+                    <td style="text-align: center; font-weight: 700;">20 Bao (1.000kg)</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">7.500.000 đ</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-5.000.000 đ</td>
+                    <td style="text-align: center;"><span style="color: #D97706; font-weight: 800; font-variant-numeric: tabular-nums;">2.500.000 đ</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyDeductionModal('Chú Năm (Hộ 08)', '2.500.000')">Lập Lệnh Trừ</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Chị Mai (Hộ 29 - Suối Hai)</strong></td>
+                    <td style="text-align: left;">Bịch phôi nấm hương giống sạch + Máy đo nhiệt ẩm nhà màng</td>
+                    <td style="text-align: center; font-weight: 700;">1.200 Bịch + 1 Máy</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">6.200.000 đ</td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 700; font-variant-numeric: tabular-nums;">-6.200.000 đ (Đã trừ hết)</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">0 đ (Hoàn tất)</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyHandoverModal('Chị Mai (Hộ 29)')">Xem Biên Bản</button></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Anh Long (Hộ 25 - Bãi Giữa)</strong></td>
+                    <td style="text-align: left;">Phân bón lá sinh học Amino Acid + Vôi bột nông nghiệp khử chua</td>
+                    <td style="text-align: center; font-weight: 700;">15 Can 5L + 10 Bao</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">3.800.000 đ</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-2.000.000 đ</td>
+                    <td style="text-align: center;"><span style="color: #D97706; font-weight: 800; font-variant-numeric: tabular-nums;">1.800.000 đ</span></td>
+                    <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyDeductionModal('Anh Long (Hộ 25)', '1.800.000')">Lập Lệnh Trừ</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -3635,50 +3783,113 @@
               <button class="hero-pill-btn-dark" onclick="refreshAIRadar()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> Quét Lại Giá AI</button>
             </div>
 
-            <table class="member-product-table">
-              <thead>
-                <tr>
-                  <th style="text-align: left;">NÔNG SẢN ĐẶC SẢN</th>
-                  <th style="text-align: right;">GIÁ MUA TẠI VƯỜN</th>
-                  <th style="text-align: right;">GIÁ THƯƠNG LÁI NGOÀI</th>
-                  <th style="text-align: right;">GIÁ HTX XUẤT BUÔN B2B</th>
-                  <th style="text-align: right;">GIÁ BÁN LẺ SÀN TMĐT</th>
-                  <th style="text-align: center;">BIÊN LN HTX</th>
-                  <th style="text-align: right;">KHUYẾN NGHỊ AI</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align: left;"><strong>Chuối Tiêu Hồng Yên Bình (Tươi)</strong></td>
-                  <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">8.500 đ/kg</td>
-                  <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">7.000 đ/kg</td>
-                  <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">14.500 đ/kg (Đã sấy)</td>
-                  <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">55.000 đ/túi 250g</td>
-                  <td style="text-align: center;"><span class="status-badge-clean approved">+28%</span></td>
-                  <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Gom thêm 5 tấn đón Tết</span></td>
-                </tr>
-
-                <tr>
-                  <td style="text-align: left;"><strong>Mật Ong Hoa Rừng Tự Nhiên OCOP 4★</strong></td>
-                  <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">180.000 đ/Lít</td>
-                  <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">160.000 đ/Lít</td>
-                  <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">220.000 đ/Lít</td>
-                  <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">260.000 đ/hũ 500ml</td>
-                  <td style="text-align: center;"><span class="status-badge-clean approved">+31%</span></td>
-                  <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Giữ giá ổn định</span></td>
-                </tr>
-
-                <tr>
-                  <td style="text-align: left;"><strong>Trà Bát Tiên Sao Suốt OCOP 4★</strong></td>
-                  <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">220.000 đ/kg</td>
-                  <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">200.000 đ/kg</td>
-                  <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">280.000 đ/kg</td>
-                  <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">320.000 đ/hộp</td>
-                  <td style="text-align: center;"><span class="status-badge-clean approved">+27%</span></td>
-                  <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Đóng hộp quà Tết</span></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive-box">
+              <table class="member-product-table" style="min-width: 1200px;">
+                <thead>
+                  <tr>
+                    <th style="min-width: 280px; text-align: left;">NÔNG SẢN ĐẶC SẢN</th>
+                    <th style="min-width: 140px; text-align: right;">GIÁ MUA TẠI VƯỜN</th>
+                    <th style="min-width: 150px; text-align: right;">GIÁ THƯƠNG LÁI NGOÀI</th>
+                    <th style="min-width: 180px; text-align: right;">GIÁ HTX XUẤT BUÔN B2B</th>
+                    <th style="min-width: 170px; text-align: right;">GIÁ BÁN LẺ SÀN TMĐT</th>
+                    <th style="min-width: 130px; text-align: center;">BIÊN LN HTX</th>
+                    <th style="min-width: 190px; text-align: right;">KHUYẾN NGHỊ AI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align: left;"><strong>Chuối Tiêu Hồng Yên Bình (Tươi)</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">8.500 đ/kg</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">7.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">14.500 đ/kg (Đã sấy)</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">55.000 đ/túi 250g</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+28%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Gom thêm 5 tấn đón Tết</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Chuối Sấy Dẻo OCOP 4★ (Túi Zip 250g)</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">28.000 đ/túi</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">24.000 đ/túi</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">42.000 đ/túi</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">55.000 đ/túi</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+33%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Tăng công suất lò sấy</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Trà Bát Tiên Sao Suốt OCOP 4★ (Hộp 200g)</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">220.000 đ/kg</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">200.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">280.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">320.000 đ/hộp</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+27%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Đóng hộp quà Tết VIP</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Trà Búp Đinh Cổ Thụ Thượng Hạng</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">1.200.000 đ/kg</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">1.050.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">1.650.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">1.950.000 đ/kg</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+38%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Giữ giá cao cấp</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Mật Ong Hoa Rừng Tự Nhiên OCOP 4★</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">180.000 đ/Lít</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">160.000 đ/Lít</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">220.000 đ/Lít</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">260.000 đ/hũ 500ml</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+31%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Giữ giá ổn định</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Bưởi Da Xanh Ruột Hồng OCOP (Trái 1.5kg)</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">24.000 đ/kg</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">20.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">32.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">45.000 đ/kg</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+25%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Ký hợp đồng WinMart 15T</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Cam Sành Lục Yên Mọng Nước VietGAP</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">16.000 đ/kg</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">13.500 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">22.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">30.000 đ/kg</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+27%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Thu hoạch đúng brix</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Gạo ST25 Lúa Rươi Hữu Cơ (Túi 5kg)</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">28.000 đ/kg</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">25.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">36.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">45.000 đ/kg</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+29%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Hàng hot giỏ quà Tết</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Nấm Hương Rừng Khô Tự Nhiên (Gói 200g)</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">320.000 đ/kg</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">290.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">410.000 đ/kg</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">480.000 đ/kg</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+28%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Hút chân không chống ẩm</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Rượu Mật Ong Lên Men (Mead OCOP 750ml)</strong></td>
+                    <td style="text-align: right; color: var(--brand-700); font-weight: 800; font-variant-numeric: tabular-nums;">95.000 đ/chai</td>
+                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">85.000 đ/chai</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">150.000 đ/chai</td>
+                    <td style="text-align: right; font-weight: 700; font-variant-numeric: tabular-nums;">195.000 đ/chai</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">+36%</span></td>
+                    <td style="text-align: right;"><span style="color: var(--brand-700); font-weight: 700;">Cháy hàng mùa lễ hội</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -4040,7 +4251,87 @@
     let currentDirStandard = 'all';
     let currentDirSearchQuery = '';
 
-    // Tự động đồng bộ các hộ nông dân mới vào database quản trị chi tiết
+    // Database quản trị chi tiết của các xã viên
+    const farmersDatabase = {
+      'bacba': {
+        name: 'Bác Ba (Nguyễn Văn Ba)',
+        meta: 'Mã: HTX-YB-04 · 62 tuổi · Thôn Đồng Cát, Xã Yên Bình',
+        badge: 'OCOP 4 SAO TỈNH',
+        avatar: 'bac_ba_avatar.jpg',
+        revenue: '18.450.000 đ',
+        yield: '1.8 Tấn',
+        orders: '48 Đơn sỉ',
+        phone: '0912.456.789',
+        bank: 'Agribank Chi Nhánh Yên Bình - 8800.205.123456',
+        address: 'Cụm 2, Thôn Đồng Cát, Xã Yên Bình',
+        crop: '1.8 ha Chuối Tiêu Hồng OCOP',
+        progress: '94%',
+        subtext: 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!',
+        products: bacBaProductsDemo
+      },
+      'lan': {
+        name: 'Cô Lan (Trần Thị Lan)',
+        meta: 'Mã: HTX-YB-09 · 54 tuổi · Thôn Đồi Mơ, Xã Yên Bình',
+        badge: 'VIETGAP CHUẨN TỈNH',
+        avatar: 'tea_front.jpg',
+        revenue: '32.600.000 đ',
+        yield: '2.4 Tấn',
+        orders: '65 Đơn sỉ',
+        phone: '0982.112.334',
+        bank: 'Agribank Yên Bình - 8800.334.888999',
+        address: 'Xóm Đồi Chè 1, Xã Yên Bình',
+        crop: '2.4 ha Trà Bát Tiên Sao Lửa',
+        progress: '88%',
+        subtext: 'Đạt 88% sản lượng chè búp sao lửa xuất khẩu!',
+        products: [
+          { id: 'cl_01', name: 'Trà Bát Tiên Sao Lửa (Hộp Thiếc 200g)', sku: 'SP-09-01', standard: 'VIETGAP', stdClass: 'mint', price: '180.000', stock: '500 hộp', status: 'pending', img: 'tea_front.jpg', notes: 'Tiêu chuẩn VietGAP VG-2026-YB09. Sao chè thủ công.', voiceQuote: 'Trà Bát Tiên một trăm tám mươi nghìn...', voicePrice: '180.000' },
+          { id: 'cl_02', name: 'Trà Búp Đinh Cổ Thụ (Gói 100g Chân Không)', sku: 'SP-09-02', standard: 'OCOP 4★', stdClass: 'amber', price: '350.000', stock: '120 gói', status: 'approved', img: 'tea_front.jpg', notes: 'Hái 1 tôm 1 lá sáng sớm, nước xanh trong sánh.', voiceQuote: 'Chè búp đinh ba trăm rưởi...', voicePrice: '350.000' },
+          { id: 'cl_03', name: 'Trà Bát Tiên Túi Lọc (30 Túi Lọc/Hộp)', sku: 'SP-09-03', standard: 'OCOP 3★', stdClass: 'amber', price: '85.000', stock: '400 túi', status: 'approved', img: 'tea_front.jpg', notes: 'Tiện lợi cho văn phòng, hương thơm dịu mát.', voiceQuote: 'Trà túi lọc tám mươi lăm nghìn...', voicePrice: '85.000' },
+          { id: 'cl_04', name: 'Trà Bát Tiên Thượng Hạng (Hộp Quà VIP 500g)', sku: 'SP-09-04', standard: 'OCOP 4★ VIP', stdClass: 'amber', price: '520.000', stock: '85 hộp', status: 'approved', img: 'tea_front.jpg', notes: 'Hộp sơn mài quà tặng doanh nghiệp và đối tác B2B.', voiceQuote: 'Hộp trà VIP năm trăm hai mươi ngàn...', voicePrice: '520.000' },
+          { id: 'cl_05', name: 'Bã Trà Làm Phân Hữu Cơ Đóng Bao 25kg', sku: 'SP-09-05', standard: 'HỮU CƠ', stdClass: 'gray', price: '45.000', stock: '60 bao', status: 'deleted', img: 'tea_front.jpg', notes: 'Phụ phẩm nông nghiệp ủ men trichoderma.', voiceQuote: 'Bao bã chè bốn lăm ngàn...', voicePrice: '45.000' }
+        ]
+      },
+      'tuan': {
+        name: 'Anh Tuấn (Hoàng Văn Tuấn)',
+        meta: 'Mã: HTX-YB-12 · 39 tuổi · Thôn Suối Hai, Xã Yên Bình',
+        badge: 'OCOP 4 SAO TỈNH',
+        avatar: 'honey_front.jpg',
+        revenue: '24.200.000 đ',
+        yield: '1.200 Lít',
+        orders: '38 Đơn sỉ',
+        phone: '0973.998.776',
+        bank: 'BIDV Yên Bình - 4501.998.776',
+        address: 'Bìa rừng tự nhiên Xã Yên Bình',
+        crop: '75 Đàn ong Mật Ong Hoa Rừng Tự Nhiên',
+        progress: '76%',
+        subtext: 'Đạt 76% kế hoạch quay mật ong hoa rừng vụ hè!',
+        products: [
+          { id: 'at_01', name: 'Mật Ong Hoa Rừng Tự Nhiên (Chai 500ml)', sku: 'SP-12-01', standard: 'OCOP 4★', stdClass: 'amber', price: '220.000', stock: '150 chai', status: 'pending', img: 'honey_front.jpg', notes: 'Thủy phần < 18.5%, tự nhiên 100% không pha đường.', voiceQuote: 'Mật ong rừng chai nửa lít hai trăm hai chục...', voicePrice: '220.000' },
+          { id: 'at_02', name: 'Sữa Ong Chúa Tươi Nguyên Chất (Hũ 100g)', sku: 'SP-12-02', standard: 'OCOP 4★', stdClass: 'amber', price: '280.000', stock: '85 hũ', status: 'approved', img: 'honey_front.jpg', notes: 'Khai thác trực tiếp từ tổ chúa, bảo quản đông sâu.', voiceQuote: 'Sữa ong chúa tươi hai trăm tám...', voicePrice: '280.000' },
+          { id: 'at_03', name: 'Mật Ong Bánh Tổ Nguyên Khung (Khay 400g)', sku: 'SP-12-03', standard: 'OCOP 4★ VIP', stdClass: 'amber', price: '190.000', stock: '70 khay', status: 'approved', img: 'honey_front.jpg', notes: 'Cắt trực tiếp từ cầu ong tự nhiên, sáp non dẻo ngọt.', voiceQuote: 'Mật ong bánh tổ một trăm chín mươi ngàn...', voicePrice: '190.000' },
+          { id: 'at_04', name: 'Sáp Ong Rừng Tự Nhiên Thô Chưa Lọc', sku: 'SP-12-04', standard: 'NGUYÊN LIỆU', stdClass: 'red', price: '70.000', stock: '25 kg', status: 'rejected', img: 'honey_front.jpg', notes: 'Lẫn vụn vỏ cây, chưa lọc cặn đạt chuẩn đưa lên sàn.', voiceQuote: 'Sáp ong thô bảy mươi ngàn một cân...', voicePrice: '70.000' }
+        ]
+      }
+    };
+
+    // Hàm tạo 7 sản phẩm thực tế theo đúng cây trồng và tiêu chuẩn của từng hộ
+    function generateProductsForMember(f) {
+      const codeNum = f.code.replace('HTX-YB-', '');
+      const crop = f.crop;
+      const baseImg = f.avatar || 'banana_front.jpg';
+      const secImg = (baseImg === 'tea_front.jpg' ? 'honey_front.jpg' : (baseImg === 'honey_front.jpg' ? 'tea_front.jpg' : 'banana_plate.jpg'));
+      return [
+        { id: f.key + '_01', name: crop + ' (Chuẩn Tuyển Chọn Loại 1 Tươi)', sku: 'SP-' + codeNum + '-01', standard: f.standard, stdClass: 'mint', price: '65.000', stock: '350 đơn vị', status: 'approved', img: baseImg, notes: 'Thu hoạch đạt chuẩn ' + f.standard + ' ghi nhận tại vườn ngày 06/10.', voiceQuote: crop + ' đợt này thu hoạch tươi rói đẹp lắm bà con...', voicePrice: '65.000' },
+        { id: f.key + '_02', name: crop + ' Chế Biến Sấy Khô OCOP Đóng Gói', sku: 'SP-' + codeNum + '-02', standard: f.standard, stdClass: 'amber', price: '145.000', stock: '180 gói', status: 'pending', img: 'banana_back.jpg', notes: 'Mẫu chế biến sấy lạnh gửi phòng thẩm định OCOP tỉnh nghiệm thu.', voiceQuote: 'Lô chế biến gửi thẩm định giá một trăm bốn lăm ngàn...', voicePrice: '145.000' },
+        { id: f.key + '_03', name: crop + ' Hộp Quà Tết Đặc Sản Hoàng Gia (Combo VIP)', sku: 'SP-' + codeNum + '-03', standard: 'OCOP 4★ VIP', stdClass: 'amber', price: '280.000', stock: '60 hộp', status: 'approved', img: secImg, notes: 'Đóng gói bao bì quà tặng Tết 2026 liên kết phân phối WinMart.', voiceQuote: 'Hộp quà biếu đặc sản hai trăm tám mươi ngàn...', voicePrice: '280.000' },
+        { id: f.key + '_04', name: crop + ' Xuất Sỉ Cho Siêu Thị (Thùng 15kg)', sku: 'SP-' + codeNum + '-04', standard: 'VIETGAP', stdClass: 'mint', price: '320.000', stock: '40 thùng', status: 'approved', img: baseImg, notes: 'Hợp đồng xuất bán định kỳ hằng tuần cho các siêu thị tại Hà Nội.', voiceQuote: 'Thùng xuất sỉ mười lăm ký ba trăm hai mươi ngàn...', voicePrice: '320.000' },
+        { id: f.key + '_05', name: crop + ' Thử Nghiệm Lên Men Sinh Học', sku: 'SP-' + codeNum + '-05', standard: 'THỬ NGHIỆM', stdClass: 'red', price: '85.000', stock: '50 chai', status: 'paused', img: 'banana_back.jpg', notes: 'Tạm dừng đưa lên sàn thương mại điện tử để hoàn thiện nhãn phụ.', voiceQuote: 'Lô lên men thử nghiệm tám mươi lăm ngàn...', voicePrice: '85.000' },
+        { id: f.key + '_06', name: crop + ' Phụ Phẩm Chưa Qua Tuyển Lọc', sku: 'SP-' + codeNum + '-06', standard: 'CHƯA ĐẠT', stdClass: 'red', price: '30.000', stock: '15 bao', status: 'rejected', img: 'banana_plate.jpg', notes: 'Chưa đủ độ ngọt và kích thước theo quy chuẩn. Trả về cho hộ dân.', voiceQuote: 'Hàng xô chưa lọc bán ba mươi ngàn...', voicePrice: '30.000' },
+        { id: f.key + '_07', name: crop + ' Lô Lưu Kho Vụ Cũ (Đã Thanh Lý)', sku: 'SP-' + codeNum + '-07', standard: 'LƯU KHO', stdClass: 'gray', price: '40.000', stock: '0', status: 'deleted', img: 'banana_back.jpg', notes: 'Đã hoàn tất thanh lý toàn bộ cuối tháng 9, lưu trữ hồ sơ kế toán.', voiceQuote: 'Lô cũ thanh lý hết bốn mươi ngàn...', voicePrice: '40.000' }
+      ];
+    }
+
+    // Tự động đồng bộ toàn bộ 50 hộ xã viên vào database chi tiết
     farmersDirectory50Data.forEach(f => {
       if (!farmersDatabase[f.key]) {
         farmersDatabase[f.key] = {
@@ -4054,14 +4345,15 @@
           phone: f.phone,
           bank: f.bank,
           address: f.address,
+          crop: (f.area ? f.area + ' · ' : '') + f.crop,
           progress: f.progress + '%',
           subtext: f.subtext,
-          products: [
-            { id: f.key + '_01', name: f.crop + ' (Chuẩn Tuyển Chọn Loại 1)', sku: 'SP-' + f.code.replace('HTX-YB-', '') + '-01', standard: f.standard, stdClass: 'mint', price: '65.000', stock: '350 đơn vị', status: 'approved', img: f.avatar, notes: 'Thu hoạch đạt chuẩn ' + f.standard + ' ghi nhận tại vườn ngày 06/10.', voiceQuote: f.crop + ' đợt này thu hoạch tươi rói đẹp lắm bà con...', voicePrice: '65.000' },
-            { id: f.key + '_02', name: f.crop + ' Chế Biến Sấy Khô OCOP', sku: 'SP-' + f.code.replace('HTX-YB-', '') + '-02', standard: f.standard, stdClass: 'amber', price: '145.000', stock: '120 gói', status: 'pending', img: 'banana_back.jpg', notes: 'Mẫu chế biến gửi phòng thẩm định OCOP tỉnh nghiệm thu.', voiceQuote: 'Lô chế biến gửi thẩm định giá một trăm bốn lăm ngàn...', voicePrice: '145.000' },
-            { id: f.key + '_03', name: f.crop + ' Hộp Quà Tết Đặc Sản VIP', sku: 'SP-' + f.code.replace('HTX-YB-', '') + '-03', standard: 'OCOP 4★ VIP', stdClass: 'amber', price: '280.000', stock: '45 hộp', status: 'approved', img: 'tea_front.jpg', notes: 'Đóng gói bao bì quà tặng liên kết chuỗi WinMart.', voiceQuote: 'Hộp quà biếu đặc sản hai trăm tám mươi ngàn...', voicePrice: '280.000' }
-          ]
+          products: generateProductsForMember(f)
         };
+      } else {
+        if (!farmersDatabase[f.key].crop) {
+          farmersDatabase[f.key].crop = (f.area ? f.area + ' · ' : '') + f.crop;
+        }
       }
     });
 
@@ -4352,115 +4644,6 @@
 
       showToast('📥 Đã xuất file CSV/Excel danh sách 50 hộ xã viên thành công!');
     }
-    const farmersDatabase = {
-      'bacba': {
-        name: 'Bác Ba (Nguyễn Văn Ba)',
-        meta: 'Mã: HTX-YB-04 · 62 tuổi · Thôn Đồng Cát, Xã Yên Bình',
-        badge: 'OCOP 4 SAO TỈNH',
-        avatar: 'bac_ba_avatar.jpg',
-        revenue: '18.450.000 đ',
-        yield: '1.8 Tấn',
-        orders: '48 Đơn',
-        phone: '0912.456.789',
-        bank: 'Agribank Chi Nhánh Yên Bình - 8800.205.123456',
-        address: 'Cụm 2, Thôn Đồng Cát, Xã Yên Bình',
-        progress: '94%',
-        subtext: 'Đã hoàn thành 94% chỉ tiêu gom chuối sấy OCOP!',
-        products: bacBaProductsDemo
-      },
-      'lan': {
-        name: 'Cô Lan (Trần Thị Lan)',
-        meta: 'Mã: HTX-YB-09 · 54 tuổi · Thôn Đồi Chè, Xã Yên Bình',
-        badge: 'VIETGAP CHUẨN TỈNH',
-        avatar: 'tea_front.jpg',
-        revenue: '32.600.000 đ',
-        yield: '2.4 Tấn',
-        orders: '65 Đơn',
-        phone: '0982.112.334',
-        bank: 'Agribank Yên Bình - 8800.334.888999',
-        address: 'Xóm Đồi Chè 1, Xã Yên Bình',
-        progress: '88%',
-        subtext: 'Đạt 88% sản lượng chè búp sao lửa xuất khẩu!',
-        products: [
-          { id: 'cl_01', name: 'Trà Bát Tiên Sao Lửa (Hộp Thiếc 200g)', sku: 'SP-09-01', standard: 'VIETGAP', stdClass: 'mint', price: '180.000', stock: '500 hộp', status: 'pending', img: 'tea_front.jpg', notes: 'Tiêu chuẩn VietGAP VG-2026-YB09. Sao chè thủ công.', voiceQuote: 'Trà Bát Tiên một trăm tám mươi nghìn...', voicePrice: '180.000' },
-          { id: 'cl_02', name: 'Trà Búp Đinh Cổ Thụ (Gói 100g Chân Không)', sku: 'SP-09-02', standard: 'OCOP 4★', stdClass: 'amber', price: '350.000', stock: '120 gói', status: 'approved', img: 'tea_front.jpg', notes: 'Hái 1 tôm 1 lá sáng sớm, nước xanh trong sánh.', voiceQuote: 'Chè búp đinh ba trăm rưởi...', voicePrice: '350.000' },
-          { id: 'cl_03', name: 'Trà Bát Tiên Túi Lọc (30 Túi Lọc/Hộp)', sku: 'SP-09-03', standard: 'OCOP 3★', stdClass: 'amber', price: '85.000', stock: '400 túi', status: 'approved', img: 'tea_front.jpg', notes: 'Tiện lợi cho văn phòng, hương thơm dịu mát.', voiceQuote: 'Trà túi lọc tám mươi lăm nghìn...', voicePrice: '85.000' },
-          { id: 'cl_04', name: 'Bã Trà Làm Phân Hữu Cơ Đóng Bao 25kg', sku: 'SP-09-04', standard: 'HỮU CƠ', stdClass: 'gray', price: '45.000', stock: '60 bao', status: 'deleted', img: 'tea_front.jpg', notes: 'Phụ phẩm nông nghiệp ủ men trichoderma.', voiceQuote: 'Bao bã chè bốn lăm ngàn...', voicePrice: '45.000' }
-        ]
-      },
-      'tuan': {
-        name: 'Anh Tuấn (Hoàng Văn Tuấn)',
-        meta: 'Mã: HTX-YB-12 · 39 tuổi · Thôn Suối Rừng, Xã Yên Bình',
-        badge: 'OCOP 4 SAO TỈNH',
-        avatar: 'honey_front.jpg',
-        revenue: '24.200.000 đ',
-        yield: '420 Chai',
-        orders: '38 Đơn',
-        phone: '0973.998.776',
-        bank: 'BIDV Yên Bình - 4501.998.776',
-        address: 'Bìa rừng tự nhiên Xã Yên Bình',
-        progress: '76%',
-        subtext: 'Đạt 76% kế hoạch quay mật ong hoa rừng vụ hè!',
-        products: [
-          { id: 'at_01', name: 'Mật Ong Hoa Rừng Tự Nhiên (Chai 500ml)', sku: 'SP-12-01', standard: 'OCOP 4★', stdClass: 'amber', price: '220.000', stock: '150 chai', status: 'pending', img: 'honey_front.jpg', notes: 'Thủy phần < 18.5%, tự nhiên 100% không pha đường.', voiceQuote: 'Mật ong rừng chai nửa lít hai trăm hai chục...', voicePrice: '220.000' },
-          { id: 'at_02', name: 'Sữa Ong Chúa Tươi Nguyên Chất (Hũ 100g)', sku: 'SP-12-02', standard: 'OCOP 4★', stdClass: 'amber', price: '280.000', stock: '85 hũ', status: 'approved', img: 'honey_front.jpg', notes: 'Khai thác trực tiếp từ tổ chúa, bảo quản đông sâu.', voiceQuote: 'Sữa ong chúa tươi hai trăm tám...', voicePrice: '280.000' },
-          { id: 'at_03', name: 'Sáp Ong Rừng Tự Nhiên Thô Chưa Lọc', sku: 'SP-12-03', standard: 'NGUYÊN LIỆU', stdClass: 'red', price: '70.000', stock: '25 kg', status: 'rejected', img: 'honey_front.jpg', notes: 'Lẫn vụn vỏ cây, chưa lọc cặn đạt chuẩn đưa lên sàn.', voiceQuote: 'Sáp ong thô bảy mươi ngàn một cân...', voicePrice: '70.000' }
-        ]
-      }
-,
-      'tu': {
-        name: 'Chú Tư (Hoàng Văn Tư)',
-        meta: 'Mã: HTX-YB-31 · 58 tuổi · Thôn Đồi Mơ, Xã Yên Bình',
-        badge: 'OCOP 4 SAO TỈNH',
-        avatar: 'tea_front.jpg',
-        revenue: '21.500.000 đ',
-        yield: '1.2 Tấn',
-        orders: '52 Đơn',
-        phone: '0912.345.655',
-        bank: 'ZaloPay / Agribank - 8802.345.655',
-        address: 'Thôn Đồi Mơ, Xã Yên Bình',
-        progress: '78%',
-        subtext: 'Đạt 78% kế hoạch hái chè búp sao suốt!',
-        products: [
-          { id: 'tu_01', name: 'Trà Bát Tiên Đồi Mơ (Hộp 200g OCOP)', sku: 'SP-31-01', standard: 'OCOP 4★', stdClass: 'amber', price: '220.000', stock: '250 hộp', status: 'approved', img: 'tea_front.jpg', notes: 'Hái sương sớm đồi cao, hương thơm tự nhiên.', voiceQuote: 'Trà Bát Tiên hai trăm hai...', voicePrice: '220.000' }
-        ]
-      },
-      'sau': {
-        name: 'Cô Sáu (Trần Thị Sáu)',
-        meta: 'Mã: HTX-YB-18 · 51 tuổi · Thôn Suối Hai, Xã Yên Bình',
-        badge: 'OCOP 4 SAO TỈNH',
-        avatar: 'honey_front.jpg',
-        revenue: '14.800.000 đ',
-        yield: '350 Lít',
-        orders: '34 Đơn',
-        phone: '0934.567.890',
-        bank: 'Vietcombank - 1012.345.678',
-        address: 'Thôn Suối Hai, Xã Yên Bình',
-        progress: '92%',
-        subtext: 'Đạt 92% kế hoạch quay mật ong hoa rừng vụ thu!',
-        products: [
-          { id: 'sau_01', name: 'Mật Ong Hoa Rừng Suối Hai (Chai 500ml)', sku: 'SP-18-01', standard: 'OCOP 4★', stdClass: 'amber', price: '200.000', stock: '180 chai', status: 'approved', img: 'honey_front.jpg', notes: 'Mật ong hoa rừng tự nhiên 100%.', voiceQuote: 'Mật ong hoa rừng hai trăm ngàn...', voicePrice: '200.000' }
-        ]
-      },
-      'thang': {
-        name: 'Anh Thắng (Nguyễn Văn Thắng)',
-        meta: 'Mã: HTX-YB-52 · 42 tuổi · Thôn Bãi Giữa, Xã Yên Bình',
-        badge: 'VIETGAP CHUẨN TỈNH',
-        avatar: 'bac_ba_avatar.jpg',
-        revenue: '28.900.000 đ',
-        yield: '4.5 Tấn',
-        orders: '41 Đơn',
-        phone: '0976.223.344',
-        bank: 'Tiền mặt tại trạm cân',
-        address: 'Thôn Bãi Giữa, Xã Yên Bình',
-        progress: '82%',
-        subtext: 'Đạt 82% vụ bưởi da xanh ruột hồng!',
-        products: [
-          { id: 'thang_01', name: 'Bưởi Da Xanh Ruột Hồng Yên Bình (Trái 1.5kg)', sku: 'SP-52-01', standard: 'VIETGAP', stdClass: 'mint', price: '35.000', stock: '800 trái', status: 'approved', img: 'bac_ba_avatar.jpg', notes: 'Trái mọng nước, tép giòn ngọt.', voiceQuote: 'Bưởi da xanh ba lăm ngàn...', voicePrice: '35.000' }
-        ]
-      }
-    };
-
     // Label thuần túy KHÔNG CÓ ICON
     const statusMeta = {
       'pending':  { label: 'Đang chờ duyệt', class: 'pending' },
@@ -4476,33 +4659,57 @@
       currentStatusFilter = 'all';
       currentPage = 1;
 
-      const data = farmersDatabase[farmerKey] || farmersDatabase['bacba'];
+      // Tìm thông tin xã viên theo key hoặc mã số
+      let data = farmersDatabase[farmerKey];
+      if (!data) {
+        const found = farmersDirectory50Data.find(f => f.key === farmerKey || f.code === farmerKey);
+        if (found) data = farmersDatabase[found.key];
+      }
+      if (!data) data = farmersDatabase['bacba'];
 
       hideAllMainViews();
       document.getElementById('view-member-admin').style.display = 'block';
 
-      // Nạp profile
+      // Nạp profile đầy đủ
       document.getElementById('admin-view-breadcrumb').innerText = data.name;
       document.getElementById('admin-user-fullname').innerText = data.name;
       document.getElementById('admin-user-meta').innerText = data.meta;
       document.getElementById('admin-user-badge').innerText = data.badge;
+      if (document.getElementById('admin-user-crop-badge')) {
+        document.getElementById('admin-user-crop-badge').innerText = data.crop || 'Nông sản OCOP';
+      }
       document.getElementById('admin-user-avatar').src = data.avatar;
 
+      // 4 Thẻ Mini Stat Của Riêng Xã Viên (Doanh thu, Đơn hàng, Số lượng sản phẩm, Sản lượng)
       document.getElementById('kpi-user-revenue').innerText = data.revenue;
-      document.getElementById('kpi-user-yield').innerText = data.yield;
       document.getElementById('kpi-user-orders').innerText = data.orders;
+      if (document.getElementById('kpi-user-products')) {
+        document.getElementById('kpi-user-products').innerText = data.products.length + ' Sản Phẩm';
+      }
+      document.getElementById('kpi-user-yield').innerText = data.yield + ' (' + data.progress + ')';
 
+      // Cài đặt tài khoản của riêng xã viên
       document.getElementById('set-user-phone').value = data.phone;
       document.getElementById('set-user-bank').value = data.bank;
       document.getElementById('set-user-address').value = data.address;
 
-      // Cập nhật Cột Right Statistic
+      // Cập nhật Cột Right Statistic & Biểu đồ doanh thu 6 tháng của xã viên
       document.getElementById('right-ring-avatar').src = data.avatar;
       document.getElementById('right-ring-badge').innerText = data.progress;
       document.getElementById('right-stat-greeting').innerText = 'Xin chào, ' + data.name.split(' (')[0] + ' 🔥';
       document.getElementById('right-stat-subtext').innerText = data.subtext;
 
-      // Render Bảng sản phẩm & phân trang
+      if (document.getElementById('chart-user-peak-val')) {
+        document.getElementById('chart-user-peak-val').innerText = data.revenue;
+      }
+      if (document.getElementById('chart-user-avg-rev')) {
+        document.getElementById('chart-user-avg-rev').innerText = data.revenue;
+      }
+      if (document.getElementById('chart-user-completion-rate')) {
+        document.getElementById('chart-user-completion-rate').innerText = data.progress + ' Đạt Kế Hoạch';
+      }
+
+      // Render Bảng sản phẩm & phân trang của riêng xã viên này
       renderMemberProductsTable();
 
       setActiveNav('nav-btn-members');

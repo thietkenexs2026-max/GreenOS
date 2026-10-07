@@ -6,7 +6,7 @@
   <title>GreenVillageOS — Dành cho Hộ Nông Dân</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-page: #F8F9FA;
@@ -31,16 +31,23 @@
       --radius-sub: 16px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: var(--font-sans) !important;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    button, input, select, textarea {
-      font-family: var(--font-sans);
+    button, input, select, textarea, optgroup, option {
+      font-family: var(--font-sans) !important;
     }
 
     body {
       background-color: #E8EBE9;
       color: var(--text-main);
-      font-family: var(--font-sans);
+      font-family: var(--font-sans) !important;
       font-size: 15px;
       line-height: 1.5;
       min-height: 100vh;

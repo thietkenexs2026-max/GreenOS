@@ -51,9 +51,9 @@
   --gvos-color-zalo-blue-dark:#0052CC;
   --gvos-color-shopee-orange: #EE4D2D;
 
-  /* Typography Scale */
-  --gvos-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --gvos-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Typography Scale - 100% Inter Font Sync */
+  --gvos-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --gvos-font-mono: 'Inter', 'JetBrains Mono', ui-monospace, monospace;
 
   /* Spacing Scale (Hệ 4px) */
   --gvos-space-1: 4px;

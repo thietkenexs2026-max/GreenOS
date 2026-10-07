@@ -117,9 +117,46 @@
       font-size: 0.85rem;
       color: #8b949e;
     }
+    .nav-tabs {
+      max-width: 920px;
+      margin: 0 auto 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-tab {
+      padding: 9px 16px;
+      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .nav-tab:hover {
+      border-color: #58a6ff;
+      background: #1f2937;
+    }
+    .nav-tab.active {
+      background: #238636;
+      border-color: #238636;
+      color: white;
+    }
   </style>
 </head>
 <body>
+  <div class="nav-tabs">
+    <a href="chat_history_83581842.html" class="nav-tab">💬 Phiên 1 (Đồng bộ 2 máy & Setup Git)</a>
+    <a href="chat_history.html" class="nav-tab active">🌿 Phiên 2 (GreenVillageOS & Bác Ba)</a>
+    <a href="index.html" class="nav-tab" target="_blank">📱 App Mobile Bác Ba ↗</a>
+    <a href="htx-dashboard.html" class="nav-tab" target="_blank">👨‍💼 HTX Dashboard Web PC ↗</a>
+  </div>
+
   <div class="header">
     <div>
       <h1>🌿 GreenOS — Lịch Sử Phiên Chat Antigravity</h1>

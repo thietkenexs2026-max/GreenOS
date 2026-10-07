@@ -1994,7 +1994,305 @@
       font-size: 12px;
       color: var(--slate-500);
     }
-  </style>
+  
+    /* =========================================================================
+       DEDICATED STYLES FOR ADMIN TABLES & UNIFIED BUTTONS (ANTI-CRAMPING / DÍU)
+       ========================================================================= */
+    .table-responsive-box {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      background: #FFFFFF;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      -webkit-overflow-scrolling: touch;
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+
+    .table-responsive-box::-webkit-scrollbar {
+      height: 8px;
+    }
+    .table-responsive-box::-webkit-scrollbar-track {
+      background: #F1F5F9;
+      border-radius: 4px;
+    }
+    .table-responsive-box::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    .table-responsive-box::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    .member-product-table,
+    .coursue-clean-table,
+    .htx-modern-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 14.5px;
+    }
+
+    .member-product-table th,
+    .coursue-clean-table th,
+    .htx-modern-table th {
+      background: #F8FAFC !important;
+      color: #475569 !important;
+      font-size: 13px !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.6px !important;
+      padding: 16px 20px !important;
+      border-bottom: 2px solid #E2E8F0 !important;
+      white-space: nowrap !important;
+      text-align: left;
+    }
+
+    .member-product-table td,
+    .coursue-clean-table td,
+    .htx-modern-table td {
+      padding: 18px 20px !important;
+      vertical-align: middle !important;
+      border-bottom: 1px solid #F1F5F9 !important;
+      background: #FFFFFF;
+      color: #1E293B;
+      line-height: 1.5;
+    }
+
+    .member-product-table tr:last-child td,
+    .coursue-clean-table tr:last-child td,
+    .htx-modern-table tr:last-child td {
+      border-bottom: none !important;
+    }
+
+    .member-product-table tr.clickable-row,
+    .coursue-clean-table tr.clickable-row,
+    .htx-modern-table tr.clickable-row {
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .member-product-table tr.clickable-row:hover td,
+    .coursue-clean-table tr.clickable-row:hover td,
+    .htx-modern-table tr.clickable-row:hover td {
+      background: #F8FAFC !important;
+    }
+
+    /* UNIFIED BUTTON DESIGN SYSTEM */
+    .hero-pill-btn-green {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 9px 18px !important;
+      border-radius: var(--radius-pill) !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      background: #059669 !important;
+      color: #FFFFFF !important;
+      border: none !important;
+      cursor: pointer !important;
+      transition: all 0.18s ease !important;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25) !important;
+      white-space: nowrap !important;
+    }
+    .hero-pill-btn-green:hover {
+      background: #047857 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35) !important;
+    }
+
+    .hero-pill-btn-white {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 9px 18px !important;
+      border-radius: var(--radius-pill) !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      border: 1.5px solid #E2E8F0 !important;
+      cursor: pointer !important;
+      transition: all 0.18s ease !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+      white-space: nowrap !important;
+    }
+    .hero-pill-btn-white:hover {
+      background: #F8FAFC !important;
+      border-color: #CBD5E1 !important;
+      color: #059669 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    .hero-pill-btn-dark {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 9px 18px !important;
+      border-radius: var(--radius-pill) !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      background: #0F172A !important;
+      color: #FFFFFF !important;
+      border: none !important;
+      cursor: pointer !important;
+      transition: all 0.18s ease !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2) !important;
+      white-space: nowrap !important;
+    }
+    .hero-pill-btn-dark:hover {
+      background: #1E293B !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3) !important;
+    }
+
+    .btn-table-action-view {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      padding: 8px 16px !important;
+      border-radius: var(--radius-pill) !important;
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      background: #ECFDF5 !important;
+      color: #065F46 !important;
+      border: 1.5px solid #A7F3D0 !important;
+      cursor: pointer !important;
+      transition: all 0.18s ease !important;
+      white-space: nowrap !important;
+    }
+    .btn-table-action-view:hover {
+      background: #059669 !important;
+      color: #FFFFFF !important;
+      border-color: #059669 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 3px 8px rgba(5, 150, 105, 0.3) !important;
+    }
+
+    .btn-close-modal {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      background: #F1F5F9 !important;
+      border: 1px solid #E2E8F0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      color: #64748B !important;
+      transition: all 0.15s ease !important;
+    }
+    .btn-close-modal:hover {
+      background: #E2E8F0 !important;
+      color: #0F172A !important;
+      transform: scale(1.06) !important;
+    }
+
+    .btn-coursue-back {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 8px 16px !important;
+      border-radius: var(--radius-pill) !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid #E2E8F0 !important;
+      color: #475569 !important;
+      cursor: pointer !important;
+      transition: all 0.15s ease !important;
+      white-space: nowrap !important;
+    }
+    .btn-coursue-back:hover {
+      background: #F8FAFC !important;
+      color: #0F172A !important;
+      border-color: #CBD5E1 !important;
+    }
+
+    .status-tab-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 8px 18px !important;
+      border-radius: var(--radius-pill) !important;
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      border: none !important;
+      background: transparent !important;
+      color: var(--slate-600) !important;
+      cursor: pointer !important;
+      transition: all 0.15s ease !important;
+      white-space: nowrap !important;
+    }
+    .status-tab-btn:hover {
+      color: var(--slate-900) !important;
+      background: rgba(255, 255, 255, 0.7) !important;
+    }
+    .status-tab-btn.active {
+      background: #FFFFFF !important;
+      color: var(--slate-900) !important;
+      font-weight: 800 !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    .btn-page-nav {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 8px 16px !important;
+      border-radius: var(--radius-pill) !important;
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      border: 1.5px solid var(--slate-200) !important;
+      background: #FFFFFF !important;
+      color: var(--slate-700) !important;
+      cursor: pointer !important;
+      transition: all 0.15s !important;
+      white-space: nowrap !important;
+    }
+    .btn-page-nav:hover:not(:disabled) {
+      background: var(--slate-100) !important;
+      color: var(--slate-900) !important;
+      border-color: #CBD5E1 !important;
+    }
+    .btn-page-nav:disabled {
+      opacity: 0.4 !important;
+      cursor: not-allowed !important;
+    }
+
+    .btn-page-num {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      font-size: 14px !important;
+      font-weight: 800 !important;
+      border: 1px solid var(--slate-200) !important;
+      background: #FFFFFF !important;
+      color: var(--slate-700) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: all 0.15s !important;
+    }
+    .btn-page-num:hover {
+      background: var(--slate-100) !important;
+      color: var(--slate-900) !important;
+    }
+    .btn-page-num.active {
+      background: #059669 !important;
+      border-color: #059669 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 3px 8px rgba(5, 150, 105, 0.35) !important;
+    }
+
+</style>
 </head>
 <body>
 
@@ -2450,20 +2748,20 @@
             </div>
 
             <!-- Bảng hiển thị 10 xã viên / trang -->
-            <div style="overflow-x: auto; margin-top: 12px; border: 1px solid var(--slate-200); border-radius: 14px;">
-              <table class="member-product-table" style="width: 100%;">
+            <div class="table-responsive-box">
+              <table class="member-product-table" style="min-width: 1420px;">
                 <thead>
                   <tr>
-                    <th style="width: 45px; text-align: center;">#STT</th>
-                    <th>HỘ XÃ VIÊN & MÃ SỐ</th>
-                    <th>ĐỊA BÀN</th>
-                    <th>CÂY TRỒNG CHỦ LỰC</th>
-                    <th>QUY MÔ</th>
-                    <th>TIÊU CHUẨN</th>
-                    <th>SẢN LƯỢNG / DOANH THU</th>
-                    <th>TIẾN ĐỘ THU HOẠCH</th>
-                    <th>TRẠNG THÁI</th>
-                    <th style="text-align: right;">QUẢN TRỊ</th>
+                    <th style="width: 60px; min-width: 60px; text-align: center;">#STT</th>
+                    <th style="min-width: 300px;">HỘ XÃ VIÊN & MÃ SỐ</th>
+                    <th style="min-width: 160px;">ĐỊA BÀN</th>
+                    <th style="min-width: 200px;">CÂY TRỒNG CHỦ LỰC</th>
+                    <th style="min-width: 120px;">QUY MÔ</th>
+                    <th style="min-width: 150px;">TIÊU CHUẨN</th>
+                    <th style="min-width: 170px;">SẢN LƯỢNG / DOANH THU</th>
+                    <th style="min-width: 180px;">TIẾN ĐỘ THU HOẠCH</th>
+                    <th style="min-width: 150px;">TRẠNG THÁI</th>
+                    <th style="min-width: 200px; text-align: right;">QUẢN TRỊ</th>
                   </tr>
                 </thead>
                 <tbody id="directory-members-table-body">
@@ -2621,8 +2919,8 @@
             </div>
 
             <!-- BẢNG LIỆT KÊ SẢN PHẨM: 1 DÒNG DUY NHẤT (CLICK DÒNG MỞ POPUP) -->
-            <div style="overflow-x: auto;">
-              <table class="coursue-clean-table">
+            <div class="table-responsive-box">
+              <table class="coursue-clean-table" style="min-width: 1150px;">
                 <thead>
                   <tr>
                     <th style="width: 50px;">#STT</th>
@@ -3830,43 +4128,56 @@
         const stt = startIndex + idx + 1;
         return `
           <tr class="clickable-row" onclick="switchToMemberAdmin('${m.key}')">
-            <td style="text-align: center;"><strong style="color: var(--slate-500); font-size: 13.5px;">#${stt}</strong></td>
+            <td style="text-align: center;">
+              <strong style="color: var(--slate-400); font-size: 14px;">#${String(stt).padStart(2, '0')}</strong>
+            </td>
             <td>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <img src="${m.avatar}" alt="${m.name}" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid #059669; flex-shrink: 0;">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <img src="${m.avatar}" alt="${m.name}" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2.5px solid #059669; box-shadow: 0 2px 8px rgba(5,150,105,0.2); flex-shrink: 0;">
                 <div>
-                  <div style="font-weight: 800; color: var(--slate-900); font-size: 14.5px;">${m.name}</div>
-                  <div style="font-size: 12px; color: var(--slate-500);">Mã: <strong>${m.code}</strong> · ${m.age} tuổi · 📞 ${m.phone}</div>
+                  <div style="font-weight: 800; color: #0F172A; font-size: 16px; margin-bottom: 4px;">${m.name}</div>
+                  <div style="font-size: 13px; color: #64748B; line-height: 1.4;">
+                    Mã: <strong style="color: #059669; font-weight: 800;">${m.code}</strong> · ${m.age} tuổi · 📞 <span style="font-weight: 700; color: #334155;">${m.phone}</span>
+                  </div>
                 </div>
               </div>
             </td>
-            <td><span style="font-weight: 600; color: var(--slate-700);">${m.village}</span></td>
-            <td><span class="table-tag-dept ${m.cropClass || ''}">${m.crop}</span></td>
-            <td style="font-weight: 700; color: var(--slate-800);">${m.area}</td>
-            <td><span class="status-badge-clean ${m.stdClass}">${m.standard}</span></td>
             <td>
-              <div style="font-weight: 700; color: var(--slate-900);">${m.yield}</div>
-              <div style="font-size: 12px; color: var(--brand-700); font-weight: 700;">${m.revenue}</div>
-            </td>
-            <td style="min-width: 140px;">
-              <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 4px;">
-                <span style="color: var(--brand-700);">${m.progress}%</span>
-                <span style="color: var(--slate-500); font-weight: 500;">Chỉ tiêu</span>
-              </div>
-              <div style="width: 100%; height: 6px; background: var(--slate-200); border-radius: 4px; overflow: hidden;">
-                <div style="width: ${m.progress}%; height: 100%; background: #059669; border-radius: 4px;"></div>
-              </div>
+              <span style="font-weight: 700; color: #334155; font-size: 14.5px;">${m.village}</span>
             </td>
             <td>
-              <span class="status-badge-clean ${m.statusClass}">${m.statusLabel}</span>
+              <span class="table-tag-dept ${m.cropClass || ''}" style="display: inline-block; padding: 6px 14px; font-size: 13.5px; font-weight: 700; border-radius: 9999px;">${m.crop}</span>
+            </td>
+            <td>
+              <strong style="font-size: 15px; color: #0F172A;">${m.area}</strong>
+            </td>
+            <td>
+              <span class="status-badge-clean ${m.stdClass}" style="padding: 6px 14px; font-size: 13px; font-weight: 800;">${m.standard}</span>
+            </td>
+            <td>
+              <div style="font-weight: 800; color: #0F172A; font-size: 15px;">${m.yield}</div>
+              <div style="font-size: 13.5px; color: #059669; font-weight: 800; margin-top: 3px;">${m.revenue}</div>
+            </td>
+            <td>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; margin-bottom: 6px;">
+                <span style="color: #059669;">${m.progress}% tiến độ</span>
+                <span style="color: #64748B; font-weight: 600;">Chỉ tiêu</span>
+              </div>
+              <div style="width: 100%; height: 8px; background: #E2E8F0; border-radius: 6px; overflow: hidden;">
+                <div style="width: ${m.progress}%; height: 100%; background: #059669; border-radius: 6px;"></div>
+              </div>
+            </td>
+            <td>
+              <span class="status-badge-clean ${m.statusClass}" style="padding: 6px 14px; font-size: 13px; font-weight: 800;">${m.statusLabel}</span>
             </td>
             <td style="text-align: right;">
-              <div style="display: flex; justify-content: flex-end; gap: 6px;" onclick="event.stopPropagation();">
-                <button class="hero-pill-btn-green" style="font-size: 12px; padding: 5px 12px;" onclick="switchToMemberAdmin('${m.key}')" title="Xem hồ sơ & bảng sản phẩm">
+              <div style="display: flex; justify-content: flex-end; gap: 8px;" onclick="event.stopPropagation();">
+                <button class="btn-table-action-view" onclick="switchToMemberAdmin('${m.key}')" title="Xem hồ sơ cá nhân & nông sản">
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                   Xem Hồ Sơ
                 </button>
-                <button class="hero-pill-btn-white" style="font-size: 12px; padding: 5px 9px;" onclick="openZaloCallModal('${m.name} - ${m.phone}')" title="Gọi Zalo trao đổi nông vụ">
-                  <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <button class="hero-pill-btn-white" style="padding: 8px 12px;" onclick="openZaloCallModal('${m.name} - ${m.phone}')" title="Gọi Zalo trao đổi nông vụ">
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 </button>
               </div>
             </td>
@@ -4278,9 +4589,9 @@
             #${String(rowNumber).padStart(2, '0')}
           </td>
           <td>
-            <div style="display: flex; align-items: center;">
-              <img src="${p.img}" alt="${p.name}" class="table-prod-thumb-mini">
-              <span class="table-prod-name-cell" title="${p.name}">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="${p.img}" alt="${p.name}" style="width: 44px; height: 44px; border-radius: 10px; object-fit: cover; border: 1.5px solid var(--slate-200); flex-shrink: 0;">
+              <span class="table-prod-name-cell" style="max-width: 320px; font-size: 15.5px; font-weight: 800; color: #0F172A;" title="${p.name}">
                 ${p.name}
               </span>
             </div>
@@ -4974,7 +5285,8 @@
       document.getElementById('audio-preview-text').innerText = text;
       audioPlaying = true;
       audioSeconds = 12;
-      document.getElementById('btn-play-pause-audio').innerText = '⏸';
+      const vBtn = document.getElementById('btn-play-pause-audio');
+      if (vBtn) vBtn.innerHTML = '<svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
       openGenericModal('modal-voice-preview');
 
       if (audioTimer) clearInterval(audioTimer);
@@ -5099,7 +5411,7 @@
     <div class="vietqr-card-box" onclick="event.stopPropagation()">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
         <span style="font-size: 13px; font-weight: 800; background: var(--brand-50); color: var(--brand-700); padding: 4px 12px; border-radius: var(--radius-pill);">NAPAS 247 · VIETQR</span>
-        <button onclick="closeVietQRModal()" style="background: none; border: none; cursor: pointer; color: var(--slate-400); display: flex; align-items: center;"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeVietQRModal()" title="Đóng mã QR"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <h3 style="font-size: 18px; font-weight: 800; color: var(--slate-900); margin-bottom: 4px;" id="vietqr-farmer-name">Bác Ba (Nguyễn Văn Ba)</h3>
@@ -5163,7 +5475,7 @@
         </div>
       </div>
       <div class="copilot-header-actions">
-        <button onclick="toggleAICopilot()" title="Thu nhỏ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="toggleAICopilot()" title="Thu nhỏ trợ lý AI"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
     </div>
 
@@ -5647,8 +5959,8 @@
   <!-- Modal 9: Trình Phát Âm Thanh Đối Soát Giọng Nói -->
   <div id="modal-voice-preview" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-voice-preview')">
     <div class="modal-content-container" style="max-width: 500px; text-align: center; padding: 32px 24px;" onclick="event.stopPropagation()">
-      <div style="width: 70px; height: 70px; border-radius: 50%; background: #ECFDF5; color: #059669; font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; border: 2px solid #A7F3D0;">
-        🔊
+      <div style="width: 70px; height: 70px; border-radius: 50%; background: #ECFDF5; color: #059669; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; border: 2px solid #A7F3D0;">
+        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
       </div>
       <h3 style="font-size: 17px; font-weight: 800; color: var(--slate-900); margin-bottom: 4px;" id="audio-preview-title">Trình Phát Âm Thanh AI</h3>
       <p style="font-size: 13px; color: var(--slate-500); margin-bottom: 18px;" id="audio-preview-sub">Giọng đọc tự nhiên được tổng hợp từ công nghệ Text-to-Speech</p>
@@ -5659,7 +5971,7 @@
 
       <!-- Player Controls -->
       <div style="background: white; border: 1px solid var(--slate-200); border-radius: 16px; padding: 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-        <button id="btn-play-pause-audio" style="width: 44px; height: 44px; border-radius: 50%; background: #059669; color: white; border: none; font-size: 18px; cursor: pointer;" onclick="toggleAudioSimulation()">⏸</button>
+        <button id="btn-play-pause-audio" class="hero-pill-btn-green" style="border-radius: 50% !important; width: 46px !important; height: 46px !important; padding: 0 !important; justify-content: center !important;" onclick="toggleAudioSimulation()" title="Tạm dừng/Phát tiếp"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
         <div style="flex: 1;">
           <div style="height: 6px; background: var(--slate-200); border-radius: 3px; overflow: hidden; position: relative;">
             <div id="audio-progress-bar" style="height: 100%; width: 45%; background: #059669; transition: width 0.3s;"></div>
@@ -5955,6 +6267,89 @@
       <div style="display: flex; justify-content: flex-end; gap: 10px;">
         <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-ocop-dossier')">Đóng Lại</button>
         <button class="hero-pill-btn-dark" onclick="showToast('Đang tải trọn bộ hồ sơ OCOP (PDF - 14 trang)...');"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Tải Trọn Bộ Hồ Sơ (PDF)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Thêm Xã Viên Mới Vào HTX -->
+  <div id="modal-add-farmer-member" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-add-farmer-member')">
+    <div class="modal-content-container" style="max-width: 650px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>Thêm Hộ Xã Viên Mới Vào HTX Yên Bình</h3>
+          <p>Đăng ký hộ nông dân vào hệ thống chuỗi giá trị và cấp mã số vùng trồng</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-farmer-member')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Họ Và Tên Chủ Hộ:</label>
+            <input type="text" id="new-member-name" class="form-input-stylish" placeholder="Ví dụ: Bác Tám (Đỗ Văn Tám)">
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Tuổi:</label>
+            <input type="number" id="new-member-age" class="form-input-stylish" placeholder="58" value="55">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Thôn / Xóm Canh Tác:</label>
+            <select id="new-member-village" class="form-input-stylish">
+              <option value="Thôn Đồng Cát">Thôn Đồng Cát</option>
+              <option value="Thôn Đồi Mơ">Thôn Đồi Mơ</option>
+              <option value="Thôn Suối Hai">Thôn Suối Hai</option>
+              <option value="Thôn Bãi Giữa">Thôn Bãi Giữa</option>
+              <option value="Thôn Đầm Sen">Thôn Đầm Sen</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Số Điện Thoại (Zalo):</label>
+            <input type="text" id="new-member-phone" class="form-input-stylish" placeholder="Ví dụ: 0912.888.999">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Cây Trồng / Nông Sản Chủ Lực:</label>
+            <input type="text" id="new-member-crop" class="form-input-stylish" placeholder="Ví dụ: Chuối Tiêu Hồng / Trà Bát Tiên">
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Quy Mô (Diện Tích):</label>
+            <input type="text" id="new-member-area" class="form-input-stylish" placeholder="Ví dụ: 1.5 ha" value="1.5 ha">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Tiêu Chuẩn Đăng Ký:</label>
+            <select id="new-member-standard" class="form-input-stylish">
+              <option value="OCOP 4★ Tỉnh">OCOP 4 Sao Tỉnh</option>
+              <option value="OCOP 3★">OCOP 3 Sao</option>
+              <option value="VIETGAP">Chuẩn VietGAP</option>
+              <option value="HỮU CƠ">Hữu Cơ PGS</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Sản Lượng Dự Kiến / Năm:</label>
+            <input type="text" id="new-member-yield" class="form-input-stylish" placeholder="Ví dụ: 12 Tấn/năm" value="12 Tấn/năm">
+          </div>
+        </div>
+
+        <div>
+          <label style="font-weight: 800; font-size: 14px; color: var(--slate-800); display: block; margin-bottom: 6px;">Tài Khoản Ngân Hàng Chi Trả Tiền Tươi:</label>
+          <input type="text" id="new-member-bank" class="form-input-stylish" placeholder="Ví dụ: Agribank Yên Bình - 8802.205.xxx">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px;">
+          <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-add-farmer-member')">Hủy Bỏ</button>
+          <button class="hero-pill-btn-green" onclick="saveNewMember()">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Lưu Hồ Sơ Xã Viên
+          </button>
+        </div>
       </div>
     </div>
   </div>

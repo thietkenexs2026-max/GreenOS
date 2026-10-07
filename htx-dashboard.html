@@ -2108,14 +2108,14 @@
         <div class="center-top-bar">
           <div class="search-capsule-input">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" style="color: var(--slate-400);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" placeholder="Tìm kiếm nông sản, xã viên, đơn hàng WinMart...">
+            <input type="text" id="top-global-search" placeholder="Tìm kiếm nông sản, xã viên, đơn hàng WinMart..." oninput="handleGlobalSearch(this.value)">
           </div>
 
-          <button class="top-action-btn" title="Zalo OA" onclick="showToast('Zalo OA: 142 xã viên và 4.820 khách hàng đang online')">
+          <button class="top-action-btn" title="Zalo OA" onclick="openZaloCommunityModal()">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </button>
 
-          <button class="top-action-btn" title="Thông báo mới" onclick="showToast('Có lô hàng chuối sấy mới từ Bác Ba cần thẩm định!')">
+          <button class="top-action-btn" title="Thông báo mới" onclick="openNotificationsModal()">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
             <span class="top-badge-dot"></span>
           </button>
@@ -2125,7 +2125,7 @@
             <span style="font-size: 13px;">AI Copilot</span>
           </button>
 
-          <div class="top-user-pill" title="Tài khoản chủ nhiệm HTX">
+          <div class="top-user-pill" title="Tài khoản chủ nhiệm HTX" style="cursor: pointer;" onclick="openAdminProfileModal()">
             <div class="top-user-avatar">VH</div>
             <span class="top-user-name">Chủ nhiệm Hùng</span>
           </div>
@@ -2188,8 +2188,8 @@
             <div class="section-headline-bar">
               <h3>Nông Sản Xã Viên Gửi Duyệt Lên Sàn</h3>
               <div class="nav-arrow-circles">
-                <button class="nav-arrow-btn">‹</button>
-                <button class="nav-arrow-btn active-primary" onclick="switchToMemberAdmin('bacba')">›</button>
+                <button class="nav-arrow-btn" onclick="scrollCoursueGrid(-1)">‹</button>
+                <button class="nav-arrow-btn active-primary" onclick="scrollCoursueGrid(1)">›</button>
               </div>
             </div>
 
@@ -2198,7 +2198,7 @@
               <div class="coursue-item-card" onclick="openProductModal('sp_01')">
                 <div class="coursue-img-wrapper">
                   <img src="banana_front.jpg" alt="Chuối sấy Bác Ba">
-                  <button class="floating-heart-btn" title="Lưu trữ">♡</button>
+                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)">♡</button>
                 </div>
                 <div class="coursue-card-body">
                   <span class="pill-category-badge amber">OCOP 4 SAO</span>
@@ -2220,7 +2220,7 @@
               <div class="coursue-item-card" onclick="openProductModal('cl_01')">
                 <div class="coursue-img-wrapper">
                   <img src="tea_front.jpg" alt="Trà Bát Tiên">
-                  <button class="floating-heart-btn" title="Lưu trữ">♡</button>
+                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)">♡</button>
                 </div>
                 <div class="coursue-card-body">
                   <span class="pill-category-badge mint">VIETGAP TỈNH</span>
@@ -2242,7 +2242,7 @@
               <div class="coursue-item-card" onclick="openProductModal('at_01')">
                 <div class="coursue-img-wrapper">
                   <img src="honey_front.jpg" alt="Mật ong hoa rừng">
-                  <button class="floating-heart-btn" title="Lưu trữ">♡</button>
+                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)">♡</button>
                 </div>
                 <div class="coursue-card-body">
                   <span class="pill-category-badge cyan">MẬT ONG RỪNG</span>
@@ -2289,7 +2289,7 @@
                   <td>1.200 túi Chuối Sấy Giòn Yên Bình</td>
                   <td><strong style="color: var(--brand-700); font-size: 16px;">54.000.000 đ</strong></td>
                   <td>
-                    <button class="circle-arrow-action" title="In phiếu đóng gói" onclick="showToast('In phiếu đóng gói 1.200 túi WinMart...')">↗</button>
+                    <button class="circle-arrow-action" title="In phiếu đóng gói" onclick="openDispatchSlipModal('WM-8821')">↗</button>
                   </td>
                 </tr>
 
@@ -2302,7 +2302,7 @@
                   <td>3 túi Chuối Sấy + 1 hộp Trà Bát Tiên</td>
                   <td><strong style="color: var(--slate-900); font-size: 16px;">345.000 đ</strong></td>
                   <td>
-                    <button class="circle-arrow-action" title="Xem vận đơn" onclick="showToast('Xem vận đơn Shopee #SHP-8821')">↗</button>
+                    <button class="circle-arrow-action" title="Xem vận đơn" onclick="openDispatchSlipModal('SHP-8821')">↗</button>
                   </td>
                 </tr>
               </tbody>
@@ -2339,7 +2339,7 @@
             </div>
 
             <div class="member-hero-actions">
-              <button class="hero-pill-btn-white" onclick="showToast('Đang kết nối gọi Zalo cho hộ dân...')">
+              <button class="hero-pill-btn-white" onclick="openZaloCallModal('Bác Ba (Hộ 04 - 0912.345.889)')">
                 📞 Gọi Zalo
               </button>
               <button class="hero-pill-btn-dark" onclick="saveMemberSettings()">
@@ -2531,7 +2531,7 @@
                 <span class="pill-category-badge mint">4 Hợp Đồng Đang Gom</span>
               </div>
               <div class="table-filter-side">
-                <button class="btn-table-action-view" onclick="showToast('Đang kết nối hệ thống EDI WinMart...')">+ Thêm Hợp Đồng Mới</button>
+                <button class="btn-table-action-view" onclick="openAddB2BContractModal()">+ Thêm Hợp Đồng Mới</button>
               </div>
             </div>
 
@@ -2556,7 +2556,7 @@
                   <td><strong style="color: var(--brand-700);">54.000.000 đ</strong></td>
                   <td><span class="status-badge-clean approved">Đang đóng gói</span></td>
                   <td style="text-align: right;">
-                    <button class="btn-table-action-view" onclick="event.stopPropagation(); showToast('In phiếu xuất kho 1.200 túi WinMart')">In Phiếu Kho</button>
+                    <button class="btn-table-action-view" onclick="event.stopPropagation(); openDispatchSlipModal('WM-8821')">In Phiếu Kho</button>
                   </td>
                 </tr>
                 <tr class="clickable-row" onclick="showToast('Xem chi tiết đơn B2B-9822 MM Mega')">
@@ -2567,7 +2567,7 @@
                   <td><strong style="color: var(--brand-700);">48.600.000 đ</strong></td>
                   <td><span class="status-badge-clean pending">Đang chờ gom</span></td>
                   <td style="text-align: right;">
-                    <button class="btn-table-action-view" onclick="event.stopPropagation(); showToast('Gửi thông báo gom trà tới Cô Lan')">Gom Hàng</button>
+                    <button class="btn-table-action-view" onclick="event.stopPropagation(); showLogisticsView()">Gom Hàng</button>
                   </td>
                 </tr>
                 <tr class="clickable-row" onclick="showToast('Xem chi tiết đơn B2B-9823 BigC')">
@@ -2578,7 +2578,7 @@
                   <td><strong style="color: var(--brand-700);">30.000.000 đ</strong></td>
                   <td><span class="status-badge-clean paused">Tạm dừng giao</span></td>
                   <td style="text-align: right;">
-                    <button class="btn-table-action-view" onclick="event.stopPropagation(); showToast('Kiểm tra kho trữ mật ong')">Kiểm Tra</button>
+                    <button class="btn-table-action-view" onclick="event.stopPropagation(); showSuppliesView()">Kiểm Tra</button>
                   </td>
                 </tr>
               </tbody>
@@ -2605,7 +2605,7 @@
                 <h3>Kịch Bản Livestream TikTok Shop & Video Ngắn</h3>
                 <span class="pill-category-badge amber">Tự Động Sinh Bằng Gemini AI</span>
               </div>
-              <button class="hero-pill-btn-dark" onclick="showToast('Gemini AI đang sinh thêm kịch bản mới cho Trà Bát Tiên...')">✨ Sinh Kịch Bản Mới</button>
+              <button class="hero-pill-btn-dark" onclick="openAIGeneratorModal()">✨ Sinh Kịch Bản Mới</button>
             </div>
 
             <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 20px; margin-bottom: 18px;">
@@ -2617,7 +2617,7 @@
               </p>
               <div style="display: flex; gap: 10px;">
                 <button class="hero-pill-btn-white" onclick="showToast('Đã sao chép kịch bản vào clipboard!')">📋 Sao Chép Kịch Bản</button>
-                <button class="btn-table-action-view" onclick="showToast('Đang phát kịch bản thử giọng nói AI...')">🔊 Nghe Đọc Thử Giọng AI</button>
+                <button class="btn-table-action-view" onclick="openVoicePreviewModal('Kịch Bản TikTok Bác Ba', 'Bà con ơi, chuối vườn nhà Ba quả đẫy đà thế này mà không làm chuối sấy giòn thì tiếc lắm! Hôm nay HTX trợ giá combo 3 gói miễn phí ship tận nhà, bấm ngay giỏ hàng góc trái nghen!')">🔊 Nghe Đọc Thử Giọng AI</button>
               </div>
             </div>
           </div>
@@ -2668,8 +2668,8 @@
                 <span class="pill-category-badge amber">Chiết khấu HTX trích 10% vận hành & bao bì</span>
               </div>
               <div style="display: flex; gap: 8px;">
-                <button class="hero-pill-btn-white" onclick="showToast('Đang xuất bảng kê quyết toán sang Excel...')">📊 Xuất File Excel</button>
-                <button class="hero-pill-btn-dark" onclick="showToast('Đã phát lệnh chuyển khoản VietQR hàng loạt cho 12 hộ chờ giải ngân!')">⚡ Chuyển Khoản Hàng Loạt</button>
+                <button class="hero-pill-btn-white" onclick="exportSettlementExcel()">📊 Xuất File Excel</button>
+                <button class="hero-pill-btn-dark" onclick="openBatchPayoutModal()">⚡ Chuyển Khoản Hàng Loạt</button>
               </div>
             </div>
 
@@ -2754,7 +2754,7 @@
                     <td><span style="font-size: 12px; color: var(--slate-600);">Tiền mặt (Trạm cân)</span></td>
                     <td><span class="status-badge-clean pending">Chờ ký nhận</span></td>
                     <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="showToast('Đã xuất phiếu chi tiền mặt 7.875.000đ cho anh Thắng!')">In Phiếu Chi</button>
+                      <button class="btn-table-action-view" onclick="openCashVoucherModal('Anh Thắng (Nguyễn Văn Thắng)', '7.875.000', 'Bưởi Da Xanh Loại 1 (350kg)')">In Phiếu Chi</button>
                     </td>
                   </tr>
 
@@ -2823,8 +2823,8 @@
                 <span class="pill-category-badge amber">Tự động điều phối theo bản đồ vùng trồng xã Yên Bình</span>
               </div>
               <div style="display: flex; gap: 8px;">
-                <button class="hero-pill-btn-white" onclick="showToast('Đã gửi thông báo Zalo nhắc giờ tập kết tới 38 hộ!')">📢 Gửi Zalo Nhắc Bà Con</button>
-                <button class="hero-pill-btn-dark" onclick="showToast('Đang tạo lộ trình thu gom mới cho ngày mai...')">➕ Thêm Tuyến Xe</button>
+                <button class="hero-pill-btn-white" onclick="broadcastLogisticsZalo()">📢 Gửi Zalo Nhắc Bà Con</button>
+                <button class="hero-pill-btn-dark" onclick="openAddRouteModal()">➕ Thêm Tuyến Xe</button>
               </div>
             </div>
 
@@ -2844,7 +2844,7 @@
                 <div style="background: var(--slate-50); border-radius: 10px; padding: 10px; font-size: 12px; color: var(--slate-700); margin-bottom: 14px;">
                   📍 Điểm dừng kế tiếp: <strong>Trạm Cân Nhà Văn Hóa Thôn Cát (Lúc 09:15)</strong>
                 </div>
-                <button class="hero-pill-btn-green" style="width: 100%; justify-content: center;" onclick="showToast('Đang theo dõi GPS xe tải 29H-842.15 real-time...')">📍 Xem Vị Trí Xe Trên Bản Đồ</button>
+                <button class="hero-pill-btn-green" style="width: 100%; justify-content: center;" onclick="openGPSFleetModal('Tuyến 1 - Thôn Đồng Cát')">📍 Xem Vị Trí Xe Trên Bản Đồ</button>
               </div>
 
               <div style="background: white; border: 1px solid var(--slate-200); border-radius: 16px; padding: 20px;">
@@ -2861,7 +2861,7 @@
                 <div style="background: var(--slate-50); border-radius: 10px; padding: 10px; font-size: 12px; color: var(--slate-700); margin-bottom: 14px;">
                   ✓ Đã nhập kho sơ chế trung tâm HTX lúc 08:35
                 </div>
-                <button class="hero-pill-btn-white" style="width: 100%; justify-content: center;" onclick="showToast('Đã nghiệm thu phiếu cân nhập kho Tuyến 2')">📄 Xem Phiếu Nghiệm Thu</button>
+                <button class="hero-pill-btn-white" style="width: 100%; justify-content: center;" onclick="openNghiemThuModal('Tuyến 2 - Thôn Suối Hai')">📄 Xem Phiếu Nghiệm Thu</button>
               </div>
 
               <div style="background: white; border: 1px solid var(--slate-200); border-radius: 16px; padding: 20px;">
@@ -2878,7 +2878,7 @@
                 <div style="background: var(--slate-50); border-radius: 10px; padding: 10px; font-size: 12px; color: var(--slate-700); margin-bottom: 14px;">
                   ⏳ Đang dán tem QR Traceability và bọc màng co
                 </div>
-                <button class="hero-pill-btn-white" style="width: 100%; justify-content: center;" onclick="showToast('Đã in vận đơn đường bộ kèm mã QR kiểm dịch')">🏷️ In Vận Đơn Kèm QR</button>
+                <button class="hero-pill-btn-white" style="width: 100%; justify-content: center;" onclick="openDispatchSlipModal('WM-8821')">🏷️ In Vận Đơn Kèm QR</button>
               </div>
             </div>
           </div>
@@ -2927,7 +2927,7 @@
                 <h3>Quản Lý Tồn Kho Bao Bì & Tem Nhãn OCOP 4 Sao</h3>
                 <span class="pill-category-badge amber">Kết nối tự động xưởng in bao bì màng nhôm Tân Á</span>
               </div>
-              <button class="hero-pill-btn-dark" onclick="showToast('Đã gửi đơn đặt in 3.000 túi zipper màng nhôm OCOP tới xưởng Tân Á!')">📦 Đặt In 3.000 Túi Mới</button>
+              <button class="hero-pill-btn-dark" onclick="openPackagingOrderModal()">📦 Đặt In 3.000 Túi Mới</button>
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
@@ -2982,7 +2982,7 @@
                   <td style="font-weight: 700;">3.200.000 đ</td>
                   <td style="color: var(--brand-700); font-weight: 700;">-3.200.000 đ (Đã trừ hết)</td>
                   <td><span class="status-badge-clean approved">0 đ (Hoàn tất)</span></td>
-                  <td style="text-align: right;"><button class="btn-table-action-view" onclick="showToast('Xem chi tiết biên bản giao nhận phân bón Bác Ba')">Xem Biên Bản</button></td>
+                  <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyHandoverModal('Bác Ba (Hộ 04)')">Xem Biên Bản</button></td>
                 </tr>
                 <tr>
                   <td><strong>Chú Tư (Hộ 31)</strong></td>
@@ -2991,7 +2991,7 @@
                   <td style="font-weight: 700;">4.500.000 đ</td>
                   <td style="color: var(--slate-500);">-2.000.000 đ</td>
                   <td><span style="color: #D97706; font-weight: 800;">2.500.000 đ</span></td>
-                  <td style="text-align: right;"><button class="btn-table-action-view" onclick="showToast('Đang chuẩn bị cấn trừ vào đợt cân trà ngày mai')">Lập Lệnh Trừ</button></td>
+                  <td style="text-align: right;"><button class="btn-table-action-view" onclick="openSupplyDeductionModal('Chú Tư (Hộ 31)', '2.500.000')">Lập Lệnh Trừ</button></td>
                 </tr>
               </tbody>
             </table>
@@ -3040,7 +3040,7 @@
                 <h3>Bảng So Sánh Giá Nông Sản Thời Gian Thực (Chợ Đầu Mối vs HTX vs Siêu Thị)</h3>
                 <span class="pill-category-badge amber">Cập nhật mỗi 2 giờ từ Chợ Long Biên, WinMart, TikTok Shop</span>
               </div>
-              <button class="hero-pill-btn-dark" onclick="showToast('AI Radar vừa quét giá 4 sàn TMĐT: Đang giữ mức giá cạnh tranh tốt nhất!')">⚡ Quét Lại Giá AI</button>
+              <button class="hero-pill-btn-dark" onclick="refreshAIRadar()">⚡ Quét Lại Giá AI</button>
             </div>
 
             <table class="member-product-table">
@@ -3191,7 +3191,7 @@
               </button>
             </div>
 
-            <button class="btn-see-all-coursue" onclick="showToast('Danh bạ HTX: 142 hộ nông dân thuộc 5 thôn Xã Yên Bình.')">
+            <button class="btn-see-all-coursue" onclick="openAllMembersDirectoryModal()">
               Xem Toàn Bộ 142 Xã Viên
             </button>
           </div>
@@ -3235,7 +3235,7 @@
 
       <!-- Băng phát âm thanh giọng nói gốc -->
       <div class="audio-voice-wave-bar">
-        <button class="audio-play-round" onclick="showToast('🔊 Đang phát giọng nói đối soát giá của hộ dân...')">▶</button>
+        <button class="audio-play-round" onclick="openVoicePreviewModal('Giọng Nói Đối Soát Hộ Dân', document.getElementById('modal-voice-quote').innerText)">▶</button>
         <div>
           <div style="font-size: 14.5px; color: var(--slate-900);">
             <strong>Giọng nói gốc hộ dân:</strong> <em id="modal-voice-quote">"Chuối sấy giòn túi hai trăm năm mươi gam, bán năm mươi lăm nghìn một gói nghen..."</em>
@@ -3436,6 +3436,58 @@
           { id: 'at_01', name: 'Mật Ong Hoa Rừng Tự Nhiên (Chai 500ml)', sku: 'SP-12-01', standard: 'OCOP 4★', stdClass: 'amber', price: '220.000', stock: '150 chai', status: 'pending', img: 'honey_front.jpg', notes: 'Thủy phần < 18.5%, tự nhiên 100% không pha đường.', voiceQuote: 'Mật ong rừng chai nửa lít hai trăm hai chục...', voicePrice: '220.000' },
           { id: 'at_02', name: 'Sữa Ong Chúa Tươi Nguyên Chất (Hũ 100g)', sku: 'SP-12-02', standard: 'OCOP 4★', stdClass: 'amber', price: '280.000', stock: '85 hũ', status: 'approved', img: 'honey_front.jpg', notes: 'Khai thác trực tiếp từ tổ chúa, bảo quản đông sâu.', voiceQuote: 'Sữa ong chúa tươi hai trăm tám...', voicePrice: '280.000' },
           { id: 'at_03', name: 'Sáp Ong Rừng Tự Nhiên Thô Chưa Lọc', sku: 'SP-12-03', standard: 'NGUYÊN LIỆU', stdClass: 'red', price: '70.000', stock: '25 kg', status: 'rejected', img: 'honey_front.jpg', notes: 'Lẫn vụn vỏ cây, chưa lọc cặn đạt chuẩn đưa lên sàn.', voiceQuote: 'Sáp ong thô bảy mươi ngàn một cân...', voicePrice: '70.000' }
+        ]
+      }
+,
+      'tu': {
+        name: 'Chú Tư (Hoàng Văn Tư)',
+        meta: 'Mã: HTX-YB-31 · 58 tuổi · Thôn Đồi Mơ, Xã Yên Bình',
+        badge: 'OCOP 4 SAO TỈNH',
+        avatar: 'tea_front.jpg',
+        revenue: '21.500.000 đ',
+        yield: '1.2 Tấn',
+        orders: '52 Đơn',
+        phone: '0912.345.655',
+        bank: 'ZaloPay / Agribank - 8802.345.655',
+        address: 'Thôn Đồi Mơ, Xã Yên Bình',
+        progress: '78%',
+        subtext: 'Đạt 78% kế hoạch hái chè búp sao suốt!',
+        products: [
+          { id: 'tu_01', name: 'Trà Bát Tiên Đồi Mơ (Hộp 200g OCOP)', sku: 'SP-31-01', standard: 'OCOP 4★', stdClass: 'amber', price: '220.000', stock: '250 hộp', status: 'approved', img: 'tea_front.jpg', notes: 'Hái sương sớm đồi cao, hương thơm tự nhiên.', voiceQuote: 'Trà Bát Tiên hai trăm hai...', voicePrice: '220.000' }
+        ]
+      },
+      'sau': {
+        name: 'Cô Sáu (Trần Thị Sáu)',
+        meta: 'Mã: HTX-YB-18 · 51 tuổi · Thôn Suối Hai, Xã Yên Bình',
+        badge: 'OCOP 4 SAO TỈNH',
+        avatar: 'honey_front.jpg',
+        revenue: '14.800.000 đ',
+        yield: '350 Lít',
+        orders: '34 Đơn',
+        phone: '0934.567.890',
+        bank: 'Vietcombank - 1012.345.678',
+        address: 'Thôn Suối Hai, Xã Yên Bình',
+        progress: '92%',
+        subtext: 'Đạt 92% kế hoạch quay mật ong hoa rừng vụ thu!',
+        products: [
+          { id: 'sau_01', name: 'Mật Ong Hoa Rừng Suối Hai (Chai 500ml)', sku: 'SP-18-01', standard: 'OCOP 4★', stdClass: 'amber', price: '200.000', stock: '180 chai', status: 'approved', img: 'honey_front.jpg', notes: 'Mật ong hoa rừng tự nhiên 100%.', voiceQuote: 'Mật ong hoa rừng hai trăm ngàn...', voicePrice: '200.000' }
+        ]
+      },
+      'thang': {
+        name: 'Anh Thắng (Nguyễn Văn Thắng)',
+        meta: 'Mã: HTX-YB-52 · 42 tuổi · Thôn Bãi Giữa, Xã Yên Bình',
+        badge: 'VIETGAP CHUẨN TỈNH',
+        avatar: 'bac_ba_avatar.jpg',
+        revenue: '28.900.000 đ',
+        yield: '4.5 Tấn',
+        orders: '41 Đơn',
+        phone: '0976.223.344',
+        bank: 'Tiền mặt tại trạm cân',
+        address: 'Thôn Bãi Giữa, Xã Yên Bình',
+        progress: '82%',
+        subtext: 'Đạt 82% vụ bưởi da xanh ruột hồng!',
+        products: [
+          { id: 'thang_01', name: 'Bưởi Da Xanh Ruột Hồng Yên Bình (Trái 1.5kg)', sku: 'SP-52-01', standard: 'VIETGAP', stdClass: 'mint', price: '35.000', stock: '800 trái', status: 'approved', img: 'bac_ba_avatar.jpg', notes: 'Trái mọng nước, tép giòn ngọt.', voiceQuote: 'Bưởi da xanh ba lăm ngàn...', voicePrice: '35.000' }
         ]
       }
     };
@@ -4004,7 +4056,7 @@
           <div style="background: white; border: 1px dashed var(--brand-400); border-radius: 12px; padding: 12px; font-size: 12px; line-height: 1.5; white-space: pre-wrap; color: var(--slate-800); margin: 8px 0;" id="draft-zalo-content">${msgText}</div>
           <div class="copilot-action-group">
             <button class="copilot-action-btn" onclick="copyDraftZalo()">📋 Sao Chép Tin Nhắn</button>
-            <button class="copilot-action-btn" onclick="showToast('✅ Đã gửi thẳng vào Nhóm Zalo Nông Sản Xã (142 thành viên)!')">🚀 Gửi Vào Nhóm Zalo Xã</button>
+            <button class="copilot-action-btn" onclick="broadcastLogisticsZalo()">🚀 Gửi Vào Nhóm Zalo Xã</button>
           </div>
         `;
       } else if (q.includes('winmart') || q.includes('b2b') || q.includes('đơn buôn')) {
@@ -4020,7 +4072,7 @@
           </table>
           <div class="copilot-action-group">
             <button class="copilot-action-btn" onclick="showB2BOrdersView()">📦 Xem Chi Tiết Đơn Buôn</button>
-            <button class="copilot-action-btn" onclick="showToast('Đã in vận đơn WinMart kèm mã QR kiểm dịch!')">🏷️ In Vận Đơn Kèm QR</button>
+            <button class="copilot-action-btn" onclick="openDispatchSlipModal('WM-8821')">🏷️ In Vận Đơn Kèm QR</button>
           </div>
         `;
       } else if (q.includes('ocop') || q.includes('4 sao') || q.includes('tiêu chuẩn')) {
@@ -4035,7 +4087,7 @@
           </ol>
           <div class="copilot-action-group">
             <button class="copilot-action-btn" onclick="showSuppliesView()">📦 Xem Tồn Kho Bao Bì OCOP</button>
-            <button class="copilot-action-btn" onclick="showToast('Đã xuất bộ hồ sơ minh chứng OCOP 4 sao gửi Phòng Nông Nghiệp Huyện')">📄 Xuất Bộ Hồ Sơ OCOP</button>
+            <button class="copilot-action-btn" onclick="openOcopDossierModal()">📄 Xuất Bộ Hồ Sơ OCOP</button>
           </div>
         `;
       } else if (q.includes('quyết toán') || q.includes('tiền tươi') || q.includes('chi trả') || q.includes('giải ngân')) {
@@ -4092,6 +4144,274 @@
         setTimeout(() => toast.remove(), 250);
       }, 3000);
     }
+
+    // =========================================================================
+    // CÁC HÀM XỬ LÝ CHO TẤT CẢ CÁC NÚT BẤM VÀ CỬA SỔ POPUP
+    // =========================================================================
+    function openGenericModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeGenericModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        modal.style.display = 'none';
+      }
+    }
+
+    function closeGenericModalOnBackdrop(event, modalId) {
+      if (event && event.target.id === modalId) {
+        closeGenericModal(modalId);
+      }
+    }
+
+    // Top Bar triggers
+    function openZaloCommunityModal() {
+      openGenericModal('modal-zalo-community');
+    }
+
+    function openNotificationsModal() {
+      openGenericModal('modal-notifications-center');
+    }
+
+    function openAdminProfileModal() {
+      openGenericModal('modal-admin-profile');
+    }
+
+    function handleGlobalSearch(query) {
+      const q = query.toLowerCase().trim();
+      const rows = document.querySelectorAll('#member-products-table-body tr');
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = (!q || text.includes(q)) ? '' : 'none';
+      });
+    }
+
+    // Carousel & Favorite
+    function scrollCoursueGrid(direction) {
+      const grid = document.querySelector('.cards-coursue-grid');
+      if (grid) {
+        grid.scrollBy({ left: direction * 280, behavior: 'smooth' });
+      }
+    }
+
+    function toggleFavorite(btn, event) {
+      if (event) event.stopPropagation();
+      if (btn.innerText === '♡') {
+        btn.innerText = '❤️';
+        btn.style.color = '#EF4444';
+        showToast('❤️ Đã lưu nông sản vào danh mục yêu thích!');
+      } else {
+        btn.innerText = '♡';
+        btn.style.color = '';
+        showToast('Đã bỏ lưu khỏi danh mục yêu thích');
+      }
+    }
+
+    // Members Directory Modal
+    function openAllMembersDirectoryModal() {
+      openGenericModal('modal-all-members-directory');
+    }
+
+    function filterMembersDirectory(query) {
+      const q = query.toLowerCase().trim();
+      const rows = document.querySelectorAll('#table-members-directory tbody tr');
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = (!q || text.includes(q)) ? '' : 'none';
+      });
+    }
+
+    function filterMembersByVillage(village) {
+      const rows = document.querySelectorAll('#table-members-directory tbody tr');
+      rows.forEach(r => {
+        if (village === 'all') {
+          r.style.display = '';
+        } else {
+          r.style.display = r.innerText.includes(village) ? '' : 'none';
+        }
+      });
+      showToast('Đang lọc danh bạ xã viên: ' + (village === 'all' ? 'Toàn Xã' : village));
+    }
+
+    // Zalo Call Modal
+    function openZaloCallModal(farmerName) {
+      document.getElementById('zalo-call-name').innerText = farmerName;
+      document.getElementById('zalo-call-status').innerText = 'Đang kết nối thoại Zalo... 📞';
+      openGenericModal('modal-zalo-call');
+      setTimeout(() => {
+        const statusEl = document.getElementById('zalo-call-status');
+        if (statusEl) statusEl.innerText = '00:08 · Kết nối thành công';
+      }, 1500);
+    }
+
+    // Add B2B Contract
+    function openAddB2BContractModal() {
+      openGenericModal('modal-add-b2b-contract');
+    }
+
+    function submitAddB2BContract() {
+      const partner = document.getElementById('b2b-partner-input').value;
+      const prod = document.getElementById('b2b-prod-select').value;
+      const qty = document.getElementById('b2b-qty-input').value;
+      closeGenericModal('modal-add-b2b-contract');
+      showToast(`✅ ĐÃ LƯU THÀNH CÔNG HỢP ĐỒNG ${partner} (${qty})!`);
+    }
+
+    // Dispatch Slip
+    function openDispatchSlipModal(slipId) {
+      openGenericModal('modal-dispatch-slip');
+    }
+
+    // AI Generator Modal
+    function openAIGeneratorModal() {
+      document.getElementById('ai-gen-output-box').style.display = 'none';
+      openGenericModal('modal-ai-generator');
+    }
+
+    function executeAIGeneration() {
+      const prod = document.getElementById('ai-gen-product').value;
+      const box = document.getElementById('ai-gen-output-box');
+      const title = document.getElementById('ai-gen-result-title');
+      const content = document.getElementById('ai-gen-result-content');
+
+      box.style.display = 'block';
+      title.innerText = '🎬 Kịch Bản TikTok Shop Vừa Sinh:';
+      content.innerText = `[00:00 - 00:06] Cầm hũ sản phẩm nghiêng nhẹ bắt ánh nắng mai: "Bà con thành phố uống trà/mật ong nhiều rồi, nhưng có biết vị ngọt sương sớm rừng Yên Bình nó thanh tao cỡ nào không?".\n\n[00:07 - 00:20] Rót dòng mật óng ả/nhấp ngụm trà xanh sóng sánh: "Đây là lô chuẩn OCOP 4 sao vừa hái xong sáng nay, không pha tạp, không hương liệu tổng hợp!".\n\n[00:21 - 00:30] CTA: "Hôm nay HTX trợ giá độc quyền giảm 25% kèm quà tặng gói chuối sấy giòn, bấm ngay link giỏ hàng góc trái nghen!"`;
+      showToast('✨ Gemini AI đã sinh xong kịch bản mới chất lượng cao!');
+    }
+
+    // Voice Preview
+    let audioPlaying = true;
+    let audioTimer = null;
+    let audioSeconds = 12;
+
+    function openVoicePreviewModal(title, text) {
+      document.getElementById('audio-preview-title').innerText = title;
+      document.getElementById('audio-preview-text').innerText = text;
+      audioPlaying = true;
+      audioSeconds = 12;
+      document.getElementById('btn-play-pause-audio').innerText = '⏸';
+      openGenericModal('modal-voice-preview');
+
+      if (audioTimer) clearInterval(audioTimer);
+      audioTimer = setInterval(() => {
+        if (audioPlaying) {
+          audioSeconds++;
+          if (audioSeconds > 28) audioSeconds = 0;
+          const min = String(Math.floor(audioSeconds / 60)).padStart(2, '0');
+          const sec = String(audioSeconds % 60).padStart(2, '0');
+          const curTimeEl = document.getElementById('audio-current-time');
+          const barEl = document.getElementById('audio-progress-bar');
+          if (curTimeEl) curTimeEl.innerText = `${min}:${sec}`;
+          if (barEl) barEl.style.width = ((audioSeconds / 28) * 100) + '%';
+        }
+      }, 1000);
+    }
+
+    function toggleAudioSimulation() {
+      audioPlaying = !audioPlaying;
+      document.getElementById('btn-play-pause-audio').innerText = audioPlaying ? '⏸' : '▶';
+    }
+
+    // Batch Payout
+    function openBatchPayoutModal() {
+      openGenericModal('modal-batch-payout');
+    }
+
+    function executeBatchPayout() {
+      closeGenericModal('modal-batch-payout');
+      showToast('✅ ĐÃ GIẢI NGÂN THÀNH CÔNG 35.800.000Đ CHO 12 HỘ XÃ VIÊN QUA NAPAS 247!');
+    }
+
+    // Cash Voucher
+    function openCashVoucherModal(name, amount, reason) {
+      document.getElementById('cash-voucher-name').innerText = name;
+      document.getElementById('cash-voucher-amount').innerText = amount + ' VNĐ';
+      document.getElementById('cash-voucher-reason').innerText = reason;
+      openGenericModal('modal-cash-voucher');
+    }
+
+    // Fleet GPS
+    function openGPSFleetModal(routeTitle) {
+      document.getElementById('gps-route-title').innerText = routeTitle;
+      openGenericModal('modal-gps-fleet');
+    }
+
+    function openNghiemThuModal(routeTitle) {
+      showToast(`📄 Biên bản nghiệm thu cân nhận nông sản ${routeTitle}: Đạt 100% tỷ lệ loại 1.`);
+    }
+
+    function openAddRouteModal() {
+      showToast('➕ Đã tạo tuyến xe số 4 (Thôn Bãi Giữa - Đầm Sen) xuất phát sáng mai 07h00!');
+    }
+
+    // Packaging & Supplies
+    function openPackagingOrderModal() {
+      openGenericModal('modal-packaging-order');
+    }
+
+    function openSupplyHandoverModal(farmerName) {
+      openGenericModal('modal-supply-handover');
+    }
+
+    function openSupplyDeductionModal(farmerName, amount) {
+      openGenericModal('modal-supply-deduction');
+    }
+
+    // Ocop Dossier
+    function openOcopDossierModal() {
+      openGenericModal('modal-ocop-dossier');
+    }
+
+    // Excel Export (Real CSV File Download)
+    function exportSettlementExcel() {
+      const csvRows = [
+        ["STT", "XÃ VIÊN", "THÔN/BẢN", "NÔNG SẢN", "KHỐI LƯỢNG (KG)", "DOANH THU (VND)", "PHÍ HTX 10%", "THỰC NHẬN (VND)", "NGÂN HÀNG", "TRẠNG THÁI"],
+        ["1", "Bác Ba (Nguyễn Văn Ba)", "Thôn Đồng Cát", "Chuối Sấy Giòn OCOP", "120", "6600000", "-660000", "5940000", "Agribank 8802****8899", "Đã chuyển"],
+        ["2", "Cô Sáu (Trần Thị Sáu)", "Thôn Suối Hai", "Mật Ong Hoa Rừng", "45", "9000000", "-900000", "8100000", "Vietcombank 1012****34", "Chờ giải ngân"],
+        ["3", "Chú Tư (Hoàng Văn Tư)", "Thôn Đồi Mơ", "Trà Bát Tiên OCOP", "80", "17600000", "-1760000", "15840000", "ZaloPay 0912****55", "Chờ giải ngân"],
+        ["4", "Anh Thắng (Nguyễn Văn Thắng)", "Thôn Bãi Giữa", "Bưởi Da Xanh Loại 1", "350", "8750000", "-875000", "7875000", "Tiền mặt trạm cân", "Chờ ký nhận"],
+        ["5", "Chị Lan (Vũ Thị Lan)", "Thôn Đồng Cát", "Gạo Hữu Cơ ST25", "500", "15000000", "-1500000", "13500000", "Agribank 8802****8811", "Đã chuyển"]
+      ];
+
+      let csvContent = "data:text/csv;charset=utf-8,﻿" + csvRows.map(e => e.join(",")).join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "Quyet_Toan_Nong_San_HTX_Dong_Cat_T10.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('📊 ĐÃ XUẤT THÀNH CÔNG FILE EXCEL/CSV QUYẾT TOÁN!');
+    }
+
+    // Zalo Broadcast
+    function broadcastLogisticsZalo() {
+      showToast('📢 ĐÃ PHÁT THÔNG BÁO ZALO LỊCH THU GOM CHUỐI TỚI 142 HỘ XÃ VIÊN!');
+    }
+
+    function submitZaloBroadcast() {
+      const input = document.getElementById('zalo-broadcast-input');
+      const val = input.value.trim();
+      closeGenericModal('modal-zalo-community');
+      showToast('🚀 ĐÃ GỬI THÔNG BÁO ZNS TỚI TOÀN BỘ 142 HỘ: ' + (val ? val.slice(0, 35) + '...' : 'Thông báo khẩn cấp'));
+      input.value = '';
+    }
+
+    // Market Radar Refresh
+    function refreshAIRadar() {
+      showToast('⚡ AI Radar đang quét giá real-time từ 4 sàn TMĐT & Chợ đầu mối Long Biên...');
+      setTimeout(() => {
+        showToast('✓ CẬP NHẬT XONG: Giá chuối sấy & mật ong giữ vững vị trí Top 1 cạnh tranh!');
+      }, 1200);
+    }
+
   </script>
 
   <!-- =========================================================================
@@ -4206,5 +4526,758 @@
       </button>
     </div>
   </div>
+
+  <!-- =========================================================================
+       10. CÁC MÀN HÌNH POPUP & MODAL TƯƠNG ỨNG CHO TẤT CẢ CÁC NÚT BẤM
+       ========================================================================= -->
+
+  <!-- Modal 1: Zalo OA & Cộng Đồng Xã Viên -->
+  <div id="modal-zalo-community" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-zalo-community')">
+    <div class="modal-content-container" style="max-width: 680px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3 style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #0068FF; font-size: 22px;">💬</span> Cổng Điều Hành Zalo OA Nông Sản Xã
+          </h3>
+          <p>Kênh phát thanh & trao đổi trực tiếp với 142 hộ xã viên và 4.820 khách hàng</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-zalo-community')">✕</button>
+      </div>
+
+      <div style="background: #F0F7FF; border: 1px solid #BFDBFE; border-radius: 16px; padding: 16px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: #0068FF; color: white; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900;">Z</div>
+          <div>
+            <div style="font-weight: 800; color: #1E3A8A; font-size: 15px;">HTX Nông Sản Xã Yên Bình (OA Verified)</div>
+            <div style="font-size: 12.5px; color: #3B82F6;">4.820 Người quan tâm · Nhóm xã viên: 142 thành viên</div>
+          </div>
+        </div>
+        <span class="status-badge-clean approved">Đang hoạt động</span>
+      </div>
+
+      <h4 style="font-size: 14px; font-weight: 800; color: var(--slate-800); margin-bottom: 10px;">Tin Nhắn Gần Nhất Từ Bà Con:</h4>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; max-height: 240px; overflow-y: auto;">
+        <div style="background: white; border: 1px solid var(--slate-200); border-radius: 12px; padding: 12px; display: flex; justify-content: space-between;">
+          <div>
+            <strong>Bác Ba (Thôn Đồng Cát):</strong>
+            <p style="font-size: 13px; color: var(--slate-600); margin-top: 2px;">"Chú Hùng ơi mai xe tải mấy giờ qua cân chuối để Ba bảo mấy đứa nhỏ bẻ sớm?"</p>
+          </div>
+          <span style="font-size: 11px; color: var(--slate-400);">5 phút trước</span>
+        </div>
+        <div style="background: white; border: 1px solid var(--slate-200); border-radius: 12px; padding: 12px; display: flex; justify-content: space-between;">
+          <div>
+            <strong>Cô Lan (Thôn Đồi Mơ):</strong>
+            <p style="font-size: 13px; color: var(--slate-600); margin-top: 2px;">"Mẻ trà sao suốt hôm nay thơm nức, HTX gom sớm giúp Lan nhé."</p>
+          </div>
+          <span style="font-size: 11px; color: var(--slate-400);">18 phút trước</span>
+        </div>
+      </div>
+
+      <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 16px;">
+        <label style="font-size: 13px; font-weight: 700; color: var(--slate-700); margin-bottom: 6px; display: block;">Phát Thông Báo ZNS Khẩn Cấp Tới 142 Hộ:</label>
+        <textarea id="zalo-broadcast-input" style="width: 100%; border: 1.5px solid var(--slate-300); border-radius: 10px; padding: 10px; font-size: 13px; font-family: inherit; height: 75px; resize: none; margin-bottom: 10px;" placeholder="Nhập nội dung cần thông báo cho bà con xã viên..."></textarea>
+        <div style="display: flex; justify-content: flex-end; gap: 8px;">
+          <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-zalo-community')">Đóng Lại</button>
+          <button class="hero-pill-btn-green" onclick="submitZaloBroadcast()">🚀 Phát Tin Nhắn Tới 142 Hộ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Trung Tâm Thông Báo Điều Hành -->
+  <div id="modal-notifications-center" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-notifications-center')">
+    <div class="modal-content-container" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>🔔 Trung Tâm Thông Báo Điều Hành HTX</h3>
+          <p>Cập nhật biến động mùa vụ, đơn sỉ và kiểm định chất lượng theo thời gian thực</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-notifications-center')">✕</button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+        <div style="background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 14px; padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="font-size: 11px; font-weight: 800; background: #D97706; color: white; padding: 3px 8px; border-radius: 12px;">CHỜ PHÊ DUYỆT</span>
+            <h4 style="font-size: 14px; font-weight: 800; color: #92400E; margin: 4px 0 2px;">Lô chuối sấy giòn mới từ hộ Bác Ba (120kg)</h4>
+            <p style="font-size: 12.5px; color: #B45309;">Hộ dân đã ghi âm giá 55.000đ/gói và gửi đủ 3 ảnh chụp thực tế.</p>
+          </div>
+          <button class="hero-pill-btn-dark" style="font-size: 12px; padding: 6px 14px;" onclick="closeGenericModal('modal-notifications-center'); openProductModalFromTable('Chuối Sấy Giòn Yên Bình (Túi 250g Zip)', '55.000', 'Đang chờ duyệt', 'Bác Ba (Hộ 04 - Thôn Đồng Cát)', 'banana_front.jpg', 'banana_plate.jpg', 'banana_back.jpg')">Duyệt Ngay</button>
+        </div>
+
+        <div style="background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 14px; padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="font-size: 11px; font-weight: 800; background: #059669; color: white; padding: 3px 8px; border-radius: 12px;">ĐƠN BUÔN B2B</span>
+            <h4 style="font-size: 14px; font-weight: 800; color: #065F46; margin: 4px 0 2px;">WinMart Times City đã nghiệm thu 1.200 túi</h4>
+            <p style="font-size: 12.5px; color: #047857;">Thanh toán thành công 17.400.000đ vào tài khoản Agribank HTX.</p>
+          </div>
+          <button class="hero-pill-btn-green" style="font-size: 12px; padding: 6px 14px;" onclick="closeGenericModal('modal-notifications-center'); openDispatchSlipModal('WM-8821')">Xem Vận Đơn</button>
+        </div>
+
+        <div style="background: #FEE2E2; border: 1px solid #FECACA; border-radius: 14px; padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="font-size: 11px; font-weight: 800; background: #DC2626; color: white; padding: 3px 8px; border-radius: 12px;">CẢNH BÁO TỒN KHO</span>
+            <h4 style="font-size: 14px; font-weight: 800; color: #991B1B; margin: 4px 0 2px;">Hũ thủy tinh mật ong 500ml chỉ còn 320 hũ</h4>
+            <p style="font-size: 12.5px; color: #B91C1C;">Đang dưới định mức an toàn, cần đặt xưởng sản xuất thêm.</p>
+          </div>
+          <button class="hero-pill-btn-white" style="font-size: 12px; padding: 6px 14px; color: #DC2626; border-color: #FECACA;" onclick="closeGenericModal('modal-notifications-center'); openPackagingOrderModal()">Đặt In Gấp</button>
+        </div>
+
+        <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 14px; padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="font-size: 11px; font-weight: 800; background: #2563EB; color: white; padding: 3px 8px; border-radius: 12px;">LOGISTICS VÙNG TRỒNG</span>
+            <h4 style="font-size: 14px; font-weight: 800; color: #1E40AF; margin: 4px 0 2px;">Tuyến xe 1 (Tài xế Tuấn) đã đến trạm cân Thôn Cát</h4>
+            <p style="font-size: 12.5px; color: #1D4ED8;">Đã cân nhận 2.4 / 3.2 tấn chuối tiêu đạt chuẩn OCOP.</p>
+          </div>
+          <button class="hero-pill-btn-white" style="font-size: 12px; padding: 6px 14px;" onclick="closeGenericModal('modal-notifications-center'); openGPSFleetModal('Tuyến 1 - Thôn Đồng Cát')">Xem GPS</button>
+        </div>
+      </div>
+
+      <button class="hero-pill-btn-dark" style="width: 100%; justify-content: center;" onclick="closeGenericModal('modal-notifications-center')">Đánh Dấu Đã Đọc Tất Cả</button>
+    </div>
+  </div>
+
+  <!-- Modal 3: Tài Khoản & Cài Đặt Chủ Nhiệm HTX -->
+  <div id="modal-admin-profile" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-admin-profile')">
+    <div class="modal-content-container" style="max-width: 600px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>👨‍💼 Hồ Sơ Ban Lãnh Đạo HTX Đồng Cát</h3>
+          <p>Cấu hình chữ ký số, con dấu pháp nhân và tài khoản thanh toán tập trung</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-admin-profile')">✕</button>
+      </div>
+
+      <div style="display: flex; gap: 16px; align-items: center; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 18px; margin-bottom: 20px;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #059669; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900;">VH</div>
+        <div>
+          <h4 style="font-size: 17px; font-weight: 800; color: var(--slate-900);">Vũ Văn Hùng · Chủ Nhiệm HTX</h4>
+          <p style="font-size: 13.5px; color: var(--slate-600);">Hợp Tác Xã Nông Nghiệp & Dịch Vụ Đồng Cát</p>
+          <div style="font-size: 12px; color: var(--brand-700); font-weight: 700; margin-top: 4px;">✓ Đã xác thực Chữ ký số Ban Cơ yếu Chính phủ</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;">
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Mã Số Thuế HTX:</label>
+          <input type="text" class="form-input-stylish" value="5200892144-001" readonly>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Số Tài Khoản Thu Chi:</label>
+          <input type="text" class="form-input-stylish" value="Agribank 880020109988" readonly>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Mã Vùng Trồng OCOP:</label>
+          <input type="text" class="form-input-stylish" value="PUC-VN-YB-028" readonly>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Chiết Khấu HTX Mặc Định:</label>
+          <input type="text" class="form-input-stylish" value="10.0% (Bao bì + kho mát)">
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-admin-profile')">Đóng Lại</button>
+        <button class="hero-pill-btn-dark" onclick="showToast('Đã lưu cấu hình tài khoản chủ nhiệm HTX!'); closeGenericModal('modal-admin-profile');">Lưu Cấu Hình</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Danh Bạ Toàn Bộ 142 Xã Viên -->
+  <div id="modal-all-members-directory" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-all-members-directory')">
+    <div class="modal-content-container" style="max-width: 960px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>🌾 Danh Bạ 142 Hộ Xã Viên — HTX Đồng Cát</h3>
+          <p>Phân bố trên 5 thôn thuộc xã Yên Bình · Quản lý mùa vụ, diện tích canh tác & mã vùng trồng</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-all-members-directory')">✕</button>
+      </div>
+
+      <!-- Filter bar -->
+      <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+        <input type="text" id="member-search-input" placeholder="Tìm tên xã viên, số điện thoại, cây trồng..." style="flex: 1; border: 1px solid var(--slate-300); border-radius: var(--radius-pill); padding: 8px 16px; font-size: 13.5px;" oninput="filterMembersDirectory(this.value)">
+        <button class="copilot-chip-btn active" onclick="filterMembersByVillage('all')">Toàn Xã (142)</button>
+        <button class="copilot-chip-btn" onclick="filterMembersByVillage('Thôn Đồng Cát')">Thôn Cát (38)</button>
+        <button class="copilot-chip-btn" onclick="filterMembersByVillage('Thôn Đồi Mơ')">Đồi Mơ (32)</button>
+        <button class="copilot-chip-btn" onclick="filterMembersByVillage('Thôn Suối Hai')">Suối Hai (28)</button>
+        <button class="copilot-chip-btn" onclick="filterMembersByVillage('Thôn Bãi Giữa')">Bãi Giữa (24)</button>
+        <button class="copilot-chip-btn" onclick="filterMembersByVillage('Thôn Đầm Sen')">Đầm Sen (20)</button>
+      </div>
+
+      <div style="max-height: 480px; overflow-y: auto;">
+        <table class="member-product-table" id="table-members-directory">
+          <thead>
+            <tr>
+              <th>HỘ XÃ VIÊN</th>
+              <th>ĐỊA BÀN</th>
+              <th>CÂY TRỒNG CHỦ LỰC</th>
+              <th>DIỆN TÍCH</th>
+              <th>SẢN LƯỢNG CAM KẾT</th>
+              <th>TIẾN ĐỘ THU HOẠCH</th>
+              <th style="text-align: right;">QUẢN TRỊ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Bác Ba (Nguyễn Văn Ba)</strong><br><span style="font-size: 12px; color: var(--slate-500);">0912.345.889</span></td>
+              <td>Thôn Đồng Cát</td>
+              <td><span class="table-tag-dept">Chuối Tiêu Hồng OCOP</span></td>
+              <td>1.8 ha</td>
+              <td>14 Tấn/năm</td>
+              <td><span class="status-badge-clean approved">94% (Đạt chỉ tiêu)</span></td>
+              <td style="text-align: right;"><button class="hero-pill-btn-green" style="font-size: 12px; padding: 4px 12px;" onclick="closeGenericModal('modal-all-members-directory'); switchToMemberAdmin('bacba')">Mở Hồ Sơ</button></td>
+            </tr>
+            <tr>
+              <td><strong>Cô Lan (Vũ Thị Lan)</strong><br><span style="font-size: 12px; color: var(--slate-500);">0988.112.445</span></td>
+              <td>Thôn Đồng Cát</td>
+              <td><span class="table-tag-dept">Gạo ST25 & Trà Bát Tiên</span></td>
+              <td>2.2 ha</td>
+              <td>18 Tấn/năm</td>
+              <td><span class="status-badge-clean approved">88%</span></td>
+              <td style="text-align: right;"><button class="hero-pill-btn-green" style="font-size: 12px; padding: 4px 12px;" onclick="closeGenericModal('modal-all-members-directory'); switchToMemberAdmin('lan')">Mở Hồ Sơ</button></td>
+            </tr>
+            <tr>
+              <td><strong>Chú Tư (Hoàng Văn Tư)</strong><br><span style="font-size: 12px; color: var(--slate-500);">0912.345.655</span></td>
+              <td>Thôn Đồi Mơ</td>
+              <td><span class="table-tag-dept">Trà Bát Tiên Sao Suốt</span></td>
+              <td>1.5 ha</td>
+              <td>6 Tấn/năm</td>
+              <td><span class="status-badge-clean pending">78%</span></td>
+              <td style="text-align: right;"><button class="hero-pill-btn-green" style="font-size: 12px; padding: 4px 12px;" onclick="closeGenericModal('modal-all-members-directory'); switchToMemberAdmin('tu')">Mở Hồ Sơ</button></td>
+            </tr>
+            <tr>
+              <td><strong>Cô Sáu (Trần Thị Sáu)</strong><br><span style="font-size: 12px; color: var(--slate-500);">0934.567.890</span></td>
+              <td>Thôn Suối Hai</td>
+              <td><span class="table-tag-dept">Mật Ong Hoa Rừng OCOP</span></td>
+              <td>65 Đàn ong</td>
+              <td>1.200 Lít/năm</td>
+              <td><span class="status-badge-clean approved">92%</span></td>
+              <td style="text-align: right;"><button class="hero-pill-btn-green" style="font-size: 12px; padding: 4px 12px;" onclick="closeGenericModal('modal-all-members-directory'); switchToMemberAdmin('sau')">Mở Hồ Sơ</button></td>
+            </tr>
+            <tr>
+              <td><strong>Anh Thắng (Nguyễn Văn Thắng)</strong><br><span style="font-size: 12px; color: var(--slate-500);">0976.223.344</span></td>
+              <td>Thôn Bãi Giữa</td>
+              <td><span class="table-tag-dept">Bưởi Da Xanh Ruột Hồng</span></td>
+              <td>3.0 ha</td>
+              <td>25 Tấn/năm</td>
+              <td><span class="status-badge-clean pending">82%</span></td>
+              <td style="text-align: right;"><button class="hero-pill-btn-green" style="font-size: 12px; padding: 4px 12px;" onclick="closeGenericModal('modal-all-members-directory'); switchToMemberAdmin('thang')">Mở Hồ Sơ</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Cuộc Gọi Thoại Zalo Trực Tiếp -->
+  <div id="modal-zalo-call" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-zalo-call')">
+    <div class="modal-content-container" style="max-width: 420px; text-align: center; padding: 36px 28px;" onclick="event.stopPropagation()">
+      <div style="width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 16px; border: 3px solid #059669; overflow: hidden; box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);">
+        <img id="zalo-call-avatar" src="bac_ba_avatar.jpg" alt="Bác Ba" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--slate-900); margin-bottom: 4px;" id="zalo-call-name">Bác Ba (Hộ 04)</h3>
+      <p style="font-size: 13.5px; color: #059669; font-weight: 700; margin-bottom: 24px;" id="zalo-call-status">Đang kết nối thoại Zalo... 📞</p>
+
+      <!-- Sóng âm thanh -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 6px; height: 40px; margin-bottom: 28px;">
+        <span style="width: 4px; height: 20px; background: #059669; border-radius: 4px; animation: pulseMic 0.6s infinite alternate;"></span>
+        <span style="width: 4px; height: 35px; background: #059669; border-radius: 4px; animation: pulseMic 0.8s infinite alternate 0.2s;"></span>
+        <span style="width: 4px; height: 15px; background: #059669; border-radius: 4px; animation: pulseMic 0.5s infinite alternate 0.4s;"></span>
+        <span style="width: 4px; height: 30px; background: #059669; border-radius: 4px; animation: pulseMic 0.7s infinite alternate 0.1s;"></span>
+        <span style="width: 4px; height: 22px; background: #059669; border-radius: 4px; animation: pulseMic 0.6s infinite alternate 0.3s;"></span>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 16px;">
+        <button class="hero-pill-btn-white" style="border-radius: 50%; width: 50px; height: 50px; padding: 0; justify-content: center;" title="Bật/Tắt Mic" onclick="showToast('Đã tắt/bật micro')">🎙️</button>
+        <button class="hero-pill-btn-white" style="border-radius: 50%; width: 50px; height: 50px; padding: 0; justify-content: center;" title="Loa ngoài" onclick="showToast('Đã bật loa ngoài âm lượng tối đa')">🔊</button>
+        <button style="background: #EF4444; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px;" title="Kết thúc cuộc gọi" onclick="closeGenericModal('modal-zalo-call')">📵</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Thêm Hợp Đồng / Đơn Buôn B2B Mới -->
+  <div id="modal-add-b2b-contract" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-add-b2b-contract')">
+    <div class="modal-content-container" style="max-width: 650px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>📝 Thêm Hợp Đồng Cung Ứng Nông Sản B2B Mới</h3>
+          <p>Tạo hợp đồng bao tiêu với chuỗi siêu thị, sàn TMĐT hoặc đại lý bán sỉ</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-b2b-contract')">✕</button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;">
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Tên Đối Tác / Siêu Thị:</label>
+          <input type="text" id="b2b-partner-input" class="form-input-stylish" value="Hệ Thống Siêu Thị Co.opmart Miền Bắc">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Mặt Hàng Nông Sản:</label>
+          <select id="b2b-prod-select" class="form-input-stylish">
+            <option>Chuối Sấy Giòn OCOP 4★ (Túi 250g)</option>
+            <option>Mật Ong Hoa Rừng OCOP (Hũ 500ml)</option>
+            <option>Trà Bát Tiên Sao Suốt (Hộp 200g)</option>
+            <option>Bưởi Da Xanh Yên Bình (Trái)</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Số Lượng Đặt Hàng:</label>
+          <input type="text" id="b2b-qty-input" class="form-input-stylish" value="2.000 Túi (0.5 Tấn)">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Giá Bán Xuất Kho (VNĐ):</label>
+          <input type="text" id="b2b-price-input" class="form-input-stylish" value="14.500 đ/túi (Tổng 29.000.000 đ)">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Ngày Giao Hàng Dự Kiến:</label>
+          <input type="date" class="form-input-stylish" value="2026-10-15">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Điều Khoản Thanh Toán:</label>
+          <input type="text" class="form-input-stylish" value="Tạm ứng 50%, quyết toán sau 7 ngày">
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-add-b2b-contract')">Hủy Bỏ</button>
+        <button class="hero-pill-btn-green" onclick="submitAddB2BContract()">✓ Ký Duyệt & Lưu Hợp Đồng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 7: Phiếu Xuất Kho & Vận Đơn B2B -->
+  <div id="modal-dispatch-slip" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-dispatch-slip')">
+    <div class="modal-content-container" style="max-width: 720px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <span style="font-size: 11px; font-weight: 800; background: var(--brand-50); color: var(--brand-700); padding: 3px 8px; border-radius: var(--radius-pill);">PHIẾU XUẤT KHO ĐIỆN TỬ</span>
+          <h3 style="margin-top: 4px;">Phiếu Xuất Kho & Vận Đơn Lô Hàng #WM-8821</h3>
+          <p>Mã kiểm dịch & truy xuất nguồn gốc: <strong>OCOP-YB-2026-8821</strong></p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-dispatch-slip')">✕</button>
+      </div>
+
+      <div style="background: white; border: 1.5px solid var(--slate-200); border-radius: 16px; padding: 22px; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--slate-300); padding-bottom: 14px; margin-bottom: 14px;">
+          <div>
+            <div style="font-weight: 800; font-size: 15px; color: var(--brand-900);">ĐƠN VỊ XUẤT: HTX NÔNG NGHIỆP ĐỒNG CÁT</div>
+            <div style="font-size: 12.5px; color: var(--slate-600);">Xã Yên Bình, Tỉnh Yên Bái · ĐT: 0216.3882.112</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-weight: 800; font-size: 15px; color: #1D4ED8;">ĐƠN VỊ NHẬN: CHUỖI WINMART</div>
+            <div style="font-size: 12.5px; color: var(--slate-600);">Hub Tổng Times City, Hai Bà Trưng, Hà Nội</div>
+          </div>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px;">
+          <thead>
+            <tr style="background: var(--slate-100); text-align: left;">
+              <th style="padding: 8px;">STT</th>
+              <th style="padding: 8px;">TÊN HÀNG HÓA</th>
+              <th style="padding: 8px;">QUY CÁCH</th>
+              <th style="padding: 8px;">SỐ LƯỢNG</th>
+              <th style="padding: 8px;">ĐƠN GIÁ</th>
+              <th style="padding: 8px; text-align: right;">THÀNH TIỀN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--slate-200);">
+              <td style="padding: 8px;">01</td>
+              <td style="padding: 8px; font-weight: 700;">Chuối Sấy Giòn Yên Bình OCOP 4★</td>
+              <td style="padding: 8px;">Túi Zip màng nhôm 250g</td>
+              <td style="padding: 8px; font-weight: 800;">1.200 Túi</td>
+              <td style="padding: 8px;">14.500 đ</td>
+              <td style="padding: 8px; text-align: right; font-weight: 900; color: var(--brand-700);">17.400.000 đ</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div style="width: 70px; height: 70px; border: 1px solid var(--slate-200); border-radius: 8px; padding: 4px;">
+              <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;"><rect width="100" height="100" fill="#fff"/><path d="M10 10h30v30h-30z M60 10h30v30h-30z M10 60h30v30h-30z" fill="#059669"/></svg>
+            </div>
+            <div style="font-size: 11.5px; color: var(--slate-500);">
+              Quét mã QR để xem chứng chỉ VietGAP,<br>ngày sấy và nguồn gốc hộ Bác Ba.
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 13px; color: var(--slate-500);">Tổng thanh toán:</div>
+            <div style="font-size: 22px; font-weight: 900; color: var(--brand-700);">17.400.000 đ</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-dispatch-slip')">Đóng Lại</button>
+        <button class="hero-pill-btn-dark" onclick="window.print()">🖨️ In Phiếu Xuất Kho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 8: Trình Tạo Kịch Bản AI Livestream Mới -->
+  <div id="modal-ai-generator" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-ai-generator')">
+    <div class="modal-content-container" style="max-width: 650px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>✨ Trình Sinh Kịch Bản AI Mới (Gemini Flash)</h3>
+          <p>Tự động tạo nội dung Livestream TikTok Shop, kịch bản Reels & caption Facebook OCOP</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-ai-generator')">✕</button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Chọn Nông Sản:</label>
+          <select id="ai-gen-product" class="form-input-stylish">
+            <option value="tea">Trà Bát Tiên Sao Suốt (Hộ Cô Lan)</option>
+            <option value="honey">Mật Ong Hoa Rừng Tự Nhiên (Hộ Cô Sáu)</option>
+            <option value="banana">Chuối Sấy Giòn OCOP 4★ (Hộ Bác Ba)</option>
+            <option value="pomelo">Bưởi Da Xanh Yên Bình (Hộ Anh Thắng)</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Kênh Truyền Thông & Định Dạng:</label>
+          <select id="ai-gen-channel" class="form-input-stylish">
+            <option>TikTok Shop (Video ngắn 30s)</option>
+            <option>Zalo OA (Bài viết kèm ảnh thật)</option>
+            <option>Shopee Mall (Mô tả chuẩn OCOP)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Ghi chú điểm nhấn (Tùy chọn):</label>
+        <input type="text" id="ai-gen-notes" class="form-input-stylish" value="Nhấn mạnh độ ngọt thanh tự nhiên, hái sương sớm tại vùng đồi Yên Bình">
+      </div>
+
+      <div id="ai-gen-output-box" style="display: none; background: #F8FAFC; border: 1.5px dashed var(--brand-500); border-radius: 14px; padding: 16px; margin-bottom: 18px;">
+        <h4 style="font-size: 14.5px; font-weight: 800; color: var(--brand-900); margin-bottom: 8px;" id="ai-gen-result-title">🎬 Kịch Bản Sinh Ra:</h4>
+        <p style="font-size: 13.5px; line-height: 1.6; color: var(--slate-800); white-space: pre-wrap;" id="ai-gen-result-content"></p>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-ai-generator')">Đóng Lại</button>
+        <button class="hero-pill-btn-dark" id="btn-trigger-ai-gen" onclick="executeAIGeneration()">✨ Tạo Kịch Bản Bằng AI</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 9: Trình Phát Âm Thanh Đối Soát Giọng Nói -->
+  <div id="modal-voice-preview" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-voice-preview')">
+    <div class="modal-content-container" style="max-width: 500px; text-align: center; padding: 32px 24px;" onclick="event.stopPropagation()">
+      <div style="width: 70px; height: 70px; border-radius: 50%; background: #ECFDF5; color: #059669; font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; border: 2px solid #A7F3D0;">
+        🔊
+      </div>
+      <h3 style="font-size: 17px; font-weight: 800; color: var(--slate-900); margin-bottom: 4px;" id="audio-preview-title">Trình Phát Âm Thanh AI</h3>
+      <p style="font-size: 13px; color: var(--slate-500); margin-bottom: 18px;" id="audio-preview-sub">Giọng đọc tự nhiên được tổng hợp từ công nghệ Text-to-Speech</p>
+
+      <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 14px; padding: 14px; margin-bottom: 20px; text-align: left; font-size: 13px; line-height: 1.5; color: var(--slate-700);" id="audio-preview-text">
+        "Đang tải nội dung văn bản..."
+      </div>
+
+      <!-- Player Controls -->
+      <div style="background: white; border: 1px solid var(--slate-200); border-radius: 16px; padding: 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <button id="btn-play-pause-audio" style="width: 44px; height: 44px; border-radius: 50%; background: #059669; color: white; border: none; font-size: 18px; cursor: pointer;" onclick="toggleAudioSimulation()">⏸</button>
+        <div style="flex: 1;">
+          <div style="height: 6px; background: var(--slate-200); border-radius: 3px; overflow: hidden; position: relative;">
+            <div id="audio-progress-bar" style="height: 100%; width: 45%; background: #059669; transition: width 0.3s;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--slate-400); margin-top: 5px;">
+            <span id="audio-current-time">00:12</span>
+            <span>00:28</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="hero-pill-btn-white" style="width: 100%; justify-content: center;" onclick="closeGenericModal('modal-voice-preview')">Đóng Trình Phát</button>
+    </div>
+  </div>
+
+  <!-- Modal 10: Xác Nhận Chuyển Khoản Hàng Loạt 12 Hộ -->
+  <div id="modal-batch-payout" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-batch-payout')">
+    <div class="modal-content-container" style="max-width: 650px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>⚡ Lệnh Chi Trả VietQR Tự Động (12 Hộ Xã Viên)</h3>
+          <p>Cổng thanh toán Napas 247 · Ngân hàng Nông nghiệp & PTNT (Agribank)</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-batch-payout')">✕</button>
+      </div>
+
+      <div style="background: var(--brand-50); border: 1px solid var(--brand-200); border-radius: 16px; padding: 16px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 12.5px; color: var(--brand-800); font-weight: 700;">TỔNG SỐ TIỀN GIẢI NGÂN ĐỢT 2:</div>
+          <div style="font-size: 26px; font-weight: 900; color: var(--brand-700);">35.800.000 đ</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 12.5px; color: var(--brand-800);">Số lượng thụ hưởng:</div>
+          <div style="font-size: 16px; font-weight: 800; color: var(--brand-900);">12 Hộ Xã Viên</div>
+        </div>
+      </div>
+
+      <div style="max-height: 220px; overflow-y: auto; margin-bottom: 20px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 12.5px;">
+          <tr style="border-bottom: 1px solid var(--slate-200);"><td style="padding: 8px;">1. Cô Sáu (Trần Thị Sáu) · Mật ong hoa rừng</td><td style="font-weight: 700; color: var(--brand-700); text-align: right;">8.100.000 đ</td></tr>
+          <tr style="border-bottom: 1px solid var(--slate-200);"><td style="padding: 8px;">2. Chú Tư (Hoàng Văn Tư) · Trà Bát Tiên OCOP</td><td style="font-weight: 700; color: var(--brand-700); text-align: right;">15.840.000 đ</td></tr>
+          <tr style="border-bottom: 1px solid var(--slate-200);"><td style="padding: 8px;">3. Bác Năm (Đỗ Văn Năm) · Mận hậu sấy dẻo</td><td style="font-weight: 700; color: var(--brand-700); text-align: right;">6.300.000 đ</td></tr>
+          <tr style="border-bottom: 1px solid var(--slate-200);"><td style="padding: 8px;">4. Chú Bảy (Lê Văn Bảy) · Cam sành Yên Bình</td><td style="font-weight: 700; color: var(--brand-700); text-align: right;">5.560.000 đ</td></tr>
+        </table>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-batch-payout')">Hủy Bỏ</button>
+        <button class="hero-pill-btn-green" onclick="executeBatchPayout()">⚡ Xác Nhận Giải Ngân Bằng Mã OTP</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 11: Phiếu Chi Tiền Mặt Tại Trạm Cân -->
+  <div id="modal-cash-voucher" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-cash-voucher')">
+    <div class="modal-content-container" style="max-width: 600px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <span style="font-size: 11px; font-weight: 800; background: #FEF3C7; color: #92400E; padding: 3px 8px; border-radius: var(--radius-pill);">CHỨNG TỪ KẾ TOÁN</span>
+          <h3 style="margin-top: 4px;">Phiếu Chi Tiền Mặt Số #42/PC-HTX</h3>
+          <p>Thanh toán trực tiếp tại Trạm Cân Nông Sản Xã Yên Bình</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-cash-voucher')">✕</button>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--slate-300); border-radius: 14px; padding: 20px; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 13.5px;">
+          <span style="color: var(--slate-600);">Người nhận tiền:</span>
+          <strong id="cash-voucher-name">Anh Thắng (Nguyễn Văn Thắng)</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 13.5px;">
+          <span style="color: var(--slate-600);">Lý do chi:</span>
+          <span id="cash-voucher-reason">Thu mua 350kg Bưởi Da Xanh Loại 1</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 13.5px;">
+          <span style="color: var(--slate-600);">Số tiền thực chi:</span>
+          <strong style="color: var(--brand-700); font-size: 18px;" id="cash-voucher-amount">7.875.000 VNĐ</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 18px; font-size: 12.5px; color: var(--slate-500);">
+          <span>(Bằng chữ: Bảy triệu tám trăm bảy mươi lăm nghìn đồng chẵn)</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; text-align: center; font-size: 12px; color: var(--slate-700); border-top: 1px dashed var(--slate-200); padding-top: 14px;">
+          <div><strong>Người Nhận</strong><br><br><span style="color: var(--slate-400);">(Ký, họ tên)</span></div>
+          <div><strong>Thủ Quỹ</strong><br><br><span style="color: var(--slate-400);">(Ký, họ tên)</span></div>
+          <div><strong>Chủ Nhiệm HTX</strong><br><br><span style="color: var(--brand-700); font-weight: 700;">Vũ Văn Hùng</span></div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-cash-voucher')">Đóng Lại</button>
+        <button class="hero-pill-btn-dark" onclick="window.print()">🖨️ In Phiếu Chi Tiền Mặt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 12: Bản Đồ Định Vị GPS Đội Xe Thu Gom -->
+  <div id="modal-gps-fleet" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-gps-fleet')">
+    <div class="modal-content-container" style="max-width: 750px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>📍 Giám Sát GPS Hành Trình Xe Thu Gom</h3>
+          <p id="gps-route-title">Xe Tải 2.5 Tấn (29H-842.15) · Tuyến 1: Thôn Đồng Cát & Đồi Mơ</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-gps-fleet')">✕</button>
+      </div>
+
+      <!-- Mock GIS Map -->
+      <div style="background: #E2E8F0; border-radius: 16px; height: 320px; position: relative; overflow: hidden; margin-bottom: 18px; border: 1px solid var(--slate-300);">
+        <!-- Roads SVG mockup -->
+        <svg viewBox="0 0 600 300" style="width: 100%; height: 100%;">
+          <rect width="600" height="300" fill="#E2E8F0"/>
+          <!-- River -->
+          <path d="M0 220 Q 200 240 400 180 T 600 200" fill="none" stroke="#93C5FD" stroke-width="26"/>
+          <!-- Roads -->
+          <path d="M50 50 L 250 120 L 450 80 L 550 200" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+          <path d="M250 120 L 300 250" fill="none" stroke="#FFFFFF" stroke-width="10"/>
+
+          <!-- Stops -->
+          <circle cx="50" cy="50" r="8" fill="#10B981"/>
+          <text x="65" y="55" font-size="11" font-weight="bold" fill="#065F46">Xuất phát: Kho HTX</text>
+
+          <circle cx="250" cy="120" r="10" fill="#EF4444" stroke="#FFF" stroke-width="2"/>
+          <text x="250" y="105" font-size="11" font-weight="bold" fill="#B91C1C" text-anchor="middle">Xe 29H-842.15 🚚</text>
+
+          <circle cx="450" cy="80" r="8" fill="#3B82F6"/>
+          <text x="450" y="70" font-size="11" font-weight="bold" fill="#1E40AF" text-anchor="middle">Trạm cân Thôn Cát (18 hộ)</text>
+
+          <circle cx="550" cy="200" r="8" fill="#F59E0B"/>
+          <text x="520" y="225" font-size="11" font-weight="bold" fill="#92400E">Vườn Chuối Bác Ba</text>
+        </svg>
+
+        <div style="position: absolute; bottom: 14px; left: 14px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(4px); padding: 8px 14px; border-radius: 10px; font-size: 12.5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          Tốc độ: <strong>32 km/h</strong> · Tọa độ: <strong>21.7248° N, 104.9123° E</strong> · Tài xế: <strong>Tuấn (0915.223.xxx)</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 13px; color: var(--slate-600);">Ước tính hoàn tất tuyến: <strong>11h15 Trưa nay</strong></span>
+        <button class="hero-pill-btn-green" onclick="showToast('Đang kết nối gọi bộ đàm tới tài xế Tuấn...')">📞 Gọi Bộ Đàm Tài Xế</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 13: Đặt In Bao Bì Màng Nhôm Xưởng Tân Á -->
+  <div id="modal-packaging-order" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-packaging-order')">
+    <div class="modal-content-container" style="max-width: 600px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>📦 Đơn Đặt In Bao Bì Màng Nhôm OCOP 4★</h3>
+          <p>Kết nối trực tiếp hệ thống Xưởng Bao Bì Màng Nhôm Tân Á Hưng Yên</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-packaging-order')">✕</button>
+      </div>
+
+      <div style="display: flex; gap: 16px; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 16px; margin-bottom: 18px; align-items: center;">
+        <img src="banana_front.jpg" alt="Bao bì" style="width: 80px; height: 80px; object-fit: cover; border-radius: 12px; border: 1px solid var(--slate-200);">
+        <div>
+          <h4 style="font-size: 15px; font-weight: 800; color: var(--slate-900);">Túi Zipper Màng Nhôm Ép 3 Lớp (OPP/AL/PE)</h4>
+          <p style="font-size: 13px; color: var(--slate-600);">Quy cách: 250g · In trục đồng 6 màu sắc nét · Có tem QR OCOP</p>
+          <div style="font-size: 12px; color: var(--brand-700); font-weight: 700; margin-top: 2px;">Đạt chuẩn đóng gói chuỗi siêu thị WinMart & xuất khẩu</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;">
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Số Lượng Đặt In:</label>
+          <input type="text" class="form-input-stylish" value="3.000 Túi">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Đơn Giá Ưu Đãi HTX:</label>
+          <input type="text" class="form-input-stylish" value="1.450 đ/túi (Tổng 4.350.000 đ)" readonly>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Ngày Giao Hàng:</label>
+          <input type="date" class="form-input-stylish" value="2026-10-12">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 700; color: var(--slate-700); display: block; margin-bottom: 5px;">Địa Điểm Nhận Hàng:</label>
+          <input type="text" class="form-input-stylish" value="Kho Trung Tâm HTX Đồng Cát">
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-packaging-order')">Hủy Lệnh</button>
+        <button class="hero-pill-btn-green" onclick="showToast('✅ ĐÃ KÝ DUYỆT ĐƠN ĐẶT IN 3.000 TÚI TỚI XƯỞNG TÂN Á!'); closeGenericModal('modal-packaging-order');">✓ Xác Nhận Ký Đơn Đặt In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 14: Biên Bản Bàn Giao Phân Bón Vi Sinh -->
+  <div id="modal-supply-handover" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-supply-handover')">
+    <div class="modal-content-container" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <span style="font-size: 11px; font-weight: 800; background: var(--brand-50); color: var(--brand-700); padding: 3px 8px; border-radius: var(--radius-pill);">VẬT TƯ ĐẦU VÀO</span>
+          <h3 style="margin-top: 4px;">Biên Bản Cấp Ứng Phân Bón & Túi Bọc Buồng</h3>
+          <p>Hộ Xã Viên: <strong>Bác Ba (Nguyễn Văn Ba) · Thôn Đồng Cát</strong></p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-supply-handover')">✕</button>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--slate-300); border-radius: 14px; padding: 18px; margin-bottom: 18px; font-size: 13.5px; line-height: 1.6;">
+        <p><strong>Loại vật tư cấp ứng:</strong> 8 Bao phân vi sinh hữu cơ Sông Gianh (50kg/bao) + 200 Túi màng bọc buồng chuối chống nấm.</p>
+        <p><strong>Tổng giá trị:</strong> 3.200.000 VNĐ (Rẻ hơn giá đại lý 24.4%).</p>
+        <p><strong>Hình thức:</strong> Cấp chậm không lãi suất, cam kết cấn trừ vào tiền chuối bán được vụ thu hoạch tháng 10/2026.</p>
+        <p style="color: var(--brand-700); font-weight: 700; margin-top: 8px;">✓ Tình trạng thanh toán: ĐÃ CẤN TRỪ HẾT (Số dư nợ: 0 đ).</p>
+      </div>
+
+      <button class="hero-pill-btn-white" style="width: 100%; justify-content: center;" onclick="closeGenericModal('modal-supply-handover')">Đóng Lại</button>
+    </div>
+  </div>
+
+  <!-- Modal 15: Lệnh Cấn Trừ Công Nợ Vật Tư -->
+  <div id="modal-supply-deduction" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-supply-deduction')">
+    <div class="modal-content-container" style="max-width: 550px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>Lập Lệnh Cấn Trừ Công Nợ Vật Tư</h3>
+          <p>Hộ: <strong>Chú Tư (Hoàng Văn Tư) · Thôn Đồi Mơ</strong></p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-supply-deduction')">✕</button>
+      </div>
+
+      <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 14px; padding: 16px; margin-bottom: 18px; font-size: 13.5px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span>Tiền trà cân đợt này:</span>
+          <strong>17.600.000 đ</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px; color: #D97706;">
+          <span>Nợ phân NPK còn lại:</span>
+          <strong>-2.500.000 đ</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px; color: var(--slate-500);">
+          <span>Phí HTX trích 10%:</span>
+          <strong>-1.760.000 đ</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--slate-300); padding-top: 8px; font-size: 15px;">
+          <span>Số tiền thực chi cho Chú Tư:</span>
+          <strong style="color: var(--brand-700); font-size: 18px;">13.340.000 đ</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-supply-deduction')">Hủy</button>
+        <button class="hero-pill-btn-green" onclick="showToast('✅ ĐÃ DUYỆT LỆNH CẤN TRỪ 2.500.000Đ CỦA CHÚ TƯ!'); closeGenericModal('modal-supply-deduction');">✓ Duyệt Cấn Trừ & Quyết Toán</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 16: Bộ Hồ Sơ Minh Chứng OCOP 4 Sao -->
+  <div id="modal-ocop-dossier" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-ocop-dossier')">
+    <div class="modal-content-container" style="max-width: 650px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>📜 Bộ Hồ Sơ Minh Chứng OCOP 4★ Quốc Gia</h3>
+          <p>HTX Nông Nghiệp Đồng Cát · Sản phẩm: Chuối Sấy Giòn & Mật Ong Hoa Rừng</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-ocop-dossier')">✕</button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+        <div style="background: white; border: 1px solid var(--slate-200); border-radius: 12px; padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong>1. Bản đồ & Danh sách 142 mã vùng trồng (PUC)</strong>
+            <div style="font-size: 12px; color: var(--slate-500);">Chứng nhận Chi cục Trồng trọt & BVTV Tỉnh</div>
+          </div>
+          <span class="status-badge-clean approved">Đầy đủ 100%</span>
+        </div>
+        <div style="background: white; border: 1px solid var(--slate-200); border-radius: 12px; padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong>2. Phiếu kiểm nghiệm độ ẩm & vi sinh Viện ATTP</strong>
+            <div style="font-size: 12px; color: var(--slate-500);">Độ ẩm 4.8%, không chất bảo quản tổng hợp</div>
+          </div>
+          <span class="status-badge-clean approved">Đạt chuẩn</span>
+        </div>
+        <div style="background: white; border: 1px solid var(--slate-200); border-radius: 12px; padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong>3. Thiết kế bao bì màng nhôm & tem QR Traceability</strong>
+            <div style="font-size: 12px; color: var(--slate-500);">Chuẩn màng nhôm 3 lớp OPP/AL/PE xưởng Tân Á</div>
+          </div>
+          <span class="status-badge-clean approved">Đã duyệt</span>
+        </div>
+        <div style="background: white; border: 1px solid var(--slate-200); border-radius: 12px; padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong>4. Hợp đồng bao tiêu thương mại B2B với WinMart</strong>
+            <div style="font-size: 12px; color: var(--slate-500);">Sản lượng tối thiểu 1.200 túi/tháng</div>
+          </div>
+          <span class="status-badge-clean approved">Đã ký kết</span>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-ocop-dossier')">Đóng Lại</button>
+        <button class="hero-pill-btn-dark" onclick="showToast('Đang tải trọn bộ hồ sơ OCOP (PDF - 14 trang)...');">📥 Tải Trọn Bộ Hồ Sơ (PDF)</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

@@ -215,6 +215,17 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
   - Hỗ trợ phím tắt toàn cục `Escape` để đóng modal và đóng dropdown tìm kiếm tức thì.
   - Đảm bảo kiểm tra cú pháp JavaScript đạt chuẩn 100% không còn lỗi ngắt chuỗi hay quote mismatch.
 
+### Giai đoạn 18: Tính Năng Đính Kèm Hình Ảnh Khi Gửi Tin Nhắn Zalo & Xem Trước Bố Cục Ảnh Mô Phỏng
+- **Yêu cầu 52**: "gửi tin nhắn zalo có thể thêm ảnh nhé".
+  - *Giải pháp*:
+    - Bổ sung phân vùng **Đính Kèm Hình Ảnh Nông Sản & Điểm Cân (Tối đa 5 ảnh)** trong modal `#modal-zalo-broadcast-confirm`.
+    - Hỗ trợ tải ảnh trực tiếp từ máy tính/điện thoại qua file input và `FileReader` (đọc chuẩn DataURL).
+    - Tích hợp thanh công cụ gắn ảnh mẫu nhanh cho nông sản chủ lực (Chuối sấy OCOP, Đĩa chuối kiểm tra, Trà Bát Tiên, Mật ong rừng, Tem truy xuất OCOP).
+    - Hiển thị danh sách thumbnail ảnh đã chọn kèm nút xóa nhanh `✕` và bộ đếm số lượng ảnh thời gian thực (`Đã chọn: X / 5 ảnh`).
+    - Nâng cấp **Khung Mô Phỏng Bong Bóng Chat Zalo**: Tự động render lưới ảnh thông minh chuẩn giao diện Zalo (`grid-1`, `grid-2`, `grid-3`, `grid-4`, `grid-5`), bo góc mịn, hiển thị ảnh mẫu trước đoạn văn bản và đính kèm nhãn `📷 X ảnh đính kèm chất lượng gốc HD`.
+    - Tự động gán bộ ảnh gợi ý phù hợp khi người dùng chuyển đổi giữa 3 mẫu tin nhắn nhanh.
+    - Cập nhật thông báo Toast khi phát lệnh gửi thành công: xác nhận số lượng ảnh HD đã gửi kèm qua Zalo OA tới nhóm nhận tin.
+
 ---
 
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã

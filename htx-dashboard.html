@@ -2553,6 +2553,143 @@
       color: #FFFFFF;
     }
 
+    /* =========================================================================
+       STYLES CHO PHẦN ĐÍNH KÈM HÌNH ẢNH TRONG POPUP ZALO BROADCAST
+       ========================================================================= */
+    .zalo-attach-zone {
+      background: #FFFFFF;
+      border: 1.5px dashed #CBD5E1;
+      border-radius: 12px;
+      padding: 12px 14px;
+      transition: all 0.2s ease;
+      margin-top: 4px;
+    }
+    .zalo-attach-zone:hover {
+      border-color: #0068FF;
+      background: #F8FAFC;
+    }
+    .zalo-attached-grid {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .zalo-thumb-card {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      background: #F1F5F9;
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
+    }
+    .zalo-thumb-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 104, 255, 0.15);
+      border-color: #93C5FD;
+    }
+    .zalo-thumb-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .zalo-thumb-card .btn-remove-thumb {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.75);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: background 0.15s;
+    }
+    .zalo-thumb-card .btn-remove-thumb:hover {
+      background: #EF4444;
+    }
+    .zalo-quick-img-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .zalo-quick-img-chip:hover {
+      border-color: #0068FF;
+      background: #EFF6FF;
+      color: #0068FF;
+    }
+    
+    /* Layout ảnh trong bong bóng chat Zalo mô phỏng */
+    .zalo-bubble-gallery {
+      margin-bottom: 10px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .zalo-bubble-gallery.grid-1 {
+      display: block;
+    }
+    .zalo-bubble-gallery.grid-1 img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+    .zalo-bubble-gallery.grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .zalo-bubble-gallery.grid-2 img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+    }
+    .zalo-bubble-gallery.grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px;
+    }
+    .zalo-bubble-gallery.grid-3 img {
+      width: 100%;
+      height: 105px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+    }
+    .zalo-bubble-gallery.grid-4, .zalo-bubble-gallery.grid-5 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+    .zalo-bubble-gallery.grid-4 img, .zalo-bubble-gallery.grid-5 img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+    }
+
 
     /* =========================================================================
        UI/UX PRO MAX ENHANCEMENTS: FOCUS-VISIBLE, ACTIVE FEEDBACK & SCROLLBARS
@@ -6667,6 +6804,109 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       }
     };
 
+    // Dữ liệu hình ảnh đính kèm trong tin nhắn Zalo
+    let attachedZaloImages = [
+      { id: 'img-1', url: 'banana_front.jpg', name: 'Chuối sấy OCOP 4 sao' },
+      { id: 'img-2', url: 'banana_plate.jpg', name: 'Đĩa chuối kiểm tra chất lượng' }
+    ];
+
+    const defaultZaloTemplateImages = {
+      1: [
+        { id: 'img-1', url: 'banana_front.jpg', name: 'Chuối sấy OCOP 4 sao' },
+        { id: 'img-2', url: 'banana_plate.jpg', name: 'Đĩa chuối kiểm tra' }
+      ],
+      2: [
+        { id: 'img-3', url: 'tea_front.jpg', name: 'Trà Bát Tiên' },
+        { id: 'img-4', url: 'honey_front.jpg', name: 'Mật ong hoa rừng' }
+      ],
+      3: [
+        { id: 'img-5', url: 'banana_front.jpg', name: 'Túi zipper WinMart' },
+        { id: 'img-6', url: 'banana_back.jpg', name: 'Tem truy xuất OCOP' }
+      ]
+    };
+
+    function renderZaloAttachedImages() {
+      const container = document.getElementById('zalo-attached-grid');
+      const counter = document.getElementById('zalo-attached-counter');
+      if (counter) {
+        counter.innerText = 'Đã chọn: ' + attachedZaloImages.length + ' / 5 ảnh';
+      }
+      if (!container) return;
+
+      if (attachedZaloImages.length === 0) {
+        container.innerHTML = '<div style="font-size: 12px; color: var(--slate-400); font-style: italic; padding: 6px 0;">Chưa có hình ảnh nào được đính kèm. Bạn có thể bấm nút tải ảnh hoặc chọn nhanh các mẫu ở trên.</div>';
+        return;
+      }
+
+      container.innerHTML = attachedZaloImages.map((img, idx) => {
+        return '<div class="zalo-thumb-card" title="' + img.name + '">' +
+          '<img src="' + img.url + '" alt="' + img.name + '" onclick="window.open(\'' + img.url + '\', \'_blank\')">' +
+          '<button type="button" class="btn-remove-thumb" onclick="removeZaloAttachedImage(' + idx + ')" title="Xóa ảnh này">' +
+            '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
+          '</button>' +
+        '</div>';
+      }).join('');
+    }
+
+    function addQuickZaloImage(url, name) {
+      if (attachedZaloImages.length >= 5) {
+        showToast('⚠️ Zalo giới hạn đính kèm tối đa 5 ảnh mỗi lần phát tin!');
+        return;
+      }
+      attachedZaloImages.push({
+        id: 'img-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+        url: url,
+        name: name
+      });
+      renderZaloAttachedImages();
+      updateZaloPreview();
+      showToast('Đã thêm ảnh đính kèm: ' + name);
+    }
+
+    function handleZaloImageUpload(event) {
+      const files = event.target.files;
+      if (!files || files.length === 0) return;
+
+      let remainingSlots = 5 - attachedZaloImages.length;
+      if (remainingSlots <= 0) {
+        showToast('⚠️ Đã đạt giới hạn tối đa 5 ảnh đính kèm!');
+        event.target.value = '';
+        return;
+      }
+
+      const filesToProcess = Array.from(files).slice(0, remainingSlots);
+      let loadedCount = 0;
+
+      filesToProcess.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          attachedZaloImages.push({
+            id: 'img-upload-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+            url: e.target.result,
+            name: file.name
+          });
+          loadedCount++;
+          if (loadedCount === filesToProcess.length) {
+            renderZaloAttachedImages();
+            updateZaloPreview();
+            showToast('✓ Đã tải lên ' + loadedCount + ' ảnh thành công!');
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+
+      event.target.value = '';
+    }
+
+    function removeZaloAttachedImage(idx) {
+      if (idx >= 0 && idx < attachedZaloImages.length) {
+        const removed = attachedZaloImages.splice(idx, 1);
+        renderZaloAttachedImages();
+        updateZaloPreview();
+        showToast('Đã gỡ ảnh: ' + (removed[0] ? removed[0].name : ''));
+      }
+    }
+
     function broadcastLogisticsZalo(preselectedGroup) {
       if (preselectedGroup && document.getElementById('zalo-broadcast-target-group')) {
         document.getElementById('zalo-broadcast-target-group').value = preselectedGroup;
@@ -6684,8 +6924,14 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       const textarea = document.getElementById('zalo-broadcast-msg-body');
       if (textarea) {
         textarea.value = tpl.content;
-        updateZaloPreview();
       }
+
+      // Reset default template images
+      if (defaultZaloTemplateImages[tplId]) {
+        attachedZaloImages = defaultZaloTemplateImages[tplId].map(img => Object.assign({}, img));
+      }
+      renderZaloAttachedImages();
+      updateZaloPreview();
     }
 
     function updateZaloPreview() {
@@ -6694,8 +6940,26 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       const counter = document.getElementById('zalo-char-count');
       if (textarea && preview) {
         const val = textarea.value;
-        preview.innerText = val || '(Chưa có nội dung tin nhắn)';
         if (counter) counter.innerText = val.length + ' ký tự';
+
+        let galleryHtml = '';
+        if (attachedZaloImages && attachedZaloImages.length > 0) {
+          const count = attachedZaloImages.length;
+          const gridClass = 'grid-' + Math.min(count, 5);
+          galleryHtml = '<div class="zalo-bubble-gallery ' + gridClass + '">' +
+            attachedZaloImages.map(img => '<img src="' + img.url + '" alt="' + img.name + '" title="' + img.name + '">').join('') +
+          '</div>';
+        }
+
+        const safeText = val ? val.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') : '(Chưa có nội dung tin nhắn)';
+        const imageBadge = attachedZaloImages.length > 0
+          ? '<div style="margin-top: 8px; font-size: 11px; font-weight: 700; color: #0068FF; display: flex; align-items: center; gap: 4px;">' +
+              '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>' +
+              'Đính kèm ' + attachedZaloImages.length + ' ảnh chất lượng gốc HD' +
+            '</div>'
+          : '';
+
+        preview.innerHTML = galleryHtml + '<div style="white-space: pre-wrap; word-break: break-word;">' + safeText + '</div>' + imageBadge;
       }
     }
 
@@ -6713,8 +6977,13 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         return;
       }
 
+      const imgCount = attachedZaloImages.length;
       closeGenericModal('modal-zalo-broadcast-confirm');
-      showToast('🚀 ĐÃ PHÁT THÀNH CÔNG THÔNG BÁO QUA ZALO OA TỚI: ' + group + '!');
+      if (imgCount > 0) {
+        showToast('🚀 ĐÃ PHÁT THÀNH CÔNG THÔNG BÁO KÈM ' + imgCount + ' ẢNH HD QUA ZALO OA TỚI: ' + group + '!');
+      } else {
+        showToast('🚀 ĐÃ PHÁT THÀNH CÔNG THÔNG BÁO QUA ZALO OA TỚI: ' + group + '!');
+      }
     }
 
 
@@ -6920,9 +7189,15 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 16px;">
         <label style="font-size: 13px; font-weight: 700; color: var(--slate-700); margin-bottom: 6px; display: block;">Phát Thông Báo ZNS Khẩn Cấp Tới 142 Hộ:</label>
         <textarea id="zalo-broadcast-input" style="width: 100%; border: 1.5px solid var(--slate-300); border-radius: 10px; padding: 10px; font-size: 13px; font-family: inherit; height: 75px; resize: none; margin-bottom: 10px;" placeholder="Nhập nội dung cần thông báo cho bà con xã viên..."></textarea>
-        <div style="display: flex; justify-content: flex-end; gap: 8px;">
-          <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-zalo-community')">Đóng Lại</button>
-          <button class="hero-pill-btn-green" onclick="submitZaloBroadcast()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Phát Tin Nhắn Tới 142 Hộ</button>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+          <button type="button" class="hero-pill-btn-white" style="font-size: 13px;" onclick="closeGenericModal('modal-zalo-community'); broadcastLogisticsZalo('Toàn Bộ 142 Hộ Xã Viên HTX Yên Bình');">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Soạn Tin Kèm Ảnh Chi Tiết
+          </button>
+          <div style="display: flex; gap: 8px;">
+            <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-zalo-community')">Đóng Lại</button>
+            <button class="hero-pill-btn-green" onclick="submitZaloBroadcast()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Phát Tin Nhắn Tới 142 Hộ</button>
+          </div>
         </div>
       </div>
     </div>
@@ -7858,6 +8133,40 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <span style="font-size: 12px; color: var(--slate-500);" id="zalo-char-count">485 ký tự</span>
           </div>
           <textarea id="zalo-broadcast-msg-body" class="form-input-stylish" rows="8" style="font-size: 13px; line-height: 1.5; font-family: Inter, sans-serif;" oninput="updateZaloPreview()"></textarea>
+        </div>
+
+        <!-- Đính Kèm Hình Ảnh Nông Sản / Lô Hàng Khi Gửi Tin Zalo -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: flex; align-items: center; gap: 6px;">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              Hình Ảnh Nông Sản & Điểm Cân Đính Kèm (Tối đa 5 ảnh):
+            </label>
+            <span style="font-size: 12px; font-weight: 700; color: #0068FF;" id="zalo-attached-counter">Đã chọn: 2 / 5 ảnh</span>
+          </div>
+
+          <div class="zalo-attach-zone">
+            <!-- Action Toolbar: Upload button + Quick preset chips -->
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <input type="file" id="zalo-image-file-input" accept="image/*" multiple style="display: none;" onchange="handleZaloImageUpload(event)">
+              <button type="button" class="hero-pill-btn-green" style="font-size: 12px; padding: 6px 14px;" onclick="document.getElementById('zalo-image-file-input').click()">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                Tải Ảnh Từ Thiết Bị
+              </button>
+
+              <span style="font-size: 12px; color: var(--slate-400); font-weight: 600;">hoặc chọn mẫu nhanh:</span>
+              <button type="button" class="zalo-quick-img-chip" onclick="addQuickZaloImage('banana_front.jpg', 'Chuối sấy OCOP')">Chuối OCOP</button>
+              <button type="button" class="zalo-quick-img-chip" onclick="addQuickZaloImage('banana_plate.jpg', 'Đĩa chuối mẫu kiểm tra')">Đĩa chuối mẫu</button>
+              <button type="button" class="zalo-quick-img-chip" onclick="addQuickZaloImage('tea_front.jpg', 'Trà Bát Tiên')">Trà Bát Tiên</button>
+              <button type="button" class="zalo-quick-img-chip" onclick="addQuickZaloImage('honey_front.jpg', 'Mật ong hoa rừng')">Mật ong rừng</button>
+              <button type="button" class="zalo-quick-img-chip" onclick="addQuickZaloImage('banana_back.jpg', 'Tem OCOP truy xuất')">Tem truy xuất</button>
+            </div>
+
+            <!-- Attached Thumbnails Container -->
+            <div id="zalo-attached-grid" class="zalo-attached-grid">
+              <!-- Rendered dynamically by renderZaloAttachedImages() -->
+            </div>
+          </div>
         </div>
 
         <!-- Khung Mô Phỏng Xem Trước Bóng Chat Zalo -->

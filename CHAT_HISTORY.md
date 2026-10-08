@@ -204,6 +204,17 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
     - Đồng bộ hóa toàn bộ mã nguồn và tài liệu giữa 2 thư mục làm việc `c:\Users\pc\Desktop\Chợ xanh` và `C:\Users\pc\Desktop\greenOS`.
     - Commit và `git push origin main` lên GitHub repository `git@github.com:thietkenexs2026-max/GreenOS.git` để người dùng tiếp tục làm việc liền mạch tại văn phòng công ty.
 
+### Giai đoạn 17: Tìm Kiếm Thông Minh, Theo Dõi Tuyến Xe, Xác Nhận Zalo & Rà Soát Chuẩn Hóa UI/UX Pro Max
+- **Yêu cầu 48**: Áp dụng kết quả live search tại thanh tìm kiếm toàn cục, bổ sung popup nhập thông tin chuyến xe & bảng theo dõi trạng thái tuyến xe real-time.
+- **Yêu cầu 49**: Khi bấm gửi Zalo nhắc bà con, hiển thị modal xác nhận phát sóng với mẫu tin nhắn, tùy chọn nhóm nhận tin và bong bóng mô phỏng Zalo chat trước khi phát lệnh.
+- **Yêu cầu 50**: Bổ sung dữ liệu vận hành xã viên chuyên sâu (sổ tín dụng nội bộ & lịch dự báo thu hoạch mùa vụ).
+- **Yêu cầu 51**: Rà soát toàn diện UI/UX theo kỹ năng `ui-ux-pro-max`:
+  - Chuẩn hóa 100% các nút chức năng trên cả Web HTX và Mobile Bác Ba sang Vector SVG sắc nét, xóa bỏ hoàn toàn ký tự emoji thô sơ trong button.
+  - Thiết lập hiệu ứng xúc giác tương tác (`:focus-visible` outline #059669 2.5px và `:active` scale 0.97 với transition 100ms).
+  - Tối ưu hóa bảng dữ liệu chống díu chữ (`.table-responsive-box` với `min-width: 950px - 1420px`).
+  - Hỗ trợ phím tắt toàn cục `Escape` để đóng modal và đóng dropdown tìm kiếm tức thì.
+  - Đảm bảo kiểm tra cú pháp JavaScript đạt chuẩn 100% không còn lỗi ngắt chuỗi hay quote mismatch.
+
 ---
 
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã

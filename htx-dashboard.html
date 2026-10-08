@@ -2321,6 +2321,285 @@
       box-shadow: 0 3px 8px rgba(5, 150, 105, 0.35) !important;
     }
 
+
+    /* =========================================================================
+       STYLES CHO THANH TÌM KIẾM TOÀN DIỆN & DROPDOWN KẾT QUẢ TRỰC TIẾP
+       ========================================================================= */
+    .global-search-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 100%;
+      min-width: 500px;
+      max-width: 620px;
+      max-height: 480px;
+      overflow-y: auto;
+      background: #FFFFFF;
+      border: 1.5px solid var(--slate-200);
+      border-radius: 16px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      z-index: 99999;
+      padding: 8px 0;
+      font-family: Inter, sans-serif;
+    }
+    .search-dropdown-header {
+      padding: 8px 18px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--slate-500);
+      background: var(--slate-50);
+      border-bottom: 1px solid var(--slate-100);
+      border-top: 1px solid var(--slate-100);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-dropdown-header:first-child {
+      border-top: none;
+    }
+    .search-result-item {
+      padding: 11px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border-bottom: 1px solid var(--slate-100);
+      text-align: left;
+    }
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+    .search-result-item:hover, .search-result-item.selected {
+      background: #F0FDF4;
+    }
+    .search-item-thumb {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid var(--slate-200);
+      flex-shrink: 0;
+    }
+    .search-item-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+      background: var(--slate-100);
+      color: var(--slate-700);
+    }
+    .search-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .search-item-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .search-item-sub {
+      font-size: 12px;
+      color: var(--slate-500);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .search-highlight {
+      background: #FEF08A;
+      color: #854D0E;
+      padding: 0 3px;
+      border-radius: 3px;
+      font-weight: 800;
+    }
+    .search-no-results {
+      padding: 24px 20px;
+      text-align: center;
+      color: var(--slate-500);
+      font-size: 13.5px;
+    }
+
+    /* =========================================================================
+       STYLES CHO BẢNG THEO DÕI TUYẾN XE & TIẾN ĐỘ THU GOM NÔNG SẢN
+       ========================================================================= */
+    .fleet-pulse-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .fleet-pulse-badge .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .fleet-pulse-badge.running {
+      background: #ECFDF5;
+      color: #047857;
+      border: 1px solid #A7F3D0;
+    }
+    .fleet-pulse-badge.running .pulse-dot {
+      background: #10B981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse-green 1.6s infinite;
+    }
+    .fleet-pulse-badge.weighing {
+      background: #FFFBEB;
+      color: #B45309;
+      border: 1px solid #FDE68A;
+    }
+    .fleet-pulse-badge.weighing .pulse-dot {
+      background: #F59E0B;
+      box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+      animation: pulse-amber 1.6s infinite;
+    }
+    .fleet-pulse-badge.waiting {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+    .fleet-pulse-badge.waiting .pulse-dot {
+      background: #3B82F6;
+    }
+    .fleet-pulse-badge.completed {
+      background: #F1F5F9;
+      color: #475569;
+      border: 1px solid #CBD5E1;
+    }
+    .fleet-pulse-badge.completed .pulse-dot {
+      background: #64748B;
+    }
+    @keyframes pulse-green {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    @keyframes pulse-amber {
+      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    }
+    .fleet-progress-bar-wrap {
+      background: #E2E8F0;
+      border-radius: 6px;
+      height: 7px;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .fleet-progress-bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.3s ease;
+    }
+
+    /* =========================================================================
+       STYLES CHO POPUP BẢNG NỘI DUNG NHẮC BÀ CON QUA ZALO
+       ========================================================================= */
+    .zalo-preview-card {
+      background: #F0F6FF;
+      border: 1.5px solid #BFDBFE;
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 10px;
+    }
+    .zalo-bubble-box {
+      background: #FFFFFF;
+      border-radius: 12px 12px 12px 2px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 6px rgba(0, 104, 255, 0.08);
+      border: 1px solid #D1E4FF;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #1E293B;
+      white-space: pre-wrap;
+    }
+    .zalo-template-pill-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid var(--slate-300);
+      background: #FFFFFF;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .zalo-template-pill-btn:hover {
+      background: var(--slate-100);
+      border-color: var(--slate-400);
+    }
+    .zalo-template-pill-btn.active {
+      background: #0068FF;
+      border-color: #0068FF;
+      color: #FFFFFF;
+    }
+
+
+    /* =========================================================================
+       UI/UX PRO MAX ENHANCEMENTS: FOCUS-VISIBLE, ACTIVE FEEDBACK & SCROLLBARS
+       ========================================================================= */
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2.5px solid #059669 !important;
+      outline-offset: 2px !important;
+    }
+
+    button:active, 
+    .hero-pill-btn-green:active, 
+    .hero-pill-btn-dark:active, 
+    .hero-pill-btn-white:active, 
+    .btn-table-action-view:active, 
+    .btn-table-action-approve:active, 
+    .btn-filter-pill:active,
+    .top-action-btn:active,
+    .sidebar-menu-btn:active {
+      transform: scale(0.97) !important;
+      transition: transform 0.1s ease !important;
+    }
+
+    /* Custom Modern Thin Scrollbar for Tables & Dropdowns */
+    .table-responsive-box::-webkit-scrollbar,
+    .global-search-dropdown::-webkit-scrollbar,
+    div[style*="overflow-y: auto"]::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+    .table-responsive-box::-webkit-scrollbar-track,
+    .global-search-dropdown::-webkit-scrollbar-track,
+    div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
+      background: #F1F5F9;
+      border-radius: 4px;
+    }
+    .table-responsive-box::-webkit-scrollbar-thumb,
+    .global-search-dropdown::-webkit-scrollbar-thumb,
+    div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    .table-responsive-box::-webkit-scrollbar-thumb:hover,
+    .global-search-dropdown::-webkit-scrollbar-thumb:hover,
+    div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
 </style>
 </head>
 <body>
@@ -2433,9 +2712,14 @@
       <main class="app-center-content">
         <!-- Top Search Bar & Header Controls -->
         <div class="center-top-bar">
-          <div class="search-capsule-input">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" style="color: var(--slate-400);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" id="top-global-search" placeholder="Tìm kiếm nông sản, xã viên, đơn hàng WinMart..." oninput="handleGlobalSearch(this.value)">
+          <div class="search-capsule-input" style="position: relative; flex: 1; max-width: 580px;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" style="color: var(--slate-400); flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="top-global-search" placeholder="Tìm kiếm nông sản, xã viên, đơn hàng WinMart, chuyến xe..." oninput="handleGlobalSearch(this.value)" onfocus="handleGlobalSearch(this.value)" autocomplete="off">
+            <button id="btn-clear-global-search" onclick="clearGlobalSearch()" style="display: none; background: none; border: none; cursor: pointer; color: var(--slate-400); padding: 4px;" title="Xóa tìm kiếm">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <!-- Dropdown Kết Quả Tìm Kiếm Đa Danh Mục Trực Tiếp -->
+            <div id="global-search-dropdown" class="global-search-dropdown" style="display: none;"></div>
           </div>
 
           <button class="top-action-btn" title="Zalo OA" onclick="openZaloCommunityModal()">
@@ -2595,7 +2879,8 @@
               <span class="see-all-link" onclick="showB2BOrdersView()">Xem toàn bộ đơn buôn B2B ➔</span>
             </div>
 
-            <table class="coursue-clean-table">
+            <div class="table-responsive-box">
+              <table class="coursue-clean-table" style="min-width: 950px;">
               <thead>
                 <tr>
                   <th style="text-align: left;">ĐỐI TÁC / KHÁCH MUA</th>
@@ -2633,6 +2918,7 @@
                 </tr>
               </tbody>
             </table>
+            </div>
           </section>
         </div>
 
@@ -3062,6 +3348,163 @@
             </div>
           </div>
 
+          <!-- ===============================================================
+               MODULE BỔ SUNG QUẢN TRỊ XÃ VIÊN:
+               1. SỔ THEO DÕI TÍN DỤNG & ỨNG TRƯỚC VẬT TƯ ĐẦU VÀO
+               2. LỊCH THỜI VỤ & DỰ BÁO NGÀY THU HOẠCH TỪNG THỬA ĐẤT
+               =============================================================== -->
+          <div class="member-card-container">
+            <div class="table-top-toolbar-header">
+              <div class="table-title-side">
+                <h3 style="display: flex; align-items: center; gap: 8px;">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--brand-700);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Sổ Theo Dõi Tín Dụng & Ứng Trước Nông Nghiệp Nội Bộ HTX
+                </h3>
+                <span class="pill-category-badge amber">Hỗ trợ phân bón, giống và bao bì OCOP cấn trừ khi thu hoạch chuối</span>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="hero-pill-btn-white" onclick="openCashVoucherModal('Bác Ba (Nguyễn Văn Ba)', '6.450.000', 'Đối Soát Nợ Vật Tư Vụ 3')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg> In Sổ Đối Soát</button>
+                <button class="hero-pill-btn-dark" onclick="openSupplyHandoverModal('Bác Ba (Hộ 04)')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg> Ứng Thêm Vật Tư</button>
+              </div>
+            </div>
+
+            <!-- 4 Thẻ Mini KPI Tín Dụng Nội Bộ -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 16px;">
+              <div style="background: white; border: 1px solid var(--slate-200); border-radius: 14px; padding: 14px 18px;">
+                <div style="font-size: 11.5px; font-weight: 800; color: var(--slate-500); text-transform: uppercase;">TỔNG ỨNG ĐẦU VỤ</div>
+                <div style="font-size: 19px; font-weight: 800; color: var(--slate-900); margin-top: 4px;">21.450.000 đ</div>
+                <div style="font-size: 12px; color: var(--slate-500); margin-top: 2px;">Phân bón, túi OCOP, cày bừa</div>
+              </div>
+              <div style="background: white; border: 1px solid var(--slate-200); border-radius: 14px; padding: 14px 18px;">
+                <div style="font-size: 11.5px; font-weight: 800; color: var(--slate-500); text-transform: uppercase;">ĐÃ CẤN TRỪ VỤ NÀY</div>
+                <div style="font-size: 19px; font-weight: 800; color: var(--brand-700); margin-top: 4px;">15.000.000 đ</div>
+                <div style="font-size: 12px; color: var(--brand-600); margin-top: 2px;">✓ Trừ từ 3 đợt giao chuối</div>
+              </div>
+              <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 14px; padding: 14px 18px;">
+                <div style="font-size: 11.5px; font-weight: 800; color: #B45309; text-transform: uppercase;">DƯ NỢ CÒN LẠI</div>
+                <div style="font-size: 19px; font-weight: 800; color: #B45309; margin-top: 4px;">6.450.000 đ</div>
+                <div style="font-size: 12px; color: #92400E; margin-top: 2px;">Trừ đợt thu hoạch 15/10</div>
+              </div>
+              <div style="background: white; border: 1px solid var(--slate-200); border-radius: 14px; padding: 14px 18px;">
+                <div style="font-size: 11.5px; font-weight: 800; color: var(--slate-500); text-transform: uppercase;">HẠN MỨC TÍN CHẤP HTX</div>
+                <div style="font-size: 19px; font-weight: 800; color: #1D4ED8; margin-top: 4px;">50.000.000 đ</div>
+                <div style="font-size: 12px; color: var(--slate-500); margin-top: 2px;">Xã viên nòng cốt hạng A</div>
+              </div>
+            </div>
+
+            <!-- Bảng Chi Tiết Khoản Ứng Vật Tư -->
+            <div class="table-responsive-box" style="margin-bottom: 28px;">
+              <table class="custom-admin-table" style="min-width: 1100px;">
+                <thead>
+                  <tr>
+                    <th style="width: 120px; text-align: center;">NGÀY NHẬN</th>
+                    <th style="width: 280px; text-align: left;">DANH MỤC VẬT TƯ / DỊCH VỤ ỨNG</th>
+                    <th style="width: 130px; text-align: center;">SỐ LƯỢNG</th>
+                    <th style="width: 140px; text-align: right;">ĐƠN GIÁ</th>
+                    <th style="width: 150px; text-align: right;">THÀNH TIỀN</th>
+                    <th style="width: 160px; text-align: center;">HÌNH THỨC CẤN TRỪ</th>
+                    <th style="width: 140px; text-align: center;">TRẠNG THÁI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align: center; color: var(--slate-500);">15/08/2026</td>
+                    <td style="text-align: left; font-weight: 700; color: var(--slate-800);">Phân Bón Hữu Cơ Vi Sinh Sông Gianh (Bao 50kg)</td>
+                    <td style="text-align: center; font-weight: 700;">30 Bao (1.5 Tấn)</td>
+                    <td style="text-align: right; font-variant-numeric: tabular-nums;">250.000 đ</td>
+                    <td style="text-align: right; font-weight: 800; font-variant-numeric: tabular-nums;">7.500.000 đ</td>
+                    <td style="text-align: center; font-size: 12px;">Khấu trừ đợt thu hoạch 1</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">Đã Cấn Trừ</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center; color: var(--slate-500);">25/08/2026</td>
+                    <td style="text-align: left; font-weight: 700; color: var(--slate-800);">Túi Zipper Màng Nhôm 250g In Tem OCOP 4 Sao</td>
+                    <td style="text-align: center; font-weight: 700;">3.000 Túi</td>
+                    <td style="text-align: right; font-variant-numeric: tabular-nums;">1.450 đ</td>
+                    <td style="text-align: right; font-weight: 800; font-variant-numeric: tabular-nums;">4.350.000 đ</td>
+                    <td style="text-align: center; font-size: 12px;">Khấu trừ đợt thu hoạch 2</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">Đã Cấn Trừ</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center; color: var(--slate-500);">05/09/2026</td>
+                    <td style="text-align: left; font-weight: 700; color: var(--slate-800);">Cây Giống Chuối Tiêu Hồng Cấy Mô F1 (Khay bầu)</td>
+                    <td style="text-align: center; font-weight: 700;">200 Cây</td>
+                    <td style="text-align: right; font-variant-numeric: tabular-nums;">15.000 đ</td>
+                    <td style="text-align: right; font-weight: 800; font-variant-numeric: tabular-nums;">3.000.000 đ</td>
+                    <td style="text-align: center; font-size: 12px;">Khấu trừ đợt thu hoạch 2</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">Đã Cấn Trừ</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center; color: var(--slate-500);">20/09/2026</td>
+                    <td style="text-align: left; font-weight: 700; color: var(--slate-800);">Túi Bao Buồng Chuối Xanh Chống Côn Trùng & Nắng</td>
+                    <td style="text-align: center; font-weight: 700;">800 Túi</td>
+                    <td style="text-align: right; font-variant-numeric: tabular-nums;">4.500 đ</td>
+                    <td style="text-align: right; font-weight: 800; color: #B45309; font-variant-numeric: tabular-nums;">3.600.000 đ</td>
+                    <td style="text-align: center; font-size: 12px;">Trừ chuyến gom 15/10</td>
+                    <td style="text-align: center;"><span class="status-badge-clean pending">Chờ Cấn Trừ</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center; color: var(--slate-500);">28/09/2026</td>
+                    <td style="text-align: left; font-weight: 700; color: var(--slate-800);">Thuốc Sinh Học Trừ Nấm Đốm Lá Thảo Mộc OCOP</td>
+                    <td style="text-align: center; font-weight: 700;">15 Lọ</td>
+                    <td style="text-align: right; font-variant-numeric: tabular-nums;">190.000 đ</td>
+                    <td style="text-align: right; font-weight: 800; color: #B45309; font-variant-numeric: tabular-nums;">2.850.000 đ</td>
+                    <td style="text-align: center; font-size: 12px;">Trừ chuyến gom 15/10</td>
+                    <td style="text-align: center;"><span class="status-badge-clean pending">Chờ Cấn Trừ</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- BẢNG LỊCH THỜI VỤ & DỰ BÁO NGÀY THU HOẠCH TỪNG LÔ ĐẤT -->
+            <div class="table-top-toolbar-header">
+              <div class="table-title-side">
+                <h3 style="display: flex; align-items: center; gap: 8px;">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: #059669;"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  Lịch Thời Vụ & Dự Báo Ngày Thu Hoạch Từng Lô Đất Canh Tác
+                </h3>
+                <span class="pill-category-badge green">Kết nối tự động với lịch điều phối xe tải thu mua của HTX</span>
+              </div>
+              <button class="hero-pill-btn-green" onclick="broadcastLogisticsZalo()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Đăng Ký Chuyến Xe Thu Hoạch</button>
+            </div>
+
+            <div class="table-responsive-box" style="margin-bottom: 28px;">
+              <table class="custom-admin-table" style="min-width: 1100px;">
+                <thead>
+                  <tr>
+                    <th style="width: 140px; text-align: left;">MÃ LÔ ĐẤT</th>
+                    <th style="width: 220px; text-align: left;">VÙNG TRỒNG & VỊ TRÍ</th>
+                    <th style="width: 110px; text-align: center;">DIỆN TÍCH</th>
+                    <th style="width: 180px; text-align: left;">GIỐNG NÔNG SẢN</th>
+                    <th style="width: 150px; text-align: center;">DỰ KIẾN THU HOẠCH</th>
+                    <th style="width: 130px; text-align: right;">SẢN LƯỢNG DỰ KIẾN</th>
+                    <th style="width: 170px; text-align: center;">TÌNH TRẠNG SINH TRƯỞNG</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align: left; font-weight: 700; color: var(--brand-700);">PUC-YB-DC01</td>
+                    <td style="text-align: left;">Thửa số 14, Gò Đồi Cát A1</td>
+                    <td style="text-align: center; font-weight: 700;">0.8 ha</td>
+                    <td style="text-align: left; font-weight: 600;">Chuối Tiêu Hồng F1 (OCOP)</td>
+                    <td style="text-align: center; font-weight: 800; color: #DC2626;">15/10/2026 (Còn 7 ngày)</td>
+                    <td style="text-align: right; font-weight: 800; font-variant-numeric: tabular-nums;">2.8 Tấn</td>
+                    <td style="text-align: center;"><span class="status-badge-clean pending">Quả Đẫy Đà · Sắp Cắt</span></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left; font-weight: 700; color: var(--brand-700);">PUC-YB-DC02</td>
+                    <td style="text-align: left;">Thửa số 28, Bãi Ven Sông B2</td>
+                    <td style="text-align: center; font-weight: 700;">0.6 ha</td>
+                    <td style="text-align: left; font-weight: 600;">Chuối Ngự Tiến Vua Đậm Vị</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--slate-700);">02/11/2026 (Còn 25 ngày)</td>
+                    <td style="text-align: right; font-weight: 800; font-variant-numeric: tabular-nums;">1.6 Tấn</td>
+                    <td style="text-align: center;"><span class="status-badge-clean approved">Đang Vào Phấn Đẹp</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           <!-- Cài Đặt Tài Khoản & Thông Tin Chi Trả Của Xã Viên -->
           <div class="member-card-container">
             <div class="table-top-toolbar-header" style="margin-bottom: 16px;">
@@ -3258,7 +3701,7 @@
         <div id="view-ai-content">
           <div class="member-top-nav-bar">
             <button class="btn-coursue-back" onclick="showOverviewView()">
-              <span>←</span> Quay lại Dashboard
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại Dashboard
             </button>
             <div class="member-breadcrumb">
               Phân hệ: <strong>AI Studio — Kịch Bản Livestream & Tiếp Thị Nông Sản Đa Kênh</strong>
@@ -3295,7 +3738,7 @@
         <div id="view-settlement" style="display: none;">
           <div class="member-top-nav-bar">
             <button class="btn-coursue-back" onclick="showOverviewView()">
-              <span>←</span> Quay lại Dashboard
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại Dashboard
             </button>
             <div class="member-breadcrumb">
               Phân hệ: <strong>Sổ Quyết Toán & Giải Ngân Tiền Nông Sản (142 Hộ Xã Viên)</strong>
@@ -3340,8 +3783,8 @@
             </div>
 
             <!-- Settlement Table -->
-            <div style="overflow-x: auto;">
-              <table class="member-product-table">
+            <div class="table-responsive-box">
+              <table class="member-product-table" style="min-width: 1300px;">
                 <thead>
                   <tr>
                     <th style="text-align: left;">XÃ VIÊN & ĐỊA BÀN</th>
@@ -3452,7 +3895,7 @@
         <div id="view-logistics" style="display: none;">
           <div class="member-top-nav-bar">
             <button class="btn-coursue-back" onclick="showOverviewView()">
-              <span>←</span> Quay lại Dashboard
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại Dashboard
             </button>
             <div class="member-breadcrumb">
               Phân hệ: <strong>Harvest Fleet & Logistics Hub — Điều Phối Thu Gom Tuyến Thôn</strong>
@@ -3483,69 +3926,65 @@
               </div>
             </div>
 
-            <div class="table-top-toolbar-header">
+                        <div class="table-top-toolbar-header">
               <div class="table-title-side">
-                <h3>Lộ Trình Các Chuyến Xe Thu Gom Trong Ngày</h3>
+                <h3>Lộ Trình & Thẻ Tuyến Xe Thu Gom Nông Sản Trong Ngày</h3>
                 <span class="pill-category-badge amber">Tự động điều phối theo bản đồ vùng trồng xã Yên Bình</span>
               </div>
-              <div style="display: flex; gap: 8px;">
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                 <button class="hero-pill-btn-white" onclick="broadcastLogisticsZalo()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg> Gửi Zalo Nhắc Bà Con</button>
-                <button class="hero-pill-btn-dark" onclick="openAddRouteModal()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="vertical-align: -2px; margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg> Thêm Tuyến Xe</button>
+                <button class="hero-pill-btn-dark" onclick="openAddRouteModal()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="vertical-align: -2px; margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg> Thêm Chuyến Xe Mới</button>
               </div>
             </div>
 
-            <!-- Route Cards -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px;">
-              <div style="background: white; border: 1.5px solid var(--brand-400); border-radius: 16px; padding: 20px; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.1);">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                  <span style="font-size: 12px; font-weight: 800; background: var(--brand-50); color: var(--brand-700); padding: 4px 10px; border-radius: 20px;">TUYẾN 1 · ĐANG CHẠY</span>
-                  <span style="font-size: 13px; font-weight: 700; color: var(--slate-700);">07:30 - 11:30</span>
-                </div>
-                <h4 style="font-size: 16px; font-weight: 800; color: var(--brand-900); margin-bottom: 6px;">Thôn Đồng Cát & Đồi Mơ</h4>
-                <p style="font-size: 13px; color: var(--slate-600); line-height: 1.5; margin-bottom: 12px;">
-                  Xe tải 2.5 Tấn (29H-842.15) · Tài xế: Tuấn<br>
-                  Gom 18 hộ xã viên (có hộ Bác Ba)<br>
-                  Sản lượng: <strong>3.2 Tấn Chuối Tiêu OCOP</strong>
-                </p>
-                <div style="background: var(--slate-50); border-radius: 10px; padding: 10px; font-size: 12px; color: var(--slate-700); margin-bottom: 14px;">
-                  📍 Điểm dừng kế tiếp: <strong>Trạm Cân Nhà Văn Hóa Thôn Cát (Lúc 09:15)</strong>
-                </div>
-                <button class="hero-pill-btn-green" style="width: 100%; justify-content: center;" onclick="openGPSFleetModal('Tuyến 1 - Thôn Đồng Cát')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> Xem Vị Trí Xe Trên Bản Đồ</button>
-              </div>
+            <!-- Route Cards Grid (Dynamic) -->
+            <div id="fleet-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 14px; margin-bottom: 28px;">
+              <!-- Được render tự động qua renderFleetCards() -->
+            </div>
 
-              <div style="background: white; border: 1px solid var(--slate-200); border-radius: 16px; padding: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                  <span style="font-size: 12px; font-weight: 800; background: #ECFDF5; color: #047857; padding: 4px 10px; border-radius: 20px;">TUYẾN 2 · HOÀN THÀNH</span>
-                  <span style="font-size: 13px; font-weight: 700; color: var(--slate-700);">06:00 - 08:30</span>
-                </div>
-                <h4 style="font-size: 16px; font-weight: 800; color: var(--slate-800); margin-bottom: 6px;">Thôn Suối Hai & Đầm Sen</h4>
-                <p style="font-size: 13px; color: var(--slate-600); line-height: 1.5; margin-bottom: 12px;">
-                  Xe bán tải 1.5 Tấn (29C-651.90) · Tài xế: Hùng<br>
-                  Gom 12 hộ (Mật ong & Trà)<br>
-                  Sản lượng: <strong>450L Mật Ong + 300kg Trà</strong>
-                </p>
-                <div style="background: var(--slate-50); border-radius: 10px; padding: 10px; font-size: 12px; color: var(--slate-700); margin-bottom: 14px;">
-                  ✓ Đã nhập kho sơ chế trung tâm HTX lúc 08:35
-                </div>
-                <button class="hero-pill-btn-white" style="width: 100%; justify-content: center;" onclick="openNghiemThuModal('Tuyến 2 - Thôn Suối Hai')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Xem Phiếu Nghiệm Thu</button>
+            <!-- BẢNG THEO DÕI TRẠNG THÁI TUYẾN XE & TIẾN ĐỘ THU GOM NÔNG SẢN THỜI GIAN THỰC -->
+            <div class="table-top-toolbar-header" style="margin-top: 24px;">
+              <div class="table-title-side">
+                <h3 style="display: flex; align-items: center; gap: 8px;">
+                  <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10B981; box-shadow: 0 0 0 4px rgba(16,185,129,0.2);"></span>
+                  Bảng Theo Dõi Trạng Thái Tuyến Xe & Tiến Độ Thu Gom (Thời Gian Thực)
+                </h3>
+                <span class="pill-category-badge green">Giám sát GPS, tiến độ cân nhận nông sản và trạng thái xe tải thu mua cấp xã</span>
               </div>
+              <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <input type="text" id="fleet-search-input" placeholder="Lọc theo tài xế, biển số, tuyến xe..." class="form-input-stylish" style="width: 250px; padding: 7px 12px; font-size: 13px;" oninput="filterFleetTable(this.value)">
+                <button class="hero-pill-btn-white" onclick="refreshFleetStatus()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> Làm Mới GPS</button>
+                <button class="hero-pill-btn-dark" onclick="openAddRouteModal()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="vertical-align: -2px; margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg> Thêm Chuyến Xe</button>
+              </div>
+            </div>
 
-              <div style="background: white; border: 1px solid var(--slate-200); border-radius: 16px; padding: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                  <span style="font-size: 12px; font-weight: 800; background: #EFF6FF; color: #1D4ED8; padding: 4px 10px; border-radius: 20px;">TUYẾN 3 · CHỜ XUẤT PHÁT</span>
-                  <span style="font-size: 13px; font-weight: 700; color: var(--slate-700);">13:30 Chiều</span>
-                </div>
-                <h4 style="font-size: 16px; font-weight: 800; color: var(--slate-800); margin-bottom: 6px;">Giao Đơn Buôn WinMart</h4>
-                <p style="font-size: 13px; color: var(--slate-600); line-height: 1.5; margin-bottom: 12px;">
-                  Xe tải 3.5 Tấn (29H-112.38) · Tài xế: Long<br>
-                  Giao Hub Tổng WinMart Times City Hà Nội<br>
-                  Lô hàng: <strong>1.200 Túi Chuối Sấy OCOP</strong>
-                </p>
-                <div style="background: var(--slate-50); border-radius: 10px; padding: 10px; font-size: 12px; color: var(--slate-700); margin-bottom: 14px;">
-                  ⏳ Đang dán tem QR Traceability và bọc màng co
-                </div>
-                <button class="hero-pill-btn-white" style="width: 100%; justify-content: center;" onclick="openDispatchSlipModal('WM-8821')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg> In Vận Đơn Kèm QR</button>
-              </div>
+            <!-- Bộ Lọc Trạng Thái Tuyến Xe -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
+              <button class="btn-filter-pill active" id="fleet-filter-all" onclick="setFleetFilter('all')">Tất cả tuyến (<span id="fleet-count-all">4</span>)</button>
+              <button class="btn-filter-pill" id="fleet-filter-running" onclick="setFleetFilter('running')"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10B981; margin-right:5px; vertical-align:middle;"></span> Đang di chuyển (<span id="fleet-count-running">1</span>)</button>
+              <button class="btn-filter-pill" id="fleet-filter-weighing" onclick="setFleetFilter('weighing')"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#F59E0B; margin-right:5px; vertical-align:middle;"></span> Đang cân hàng (<span id="fleet-count-weighing">1</span>)</button>
+              <button class="btn-filter-pill" id="fleet-filter-waiting" onclick="setFleetFilter('waiting')"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#3B82F6; margin-right:5px; vertical-align:middle;"></span> Chờ xuất bến (<span id="fleet-count-waiting">1</span>)</button>
+              <button class="btn-filter-pill" id="fleet-filter-completed" onclick="setFleetFilter('completed')"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#94A3B8; margin-right:5px; vertical-align:middle;"></span> Đã về kho (<span id="fleet-count-completed">1</span>)</button>
+            </div>
+
+            <div class="table-responsive-box">
+              <table class="custom-admin-table" style="min-width: 1420px;">
+                <thead>
+                  <tr>
+                    <th style="width: 170px; text-align: left;">MÃ & TUYẾN THU GOM</th>
+                    <th style="width: 160px; text-align: left;">PHƯƠNG TIỆN & BIỂN SỐ</th>
+                    <th style="width: 170px; text-align: left;">TÀI XẾ & LIÊN LẠC</th>
+                    <th style="width: 220px; text-align: left;">NÔNG SẢN & TIẾN ĐỘ GOM</th>
+                    <th style="width: 240px; text-align: left;">ĐIỂM DỪNG / GPS CHECKPOINT</th>
+                    <th style="width: 130px; text-align: center;">KHUNG GIỜ</th>
+                    <th style="width: 160px; text-align: center;">TRẠNG THÁI TUYẾN</th>
+                    <th style="width: 170px; text-align: right;">THAO TÁC</th>
+                  </tr>
+                </thead>
+                <tbody id="fleet-trips-table-body">
+                  <!-- Được render tự động qua renderFleetTripsTable() -->
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -3556,7 +3995,7 @@
         <div id="view-supplies" style="display: none;">
           <div class="member-top-nav-bar">
             <button class="btn-coursue-back" onclick="showOverviewView()">
-              <span>←</span> Quay lại Dashboard
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại Dashboard
             </button>
             <div class="member-breadcrumb">
               Phân hệ: <strong>Kho Bao Bì OCOP & Chương Trình Mua Chung Vật Tư Đầu Vào</strong>
@@ -3744,7 +4183,7 @@
         <div id="view-radar" style="display: none;">
           <div class="member-top-nav-bar">
             <button class="btn-coursue-back" onclick="showOverviewView()">
-              <span>←</span> Quay lại Dashboard
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại Dashboard
             </button>
             <div class="member-breadcrumb">
               Phân hệ: <strong>Market Price Radar — Radar Định Giá Đa Kênh & Dự Báo Thị Trường</strong>
@@ -5376,14 +5815,243 @@
       openGenericModal('modal-admin-profile');
     }
 
+    // =========================================================================
+    // HỆ THỐNG TÌM KIẾM TOÀN DIỆN (GLOBAL SEARCH ENGINE)
+    // =========================================================================
     function handleGlobalSearch(query) {
-      const q = query.toLowerCase().trim();
-      const rows = document.querySelectorAll('#member-products-table-body tr');
-      rows.forEach(r => {
-        const text = r.innerText.toLowerCase();
-        r.style.display = (!q || text.includes(q)) ? '' : 'none';
-      });
+      const dropdown = document.getElementById('global-search-dropdown');
+      const clearBtn = document.getElementById('btn-clear-global-search');
+      if (!dropdown) return;
+
+      const q = (query || '').toLowerCase().trim();
+      if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
+
+      if (!q) {
+        dropdown.style.display = 'none';
+        dropdown.innerHTML = '';
+        return;
+      }
+
+      function highlight(text, keyword) {
+        if (!keyword) return text;
+        const reg = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(reg, '<span class="search-highlight">$1</span>');
+      }
+
+      // 1. Tìm Nông Sản
+      const matchedProducts = [];
+      if (typeof allProducts !== 'undefined' && Array.isArray(allProducts)) {
+        allProducts.forEach(p => {
+          const matchName = (p.name || '').toLowerCase().includes(q);
+          const matchFarmer = (p.farmer || '').toLowerCase().includes(q);
+          const matchCat = (p.category || '').toLowerCase().includes(q);
+          const matchPrice = (p.price || '').toLowerCase().includes(q);
+          if (matchName || matchFarmer || matchCat || matchPrice) {
+            matchedProducts.push(p);
+          }
+        });
+      }
+
+      // 2. Tìm Xã Viên & Nông Hộ
+      const matchedMembers = [];
+      if (typeof farmersDirectory50Data !== 'undefined' && Array.isArray(farmersDirectory50Data)) {
+        farmersDirectory50Data.forEach(m => {
+          const matchName = (m.name || '').toLowerCase().includes(q);
+          const matchCode = (m.code || '').toLowerCase().includes(q);
+          const matchPhone = (m.phone || '').toLowerCase().includes(q);
+          const matchVillage = (m.village || '').toLowerCase().includes(q);
+          const matchCrop = (m.crop || '').toLowerCase().includes(q);
+          if (matchName || matchCode || matchPhone || matchVillage || matchCrop) {
+            matchedMembers.push(m);
+          }
+        });
+      }
+
+      // 3. Tìm Đơn Buôn B2B
+      const b2bOrders = [
+        { code: 'HĐ-WM-8821', client: 'Siêu Thị WinMart Miền Bắc', prod: '1.200 Túi Chuối Sấy OCOP 250g', val: '17.400.000 đ', status: 'Đang gom hàng' },
+        { code: 'HĐ-CM-4402', client: 'Hệ Thống Siêu Thị Co.opMart', prod: '800 Túi Chuối Sấy Dẻo & Mật Ong', val: '14.800.000 đ', status: 'Đã ký kết' },
+        { code: 'HĐ-BHX-9120', client: 'Bách Hóa Xanh Miền Bắc', prod: '1.500 Túi Chuối Màng Nhôm Zip', val: '21.750.000 đ', status: 'Đang xuất kho' },
+        { code: 'HĐ-MM-5510', client: 'MM Mega Market Thăng Long', prod: '500 Hũ Mật Ong OCOP 500ml', val: '27.500.000 đ', status: 'Đang vận chuyển' }
+      ];
+      const matchedB2B = b2bOrders.filter(o => 
+        o.code.toLowerCase().includes(q) || 
+        o.client.toLowerCase().includes(q) || 
+        o.prod.toLowerCase().includes(q)
+      );
+
+      // 4. Tìm Chuyến Xe & Logistics
+      const matchedTrips = (typeof fleetTripsData !== 'undefined' && Array.isArray(fleetTripsData)) ? 
+        fleetTripsData.filter(t => 
+          (t.id || '').toLowerCase().includes(q) ||
+          (t.name || '').toLowerCase().includes(q) ||
+          (t.driver || '').toLowerCase().includes(q) ||
+          (t.plate || '').toLowerCase().includes(q) ||
+          (t.crop || '').toLowerCase().includes(q)
+        ) : [];
+
+      // 5. Tìm Bao Bì & Vật Tư
+      const suppliesList = [
+        { name: 'Túi Zipper Màng Nhôm 250g (Chuối Sấy OCOP)', stock: 'Tồn 1.450 túi', price: '1.450 đ/túi' },
+        { name: 'Hũ Thủy Tinh Lục Giác 500ml (Mật Ong OCOP)', stock: 'Tồn 320 hũ', price: '4.800 đ/hũ' },
+        { name: 'Phân Bón Hữu Cơ Vi Sinh Sông Gianh', stock: 'Tồn 45 Tấn', price: '5.000 đ/kg' }
+      ];
+      const matchedSupplies = suppliesList.filter(s => s.name.toLowerCase().includes(q));
+
+      const totalMatches = matchedProducts.length + matchedMembers.length + matchedB2B.length + matchedTrips.length + matchedSupplies.length;
+
+      if (totalMatches === 0) {
+        dropdown.innerHTML = `<div class="search-no-results">Không tìm thấy kết quả nào khớp với "<strong>${q}</strong>". Hãy thử gõ <em>chuối, bác ba, winmart, xe...</em></div>`;
+        dropdown.style.display = 'block';
+        return;
+      }
+
+      let html = `<div style="padding: 6px 18px; font-size: 12px; color: var(--slate-500); background: #F8FAFC; border-bottom: 1px solid var(--slate-100); display: flex; justify-content: space-between;">
+        <span>Kết quả tìm kiếm cho: "<strong>${q}</strong>"</span>
+        <strong style="color: var(--brand-700);">${totalMatches} kết quả</strong>
+      </div>`;
+
+      // Render Nhóm Nông Sản
+      if (matchedProducts.length > 0) {
+        html += `<div class="search-dropdown-header"><span>🌾 Nông Sản & Lô Hàng (${matchedProducts.length})</span></div>`;
+        matchedProducts.slice(0, 4).forEach(p => {
+          html += `
+            <div class="search-result-item" onclick="selectSearchResult('product', '${p.id || 1}')">
+              <img src="${p.img || 'banana_front.jpg'}" class="search-item-thumb" alt="Product">
+              <div class="search-item-info">
+                <div class="search-item-title">
+                  <span>${highlight(p.name || '', q)}</span>
+                  <span class="status-badge-clean ${p.statusClass || 'approved'}" style="font-size: 11px; padding: 2px 8px;">${p.statusText || 'Đã duyệt'}</span>
+                </div>
+                <div class="search-item-sub">
+                  Chủ hộ: <strong>${highlight(p.farmer || '', q)}</strong> · Giá bán: <strong style="color: var(--brand-700);">${p.price || ''} đ</strong>
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+
+      // Render Nhóm Xã Viên
+      if (matchedMembers.length > 0) {
+        html += `<div class="search-dropdown-header"><span>👥 Xã Viên & Nông Hộ (${matchedMembers.length})</span></div>`;
+        matchedMembers.slice(0, 4).forEach(m => {
+          html += `
+            <div class="search-result-item" onclick="selectSearchResult('member', '${m.key || 'bacba'}')">
+              <div class="search-item-icon-box" style="background: #ECFDF5; color: #047857; font-weight: 800; font-size: 14px;">${m.name.charAt(0)}</div>
+              <div class="search-item-info">
+                <div class="search-item-title">
+                  <span>${highlight(m.name, q)}</span>
+                  <span style="font-size: 11px; background: var(--slate-100); padding: 2px 6px; border-radius: 4px; font-weight: 600;">${m.code}</span>
+                </div>
+                <div class="search-item-sub">
+                  ${highlight(m.village || '', q)} · ${highlight(m.crop || '', q)} · SĐT: <strong>${highlight(m.phone || '', q)}</strong>
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+
+      // Render Nhóm Chuyến Xe & Logistics
+      if (matchedTrips.length > 0) {
+        html += `<div class="search-dropdown-header"><span>🚚 Chuyến Xe & Logistics (${matchedTrips.length})</span></div>`;
+        matchedTrips.slice(0, 3).forEach(t => {
+          html += `
+            <div class="search-result-item" onclick="selectSearchResult('fleet', '${t.id}')">
+              <div class="search-item-icon-box" style="background: #EFF6FF; color: #1D4ED8;">🚚</div>
+              <div class="search-item-info">
+                <div class="search-item-title">
+                  <span>${highlight(t.name, q)}</span>
+                  <span class="fleet-pulse-badge ${t.statusClass}" style="font-size: 11px; padding: 2px 8px;">${t.statusText}</span>
+                </div>
+                <div class="search-item-sub">
+                  Tài xế: <strong>${highlight(t.driver, q)}</strong> (${t.phone}) · Biển số: <strong>${highlight(t.plate, q)}</strong> · Gom: ${highlight(t.crop, q)}
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+
+      // Render Nhóm Đơn Buôn B2B
+      if (matchedB2B.length > 0) {
+        html += `<div class="search-dropdown-header"><span>📦 Đơn Buôn Siêu Thị B2B (${matchedB2B.length})</span></div>`;
+        matchedB2B.forEach(o => {
+          html += `
+            <div class="search-result-item" onclick="selectSearchResult('b2b', '${o.code}')">
+              <div class="search-item-icon-box" style="background: #FFFBEB; color: #B45309;">🏢</div>
+              <div class="search-item-info">
+                <div class="search-item-title">
+                  <span>${highlight(o.client, q)}</span>
+                  <span style="font-size: 11px; background: var(--brand-50); color: var(--brand-700); padding: 2px 6px; border-radius: 4px; font-weight: 700;">${o.code}</span>
+                </div>
+                <div class="search-item-sub">
+                  ${highlight(o.prod, q)} · Trị giá: <strong style="color: var(--brand-700);">${o.val}</strong>
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+
+      // Render Nhóm Bao Bì & Vật Tư
+      if (matchedSupplies.length > 0) {
+        html += `<div class="search-dropdown-header"><span>📦 Kho Bao Bì & Vật Tư (${matchedSupplies.length})</span></div>`;
+        matchedSupplies.forEach(s => {
+          html += `
+            <div class="search-result-item" onclick="selectSearchResult('supplies', '')">
+              <div class="search-item-icon-box">📦</div>
+              <div class="search-item-info">
+                <div class="search-item-title">${highlight(s.name, q)}</div>
+                <div class="search-item-sub">${s.stock} · Đơn giá sỉ: ${s.price}</div>
+              </div>
+            </div>`;
+        });
+      }
+
+      dropdown.innerHTML = html;
+      dropdown.style.display = 'block';
     }
+
+    function clearGlobalSearch() {
+      const input = document.getElementById('top-global-search');
+      const dropdown = document.getElementById('global-search-dropdown');
+      const clearBtn = document.getElementById('btn-clear-global-search');
+      if (input) input.value = '';
+      if (clearBtn) clearBtn.style.display = 'none';
+      if (dropdown) {
+        dropdown.style.display = 'none';
+        dropdown.innerHTML = '';
+      }
+    }
+
+    function selectSearchResult(type, id) {
+      clearGlobalSearch();
+      if (type === 'product') {
+        showOverviewView();
+        const p = allProducts.find(x => x.id === parseInt(id));
+        if (p) openApprovalModal(p.id);
+        else showToast('🌾 Đang xem nông sản: ' + id);
+      } else if (type === 'member') {
+        loadMemberAdminProfile(id);
+        showToast('👤 Đã chuyển sang hồ sơ xã viên!');
+      } else if (type === 'b2b') {
+        showB2BOrdersView();
+        openContractDetailsModal('Hợp Đồng Siêu Thị WinMart Miền Bắc (WM-8821)');
+      } else if (type === 'fleet') {
+        showLogisticsView();
+        showToast('🚚 Đang theo dõi chuyến xe!');
+      } else if (type === 'supplies') {
+        showSuppliesView();
+        showToast('📦 Đang xem Kho Bao Bì & Vật Tư Đầu Vào!');
+      }
+    }
+
+    // Đóng dropdown tìm kiếm khi click ngoài
+    document.addEventListener('click', function(e) {
+      const container = document.querySelector('.search-capsule-input');
+      const dropdown = document.getElementById('global-search-dropdown');
+      if (container && dropdown && !container.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
 
     // Carousel & Favorite
     function scrollCoursueGrid(direction) {
@@ -5617,10 +6285,438 @@
       showToast('📊 ĐÃ XUẤT THÀNH CÔNG FILE EXCEL/CSV QUYẾT TOÁN!');
     }
 
-    // Zalo Broadcast
-    function broadcastLogisticsZalo() {
-      showToast('📢 ĐÃ PHÁT THÔNG BÁO ZALO LỊCH THU GOM CHUỐI TỚI 142 HỘ XÃ VIÊN!');
+
+    // =========================================================================
+    // DỮ LIỆU & ĐIỀU PHỐI ĐỘI XE THU GOM NÔNG SẢN THỜI GIAN THỰC (LOGISTICS FLEET)
+    // =========================================================================
+    let fleetTripsData = [
+      {
+        id: 'TX-01',
+        name: 'Tuyến 1 · Thôn Đồng Cát & Đồi Mơ',
+        driver: 'Nguyễn Văn Tuấn',
+        phone: '0912.842.115',
+        truck: 'Xe tải 2.5 Tấn',
+        plate: '29H-842.15',
+        crop: 'Chuối Tiêu Hồng OCOP',
+        farms: '18 Hộ (có hộ Bác Ba)',
+        plannedYield: '3.2 Tấn',
+        collectedYield: '2.4 Tấn',
+        progress: 75,
+        schedule: '07:30 - 11:30',
+        currentStop: 'Điểm 2/3: Trạm Cân NVH Thôn Cát (09:15)',
+        status: 'running',
+        statusText: 'Đang Di Chuyển',
+        statusClass: 'running'
+      },
+      {
+        id: 'TX-02',
+        name: 'Tuyến 2 · Thôn Suối Hai & Đầm Sen',
+        driver: 'Lê Văn Hùng',
+        phone: '0983.651.290',
+        truck: 'Xe bán tải 1.5 Tấn',
+        plate: '29C-651.90',
+        crop: 'Mật Ong Rừng & Trà Búp',
+        farms: '12 Hộ (Cô Bảy, Chú Năm)',
+        plannedYield: '750 kg',
+        collectedYield: '750 kg',
+        progress: 100,
+        schedule: '06:00 - 08:30',
+        currentStop: 'Đã về Kho Sơ Chế Trung Tâm HTX (08:35)',
+        status: 'completed',
+        statusText: 'Đã Về Kho',
+        statusClass: 'completed'
+      },
+      {
+        id: 'TX-03',
+        name: 'Tuyến 3 · Vận Chuyển Đơn Buôn WinMart',
+        driver: 'Trần Văn Long',
+        phone: '0977.112.338',
+        truck: 'Xe tải 3.5 Tấn',
+        plate: '29H-112.38',
+        crop: 'Chuối Sấy Dẻo OCOP 250g',
+        farms: 'Xuất kho tổng HTX',
+        plannedYield: '1.200 Túi (300kg)',
+        collectedYield: 'Đang bốc xếp',
+        progress: 30,
+        schedule: '13:30 - 16:30',
+        currentStop: 'Sân Kho HTX · Đang dán tem QR Traceability',
+        status: 'waiting',
+        statusText: 'Chờ Xuất Bến',
+        statusClass: 'waiting'
+      },
+      {
+        id: 'TX-04',
+        name: 'Tuyến 4 · Thôn Bãi Giữa & Đồi Chè',
+        driver: 'Phạm Đức Mạnh',
+        phone: '0904.556.789',
+        truck: 'Xe tải 1.8 Tấn Thùng Kín',
+        plate: '29D-445.67',
+        crop: 'Bưởi Da Xanh & Gạo ST25',
+        farms: '14 Hộ (Anh Thắng, Bác Sáu)',
+        plannedYield: '2.1 Tấn',
+        collectedYield: '1.1 Tấn',
+        progress: 52,
+        schedule: '10:00 - 14:00',
+        currentStop: 'Điểm 1/2: Trạm Cân Thôn Bãi Giữa (Đang cân hàng)',
+        status: 'weighing',
+        statusText: 'Đang Cân Hàng',
+        statusClass: 'weighing'
+      }
+    ];
+
+    let currentFleetFilter = 'all';
+    let currentFleetSearchQuery = '';
+
+    function renderFleetCards() {
+      const grid = document.getElementById('fleet-cards-grid');
+      if (!grid) return;
+
+      grid.innerHTML = fleetTripsData.map(t => {
+        let badgeStyle = 'background: var(--brand-50); color: var(--brand-700);';
+        let borderColor = 'border: 1px solid var(--slate-200);';
+        if (t.status === 'running') {
+          borderColor = 'border: 1.5px solid var(--brand-400); box-shadow: 0 4px 14px rgba(5, 150, 105, 0.1);';
+        } else if (t.status === 'completed') {
+          badgeStyle = 'background: #ECFDF5; color: #047857;';
+        } else if (t.status === 'waiting') {
+          badgeStyle = 'background: #EFF6FF; color: #1D4ED8;';
+        } else if (t.status === 'weighing') {
+          badgeStyle = 'background: #FFFBEB; color: #B45309;';
+        }
+
+        return `
+          <div style="background: white; ${borderColor} border-radius: 16px; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 12px; font-weight: 800; ${badgeStyle} padding: 4px 10px; border-radius: 20px;">${t.id} · ${t.statusText.toUpperCase()}</span>
+              <span style="font-size: 13px; font-weight: 700; color: var(--slate-700);">${t.schedule}</span>
+            </div>
+            <h4 style="font-size: 16px; font-weight: 800; color: var(--slate-900); margin-bottom: 6px;">${t.name}</h4>
+            <p style="font-size: 13px; color: var(--slate-600); line-height: 1.5; margin-bottom: 12px;">
+              ${t.truck} (${t.plate}) · Tài xế: <strong>${t.driver}</strong><br>
+              ${t.farms}<br>
+              Sản lượng: <strong>${t.plannedYield} ${t.crop}</strong>
+            </p>
+            <div style="background: var(--slate-50); border-radius: 10px; padding: 10px; font-size: 12px; color: var(--slate-700); margin-bottom: 14px;">
+              📍 ${t.currentStop}
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="hero-pill-btn-green" style="flex: 1; justify-content: center; font-size: 12.5px; padding: 8px 12px;" onclick="openGPSFleetModal('${t.name}')">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> GPS
+              </button>
+              <button class="hero-pill-btn-white" style="font-size: 12.5px; padding: 8px 12px; display: inline-flex; align-items: center; gap: 4px;" onclick="cycleTripStatus('${t.id}')" title="Chuyển trạng thái chuyến xe">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg> Đổi Trạng Thái
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
+
+    function renderFleetTripsTable() {
+      const tbody = document.getElementById('fleet-trips-table-body');
+      if (!tbody) return;
+
+      const q = (currentFleetSearchQuery || '').toLowerCase().trim();
+      const filtered = fleetTripsData.filter(t => {
+        const matchFilter = (currentFleetFilter === 'all' || t.status === currentFleetFilter);
+        const matchSearch = (!q || 
+          t.id.toLowerCase().includes(q) || 
+          t.name.toLowerCase().includes(q) || 
+          t.driver.toLowerCase().includes(q) || 
+          t.plate.toLowerCase().includes(q) || 
+          t.crop.toLowerCase().includes(q)
+        );
+        return matchFilter && matchSearch;
+      });
+
+      // Cập nhật số đếm trên các tab lọc
+      const countAll = fleetTripsData.length;
+      const countRunning = fleetTripsData.filter(t => t.status === 'running').length;
+      const countWeighing = fleetTripsData.filter(t => t.status === 'weighing').length;
+      const countWaiting = fleetTripsData.filter(t => t.status === 'waiting').length;
+      const countCompleted = fleetTripsData.filter(t => t.status === 'completed').length;
+
+      if (document.getElementById('fleet-count-all')) document.getElementById('fleet-count-all').innerText = countAll;
+      if (document.getElementById('fleet-count-running')) document.getElementById('fleet-count-running').innerText = countRunning;
+      if (document.getElementById('fleet-count-weighing')) document.getElementById('fleet-count-weighing').innerText = countWeighing;
+      if (document.getElementById('fleet-count-waiting')) document.getElementById('fleet-count-waiting').innerText = countWaiting;
+      if (document.getElementById('fleet-count-completed')) document.getElementById('fleet-count-completed').innerText = countCompleted;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 32px; color: var(--slate-500);">Không có tuyến xe nào khớp với điều kiện lọc hiện tại.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(t => {
+        return `
+          <tr>
+            <td style="text-align: left;">
+              <div style="font-weight: 800; color: var(--slate-900); font-size: 14px;">${t.id} · ${t.name.split(' · ')[1] || t.name}</div>
+              <div style="font-size: 12px; color: var(--slate-500); margin-top: 2px;">${t.farms}</div>
+            </td>
+            <td style="text-align: left;">
+              <div style="font-weight: 700; color: var(--slate-800);">${t.plate}</div>
+              <div style="font-size: 12px; color: var(--slate-500);">${t.truck}</div>
+            </td>
+            <td style="text-align: left;">
+              <div style="font-weight: 700; color: var(--slate-900);">${t.driver}</div>
+              <div style="font-size: 12px; color: var(--slate-500); display: flex; align-items: center; gap: 6px; margin-top: 2px;">
+                <span>${t.phone}</span>
+                <button onclick="openZaloCallModal('Tài xế: ${t.driver} (${t.phone})')" style="background: none; border: none; cursor: pointer; color: #0068FF; padding: 2px;" title="Gọi Zalo cho tài xế" aria-label="Gọi Zalo"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></button>
+              </div>
+            </td>
+            <td style="text-align: left;">
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 700;">
+                <span style="color: var(--brand-900);">${t.crop}</span>
+                <span style="color: var(--brand-700);">${t.collectedYield} / ${t.plannedYield}</span>
+              </div>
+              <div class="fleet-progress-bar-wrap">
+                <div class="fleet-progress-bar-fill" style="width: ${t.progress}%; background: ${t.progress === 100 ? '#059669' : '#10B981'};"></div>
+              </div>
+              <div style="font-size: 11px; color: var(--slate-400); text-align: right; margin-top: 2px;">Đã gom ${t.progress}%</div>
+            </td>
+            <td style="text-align: left;">
+              <div style="font-size: 13px; font-weight: 600; color: var(--slate-800);">${t.currentStop}</div>
+            </td>
+            <td style="text-align: center; font-weight: 700; color: var(--slate-700); font-size: 13px;">
+              ${t.schedule}
+            </td>
+            <td style="text-align: center;">
+              <span class="fleet-pulse-badge ${t.statusClass}" onclick="cycleTripStatus('${t.id}')" style="cursor: pointer;" title="Bấm để đổi trạng thái">
+                <span class="pulse-dot"></span>
+                ${t.statusText}
+              </span>
+            </td>
+            <td style="text-align: right;">
+              <div style="display: flex; gap: 6px; justify-content: flex-end;">
+                <button class="btn-table-action-view" onclick="openGPSFleetModal('${t.name}')" title="Xem bản đồ">Bản Đồ</button>
+                <button class="btn-table-action-approve" onclick="cycleTripStatus('${t.id}')" title="Chuyển trạng thái kế tiếp" style="display: inline-flex; align-items: center; gap: 3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>Cập Nhật</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function setFleetFilter(filter) {
+      currentFleetFilter = filter;
+      document.querySelectorAll('[id^="fleet-filter-"]').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('fleet-filter-' + filter);
+      if (activeBtn) activeBtn.classList.add('active');
+      renderFleetTripsTable();
+    }
+
+    function filterFleetTable(query) {
+      currentFleetSearchQuery = query;
+      renderFleetTripsTable();
+    }
+
+    function refreshFleetStatus() {
+      showToast('🔄 ĐÃ ĐỒNG BỘ ĐỊNH VỊ GPS VÀ TIẾN ĐỘ THU GOM 4 TUYẾN XE!');
+      renderFleetTripsTable();
+      renderFleetCards();
+    }
+
+    function cycleTripStatus(tripId) {
+      const trip = fleetTripsData.find(t => t.id === tripId);
+      if (!trip) return;
+
+      const states = [
+        { status: 'waiting', text: 'Chờ Xuất Bến', cls: 'waiting' },
+        { status: 'running', text: 'Đang Di Chuyển', cls: 'running' },
+        { status: 'weighing', text: 'Đang Cân Hàng', cls: 'weighing' },
+        { status: 'completed', text: 'Đã Về Kho', cls: 'completed' }
+      ];
+
+      const currentIdx = states.findIndex(s => s.status === trip.status);
+      const nextIdx = (currentIdx + 1) % states.length;
+      const nextState = states[nextIdx];
+
+      trip.status = nextState.status;
+      trip.statusText = nextState.text;
+      trip.statusClass = nextState.cls;
+
+      showToast(`🚚 Tuyến ${trip.id}: Đã chuyển sang trạng thái "${nextState.text}"!`);
+      renderFleetTripsTable();
+      renderFleetCards();
+    }
+
+    function onDriverSelectChange(val) {
+      if (val === 'custom') {
+        document.getElementById('new-fleet-phone').value = '';
+        document.getElementById('new-fleet-truck').value = '';
+        document.getElementById('new-fleet-plate').value = '';
+      } else {
+        const parts = val.split('|');
+        if (parts.length >= 3) {
+          document.getElementById('new-fleet-phone').value = parts[1];
+          const truckParts = parts[2].split(' (');
+          document.getElementById('new-fleet-plate').value = truckParts[0] || '';
+          document.getElementById('new-fleet-truck').value = (truckParts[1] ? truckParts[1].replace(')', '') : 'Xe tải');
+        }
+      }
+    }
+
+    function openAddRouteModal() {
+      const nextId = 'TX-0' + (fleetTripsData.length + 1);
+      if (document.getElementById('new-fleet-id')) {
+        document.getElementById('new-fleet-id').value = nextId;
+      }
+      openGenericModal('modal-add-fleet-trip');
+    }
+
+    function saveNewFleetTrip() {
+      const id = document.getElementById('new-fleet-id').value.trim();
+      const name = document.getElementById('new-fleet-name').value.trim();
+      let driver = document.getElementById('new-fleet-driver').value;
+      if (driver.includes('|')) driver = driver.split('|')[0];
+      const phone = document.getElementById('new-fleet-phone').value.trim();
+      const truck = document.getElementById('new-fleet-truck').value.trim();
+      const plate = document.getElementById('new-fleet-plate').value.trim();
+      const crop = document.getElementById('new-fleet-crop').value.trim();
+      const yieldVal = document.getElementById('new-fleet-yield').value.trim();
+      const schedule = document.getElementById('new-fleet-schedule').value.trim();
+      const stop = document.getElementById('new-fleet-stop').value.trim();
+      const status = document.getElementById('new-fleet-status').value;
+
+      if (!name) {
+        showToast('⚠️ Vui lòng nhập tên tuyến thu gom!');
+        return;
+      }
+
+      let statusText = 'Chờ Xuất Bến';
+      if (status === 'running') statusText = 'Đang Di Chuyển';
+      else if (status === 'weighing') statusText = 'Đang Cân Hàng';
+      else if (status === 'completed') statusText = 'Đã Về Kho';
+
+      const newTrip = {
+        id: id,
+        name: name,
+        driver: driver || 'Phạm Đức Mạnh',
+        phone: phone || '0904.556.789',
+        truck: truck || 'Xe tải 1.8 Tấn',
+        plate: plate || '29D-445.67',
+        crop: crop || 'Nông sản OCOP',
+        farms: '14 Hộ Xã Viên',
+        plannedYield: yieldVal || '2.5 Tấn',
+        collectedYield: '0 Tấn',
+        progress: 10,
+        schedule: schedule || '14:00 - 17:30',
+        currentStop: stop || 'Trạm Cân Thôn Bãi Giữa',
+        status: status,
+        statusText: statusText,
+        statusClass: status
+      };
+
+      fleetTripsData.unshift(newTrip);
+      closeGenericModal('modal-add-fleet-trip');
+      renderFleetTripsTable();
+      renderFleetCards();
+      showToast(`✓ ĐÃ TẠO VÀ PHÂN BỔ THÀNH CÔNG TUYẾN XE ${newTrip.id}!`);
+    }
+
+    // =========================================================================
+    // HỆ THỐNG GỬI TIN NHẮN ZALO NHẮC BÀ CON (ZALO BROADCAST CONFIRMATION)
+    // =========================================================================
+    const zaloTemplates = {
+      1: {
+        title: 'Mẫu 1: Xe Gom Chuối Chiều Nay',
+        content: `[THÔNG BÁO HTX ĐỒNG CÁT - THU GOM CHUỐI CHIỀU NAY]
+
+Kính gửi bà con xã viên Thôn Đồng Cát & Đồi Mơ!
+
+14h00 chiều nay (thứ Năm), xe tải HTX biển số 29H-842.15 do chú Tuấn lái sẽ có mặt tại Trạm Cân Nhà Văn Hóa Thôn Cát để thu mua chuối tiêu hồng đạt chuẩn OCOP.
+
+Bà con lưu ý:
+1. Cắt chuối từ trưa, lau sạch mủ, bọc túi giấy bảo vệ quả.
+2. Giá thu mua niêm yết: 8.500 đ/kg đối với chuối loại 1.
+3. Nhớ mang theo điện thoại để quét mã QR nhận tiền tươi qua Agribank/ZaloPay ngay tại trạm cân.
+
+Chúc bà con một vụ mùa bội thu!
+- Ban Quản Lý HTX Nông Nghiệp Yên Bình -`
+      },
+      2: {
+        title: 'Mẫu 2: Cân Trà & Mật Ong Sáng Mai',
+        content: `[THÔNG BÁO HTX ĐỒNG CÁT - THU MUA TRÀ & MẬT ONG SÁNG MAI]
+
+Kính gửi bà con xã viên Thôn Suối Hai & Đầm Sen!
+
+06h30 sáng mai, xe tải 1.5 Tấn (29C-651.90) do chú Hùng phụ trách sẽ đón hàng tại Điểm Cân Trạm Xã.
+
+Bà con lưu ý:
+1. Búp trà hái sớm 1 tôm 2 lá, đóng sọt tre thoáng khí, không để hấp hơi.
+2. Mật ong hoa nhãn đóng hũ thủy tinh hoặc can sạch 20L có dán tem hộ.
+3. Tiền thanh toán sẽ chuyển khoản 100% trong vòng 15 phút sau khi nghiệm thu.
+
+Trân trọng cảm ơn bà con!
+- Ban Quản Trị HTX -`
+      },
+      3: {
+        title: 'Mẫu 3: Đóng Túi OCOP Xuất WinMart',
+        content: `[THÔNG BÁO HTX ĐỒNG CÁT - GOM HÀNG GIAO SIÊU THỊ WINMART]
+
+Kính gửi 24 hộ nòng cốt cung cấp chuối sấy dẻo OCOP!
+
+Để kịp tiến độ giao đơn hàng 1.200 túi cho chuỗi siêu thị WinMart Times City Hà Nội vào sáng mai, đề nghị các hộ:
+1. Hoàn tất đóng gói túi zipper màng nhôm 250g trước 16h00 hôm nay.
+2. Dán đủ tem truy xuất nguồn gốc QR Code của từng hộ.
+3. Tập kết tại Kho sơ chế trung tâm HTX để kiểm định độ ẩm.
+
+HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi nhập kho.
+- Ban Giám Đốc HTX Yên Bình -`
+      }
+    };
+
+    function broadcastLogisticsZalo(preselectedGroup) {
+      if (preselectedGroup && document.getElementById('zalo-broadcast-target-group')) {
+        document.getElementById('zalo-broadcast-target-group').value = preselectedGroup;
+      }
+      selectZaloTemplate(1);
+      openGenericModal('modal-zalo-broadcast-confirm');
+    }
+
+    function selectZaloTemplate(tplId) {
+      document.querySelectorAll('.zalo-template-pill-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('btn-tpl-' + tplId);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const tpl = zaloTemplates[tplId] || zaloTemplates[1];
+      const textarea = document.getElementById('zalo-broadcast-msg-body');
+      if (textarea) {
+        textarea.value = tpl.content;
+        updateZaloPreview();
+      }
+    }
+
+    function updateZaloPreview() {
+      const textarea = document.getElementById('zalo-broadcast-msg-body');
+      const preview = document.getElementById('zalo-bubble-preview-content');
+      const counter = document.getElementById('zalo-char-count');
+      if (textarea && preview) {
+        const val = textarea.value;
+        preview.innerText = val || '(Chưa có nội dung tin nhắn)';
+        if (counter) counter.innerText = val.length + ' ký tự';
+      }
+    }
+
+    function onZaloTargetGroupChange(groupName) {
+      showToast('Đã chọn gửi tới: ' + groupName);
+    }
+
+    function submitZaloBroadcastConfirm() {
+      const textarea = document.getElementById('zalo-broadcast-msg-body');
+      const group = document.getElementById('zalo-broadcast-target-group').value;
+      const contentText = textarea ? textarea.value.trim() : '';
+
+      if (!contentText) {
+        showToast('⚠️ Vui lòng nhập nội dung tin nhắn trước khi gửi!');
+        return;
+      }
+
+      closeGenericModal('modal-zalo-broadcast-confirm');
+      showToast('🚀 ĐÃ PHÁT THÀNH CÔNG THÔNG BÁO QUA ZALO OA TỚI: ' + group + '!');
+    }
+
 
     function submitZaloBroadcast() {
       const input = document.getElementById('zalo-broadcast-input');
@@ -5637,6 +6733,32 @@
         showToast('✓ CẬP NHẬT XONG: Giá chuối sấy & mật ong giữ vững vị trí Top 1 cạnh tranh!');
       }, 1200);
     }
+
+  
+    // Khởi tạo bảng tuyến xe và thẻ lộ trình khi tải trang
+    setTimeout(() => {
+      if (typeof renderFleetCards === 'function') renderFleetCards();
+      if (typeof renderFleetTripsTable === 'function') renderFleetTripsTable();
+    }, 150);
+
+  
+    // UI/UX Pro Max: Lắng nghe phím Escape để đóng nhanh modal & dropdown
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' || e.keyCode === 27) {
+        // Đóng dropdown tìm kiếm nếu đang mở
+        const searchDropdown = document.getElementById('global-search-dropdown');
+        if (searchDropdown && searchDropdown.style.display !== 'none') {
+          clearGlobalSearch();
+          return;
+        }
+        // Đóng tất cả modal đang mở
+        document.querySelectorAll('.modal-backdrop-overlay').forEach(m => {
+          if (m.style.display === 'flex' || m.style.display === 'block') {
+            m.style.display = 'none';
+          }
+        });
+      }
+    });
 
   </script>
 
@@ -5717,12 +6839,12 @@
 
     <!-- Quick Prompt Chips -->
     <div class="copilot-chips-wrap">
-      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('📊 Tổng hợp doanh thu & tồn kho hôm nay')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Doanh thu hôm nay</button>
-      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('👨‍🌾 Kiểm tra sản lượng & công nợ Bác Ba')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> Công nợ Bác Ba</button>
-      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('📢 Soạn thông báo gửi nhóm Zalo 142 xã viên gom chuối')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg> Viết tin Zalo</button>
-      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('🚚 Kiểm tra đơn sỉ B2B WinMart cần giao')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg> Đơn buôn WinMart</button>
+      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('Tổng hợp doanh thu & tồn kho hôm nay')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Doanh thu hôm nay</button>
+      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('Kiểm tra sản lượng & công nợ Bác Ba')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> Công nợ Bác Ba</button>
+      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('Soạn thông báo gửi nhóm Zalo 142 xã viên gom chuối')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg> Viết tin Zalo</button>
+      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('Kiểm tra đơn sỉ B2B WinMart cần giao')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg> Đơn buôn WinMart</button>
       <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('Quy trình nâng hạng OCOP 4 sao')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg> Tiêu chuẩn OCOP 4 Sao</button>
-      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('💰 Tình hình chi trả tiền tươi đợt này')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Chi trả tiền tươi</button>
+      <button class="copilot-chip-btn" onclick="sendQuickCopilotPrompt('Tình hình chi trả tiền tươi đợt này')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Chi trả tiền tươi</button>
     </div>
 
     <!-- Messages Container -->
@@ -5763,7 +6885,7 @@
           </h3>
           <p>Kênh phát thanh & trao đổi trực tiếp với 142 hộ xã viên và 4.820 khách hàng</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-zalo-community')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-zalo-community')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="background: #F0F7FF; border: 1px solid #BFDBFE; border-radius: 16px; padding: 16px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between;">
@@ -5814,7 +6936,7 @@
           <h3>🔔 Trung Tâm Thông Báo Điều Hành HTX</h3>
           <p>Cập nhật biến động mùa vụ, đơn sỉ và kiểm định chất lượng theo thời gian thực</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-notifications-center')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-notifications-center')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
@@ -5867,7 +6989,7 @@
           <h3>👨‍💼 Hồ Sơ Ban Lãnh Đạo HTX Đồng Cát</h3>
           <p>Cấu hình chữ ký số, con dấu pháp nhân và tài khoản thanh toán tập trung</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-admin-profile')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-admin-profile')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="display: flex; gap: 16px; align-items: center; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 18px; margin-bottom: 20px;">
@@ -5918,7 +7040,7 @@
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
             Mở Trang Quản Trị 50 Xã Viên
           </button>
-          <button class="btn-close-modal" onclick="closeGenericModal('modal-all-members-directory')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+          <button class="btn-close-modal" onclick="closeGenericModal('modal-all-members-directory')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
         </div>
       </div>
 
@@ -6032,7 +7154,7 @@
           <h3>📝 Thêm Hợp Đồng Cung Ứng Nông Sản B2B Mới</h3>
           <p>Tạo hợp đồng bao tiêu với chuỗi siêu thị, sàn TMĐT hoặc đại lý bán sỉ</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-b2b-contract')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-b2b-contract')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;">
@@ -6083,7 +7205,7 @@
           <h3 style="margin-top: 4px;">Phiếu Xuất Kho & Vận Đơn Lô Hàng #WM-8821</h3>
           <p>Mã kiểm dịch & truy xuất nguồn gốc: <strong>OCOP-YB-2026-8821</strong></p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-dispatch-slip')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-dispatch-slip')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="background: white; border: 1.5px solid var(--slate-200); border-radius: 16px; padding: 22px; margin-bottom: 20px;">
@@ -6152,7 +7274,7 @@
           <h3>✨ Trình Sinh Kịch Bản AI Mới (Gemini Flash)</h3>
           <p>Tự động tạo nội dung Livestream TikTok Shop, kịch bản Reels & caption Facebook OCOP</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-ai-generator')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-ai-generator')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
@@ -6231,7 +7353,7 @@
           <h3>⚡ Lệnh Chi Trả VietQR Tự Động (12 Hộ Xã Viên)</h3>
           <p>Cổng thanh toán Napas 247 · Ngân hàng Nông nghiệp & PTNT (Agribank)</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-batch-payout')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-batch-payout')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="background: var(--brand-50); border: 1px solid var(--brand-200); border-radius: 16px; padding: 16px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center;">
@@ -6270,7 +7392,7 @@
           <h3 style="margin-top: 4px;">Phiếu Chi Tiền Mặt Số #42/PC-HTX</h3>
           <p>Thanh toán trực tiếp tại Trạm Cân Nông Sản Xã Yên Bình</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-cash-voucher')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-cash-voucher')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="background: white; border: 1px solid var(--slate-300); border-radius: 14px; padding: 20px; margin-bottom: 20px;">
@@ -6312,7 +7434,7 @@
           <h3>📍 Giám Sát GPS Hành Trình Xe Thu Gom</h3>
           <p id="gps-route-title">Xe Tải 2.5 Tấn (29H-842.15) · Tuyến 1: Thôn Đồng Cát & Đồi Mơ</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-gps-fleet')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-gps-fleet')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <!-- Mock GIS Map -->
@@ -6360,7 +7482,7 @@
           <h3>📦 Đơn Đặt In Bao Bì Màng Nhôm OCOP 4★</h3>
           <p>Kết nối trực tiếp hệ thống Xưởng Bao Bì Màng Nhôm Tân Á Hưng Yên</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-packaging-order')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-packaging-order')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="display: flex; gap: 16px; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 16px; margin-bottom: 18px; align-items: center;">
@@ -6407,7 +7529,7 @@
           <h3 style="margin-top: 4px;">Biên Bản Cấp Ứng Phân Bón & Túi Bọc Buồng</h3>
           <p>Hộ Xã Viên: <strong>Bác Ba (Nguyễn Văn Ba) · Thôn Đồng Cát</strong></p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-supply-handover')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-supply-handover')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="background: white; border: 1px solid var(--slate-300); border-radius: 14px; padding: 18px; margin-bottom: 18px; font-size: 13.5px; line-height: 1.6;">
@@ -6429,7 +7551,7 @@
           <h3>Lập Lệnh Cấn Trừ Công Nợ Vật Tư</h3>
           <p>Hộ: <strong>Chú Tư (Hoàng Văn Tư) · Thôn Đồi Mơ</strong></p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-supply-deduction')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-supply-deduction')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 14px; padding: 16px; margin-bottom: 18px; font-size: 13.5px;">
@@ -6466,7 +7588,7 @@
           <h3>📜 Bộ Hồ Sơ Minh Chứng OCOP 4★ Quốc Gia</h3>
           <p>HTX Nông Nghiệp Đồng Cát · Sản phẩm: Chuối Sấy Giòn & Mật Ong Hoa Rừng</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-ocop-dossier')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-ocop-dossier')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
@@ -6515,7 +7637,7 @@
           <h3>Thêm Hộ Xã Viên Mới Vào HTX Yên Bình</h3>
           <p>Đăng ký hộ nông dân vào hệ thống chuỗi giá trị và cấp mã số vùng trồng</p>
         </div>
-        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-farmer-member')"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-farmer-member')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
@@ -6584,6 +7706,195 @@
           <button class="hero-pill-btn-green" onclick="saveNewMember()">
             <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             Lưu Hồ Sơ Xã Viên
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Thêm Tuyến Xe & Điều Phối Chuyến Thu Gom Nông Sản Mới -->
+  <div id="modal-add-fleet-trip" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-add-fleet-trip')">
+    <div class="modal-content-container" style="max-width: 680px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>Thêm Chuyến Xe & Điều Phối Thu Gom Nông Sản</h3>
+          <p>Phân bổ xe tải đón hàng tại các điểm cân thôn xóm hoặc giao đơn sỉ B2B</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-fleet-trip')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Mã Chuyến Xe:</label>
+            <input type="text" id="new-fleet-id" class="form-input-stylish" value="TX-05" readonly style="background: var(--slate-50); font-weight: 800; color: var(--brand-700);">
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Tên Lộ Trình / Tuyến Thu Gom:</label>
+            <input type="text" id="new-fleet-name" class="form-input-stylish" placeholder="Ví dụ: Tuyến 5 · Thôn Bãi Giữa & Đầm Sen - Hub HTX" value="Tuyến 5 · Thôn Bãi Giữa & Đầm Sen - Hub HTX">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Tài Xế Phụ Trách:</label>
+            <select id="new-fleet-driver" class="form-input-stylish" onchange="onDriverSelectChange(this.value)">
+              <option value="Phạm Đức Mạnh|0904.556.789|29D-445.67 (Xe tải 1.8T)">Phạm Đức Mạnh (0904.556.789 - Xe 1.8T)</option>
+              <option value="Nguyễn Văn Tuấn|0912.842.115|29H-842.15 (Xe tải 2.5T)">Nguyễn Văn Tuấn (0912.842.115 - Xe 2.5T)</option>
+              <option value="Lê Văn Hùng|0983.651.290|29C-651.90 (Xe bán tải 1.5T)">Lê Văn Hùng (0983.651.290 - Bán tải 1.5T)</option>
+              <option value="Trần Văn Long|0977.112.338|29H-112.38 (Xe tải 3.5T)">Trần Văn Long (0977.112.338 - Xe 3.5T)</option>
+              <option value="custom">-- Nhập tài xế & xe khác --</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Số Điện Thoại:</label>
+            <input type="text" id="new-fleet-phone" class="form-input-stylish" value="0904.556.789">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Phương Tiện & Tải Trọng:</label>
+            <input type="text" id="new-fleet-truck" class="form-input-stylish" value="Xe tải 1.8 Tấn Thùng Kín">
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Biển Số Xe:</label>
+            <input type="text" id="new-fleet-plate" class="form-input-stylish" value="29D-445.67">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Nông Sản Thu Gom & Phạm Vi:</label>
+            <input type="text" id="new-fleet-crop" class="form-input-stylish" value="Bưởi Da Xanh & Gạo ST25 Hữu Cơ (14 hộ)">
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Sản Lượng Kế Hoạch:</label>
+            <input type="text" id="new-fleet-yield" class="form-input-stylish" value="2.5 Tấn">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Khung Giờ Hoạt Động:</label>
+            <input type="text" id="new-fleet-schedule" class="form-input-stylish" value="13:30 - 17:00 Chiều">
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Trạng Thái Khởi Tạo:</label>
+            <select id="new-fleet-status" class="form-input-stylish">
+              <option value="running"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10B981; margin-right:5px; vertical-align:middle;"></span> Đang di chuyển</option>
+              <option value="weighing"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#F59E0B; margin-right:5px; vertical-align:middle;"></span> Đang cân hàng tại thôn</option>
+              <option value="waiting" selected><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#3B82F6; margin-right:5px; vertical-align:middle;"></span> Chờ xuất bến</option>
+              <option value="completed">⚪ Đã hoàn thành</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Điểm Dừng Kế Tiếp / Checkpoint GPS:</label>
+          <input type="text" id="new-fleet-stop" class="form-input-stylish" value="Trạm Cân Nhà Văn Hóa Thôn Bãi Giữa (Lúc 14:15)">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+          <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-add-fleet-trip')">Hủy Bỏ</button>
+          <button class="hero-pill-btn-green" onclick="saveNewFleetTrip()">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Xác Nhận Tạo Tuyến Xe
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Bảng Soạn Thảo & Xác Nhận Gửi Tin Nhắn Zalo Nhắc Bà Con Gom Hàng -->
+  <div id="modal-zalo-broadcast-confirm" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-zalo-broadcast-confirm')">
+    <div class="modal-content-container" style="max-width: 720px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3 style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #0068FF; font-size: 22px;">📢</span> Soạn & Xác Nhận Gửi Tin Nhắn Zalo Nhắc Bà Con
+          </h3>
+          <p>Tin nhắn chính thức từ Zalo OA Hợp Tác Xã Đồng Cát gửi trực tiếp tới điện thoại của bà con xã viên</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-zalo-broadcast-confirm')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+        <!-- Chọn Mẫu Tin Soạn Sẵn -->
+        <div>
+          <label style="font-weight: 800; font-size: 13px; color: var(--slate-700); display: block; margin-bottom: 6px;">Chọn Mẫu Tin Nhắn Nhanh:</label>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" class="zalo-template-pill-btn active" id="btn-tpl-1" onclick="selectZaloTemplate(1)"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align:-2px; margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918"/></svg> Mẫu 1: Xe Gom Chuối Chiều Nay</button>
+            <button type="button" class="zalo-template-pill-btn" id="btn-tpl-2" onclick="selectZaloTemplate(2)"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align:-2px; margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg> Mẫu 2: Cân Trà & Mật Ong Sáng Mai</button>
+            <button type="button" class="zalo-template-pill-btn" id="btn-tpl-3" onclick="selectZaloTemplate(3)"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align:-2px; margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg> Mẫu 3: Đóng Túi OCOP Xuất WinMart</button>
+          </div>
+        </div>
+
+        <!-- Chọn Đối Tượng / Thôn Xóm Nhận Tin -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 14px;">
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Gửi Tới Địa Bàn / Nhóm Xã Viên:</label>
+            <select id="zalo-broadcast-target-group" class="form-input-stylish" onchange="onZaloTargetGroupChange(this.value)">
+              <option value="Thôn Đồng Cát & Đồi Mơ (38 Hộ - Tuyến Xe 1)">Thôn Đồng Cát & Đồi Mơ (38 Hộ - Tuyến Xe 1)</option>
+              <option value="Thôn Suối Hai & Đầm Sen (26 Hộ - Tuyến Xe 2)">Thôn Suối Hai & Đầm Sen (26 Hộ - Tuyến Xe 2)</option>
+              <option value="Thôn Bãi Giữa & Đồi Chè (22 Hộ - Tuyến Xe 4)">Thôn Bãi Giữa & Đồi Chè (22 Hộ - Tuyến Xe 4)</option>
+              <option value="Toàn Bộ 142 Hộ Xã Viên HTX Yên Bình">Toàn Bộ 142 Hộ Xã Viên HTX Yên Bình</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800); display: block; margin-bottom: 6px;">Kênh Truyền Thông:</label>
+            <select class="form-input-stylish">
+              <option value="zns">Zalo OA + ZNS Ưu Tiên</option>
+              <option value="group">Nhóm Zalo Xã Viên</option>
+              <option value="sms">SMS Brandname Cấp Xã</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Khung Nội Dung Soạn Thảo Tin Nhắn -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label style="font-weight: 800; font-size: 13.5px; color: var(--slate-800);">Nội Dung Tin Nhắn Nhắc Bà Con (Có Thể Chỉnh Sửa):</label>
+            <span style="font-size: 12px; color: var(--slate-500);" id="zalo-char-count">485 ký tự</span>
+          </div>
+          <textarea id="zalo-broadcast-msg-body" class="form-input-stylish" rows="8" style="font-size: 13px; line-height: 1.5; font-family: Inter, sans-serif;" oninput="updateZaloPreview()"></textarea>
+        </div>
+
+        <!-- Khung Mô Phỏng Xem Trước Bóng Chat Zalo -->
+        <div class="zalo-preview-card">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: #0068FF; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px;">Z</div>
+            <div>
+              <div style="font-weight: 800; font-size: 13px; color: #1E293B; display: flex; align-items: center; gap: 4px;">
+                HTX Nông Nghiệp Yên Bình <span style="background: #F59E0B; color: white; border-radius: 50%; width: 14px; height: 14px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">✓</span>
+              </div>
+              <div style="font-size: 11px; color: var(--slate-500);">Tài khoản Zalo Doanh nghiệp xác thực</div>
+            </div>
+          </div>
+
+          <div class="zalo-bubble-box" id="zalo-bubble-preview-content">
+            <!-- Nội dung đồng bộ thời gian thực từ textarea -->
+          </div>
+          <div style="font-size: 11px; color: var(--slate-400); margin-top: 6px; text-align: right;">Đã nhận lúc 15:35 · Đã xem</div>
+        </div>
+
+        <!-- Tùy Chọn Gửi -->
+        <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 12px; padding: 12px 16px; font-size: 13px; color: var(--slate-700);">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-bottom: 6px;">
+            <input type="checkbox" id="zalo-chk-sound" checked>
+            <span><strong>Bật chuông thông báo ưu tiên (ZNS):</strong> Đảm bảo điện thoại của bà con rung chuông cả khi khóa màn hình.</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="zalo-chk-log" checked>
+            <span><strong>Ghi vào nhật ký điều hành HTX:</strong> Lưu lại lịch sử phát tin để đối soát sản lượng thu mua.</span>
+          </label>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px;">
+          <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-zalo-broadcast-confirm')">Hủy Bỏ</button>
+          <button class="hero-pill-btn-green" style="background: #0068FF; border-color: #0068FF; box-shadow: 0 4px 14px rgba(0, 104, 255, 0.35);" onclick="submitZaloBroadcastConfirm()">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            Xác Nhận Gửi Tin Zalo Ngay
           </button>
         </div>
       </div>

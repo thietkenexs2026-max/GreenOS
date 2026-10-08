@@ -228,6 +228,28 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 19: Bổ Sung Trang Dashboard Nông Hộ Cho Mobile App Bác Ba (`index.html`)
+- **Yêu cầu 53**: "ở mobile app của bác ba thêm 1 trang dashboard nhé".
+  - *Giải pháp*:
+    - **Xây dựng phân hệ Dashboard Nông Hộ độc lập (`panel-dashboard`)**: Chuẩn hóa theo Persona 1 cho người lớn tuổi (chữ to, số nét đậm, độ tương phản cao, thao tác 1 chạm, 100% Font Inter).
+    - **Lối tắt truy cập nhanh trên Trang chủ (`home-dashboard-banner`)**: Nằm ngay dưới lời chào Bác Ba, hiển thị tổng quan thu nhập 18.45 tr, 42 đơn hàng và nút mở nhanh 1 chạm.
+    - **Nâng cấp thanh điều hướng đáy Native 5-Tab (`appBottomNav`)**: Bổ sung tab **Dashboard** (vị trí Tab 2) bên cạnh Trang chủ, Đăng bán (+), Kho hàng và Chợ Xã.
+    - **Thẻ Hero Doanh Thu & Dòng Tiền Vụ Tết 2026**: Hiển thị tổng thu nhập **18.450.000 đ** (+15% so với cùng kỳ), phân rã minh bạch giữa tiền đã về tài khoản Agribank (14.600.000 đ) và tiền tạm giữ HTX chờ quyết toán ngày 23 Tết (3.850.000 đ).
+    - **Lưới 4 Chỉ Số Vận Hành Nông Vụ Cốt Lõi**:
+      - 🌾 **4.2 / 6 Tấn**: Sản lượng chuối Tết (đạt 70% tiến độ vụ mùa).
+      - 📦 **42 Đơn Hàng**: 24 đơn sỉ HTX gom cho chuỗi WinMart/Co.op + 18 đơn lẻ Zalo.
+      - 🏷️ **7 Mặt Hàng**: Nông sản OCOP 4 sao và chế biến đang lưu hành.
+      - 🍌 **88% Loại 1**: Chuẩn buồng loại A trên 1.200 cây chuối đang cho thu hoạch.
+    - **Cảnh Báo Lịch Xe Thu Gom Nông Sản HTX (Nóng Hổi Trong Tuần)**: Chuyến xe gom 08:30 sáng Thứ 5 tại Nhà văn hóa Thôn Đồng Cát (Tài xế Chú Hùng - Xe 2.5 tấn) kèm nút bấm 1 chạm gửi tin Zalo xác nhận xuất 500kg hàng.
+    - **Tiến Độ Thu Hoạch 2 Khu Vườn Chuối**: Vườn Đồi Đồng Cát (1.2 ha - 2.8 tấn đã cắt đưa vào lò sấy) & Vườn Bãi Bồi Sông (0.8 ha - 1.4 tấn chuối ngự cắt đợt 2 vào 20 tháng Chạp).
+    - **Biểu Đồ Doanh Thu 6 Tháng CSS Bars**: Trực quan từ Tháng 8 đến Tháng 1 (Tết) đạt đỉnh kỷ lục, chạm vào từng cột để nghe hoặc xem chi tiết.
+    - **Danh Mục 7 Sản Phẩm Nông Sản Đang Bán**: Chuối sấy giòn OCOP, chuối dẻo đóng hộp quà, chuối ngự tươi VietGAP, mật ong rừng, trà Bát Tiên, rượu chuối hột chum sành, bột chuối xanh dinh dưỡng.
+    - **Bộ 4 Nút Tác Vụ Nhanh (Big Touch Targets)**: 🎙️ Đăng Bán Mới (Voice-First), 🚚 Báo Xe Cân Chuối, 💳 Mã VietQR Nhận Tiền, 📞 Gọi Cán Bộ Hub.
+    - **Trợ Năng Âm Thanh `speakDashboardBrief()`**: Nút loa đọc to tóm tắt số liệu thu nhập và lịch xe gom hàng bằng tiếng Việt cho Bác Ba.
+    - **Modal VietQR Ngân Hàng Agribank**: Popup hiện mã QR tài khoản chính chủ của Bác Ba để người mua quét tiền trực tiếp.
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

@@ -291,6 +291,61 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 24: Xuất Bản Độc Lập File Portal Trình Diễn Ra Desktop & Downloads
+- **Yêu cầu 58**: "export riêng cái file portal ra đây đi".
+  - *Giải pháp*:
+    - Sao chép và xuất trực tiếp file `PORTAL_GREENOS.html` ra cả 2 thư mục dễ truy cập nhất của người dùng: `/Users/hoangminhduc/Desktop/PORTAL_GREENOS.html` và `/Users/hoangminhduc/Downloads/PORTAL_GREENOS.html`.
+    - Tạo sự thuận tiện tối đa khi chỉ cần click đúp từ Desktop là có thể trải nghiệm ngay lập tức toàn bộ hệ thống GreenOS mà không cần tìm kiếm trong thư mục dự án.
+
+### Giai đoạn 25: Nhúng Base64 100% Toàn Bộ Hình Ảnh — Khắc Phục Lỗi Hiển Thị Ảnh Khi Mở Độc Lập
+- **Yêu cầu 59**: "đang lỗi ảnh ở trong file html đó, chỉnh đi".
+  - *Nguyên nhân*: Khi gửi file `PORTAL.html` hoặc `PORTAL_GREENOS.html` đi nơi khác hoặc mở độc lập ngoài thư mục dự án, các đường dẫn ảnh cục bộ (`assets/...`) không tìm thấy khiến giao diện bị vỡ ảnh.
+  - *Giải pháp*:
+    - Chuyển đổi toàn bộ 8 file ảnh thực tế của Bác Ba và Hợp tác xã sang định dạng chuỗi dữ liệu Base64 Data URI:
+      - `bac_ba_avatar.jpg` (Chân dung Bác Ba nông dân OCOP)
+      - `banana_front.jpg` (Túi chuối sấy dẻo mặt trước)
+      - `banana_plate.jpg` (Đĩa chuối sấy dẻo bày mẫu)
+      - `banana_back.jpg` (Mặt sau bao bì dinh dưỡng OCOP)
+      - `honey_front.jpg` (Mật ong hoa rừng nguyên chất)
+      - `tea_front.jpg` (Chè Bát Tiên OCOP đặc sản)
+      - `tet_banner.jpg` (Banner Tết cổ truyền rực rỡ)
+      - `ocop_banner.jpg` (Banner chứng nhận OCOP 4 sao)
+      - `vietqr.png` (Mã thanh toán VietQR Agribank)
+    - Nhúng trực tiếp cơ chế nạp Base64 vào bộ nhớ iframe của `PORTAL.html`. Dù file HTML được lưu ở bất kỳ thư mục nào trên máy tính hay điện thoại, 100% hình ảnh luôn hiển thị sắc nét tức thì không cần kết nối mạng.
+
+### Giai đoạn 26: Bổ Sung Toàn Bộ Tính Năng Xem Full Screen & Mở Tab Độc Lập Cho Cả 2 Bản Demo
+- **Yêu cầu 60**: "đang chưa có chỗ xem full screen của 2 bản demo à".
+  - *Giải pháp*:
+    - **Nút Toàn màn hình trung tâm**: Bổ sung nút `⛶ Toàn Màn Hình` tại thanh điều khiển trung tâm và từng thẻ giới thiệu nhanh.
+    - **Thanh công cụ lơ lửng Glassmorphism trong chế độ Fullscreen**: Cho phép người dùng chuyển đổi nhanh giữa `📱 Mobile Bác Ba` và `🖥️ Web HTX PC` bằng 1 click.
+    - **Phím tắt chuyên nghiệp**: Hỗ trợ phím `F` (bật/tắt Fullscreen), `Esc` (thu nhỏ), `1` (chuyển xem Mobile), `2` (chuyển xem Desktop PC).
+    - **Tính năng Mở Tab Độc Lập (`↗ Mở Tab Mới`)**: Tạo Blob URL động để mở riêng biệt từng ứng dụng sang tab trình duyệt mới toanh, xem trực tiếp toàn màn hình native không bị viền portal bao quanh.
+
+### Giai đoạn 27: Nâng Cấp Quản Lý Đơn Hàng Bác Ba Chuẩn Shopee Partner — Bộ Lọc Ngày & STT Nổi Bật
+- **Yêu cầu 61**: "chỉnh sửa phần thông tin đơn hàng của bác ba nhé, ở trong đó khi bấm vào màn sẽ là thông tin cơ bản của từng đơn hàng list theo từng ngày có số tứ tự đơn hàng nhé, xong sẽ có filte. Như màn thông tin của shopee này, filter sẽ cho chọn hôm nay, hôm qua, 3 ngày trước, và khoảng thời gian tuỳ chọn".
+  - *Giải pháp*:
+    - **Thẻ đơn hàng chuẩn Shopee Partner**: Bố cục STT đơn hàng to đậm màu cam (`#FF6B00`), mã đơn `[#GOS-...]`, nhãn trạng thái giao nhận và tài xế nhận đơn.
+    - **Hệ thống Tab trạng thái vuốt ngang**: `Tất cả`, `Mới (3)`, `Đang làm (2)`, `Làm xong (1)`, `Đang giao (2)`, `Lịch sử (2)`.
+    - **Bộ lọc ngày dạng Bottom Sheet Modal**: Hỗ trợ chọn nhanh: *Hôm nay*, *Hôm qua*, *3 ngày trước*, *7 ngày qua*, *Tháng này*, và *Khoảng thời gian tuỳ chọn* (với 2 ô chọn ngày bắt đầu & kết thúc).
+    - **Màn hình Chi tiết đơn hàng chuyên sâu**: Hiển thị thông tin tài xế, gọi điện thoại nhanh, ghi chú đơn hàng đóng khung vàng nổi bật, bảng kê chi tiết từng sản phẩm và dòng tiền nhận thực tế.
+
+### Giai đoạn 28: Tinh Chỉnh Layout Pixel-Perfect (356px) Chống Tràn Text & Đồng Bộ 100% Nông Sản Bác Ba
+- **Yêu cầu 62 & 63**: "căn chỉnh lại text cho hợp layout, với cả hiện thị nội dung sao cho hợp với sản phẩm mà bác ba bán nhé", "chỉnh sửa lại text vẫn vỡ layout".
+  - *Giải pháp*:
+    - **Đồng bộ 100% Nông sản OCOP thực tế của Bác Ba**: Thay thế triệt để các món ăn vặt mẫu sang toàn bộ nông sản Bác Ba sản xuất: Chuối sấy dẻo OCOP, Rượu chuối hột rừng men lá, Chuối sấy giòn hút chân không, Buồng chuối ngự tiến vua, Mật ong hoa rừng Ba Bể, Chè Shan Tuyết Bát Tiên cổ thụ, Bột chuối xanh nguyên chất.
+    - **Khắc phục triệt để vỡ layout trên khung màn 356px**:
+      - Thu gọn nút quay lại tiêu đề thành nút tròn nhỏ gọn `←` (32px), tạo không gian thoải mái cho tiêu đề "Đơn hàng".
+      - Bổ sung `min-width: 0`, `flex-shrink: 1`, `text-overflow: ellipsis` cho nút chọn ngày, đảm bảo chuỗi ngày tháng dài tự động co gọn thanh lịch kèm mũi tên `▼`.
+      - Tối ưu bảng thanh toán tài chính theo chuẩn ảnh Shopee thực tế: bên phải chỉ để nút điều hướng `Chi tiết ›`, đưa toàn bộ tên phương thức sang dòng phụ dưới, dẹp bỏ 100% hiện tượng rớt dòng hay tràn màn hình.
+
+### Giai đoạn 29: Đồng Bộ Mã Nguồn Lên GitHub Remote
+- **Yêu cầu 64**: "push hết lên git nhé".
+  - *Giải pháp*:
+    - Kiểm tra và cam kết toàn bộ các tệp tin mã nguồn, tệp tin xuất độc lập và cập nhật tài liệu lịch sử trao đổi.
+    - Đẩy toàn bộ các commit (`1b00a2e`, `bda818a`, `945e4b8`, `d3bed9a`, `5263024`) lên nhánh `main` của kho lưu trữ GitHub (`git@github.com:thietkenexs2026-max/GreenOS.git`).
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

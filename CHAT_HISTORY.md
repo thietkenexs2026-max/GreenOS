@@ -273,6 +273,14 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
     - **Chống tràn chữ thẻ sản phẩm**: Bổ sung `dpc-info` với `min-width: 0; flex: 1; text-overflow: ellipsis;` đảm bảo tên dài tự cắt `...` trước khối giá.
     - **Chuẩn hóa Vector SVG**: Thay thế toàn bộ emoji thô (`🌾`, `📦`, `🏷️`, `🍌`, `🎙️`, `🚚`, `💳`, `📞`) trong các thẻ KPI và 4 nút tác vụ nhanh sang 100% Vector SVG sắc nét, đồng bộ chuẩn `ui-ux-pro-max`.
 
+### Giai đoạn 22: Việt Hóa Thuần Việt — Đổi Tên Trang Thành "Thống Kê"
+- **Yêu cầu 56**: "đổi tên trang đó là thống kê nhé".
+  - *Giải pháp*:
+    - **Thanh menu đáy Native Tab 2**: Chuyển nhãn từ `Dashboard` sang `Thống kê`, đồng thời nâng cấp icon sang biểu đồ cột trực quan (`bar-chart-2` Lucide SVG).
+    - **Header Top Bar**: Chuyển badge chỉ mục từ `DASHBOARD NÔNG HỘ` sang `THỐNG KÊ NÔNG HỘ`.
+    - **Lối tắt nhanh Trang chủ (`home-dashboard-banner`)**: Đổi tiêu đề thành `Thống Kê Nông Hộ`, nút mở `Mở Thống Kê` và icon biểu đồ cột đồng bộ.
+    - Giúp người nông dân cao tuổi như Bác Ba tiếp cận dễ hiểu, thuần Việt, không còn từ mượn tiếng Anh mang tính kỹ thuật.
+
 ---
 
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã

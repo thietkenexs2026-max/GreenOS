@@ -1943,74 +1943,98 @@
     }
   
     /* =========================================================================
-       SHOPEE FOOD / SHOPEE PARTNER MERCHANT ORDERS STYLES
+       SHOPEE FOOD / SHOPEE PARTNER MERCHANT ORDERS STYLES (PIXEL-PERFECT MOBILE)
        ========================================================================= */
     .shopee-order-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 4px 0 10px 0;
-      border-bottom: 1px solid var(--border-line);
+      padding: 2px 0 10px 0;
+      border-bottom: 1px solid #E2E8F0;
       margin-bottom: 10px;
+      gap: 8px;
     }
     .shopee-header-left {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      min-width: 0;
+      flex: 1;
     }
-    .shopee-header-title {
-      font-size: 19px;
-      font-weight: 800;
+    .shopee-back-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
       color: #0F172A;
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
+      transition: background 150ms;
+    }
+    .shopee-back-btn:active {
+      background: #E2E8F0;
+    }
+    .shopee-header-title-text {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0F172A;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
     }
     .shopee-open-badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       font-size: 12px;
       font-weight: 700;
       color: #16A34A;
       background: #DCFCE7;
-      padding: 3px 8px;
+      padding: 2px 8px;
       border-radius: 999px;
       cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .shopee-open-dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: #16A34A;
-      box-shadow: 0 0 6px #16A34A;
+      box-shadow: 0 0 5px #16A34A;
     }
     .shopee-header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: #64748B;
+      gap: 6px;
+      flex-shrink: 0;
     }
     .shopee-header-btn {
+      width: 32px;
+      height: 32px;
       background: none;
       border: none;
-      padding: 4px;
       cursor: pointer;
       color: #475569;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
+      padding: 0;
+      transition: background 150ms;
     }
-    .shopee-header-btn:hover {
-      background: #F1F5F9;
-      color: #0F172A;
+    .shopee-header-btn:active {
+      background: #E2E8F0;
     }
 
     /* Shopee Status Tabs */
     .shopee-status-tabs-container {
-      margin: 0 -16px 12px -16px;
-      padding: 0 16px;
+      margin: 0 -18px 10px -18px;
+      padding: 0 18px;
       border-bottom: 1px solid #E2E8F0;
       overflow-x: auto;
       scrollbar-width: none;
@@ -2021,7 +2045,7 @@
     }
     .shopee-status-tabs {
       display: flex;
-      gap: 18px;
+      gap: 16px;
       min-width: max-content;
       padding-bottom: 1px;
     }
@@ -2029,12 +2053,11 @@
       font-size: 14.5px;
       font-weight: 700;
       color: #64748B;
-      padding: 8px 4px 10px 4px;
+      padding: 6px 2px 8px 2px;
       cursor: pointer;
       border-bottom: 3px solid transparent;
       white-space: nowrap;
-      transition: all 150ms ease;
-      position: relative;
+      transition: all 140ms ease;
     }
     .shopee-tab-item.active {
       color: #EE4D2D;
@@ -2042,29 +2065,26 @@
       font-weight: 800;
     }
 
-    /* Shopee Filter Toolbar */
+    /* Shopee Filter Toolbar (No wrapping, auto ellipsis) */
     .shopee-filter-toolbar {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
+      gap: 8px;
+      margin-bottom: 12px;
     }
     .shopee-date-btn {
       flex: 1;
-      background: #FFFFFF;
+      min-width: 0;
+      background: #FFF5F1;
       border: 1.5px solid #EE4D2D;
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 7px 8px 7px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 13px;
-      font-weight: 700;
-      color: #EE4D2D;
+      gap: 6px;
       cursor: pointer;
       position: relative;
-      background-color: #FFF5F1;
-      box-shadow: 0 1px 3px rgba(238, 77, 45, 0.08);
     }
     .shopee-date-check-tag {
       position: absolute;
@@ -2078,33 +2098,46 @@
       align-items: center;
       justify-content: center;
       color: #FFF;
-      font-size: 9px;
+      font-size: 8.5px;
+      font-weight: 900;
       line-height: 1;
+    }
+    .shopee-date-text {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #EE4D2D;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+      flex: 1;
     }
     .shopee-dropdown-filter {
       background: #FFFFFF;
       border: 1px solid #CBD5E1;
       border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 13px;
+      padding: 7px 10px;
+      font-size: 12.5px;
       font-weight: 600;
       color: #475569;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    /* Shopee Order Card Item */
+    /* Shopee Order Card Item (Strictly matching Screenshot 1) */
     .shopee-order-card {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
-      border-radius: 14px;
-      padding: 14px 16px;
-      margin-bottom: 11px;
+      border-radius: 12px;
+      padding: 13px 15px;
+      margin-bottom: 10px;
       cursor: pointer;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-      transition: all 160ms ease;
+      transition: all 140ms ease;
     }
     .shopee-order-card:active {
       transform: scale(0.99);
@@ -2124,65 +2157,57 @@
     }
     .soc-status-text {
       font-size: 13.5px;
-      font-weight: 700;
+      font-weight: 600;
       color: #64748B;
-    }
-    .soc-status-text.delivered {
-      color: #16A34A;
-    }
-    .soc-status-text.shipping {
-      color: #0284C7;
-    }
-    .soc-status-text.preparing {
-      color: #D97706;
     }
     .soc-time-row {
-      font-size: 12.5px;
+      font-size: 13px;
       color: #64748B;
-      margin-bottom: 6px;
-      font-weight: 500;
+      margin-bottom: 5px;
+      font-weight: 400;
     }
     .soc-meta-row {
       font-size: 13.5px;
       color: #334155;
-      font-weight: 600;
-      margin-bottom: 6px;
+      font-weight: 500;
+      margin-bottom: 5px;
       display: flex;
       align-items: center;
       gap: 6px;
-      line-height: 1.35;
-      flex-wrap: wrap;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .soc-meta-sep {
       color: #CBD5E1;
-      font-weight: 400;
+      font-weight: 300;
     }
     .soc-payout-row {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 600;
       color: #0F172A;
       display: flex;
       align-items: baseline;
       gap: 5px;
-      padding-top: 4px;
+      padding-top: 2px;
     }
     .soc-payout-label {
-      color: #475569;
-      font-weight: 600;
+      color: #334155;
+      font-weight: 500;
     }
     .soc-payout-val {
-      font-size: 15.5px;
-      font-weight: 800;
+      font-size: 15px;
+      font-weight: 700;
       color: #0F172A;
     }
 
-    /* Shopee Order Detail Screen */
+    /* Shopee Order Detail Screen (Strictly matching Screenshot 2) */
     .shopee-detail-card {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
       border-radius: 14px;
       padding: 14px 16px;
-      margin-bottom: 12px;
+      margin-bottom: 11px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
     .sdc-driver-row {
@@ -2194,24 +2219,30 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
+      flex: 1;
     }
     .sdc-driver-avatar {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       object-fit: cover;
       border: 1.5px solid #059669;
+      flex-shrink: 0;
     }
     .sdc-driver-name {
       font-size: 14.5px;
       font-weight: 800;
       color: #0F172A;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .sdc-driver-sub {
       font-size: 12.5px;
-      color: #16A34A;
-      font-weight: 600;
-      margin-top: 2px;
+      color: #64748B;
+      font-weight: 500;
+      margin-top: 1px;
     }
     .sdc-customer-header {
       display: flex;
@@ -2220,30 +2251,35 @@
       margin-bottom: 10px;
     }
     .sdc-customer-avatar {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      background: #ECFDF5;
-      color: #059669;
+      background: #FEF3C7;
+      color: #D97706;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-size: 14px;
+      flex-shrink: 0;
     }
     .sdc-customer-name {
       font-size: 15px;
       font-weight: 800;
       color: #0F172A;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .sdc-note-box {
       background: #FEF9C3;
-      border: 1px solid #FDE047;
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 10px 12px;
       font-size: 13px;
       color: #854D0E;
       line-height: 1.45;
       margin-bottom: 12px;
+      word-break: break-word;
     }
     .sdc-items-list {
       border-bottom: 1px solid #F1F5F9;
@@ -2255,16 +2291,17 @@
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 8px;
-      gap: 10px;
+      gap: 12px;
     }
     .sdc-item-name {
-      font-size: 14px;
+      font-size: 13.5px;
       color: #1E293B;
       line-height: 1.4;
       flex: 1;
+      min-width: 0;
     }
     .sdc-item-price {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #0F172A;
       white-space: nowrap;
@@ -2280,6 +2317,7 @@
     }
     .sdc-breakdown-row strong {
       color: #0F172A;
+      font-weight: 700;
     }
     .sdc-final-row {
       display: flex;
@@ -2290,14 +2328,14 @@
       margin-top: 6px;
     }
     .sdc-final-label {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 800;
       color: #0F172A;
     }
     .sdc-final-val {
-      font-size: 17.5px;
+      font-size: 17px;
       font-weight: 900;
-      color: #059669;
+      color: #EE4D2D;
       display: flex;
       align-items: center;
       gap: 5px;
@@ -2306,13 +2344,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 9px;
+      margin-bottom: 8px;
       font-size: 13px;
       color: #64748B;
+      gap: 8px;
     }
-    .sdc-other-row strong {
+    .sdc-other-row-label {
+      flex-shrink: 0;
+      color: #64748B;
+    }
+    .sdc-other-row-val {
       color: #0F172A;
-      font-weight: 700;
+      font-weight: 600;
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .sdc-copy-btn {
       color: #EE4D2D;
@@ -2320,8 +2367,167 @@
       background: none;
       border: none;
       cursor: pointer;
+      font-size: 12px;
+      padding-left: 5px;
+    }
+
+    /* Date Filter Modal / Bottom Sheet */
+    .order-filter-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 600;
+      display: none;
+      align-items: flex-end;
+    }
+    .order-filter-backdrop.show {
+      display: flex;
+    }
+    .order-filter-sheet {
+      background: #FFFFFF;
+      width: 100%;
+      border-radius: 20px 20px 0 0;
+      padding: 18px 16px 22px 16px;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+      animation: sheetSlideUp 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    @keyframes sheetSlideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .ofs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .ofs-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .ofs-close-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      color: #64748B;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .ofs-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 14px;
+    }
+    .ofs-option-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 13px;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      color: #334155;
+      transition: all 140ms ease;
+    }
+    .ofs-option-item:hover {
+      border-color: #EE4D2D;
+      background: #FFF5F1;
+    }
+    .ofs-option-item.selected {
+      border-color: #EE4D2D;
+      background: #FFF5F1;
+      color: #EE4D2D;
+    }
+    .ofs-radio-circle {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ofs-option-item.selected .ofs-radio-circle {
+      border-color: #EE4D2D;
+      background: #EE4D2D;
+    }
+    .ofs-radio-inner {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #FFF;
+      display: none;
+    }
+    .ofs-option-item.selected .ofs-radio-inner {
+      display: block;
+    }
+    .ofs-custom-dates-box {
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: -3px;
+      margin-bottom: 14px;
+      display: none;
+    }
+    .ofs-custom-dates-box.show {
+      display: block;
+    }
+    .ofs-date-field {
+      margin-bottom: 8px;
+    }
+    .ofs-date-field label {
+      display: block;
       font-size: 12.5px;
-      padding-left: 6px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 3px;
+    }
+    .ofs-date-field input {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid #CBD5E1;
+      border-radius: 7px;
+      font-size: 13.5px;
+      color: #0F172A;
+      font-weight: 600;
+    }
+    .ofs-action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    .ofs-btn-reset {
+      flex: 1;
+      background: #F1F5F9;
+      color: #475569;
+      border: none;
+      border-radius: 10px;
+      padding: 11px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .ofs-btn-apply {
+      flex: 2;
+      background: #EE4D2D;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 10px;
+      padding: 11px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(238, 77, 45, 0.25);
     }
 
   </style>
@@ -2884,24 +3090,22 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
            PANEL 9: MÀN HÌNH ĐƠN HÀNG BÁC BA (CHUẨN SHOPEE MERCHANT PARTNER)
            ========================================================================= -->
       <section id="panel-orders" class="view-panel">
-        <!-- Top Bar Header -->
+        <!-- Top Bar Header (Compact, No Overflow) -->
         <div class="shopee-order-header">
           <div class="shopee-header-left">
-            <button type="button" class="btn-dock-back" style="height:38px;padding:0 12px;font-size:13.5px;border-radius:10px" onclick="closeOrdersView()">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại
+            <button type="button" class="shopee-back-btn" onclick="closeOrdersView()" title="Quay lại">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             </button>
-            <div class="shopee-header-title">
-              <span>Đơn hàng</span>
-              <div class="shopee-open-badge" onclick="toggleStoreOpen(this)">
-                <span class="shopee-open-dot"></span>
-                <span id="storeOpenText">Mở cửa ›</span>
-              </div>
+            <span class="shopee-header-title-text">Đơn hàng</span>
+            <div class="shopee-open-badge" onclick="toggleStoreOpen(this)">
+              <span class="shopee-open-dot"></span>
+              <span id="storeOpenText">Mở cửa ›</span>
             </div>
           </div>
           <div class="shopee-header-actions">
-            <button type="button" class="shopee-header-btn" onclick="openOrderSearchPrompt()" title="Tìm kiếm đơn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-            <button type="button" class="shopee-header-btn" onclick="triggerToast('Hỗ trợ HTX Yên Bình: 0988.123.456 (Cháu Tuấn)')" title="Trợ giúp"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></button>
-            <button type="button" class="shopee-header-btn" onclick="triggerToast('Cài đặt thông báo âm thanh chuông đơn hàng')" title="Cài đặt"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
+            <button type="button" class="shopee-header-btn" onclick="openOrderSearchPrompt()" title="Tìm kiếm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+            <button type="button" class="shopee-header-btn" onclick="triggerToast('Hỗ trợ HTX Yên Bình: 0988.123.456')" title="Trợ giúp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></button>
+            <button type="button" class="shopee-header-btn" onclick="triggerToast('Cài đặt thông báo')" title="Cài đặt"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
           </div>
         </div>
 
@@ -2921,12 +3125,12 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="shopee-filter-toolbar">
           <button type="button" class="shopee-date-btn" onclick="openOrderDateFilterModal()" title="Bấm chọn khoảng thời gian lọc">
             <span class="shopee-date-check-tag">✓</span>
-            <span id="shopeeDateFilterLabel">01/10/2026 - 31/10/2026</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="shopee-date-text" id="shopeeDateFilterLabel">01/10/2026 - 31/10/2026</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           <button type="button" class="shopee-dropdown-filter" onclick="toggleChannelFilter(this)">
-            <span id="shopeeChannelFilterLabel">Tất cả kênh</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span id="shopeeChannelFilterLabel">Tất cả</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
         </div>
 
@@ -2940,14 +3144,14 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
            PANEL 9.1: CHI TIẾT ĐƠN HÀNG (MATCHING SCREENSHOT 2)
            ========================================================================= -->
       <section id="panel-order-detail" class="view-panel">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0 14px 0;border-bottom:1px solid #E2E8F0;margin-bottom:14px">
-          <div style="display:flex;align-items:center;gap:10px">
-            <button type="button" class="btn-dock-back" style="height:38px;padding:0 12px;font-size:13.5px;border-radius:10px" onclick="closeOrderDetail()">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:2px 0 12px 0;border-bottom:1px solid #E2E8F0;margin-bottom:12px">
+          <div style="display:flex;align-items:center;gap:6px">
+            <button type="button" class="shopee-back-btn" onclick="closeOrderDetail()" title="Quay lại">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             </button>
-            <h1 style="font-size:18.5px;font-weight:900;color:#0F172A;margin:0">Chi tiết đơn hàng</h1>
+            <h1 style="font-size:18px;font-weight:800;color:#0F172A;margin:0">Chi tiết đơn hàng</h1>
           </div>
-          <button type="button" class="shopee-header-btn" onclick="triggerToast('Tùy chọn: In phiếu giao hàng / Khiếu nại HTX')" style="font-size:18px;font-weight:900;color:#64748B">•••</button>
+          <button type="button" class="shopee-header-btn" onclick="triggerToast('Tùy chọn: In phiếu giao / Báo cáo HTX')" style="color:#EE4D2D;font-size:18px;font-weight:900">•••</button>
         </div>
 
         <div id="orderDetailContentContainer">
@@ -3010,7 +3214,6 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           </div>
         </div>
       </div>
-
 
       <!-- =========================================================================
            PANEL 10: MÀN HÌNH DOANH THU & SỔ THU TIỀN (REVENUE SCREEN)
@@ -4355,10 +4558,10 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
 
       if (orders.length === 0) {
         container.innerHTML = `
-          <div style="background:#FFF;border:1px solid #E2E8F0;border-radius:14px;padding:32px 18px;text-align:center;color:#64748B;margin-top:8px">
+          <div style="background:#FFF;border:1px solid #E2E8F0;border-radius:12px;padding:32px 16px;text-align:center;color:#64748B;margin-top:8px">
             <div style="font-size:36px;margin-bottom:8px">🌾</div>
             <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:4px">Không có đơn hàng nào</div>
-            <div style="font-size:13.5px">Không tìm thấy đơn hàng nông sản trong khoảng thời gian này.</div>
+            <div style="font-size:13px">Không tìm thấy đơn hàng nông sản trong khoảng thời gian này.</div>
             <button type="button" class="hero-pill-btn-green" style="margin-top:14px;padding:8px 16px;font-size:13px;display:inline-flex" onclick="resetDateFilter()">Xem Tất Cả Trong Tháng</button>
           </div>
         `;
@@ -4372,14 +4575,12 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
 
       orders.forEach(o => {
         const itemCount = o.items.reduce((acc, it) => acc + it.qty, 0);
-        const firstItem = o.items[0];
-        const statusClass = (o.status === 'delivered') ? 'delivered' : ((o.status === 'shipping') ? 'shipping' : 'preparing');
         
         html += `
           <div class="shopee-order-card" onclick="openOrderDetail('${o.id}')">
             <div class="soc-top-row">
               <span class="soc-order-num">#${o.id}</span>
-              <span class="soc-status-text ${statusClass}">${o.statusText}</span>
+              <span class="soc-status-text">${o.statusText}</span>
             </div>
             <div class="soc-time-row">
               Giao lúc ${o.time} ${o.date.split('-').reverse().join('/')}
@@ -4426,124 +4627,122 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       const totalItemsCount = order.items.reduce((acc, it) => acc + it.qty, 0);
 
       container.innerHTML = `
-        <!-- Card 1: Tài xế vận chuyển -->
+        <!-- Card 1: Tài xế vận chuyển (Ảnh 2) -->
         <div class="shopee-detail-card">
           <div class="sdc-driver-row">
             <div class="sdc-driver-info">
               <img src="bac_ba_avatar.jpg" alt="Tài xế" class="sdc-driver-avatar">
-              <div>
+              <div style="min-width:0;flex:1">
                 <div class="sdc-driver-name">Tài xế - ${order.driver.name} ${order.driver.code}</div>
-                <div class="sdc-driver-sub">● ${order.statusText} (${order.driver.vehicle})</div>
+                <div class="sdc-driver-sub">${order.statusText}</div>
               </div>
             </div>
-            <div style="display:flex;align-items:center;gap:6px">
-              <button type="button" class="shopee-header-btn" onclick="triggerToast('Đang gọi tài xế ${order.driver.name}: ${order.driver.phone}')" style="background:#EFF6FF;color:#2563EB;padding:8px" title="Gọi tài xế">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </button>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+              <button type="button" class="shopee-header-btn" onclick="triggerToast('Đang gọi tài xế ${order.driver.name}: ${order.driver.phone}')" style="background:#F1F5F9;color:#0F172A;border:1px solid #CBD5E1;border-radius:50%;width:28px;height:28px;font-size:13px;font-weight:700" title="Trợ giúp">?</button>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: Khách hàng, Ghi chú & Nông sản -->
+        <!-- Card 2: Khách hàng, Ghi chú & Nông sản (Ảnh 2) -->
         <div class="shopee-detail-card">
           <div class="sdc-customer-header">
             <div class="sdc-customer-avatar">🌾</div>
             <div class="sdc-customer-name">Khách hàng - ${order.customer.maskName}</div>
           </div>
 
-          <!-- Ghi chú nổi bật màu vàng -->
+          <!-- Ghi chú vàng -->
           <div class="sdc-note-box">
-            <strong>Ghi chú:</strong> ${order.note}
+            <strong style="color:#A16207">Ghi chú:</strong> ${order.note}
           </div>
 
-          <!-- Danh sách món nông sản -->
+          <!-- Danh sách món -->
           <div class="sdc-items-list">
             ${itemsHtml}
           </div>
 
           <!-- Bảng kê chi phí -->
           <div class="sdc-breakdown-row">
-            <span>Tổng tiền nông sản (giá gốc)</span>
+            <span>Tổng tiền món (giá gốc)</span>
             <strong>${order.price.raw.toLocaleString('vi-VN')}đ</strong>
           </div>
-          <div class="sdc-breakdown-row" style="color:#EE4D2D">
-            <span>Giảm giá khuyến mãi vụ mùa</span>
-            <span>${order.price.discount.toLocaleString('vi-VN')}đ</span>
+          <div class="sdc-breakdown-row" style="color:#64748B">
+            <span>Giảm giá</span>
+            <span>${order.price.discount.toLocaleString('vi-VN')}đ ∨</span>
           </div>
           <div class="sdc-breakdown-row" style="color:#64748B">
-            <span>Chiết khấu HTX & Sàn OCOP</span>
+            <span>Chiết khấu</span>
             <span>${order.price.commission.toLocaleString('vi-VN')}đ</span>
           </div>
           <div class="sdc-breakdown-row" style="color:#64748B">
-            <span>Thuế & Quỹ phát triển nông hộ</span>
+            <span>Thuế khấu trừ</span>
             <span>${order.price.tax.toLocaleString('vi-VN')}đ</span>
           </div>
 
           <div class="sdc-final-row">
             <span class="sdc-final-label">Tổng tiền Bác Ba nhận (${totalItemsCount} món)</span>
             <span class="sdc-final-val">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
               ${order.price.final.toLocaleString('vi-VN')}đ
             </span>
           </div>
         </div>
 
-        <!-- Card 3: Thông tin khác -->
-        <div class="shopee-detail-card" style="margin-bottom:20px">
+        <!-- Card 3: Thông tin khác (Ảnh 2) -->
+        <div class="shopee-detail-card" style="margin-bottom:18px">
           <div style="font-size:15px;font-weight:800;color:#0F172A;margin-bottom:12px">Thông tin khác</div>
           
           <div class="sdc-other-row">
-            <span>Mã đơn hàng</span>
-            <div>
+            <span class="sdc-other-row-label">Mã đơn hàng</span>
+            <div class="sdc-other-row-val">
               <strong>${order.code}</strong>
               <button type="button" class="sdc-copy-btn" onclick="copyOrderCode('${order.code}')">SAO CHÉP</button>
             </div>
           </div>
 
           <div class="sdc-other-row">
-            <span>Thời gian đặt hàng</span>
-            <span>${order.timeline.ordered}</span>
+            <span class="sdc-other-row-label">Thời gian đặt hàng</span>
+            <span class="sdc-other-row-val">${order.timeline.ordered}</span>
           </div>
 
           <div class="sdc-other-row">
-            <span>Khoảng cách</span>
-            <span>${order.timeline.distance}</span>
+            <span class="sdc-other-row-label">Khoảng cách</span>
+            <span class="sdc-other-row-val">${order.customer.distance}</span>
           </div>
 
           <div class="sdc-other-row">
-            <span>Thời gian HTX xác nhận</span>
-            <span>${order.timeline.confirmed}</span>
+            <span class="sdc-other-row-label">Thời gian xác nhận đơn</span>
+            <span class="sdc-other-row-val">${order.timeline.confirmed}</span>
           </div>
 
           <div class="sdc-other-row">
-            <span>Thời gian đóng gói xong</span>
-            <span>${order.timeline.prepared}</span>
+            <span class="sdc-other-row-label">Thời gian chuẩn bị xong</span>
+            <span class="sdc-other-row-val">${order.timeline.prepared}</span>
           </div>
 
           <div class="sdc-other-row">
-            <span>Thời gian lấy hàng</span>
-            <span>${order.timeline.pickup}</span>
+            <span class="sdc-other-row-label">Thời gian lấy hàng</span>
+            <span class="sdc-other-row-val">${order.timeline.pickup}</span>
           </div>
 
           <div class="sdc-other-row">
-            <span>Thời gian giao hàng</span>
-            <span>${order.timeline.delivered}</span>
+            <span class="sdc-other-row-label">Thời gian giao hàng</span>
+            <span class="sdc-other-row-val">${order.timeline.delivered}</span>
           </div>
 
-          <div class="sdc-other-row" style="border-top:1px dashed #E2E8F0;padding-top:10px;margin-top:6px">
-            <span>Thanh toán đơn hàng</span>
-            <span style="font-weight:700;color:#16A34A">${order.timeline.payment} ›</span>
+          <div class="sdc-other-row" style="border-top:1px dashed #E2E8F0;padding-top:9px;margin-top:6px">
+            <span class="sdc-other-row-label">Thanh toán đơn hàng</span>
+            <span class="sdc-other-row-val" style="color:#64748B;font-weight:600" onclick="triggerToast('Thanh toán: Chuyển khoản VietQR Agribank (Đã nhận tiền)')">Chi tiết ›</span>
           </div>
         </div>
 
         <!-- Sticky Action Buttons -->
-        <div style="display:flex;gap:10px;margin-bottom:24px">
-          <button type="button" class="btn-dock-next" style="flex:1;height:48px;font-size:14.5px;background:#059669" onclick="triggerToast('Đã gửi thông tin đơn #${order.id} vào nhóm Zalo HTX Yên Bình!')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
+        <div style="display:flex;gap:10px;margin-bottom:20px">
+          <button type="button" class="btn-dock-next" style="flex:1;height:46px;font-size:14px;background:#059669;border-radius:12px" onclick="triggerToast('Đã gửi thông tin đơn #${order.id} vào nhóm Zalo HTX Yên Bình!')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
             Chia Sẻ Zalo
           </button>
-          <button type="button" class="btn-dock-back" style="flex:1;height:48px;font-size:14.5px;border-radius:14px" onclick="triggerToast('Đã tạo bản in hóa đơn giao hàng #${order.id}')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <button type="button" class="btn-dock-back" style="flex:1;height:46px;font-size:14px;border-radius:12px" onclick="triggerToast('Đã tạo bản in phiếu giao hàng #${order.id}')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
             In Phiếu Đơn
           </button>
         </div>

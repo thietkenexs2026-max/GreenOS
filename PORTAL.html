@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenOS — Cổng Trình Diễn Toàn Diện (Executive Showcase Portal)</title>
+  <style>
+    :root {
+      --bg: #0B1320;
+      --card-bg: #141E33;
+      --border: #1E2D4A;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --green-primary: #10B981;
+      --green-dark: #059669;
+      --green-soft: #ECFDF5;
+      --blue-accent: #38BDF8;
+      --gold-accent: #F59E0B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px;
+      min-height: 100vh;
+    }
+    .portal-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .portal-header {
+      background: linear-gradient(135deg, #064E3B 0%, #065F46 40%, #047857 75%, #059669 100%);
+      border-radius: 24px;
+      padding: 36px 32px;
+      margin-bottom: 28px;
+      box-shadow: 0 16px 36px -10px rgba(5, 150, 105, 0.4);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .portal-header::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 220px;
+      height: 220px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .ph-title-wrap h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ph-title-wrap p {
+      font-size: 1rem;
+      color: #A7F3D0;
+      margin-top: 6px;
+      max-width: 640px;
+    }
+    .ph-badges {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .badge-chip {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .portal-grid-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .showcase-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: all 250ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .showcase-card:hover {
+      border-color: var(--green-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(16, 185, 129, 0.15);
+    }
+    .sc-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .sc-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 26px;
+    }
+    .sc-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+    .sc-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .sc-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 12px 0 16px;
+    }
+    .sc-tag {
+      background: #1E293B;
+      color: #CBD5E1;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+    }
+    .sc-tag.green { background: #064E3B; color: #6EE7B7; border-color: #059669; }
+    .sc-tag.blue { background: #0C4A6E; color: #7DD3FC; border-color: #0284C7; }
+    .sc-features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .sc-features li {
+      font-size: 0.88rem;
+      color: #E2E8F0;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .sc-features li svg {
+      width: 16px;
+      height: 16px;
+      color: var(--green-primary);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .btn-launch {
+      width: 100%;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 180ms ease;
+    }
+    .btn-launch.primary {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+    .btn-launch.primary:hover {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      transform: scale(1.01);
+    }
+    .btn-launch.secondary {
+      background: #1E293B;
+      color: #F8FAFC;
+      border: 1px solid #334155;
+    }
+    .btn-launch.secondary:hover {
+      background: #334155;
+      color: #FFFFFF;
+    }
+    .interactive-viewer-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .ivs-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .ivs-tabs {
+      display: flex;
+      gap: 8px;
+    }
+    .ivs-tab-btn {
+      background: #1E293B;
+      color: #94A3B8;
+      border: 1px solid #334155;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 150ms ease;
+    }
+    .ivs-tab-btn.active {
+      background: #059669;
+      color: #FFFFFF;
+      border-color: #059669;
+    }
+    .ivs-frame-container {
+      width: 100%;
+      height: 780px;
+      background: #0F172A;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .ivs-frame-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .history-tabs-shelf {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .ht-link {
+      background: #1E293B;
+      color: #CBD5E1;
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid #334155;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 150ms;
+    }
+    .ht-link:hover {
+      border-color: #38BDF8;
+      color: #FFFFFF;
+      background: #0F172A;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="portal-wrap">
+    
+    <!-- Header -->
+    <header class="portal-header">
+      <div class="ph-title-wrap">
+        <h1>🌿 GreenOS — Executive Showcase Portal</h1>
+        <p>Hệ sinh thái số hóa nông nghiệp đa tầng: Mobile App Nông Hộ Bác Ba & Web PC SaaS Quản Trị Hợp Tác Xã Đồng Cát (Yên Bình).</p>
+        <div class="ph-badges">
+          <span class="badge-chip">🌾 22 Giai đoạn phát triển</span>
+          <span class="badge-chip">📱 Mobile App (PWA)</span>
+          <span class="badge-chip">🖥️ Web SaaS PC</span>
+          <span class="badge-chip">100% Vector SVG</span>
+          <span class="badge-chip">✅ Chạy Offline / Local</span>
+        </div>
+      </div>
+      <div>
+        <a href="GreenOS_Export_HTML.zip" download class="btn-launch primary" style="width: auto; padding: 0 24px; height: 50px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Tải Trọn Bộ File ZIP (Cho Team)</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 2 Phân Hệ Trọng Tâm -->
+    <div class="portal-grid-showcase">
+      
+      <!-- Card 1: Mobile App Bác Ba -->
+      <div class="showcase-card">
+        <div>
+          <div class="sc-header">
+            <div class="sc-icon" style="background:#ECFDF5;color:#15803D">📱</div>
+            <div>
+              <div class="sc-title">Mobile App Nông Dân Bác Ba</div>
+              <div class="sc-sub">Dành cho người lớn tuổi · Voice-First · Giao diện thuần Việt</div>
+            </div>
+          </div>
+          <div class="sc-tags">
+            <span class="sc-tag green">File: index.html</span>
+            <span class="sc-tag">Chuẩn iPhone 16 Pro</span>
+            <span class="sc-tag">Trợ năng Loa đọc</span>
+          </div>
+          <ul class="sc-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Tab Thống Kê Nông Hộ:</strong> Bảng 4 KPI mùa vụ, biểu đồ CSS bars 6 tháng chuẩn ray 90px (chống đè chữ 100%), lịch xe gom HTX thứ 5.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Quy trình đăng bán 3 bước (Wizard):</strong> Chụp 4 góc ảnh thật, bấm micro nói giá 1 câu, sinh bài bán hàng Zalo chuẩn xác.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Bộ 4 nút tác vụ to:</strong> Đăng bán Voice, Báo xe cân chuối, Mã QR VietQR Agribank, Gọi cháu Tuấn Đoàn xã.</span>
+            </li>
+          </ul>
+        </div>
+        <a href="index.html" target="_blank" class="btn-launch primary">
+          <span>Khám Phá App Mobile Bác Ba</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+
+      <!-- Card 2: Web PC SaaS HTX -->
+      <div class="showcase-card">
+        <div>
+          <div class="sc-header">
+            <div class="sc-icon" style="background:#EFF6FF;color:#1D4ED8">👨‍💼</div>
+            <div>
+              <div class="sc-title">HTX Dashboard Web PC</div>
+              <div class="sc-sub">Hợp tác xã Đồng Cát (Yên Bình) · Quản trị SaaS đa kênh</div>
+            </div>
+          </div>
+          <div class="sc-tags">
+            <span class="sc-tag blue">File: htx-dashboard.html</span>
+            <span class="sc-tag">13 Bảng Nghiệp Vụ</span>
+            <span class="sc-tag">AI Copilot</span>
+          </div>
+          <ul class="sc-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Phát tin Zalo OA kèm ảnh:</strong> Đính kèm tối đa 5 ảnh nông sản, mosaic grid preview thông minh, 3 mẫu tin định sẵn.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Theo dõi tuyến xe thu gom real-time:</strong> 5 filter tab, GPS live tracker, tiến độ cân chuối liên thôn.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Tìm kiếm thông minh 5 phân hệ:</strong> Nông sản, 50 xã viên, Hợp đồng B2B, Tuyến xe, Kho vật tư với keyword highlight.</span>
+            </li>
+          </ul>
+        </div>
+        <a href="htx-dashboard.html" target="_blank" class="btn-launch primary" style="background:linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)">
+          <span>Khám Phá HTX Dashboard PC</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Live Interactive Viewer -->
+    <div class="interactive-viewer-section">
+      <div class="ivs-header">
+        <div>
+          <h2 style="font-size:1.25rem;font-weight:800;color:#FFFFFF">Trải Nghiệm Trực Tiếp Cả 2 Nền Tảng Ngay Tại Đây</h2>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-top:2px">Bấm chuyển đổi tab bên dưới để trải nghiệm ngay trong khung nhìn:</p>
+        </div>
+        <div class="ivs-tabs">
+          <button type="button" class="ivs-tab-btn active" onclick="switchViewerFrame('mobile')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <span>Mobile App Bác Ba</span>
+          </button>
+          <button type="button" class="ivs-tab-btn" onclick="switchViewerFrame('desktop')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>HTX Dashboard PC</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="ivs-frame-container" id="frameContainer">
+        <iframe id="viewerFrame" src="index.html" title="Demo Viewer"></iframe>
+      </div>
+    </div>
+
+    <!-- Kho Lưu Trữ Lịch Sử Chat 6 Phiên -->
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:24px;">
+      <h3 style="font-size:1.15rem;font-weight:800;color:#FFFFFF;margin-bottom:6px">📚 Kho Tài Liệu & Lịch Sử Trao Đổi 6 Phiên (Changelog)</h3>
+      <p style="font-size:0.88rem;color:var(--text-muted)">Ghi chép toàn diện 56 yêu cầu kỹ thuật, quyết định thiết kế và mã nguồn suốt dự án GreenOS:</p>
+      
+      <div class="history-tabs-shelf">
+        <a href="chat_history_phien6.html" target="_blank" class="ht-link" style="border-color:#10B981;color:#6EE7B7">
+          <span>🚀 Phiên 6 (Hôm nay: Sửa Layout & Thống Kê)</span>
+        </a>
+        <a href="chat_history_phien5.html" target="_blank" class="ht-link">
+          <span>📱 Phiên 5 (Mobile Dashboard Bác Ba)</span>
+        </a>
+        <a href="chat_history_phien4.html" target="_blank" class="ht-link">
+          <span>🚚 Phiên 4 (SVG, Zalo & Tuyến xe)</span>
+        </a>
+        <a href="chat_history.html" target="_blank" class="ht-link">
+          <span>👨‍💼 Phiên 3 (HTX Dashboard PC)</span>
+        </a>
+        <a href="chat_history_742f8079.html" target="_blank" class="ht-link">
+          <span>🌿 Phiên 2 (GreenVillageOS)</span>
+        </a>
+        <a href="chat_history_83581842.html" target="_blank" class="ht-link">
+          <span>💬 Phiên 1 (SSH & Setup Git)</span>
+        </a>
+        <a href="CHAT_HISTORY.md" target="_blank" class="ht-link">
+          <span>📋 CHAT_HISTORY.md (Toàn bộ 22 Giai đoạn)</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchViewerFrame(mode) {
+      const frame = document.getElementById('viewerFrame');
+      const btns = document.querySelectorAll('.ivs-tab-btn');
+      btns.forEach(b => b.classList.remove('active'));
+
+      if (mode === 'mobile') {
+        frame.src = 'index.html';
+        btns[0].classList.add('active');
+      } else {
+        frame.src = 'htx-dashboard.html';
+        btns[1].classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -281,6 +281,14 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
     - **Lối tắt nhanh Trang chủ (`home-dashboard-banner`)**: Đổi tiêu đề thành `Thống Kê Nông Hộ`, nút mở `Mở Thống Kê` và icon biểu đồ cột đồng bộ.
     - Giúp người nông dân cao tuổi như Bác Ba tiếp cận dễ hiểu, thuần Việt, không còn từ mượn tiếng Anh mang tính kỹ thuật.
 
+### Giai đoạn 23: Xuất Trọn Bộ HTML Package & Cổng Điều Phối Trình Diễn Cho Team
+- **Yêu cầu 57**: "export html để tôi gửi cho team nhé".
+  - *Giải pháp*:
+    - **Xây dựng Cổng Trình Diễn Toàn Diện ([PORTAL.html](PORTAL.html))**: Tích hợp giao diện trình diễn song song cả 2 nền tảng Mobile App và Web PC SaaS trực tiếp trên một màn hình duy nhất, có nút tải file nén ZIP và điều hướng mở full màn hình.
+    - **Lịch sử trao đổi Phiên 6 ([chat_history_phien6.html](chat_history_phien6.html))**: Ghi chép chi tiết toàn bộ các bước khắc phục lỗi layout đè chữ, chuyển đổi tên trang thành "Thống kê", chuẩn hóa SVG và các test kiểm thử.
+    - **Hướng dẫn thành viên Team ([HUONG_DAN_CHO_TEAM.txt](HUONG_DAN_CHO_TEAM.txt))**: Hướng dẫn mở trực tiếp bằng bất kỳ trình duyệt nào mà không cần cài đặt môi trường.
+    - **Đóng gói file nén `GreenOS_Export_HTML.zip`**: Nén toàn bộ 22 file HTML, CSS, Markdown và ảnh sản phẩm gốc (~5.7 MB) sẵn sàng gửi qua Zalo/Email cho đối tác và thành viên trong nhóm.
+
 ---
 
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã

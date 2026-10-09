@@ -1,0 +1,49 @@
+========================================================================
+             HƯỚNG DẪN MỞ & TRẢI NGHIỆM HỆ THỐNG GREENOS
+========================================================================
+
+Kính gửi các thành viên trong Team,
+
+Gói HTML này là bản đóng gói hoàn chỉnh nhất của dự án GreenOS (tính đến ngày 09/10/2026),
+bao gồm toàn bộ mã nguồn giao diện, dữ liệu mô phỏng thực tế và lịch sử phát triển.
+
+BẠN KHÔNG CẦN CÀI ĐẶT BẤT KỲ PHẦN MỀM HAY SERVER NÀO.
+CHỈ CẦN CLICK ĐÚP CHUỘT ĐỂ MỞ BẰNG TRÌNH DUYỆT (CHROME / EDGE / SAFARI / COCCOC / FIREFOX).
+
+------------------------------------------------------------------------
+1. CÁC FILE CHÍNH ĐỂ XEM:
+------------------------------------------------------------------------
+
+⭐ [PORTAL.html] - CỔNG TRÌNH DIỄN CHUNG CHO CẢ TEAM
+   - Trang điều phối trung tâm.
+   - Có thể xem song song cả Mobile App và Web PC trực tiếp trên 1 màn hình.
+   - Có đầy đủ các nút bấm mở full-screen và liên kết tài liệu.
+
+📱 [index.html] - MOBILE WEB APP CHO NÔNG DÂN (BÁC BA, 62 TUỔI)
+   - Thiết kế chuẩn cho người lớn tuổi: Font chữ lớn, tương phản cao, Voice-First.
+   - Tab 1: Trang chủ (Lời chào, banner trượt, thẻ thống kê nhanh, trợ năng loa đọc).
+   - Tab 2: Thống kê nông hộ (Biểu đồ doanh thu 6 tháng, 4 KPI, lịch xe gom HTX, danh mục nông sản).
+   - Tab 3 (Nút tròn giữa): Quy trình đăng bán 3 bước (Wizard) từ ảnh chụp và giọng nói.
+   - Tab 4: Kho hàng nông sản của hộ.
+   - Tab 5: Chợ xã Yên Bình.
+
+👨‍💼 [htx-dashboard.html] - DASHBOARD QUẢN TRỊ HỢP TÁC XÃ (WEB PC DESKTOP)
+   - 13 phân hệ nghiệp vụ SaaS chuyên sâu cho Ban Quản trị HTX Đồng Cát.
+   - Quản trị 50 hộ xã viên (xem chi tiết từng hộ, sổ tín dụng, lịch mùa vụ).
+   - Theo dõi đội xe thu gom nông sản real-time (tuyến xe, điểm cân, tiến độ).
+   - Phát tin nhắn Zalo OA tới xã viên kèm ảnh đính kèm (tối đa 5 ảnh, mosaic grid).
+   - Thanh tìm kiếm toàn cục 5 thực thể với keyword highlighting.
+   - Trợ lý AI Copilot đàm thoại tra cứu nhanh tồn kho và nghiệp vụ OCOP.
+
+📚 [chat_history_phien6.html] & [CHAT_HISTORY.md] - LỊCH SỬ TRAO ĐỔI & PHÁT TRIỂN
+   - Lưu trữ toàn bộ 56 yêu cầu kỹ thuật và quyết định thiết kế qua 22 giai đoạn.
+
+------------------------------------------------------------------------
+2. HỆ THỐNG GITHUB REPO (DÀNH CHO DEV / SYNC CODE):
+------------------------------------------------------------------------
+- Repository: git@github.com:thietkenexs2026-max/GreenOS.git
+- Branch chính: main
+- Lệnh kéo code mới nhất: git pull origin main
+
+Chúc team trải nghiệm và đóng góp ý kiến thuận lợi!
+========================================================================

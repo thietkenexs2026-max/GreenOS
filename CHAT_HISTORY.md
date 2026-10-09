@@ -258,6 +258,21 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
     - Đồng bộ hóa 100% dữ liệu sang cả 2 thư mục làm việc cục bộ `c:\Users\pc\Desktop\Chợ xanh` và `C:\Users\pc\Desktop\greenOS`.
     - Commit và `git push origin main` lên GitHub remote repository `git@github.com:thietkenexs2026-max/GreenOS.git` để người dùng tiếp tục làm việc liền mạch vào ngày mai.
 
+### Giai đoạn 21: Tái Cấu Trúc Toàn Diện & Khắc Phục Lỗi Layout Đè Chữ Dashboard Mobile Bác Ba
+- **Yêu cầu 55**: "sửa lại trang dashborad mobile của bác ba đang bị lỗi layout, chứ đang đè lên nhau".
+  - *Nguyên nhân cốt lõi*:
+    1. Cột biểu đồ doanh thu 6 tháng (`chart-bar-pillar`) có chiều cao 100% lồng trực tiếp với số liệu và nhãn khiến nhãn số bị đẩy ngược lên 40px, đè trực tiếp lên tiêu đề section "📈 Doanh thu 6 tháng gần đây".
+    2. Thẻ định danh nông hộ (`dash-farmer-badge-card`) gom avatar, tên dài và pill trạng thái trên cùng 1 hàng không có flex-wrap khiến nút trạng thái tràn và đè lên tên xã viên.
+    3. Thẻ top bar (`dash-top-bar`) nhồi nhét 3 nút (Back + Badge + Voice) vượt quá 356px chiều rộng container làm vỡ layout.
+    4. Thẻ sản phẩm (`dash-product-card`) thiếu `min-width: 0; overflow: hidden;` ở khối trung gian khiến tên sản phẩm dài va chạm với khối giá tiền bên phải.
+    5. Các thẻ KPI 4 grid (`dash-kpi-item`) có font số 20px gây tràn dòng trên màn hình hẹp.
+  - *Giải pháp triệt để*:
+    - **Tái cấu trúc biểu đồ CSS Bars**: Tách riêng khung ray (`chart-bar-track`) cố định 90px có đường trục đáy rõ ràng, giá trị số nằm độc lập bên trên và nhãn tháng nằm bên dưới — loại bỏ 100% hiện tượng số liệu trồi lên đè tiêu đề.
+    - **Tách 2 tầng cho thẻ hồ sơ Bác Ba**: Hàng 1 là Avatar to + Tên & Thôn xóm; Hàng 2 là Mã xã viên XV-004 + Pill trạng thái xuất chuối.
+    - **Tối ưu Top Bar**: Nút Trang chủ + Badge + Loa nghe đọc co giãn hài hòa, không bao giờ vượt khung 356px.
+    - **Chống tràn chữ thẻ sản phẩm**: Bổ sung `dpc-info` với `min-width: 0; flex: 1; text-overflow: ellipsis;` đảm bảo tên dài tự cắt `...` trước khối giá.
+    - **Chuẩn hóa Vector SVG**: Thay thế toàn bộ emoji thô (`🌾`, `📦`, `🏷️`, `🍌`, `🎙️`, `🚚`, `💳`, `📞`) trong các thẻ KPI và 4 nút tác vụ nhanh sang 100% Vector SVG sắc nét, đồng bộ chuẩn `ui-ux-pro-max`.
+
 ---
 
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã

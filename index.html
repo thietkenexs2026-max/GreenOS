@@ -1254,6 +1254,8 @@
       align-items: center;
       gap: 12px;
       min-width: 0;
+      flex: 1;
+      overflow: hidden;
     }
     .hdb-icon-box {
       width: 40px;
@@ -1267,6 +1269,11 @@
       flex-shrink: 0;
       box-shadow: 0 3px 8px rgba(21, 128, 61, 0.25);
     }
+    .hdb-info {
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+    }
     .hdb-title {
       font-size: 15px;
       font-weight: 800;
@@ -1275,13 +1282,14 @@
       line-height: 1.3;
     }
     .hdb-desc {
-      font-size: 12.5px;
+      font-size: 12px;
       color: #166534;
       font-weight: 500;
-      margin-top: 1px;
+      margin-top: 2px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-height: 1.3;
     }
     .btn-hdb-open {
       display: inline-flex;
@@ -1305,28 +1313,28 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
-      gap: 10px;
+      gap: 6px;
+      margin-bottom: 14px;
     }
-    .dash-top-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .dash-top-bar .btn-dock-back {
+      flex-shrink: 0;
     }
     .btn-voice-brief {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: #ECFDF5;
       color: var(--agri-green-dark);
       border: 1px solid #A7F3D0;
       border-radius: var(--radius-pill);
-      padding: 7px 12px;
-      font-size: 13px;
+      padding: 7px 11px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(16, 185, 129, 0.15);
       transition: all 150ms ease;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     .btn-voice-brief:active {
       transform: scale(0.96);
@@ -1338,17 +1346,18 @@
       background: #FFFFFF;
       border: 1px solid var(--border-line);
       border-radius: var(--radius-sub);
-      padding: 13px 14px;
+      padding: 12px 14px;
       margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .dfb-user {
       display: flex;
       align-items: center;
       gap: 11px;
+      min-width: 0;
     }
     .dfb-avatar {
       width: 44px;
@@ -1356,17 +1365,40 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--agri-green);
+      flex-shrink: 0;
+    }
+    .dfb-info {
+      min-width: 0;
+      flex: 1;
     }
     .dfb-name {
-      font-size: 15.5px;
+      font-size: 15px;
       font-weight: 800;
       color: var(--text-main);
-      line-height: 1.2;
+      line-height: 1.3;
     }
     .dfb-role {
       font-size: 12px;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 1px;
+      line-height: 1.3;
+    }
+    .dfb-bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-line);
+    }
+    .dfb-id-tag {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .dfb-id-tag strong {
+      color: var(--text-main);
+      font-weight: 700;
     }
     .dfb-status-pill {
       display: inline-flex;
@@ -1376,10 +1408,16 @@
       color: #15803D;
       padding: 4px 10px;
       border-radius: var(--radius-pill);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       border: 1px solid #BBF7D0;
       cursor: pointer;
+      white-space: nowrap;
+      transition: all 150ms ease;
+    }
+    .dfb-status-pill:active {
+      transform: scale(0.96);
+      background: #BBF7D0;
     }
 
     /* Hero Doanh Thu Dashboard */
@@ -1387,7 +1425,7 @@
       background: linear-gradient(135deg, #15803D 0%, #166534 100%);
       color: #FFFFFF;
       border-radius: var(--radius-card);
-      padding: 20px 18px;
+      padding: 18px 16px;
       margin-bottom: 16px;
       box-shadow: 0 10px 25px -5px rgba(21, 128, 61, 0.4);
       position: relative;
@@ -1405,61 +1443,79 @@
       pointer-events: none;
     }
     .drh-label {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: #BBF7D0;
       margin-bottom: 6px;
+      line-height: 1.3;
     }
     .drh-amount {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
       letter-spacing: -0.02em;
-      line-height: 1.1;
+      line-height: 1.15;
       margin-bottom: 6px;
+      color: #FFFFFF;
+      word-break: break-word;
     }
     .drh-growth {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: #DCFCE7;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 6px;
+      gap: 4px 8px;
       margin-bottom: 14px;
+      line-height: 1.4;
     }
     .drh-split-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding-top: 14px;
+      gap: 8px;
+      padding-top: 12px;
       border-top: 1px solid rgba(255, 255, 255, 0.18);
     }
     .drh-split-item {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 12px;
-      padding: 10px;
+      padding: 10px 9px;
       backdrop-filter: blur(8px);
       cursor: pointer;
       transition: background 150ms;
+      min-width: 0;
     }
     .drh-split-item:active { background: rgba(255, 255, 255, 0.2); }
     .drh-split-lbl {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       color: #BBF7D0;
       text-transform: uppercase;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .drh-split-val {
-      font-size: 16.5px;
+      font-size: 15px;
       font-weight: 800;
       color: #FFFFFF;
-      margin-top: 2px;
+      margin-top: 3px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .drh-split-sub {
       font-size: 11px;
       color: #E2E8F0;
-      margin-top: 1px;
+      margin-top: 3px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* 4 KPI Grid */
@@ -1473,17 +1529,25 @@
       background: #FFFFFF;
       border: 1px solid var(--border-line);
       border-radius: var(--radius-sub);
-      padding: 13px 12px;
+      padding: 12px 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.02);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 108px;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+    .dash-kpi-item:active {
+      transform: scale(0.97);
+      background: #F8FAFC;
     }
     .dki-icon-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      gap: 4px;
     }
     .dki-icon {
       width: 32px;
@@ -1492,25 +1556,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
     }
     .dki-tag {
       font-size: 10.5px;
       font-weight: 700;
       padding: 2px 6px;
       border-radius: var(--radius-pill);
+      white-space: nowrap;
     }
     .dki-value {
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 800;
       color: var(--text-main);
       letter-spacing: -0.01em;
-      line-height: 1.2;
+      line-height: 1.25;
+      word-break: break-word;
     }
     .dki-label {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-muted);
       font-weight: 600;
       margin-top: 3px;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* Thẻ Lịch Xe Thu Gom Nông Sản HTX */
@@ -1526,29 +1598,33 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
     }
     .dac-title {
-      font-size: 14.5px;
+      font-size: 13.5px;
       font-weight: 800;
       color: #92400E;
       display: flex;
       align-items: center;
       gap: 6px;
+      line-height: 1.3;
     }
     .dac-time-badge {
       background: #F59E0B;
       color: #FFFFFF;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
       padding: 3px 8px;
       border-radius: var(--radius-pill);
+      white-space: nowrap;
     }
     .dac-body {
-      font-size: 13.5px;
+      font-size: 13px;
       color: #78350F;
-      line-height: 1.5;
-      margin-bottom: 10px;
+      line-height: 1.55;
+      margin-bottom: 12px;
     }
     .dac-btn-zalo {
       width: 100%;
@@ -1557,7 +1633,7 @@
       color: #FFFFFF;
       border: none;
       border-radius: var(--radius-pill);
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -1583,22 +1659,26 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 12px;
+      gap: 8px;
     }
     .dcs-title {
-      font-size: 15.5px;
+      font-size: 15px;
       font-weight: 800;
       color: var(--text-main);
       display: flex;
       align-items: center;
       gap: 6px;
+      line-height: 1.3;
     }
     .dcs-badge {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: var(--agri-green);
       background: var(--agri-green-soft);
       padding: 3px 8px;
       border-radius: var(--radius-pill);
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     .progress-bar-wrap {
       width: 100%;
@@ -1620,58 +1700,101 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
     }
     .orchard-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .oi-left-name { font-size: 14px; font-weight: 700; color: var(--text-main); }
-    .oi-left-sub { font-size: 12.5px; color: var(--text-muted); margin-top: 1px; }
-    .oi-right-val { font-size: 14px; font-weight: 800; color: var(--agri-green); text-align: right; }
-    .oi-right-status { font-size: 11.5px; font-weight: 600; color: var(--text-muted); text-align: right; }
+    .oi-left {
+      min-width: 0;
+      flex: 1;
+    }
+    .oi-left-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+    .oi-left-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .oi-right {
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .oi-right-val {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--agri-green);
+      line-height: 1.2;
+    }
+    .oi-right-status {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.2;
+    }
 
     /* Biểu Đồ Doanh Thu 6 Tháng CSS Bars */
     .chart-bars-wrap {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      height: 130px;
-      padding-top: 16px;
-      margin-top: 10px;
-      border-bottom: 1.5px solid #CBD5E1;
+      gap: 6px;
+      padding: 8px 4px 6px;
+      margin-top: 12px;
     }
     .chart-bar-col {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 100%;
-      justify-content: flex-end;
+      gap: 6px;
       cursor: pointer;
+      transition: transform 150ms ease;
     }
-    .chart-bar-pillar {
-      width: 26px;
-      background: #E2E8F0;
-      border-radius: 6px 6px 0 0;
-      transition: all 200ms ease;
-      position: relative;
-    }
-    .chart-bar-pillar.highlight {
-      background: linear-gradient(180deg, #10B981 0%, #15803D 100%);
-      box-shadow: 0 2px 8px rgba(21, 128, 61, 0.3);
+    .chart-bar-col:active {
+      transform: scale(0.95);
     }
     .chart-bar-val {
       font-size: 11px;
       font-weight: 700;
       color: #64748B;
-      margin-bottom: 4px;
+      line-height: 1;
+      min-height: 13px;
     }
-    .chart-bar-pillar.highlight .chart-bar-val {
+    .chart-bar-col.active-month .chart-bar-val,
+    .chart-bar-pillar.highlight ~ .chart-bar-val {
       color: #15803D;
       font-weight: 800;
     }
+    .chart-bar-track {
+      width: 100%;
+      max-width: 30px;
+      height: 90px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      border-bottom: 2px solid #CBD5E1;
+    }
+    .chart-bar-pillar {
+      width: 100%;
+      max-width: 22px;
+      background: #E2E8F0;
+      border-radius: 5px 5px 0 0;
+      transition: all 200ms ease;
+    }
+    .chart-bar-pillar.highlight {
+      background: linear-gradient(180deg, #10B981 0%, #15803D 100%);
+      box-shadow: 0 3px 8px rgba(21, 128, 61, 0.35);
+    }
     .chart-bar-label {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #64748B;
-      margin-top: 6px;
+      line-height: 1;
     }
 
     /* Thẻ Sản Phẩm Dashboard */
@@ -1679,12 +1802,12 @@
       background: #FFFFFF;
       border: 1px solid var(--border-line);
       border-radius: 14px;
-      padding: 11px 12px;
+      padding: 10px 12px;
       margin-bottom: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       cursor: pointer;
       transition: background 150ms ease;
     }
@@ -1694,42 +1817,56 @@
       align-items: center;
       gap: 10px;
       min-width: 0;
+      flex: 1;
     }
     .dpc-thumb {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 10px;
       object-fit: cover;
       flex-shrink: 0;
       border: 1px solid var(--border-line);
     }
+    .dpc-info {
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+    }
     .dpc-name {
-      font-size: 14.5px;
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-height: 1.3;
     }
     .dpc-tag {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-muted);
       margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
     }
     .dpc-right {
       text-align: right;
       flex-shrink: 0;
+      min-width: 80px;
     }
     .dpc-price {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 800;
       color: var(--agri-green);
+      line-height: 1.2;
     }
     .dpc-sold {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       color: #64748B;
-      margin-top: 1px;
+      margin-top: 2px;
+      line-height: 1.2;
     }
 
     /* Bộ Nút Thao Tác Nhanh Lớn (Big Touch Targets) */
@@ -1859,7 +1996,7 @@
             <div class="hdb-icon-box">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="7" height="9" x="3" y="3" rx="1.5"/><rect width="7" height="5" x="14" y="3" rx="1.5"/><rect width="7" height="9" x="14" y="12" rx="1.5"/><rect width="7" height="5" x="3" y="16" rx="1.5"/></svg>
             </div>
-            <div>
+            <div class="hdb-info">
               <div class="hdb-title">Bảng Điều Khiển Nông Hộ</div>
               <div class="hdb-desc">18.450.000 đ vụ Tết · 42 đơn · Đạt 70% vụ chuối</div>
             </div>
@@ -2510,14 +2647,12 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       <section id="panel-dashboard" class="view-panel">
         <!-- Top Action Bar -->
         <div class="dash-top-bar">
-          <div class="dash-top-left">
-            <button type="button" class="btn-dock-back" style="height:40px;padding:0 14px;font-size:13.5px" onclick="switchNavTab('home')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Trang chủ
-            </button>
-            <span class="wizard-step-indicator" style="background:#ECFDF5;color:#15803D;border-color:#BBF7D0">DASHBOARD NÔNG HỘ</span>
-          </div>
+          <button type="button" class="btn-dock-back" style="height:38px;padding:0 12px;font-size:13px" onclick="switchNavTab('home')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Trang chủ
+          </button>
+          <span class="wizard-step-indicator" style="background:#ECFDF5;color:#15803D;border-color:#BBF7D0;font-size:11.5px;padding:5px 9px">DASHBOARD NÔNG HỘ</span>
           <button type="button" class="btn-voice-brief" onclick="speakDashboardBrief()" title="Bấm nghe đọc tóm tắt bằng giọng nói">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
             <span>Nghe đọc</span>
           </button>
         </div>
@@ -2526,14 +2661,17 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-farmer-badge-card">
           <div class="dfb-user">
             <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="dfb-avatar">
-            <div>
+            <div class="dfb-info">
               <div class="dfb-name">Bác Ba (Nguyễn Văn Ba)</div>
-              <div class="dfb-role">Tổ trưởng Chuối OCOP · Mã: XV-004</div>
+              <div class="dfb-role">Tổ trưởng Chuối OCOP · Thôn Đồng Cát</div>
             </div>
           </div>
-          <div class="dfb-status-pill" onclick="toggleFarmStatus(this)" title="Chạm để chuyển trạng thái">
-            <span>●</span>
-            <span id="farmStatusText">Sẵn sàng xuất chuối</span>
+          <div class="dfb-bottom-row">
+            <span class="dfb-id-tag">Mã xã viên: <strong>XV-004</strong></span>
+            <div class="dfb-status-pill" onclick="toggleFarmStatus(this)" title="Chạm để chuyển trạng thái">
+              <span>●</span>
+              <span id="farmStatusText">Sẵn sàng xuất chuối</span>
+            </div>
           </div>
         </div>
 
@@ -2542,7 +2680,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           <div class="drh-label">TỔNG THU NHẬP NÔNG SẢN VỤ TẾT 2026</div>
           <div class="drh-amount">18.450.000 đ</div>
           <div class="drh-growth">
-            <span>↗ Tăng +15% so với cùng kỳ năm 2025</span>
+            <span>↗ Tăng +15% so với năm 2025</span>
             <span>· 42 đơn hoàn tất</span>
           </div>
           <div class="drh-split-row">
@@ -2564,7 +2702,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           <!-- KPI 1: Sản lượng -->
           <div class="dash-kpi-item" onclick="triggerToast('Vụ chuối Tết: Đã cắt 4.2 tấn / Kế hoạch 6.0 tấn')">
             <div class="dki-icon-row">
-              <div class="dki-icon" style="background:#ECFDF5;color:#15803D">🌾</div>
+              <div class="dki-icon" style="background:#ECFDF5;color:#15803D"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a9 9 0 0 1 9 9v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V11a9 9 0 0 1 9-9Z"/><path d="M12 22V11"/></svg></div>
               <span class="dki-tag" style="background:#DCFCE7;color:#15803D">70% VỤ</span>
             </div>
             <div>
@@ -2576,7 +2714,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           <!-- KPI 2: Đơn hàng -->
           <div class="dash-kpi-item" onclick="openOrdersView()">
             <div class="dki-icon-row">
-              <div class="dki-icon" style="background:#EFF6FF;color:#1D4ED8">📦</div>
+              <div class="dki-icon" style="background:#EFF6FF;color:#1D4ED8"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
               <span class="dki-tag" style="background:#DBEAFE;color:#1D4ED8">42 ĐƠN</span>
             </div>
             <div>
@@ -2588,7 +2726,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           <!-- KPI 3: Mặt hàng lưu hành -->
           <div class="dash-kpi-item" onclick="switchNavTab('inventory')">
             <div class="dki-icon-row">
-              <div class="dki-icon" style="background:#FEF3C7;color:#B45309">🏷️</div>
+              <div class="dki-icon" style="background:#FEF3C7;color:#B45309"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><circle cx="7" cy="7" r="1.5"/></svg></div>
               <span class="dki-tag" style="background:#FDE68A;color:#92400E">OCOP 4⭐</span>
             </div>
             <div>
@@ -2600,7 +2738,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           <!-- KPI 4: Tỷ lệ loại 1 -->
           <div class="dash-kpi-item" onclick="triggerToast('Tỷ lệ chuối đạt chuẩn xuất khẩu loại 1 của Bác Ba đạt 88%')">
             <div class="dki-icon-row">
-              <div class="dki-icon" style="background:#F3E8FF;color:#7E22CE">🍌</div>
+              <div class="dki-icon" style="background:#F3E8FF;color:#7E22CE"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7"/><path d="M14 14.66V17c0 .55.45 1 1 1h2"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
               <span class="dki-tag" style="background:#E9D5FF;color:#6B21A8">CHUẨN A</span>
             </div>
             <div>
@@ -2645,11 +2783,11 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
 
           <!-- Lô 1: Vườn Đồng Cát -->
           <div class="orchard-item">
-            <div>
+            <div class="oi-left">
               <div class="oi-left-name">Vườn Đồi Đồng Cát (1.2 ha)</div>
               <div class="oi-left-sub">Chuối tiêu hồng · Đã cắt đợt 1</div>
             </div>
-            <div>
+            <div class="oi-right">
               <div class="oi-right-val">2.8 Tấn</div>
               <div class="oi-right-status" style="color:var(--agri-green)">✓ Đang lò sấy HTX</div>
             </div>
@@ -2657,11 +2795,11 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
 
           <!-- Lô 2: Vườn Bãi Bồi Sông -->
           <div class="orchard-item">
-            <div>
+            <div class="oi-left">
               <div class="oi-left-name">Vườn Bãi Bồi Sông (0.8 ha)</div>
               <div class="oi-left-sub">Chuối ngự chín cây · Cắt đợt 2</div>
             </div>
-            <div>
+            <div class="oi-right">
               <div class="oi-right-val">1.4 Tấn</div>
               <div class="oi-right-status" style="color:#D97706">⏳ Dự kiến 20 Tết</div>
             </div>
@@ -2674,53 +2812,65 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
             <div class="dcs-title">
               <span>📈 Doanh thu 6 tháng gần đây</span>
             </div>
-            <span style="font-size:12.5px;color:var(--text-muted);font-weight:600">Đơn vị: Triệu VNĐ</span>
+            <span style="font-size:12px;color:var(--text-muted);font-weight:600">Đơn vị: Triệu VNĐ</span>
           </div>
 
           <div class="chart-bars-wrap">
             <!-- T8 -->
             <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 8/2025: 8.2 triệu đ (Bắt đầu vụ)')">
               <span class="chart-bar-val">8.2</span>
-              <div class="chart-bar-pillar" style="height: 44%"></div>
+              <div class="chart-bar-track">
+                <div class="chart-bar-pillar" style="height: 44%"></div>
+              </div>
               <span class="chart-bar-label">T8</span>
             </div>
 
             <!-- T9 -->
             <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 9/2025: 11.5 triệu đ (Gom đơn WinMart)')">
               <span class="chart-bar-val">11.5</span>
-              <div class="chart-bar-pillar" style="height: 62%"></div>
+              <div class="chart-bar-track">
+                <div class="chart-bar-pillar" style="height: 62%"></div>
+              </div>
               <span class="chart-bar-label">T9</span>
             </div>
 
             <!-- T10 -->
             <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 10/2025: 14.8 triệu đ (Mở rộng sấy dẻo)')">
               <span class="chart-bar-val">14.8</span>
-              <div class="chart-bar-pillar" style="height: 80%"></div>
+              <div class="chart-bar-track">
+                <div class="chart-bar-pillar" style="height: 80%"></div>
+              </div>
               <span class="chart-bar-label">T10</span>
             </div>
 
             <!-- T11 -->
             <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 11/2025: 16.2 triệu đ (Hội chợ OCOP)')">
               <span class="chart-bar-val">16.2</span>
-              <div class="chart-bar-pillar" style="height: 88%"></div>
+              <div class="chart-bar-track">
+                <div class="chart-bar-pillar" style="height: 88%"></div>
+              </div>
               <span class="chart-bar-label">T11</span>
             </div>
 
             <!-- T12 -->
             <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 12/2025: 17.5 triệu đ (Chuẩn bị hàng Tết)')">
               <span class="chart-bar-val">17.5</span>
-              <div class="chart-bar-pillar" style="height: 94%"></div>
+              <div class="chart-bar-track">
+                <div class="chart-bar-pillar" style="height: 94%"></div>
+              </div>
               <span class="chart-bar-label">T12</span>
             </div>
 
             <!-- T1 Tết -->
             <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 1/2026: 18.45 triệu đ (Đỉnh vụ Tết cao kỷ lục!)')">
               <span class="chart-bar-val" style="color:var(--agri-green);font-weight:800">18.5</span>
-              <div class="chart-bar-pillar highlight" style="height: 100%"></div>
+              <div class="chart-bar-track">
+                <div class="chart-bar-pillar highlight" style="height: 100%"></div>
+              </div>
               <span class="chart-bar-label" style="color:var(--agri-green);font-weight:800">T1 ⭐</span>
             </div>
           </div>
-          <div style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:8px">
+          <div style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:10px">
             * Bác chạm vào từng cột để xem chi tiết doanh thu từng tháng
           </div>
         </div>
@@ -2737,7 +2887,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-product-card" onclick="openProductDetail('banana')">
           <div class="dpc-left">
             <img src="banana_front.jpg" alt="Chuối sấy giòn" class="dpc-thumb">
-            <div>
+            <div class="dpc-info">
               <div class="dpc-name">Chuối sấy giòn Đồng Cát</div>
               <div class="dpc-tag">✓ Túi zip 250g · OCOP 4 sao</div>
             </div>
@@ -2752,7 +2902,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-product-card" onclick="triggerToast('Chuối dẻo đóng hộp: Đã xuất 280 hộp quà Tết')">
           <div class="dpc-left">
             <img src="banana_plate.jpg" alt="Chuối dẻo đóng hộp" class="dpc-thumb">
-            <div>
+            <div class="dpc-info">
               <div class="dpc-name">Chuối dẻo nguyên trái hộp quà</div>
               <div class="dpc-tag">✓ Hộp 500g · Đặc sản Tết</div>
             </div>
@@ -2767,7 +2917,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-product-card" onclick="triggerToast('Chuối ngự tuyển chọn: Đang gom hợp đồng sỉ WinMart 2.5 tấn')">
           <div class="dpc-left">
             <img src="tet_banner.jpg" alt="Chuối ngự tươi" class="dpc-thumb">
-            <div>
+            <div class="dpc-info">
               <div class="dpc-name">Chuối ngự tươi chín cây loại 1</div>
               <div class="dpc-tag">✓ VietGAP · Hợp đồng WinMart</div>
             </div>
@@ -2782,7 +2932,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-product-card" onclick="triggerToast('Mật ong hoa rừng: Sản phẩm liên kết hộ Thôn Đồi Chè')">
           <div class="dpc-left">
             <img src="honey_front.jpg" alt="Mật ong hoa rừng" class="dpc-thumb">
-            <div>
+            <div class="dpc-info">
               <div class="dpc-name">Mật ong hoa rừng tự nhiên</div>
               <div class="dpc-tag">✓ Hũ 500g · OCOP 4 sao</div>
             </div>
@@ -2797,7 +2947,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-product-card" onclick="triggerToast('Trà Bát Tiên: Sản phẩm liên kết hộ Bác Ba')">
           <div class="dpc-left">
             <img src="tea_front.jpg" alt="Trà Bát Tiên" class="dpc-thumb">
-            <div>
+            <div class="dpc-info">
               <div class="dpc-name">Trà Bát Tiên Thái Nguyên</div>
               <div class="dpc-tag">✓ Túi 500g · OCOP 4 sao</div>
             </div>
@@ -2812,7 +2962,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-product-card" onclick="triggerToast('Rượu chuối hột chum sành: Đã bán 45 chai đặc sản Tết')">
           <div class="dpc-left">
             <img src="banana_front.jpg" alt="Rượu chuối hột" class="dpc-thumb">
-            <div>
+            <div class="dpc-info">
               <div class="dpc-name">Rượu chuối hột ngâm chum sành</div>
               <div class="dpc-tag">✓ Chai 500ml · Truyền thống</div>
             </div>
@@ -2827,7 +2977,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-product-card" onclick="triggerToast('Bột chuối xanh dinh dưỡng: Đang thử nghiệm mẻ mới tại lò sấy HTX')">
           <div class="dpc-left">
             <img src="banana_plate.jpg" alt="Bột chuối xanh" class="dpc-thumb">
-            <div>
+            <div class="dpc-info">
               <div class="dpc-name">Bột chuối xanh sấy lạnh</div>
               <div class="dpc-tag">⏳ Hũ 400g · Thử nghiệm HTX</div>
             </div>
@@ -2846,28 +2996,28 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <div class="dash-quick-grid">
           <!-- Action 1: Đăng bán nhanh -->
           <div class="btn-dash-action" onclick="startWizardFlow()">
-            <div class="bda-icon" style="background:#ECFDF5;color:#15803D">🎙️</div>
+            <div class="bda-icon" style="background:#ECFDF5;color:#15803D"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div>
             <div class="bda-title">Đăng Bán Mới</div>
             <div class="bda-sub">Nói giá 1 câu</div>
           </div>
 
           <!-- Action 2: Báo xe cân chuối -->
           <div class="btn-dash-action" onclick="confirmTruckDispatch()">
-            <div class="bda-icon" style="background:#FEF3C7;color:#D97706">🚚</div>
+            <div class="bda-icon" style="background:#FEF3C7;color:#D97706"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="16" height="13" x="1" y="6" rx="2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M17 6h4l2 4v6h-6"/></svg></div>
             <div class="bda-title">Báo Cân Chuối</div>
             <div class="bda-sub">Gọi xe gom HTX</div>
           </div>
 
           <!-- Action 3: Mã VietQR nhận tiền -->
           <div class="btn-dash-action" onclick="openFarmerQRModal()">
-            <div class="bda-icon" style="background:#EEF2FF;color:#4F46E5">💳</div>
+            <div class="bda-icon" style="background:#EEF2FF;color:#4F46E5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg></div>
             <div class="bda-title">Mã VietQR</div>
             <div class="bda-sub">Quét nhận tiền</div>
           </div>
 
           <!-- Action 4: Gọi hỗ trợ kỹ thuật -->
           <div class="btn-dash-action" onclick="switchNavTab('support')">
-            <div class="bda-icon" style="background:#FEE2E2;color:#DC2626">📞</div>
+            <div class="bda-icon" style="background:#FEE2E2;color:#DC2626"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <div class="bda-title">Hỗ Trợ Hub</div>
             <div class="bda-sub">Cháu Tuấn Đoàn xã</div>
           </div>

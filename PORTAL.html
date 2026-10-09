@@ -2552,6 +2552,532 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       animation: modalPop 200ms cubic-bezier(0.16, 1, 0.3, 1);
     }
+  
+    /* =========================================================================
+       SHOPEE FOOD / SHOPEE PARTNER MERCHANT ORDERS STYLES
+       ========================================================================= */
+    .shopee-order-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 0 10px 0;
+      border-bottom: 1px solid var(--border-line);
+      margin-bottom: 10px;
+    }
+    .shopee-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .shopee-header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .shopee-open-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #16A34A;
+      background: #DCFCE7;
+      padding: 3px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .shopee-open-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #16A34A;
+      box-shadow: 0 0 6px #16A34A;
+    }
+    .shopee-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #64748B;
+    }
+    .shopee-header-btn {
+      background: none;
+      border: none;
+      padding: 4px;
+      cursor: pointer;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .shopee-header-btn:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+    }
+
+    /* Shopee Status Tabs */
+    .shopee-status-tabs-container {
+      margin: 0 -16px 12px -16px;
+      padding: 0 16px;
+      border-bottom: 1px solid #E2E8F0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .shopee-status-tabs-container::-webkit-scrollbar {
+      display: none;
+    }
+    .shopee-status-tabs {
+      display: flex;
+      gap: 18px;
+      min-width: max-content;
+      padding-bottom: 1px;
+    }
+    .shopee-tab-item {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #64748B;
+      padding: 8px 4px 10px 4px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 150ms ease;
+      position: relative;
+    }
+    .shopee-tab-item.active {
+      color: #EE4D2D;
+      border-bottom-color: #EE4D2D;
+      font-weight: 800;
+    }
+
+    /* Shopee Filter Toolbar */
+    .shopee-filter-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .shopee-date-btn {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1.5px solid #EE4D2D;
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #EE4D2D;
+      cursor: pointer;
+      position: relative;
+      background-color: #FFF5F1;
+      box-shadow: 0 1px 3px rgba(238, 77, 45, 0.08);
+    }
+    .shopee-date-check-tag {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 14px;
+      height: 14px;
+      background: #EE4D2D;
+      border-radius: 6px 0 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-size: 9px;
+      line-height: 1;
+    }
+    .shopee-dropdown-filter {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Shopee Order Card Item */
+    .shopee-order-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      transition: all 180ms ease;
+    }
+    .shopee-order-card:active {
+      transform: scale(0.985);
+      background: #F8FAFC;
+    }
+    .soc-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .soc-order-num {
+      font-size: 21px;
+      font-weight: 900;
+      color: #0F172A;
+      letter-spacing: -0.01em;
+    }
+    .soc-status-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #64748B;
+    }
+    .soc-status-text.delivered {
+      color: #16A34A;
+    }
+    .soc-status-text.shipping {
+      color: #0284C7;
+    }
+    .soc-status-text.preparing {
+      color: #D97706;
+    }
+    .soc-time-row {
+      font-size: 13px;
+      color: #64748B;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .soc-meta-row {
+      font-size: 13.5px;
+      color: #334155;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .soc-meta-sep {
+      color: #CBD5E1;
+      font-weight: 400;
+    }
+    .soc-payout-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 10px;
+      border-top: 1px dashed #E2E8F0;
+      margin-top: 4px;
+    }
+    .soc-payout-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1E293B;
+    }
+    .soc-payout-val {
+      font-size: 16px;
+      font-weight: 900;
+      color: #EE4D2D;
+    }
+
+    /* Date Filter Modal / Bottom Sheet */
+    .order-filter-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 600;
+      display: none;
+      align-items: flex-end;
+    }
+    .order-filter-backdrop.show {
+      display: flex;
+    }
+    .order-filter-sheet {
+      background: #FFFFFF;
+      width: 100%;
+      border-radius: 20px 20px 0 0;
+      padding: 20px 18px 24px 18px;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+      animation: sheetSlideUp 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    @keyframes sheetSlideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .ofs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .ofs-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .ofs-close-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #64748B;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .ofs-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .ofs-option-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #334155;
+      transition: all 140ms ease;
+    }
+    .ofs-option-item:hover {
+      border-color: #EE4D2D;
+      background: #FFF5F1;
+    }
+    .ofs-option-item.selected {
+      border-color: #EE4D2D;
+      background: #FFF5F1;
+      color: #EE4D2D;
+    }
+    .ofs-radio-circle {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ofs-option-item.selected .ofs-radio-circle {
+      border-color: #EE4D2D;
+      background: #EE4D2D;
+    }
+    .ofs-radio-inner {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #FFF;
+      display: none;
+    }
+    .ofs-option-item.selected .ofs-radio-inner {
+      display: block;
+    }
+    .ofs-custom-dates-box {
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: -4px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .ofs-custom-dates-box.show {
+      display: block;
+    }
+    .ofs-date-field {
+      margin-bottom: 10px;
+    }
+    .ofs-date-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+    .ofs-date-field input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #0F172A;
+      font-weight: 600;
+    }
+    .ofs-action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .ofs-btn-reset {
+      flex: 1;
+      background: #F1F5F9;
+      color: #475569;
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .ofs-btn-apply {
+      flex: 2;
+      background: #EE4D2D;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 14.5px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
+    }
+
+    /* Shopee Order Detail Screen */
+    .shopee-detail-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .sdc-driver-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sdc-driver-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sdc-driver-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #EE4D2D;
+    }
+    .sdc-driver-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .sdc-driver-sub {
+      font-size: 13px;
+      color: #16A34A;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .sdc-customer-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .sdc-customer-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #FEE2E2;
+      color: #EE4D2D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .sdc-customer-name {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .sdc-note-box {
+      background: #FEF9C3;
+      border: 1px solid #FDE047;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13.5px;
+      color: #854D0E;
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+    .sdc-items-list {
+      border-bottom: 1px solid #F1F5F9;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+    .sdc-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #1E293B;
+    }
+    .sdc-breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 13.5px;
+      color: #475569;
+    }
+    .sdc-final-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px dashed #CBD5E1;
+      margin-top: 8px;
+    }
+    .sdc-final-label {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .sdc-final-val {
+      font-size: 18px;
+      font-weight: 900;
+      color: #EE4D2D;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sdc-other-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: #64748B;
+    }
+    .sdc-other-row strong {
+      color: #0F172A;
+      font-weight: 700;
+    }
+    .sdc-copy-btn {
+      color: #EE4D2D;
+      font-weight: 800;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      padding-left: 6px;
+    }
+
   </style>
 </head>
 <body class="has-bottom-nav">
@@ -3108,82 +3634,137 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       <!-- =========================================================================
            PANEL 9: MÀN HÌNH ĐƠN HÀNG BÁN ĐƯỢC (ORDERS SCREEN)
            ========================================================================= -->
+            <!-- =========================================================================
+           PANEL 9: MÀN HÌNH ĐƠN HÀNG BÁC BA (CHUẨN SHOPEE MERCHANT PARTNER)
+           ========================================================================= -->
       <section id="panel-orders" class="view-panel">
-        <div class="wizard-top-header">
-          <button type="button" class="btn-dock-back" style="height:42px;padding:0 16px;font-size:14.5px" onclick="switchNavTab('home')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Về Trang chủ
+        <!-- Top Bar Header -->
+        <div class="shopee-order-header">
+          <div class="shopee-header-left">
+            <button type="button" class="btn-dock-back" style="height:38px;padding:0 12px;font-size:13.5px;border-radius:10px" onclick="closeOrdersView()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại
+            </button>
+            <div class="shopee-header-title">
+              <span>Đơn hàng</span>
+              <div class="shopee-open-badge" onclick="toggleStoreOpen(this)">
+                <span class="shopee-open-dot"></span>
+                <span id="storeOpenText">Mở cửa ›</span>
+              </div>
+            </div>
+          </div>
+          <div class="shopee-header-actions">
+            <button type="button" class="shopee-header-btn" onclick="openOrderSearchPrompt()" title="Tìm kiếm đơn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+            <button type="button" class="shopee-header-btn" onclick="triggerToast('Hỗ trợ HTX Yên Bình: 0988.123.456 (Cháu Tuấn)')" title="Trợ giúp"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></button>
+            <button type="button" class="shopee-header-btn" onclick="triggerToast('Cài đặt thông báo âm thanh chuông đơn hàng')" title="Cài đặt"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
+          </div>
+        </div>
+
+        <!-- Horizontal Scrollable Tabs matching Shopee -->
+        <div class="shopee-status-tabs-container">
+          <div class="shopee-status-tabs">
+            <div class="shopee-tab-item" data-tab="all" onclick="selectOrderStatusTab('all')">Tất cả</div>
+            <div class="shopee-tab-item" data-tab="new" onclick="selectOrderStatusTab('new')">Mới</div>
+            <div class="shopee-tab-item" data-tab="preparing" onclick="selectOrderStatusTab('preparing')">Đang làm</div>
+            <div class="shopee-tab-item" data-tab="done" onclick="selectOrderStatusTab('done')">Làm xong</div>
+            <div class="shopee-tab-item" data-tab="shipping" onclick="selectOrderStatusTab('shipping')">Đang giao</div>
+            <div class="shopee-tab-item active" data-tab="history" onclick="selectOrderStatusTab('history')">Lịch sử</div>
+          </div>
+        </div>
+
+        <!-- Sub-filter Toolbar (Date Dropdown + Status Dropdown) -->
+        <div class="shopee-filter-toolbar">
+          <button type="button" class="shopee-date-btn" onclick="openOrderDateFilterModal()" title="Bấm chọn khoảng thời gian lọc">
+            <span class="shopee-date-check-tag">✓</span>
+            <span id="shopeeDateFilterLabel">01/10/2026 - 31/10/2026</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
-          <span class="wizard-step-indicator" style="background:#EEF2FF;color:#4F46E5;border-color:#C7D2FE">18 ĐƠN HÀNG</span>
+          <button type="button" class="shopee-dropdown-filter" onclick="toggleChannelFilter(this)">
+            <span id="shopeeChannelFilterLabel">Tất cả kênh</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
         </div>
 
-        <h1 class="step-main-title" style="font-size:22px;margin-top:8px">Đơn hàng của Bác Ba</h1>
-        <p class="step-sub-desc">Các đơn bà con và khách đặt qua Zalo & Nhóm Chợ Xã:</p>
-
-        <!-- Bộ lọc trạng thái đơn -->
-        <div class="filter-pills-row">
-          <button type="button" class="filter-pill-btn active" onclick="filterOrders(this, 'all')">Tất cả (18)</button>
-          <button type="button" class="filter-pill-btn" onclick="filterOrders(this, 'done')">Đã nhận tiền (14)</button>
-          <button type="button" class="filter-pill-btn" onclick="filterOrders(this, 'shipping')">Đang giao (3)</button>
-          <button type="button" class="filter-pill-btn" onclick="filterOrders(this, 'pending')">Chờ gom (1)</button>
-        </div>
-
-        <!-- Danh sách đơn hàng -->
-        <div class="order-card-item">
-          <div class="order-card-header">
-            <span>Đơn #042 · Hôm nay 10:15</span>
-            <span class="order-status-tag" style="background:#DCFCE7;color:#15803D">✓ Đã nhận tiền</span>
-          </div>
-          <div class="order-card-content">
-            5 túi Chuối sấy giòn (250g) · 275.000 đ
-          </div>
-          <div class="order-card-footer">
-            <span style="color:var(--text-muted)">Khách: <b>Cô Lan (Tổ 1 Xã)</b></span>
-            <span style="color:var(--agri-green);font-weight:700">Đã giao tận nhà</span>
-          </div>
-        </div>
-
-        <div class="order-card-item">
-          <div class="order-card-header">
-            <span>Đơn #041 · Hôm nay 08:30</span>
-            <span class="order-status-tag" style="background:#E0F2FE;color:#0284C7">🚚 Đang gửi xe khách</span>
-          </div>
-          <div class="order-card-content">
-            10 túi Chuối sấy + 2 hũ Mật ong rừng · 910.000 đ
-          </div>
-          <div class="order-card-footer">
-            <span style="color:var(--text-muted)">Khách: <b>Chị Mai (Hà Nội)</b></span>
-            <span style="color:#0284C7;font-weight:700">Xe bến Mỹ Đình</span>
-          </div>
-        </div>
-
-        <div class="order-card-item">
-          <div class="order-card-header">
-            <span>Đơn #040 · Hôm qua 16:20</span>
-            <span class="order-status-tag" style="background:#FEF3C7;color:#D97706">⏳ Chờ gom hàng</span>
-          </div>
-          <div class="order-card-content">
-            2 bao Gạo Nếp Nương Tú Lệ (10kg) · 420.000 đ
-          </div>
-          <div class="order-card-footer">
-            <span style="color:var(--text-muted)">Khách: <b>Bác Thành (Xã bên)</b></span>
-            <span style="color:#D97706;font-weight:700">Chiều ghé lấy</span>
-          </div>
-        </div>
-
-        <div class="order-card-item">
-          <div class="order-card-header">
-            <span>Đơn #039 · Hôm qua 11:05</span>
-            <span class="order-status-tag" style="background:#DCFCE7;color:#15803D">✓ Đã nhận tiền</span>
-          </div>
-          <div class="order-card-content">
-            2 túi Trà Bát Tiên Thái Nguyên · 240.000 đ
-          </div>
-          <div class="order-card-footer">
-            <span style="color:var(--text-muted)">Khách: <b>Cháu Tuấn (Đoàn Xã)</b></span>
-            <span style="color:var(--agri-green);font-weight:700">QR chuyển khoản</span>
-          </div>
+        <!-- Order Cards List Container -->
+        <div id="shopeeOrdersListContainer">
+          <!-- Populated by JavaScript renderOrdersList() -->
         </div>
       </section>
+
+      <!-- =========================================================================
+           PANEL 9.1: CHI TIẾT ĐƠN HÀNG (MATCHING SCREENSHOT 2)
+           ========================================================================= -->
+      <section id="panel-order-detail" class="view-panel">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0 14px 0;border-bottom:1px solid #E2E8F0;margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <button type="button" class="btn-dock-back" style="height:38px;padding:0 12px;font-size:13.5px;border-radius:10px" onclick="closeOrderDetail()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Quay lại
+            </button>
+            <h1 style="font-size:18.5px;font-weight:900;color:#0F172A;margin:0">Chi tiết đơn hàng</h1>
+          </div>
+          <button type="button" class="shopee-header-btn" onclick="triggerToast('Tùy chọn: In phiếu giao hàng / Khiếu nại HTX')" style="font-size:18px;font-weight:900;color:#64748B">•••</button>
+        </div>
+
+        <div id="orderDetailContentContainer">
+          <!-- Injected dynamically by openOrderDetail(id) -->
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           MODAL LỌC KHOẢNG THỜI GIAN ĐƠN HÀNG (BOTTOM SHEET)
+           ========================================================================= -->
+      <div class="order-filter-backdrop" id="orderFilterModal" onclick="closeOrderDateFilterModal()">
+        <div class="order-filter-sheet" onclick="event.stopPropagation()">
+          <div class="ofs-header">
+            <div class="ofs-title">Chọn khoảng thời gian</div>
+            <button type="button" class="ofs-close-btn" onclick="closeOrderDateFilterModal()">✕</button>
+          </div>
+
+          <div class="ofs-options-list">
+            <div class="ofs-option-item" data-opt="today" onclick="selectDateOption('today')">
+              <span>Hôm nay (09/10/2026)</span>
+              <div class="ofs-radio-circle"><span class="ofs-radio-inner"></span></div>
+            </div>
+            <div class="ofs-option-item" data-opt="yesterday" onclick="selectDateOption('yesterday')">
+              <span>Hôm qua (08/10/2026)</span>
+              <div class="ofs-radio-circle"><span class="ofs-radio-inner"></span></div>
+            </div>
+            <div class="ofs-option-item" data-opt="3days" onclick="selectDateOption('3days')">
+              <span>3 ngày trước (06/10 - 08/10/2026)</span>
+              <div class="ofs-radio-circle"><span class="ofs-radio-inner"></span></div>
+            </div>
+            <div class="ofs-option-item" data-opt="7days" onclick="selectDateOption('7days')">
+              <span>7 ngày qua (03/10 - 09/10/2026)</span>
+              <div class="ofs-radio-circle"><span class="ofs-radio-inner"></span></div>
+            </div>
+            <div class="ofs-option-item selected" data-opt="month" onclick="selectDateOption('month')">
+              <span>Tháng này (01/10 - 31/10/2026)</span>
+              <div class="ofs-radio-circle"><span class="ofs-radio-inner"></span></div>
+            </div>
+            <div class="ofs-option-item" data-opt="custom" onclick="selectDateOption('custom')">
+              <span>Khoảng thời gian tuỳ chọn...</span>
+              <div class="ofs-radio-circle"><span class="ofs-radio-inner"></span></div>
+            </div>
+          </div>
+
+          <!-- Custom date range inputs -->
+          <div class="ofs-custom-dates-box" id="ofsCustomDatesBox">
+            <div class="ofs-date-field">
+              <label>Từ ngày:</label>
+              <input type="date" id="orderCustomFrom" value="2026-10-01">
+            </div>
+            <div class="ofs-date-field">
+              <label>Đến ngày:</label>
+              <input type="date" id="orderCustomTo" value="2026-10-09">
+            </div>
+          </div>
+
+          <div class="ofs-action-buttons">
+            <button type="button" class="ofs-btn-reset" onclick="resetDateFilter()">Thiết lập lại</button>
+            <button type="button" class="ofs-btn-apply" onclick="applyDateFilter()">Áp Dụng</button>
+          </div>
+        </div>
+      </div>
+
 
       <!-- =========================================================================
            PANEL 10: MÀN HÌNH DOANH THU & SỔ THU TIỀN (REVENUE SCREEN)
@@ -3915,7 +4496,457 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
     // =========================================================================
     // MỞ MÀN HÌNH ĐƠN HÀNG VÀ DOANH THU
     // =========================================================================
+    
+    // =========================================================================
+    // DỮ LIỆU ĐƠN HÀNG BÁC BA & QUẢN LÝ ĐƠN HÀNG CHUẨN SHOPEE MERCHANT
+    // =========================================================================
+    let previousOrdersPanel = 'home';
+    let currentOrderStatusTab = 'history'; // 'all', 'new', 'preparing', 'done', 'shipping', 'history'
+    let currentOrderDateFilter = 'month'; // 'today', 'yesterday', '3days', '7days', 'month', 'custom'
+    let customDateRange = { from: '2026-10-01', to: '2026-10-09' };
+    let isStoreOpen = true;
+
+    const BAC_BA_ORDERS = [
+      {
+        id: "2785",
+        seq: 1,
+        code: "23096-707524465",
+        date: "2026-10-09",
+        time: "22:05",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Nguyễn Văn Đạt",
+          code: "3287",
+          phone: "0912.448.910",
+          vehicle: "Xe tải nhẹ 1.25T (29H-3287)"
+        },
+        customer: {
+          name: "Chị Lan (WinMart Cầu Giấy)",
+          maskName: "L***",
+          phone: "0988.***.214",
+          distance: "9.2km",
+          address: "WinMart Cầu Giấy - Số 122 Trần Duy Hưng, Cầu Giấy, Hà Nội"
+        },
+        note: "Cung cấp dụng cụ ăn uống & kiểm tra tem nhãn OCOP trước khi gửi.",
+        items: [
+          { name: "Butter Tteok | Bánh gạo bơ OCOP", qty: 1, price: 55000 },
+          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g Zip)", qty: 1, price: 55000 }
+        ],
+        price: {
+          raw: 110000,
+          discount: -11000,
+          commission: -10802,
+          tax: -1980,
+          final: 67403
+        },
+        timeline: {
+          ordered: "09/10/2026 19:39",
+          distance: "9.2km",
+          confirmed: "09/10/2026 19:39",
+          prepared: "09/10/2026 19:45",
+          pickup: "09/10/2026 19:53",
+          delivered: "09/10/2026 22:05",
+          payment: "Chuyển khoản VietQR Agribank (Đã nhận tiền)"
+        }
+      },
+      {
+        id: "4465",
+        seq: 2,
+        code: "23096-881923014",
+        date: "2026-10-09",
+        time: "20:27",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Nguyễn Văn Đạt",
+          code: "3287",
+          phone: "0912.448.910",
+          vehicle: "Xe tải nhẹ 1.25T (29H-3287)"
+        },
+        customer: {
+          name: "Khách hàng 1***",
+          maskName: "1***",
+          phone: "0904.***.892",
+          distance: "4.8km",
+          address: "Tổ 4 Phố Cũ, TT. Yên Bình"
+        },
+        note: "Cung cấp dụng cụ ăn uống",
+        items: [
+          { name: "Butter Tteok | Bánh gạo bơ", qty: 1, price: 55000 }
+        ],
+        price: {
+          raw: 55000,
+          discount: -11000,
+          commission: -10802,
+          tax: -1980,
+          final: 31218
+        },
+        timeline: {
+          ordered: "09/10/2026 19:39",
+          distance: "4.8km",
+          confirmed: "09/10/2026 19:39",
+          prepared: "09/10/2026 19:39",
+          pickup: "09/10/2026 19:53",
+          delivered: "09/10/2026 20:27",
+          payment: "Chuyển khoản Agribank (Đã nhận tiền)"
+        }
+      },
+      {
+        id: "8729",
+        seq: 3,
+        code: "23096-441209341",
+        date: "2026-10-09",
+        time: "19:51",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Trần Hữu Nam",
+          code: "1104",
+          phone: "0976.223.441",
+          vehicle: "Xe gom HTX 29X1-542.11"
+        },
+        customer: {
+          name: "Khách hàng h***",
+          maskName: "h***",
+          phone: "0934.***.771",
+          distance: "3.2km",
+          address: "Kiot 14 Chợ Xã Yên Bình"
+        },
+        note: "Giao trước 20h giúp bác nhé, đóng túi giấy kraft.",
+        items: [
+          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g Zip)", qty: 1, price: 55000 }
+        ],
+        price: {
+          raw: 55000,
+          discount: -11000,
+          commission: -10802,
+          tax: -1980,
+          final: 31218
+        },
+        timeline: {
+          ordered: "09/10/2026 18:40",
+          distance: "3.2km",
+          confirmed: "09/10/2026 18:42",
+          prepared: "09/10/2026 19:00",
+          pickup: "09/10/2026 19:25",
+          delivered: "09/10/2026 19:51",
+          payment: "Ví điện tử MoMo (Đã thanh toán)"
+        }
+      },
+      {
+        id: "1471",
+        seq: 4,
+        code: "23096-112349021",
+        date: "2026-10-09",
+        time: "19:28",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Phạm Văn Quang",
+          code: "2044",
+          phone: "0982.551.992",
+          vehicle: "Xe máy giao nhận 29H-110.45"
+        },
+        customer: {
+          name: "Cô Mai (Đồng Cát)",
+          maskName: "M***",
+          phone: "0912.***.334",
+          distance: "1.8km",
+          address: "Xóm Giữa, Thôn Đồng Cát, Xã Yên Bình"
+        },
+        note: "Bác Ba gửi chuối sấy mẻ giòn mới ra lò trưa nay.",
+        items: [
+          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 2, price: 55000 }
+        ],
+        price: {
+          raw: 110000,
+          discount: -10000,
+          commission: -18000,
+          tax: -3200,
+          final: 78800
+        },
+        timeline: {
+          ordered: "09/10/2026 18:10",
+          distance: "1.8km",
+          confirmed: "09/10/2026 18:15",
+          prepared: "09/10/2026 18:35",
+          pickup: "09/10/2026 19:05",
+          delivered: "09/10/2026 19:28",
+          payment: "Tiền mặt khi nhận hàng (Đã thu)"
+        }
+      },
+      {
+        id: "1042",
+        seq: 5,
+        code: "23096-992144312",
+        date: "2026-10-09",
+        time: "15:40",
+        status: "shipping",
+        statusText: "Đang giao",
+        orderType: "shipping",
+        driver: {
+          name: "Đội xe HTX Yên Bình",
+          code: "HTX-01",
+          phone: "0988.123.456",
+          vehicle: "Xe tải thùng 2.5T (29H-882.14)"
+        },
+        customer: {
+          name: "WinMart Royal City",
+          maskName: "W***",
+          phone: "024.***.8899",
+          distance: "14.5km",
+          address: "Tầng B2 Royal City, Thanh Xuân, Hà Nội"
+        },
+        note: "Giao sỉ đợt 1: Đóng thùng carton chuẩn xuất khẩu.",
+        items: [
+          { name: "Chuối Sấy Giòn Yên Bình (Thùng sỉ 20 túi)", qty: 1, price: 1100000 }
+        ],
+        price: {
+          raw: 1100000,
+          discount: -50000,
+          commission: -105000,
+          tax: -19000,
+          final: 926000
+        },
+        timeline: {
+          ordered: "09/10/2026 14:00",
+          distance: "14.5km",
+          confirmed: "09/10/2026 14:10",
+          prepared: "09/10/2026 14:40",
+          pickup: "09/10/2026 15:15",
+          delivered: "Dự kiến 16:30",
+          payment: "Chuyển khoản hợp đồng B2B"
+        }
+      },
+      {
+        id: "0922",
+        seq: 6,
+        code: "23095-992144312",
+        date: "2026-10-08",
+        time: "17:40",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Nguyễn Văn Đạt",
+          code: "3287",
+          phone: "0912.448.910",
+          vehicle: "Xe gom HTX 29H-3287"
+        },
+        customer: {
+          name: "Bác Thành (Yên Hưng)",
+          maskName: "T***",
+          phone: "0903.***.112",
+          distance: "6.5km",
+          address: "Thôn Phúc Thịnh, Xã Yên Hưng"
+        },
+        note: "Ghi chú: Lấy 2 chai rượu chuối hột ngâm 1 năm.",
+        items: [
+          { name: "Rượu Chuối Hột Rừng (Chai 750ml)", qty: 2, price: 85000 },
+          { name: "Chuối Sấy Giòn (Túi 250g)", qty: 2, price: 55000 }
+        ],
+        price: {
+          raw: 280000,
+          discount: 0,
+          commission: -27440,
+          tax: -5040,
+          final: 247520
+        },
+        timeline: {
+          ordered: "08/10/2026 15:30",
+          distance: "6.5km",
+          confirmed: "08/10/2026 15:35",
+          prepared: "08/10/2026 16:10",
+          pickup: "08/10/2026 16:50",
+          delivered: "08/10/2026 17:40",
+          payment: "Tiền mặt khi nhận hàng (Đã thu)"
+        }
+      },
+      {
+        id: "0814",
+        seq: 7,
+        code: "23095-331209841",
+        date: "2026-10-08",
+        time: "11:20",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Đoàn Thanh Niên Xã",
+          code: "TN01",
+          phone: "0977.***.889",
+          vehicle: "Đoàn xã hỗ trợ ship"
+        },
+        customer: {
+          name: "Cháu Tuấn (Đoàn Xã)",
+          maskName: "T***",
+          phone: "0977.***.889",
+          distance: "2.0km",
+          address: "UBND Xã Yên Bình"
+        },
+        note: "Đơn liên hoan hội nghị thanh niên xã.",
+        items: [
+          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 5, price: 55000 }
+        ],
+        price: {
+          raw: 275000,
+          discount: -15000,
+          commission: -25480,
+          tax: -4680,
+          final: 229840
+        },
+        timeline: {
+          ordered: "08/10/2026 09:10",
+          distance: "2.0km",
+          confirmed: "08/10/2026 09:15",
+          prepared: "08/10/2026 10:00",
+          pickup: "08/10/2026 10:45",
+          delivered: "08/10/2026 11:20",
+          payment: "Chuyển khoản VietQR Agribank"
+        }
+      },
+      {
+        id: "0733",
+        seq: 8,
+        code: "23094-119482012",
+        date: "2026-10-07",
+        time: "16:05",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Nguyễn Văn Đạt",
+          code: "3287",
+          phone: "0912.448.910",
+          vehicle: "Xe gom HTX 29H-3287"
+        },
+        customer: {
+          name: "Chị Hương (Đại Lý Sạch)",
+          maskName: "H***",
+          phone: "0981.***.552",
+          distance: "11.5km",
+          address: "Chuỗi Cửa Hàng Bác Tôm - Hà Nội"
+        },
+        note: "Thùng đóng nguyên đai nguyên kiện kiểm tra mã QR truy xuất.",
+        items: [
+          { name: "Chuối Sấy Giòn (Thùng sỉ 10 túi)", qty: 1, price: 500000 }
+        ],
+        price: {
+          raw: 500000,
+          discount: 0,
+          commission: -49000,
+          tax: -9000,
+          final: 442000
+        },
+        timeline: {
+          ordered: "07/10/2026 10:00",
+          distance: "11.5km",
+          confirmed: "07/10/2026 10:10",
+          prepared: "07/10/2026 13:30",
+          pickup: "07/10/2026 14:45",
+          delivered: "07/10/2026 16:05",
+          payment: "Chuyển khoản VietinBank"
+        }
+      },
+      {
+        id: "0650",
+        seq: 9,
+        code: "23093-440219842",
+        date: "2026-10-06",
+        time: "14:30",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Nhà xe Hưng Long",
+          code: "HL99",
+          phone: "0915.***.668",
+          vehicle: "Xe khách tuyến Yên Bình - Mỹ Đình"
+        },
+        customer: {
+          name: "Khách quen Hà Nội",
+          maskName: "K***",
+          phone: "0962.***.331",
+          distance: "8.0km",
+          address: "Bến xe Mỹ Đình, Hà Nội"
+        },
+        note: "Gửi nhà xe Hưng Long chuyến 13h chiều.",
+        items: [
+          { name: "Chuối Dẻo Đóng Hộp (500g)", qty: 4, price: 75000 },
+          { name: "Trà Bát Tiên (Túi 200g)", qty: 2, price: 120000 }
+        ],
+        price: {
+          raw: 540000,
+          discount: -20000,
+          commission: -50960,
+          tax: -9360,
+          final: 459680
+        },
+        timeline: {
+          ordered: "06/10/2026 08:30",
+          distance: "8.0km",
+          confirmed: "06/10/2026 08:45",
+          prepared: "06/10/2026 11:30",
+          pickup: "06/10/2026 12:45",
+          delivered: "06/10/2026 14:30",
+          payment: "Chuyển khoản VietQR Agribank"
+        }
+      },
+      {
+        id: "0512",
+        seq: 10,
+        code: "23092-771239841",
+        date: "2026-10-05",
+        time: "16:20",
+        status: "delivered",
+        statusText: "Đã giao",
+        orderType: "history",
+        driver: {
+          name: "Nguyễn Văn Đạt",
+          code: "3287",
+          phone: "0912.448.910",
+          vehicle: "Xe gom HTX 29H-3287"
+        },
+        customer: {
+          name: "WinMart Times City",
+          maskName: "W***",
+          phone: "024.***.7766",
+          distance: "16.0km",
+          address: "Siêu thị WinMart - Times City Minh Khai"
+        },
+        note: "Đơn hợp đồng OCOP tuần đầu tháng 10.",
+        items: [
+          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 15, price: 55000 }
+        ],
+        price: {
+          raw: 825000,
+          discount: -25000,
+          commission: -78400,
+          tax: -14400,
+          final: 707200
+        },
+        timeline: {
+          ordered: "05/10/2026 09:00",
+          distance: "16.0km",
+          confirmed: "05/10/2026 09:15",
+          prepared: "05/10/2026 13:00",
+          pickup: "05/10/2026 14:30",
+          delivered: "05/10/2026 16:20",
+          payment: "Chuyển khoản VietinBank"
+        }
+      }
+    ];
+
     function openOrdersView() {
+      const activePanel = document.querySelector('.view-panel.active');
+      if (activePanel && activePanel.id !== 'panel-orders' && activePanel.id !== 'panel-order-detail') {
+        previousOrdersPanel = activePanel.id.replace('panel-', '');
+      }
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
       bottomNav.classList.add('nav-hidden');
       dockStep1.classList.remove('dock-visible');
@@ -3925,29 +4956,375 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
 
       document.getElementById('panel-orders').classList.add('active');
       document.querySelector('.screen-container').scrollTo(0, 0);
+
+      renderOrdersList();
     }
 
-    function openRevenueView() {
-      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
-      bottomNav.classList.add('nav-hidden');
-      dockStep1.classList.remove('dock-visible');
-      dockStep2.classList.remove('dock-visible');
-      dockStep3.classList.remove('dock-visible');
-      bodyElem.className = '';
+    function closeOrdersView() {
+      document.getElementById('panel-orders').classList.remove('active');
+      switchNavTab(previousOrdersPanel || 'home');
+    }
 
-      document.getElementById('panel-revenue').classList.add('active');
+    function toggleStoreOpen(badge) {
+      isStoreOpen = !isStoreOpen;
+      const text = document.getElementById('storeOpenText');
+      const dot = badge.querySelector('.shopee-open-dot');
+      if (isStoreOpen) {
+        text.innerText = 'Mở cửa ›';
+        badge.style.color = '#16A34A';
+        badge.style.background = '#DCFCE7';
+        dot.style.background = '#16A34A';
+        dot.style.boxShadow = '0 0 6px #16A34A';
+        triggerToast('🟢 Bác Ba đang mở cửa: Sẵn sàng nhận đơn sỉ & lẻ tự động!');
+      } else {
+        text.innerText = 'Tạm nghỉ ›';
+        badge.style.color = '#DC2626';
+        badge.style.background = '#FEE2E2';
+        dot.style.background = '#DC2626';
+        dot.style.boxShadow = '0 0 6px #DC2626';
+        triggerToast('⏸ Bác Ba tạm nghỉ nhận đơn mới trong hôm nay');
+      }
+    }
+
+    function openOrderSearchPrompt() {
+      const q = prompt('Nhập mã đơn hàng hoặc tên khách hàng cần tìm:', '');
+      if (q && q.trim()) {
+        const query = q.trim().toLowerCase();
+        const found = BAC_BA_ORDERS.filter(o => 
+          o.id.includes(query) || 
+          o.code.toLowerCase().includes(query) || 
+          o.customer.name.toLowerCase().includes(query) ||
+          o.customer.maskName.toLowerCase().includes(query)
+        );
+        renderFilteredOrders(found, `Tìm kiếm: "${q.trim()}"`);
+      }
+    }
+
+    function selectOrderStatusTab(tab) {
+      currentOrderStatusTab = tab;
+      document.querySelectorAll('.shopee-tab-item').forEach(el => {
+        el.classList.toggle('active', el.getAttribute('data-tab') === tab);
+      });
+      renderOrdersList();
+    }
+
+    function openOrderDateFilterModal() {
+      const modal = document.getElementById('orderFilterModal');
+      if (modal) modal.classList.add('show');
+    }
+
+    function closeOrderDateFilterModal() {
+      const modal = document.getElementById('orderFilterModal');
+      if (modal) modal.classList.remove('show');
+    }
+
+    function selectDateOption(opt) {
+      currentOrderDateFilter = opt;
+      document.querySelectorAll('.ofs-option-item').forEach(el => {
+        el.classList.toggle('selected', el.getAttribute('data-opt') === opt);
+      });
+      const customBox = document.getElementById('ofsCustomDatesBox');
+      if (customBox) {
+        customBox.classList.toggle('show', opt === 'custom');
+      }
+    }
+
+    function resetDateFilter() {
+      selectDateOption('month');
+      applyDateFilter();
+    }
+
+    function applyDateFilter() {
+      closeOrderDateFilterModal();
+      const labelElem = document.getElementById('shopeeDateFilterLabel');
+      
+      if (currentOrderDateFilter === 'today') {
+        if (labelElem) labelElem.innerText = 'Hôm nay (09/10/2026)';
+      } else if (currentOrderDateFilter === 'yesterday') {
+        if (labelElem) labelElem.innerText = 'Hôm qua (08/10/2026)';
+      } else if (currentOrderDateFilter === '3days') {
+        if (labelElem) labelElem.innerText = '3 ngày trước (06/10 - 08/10)';
+      } else if (currentOrderDateFilter === '7days') {
+        if (labelElem) labelElem.innerText = '7 ngày qua (03/10 - 09/10)';
+      } else if (currentOrderDateFilter === 'month') {
+        if (labelElem) labelElem.innerText = '01/10/2026 - 31/10/2026';
+      } else if (currentOrderDateFilter === 'custom') {
+        const fromVal = document.getElementById('orderCustomFrom').value || '2026-10-01';
+        const toVal = document.getElementById('orderCustomTo').value || '2026-10-09';
+        customDateRange = { from: fromVal, to: toVal };
+        const fParts = fromVal.split('-');
+        const tParts = toVal.split('-');
+        if (labelElem) labelElem.innerText = `${fParts[2]}/${fParts[1]} - ${tParts[2]}/${tParts[1]}/${tParts[0]}`;
+      }
+
+      renderOrdersList();
+      triggerToast('Đã áp dụng bộ lọc ngày!');
+    }
+
+    function toggleChannelFilter(btn) {
+      const channels = ['Tất cả kênh', 'Zalo Khách Quen', 'Chợ Xã HTX', 'WinMart Sỉ'];
+      const cur = document.getElementById('shopeeChannelFilterLabel').innerText;
+      let nextIdx = (channels.indexOf(cur) + 1) % channels.length;
+      document.getElementById('shopeeChannelFilterLabel').innerText = channels[nextIdx];
+      triggerToast('Kênh bán: ' + channels[nextIdx]);
+    }
+
+    function renderOrdersList() {
+      let filtered = BAC_BA_ORDERS.slice();
+
+      // 1. Filter by Date
+      if (currentOrderDateFilter === 'today') {
+        filtered = filtered.filter(o => o.date === '2026-10-09');
+      } else if (currentOrderDateFilter === 'yesterday') {
+        filtered = filtered.filter(o => o.date === '2026-10-08');
+      } else if (currentOrderDateFilter === '3days') {
+        filtered = filtered.filter(o => o.date >= '2026-10-06' && o.date <= '2026-10-08');
+      } else if (currentOrderDateFilter === '7days') {
+        filtered = filtered.filter(o => o.date >= '2026-10-03' && o.date <= '2026-10-09');
+      } else if (currentOrderDateFilter === 'custom') {
+        filtered = filtered.filter(o => o.date >= customDateRange.from && o.date <= customDateRange.to);
+      }
+
+      // 2. Filter by Status Tab
+      if (currentOrderStatusTab === 'history') {
+        filtered = filtered.filter(o => o.status === 'delivered');
+      } else if (currentOrderStatusTab === 'shipping') {
+        filtered = filtered.filter(o => o.status === 'shipping');
+      } else if (currentOrderStatusTab === 'preparing') {
+        filtered = filtered.filter(o => o.status === 'preparing');
+      } else if (currentOrderStatusTab === 'new') {
+        filtered = filtered.filter(o => o.status === 'new');
+      } else if (currentOrderStatusTab === 'done') {
+        filtered = filtered.filter(o => o.status === 'done' || o.status === 'delivered');
+      }
+
+      renderFilteredOrders(filtered);
+    }
+
+    function renderFilteredOrders(orders, customTitle) {
+      const container = document.getElementById('shopeeOrdersListContainer');
+      if (!container) return;
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div style="background:#FFF;border:1px solid #E2E8F0;border-radius:16px;padding:36px 20px;text-align:center;color:#64748B;margin-top:10px">
+            <div style="font-size:38px;margin-bottom:10px">📦</div>
+            <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:4px">Không có đơn hàng nào</div>
+            <div style="font-size:13.5px">Không tìm thấy đơn hàng phù hợp với khoảng thời gian đã chọn.</div>
+            <button type="button" class="hero-pill-btn-green" style="margin-top:14px;padding:8px 16px;font-size:13px;display:inline-flex" onclick="resetDateFilter()">Xem Tất Cả Trong Tháng</button>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      if (customTitle) {
+        html += `<div style="font-size:13px;font-weight:700;color:#475569;margin-bottom:8px">${customTitle} (${orders.length} đơn)</div>`;
+      }
+
+      orders.forEach(o => {
+        const itemCount = o.items.reduce((acc, it) => acc + it.qty, 0);
+        const firstItem = o.items[0];
+        const statusClass = (o.status === 'delivered') ? 'delivered' : ((o.status === 'shipping') ? 'shipping' : 'preparing');
+        
+        html += `
+          <div class="shopee-order-card" onclick="openOrderDetail('${o.id}')">
+            <div class="soc-top-row">
+              <span class="soc-order-num">#${o.id}</span>
+              <span class="soc-status-text ${statusClass}">${o.statusText}</span>
+            </div>
+            <div class="soc-time-row">
+              Giao lúc ${o.time} ${o.date.split('-').reverse().join('/')}
+            </div>
+            <div class="soc-meta-row">
+              <span>${itemCount} Món</span>
+              <span class="soc-meta-sep">|</span>
+              <span>${o.customer.maskName}</span>
+              <span class="soc-meta-sep">|</span>
+              <span>${o.customer.distance}</span>
+            </div>
+            <div class="soc-payout-row">
+              <span class="soc-payout-label">Quán nhận</span>
+              <span class="soc-payout-val">${o.price.final.toLocaleString('vi-VN')}đ</span>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function openOrderDetail(orderId) {
+      const order = BAC_BA_ORDERS.find(o => o.id === orderId);
+      if (!order) return;
+
+      const container = document.getElementById('orderDetailContentContainer');
+      if (!container) return;
+
+      let itemsHtml = '';
+      order.items.forEach(it => {
+        itemsHtml += `
+          <div class="sdc-item-row">
+            <div>
+              <span style="font-weight:800;color:#0F172A">${it.qty} x </span>
+              <span style="font-weight:600;color:#334155">${it.name}</span>
+            </div>
+            <div style="font-weight:700;color:#0F172A;white-space:nowrap;margin-left:8px">
+              ${(it.price * it.qty).toLocaleString('vi-VN')}đ
+            </div>
+          </div>
+        `;
+      });
+
+      const totalItemsCount = order.items.reduce((acc, it) => acc + it.qty, 0);
+
+      container.innerHTML = `
+        <!-- Card 1: Tài xế vận chuyển -->
+        <div class="shopee-detail-card">
+          <div class="sdc-driver-row">
+            <div class="sdc-driver-info">
+              <img src="bac_ba_avatar.jpg" alt="Tài xế" class="sdc-driver-avatar">
+              <div>
+                <div class="sdc-driver-name">Tài xế - ${order.driver.name} ${order.driver.code}</div>
+                <div class="sdc-driver-sub">● ${order.statusText} (${order.driver.vehicle})</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <button type="button" class="shopee-header-btn" onclick="triggerToast('Đang gọi tài xế ${order.driver.name}: ${order.driver.phone}')" style="background:#EFF6FF;color:#2563EB;padding:8px" title="Gọi tài xế">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Khách hàng, Ghi chú & Sản phẩm -->
+        <div class="shopee-detail-card">
+          <div class="sdc-customer-header">
+            <div class="sdc-customer-avatar">🌾</div>
+            <div class="sdc-customer-name">Khách hàng - ${order.customer.maskName}</div>
+          </div>
+
+          <!-- Ghi chú nổi bật màu vàng -->
+          <div class="sdc-note-box">
+            <strong>Ghi chú:</strong> ${order.note}
+          </div>
+
+          <!-- Danh sách món -->
+          <div class="sdc-items-list">
+            ${itemsHtml}
+          </div>
+
+          <!-- Bảng kê chi phí -->
+          <div class="sdc-breakdown-row">
+            <span>Tổng tiền món (giá gốc)</span>
+            <span style="font-weight:700;color:#0F172A">${order.price.raw.toLocaleString('vi-VN')}đ</span>
+          </div>
+          <div class="sdc-breakdown-row" style="color:#EE4D2D">
+            <span>Giảm giá khuyến mãi</span>
+            <span>${order.price.discount.toLocaleString('vi-VN')}đ</span>
+          </div>
+          <div class="sdc-breakdown-row" style="color:#64748B">
+            <span>Chiết khấu HTX & Sàn</span>
+            <span>${order.price.commission.toLocaleString('vi-VN')}đ</span>
+          </div>
+          <div class="sdc-breakdown-row" style="color:#64748B">
+            <span>Thuế & Quỹ bảo trợ</span>
+            <span>${order.price.tax.toLocaleString('vi-VN')}đ</span>
+          </div>
+
+          <div class="sdc-final-row">
+            <span class="sdc-final-label">Tổng tiền quán nhận (${totalItemsCount} món)</span>
+            <span class="sdc-final-val">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
+              ${order.price.final.toLocaleString('vi-VN')}đ
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 3: Thông tin khác -->
+        <div class="shopee-detail-card" style="margin-bottom:20px">
+          <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:12px">Thông tin khác</div>
+          
+          <div class="sdc-other-row">
+            <span>Mã đơn hàng</span>
+            <div>
+              <strong>${order.code}</strong>
+              <button type="button" class="sdc-copy-btn" onclick="copyOrderCode('${order.code}')">SAO CHÉP</button>
+            </div>
+          </div>
+
+          <div class="sdc-other-row">
+            <span>Thời gian đặt hàng</span>
+            <span>${order.timeline.ordered}</span>
+          </div>
+
+          <div class="sdc-other-row">
+            <span>Khoảng cách</span>
+            <span>${order.timeline.distance}</span>
+          </div>
+
+          <div class="sdc-other-row">
+            <span>Thời gian xác nhận đơn</span>
+            <span>${order.timeline.confirmed}</span>
+          </div>
+
+          <div class="sdc-other-row">
+            <span>Thời gian chuẩn bị xong</span>
+            <span>${order.timeline.prepared}</span>
+          </div>
+
+          <div class="sdc-other-row">
+            <span>Thời gian lấy hàng</span>
+            <span>${order.timeline.pickup}</span>
+          </div>
+
+          <div class="sdc-other-row">
+            <span>Thời gian giao hàng</span>
+            <span>${order.timeline.delivered}</span>
+          </div>
+
+          <div class="sdc-other-row" style="border-top:1px dashed #E2E8F0;padding-top:10px;margin-top:6px">
+            <span>Thanh toán đơn hàng</span>
+            <span style="font-weight:700;color:#16A34A">${order.timeline.payment} ›</span>
+          </div>
+        </div>
+
+        <!-- Sticky Action Buttons -->
+        <div style="display:flex;gap:10px;margin-bottom:24px">
+          <button type="button" class="btn-dock-next" style="flex:1;height:48px;font-size:14.5px;background:#059669" onclick="triggerToast('Đã gửi thông tin đơn #${order.id} vào nhóm Zalo HTX Yên Bình!')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
+            Chia Sẻ Zalo
+          </button>
+          <button type="button" class="btn-dock-back" style="flex:1;height:48px;font-size:14.5px;border-radius:14px" onclick="triggerToast('Đã tạo bản in hóa đơn giao hàng #${order.id}')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+            In Phiếu Đơn
+          </button>
+        </div>
+      `;
+
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-order-detail').classList.add('active');
       document.querySelector('.screen-container').scrollTo(0, 0);
     }
 
-    function filterOrders(btn, status) {
-      document.querySelectorAll('.filter-pill-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      triggerToast(`Đang lọc: ${btn.textContent}`);
+    function closeOrderDetail() {
+      document.getElementById('panel-order-detail').classList.remove('active');
+      document.getElementById('panel-orders').classList.add('active');
     }
 
-    // =========================================================================
-    // CHUYỂN ĐỔI ẢNH TRONG BỘ SƯU TẬP (BƯỚC 3)
-    // =========================================================================
+    function copyOrderCode(code) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(() => {
+          triggerToast('✓ Đã sao chép mã đơn: ' + code);
+        }).catch(() => {
+          triggerToast('Mã đơn: ' + code);
+        });
+      } else {
+        triggerToast('Mã đơn: ' + code);
+      }
+    }
+
+
     function switchHeroPhoto(src, caption, index) {
       const heroImg = document.getElementById('heroProductImg');
       const indicator = document.getElementById('heroBadgeIndicator');

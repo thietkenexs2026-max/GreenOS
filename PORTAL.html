@@ -2710,31 +2710,31 @@
     .shopee-order-card {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
-      border-radius: 16px;
-      padding: 16px 18px;
-      margin-bottom: 12px;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 11px;
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-      transition: all 180ms ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      transition: all 160ms ease;
     }
     .shopee-order-card:active {
-      transform: scale(0.985);
+      transform: scale(0.99);
       background: #F8FAFC;
     }
     .soc-top-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
+      margin-bottom: 3px;
     }
     .soc-order-num {
-      font-size: 21px;
-      font-weight: 900;
+      font-size: 20px;
+      font-weight: 800;
       color: #0F172A;
       letter-spacing: -0.01em;
     }
     .soc-status-text {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #64748B;
     }
@@ -2748,19 +2748,20 @@
       color: #D97706;
     }
     .soc-time-row {
-      font-size: 13px;
+      font-size: 12.5px;
       color: #64748B;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: 500;
     }
     .soc-meta-row {
       font-size: 13.5px;
       color: #334155;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       gap: 6px;
+      line-height: 1.35;
       flex-wrap: wrap;
     }
     .soc-meta-sep {
@@ -2768,191 +2769,32 @@
       font-weight: 400;
     }
     .soc-payout-row {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #0F172A;
       display: flex;
-      justify-content: space-between;
       align-items: baseline;
-      padding-top: 10px;
-      border-top: 1px dashed #E2E8F0;
-      margin-top: 4px;
+      gap: 5px;
+      padding-top: 4px;
     }
     .soc-payout-label {
-      font-size: 14px;
-      font-weight: 700;
-      color: #1E293B;
-    }
-    .soc-payout-val {
-      font-size: 16px;
-      font-weight: 900;
-      color: #EE4D2D;
-    }
-
-    /* Date Filter Modal / Bottom Sheet */
-    .order-filter-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: 600;
-      display: none;
-      align-items: flex-end;
-    }
-    .order-filter-backdrop.show {
-      display: flex;
-    }
-    .order-filter-sheet {
-      background: #FFFFFF;
-      width: 100%;
-      border-radius: 20px 20px 0 0;
-      padding: 20px 18px 24px 18px;
-      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
-      animation: sheetSlideUp 200ms cubic-bezier(0.16, 1, 0.3, 1);
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-    @keyframes sheetSlideUp {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
-    }
-    .ofs-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #E2E8F0;
-    }
-    .ofs-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: #0F172A;
-    }
-    .ofs-close-btn {
-      background: none;
-      border: none;
-      font-size: 20px;
-      color: #64748B;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .ofs-options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .ofs-option-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 14px;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 14.5px;
-      font-weight: 700;
-      color: #334155;
-      transition: all 140ms ease;
-    }
-    .ofs-option-item:hover {
-      border-color: #EE4D2D;
-      background: #FFF5F1;
-    }
-    .ofs-option-item.selected {
-      border-color: #EE4D2D;
-      background: #FFF5F1;
-      color: #EE4D2D;
-    }
-    .ofs-radio-circle {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 2px solid #CBD5E1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .ofs-option-item.selected .ofs-radio-circle {
-      border-color: #EE4D2D;
-      background: #EE4D2D;
-    }
-    .ofs-radio-inner {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #FFF;
-      display: none;
-    }
-    .ofs-option-item.selected .ofs-radio-inner {
-      display: block;
-    }
-    .ofs-custom-dates-box {
-      background: #F8FAFC;
-      border: 1px dashed #CBD5E1;
-      border-radius: 12px;
-      padding: 14px;
-      margin-top: -4px;
-      margin-bottom: 16px;
-      display: none;
-    }
-    .ofs-custom-dates-box.show {
-      display: block;
-    }
-    .ofs-date-field {
-      margin-bottom: 10px;
-    }
-    .ofs-date-field label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
       color: #475569;
-      margin-bottom: 4px;
-    }
-    .ofs-date-field input {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1px solid #CBD5E1;
-      border-radius: 8px;
-      font-size: 14px;
-      color: #0F172A;
       font-weight: 600;
     }
-    .ofs-action-buttons {
-      display: flex;
-      gap: 10px;
-    }
-    .ofs-btn-reset {
-      flex: 1;
-      background: #F1F5F9;
-      color: #475569;
-      border: none;
-      border-radius: 12px;
-      padding: 12px;
-      font-size: 14.5px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .ofs-btn-apply {
-      flex: 2;
-      background: #EE4D2D;
-      color: #FFFFFF;
-      border: none;
-      border-radius: 12px;
-      padding: 12px;
-      font-size: 14.5px;
+    .soc-payout-val {
+      font-size: 15.5px;
       font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
+      color: #0F172A;
     }
 
     /* Shopee Order Detail Screen */
     .shopee-detail-card {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
-      border-radius: 16px;
-      padding: 16px;
+      border-radius: 14px;
+      padding: 14px 16px;
       margin-bottom: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
     .sdc-driver-row {
       display: flex;
@@ -2969,15 +2811,15 @@
       height: 44px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid #EE4D2D;
+      border: 1.5px solid #059669;
     }
     .sdc-driver-name {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 800;
       color: #0F172A;
     }
     .sdc-driver-sub {
-      font-size: 13px;
+      font-size: 12.5px;
       color: #16A34A;
       font-weight: 600;
       margin-top: 2px;
@@ -2985,22 +2827,22 @@
     .sdc-customer-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
     .sdc-customer-avatar {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      background: #FEE2E2;
-      color: #EE4D2D;
+      background: #ECFDF5;
+      color: #059669;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 15px;
     }
     .sdc-customer-name {
-      font-size: 15.5px;
+      font-size: 15px;
       font-weight: 800;
       color: #0F172A;
     }
@@ -3008,59 +2850,74 @@
       background: #FEF9C3;
       border: 1px solid #FDE047;
       border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 13.5px;
+      padding: 10px 12px;
+      font-size: 13px;
       color: #854D0E;
       line-height: 1.45;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .sdc-items-list {
       border-bottom: 1px solid #F1F5F9;
-      padding-bottom: 12px;
-      margin-bottom: 12px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
     }
     .sdc-item-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 8px;
+      gap: 10px;
+    }
+    .sdc-item-name {
       font-size: 14px;
       color: #1E293B;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .sdc-item-price {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .sdc-breakdown-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
       font-size: 13.5px;
       color: #475569;
+    }
+    .sdc-breakdown-row strong {
+      color: #0F172A;
     }
     .sdc-final-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding-top: 10px;
-      border-top: 1px dashed #CBD5E1;
-      margin-top: 8px;
+      border-top: 1px solid #F1F5F9;
+      margin-top: 6px;
     }
     .sdc-final-label {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 800;
       color: #0F172A;
     }
     .sdc-final-val {
-      font-size: 18px;
+      font-size: 17.5px;
       font-weight: 900;
-      color: #EE4D2D;
+      color: #059669;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
     .sdc-other-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
       font-size: 13px;
       color: #64748B;
     }
@@ -3074,7 +2931,7 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12.5px;
       padding-left: 6px;
     }
 
@@ -4510,7 +4367,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "2785",
         seq: 1,
-        code: "23096-707524465",
+        code: "26109-707524465",
         date: "2026-10-09",
         time: "22:05",
         status: "delivered",
@@ -4520,30 +4377,29 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           name: "Nguyễn Văn Đạt",
           code: "3287",
           phone: "0912.448.910",
-          vehicle: "Xe tải nhẹ 1.25T (29H-3287)"
+          vehicle: "Xe gom HTX (29H-3287)"
         },
         customer: {
           name: "Chị Lan (WinMart Cầu Giấy)",
           maskName: "L***",
           phone: "0988.***.214",
           distance: "9.2km",
-          address: "WinMart Cầu Giấy - Số 122 Trần Duy Hưng, Cầu Giấy, Hà Nội"
+          address: "WinMart Cầu Giấy - Số 122 Trần Duy Hưng, Hà Nội"
         },
-        note: "Cung cấp dụng cụ ăn uống & kiểm tra tem nhãn OCOP trước khi gửi.",
+        note: "Đóng thùng xốp dán tem truy xuất OCOP 4 sao, kiểm tra độ giòn túi zip trước khi chuyển xe.",
         items: [
-          { name: "Butter Tteok | Bánh gạo bơ OCOP", qty: 1, price: 55000 },
-          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g Zip)", qty: 1, price: 55000 }
+          { name: "Chuối Sấy Giòn Yên Bình (Túi Zip 250g OCOP 4★)", qty: 2, price: 55000 }
         ],
         price: {
           raw: 110000,
-          discount: -11000,
-          commission: -10802,
-          tax: -1980,
-          final: 67403
+          discount: -5000,
+          commission: -5500,
+          tax: -1000,
+          final: 98500
         },
         timeline: {
           ordered: "09/10/2026 19:39",
-          distance: "9.2km",
+          distance: "9.2km (WinMart Cầu Giấy)",
           confirmed: "09/10/2026 19:39",
           prepared: "09/10/2026 19:45",
           pickup: "09/10/2026 19:53",
@@ -4554,7 +4410,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "4465",
         seq: 2,
-        code: "23096-881923014",
+        code: "26109-881923014",
         date: "2026-10-09",
         time: "20:27",
         status: "delivered",
@@ -4564,25 +4420,25 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           name: "Nguyễn Văn Đạt",
           code: "3287",
           phone: "0912.448.910",
-          vehicle: "Xe tải nhẹ 1.25T (29H-3287)"
+          vehicle: "Xe gom HTX (29H-3287)"
         },
         customer: {
-          name: "Khách hàng 1***",
+          name: "Chị Thảo (Phố Cũ)",
           maskName: "1***",
           phone: "0904.***.892",
           distance: "4.8km",
           address: "Tổ 4 Phố Cũ, TT. Yên Bình"
         },
-        note: "Cung cấp dụng cụ ăn uống",
+        note: "Khách lấy 1 hộp chuối dẻo làm quà biếu, bọc túi giấy kraft lịch sự.",
         items: [
-          { name: "Butter Tteok | Bánh gạo bơ", qty: 1, price: 55000 }
+          { name: "Chuối Dẻo Đóng Hộp Chân Không (Hộp 500g OCOP 3★)", qty: 1, price: 75000 }
         ],
         price: {
-          raw: 55000,
-          discount: -11000,
-          commission: -10802,
-          tax: -1980,
-          final: 31218
+          raw: 75000,
+          discount: 0,
+          commission: -6000,
+          tax: -1500,
+          final: 67500
         },
         timeline: {
           ordered: "09/10/2026 19:39",
@@ -4597,7 +4453,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "8729",
         seq: 3,
-        code: "23096-441209341",
+        code: "26109-441209341",
         date: "2026-10-09",
         time: "19:51",
         status: "delivered",
@@ -4607,25 +4463,25 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           name: "Trần Hữu Nam",
           code: "1104",
           phone: "0976.223.441",
-          vehicle: "Xe gom HTX 29X1-542.11"
+          vehicle: "Xe gom HTX (29X1-542.11)"
         },
         customer: {
-          name: "Khách hàng h***",
+          name: "Anh Hùng (Chợ Xã)",
           maskName: "h***",
           phone: "0934.***.771",
           distance: "3.2km",
           address: "Kiot 14 Chợ Xã Yên Bình"
         },
-        note: "Giao trước 20h giúp bác nhé, đóng túi giấy kraft.",
+        note: "Lấy chuối sấy mẻ sáng sớm mới ra lò, giao trước 20h cho sạp nông sản chợ xã.",
         items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g Zip)", qty: 1, price: 55000 }
+          { name: "Chuối Sấy Giòn Yên Bình (Túi Zip 250g OCOP 4★)", qty: 1, price: 55000 }
         ],
         price: {
           raw: 55000,
-          discount: -11000,
-          commission: -10802,
-          tax: -1980,
-          final: 31218
+          discount: 0,
+          commission: -4500,
+          tax: -1000,
+          final: 49500
         },
         timeline: {
           ordered: "09/10/2026 18:40",
@@ -4640,7 +4496,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "1471",
         seq: 4,
-        code: "23096-112349021",
+        code: "26109-112349021",
         date: "2026-10-09",
         time: "19:28",
         status: "delivered",
@@ -4650,7 +4506,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           name: "Phạm Văn Quang",
           code: "2044",
           phone: "0982.551.992",
-          vehicle: "Xe máy giao nhận 29H-110.45"
+          vehicle: "Xe máy giao nhận (29H-110.45)"
         },
         customer: {
           name: "Cô Mai (Đồng Cát)",
@@ -4659,16 +4515,17 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           distance: "1.8km",
           address: "Xóm Giữa, Thôn Đồng Cát, Xã Yên Bình"
         },
-        note: "Bác Ba gửi chuối sấy mẻ giòn mới ra lò trưa nay.",
+        note: "Bác Ba gửi hàng kèm 1 gói chuối sấy ăn thử cho cô Mai chi hội phụ nữ thôn.",
         items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 2, price: 55000 }
+          { name: "Chuối Sấy Giòn Yên Bình (Túi Zip 250g)", qty: 2, price: 55000 },
+          { name: "Mật Ong Hoa Rừng Tự Nhiên (Chai 500ml OCOP 4★)", qty: 1, price: 220000 }
         ],
         price: {
-          raw: 110000,
-          discount: -10000,
-          commission: -18000,
-          tax: -3200,
-          final: 78800
+          raw: 330000,
+          discount: -15000,
+          commission: -14000,
+          tax: -3000,
+          final: 298000
         },
         timeline: {
           ordered: "09/10/2026 18:10",
@@ -4683,7 +4540,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "1042",
         seq: 5,
-        code: "23096-992144312",
+        code: "26109-992144312",
         date: "2026-10-09",
         time: "15:40",
         status: "shipping",
@@ -4702,16 +4559,16 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           distance: "14.5km",
           address: "Tầng B2 Royal City, Thanh Xuân, Hà Nội"
         },
-        note: "Giao sỉ đợt 1: Đóng thùng carton chuẩn xuất khẩu.",
+        note: "Đơn sỉ WinMart 20 thùng chuối sấy OCOP, kèm phiếu kiểm nghiệm chất lượng VietGAP.",
         items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Thùng sỉ 20 túi)", qty: 1, price: 1100000 }
+          { name: "Chuối Sấy Giòn Yên Bình (Thùng sỉ 20 túi 250g)", qty: 1, price: 1100000 }
         ],
         price: {
           raw: 1100000,
           discount: -50000,
-          commission: -105000,
-          tax: -19000,
-          final: 926000
+          commission: -55000,
+          tax: -10000,
+          final: 985000
         },
         timeline: {
           ordered: "09/10/2026 14:00",
@@ -4726,7 +4583,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "0922",
         seq: 6,
-        code: "23095-992144312",
+        code: "26108-992144312",
         date: "2026-10-08",
         time: "17:40",
         status: "delivered",
@@ -4736,7 +4593,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           name: "Nguyễn Văn Đạt",
           code: "3287",
           phone: "0912.448.910",
-          vehicle: "Xe gom HTX 29H-3287"
+          vehicle: "Xe gom HTX (29H-3287)"
         },
         customer: {
           name: "Bác Thành (Yên Hưng)",
@@ -4745,17 +4602,17 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           distance: "6.5km",
           address: "Thôn Phúc Thịnh, Xã Yên Hưng"
         },
-        note: "Ghi chú: Lấy 2 chai rượu chuối hột ngâm 1 năm.",
+        note: "2 chai rượu chuối hột rừng ngâm 1 năm hạ thổ chum sành, bọc màng xốp chống vỡ.",
         items: [
-          { name: "Rượu Chuối Hột Rừng (Chai 750ml)", qty: 2, price: 85000 },
-          { name: "Chuối Sấy Giòn (Túi 250g)", qty: 2, price: 55000 }
+          { name: "Rượu Chuối Hột Rừng Ngâm Chum (Chai 750ml)", qty: 2, price: 85000 },
+          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 2, price: 55000 }
         ],
         price: {
           raw: 280000,
-          discount: 0,
-          commission: -27440,
-          tax: -5040,
-          final: 247520
+          discount: -10000,
+          commission: -18000,
+          tax: -4000,
+          final: 248000
         },
         timeline: {
           ordered: "08/10/2026 15:30",
@@ -4770,7 +4627,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "0814",
         seq: 7,
-        code: "23095-331209841",
+        code: "26108-331209841",
         date: "2026-10-08",
         time: "11:20",
         status: "delivered",
@@ -4789,16 +4646,16 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           distance: "2.0km",
           address: "UBND Xã Yên Bình"
         },
-        note: "Đơn liên hoan hội nghị thanh niên xã.",
+        note: "Đơn liên hoan hội nghị hội nông dân xã Yên Bình, đóng túi zip 250g tiện chia phần.",
         items: [
           { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 5, price: 55000 }
         ],
         price: {
           raw: 275000,
           discount: -15000,
-          commission: -25480,
-          tax: -4680,
-          final: 229840
+          commission: -10000,
+          tax: -2500,
+          final: 247500
         },
         timeline: {
           ordered: "08/10/2026 09:10",
@@ -4807,13 +4664,13 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           prepared: "08/10/2026 10:00",
           pickup: "08/10/2026 10:45",
           delivered: "08/10/2026 11:20",
-          payment: "Chuyển khoản VietQR Agribank"
+          payment: "Chuyển khoản VietQR Agribank (Đã nhận tiền)"
         }
       },
       {
         id: "0733",
         seq: 8,
-        code: "23094-119482012",
+        code: "26107-119482012",
         date: "2026-10-07",
         time: "16:05",
         status: "delivered",
@@ -4823,25 +4680,26 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           name: "Nguyễn Văn Đạt",
           code: "3287",
           phone: "0912.448.910",
-          vehicle: "Xe gom HTX 29H-3287"
+          vehicle: "Xe gom HTX (29H-3287)"
         },
         customer: {
-          name: "Chị Hương (Đại Lý Sạch)",
+          name: "Chị Hương (Bác Tôm)",
           maskName: "H***",
           phone: "0981.***.552",
           distance: "11.5km",
-          address: "Chuỗi Cửa Hàng Bác Tôm - Hà Nội"
+          address: "Chuỗi Thực Phẩm Sạch Bác Tôm - Hà Nội"
         },
-        note: "Thùng đóng nguyên đai nguyên kiện kiểm tra mã QR truy xuất.",
+        note: "Chuỗi thực phẩm sạch Bác Tôm Hà Nội: Buồng chuối ngự quả đều, vỏ mướt, thu hoạch sáng sớm.",
         items: [
-          { name: "Chuối Sấy Giòn (Thùng sỉ 10 túi)", qty: 1, price: 500000 }
+          { name: "Chuối Sấy Giòn Yên Bình (Thùng sỉ 10 túi)", qty: 1, price: 500000 },
+          { name: "Buồng Chuối Ngự Tiến Vua Tươi (Buồng 15kg)", qty: 1, price: 220000 }
         ],
         price: {
-          raw: 500000,
-          discount: 0,
-          commission: -49000,
-          tax: -9000,
-          final: 442000
+          raw: 720000,
+          discount: -35000,
+          commission: -32000,
+          tax: -8000,
+          final: 645000
         },
         timeline: {
           ordered: "07/10/2026 10:00",
@@ -4856,7 +4714,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "0650",
         seq: 9,
-        code: "23093-440219842",
+        code: "26106-440219842",
         date: "2026-10-06",
         time: "14:30",
         status: "delivered",
@@ -4875,17 +4733,17 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           distance: "8.0km",
           address: "Bến xe Mỹ Đình, Hà Nội"
         },
-        note: "Gửi nhà xe Hưng Long chuyến 13h chiều.",
+        note: "Gửi nhà xe Hưng Long chuyến 13h bến Mỹ Đình, dặn nhà xe xếp chuối dẻo ở khoang trên.",
         items: [
-          { name: "Chuối Dẻo Đóng Hộp (500g)", qty: 4, price: 75000 },
-          { name: "Trà Bát Tiên (Túi 200g)", qty: 2, price: 120000 }
+          { name: "Chuối Dẻo Đóng Hộp Chân Không (500g)", qty: 4, price: 75000 },
+          { name: "Trà Bát Tiên Sao Chảo Gang (Túi 200g)", qty: 2, price: 120000 }
         ],
         price: {
           raw: 540000,
           discount: -20000,
-          commission: -50960,
-          tax: -9360,
-          final: 459680
+          commission: -28000,
+          tax: -7000,
+          final: 485000
         },
         timeline: {
           ordered: "06/10/2026 08:30",
@@ -4900,7 +4758,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       {
         id: "0512",
         seq: 10,
-        code: "23092-771239841",
+        code: "26105-771239841",
         date: "2026-10-05",
         time: "16:20",
         status: "delivered",
@@ -4910,25 +4768,26 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           name: "Nguyễn Văn Đạt",
           code: "3287",
           phone: "0912.448.910",
-          vehicle: "Xe gom HTX 29H-3287"
+          vehicle: "Xe gom HTX (29H-3287)"
         },
         customer: {
           name: "WinMart Times City",
           maskName: "W***",
           phone: "024.***.7766",
           distance: "16.0km",
-          address: "Siêu thị WinMart - Times City Minh Khai"
+          address: "Siêu thị WinMart - Times City Minh Khai, Hà Nội"
         },
-        note: "Đơn hợp đồng OCOP tuần đầu tháng 10.",
+        note: "Chuối sấy giòn & bột chuối xanh lô xuất kho tuần đầu tháng 10 cho siêu thị WinMart Times City.",
         items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 15, price: 55000 }
+          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 15, price: 55000 },
+          { name: "Bột Chuối Xanh Kháng Tinh Bột (Hũ 400g)", qty: 2, price: 95000 }
         ],
         price: {
-          raw: 825000,
-          discount: -25000,
-          commission: -78400,
-          tax: -14400,
-          final: 707200
+          raw: 1015000,
+          discount: -40000,
+          commission: -50000,
+          tax: -10000,
+          final: 915000
         },
         timeline: {
           ordered: "05/10/2026 09:00",
@@ -5107,10 +4966,10 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
 
       if (orders.length === 0) {
         container.innerHTML = `
-          <div style="background:#FFF;border:1px solid #E2E8F0;border-radius:16px;padding:36px 20px;text-align:center;color:#64748B;margin-top:10px">
-            <div style="font-size:38px;margin-bottom:10px">📦</div>
+          <div style="background:#FFF;border:1px solid #E2E8F0;border-radius:14px;padding:32px 18px;text-align:center;color:#64748B;margin-top:8px">
+            <div style="font-size:36px;margin-bottom:8px">🌾</div>
             <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:4px">Không có đơn hàng nào</div>
-            <div style="font-size:13.5px">Không tìm thấy đơn hàng phù hợp với khoảng thời gian đã chọn.</div>
+            <div style="font-size:13.5px">Không tìm thấy đơn hàng nông sản trong khoảng thời gian này.</div>
             <button type="button" class="hero-pill-btn-green" style="margin-top:14px;padding:8px 16px;font-size:13px;display:inline-flex" onclick="resetDateFilter()">Xem Tất Cả Trong Tháng</button>
           </div>
         `;
@@ -5144,7 +5003,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
               <span>${o.customer.distance}</span>
             </div>
             <div class="soc-payout-row">
-              <span class="soc-payout-label">Quán nhận</span>
+              <span class="soc-payout-label">Bác Ba nhận</span>
               <span class="soc-payout-val">${o.price.final.toLocaleString('vi-VN')}đ</span>
             </div>
           </div>
@@ -5165,11 +5024,10 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       order.items.forEach(it => {
         itemsHtml += `
           <div class="sdc-item-row">
-            <div>
-              <span style="font-weight:800;color:#0F172A">${it.qty} x </span>
-              <span style="font-weight:600;color:#334155">${it.name}</span>
+            <div class="sdc-item-name">
+              <strong style="color:#0F172A">${it.qty} x </strong>${it.name}
             </div>
-            <div style="font-weight:700;color:#0F172A;white-space:nowrap;margin-left:8px">
+            <div class="sdc-item-price">
               ${(it.price * it.qty).toLocaleString('vi-VN')}đ
             </div>
           </div>
@@ -5197,7 +5055,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           </div>
         </div>
 
-        <!-- Card 2: Khách hàng, Ghi chú & Sản phẩm -->
+        <!-- Card 2: Khách hàng, Ghi chú & Nông sản -->
         <div class="shopee-detail-card">
           <div class="sdc-customer-header">
             <div class="sdc-customer-avatar">🌾</div>
@@ -5209,31 +5067,31 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
             <strong>Ghi chú:</strong> ${order.note}
           </div>
 
-          <!-- Danh sách món -->
+          <!-- Danh sách món nông sản -->
           <div class="sdc-items-list">
             ${itemsHtml}
           </div>
 
           <!-- Bảng kê chi phí -->
           <div class="sdc-breakdown-row">
-            <span>Tổng tiền món (giá gốc)</span>
-            <span style="font-weight:700;color:#0F172A">${order.price.raw.toLocaleString('vi-VN')}đ</span>
+            <span>Tổng tiền nông sản (giá gốc)</span>
+            <strong>${order.price.raw.toLocaleString('vi-VN')}đ</strong>
           </div>
           <div class="sdc-breakdown-row" style="color:#EE4D2D">
-            <span>Giảm giá khuyến mãi</span>
+            <span>Giảm giá khuyến mãi vụ mùa</span>
             <span>${order.price.discount.toLocaleString('vi-VN')}đ</span>
           </div>
           <div class="sdc-breakdown-row" style="color:#64748B">
-            <span>Chiết khấu HTX & Sàn</span>
+            <span>Chiết khấu HTX & Sàn OCOP</span>
             <span>${order.price.commission.toLocaleString('vi-VN')}đ</span>
           </div>
           <div class="sdc-breakdown-row" style="color:#64748B">
-            <span>Thuế & Quỹ bảo trợ</span>
+            <span>Thuế & Quỹ phát triển nông hộ</span>
             <span>${order.price.tax.toLocaleString('vi-VN')}đ</span>
           </div>
 
           <div class="sdc-final-row">
-            <span class="sdc-final-label">Tổng tiền quán nhận (${totalItemsCount} món)</span>
+            <span class="sdc-final-label">Tổng tiền Bác Ba nhận (${totalItemsCount} món)</span>
             <span class="sdc-final-val">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
               ${order.price.final.toLocaleString('vi-VN')}đ
@@ -5243,7 +5101,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
 
         <!-- Card 3: Thông tin khác -->
         <div class="shopee-detail-card" style="margin-bottom:20px">
-          <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:12px">Thông tin khác</div>
+          <div style="font-size:15px;font-weight:800;color:#0F172A;margin-bottom:12px">Thông tin khác</div>
           
           <div class="sdc-other-row">
             <span>Mã đơn hàng</span>
@@ -5264,12 +5122,12 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           </div>
 
           <div class="sdc-other-row">
-            <span>Thời gian xác nhận đơn</span>
+            <span>Thời gian HTX xác nhận</span>
             <span>${order.timeline.confirmed}</span>
           </div>
 
           <div class="sdc-other-row">
-            <span>Thời gian chuẩn bị xong</span>
+            <span>Thời gian đóng gói xong</span>
             <span>${order.timeline.prepared}</span>
           </div>
 

@@ -380,6 +380,36 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 31: Mở Rộng Danh Mục Nông Sản & Nhập Tay Đầy Đủ Mọi Trường Thông Tin (Bước 2)
+- **Yêu cầu 66**: "với cả ở bước 2 là có thể nhập tay các trường thông tin sản phẩm, mở rộng các sản phẩm ra nhé".
+  - *Giải pháp*:
+    - **1. Mở rộng trọn bộ danh mục nông sản thực tế của Bác Ba & Hợp tác xã**:
+      - Bổ sung thanh cuộn chọn nhanh mẫu sản phẩm (`product-catalog-bar`) với ảnh đại diện, tên gọi và mức giá thực tế:
+        1. 🍌 *Chuối sấy giòn Đồng Cát* (Túi zip 250g · 55.000 đ · OCOP 4 Sao)
+        2. 🍌 *Chuối tiêu hồng sấy dẻo OCOP* (Túi zip 500g · 60.000 đ · VietGAP)
+        3. 🍯 *Mật ong hoa rừng tự nhiên* (Hũ thủy tinh 500ml · 180.000 đ · Khai thác rừng)
+        4. 🍵 *Trà Bát Tiên Thái Nguyên OCOP* (Túi chân không 500g · 120.000 đ · Cấp tỉnh)
+        5. 🍶 *Rượu chuối hột rừng ngâm chum* (Bình sành 1 Lít · 150.000 đ · Men lá hạ thổ)
+        6. 🌾 *Bột chuối xanh sấy lạnh* (Hộp 400g · 85.000 đ · Chuẩn VSATTP)
+        7. 🍌 *Buồng chuối ngự tiến vua chín cây* (1 kg nải/buồng · 25.000 đ · Cắt tươi tại vườn)
+      - Nút `➕ Tự nhập mới`: Xóa sạch form về trạng thái trống để Bác Ba tự tay gõ bất kỳ sản phẩm mới nào chưa từng có trong danh mục.
+      - Tự động thay đổi bộ ảnh mẫu ở Bước 1 (Chụp ảnh) và Bước 3 (Thành phẩm) tương ứng với từng loại nông sản được chọn.
+    - **2. Hệ thống nhập tay toàn diện mọi trường thông tin (Bước 2)**:
+      - Thiết kế 9 trường thông tin rõ ràng, phông chữ lớn, viền nổi bật khi focus, cực kỳ thân thiện với người cao tuổi:
+        1. `Tên sản phẩm nông sản`: Ô nhập tự do gõ tay hoặc nhận diện giọng nói.
+        2. `Loại / Danh mục`: Nhập hoặc gợi ý (Sấy, Mật ong, Trà, Rượu, Bột, Trái cây tươi...).
+        3. `Đơn vị tính`: Gói, Hũ, Bình, Chai, Hộp, Kg, Buồng, Nải...
+        4. `Giá bán (VNĐ)`: Ô nhập giá nổi bật kèm thanh nút chọn nhanh tự động tương thích theo biên độ giá của từng sản phẩm.
+        5. `Quy cách / Khối lượng`: Ô nhập kèm chip nhanh (`250g`, `500g`, `1kg`).
+        6. `Hạn sử dụng`: Ô nhập kèm chip nhanh (`6 tháng`, `12 tháng`, `24 tháng`).
+        7. `Tiêu chuẩn / Chứng nhận OCOP`: Ô nhập kèm chip chọn nhanh (`⭐ OCOP 4 Sao`, `🌿 VietGAP`, `🍃 Hữu cơ`, `📱 Mã QR`).
+        8. `Thành phần & Cách chế biến`: Textarea nhập chi tiết quy trình canh tác và chế biến thực tế.
+        9. `Chính sách ưu đãi & Vận chuyển`: Ưu đãi giao tận ngõ trong xã hoặc giảm giá mua sỉ.
+    - **3. Cơ chế đồng bộ Real-time 2 chiều**:
+      - Mọi thao tác gõ tay ở Bước 2 lập tức cập nhật câu nói mẫu của giọng nói, thẻ nhận diện tóm tắt, ảnh minh họa, tiêu đề và giá ở Bước 3 và toàn bộ bài đăng Nhật ký Zalo + Tin nhắn Nhóm Chợ Xã.
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

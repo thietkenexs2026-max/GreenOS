@@ -1279,6 +1279,142 @@
     }
 
     /* =========================================================================
+       THANH CHỌN MẪU NÔNG SẢN MỞ RỘNG (PRODUCT CATALOG BAR)
+       ========================================================================= */
+    .product-catalog-bar {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+    .pcb-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .pcb-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .pcb-btn-custom {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1D4ED8;
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 150ms ease;
+    }
+    .pcb-btn-custom:active {
+      transform: scale(0.96);
+      background: #DBEAFE;
+    }
+    .pcb-scroll-chips {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .pcb-scroll-chips::-webkit-scrollbar {
+      height: 4px;
+    }
+    .pcb-scroll-chips::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 2px;
+    }
+    .pcb-chip {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: all 180ms ease;
+      user-select: none;
+    }
+    .pcb-chip:active {
+      transform: scale(0.97);
+    }
+    .pcb-chip.active {
+      background: #ECFDF5;
+      border-color: #10B981;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.18);
+    }
+    .pcb-chip-thumb {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #E2E8F0;
+    }
+    .pcb-chip-info {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      line-height: 1.25;
+    }
+    .pcb-chip-name {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+    .pcb-chip.active .pcb-chip-name {
+      color: #065F46;
+    }
+    .pcb-chip-price {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748B;
+    }
+    .pcb-chip.active .pcb-chip-price {
+      color: var(--agri-green);
+      font-weight: 800;
+    }
+    .wec-textarea {
+      width: 100%;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--text-main);
+      background: #FAFAFA;
+      font-family: inherit;
+      resize: vertical;
+      outline: none;
+      transition: all 180ms ease;
+    }
+    .wec-textarea:focus {
+      border-color: var(--agri-green);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+    }
+    .req {
+      color: #DC2626;
+      font-weight: 800;
+    }
+
+
+    /* =========================================================================
        KHỐI CHỈNH SỬA BÀI VIẾT BƯỚC 3 (POST TEXT EDITOR)
        ========================================================================= */
     .post-edit-container {
@@ -3825,53 +3961,132 @@
           </div>
         </div>
 
-        <h1 class="step-main-title">Bác muốn bán giá bao nhiêu?</h1>
-        <p class="step-sub-desc">Bác bấm vào nút micro tròn màu xanh ở dưới và nói một câu:</p>
+        <h1 class="step-main-title">Thông tin & Giá bán sản phẩm</h1>
+        <p class="step-sub-desc">Bác có thể chọn nhanh từ danh mục nông sản của bác, hoặc tự gõ nhập tay các thông tin bên dưới:</p>
 
+        <!-- THANH CHỌN MẪU NÔNG SẢN MỞ RỘNG CỦA BÁC BA & HTX -->
+        <div class="product-catalog-bar">
+          <div class="pcb-header">
+            <span class="pcb-title">🌾 Chọn nhanh mẫu nông sản HTX:</span>
+            <button type="button" class="pcb-btn-custom" onclick="selectCustomNewProduct()">
+              <span>➕ Tự nhập mới</span>
+            </button>
+          </div>
+          <div class="pcb-scroll-chips" id="catalogChipsContainer">
+            <!-- Rendered by JS or default pills -->
+            <div class="pcb-chip active" id="chipProd_banana_crisp" onclick="selectCatalogProduct('banana_crisp')">
+              <img src="banana_front.jpg" alt="Chuối sấy" class="pcb-chip-thumb">
+              <div class="pcb-chip-info">
+                <span class="pcb-chip-name">Chuối sấy giòn</span>
+                <span class="pcb-chip-price">55.000 đ</span>
+              </div>
+            </div>
+            <div class="pcb-chip" id="chipProd_banana_chewy" onclick="selectCatalogProduct('banana_chewy')">
+              <img src="banana_plate.jpg" alt="Chuối dẻo" class="pcb-chip-thumb">
+              <div class="pcb-chip-info">
+                <span class="pcb-chip-name">Chuối sấy dẻo</span>
+                <span class="pcb-chip-price">60.000 đ</span>
+              </div>
+            </div>
+            <div class="pcb-chip" id="chipProd_honey_wild" onclick="selectCatalogProduct('honey_wild')">
+              <img src="honey_front.jpg" alt="Mật ong" class="pcb-chip-thumb">
+              <div class="pcb-chip-info">
+                <span class="pcb-chip-name">Mật ong hoa rừng</span>
+                <span class="pcb-chip-price">180.000 đ</span>
+              </div>
+            </div>
+            <div class="pcb-chip" id="chipProd_tea_battiene" onclick="selectCatalogProduct('tea_battiene')">
+              <img src="tea_front.jpg" alt="Trà Bát Tiên" class="pcb-chip-thumb">
+              <div class="pcb-chip-info">
+                <span class="pcb-chip-name">Trà Bát Tiên</span>
+                <span class="pcb-chip-price">120.000 đ</span>
+              </div>
+            </div>
+            <div class="pcb-chip" id="chipProd_wine_banana" onclick="selectCatalogProduct('wine_banana')">
+              <img src="banana_back.jpg" alt="Rượu chuối" class="pcb-chip-thumb">
+              <div class="pcb-chip-info">
+                <span class="pcb-chip-name">Rượu chuối hột</span>
+                <span class="pcb-chip-price">150.000 đ</span>
+              </div>
+            </div>
+            <div class="pcb-chip" id="chipProd_flour_banana" onclick="selectCatalogProduct('flour_banana')">
+              <img src="banana_front.jpg" alt="Bột chuối" class="pcb-chip-thumb">
+              <div class="pcb-chip-info">
+                <span class="pcb-chip-name">Bột chuối xanh</span>
+                <span class="pcb-chip-price">85.000 đ</span>
+              </div>
+            </div>
+            <div class="pcb-chip" id="chipProd_banana_fresh" onclick="selectCatalogProduct('banana_fresh')">
+              <img src="banana_plate.jpg" alt="Chuối ngự tươi" class="pcb-chip-thumb">
+              <div class="pcb-chip-info">
+                <span class="pcb-chip-name">Chuối ngự tươi</span>
+                <span class="pcb-chip-price">25.000 đ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÔ PHỎNG THU ÂM GIỌNG NÓI -->
         <div class="mic-stage-card">
           <button type="button" class="mic-button-giant" id="btnMicLarge" onclick="recordVoiceSimulate()" aria-label="Bấm để nói">
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
           </button>
 
           <div class="mic-prompt-bold" id="micPromptTxt">Bấm nút tròn để nói</div>
-          <div class="mic-sample-text">
+          <div class="mic-sample-text" id="micSampleText">
             Ví dụ bác nói: <i>"Chuối sấy giòn túi 250 gam, bán năm mươi lăm nghìn một gói"</i>
           </div>
 
           <div class="extracted-result-card">
-            <div style="font-size:12.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">Máy vừa nghe được:</div>
+            <div style="font-size:12.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">Máy vừa nhận diện được:</div>
             <div class="extracted-speech-quote" id="extractedSpeechQuote">
               "Chuối sấy giòn <span class="highlight">túi 250 gam</span>, bán <span class="highlight">55 nghìn một gói</span>..."
             </div>
             <div class="tags-horizontal-list">
-              <span class="single-tag-chip">Khối lượng: <b id="tagWeight">250g</b></span>
+              <span class="single-tag-chip">Loại: <b id="tagCat">Nông sản sấy</b></span>
+              <span class="single-tag-chip">Quy cách: <b id="tagWeight">250g</b></span>
               <span class="single-tag-chip">Giá bán: <b id="tagPrice">55.000 đ</b></span>
               <span class="single-tag-chip">HSD: <b id="tagHsd">12 tháng</b></span>
             </div>
           </div>
         </div>
 
-        <!-- KHỐI CHỈNH SỬA THÔNG TIN SẢN PHẨM TRỰC TIẾP CHO BÁC BA -->
+        <!-- KHỐI NHẬP TAY ĐẦY ĐỦ CÁC TRƯỜNG THÔNG TIN SẢN PHẨM -->
         <div class="wizard-edit-card">
           <div class="wec-header">
             <div class="wec-title">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              <span>Chỉnh sửa thông tin sản phẩm</span>
+              <span>Nhập tay các trường thông tin sản phẩm</span>
             </div>
-            <span class="wec-badge">✏️ Bác có thể sửa tùy ý</span>
+            <span class="wec-badge">✏️ Bác nhập tay tùy ý</span>
           </div>
 
-          <!-- Tên sản phẩm -->
+          <!-- 1. Tên sản phẩm -->
           <div class="wec-field-group">
-            <label class="wec-label" for="inputProdName">Tên sản phẩm nông sản:</label>
-            <input type="text" id="inputProdName" class="wec-input" value="Chuối sấy giòn Đồng Cát" oninput="onProductDataChanged()">
+            <label class="wec-label" for="inputProdName">1. Tên sản phẩm nông sản: <span class="req">*</span></label>
+            <input type="text" id="inputProdName" class="wec-input" placeholder="Ví dụ: Chuối sấy giòn, Mật ong hoa rừng..." value="Chuối sấy giòn Đồng Cát" oninput="onProductDataChanged()">
           </div>
 
-          <!-- Giá bán -->
+          <!-- 2. Loại nông sản & Đơn vị tính -->
+          <div class="wec-grid-2col">
+            <div class="wec-field-group">
+              <label class="wec-label" for="inputProdCategory">2. Loại / Danh mục:</label>
+              <input type="text" id="inputProdCategory" class="wec-input" placeholder="Nông sản chế biến sấy..." value="Nông sản chế biến sấy" oninput="onProductDataChanged()">
+            </div>
+            <div class="wec-field-group">
+              <label class="wec-label" for="inputProdUnit">3. Đơn vị tính:</label>
+              <input type="text" id="inputProdUnit" class="wec-input" placeholder="Gói, Hũ, Chai, Kg..." value="Gói" oninput="onProductDataChanged()">
+            </div>
+          </div>
+
+          <!-- 3. Giá bán & Các nút chọn nhanh -->
           <div class="wec-field-group">
-            <label class="wec-label" for="inputProdPrice">Giá bán mỗi gói (VNĐ):</label>
-            <input type="text" id="inputProdPrice" class="wec-input price-input" value="55.000 đ" oninput="onProductDataChanged()">
-            <div class="wec-quick-chips">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+              <label class="wec-label" for="inputProdPrice" style="margin-bottom:0">4. Giá bán ra (VNĐ): <span class="req">*</span></label>
+              <span style="font-size:11.5px;color:var(--text-muted)">Bấm chọn nhanh hoặc gõ tay</span>
+            </div>
+            <input type="text" id="inputProdPrice" class="wec-input price-input" placeholder="Ví dụ: 55.000 đ" value="55.000 đ" oninput="onProductDataChanged()">
+            <div class="wec-quick-chips" id="priceChipsContainer">
               <button type="button" class="wec-chip" onclick="setQuickPrice('45.000 đ')">45.000đ</button>
               <button type="button" class="wec-chip" onclick="setQuickPrice('50.000 đ')">50.000đ</button>
               <button type="button" class="wec-chip active" id="chipPrice55" onclick="setQuickPrice('55.000 đ')">55.000đ</button>
@@ -3880,11 +4095,11 @@
             </div>
           </div>
 
-          <!-- Quy cách & HSD -->
+          <!-- 4. Quy cách & Hạn sử dụng -->
           <div class="wec-grid-2col">
             <div class="wec-field-group">
-              <label class="wec-label" for="inputProdWeight">Quy cách đóng gói:</label>
-              <input type="text" id="inputProdWeight" class="wec-input" value="Túi zip 250g" oninput="onProductDataChanged()">
+              <label class="wec-label" for="inputProdWeight">5. Quy cách / Khối lượng:</label>
+              <input type="text" id="inputProdWeight" class="wec-input" placeholder="Túi zip 250g, Hũ 500ml..." value="Túi zip 250g" oninput="onProductDataChanged()">
               <div class="wec-mini-chips">
                 <button type="button" class="wec-mini-chip" onclick="setQuickWeight('Túi zip 250g')">250g</button>
                 <button type="button" class="wec-mini-chip" onclick="setQuickWeight('Túi zip 500g')">500g</button>
@@ -3892,19 +4107,38 @@
               </div>
             </div>
             <div class="wec-field-group">
-              <label class="wec-label" for="inputProdHsd">Hạn sử dụng:</label>
-              <input type="text" id="inputProdHsd" class="wec-input" value="12 tháng" oninput="onProductDataChanged()">
+              <label class="wec-label" for="inputProdHsd">6. Hạn sử dụng:</label>
+              <input type="text" id="inputProdHsd" class="wec-input" placeholder="12 tháng, 6 tháng..." value="12 tháng" oninput="onProductDataChanged()">
               <div class="wec-mini-chips">
                 <button type="button" class="wec-mini-chip" onclick="setQuickHsd('6 tháng')">6 tháng</button>
                 <button type="button" class="wec-mini-chip" onclick="setQuickHsd('12 tháng')">12 tháng</button>
+                <button type="button" class="wec-mini-chip" onclick="setQuickHsd('24 tháng')">24 tháng</button>
               </div>
             </div>
           </div>
 
-          <!-- Chính sách ưu đãi -->
+          <!-- 5. Tiêu chuẩn chất lượng / Chứng nhận OCOP -->
           <div class="wec-field-group">
-            <label class="wec-label" for="inputProdPromo">Ưu đãi / Giao hàng:</label>
-            <input type="text" id="inputProdPromo" class="wec-input" value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
+            <label class="wec-label" for="inputProdCert">7. Tiêu chuẩn / Chứng nhận OCOP:</label>
+            <input type="text" id="inputProdCert" class="wec-input" placeholder="OCOP 4 Sao, VietGAP, Hữu cơ..." value="OCOP 4 Sao Tỉnh Bắc Giang" oninput="onProductDataChanged()">
+            <div class="wec-mini-chips">
+              <button type="button" class="wec-mini-chip" onclick="setQuickCert('OCOP 4 Sao')">⭐ OCOP 4 Sao</button>
+              <button type="button" class="wec-mini-chip" onclick="setQuickCert('VietGAP Sạch')">🌿 VietGAP Sạch</button>
+              <button type="button" class="wec-mini-chip" onclick="setQuickCert('Hữu cơ Nhà Vườn')">🍃 Hữu cơ Nhà Vườn</button>
+              <button type="button" class="wec-mini-chip" onclick="setQuickCert('Mã QR Truy Xuất')">📱 Mã QR Truy Xuất</button>
+            </div>
+          </div>
+
+          <!-- 6. Thành phần & Quy trình chế biến -->
+          <div class="wec-field-group">
+            <label class="wec-label" for="inputProdIngredients">8. Thành phần & Chế biến:</label>
+            <textarea id="inputProdIngredients" class="wec-textarea" rows="2" placeholder="Ví dụ: 100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên..." oninput="onProductDataChanged()">100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên, không tẩm đường hoá học.</textarea>
+          </div>
+
+          <!-- 7. Chính sách ưu đãi & Giao hàng -->
+          <div class="wec-field-group">
+            <label class="wec-label" for="inputProdPromo">9. Ưu đãi / Giao hàng:</label>
+            <input type="text" id="inputProdPromo" class="wec-input" placeholder="Ví dụ: Mua từ 5 gói miễn phí giao tận nhà trong xã..." value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
           </div>
         </div>
       </section>
@@ -4964,16 +5198,314 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     }
 
     // =========================================================================
-    // DỮ LIỆU BÀI ĐĂNG NÔNG SẢN BÁC BA & ĐỒNG BỘ NỘI DUNG CHỈNH SỬA
+    // DANH MỤC NÔNG SẢN MỞ RỘNG CỦA BÁC BA & HỢP TÁC XÃ
     // =========================================================================
+    const EXTENDED_PRODUCTS = [
+      {
+        id: 'banana_crisp',
+        name: 'Chuối sấy giòn Đồng Cát',
+        category: 'Nông sản chế biến sấy',
+        price: '55.000 đ',
+        weight: 'Túi zip 250g',
+        unit: 'Gói',
+        hsd: '12 tháng',
+        cert: 'OCOP 4 Sao Tỉnh Bắc Giang',
+        ingredients: '100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên, không tẩm đường hoá học.',
+        promo: 'Mua từ 5 gói em miễn phí giao tận nhà trong xã',
+        quickPrices: ['45.000 đ', '50.000 đ', '55.000 đ', '60.000 đ', '70.000 đ'],
+        imgHero: 'banana_front.jpg',
+        imgThumbs: [
+          { src: 'banana_front.jpg', caption: 'ẢNH 1/3: BAO BÌ CHÍNH', label: 'Bao bì' },
+          { src: 'banana_plate.jpg', caption: 'ẢNH 2/3: ĐĨA CHUỐI SẤY', label: 'Đĩa chuối' },
+          { src: 'banana_back.jpg', caption: 'ẢNH 3/3: MẶT SAU HSD', label: 'Mặt sau' }
+        ],
+        sampleSpeech: '"Chuối sấy giòn túi 250 gam, bán năm mươi lăm nghìn một gói"'
+      },
+      {
+        id: 'banana_chewy',
+        name: 'Chuối tiêu hồng sấy dẻo OCOP',
+        category: 'Nông sản sấy dẻo',
+        price: '60.000 đ',
+        weight: 'Túi zip 500g',
+        unit: 'Gói',
+        hsd: '9 tháng',
+        cert: 'OCOP 4 Sao & VietGAP',
+        ingredients: 'Chuối tiêu hồng chín bói sấy dẻo bằng công nghệ tuần hoàn khí nóng, dẻo quánh đượm mật tự nhiên.',
+        promo: 'Mua 3 túi tặng 1 gói trà dùng thử',
+        quickPrices: ['50.000 đ', '55.000 đ', '60.000 đ', '70.000 đ', '80.000 đ'],
+        imgHero: 'banana_plate.jpg',
+        imgThumbs: [
+          { src: 'banana_plate.jpg', caption: 'ẢNH 1/3: ĐĨA CHUỐI DẺO', label: 'Đĩa chuối' },
+          { src: 'banana_front.jpg', caption: 'ẢNH 2/3: BAO BÌ OCOP', label: 'Bao bì' },
+          { src: 'banana_back.jpg', caption: 'ẢNH 3/3: TIÊU CHUẨN VIETGAP', label: 'Mặt sau' }
+        ],
+        sampleSpeech: '"Chuối sấy dẻo túi nửa cân, bán sáu mươi nghìn một gói"'
+      },
+      {
+        id: 'honey_wild',
+        name: 'Mật ong hoa rừng tự nhiên',
+        category: 'Mật ong & Dược liệu',
+        price: '180.000 đ',
+        weight: 'Hũ thuỷ tinh 500ml',
+        unit: 'Hũ',
+        hsd: '24 tháng',
+        cert: 'OCOP 4 Sao Khai Thác Rừng',
+        ingredients: '100% mật ong nguyên chất quay từ hoa rừng tự nhiên vùng đồi cao, sánh đặc vàng óng thơm dịu.',
+        promo: 'Mua từ 2 hũ miễn phí ship toàn huyện',
+        quickPrices: ['150.000 đ', '180.000 đ', '200.000 đ', '220.000 đ', '250.000 đ'],
+        imgHero: 'honey_front.jpg',
+        imgThumbs: [
+          { src: 'honey_front.jpg', caption: 'ẢNH 1/3: HŨ MẬT ONG RỪNG', label: 'Hũ mật' },
+          { src: 'banana_front.jpg', caption: 'ẢNH 2/3: TEM OCOP 4 SAO', label: 'Tem OCOP' },
+          { src: 'banana_back.jpg', caption: 'ẢNH 3/3: CHỨNG NHẬN VSATTP', label: 'Chứng nhận' }
+        ],
+        sampleSpeech: '"Mật ong rừng hũ nửa lít, bán một trăm tám mươi nghìn một hũ"'
+      },
+      {
+        id: 'tea_battiene',
+        name: 'Trà Bát Tiên Thái Nguyên OCOP',
+        category: 'Chè búp đặc sản',
+        price: '120.000 đ',
+        weight: 'Túi hút chân không 500g',
+        unit: 'Gói',
+        hsd: '18 tháng',
+        cert: 'OCOP 4 Sao Cấp Tỉnh',
+        ingredients: 'Búp chè 1 tôm 2 lá sao suốt thủ công, hương cốm thơm ngát, nước xanh ánh vàng, hậu ngọt sâu.',
+        promo: 'Tặng kèm ấm pha trà du lịch cho đơn từ 2kg',
+        quickPrices: ['100.000 đ', '120.000 đ', '140.000 đ', '160.000 đ', '200.000 đ'],
+        imgHero: 'tea_front.jpg',
+        imgThumbs: [
+          { src: 'tea_front.jpg', caption: 'ẢNH 1/3: GÓI TRÀ BÁT TIÊN', label: 'Gói trà' },
+          { src: 'banana_front.jpg', caption: 'ẢNH 2/3: CÁNH TRÀ SAO KHÔ', label: 'Cánh trà' },
+          { src: 'banana_back.jpg', caption: 'ẢNH 3/3: TEM TRUY XUẤT QR', label: 'Tem QR' }
+        ],
+        sampleSpeech: '"Trà Bát Tiên túi nửa cân, bán một trăm hai mươi nghìn một gói"'
+      },
+      {
+        id: 'wine_banana',
+        name: 'Rượu chuối hột rừng ngâm chum',
+        category: 'Đồ uống truyền thống',
+        price: '150.000 đ',
+        weight: 'Bình gốm sành 1 Lít',
+        unit: 'Bình',
+        hsd: 'Càng để lâu càng ngon',
+        cert: 'Truy xuất nguồn gốc HTX',
+        ingredients: 'Rượu men lá cổ truyền ngâm chuối hột rừng đồi hạ thổ 180 ngày, thơm đượm êm say bổ gân cốt.',
+        promo: 'Bao ship khi mua combo từ 2 bình',
+        quickPrices: ['120.000 đ', '150.000 đ', '180.000 đ', '220.000 đ', '300.000 đ'],
+        imgHero: 'banana_back.jpg',
+        imgThumbs: [
+          { src: 'banana_back.jpg', caption: 'ẢNH 1/3: BÌNH RƯỢU CHUM', label: 'Bình rượu' },
+          { src: 'banana_front.jpg', caption: 'ẢNH 2/3: CHUỐI HỘT SAO VÀNG', label: 'Chuối hột' },
+          { src: 'banana_plate.jpg', caption: 'ẢNH 3/3: MÀU RƯỢU HỔ PHÁCH', label: 'Màu rượu' }
+        ],
+        sampleSpeech: '"Rượu chuối hột bình một lít, bán một trăm năm mươi nghìn"'
+      },
+      {
+        id: 'flour_banana',
+        name: 'Bột chuối xanh sấy lạnh',
+        category: 'Dinh dưỡng & Dược liệu',
+        price: '85.000 đ',
+        weight: 'Hộp giấy thân thiện 400g',
+        unit: 'Hộp',
+        hsd: '12 tháng',
+        cert: 'Chuẩn OCOP & VSATTP',
+        ingredients: 'Chuối tiêu xanh giàu tinh bột kháng sấy lạnh nghiền siêu mịn, hỗ trợ đại tràng và dạ dày.',
+        promo: 'Mua 2 hộp tặng thìa đong gỗ tự nhiên',
+        quickPrices: ['70.000 đ', '80.000 đ', '85.000 đ', '95.000 đ', '110.000 đ'],
+        imgHero: 'banana_front.jpg',
+        imgThumbs: [
+          { src: 'banana_front.jpg', caption: 'ẢNH 1/3: HỘP BỘT CHUỐI XANH', label: 'Hộp bột' },
+          { src: 'banana_plate.jpg', caption: 'ẢNH 2/3: BỘT MỊN SẤY LẠNH', label: 'Bột mịn' },
+          { src: 'banana_back.jpg', caption: 'ẢNH 3/3: HƯỚNG DẪN DÙNG', label: 'HDSD' }
+        ],
+        sampleSpeech: '"Bột chuối xanh hộp bốn trăm gam, bán tám mươi lăm nghìn"'
+      },
+      {
+        id: 'banana_fresh',
+        name: 'Buồng chuối ngự tiến vua chín cây',
+        category: 'Trái cây vườn sạch',
+        price: '25.000 đ',
+        weight: '1 kg (nguyên buồng / nải)',
+        unit: 'Kg',
+        hsd: '7 - 10 ngày',
+        cert: 'VietGAP Vườn Đồng Cát',
+        ingredients: 'Chuối ngự chín bói tự nhiên tại vườn bãi bồi, quả nhỏ đều vỏ mỏng ruột vàng mật ngọt lịm.',
+        promo: 'Cắt trực tiếp tại vườn, giao tươi trong ngày',
+        quickPrices: ['20.000 đ', '25.000 đ', '30.000 đ', '35.000 đ', '40.000 đ'],
+        imgHero: 'banana_plate.jpg',
+        imgThumbs: [
+          { src: 'banana_plate.jpg', caption: 'ẢNH 1/3: BUỒNG CHUỐI TƯƠI', label: 'Buồng chuối' },
+          { src: 'banana_front.jpg', caption: 'ẢNH 2/3: NẢI CHÍN VÀNG', label: 'Nải chín' },
+          { src: 'banana_back.jpg', caption: 'ẢNH 3/3: QUẢ VỎ MỎNG THƠM', label: 'Chi tiết' }
+        ],
+        sampleSpeech: '"Chuối ngự chín cây bán hai mươi lăm nghìn một cân"'
+      }
+    ];
+
+    // DỮ LIỆU ĐANG SOẠN THẢO (DRAFT)
     const draftProductData = {
+      id: "banana_crisp",
       name: "Chuối sấy giòn Đồng Cát",
+      category: "Nông sản chế biến sấy",
       price: "55.000 đ",
       weight: "Túi zip 250g",
+      unit: "Gói",
       hsd: "12 tháng",
+      cert: "OCOP 4 Sao Tỉnh Bắc Giang",
+      ingredients: "100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên, không tẩm đường hoá học.",
       promo: "Mua từ 5 gói em miễn phí giao tận nhà trong xã",
-      postPreset: "tet"
+      postPreset: "tet",
+      imgHero: "banana_front.jpg",
+      imgThumbs: [
+        { src: 'banana_front.jpg', caption: 'ẢNH 1/3: BAO BÌ CHÍNH', label: 'Bao bì' },
+        { src: 'banana_plate.jpg', caption: 'ẢNH 2/3: ĐĨA CHUỐI SẤY', label: 'Đĩa chuối' },
+        { src: 'banana_back.jpg', caption: 'ẢNH 3/3: MẶT SAU HSD', label: 'Mặt sau' }
+      ]
     };
+
+    // Chọn mẫu nông sản từ danh mục mở rộng
+    function selectCatalogProduct(prodId) {
+      const prod = EXTENDED_PRODUCTS.find(p => p.id === prodId);
+      if (!prod) return;
+
+      // Cập nhật active chip
+      document.querySelectorAll('.pcb-scroll-chips .pcb-chip').forEach(c => c.classList.remove('active'));
+      const activeChip = document.getElementById('chipProd_' + prodId);
+      if (activeChip) activeChip.classList.add('active');
+
+      // Ghi đè vào draftProductData
+      draftProductData.id = prod.id;
+      draftProductData.name = prod.name;
+      draftProductData.category = prod.category;
+      draftProductData.price = prod.price;
+      draftProductData.weight = prod.weight;
+      draftProductData.unit = prod.unit;
+      draftProductData.hsd = prod.hsd;
+      draftProductData.cert = prod.cert;
+      draftProductData.ingredients = prod.ingredients;
+      draftProductData.promo = prod.promo;
+      draftProductData.imgHero = prod.imgHero;
+      draftProductData.imgThumbs = prod.imgThumbs;
+
+      // Điền toàn bộ các trường nhập tay
+      const inputName = document.getElementById('inputProdName');
+      const inputCat = document.getElementById('inputProdCategory');
+      const inputUnit = document.getElementById('inputProdUnit');
+      const inputPrice = document.getElementById('inputProdPrice');
+      const inputWeight = document.getElementById('inputProdWeight');
+      const inputHsd = document.getElementById('inputProdHsd');
+      const inputCert = document.getElementById('inputProdCert');
+      const inputIngr = document.getElementById('inputProdIngredients');
+      const inputPromo = document.getElementById('inputProdPromo');
+
+      if (inputName) inputName.value = prod.name;
+      if (inputCat) inputCat.value = prod.category;
+      if (inputUnit) inputUnit.value = prod.unit;
+      if (inputPrice) inputPrice.value = prod.price;
+      if (inputWeight) inputWeight.value = prod.weight;
+      if (inputHsd) inputHsd.value = prod.hsd;
+      if (inputCert) inputCert.value = prod.cert;
+      if (inputIngr) inputIngr.value = prod.ingredients;
+      if (inputPromo) inputPromo.value = prod.promo;
+
+      // Cập nhật dãy nút chọn nhanh giá tương ứng
+      renderQuickPriceChips(prod.quickPrices, prod.price);
+
+      // Cập nhật câu nói mẫu và thẻ nhận diện
+      const sampleSpeechEl = document.getElementById('micSampleText');
+      if (sampleSpeechEl) sampleSpeechEl.innerHTML = 'Ví dụ bác nói: <i>' + prod.sampleSpeech + '</i>';
+      const quoteEl = document.getElementById('extractedSpeechQuote');
+      if (quoteEl) quoteEl.innerHTML = '"' + prod.name + ' <span class="highlight">' + prod.weight + '</span>, bán <span class="highlight">' + prod.price + '</span>..."';
+
+      // Cập nhật ảnh ở Bước 1 và Bước 3
+      updateProductPhotos(prod);
+
+      // Cập nhật các tag tóm tắt
+      onProductDataChanged();
+      triggerToast('Đã nạp mẫu: ' + prod.name);
+    }
+
+    // Tự nhập nông sản mới hoàn toàn
+    function selectCustomNewProduct() {
+      document.querySelectorAll('.pcb-scroll-chips .pcb-chip').forEach(c => c.classList.remove('active'));
+
+      const inputName = document.getElementById('inputProdName');
+      const inputCat = document.getElementById('inputProdCategory');
+      const inputUnit = document.getElementById('inputProdUnit');
+      const inputPrice = document.getElementById('inputProdPrice');
+      const inputWeight = document.getElementById('inputProdWeight');
+      const inputHsd = document.getElementById('inputProdHsd');
+      const inputCert = document.getElementById('inputProdCert');
+      const inputIngr = document.getElementById('inputProdIngredients');
+      const inputPromo = document.getElementById('inputProdPromo');
+
+      if (inputName) { inputName.value = ''; inputName.focus(); }
+      if (inputCat) inputCat.value = 'Nông sản tự trồng';
+      if (inputUnit) inputUnit.value = 'Kg';
+      if (inputPrice) inputPrice.value = '0 đ';
+      if (inputWeight) inputWeight.value = '1 kg';
+      if (inputHsd) inputHsd.value = 'Tươi dùng trong 7 ngày';
+      if (inputCert) inputCert.value = 'Nông sản sạch gia đình';
+      if (inputIngr) inputIngr.value = 'Nông sản vườn nhà trồng tự nhiên, thu hoạch tươi sạch trong ngày.';
+      if (inputPromo) inputPromo.value = 'Bà con lấy nhắn em đem qua tận ngõ!';
+
+      renderQuickPriceChips(['30.000 đ', '50.000 đ', '80.000 đ', '100.000 đ', '150.000 đ'], '0 đ');
+      onProductDataChanged();
+      triggerToast('Bác có thể tự gõ nhập tay các thông tin sản phẩm mới!');
+    }
+
+    // Hiển thị các nút giá chọn nhanh
+    function renderQuickPriceChips(prices, activePrice) {
+      const container = document.getElementById('priceChipsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      prices.forEach(pr => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'wec-chip' + (pr === activePrice ? ' active' : '');
+        btn.textContent = pr.replace(' đ', 'đ');
+        btn.onclick = () => setQuickPrice(pr);
+        container.appendChild(btn);
+      });
+    }
+
+    // Chọn nhanh chứng nhận OCOP / VietGAP
+    function setQuickCert(certVal) {
+      const input = document.getElementById('inputProdCert');
+      if (input) input.value = certVal;
+      onProductDataChanged();
+      triggerToast('Đã chọn: ' + certVal);
+    }
+
+    // Cập nhật bộ ảnh minh họa theo sản phẩm được chọn
+    function updateProductPhotos(prod) {
+      if (!prod.imgThumbs || !prod.imgThumbs.length) return;
+      
+      // Cập nhật ảnh đại diện Bước 3
+      const heroImg = document.getElementById('heroProductImg');
+      const indicator = document.getElementById('heroBadgeIndicator');
+      if (heroImg) heroImg.src = prod.imgThumbs[0].src;
+      if (indicator) indicator.textContent = prod.imgThumbs[0].caption;
+
+      // Cập nhật thumbnails bước 3
+      for (let i = 0; i < 3; i++) {
+        const thumb = document.getElementById('thumb' + i);
+        if (thumb && prod.imgThumbs[i]) {
+          const img = thumb.querySelector('img');
+          const cap = thumb.querySelector('.thumb-caption');
+          if (img) img.src = prod.imgThumbs[i].src;
+          if (cap) cap.textContent = prod.imgThumbs[i].label;
+          thumb.onclick = () => switchHeroPhoto(prod.imgThumbs[i].src, prod.imgThumbs[i].caption, i);
+        }
+      }
+
+      // Cập nhật ảnh ở Bước 1
+      const p1Img = document.querySelector('#panel-step1 .photo-slot-card-large:nth-child(1) img');
+      if (p1Img && prod.imgThumbs[0]) p1Img.src = prod.imgThumbs[0].src;
+      const p2Img = document.querySelector('#panel-step1 .photo-slot-card-large:nth-child(2) img');
+      if (p2Img && prod.imgThumbs[1]) p2Img.src = prod.imgThumbs[1].src;
+    }
 
     // Đồng bộ trạng thái Stepper Step-by-Step ở đầu trang
     function updateWizardStepper(stepNum) {
@@ -5059,44 +5591,57 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       triggerToast('Hạn sử dụng: ' + hsdVal);
     }
 
-    // Khi người dùng chỉnh sửa thông tin ở Bước 2
+    // Khi người dùng chỉnh sửa nhập tay thông tin ở Bước 2
     function onProductDataChanged() {
       const name = document.getElementById('inputProdName') ? document.getElementById('inputProdName').value : draftProductData.name;
+      const category = document.getElementById('inputProdCategory') ? document.getElementById('inputProdCategory').value : draftProductData.category;
+      const unit = document.getElementById('inputProdUnit') ? document.getElementById('inputProdUnit').value : draftProductData.unit;
       const price = document.getElementById('inputProdPrice') ? document.getElementById('inputProdPrice').value : draftProductData.price;
       const weight = document.getElementById('inputProdWeight') ? document.getElementById('inputProdWeight').value : draftProductData.weight;
       const hsd = document.getElementById('inputProdHsd') ? document.getElementById('inputProdHsd').value : draftProductData.hsd;
+      const cert = document.getElementById('inputProdCert') ? document.getElementById('inputProdCert').value : draftProductData.cert;
+      const ingredients = document.getElementById('inputProdIngredients') ? document.getElementById('inputProdIngredients').value : draftProductData.ingredients;
       const promo = document.getElementById('inputProdPromo') ? document.getElementById('inputProdPromo').value : draftProductData.promo;
 
-      draftProductData.name = name;
+      draftProductData.name = name || "Sản phẩm nông sản";
+      draftProductData.category = category;
+      draftProductData.unit = unit;
       draftProductData.price = price;
       draftProductData.weight = weight;
       draftProductData.hsd = hsd;
+      draftProductData.cert = cert;
+      draftProductData.ingredients = ingredients;
       draftProductData.promo = promo;
 
       // Cập nhật tag ở bước 2
+      const tagC = document.getElementById('tagCat');
       const tagW = document.getElementById('tagWeight');
       const tagP = document.getElementById('tagPrice');
       const tagH = document.getElementById('tagHsd');
+      if (tagC) tagC.textContent = category.replace('Nông sản ', '');
       if (tagW) tagW.textContent = weight.replace('Túi zip ', '');
       if (tagP) tagP.textContent = price;
       if (tagH) tagH.textContent = hsd;
 
-      // Tái tạo nội dung bài viết bước 3 nếu chưa sửa tay phức tạp
+      // Tái tạo nội dung bài viết bước 3
       generatePostContent();
     }
 
-    // Tạo nội dung bài viết tự động theo dữ liệu sản phẩm
+    // Tạo nội dung bài viết tự động theo dữ liệu sản phẩm nhập tay
     function generatePostContent(preset = null) {
       if (preset) draftProductData.postPreset = preset;
       const p = draftProductData;
+      const pName = p.name || "Nông sản";
+      const pUpper = pName.toUpperCase();
+      const pLower = pName.toLowerCase();
       let text = "";
 
       if (p.postPreset === 'tet') {
-        text = `🎋 ${p.name.toUpperCase()} - VỤ TẾT VỪA RA LÒ\n\nChào các bác, mẻ ${p.name.toLowerCase()} vụ Tết của nhà em vừa ra lò thơm nức mũi!\n- Đóng gói: ${p.weight} tiện lợi bảo quản.\n- Thành phần: 100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên, không tẩm đường hoá học.\n- Hạn dùng: ${p.hsd} kể từ ngày đóng gói.\n- Giá bà con: ${p.price}/gói (${p.promo}).\n\nBác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!`;
+        text = `🎋 ${pUpper} - VỤ TẾT VỪA RA LÒ\n\nChào các bác, mẻ ${pLower} vụ Tết của nhà em vừa ra lò thơm nức mũi!\n- Danh mục: ${p.category} (${p.cert}).\n- Quy cách đóng gói: ${p.weight} tiện lợi bảo quản.\n- Thành phần: ${p.ingredients}\n- Hạn sử dụng: ${p.hsd}.\n- Giá bà con: ${p.price}/${p.unit} (${p.promo}).\n\nBác nào lấy biếu Tết hoặc thưởng thức nhắn em mang qua tận ngõ liền nhé!`;
       } else if (p.postPreset === 'si') {
-        text = `📦 CUNG CẤP SỈ & LẺ: ${p.name.toUpperCase()} OCOP 4 SAO\n\nHợp tác xã Đồng Cát xuất kho lô ${p.name.toLowerCase()}:\n- Quy cách: ${p.weight}, thùng 20 gói chuẩn xuất xưởng.\n- Hạn sử dụng: ${p.hsd}.\n- Giá bán lẻ: ${p.price}/gói.\n- Chính sách đại lý: Giảm thêm 15% cho đơn từ 2 thùng trở lên, bao vận chuyển nội tỉnh.\n\nQuý đại lý và cô bác liên hệ Bác Ba để nhận mẫu thử miễn phí!`;
+        text = `📦 CUNG CẤP SỈ & LẺ: ${pUpper} (${p.cert})\n\nHợp tác xã Đồng Cát xuất kho số lượng lớn ${pLower}:\n- Tiêu chuẩn chất lượng: ${p.cert}.\n- Quy cách: ${p.weight} (${p.unit} chuẩn xuất xưởng).\n- Thành phần: ${p.ingredients}\n- Hạn dùng: ${p.hsd}.\n- Giá bán lẻ: ${p.price}/${p.unit}.\n- Chính sách đại lý: Giảm giá sỉ cho đơn số lượng lớn, bao vận chuyển nội tỉnh (${p.promo}).\n\nQuý đại lý và cô bác liên hệ Bác Ba để nhận mẫu thử miễn phí!`;
       } else {
-        text = `🌿 NÔNG SẢN NHÀ VƯỜN: ${p.name.toUpperCase()}\n\nChuối vườn nhà trồng tự nhiên, nay em đem sấy giòn thơm phục vụ bà con:\n- Quy cách: ${p.weight}.\n- Giá yêu thương: ${p.price}/gói.\n- Hạn dùng: ${p.hsd}.\n- Cam kết: Chuối sạch 100%, ngọt thanh vị trái cây đồi.\n\nBà con để lại tin nhắn hoặc gọi em giao tận ngõ nha!`;
+        text = `🌿 NÔNG SẢN NHÀ VƯỜN SẠCH: ${pUpper}\n\n${pName} vườn nhà em trồng tự nhiên đạt chuẩn ${p.cert}, nay thu hoạch phục vụ bà con:\n- Quy cách: ${p.weight}.\n- Cam kết: ${p.ingredients}\n- Giá yêu thương: ${p.price}/${p.unit}.\n- Hạn dùng: ${p.hsd}.\n- Giao hàng: ${p.promo}.\n\nBà con để lại tin nhắn hoặc gọi em Bác Ba đem qua tận nơi nha!`;
       }
 
       const textarea = document.getElementById('finalPostTextarea');

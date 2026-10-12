@@ -1413,6 +1413,165 @@
       font-weight: 800;
     }
 
+    /* =========================================================================
+       HỆ THỐNG CÁC THẺ THÔNG TIN TÁCH BIỆT (WELL-SPACED FORM SECTION CARDS)
+       ========================================================================= */
+    .form-section-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      transition: all 200ms ease;
+    }
+    .form-section-card:focus-within {
+      border-color: #86EFAC;
+      box-shadow: 0 4px 16px rgba(22, 163, 74, 0.08);
+    }
+    .fsc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .fsc-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .fsc-title svg {
+      color: var(--agri-green);
+      flex-shrink: 0;
+    }
+    .fsc-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0284C7;
+      background: #E0F2FE;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .fsc-field {
+      margin-bottom: 16px;
+    }
+    .fsc-field:last-child {
+      margin-bottom: 0;
+    }
+    .fsc-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 7px;
+    }
+    .fsc-label-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .fsc-input {
+      width: 100%;
+      height: 44px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      padding: 0 14px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      background: #FAFAFA;
+      transition: all 180ms ease;
+    }
+    .fsc-input:focus {
+      border-color: var(--agri-green);
+      background: #FFFFFF;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+    }
+    .fsc-input.price-input {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--agri-green);
+      background: #F0FDF4;
+      border-color: #86EFAC;
+    }
+    .fsc-textarea {
+      width: 100%;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.55;
+      color: var(--text-main);
+      background: #FAFAFA;
+      font-family: inherit;
+      resize: vertical;
+      outline: none;
+      transition: all 180ms ease;
+    }
+    .fsc-textarea:focus {
+      border-color: var(--agri-green);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+    }
+    .fsc-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .fsc-chips-wrap {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .fsc-chip {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 150ms ease;
+    }
+    .fsc-chip:active {
+      transform: scale(0.96);
+    }
+    .fsc-chip.active {
+      background: #DCFCE7;
+      border-color: #86EFAC;
+      color: #15803D;
+      font-weight: 800;
+    }
+    /* Khối thêm danh mục mới inline */
+    .inline-add-cat-box {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #F0FDF4;
+      border: 1.5px dashed #86EFAC;
+      border-radius: 10px;
+      animation: fadeIn 200ms ease;
+    }
+    .inline-add-cat-box.open {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+
 
     /* =========================================================================
        KHỐI CHỈNH SỬA BÀI VIẾT BƯỚC 3 (POST TEXT EDITOR)
@@ -4051,94 +4210,251 @@
           </div>
         </div>
 
-        <!-- KHỐI NHẬP TAY ĐẦY ĐỦ CÁC TRƯỜNG THÔNG TIN SẢN PHẨM -->
-        <div class="wizard-edit-card">
-          <div class="wec-header">
-            <div class="wec-title">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              <span>Nhập tay các trường thông tin sản phẩm</span>
+        <!-- =========================================================================
+             HỆ THỐNG CÁC THẺ THÔNG TIN TÁCH BIỆT THOÁNG ĐÃNG CHO BÁC BA
+             ========================================================================= -->
+
+        <!-- THẺ 1: TÊN & DANH MỤC NÔNG SẢN (HỖ TRỢ CHỌN CÓ SẴN HOẶC TỰ TẠO MỚI) -->
+        <div class="form-section-card">
+          <div class="fsc-header">
+            <div class="fsc-title">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><circle cx="7" cy="7" r="1.5"/></svg>
+              <span>1. Tên & Danh mục sản phẩm</span>
             </div>
-            <span class="wec-badge">✏️ Bác nhập tay tùy ý</span>
+            <span class="fsc-badge">Bắt buộc</span>
           </div>
 
-          <!-- 1. Tên sản phẩm -->
-          <div class="wec-field-group">
-            <label class="wec-label" for="inputProdName">1. Tên sản phẩm nông sản: <span class="req">*</span></label>
-            <input type="text" id="inputProdName" class="wec-input" placeholder="Ví dụ: Chuối sấy giòn, Mật ong hoa rừng..." value="Chuối sấy giòn Đồng Cát" oninput="onProductDataChanged()">
+          <!-- Tên sản phẩm -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdName">
+              <span>Tên nông sản / Sản phẩm <span class="req">*</span></span>
+              <span class="fsc-label-sub">Tên rõ ràng để bà con tìm</span>
+            </label>
+            <input type="text" id="inputProdName" class="fsc-input" placeholder="Ví dụ: Chuối sấy giòn, Mật ong hoa rừng..." value="Chuối sấy giòn Đồng Cát" oninput="onProductDataChanged()">
           </div>
 
-          <!-- 2. Loại nông sản & Đơn vị tính -->
-          <div class="wec-grid-2col">
-            <div class="wec-field-group">
-              <label class="wec-label" for="inputProdCategory">2. Loại / Danh mục:</label>
-              <input type="text" id="inputProdCategory" class="wec-input" placeholder="Nông sản chế biến sấy..." value="Nông sản chế biến sấy" oninput="onProductDataChanged()">
+          <!-- Danh mục sản phẩm (Chọn có sẵn hoặc Tự tạo mới) -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdCategory">
+              <span>Danh mục sản phẩm</span>
+              <span class="fsc-label-sub">Chọn dưới hoặc tự tạo</span>
+            </label>
+            <input type="text" id="inputProdCategory" class="fsc-input" placeholder="Ví dụ: Nông sản chế biến & sấy khô..." value="Nông sản chế biến & sấy khô" oninput="onProductDataChanged()">
+            
+            <!-- Danh sách chip danh mục gợi ý sẵn -->
+            <div class="fsc-chips-wrap" id="categoryChipsWrap">
+              <!-- Rendered via JS -->
             </div>
-            <div class="wec-field-group">
-              <label class="wec-label" for="inputProdUnit">3. Đơn vị tính:</label>
-              <input type="text" id="inputProdUnit" class="wec-input" placeholder="Gói, Hũ, Chai, Kg..." value="Gói" oninput="onProductDataChanged()">
+
+            <!-- Nút & Khung tạo danh mục mới -->
+            <div style="margin-top: 10px;">
+              <button type="button" class="pcb-btn-custom" onclick="toggleAddCategoryBox()">
+                <span>➕ Tạo danh mục mới...</span>
+              </button>
+            </div>
+            <div class="inline-add-cat-box" id="addCategoryBox">
+              <input type="text" id="newCatInput" class="fsc-input" style="height:38px;font-size:13.5px" placeholder="Nhập tên danh mục mới của bác...">
+              <button type="button" class="btn-dock-next" style="height:38px;padding:0 14px;font-size:13px;flex-shrink:0" onclick="saveNewCategory()">
+                <span>Thêm</span>
+              </button>
+              <button type="button" class="btn-dock-back" style="height:38px;padding:0 10px;font-size:13px;flex-shrink:0" onclick="toggleAddCategoryBox(false)">
+                <span>✕</span>
+              </button>
             </div>
           </div>
 
-          <!-- 3. Giá bán & Các nút chọn nhanh -->
-          <div class="wec-field-group">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <label class="wec-label" for="inputProdPrice" style="margin-bottom:0">4. Giá bán ra (VNĐ): <span class="req">*</span></label>
-              <span style="font-size:11.5px;color:var(--text-muted)">Bấm chọn nhanh hoặc gõ tay</span>
+          <!-- Đơn vị tính -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdUnit">
+              <span>Đơn vị tính bán lẻ</span>
+            </label>
+            <input type="text" id="inputProdUnit" class="fsc-input" placeholder="Gói, Hũ, Chai, Hộp, Kg, Buồng..." value="Gói" oninput="onProductDataChanged()">
+            <div class="fsc-chips-wrap">
+              <button type="button" class="fsc-chip active" id="chipUnit_Goi" onclick="setQuickUnit('Gói')">Gói</button>
+              <button type="button" class="fsc-chip" id="chipUnit_Hu" onclick="setQuickUnit('Hũ')">Hũ</button>
+              <button type="button" class="fsc-chip" id="chipUnit_Binh" onclick="setQuickUnit('Bình')">Bình</button>
+              <button type="button" class="fsc-chip" id="chipUnit_Hop" onclick="setQuickUnit('Hộp')">Hộp</button>
+              <button type="button" class="fsc-chip" id="chipUnit_Kg" onclick="setQuickUnit('Kg')">Kg</button>
+              <button type="button" class="fsc-chip" id="chipUnit_Buong" onclick="setQuickUnit('Buồng')">Buồng</button>
             </div>
-            <input type="text" id="inputProdPrice" class="wec-input price-input" placeholder="Ví dụ: 55.000 đ" value="55.000 đ" oninput="onProductDataChanged()">
+          </div>
+        </div>
+
+        <!-- THẺ 2: NGUỒN GỐC, VÙNG TRỒNG & NƠI SẢN XUẤT -->
+        <div class="form-section-card">
+          <div class="fsc-header">
+            <div class="fsc-title">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>2. Nơi sản xuất & Nguồn gốc xuất xứ</span>
+            </div>
+            <span class="fsc-badge" style="background:#ECFDF5;color:#059669">Minh bạch OCOP</span>
+          </div>
+
+          <!-- Nơi sản xuất / Vùng trồng -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdOrigin">
+              <span>Nơi sản xuất / Vùng trồng <span class="req">*</span></span>
+              <span class="fsc-label-sub">Địa chỉ thực tế</span>
+            </label>
+            <input type="text" id="inputProdOrigin" class="fsc-input" placeholder="Ví dụ: Vườn đồi Thôn Đồng Cát, Xã Yên Bình..." value="Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang" oninput="onProductDataChanged()">
+            <div class="fsc-chips-wrap">
+              <button type="button" class="fsc-chip active" onclick="setQuickOrigin('Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Tỉnh Bắc Giang')">🏡 Vườn đồi Đồng Cát</button>
+              <button type="button" class="fsc-chip" onclick="setQuickOrigin('Bãi bồi ven sông Lục Nam, Xã Yên Bình')">🌊 Bãi bồi ven sông</button>
+              <button type="button" class="fsc-chip" onclick="setQuickOrigin('Xưởng chế biến & sấy dẻo HTX Đồng Cát')">🏭 Xưởng sấy HTX</button>
+              <button type="button" class="fsc-chip" onclick="setQuickOrigin('Rừng tự nhiên Vườn Quốc gia Ba Bể')">🌲 Rừng tự nhiên</button>
+            </div>
+          </div>
+
+          <!-- Chủ thể / Hộ sản xuất -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdProducer">
+              <span>Hộ sản xuất / Hợp tác xã</span>
+            </label>
+            <input type="text" id="inputProdProducer" class="fsc-input" placeholder="Tên hộ nông dân, HTX..." value="Hộ kinh doanh Bác Ba · Hợp tác xã Nông Nghiệp Đồng Cát" oninput="onProductDataChanged()">
+          </div>
+
+          <!-- Mã vùng trồng & Tiêu chuẩn OCOP / VietGAP -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdCert">
+              <span>Tiêu chuẩn & Mã vùng trồng</span>
+              <span class="fsc-label-sub">Chứng thực chất lượng</span>
+            </label>
+            <input type="text" id="inputProdCert" class="fsc-input" placeholder="OCOP 4 Sao, VietGAP, Hữu cơ..." value="MSVT: VN-BG-2026-DC08 · Tiêu chuẩn OCOP 4⭐" oninput="onProductDataChanged()">
+            <div class="fsc-chips-wrap">
+              <button type="button" class="fsc-chip active" onclick="setQuickCert('OCOP 4 Sao Tỉnh Bắc Giang')">⭐ OCOP 4 Sao</button>
+              <button type="button" class="fsc-chip" onclick="setQuickCert('Chuẩn VietGAP Vùng Trồng Sạch')">🌿 Chuẩn VietGAP</button>
+              <button type="button" class="fsc-chip" onclick="setQuickCert('Hữu cơ Canh tác Tự nhiên')">🍃 Canh tác Hữu cơ</button>
+              <button type="button" class="fsc-chip" onclick="setQuickCert('Có mã QR Truy xuất Nguồn gốc')">📱 Tem QR Truy xuất</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- THẺ 3: GIÁ BÁN & CHÍNH SÁCH BÁN HÀNG -->
+        <div class="form-section-card">
+          <div class="fsc-header">
+            <div class="fsc-title">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+              <span>3. Giá bán & Chính sách bán hàng</span>
+            </div>
+            <span class="fsc-badge" style="background:#FEF3C7;color:#B45309">Ưu đãi bà con</span>
+          </div>
+
+          <!-- Giá bán ra -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdPrice">
+              <span>Giá bán ra (VNĐ / Đơn vị) <span class="req">*</span></span>
+              <span class="fsc-label-sub">Bấm chọn nhanh hoặc gõ tay</span>
+            </label>
+            <input type="text" id="inputProdPrice" class="fsc-input price-input" placeholder="Ví dụ: 55.000 đ" value="55.000 đ" oninput="onProductDataChanged()">
             <div class="wec-quick-chips" id="priceChipsContainer">
-              <button type="button" class="wec-chip" onclick="setQuickPrice('45.000 đ')">45.000đ</button>
-              <button type="button" class="wec-chip" onclick="setQuickPrice('50.000 đ')">50.000đ</button>
-              <button type="button" class="wec-chip active" id="chipPrice55" onclick="setQuickPrice('55.000 đ')">55.000đ</button>
-              <button type="button" class="wec-chip" onclick="setQuickPrice('60.000 đ')">60.000đ</button>
-              <button type="button" class="wec-chip" onclick="setQuickPrice('70.000 đ')">70.000đ</button>
+              <!-- dynamic quick price chips -->
             </div>
           </div>
 
-          <!-- 4. Quy cách & Hạn sử dụng -->
-          <div class="wec-grid-2col">
-            <div class="wec-field-group">
-              <label class="wec-label" for="inputProdWeight">5. Quy cách / Khối lượng:</label>
-              <input type="text" id="inputProdWeight" class="wec-input" placeholder="Túi zip 250g, Hũ 500ml..." value="Túi zip 250g" oninput="onProductDataChanged()">
-              <div class="wec-mini-chips">
-                <button type="button" class="wec-mini-chip" onclick="setQuickWeight('Túi zip 250g')">250g</button>
-                <button type="button" class="wec-mini-chip" onclick="setQuickWeight('Túi zip 500g')">500g</button>
-                <button type="button" class="wec-mini-chip" onclick="setQuickWeight('Hộp 1 kg')">1kg</button>
-              </div>
-            </div>
-            <div class="wec-field-group">
-              <label class="wec-label" for="inputProdHsd">6. Hạn sử dụng:</label>
-              <input type="text" id="inputProdHsd" class="wec-input" placeholder="12 tháng, 6 tháng..." value="12 tháng" oninput="onProductDataChanged()">
-              <div class="wec-mini-chips">
-                <button type="button" class="wec-mini-chip" onclick="setQuickHsd('6 tháng')">6 tháng</button>
-                <button type="button" class="wec-mini-chip" onclick="setQuickHsd('12 tháng')">12 tháng</button>
-                <button type="button" class="wec-mini-chip" onclick="setQuickHsd('24 tháng')">24 tháng</button>
-              </div>
+          <!-- Số lượng sẵn có (Tồn kho) -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdStock">
+              <span>Số lượng sẵn có để bán (Tồn kho)</span>
+              <span class="fsc-label-sub">Giúp HTX gom đơn</span>
+            </label>
+            <input type="text" id="inputProdStock" class="fsc-input" placeholder="Ví dụ: 250 gói, 1.5 tấn tại vườn..." value="250 gói sẵn tại xưởng sấy HTX" oninput="onProductDataChanged()">
+            <div class="fsc-chips-wrap">
+              <button type="button" class="fsc-chip" onclick="setQuickStock('100 gói sẵn sàng')">100 gói</button>
+              <button type="button" class="fsc-chip active" onclick="setQuickStock('250 gói sẵn tại xưởng sấy HTX')">250 gói</button>
+              <button type="button" class="fsc-chip" onclick="setQuickStock('500 gói sẵn sàng')">500 gói</button>
+              <button type="button" class="fsc-chip" onclick="setQuickStock('1.5 tấn tại vườn đồi')">1.5 tấn tại vườn</button>
             </div>
           </div>
 
-          <!-- 5. Tiêu chuẩn chất lượng / Chứng nhận OCOP -->
-          <div class="wec-field-group">
-            <label class="wec-label" for="inputProdCert">7. Tiêu chuẩn / Chứng nhận OCOP:</label>
-            <input type="text" id="inputProdCert" class="wec-input" placeholder="OCOP 4 Sao, VietGAP, Hữu cơ..." value="OCOP 4 Sao Tỉnh Bắc Giang" oninput="onProductDataChanged()">
-            <div class="wec-mini-chips">
-              <button type="button" class="wec-mini-chip" onclick="setQuickCert('OCOP 4 Sao')">⭐ OCOP 4 Sao</button>
-              <button type="button" class="wec-mini-chip" onclick="setQuickCert('VietGAP Sạch')">🌿 VietGAP Sạch</button>
-              <button type="button" class="wec-mini-chip" onclick="setQuickCert('Hữu cơ Nhà Vườn')">🍃 Hữu cơ Nhà Vườn</button>
-              <button type="button" class="wec-mini-chip" onclick="setQuickCert('Mã QR Truy Xuất')">📱 Mã QR Truy Xuất</button>
+          <!-- Chính sách ưu đãi & Vận chuyển -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdPromo">
+              <span>Ưu đãi khuyến mại & Giao hàng</span>
+            </label>
+            <input type="text" id="inputProdPromo" class="fsc-input" placeholder="Ví dụ: Mua từ 5 gói miễn phí giao tận nhà trong xã..." value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
+            <div class="fsc-chips-wrap">
+              <button type="button" class="fsc-chip active" onclick="setQuickPromo('Mua từ 5 gói em miễn phí giao tận nhà trong xã')">🚚 Freeship từ 5 gói</button>
+              <button type="button" class="fsc-chip" onclick="setQuickPromo('Mua 10 tặng 1 gói ăn thử')">🎁 Mua 10 tặng 1</button>
+              <button type="button" class="fsc-chip" onclick="setQuickPromo('Giảm 10% cho khách mua trực tiếp tại vườn')">🌾 Giảm 10% tại vườn</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- THẺ 4: QUY CÁCH ĐÓNG GÓI & THỜI HẠN SỬ DỤNG -->
+        <div class="form-section-card">
+          <div class="fsc-header">
+            <div class="fsc-title">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>4. Quy cách đóng gói & Hạn sử dụng</span>
+            </div>
+            <span class="fsc-badge">Bảo quản</span>
+          </div>
+
+          <!-- Quy cách / Khối lượng -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdWeight">
+              <span>Quy cách bao bì / Trọng lượng</span>
+            </label>
+            <input type="text" id="inputProdWeight" class="fsc-input" placeholder="Túi zip 250g, Hũ 500ml..." value="Túi zip 250g" oninput="onProductDataChanged()">
+            <div class="fsc-chips-wrap">
+              <button type="button" class="fsc-chip active" onclick="setQuickWeight('Túi zip 250g')">Túi zip 250g</button>
+              <button type="button" class="fsc-chip" onclick="setQuickWeight('Túi zip 500g')">Túi zip 500g</button>
+              <button type="button" class="fsc-chip" onclick="setQuickWeight('Hũ thuỷ tinh 500ml')">Hũ thuỷ tinh 500ml</button>
+              <button type="button" class="fsc-chip" onclick="setQuickWeight('Bình sành 1 Lít')">Bình sành 1L</button>
+              <button type="button" class="fsc-chip" onclick="setQuickWeight('Thùng 20 gói')">Thùng 20 gói</button>
             </div>
           </div>
 
-          <!-- 6. Thành phần & Quy trình chế biến -->
-          <div class="wec-field-group">
-            <label class="wec-label" for="inputProdIngredients">8. Thành phần & Chế biến:</label>
-            <textarea id="inputProdIngredients" class="wec-textarea" rows="2" placeholder="Ví dụ: 100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên..." oninput="onProductDataChanged()">100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên, không tẩm đường hoá học.</textarea>
+          <div class="fsc-grid-2col">
+            <!-- Ngày sản xuất / đóng gói -->
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label" for="inputProdMfgDate">
+                <span>Ngày đóng gói (NSX)</span>
+              </label>
+              <input type="text" id="inputProdMfgDate" class="fsc-input" placeholder="12/10/2026..." value="12/10/2026 (Mới đóng gói)" oninput="onProductDataChanged()">
+            </div>
+
+            <!-- Hạn sử dụng -->
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label" for="inputProdHsd">
+                <span>Hạn sử dụng (HSD)</span>
+              </label>
+              <input type="text" id="inputProdHsd" class="fsc-input" placeholder="12 tháng, 6 tháng..." value="12 tháng" oninput="onProductDataChanged()">
+            </div>
+          </div>
+          <div class="fsc-chips-wrap" style="margin-top:10px">
+            <button type="button" class="fsc-chip" onclick="setQuickHsd('6 tháng')">HSD 6 tháng</button>
+            <button type="button" class="fsc-chip active" onclick="setQuickHsd('12 tháng')">HSD 12 tháng</button>
+            <button type="button" class="fsc-chip" onclick="setQuickHsd('24 tháng')">HSD 24 tháng</button>
+            <button type="button" class="fsc-chip" onclick="setQuickHsd('Tươi dùng trong 7-10 ngày')">Ăn tươi 7 ngày</button>
+          </div>
+        </div>
+
+        <!-- THẺ 5: THÀNH PHẦN, QUY TRÌNH & CAM KẾT SẠCH -->
+        <div class="form-section-card">
+          <div class="fsc-header">
+            <div class="fsc-title">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>5. Thành phần & Cam kết chất lượng</span>
+            </div>
+            <span class="fsc-badge" style="background:#ECFDF5;color:#059669">100% Sạch</span>
           </div>
 
-          <!-- 7. Chính sách ưu đãi & Giao hàng -->
-          <div class="wec-field-group">
-            <label class="wec-label" for="inputProdPromo">9. Ưu đãi / Giao hàng:</label>
-            <input type="text" id="inputProdPromo" class="wec-input" placeholder="Ví dụ: Mua từ 5 gói miễn phí giao tận nhà trong xã..." value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
+          <!-- Thành phần & Chế biến -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdIngredients">
+              <span>Thành phần & Cách chế biến</span>
+              <span class="fsc-label-sub">Tự nhiên không hóa chất</span>
+            </label>
+            <textarea id="inputProdIngredients" class="fsc-textarea" rows="2" placeholder="Ví dụ: 100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên..." oninput="onProductDataChanged()">100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên, không tẩm đường hoá học.</textarea>
+          </div>
+
+          <!-- Cam kết nhà vườn -->
+          <div class="fsc-field">
+            <label class="fsc-label" for="inputProdCommitment">
+              <span>Cam kết của Bác Ba & HTX</span>
+            </label>
+            <input type="text" id="inputProdCommitment" class="fsc-input" placeholder="Ví dụ: Chuối vườn nhà tự trồng, không chất bảo quản..." value="Chuối vườn nhà tự trồng, không chất bảo quản, bao đổi trả nếu không ưng ý!" oninput="onProductDataChanged()">
           </div>
         </div>
       </section>
@@ -5343,17 +5659,34 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       }
     ];
 
-    // DỮ LIỆU ĐANG SOẠN THẢO (DRAFT)
+    // DANH SÁCH DANH MỤC NÔNG SẢN (HỖ TRỢ THÊM MỚI TÙY BIẾN)
+    const CATEGORY_LIST = [
+      '🌾 Nông sản chế biến & sấy khô',
+      '🍯 Mật ong & Dược liệu rừng',
+      '🍵 Trà, Chè & Thảo mộc',
+      '🍶 Rượu truyền thống & Men lá',
+      '🥫 Bột dinh dưỡng & Tinh bột',
+      '🍌 Trái cây & Nông sản tươi',
+      '🥬 Rau củ quả sạch hữu cơ',
+      '🫘 Hạt ngũ cốc dinh dưỡng'
+    ];
+
+    // DỮ LIỆU ĐANG SOẠN THẢO (DRAFT) ĐẦY ĐỦ CÁC TRƯỜNG THỰC TẾ
     const draftProductData = {
       id: "banana_crisp",
       name: "Chuối sấy giòn Đồng Cát",
-      category: "Nông sản chế biến sấy",
+      category: "🌾 Nông sản chế biến & sấy khô",
       price: "55.000 đ",
       weight: "Túi zip 250g",
       unit: "Gói",
+      origin: "Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang",
+      producer: "Hộ kinh doanh Bác Ba · Hợp tác xã Nông Nghiệp Đồng Cát",
+      cert: "MSVT: VN-BG-2026-DC08 · Tiêu chuẩn OCOP 4⭐",
+      stock: "250 gói sẵn tại xưởng sấy HTX",
+      mfgDate: "12/10/2026 (Mới đóng gói)",
       hsd: "12 tháng",
-      cert: "OCOP 4 Sao Tỉnh Bắc Giang",
       ingredients: "100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên, không tẩm đường hoá học.",
+      commitment: "Chuối vườn nhà tự trồng, không chất bảo quản, bao đổi trả nếu không ưng ý!",
       promo: "Mua từ 5 gói em miễn phí giao tận nhà trong xã",
       postPreset: "tet",
       imgHero: "banana_front.jpg",
@@ -5363,6 +5696,104 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         { src: 'banana_back.jpg', caption: 'ẢNH 3/3: MẶT SAU HSD', label: 'Mặt sau' }
       ]
     };
+
+    // Render danh sách các chip danh mục
+    function renderCategoryChips() {
+      const container = document.getElementById('categoryChipsWrap');
+      if (!container) return;
+      container.innerHTML = '';
+      const currentCat = draftProductData.category;
+      CATEGORY_LIST.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'fsc-chip' + (currentCat === cat || currentCat.includes(cat.slice(2, 8)) ? ' active' : '');
+        btn.textContent = cat;
+        btn.onclick = () => selectCategoryItem(cat);
+        container.appendChild(btn);
+      });
+    }
+
+    // Chọn một danh mục có sẵn
+    function selectCategoryItem(catName) {
+      draftProductData.category = catName;
+      const input = document.getElementById('inputProdCategory');
+      if (input) input.value = catName;
+      renderCategoryChips();
+      onProductDataChanged();
+      triggerToast('Đã chọn danh mục: ' + catName);
+    }
+
+    // Bật/tắt ô tạo danh mục mới
+    function toggleAddCategoryBox(forceState) {
+      const box = document.getElementById('addCategoryBox');
+      const input = document.getElementById('newCatInput');
+      if (!box) return;
+      if (forceState !== undefined) {
+        if (forceState) box.classList.add('open');
+        else box.classList.remove('open');
+      } else {
+        box.classList.toggle('open');
+      }
+      if (box.classList.contains('open') && input) {
+        input.focus();
+      }
+    }
+
+    // Lưu danh mục mới do người dùng tạo
+    function saveNewCategory() {
+      const input = document.getElementById('newCatInput');
+      if (!input || !input.value.trim()) {
+        triggerToast('Bác vui lòng nhập tên danh mục');
+        return;
+      }
+      let newName = input.value.trim();
+      if (!newName.startsWith('🏷️') && !newName.startsWith('🌾') && !newName.startsWith('✨')) {
+        newName = '🏷️ ' + newName;
+      }
+      if (!CATEGORY_LIST.includes(newName)) {
+        CATEGORY_LIST.unshift(newName);
+      }
+      input.value = '';
+      toggleAddCategoryBox(false);
+      selectCategoryItem(newName);
+      triggerToast('Đã tạo danh mục mới: ' + newName);
+    }
+
+    // Các hàm chọn nhanh thuộc tính nông sản
+    function setQuickOrigin(originVal) {
+      const el = document.getElementById('inputProdOrigin');
+      if (el) el.value = originVal;
+      onProductDataChanged();
+      triggerToast('Nơi sản xuất: ' + originVal.split(',')[0]);
+    }
+
+    function setQuickUnit(unitVal) {
+      const el = document.getElementById('inputProdUnit');
+      if (el) el.value = unitVal;
+      document.querySelectorAll('.form-section-card .fsc-chip').forEach(b => {
+        if (b.id && b.id.startsWith('chipUnit_')) {
+          b.classList.remove('active');
+        }
+      });
+      const activeBtn = document.getElementById('chipUnit_' + unitVal);
+      if (activeBtn) activeBtn.classList.add('active');
+      onProductDataChanged();
+      triggerToast('Đơn vị: ' + unitVal);
+    }
+
+    function setQuickStock(stockVal) {
+      const el = document.getElementById('inputProdStock');
+      if (el) el.value = stockVal;
+      onProductDataChanged();
+      triggerToast('Tồn kho: ' + stockVal);
+    }
+
+    function setQuickPromo(promoVal) {
+      const el = document.getElementById('inputProdPromo');
+      if (el) el.value = promoVal;
+      onProductDataChanged();
+      triggerToast('Ưu đãi: ' + promoVal);
+    }
 
     // Chọn mẫu nông sản từ danh mục mở rộng
     function selectCatalogProduct(prodId) {
@@ -5408,6 +5839,20 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       if (inputCert) inputCert.value = prod.cert;
       if (inputIngr) inputIngr.value = prod.ingredients;
       if (inputPromo) inputPromo.value = prod.promo;
+
+      const inputOrigin = document.getElementById('inputProdOrigin');
+      const inputProducer = document.getElementById('inputProdProducer');
+      const inputStock = document.getElementById('inputProdStock');
+      const inputMfgDate = document.getElementById('inputProdMfgDate');
+      const inputCommitment = document.getElementById('inputProdCommitment');
+
+      if (inputOrigin) inputOrigin.value = "Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang";
+      if (inputProducer) inputProducer.value = "Hộ kinh doanh Bác Ba · Hợp tác xã Nông Nghiệp Đồng Cát";
+      if (inputStock) inputStock.value = "250 gói sẵn tại xưởng sấy HTX";
+      if (inputMfgDate) inputMfgDate.value = "12/10/2026 (Mới đóng gói)";
+      if (inputCommitment) inputCommitment.value = "Nông sản vườn nhà tự trồng, không chất bảo quản, bao đổi trả nếu không ưng ý!";
+
+      renderCategoryChips();
 
       // Cập nhật dãy nút chọn nhanh giá tương ứng
       renderQuickPriceChips(prod.quickPrices, prod.price);
@@ -5552,6 +5997,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } else if (stepNum === 2) {
         document.getElementById('panel-step2').classList.add('active');
         dockStep2.classList.add('dock-visible');
+        renderCategoryChips();
       } else if (stepNum === 3) {
         document.getElementById('panel-step3').classList.add('active');
         dockStep3.classList.add('dock-visible');
@@ -5597,28 +6043,38 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       const category = document.getElementById('inputProdCategory') ? document.getElementById('inputProdCategory').value : draftProductData.category;
       const unit = document.getElementById('inputProdUnit') ? document.getElementById('inputProdUnit').value : draftProductData.unit;
       const price = document.getElementById('inputProdPrice') ? document.getElementById('inputProdPrice').value : draftProductData.price;
-      const weight = document.getElementById('inputProdWeight') ? document.getElementById('inputProdWeight').value : draftProductData.weight;
-      const hsd = document.getElementById('inputProdHsd') ? document.getElementById('inputProdHsd').value : draftProductData.hsd;
+      const origin = document.getElementById('inputProdOrigin') ? document.getElementById('inputProdOrigin').value : draftProductData.origin;
+      const producer = document.getElementById('inputProdProducer') ? document.getElementById('inputProdProducer').value : draftProductData.producer;
       const cert = document.getElementById('inputProdCert') ? document.getElementById('inputProdCert').value : draftProductData.cert;
-      const ingredients = document.getElementById('inputProdIngredients') ? document.getElementById('inputProdIngredients').value : draftProductData.ingredients;
+      const stock = document.getElementById('inputProdStock') ? document.getElementById('inputProdStock').value : draftProductData.stock;
       const promo = document.getElementById('inputProdPromo') ? document.getElementById('inputProdPromo').value : draftProductData.promo;
+      const weight = document.getElementById('inputProdWeight') ? document.getElementById('inputProdWeight').value : draftProductData.weight;
+      const mfgDate = document.getElementById('inputProdMfgDate') ? document.getElementById('inputProdMfgDate').value : draftProductData.mfgDate;
+      const hsd = document.getElementById('inputProdHsd') ? document.getElementById('inputProdHsd').value : draftProductData.hsd;
+      const ingredients = document.getElementById('inputProdIngredients') ? document.getElementById('inputProdIngredients').value : draftProductData.ingredients;
+      const commitment = document.getElementById('inputProdCommitment') ? document.getElementById('inputProdCommitment').value : draftProductData.commitment;
 
       draftProductData.name = name || "Sản phẩm nông sản";
       draftProductData.category = category;
       draftProductData.unit = unit;
       draftProductData.price = price;
-      draftProductData.weight = weight;
-      draftProductData.hsd = hsd;
+      draftProductData.origin = origin;
+      draftProductData.producer = producer;
       draftProductData.cert = cert;
-      draftProductData.ingredients = ingredients;
+      draftProductData.stock = stock;
       draftProductData.promo = promo;
+      draftProductData.weight = weight;
+      draftProductData.mfgDate = mfgDate;
+      draftProductData.hsd = hsd;
+      draftProductData.ingredients = ingredients;
+      draftProductData.commitment = commitment;
 
-      // Cập nhật tag ở bước 2
+      // Cập nhật tag tóm tắt ở bước 2
       const tagC = document.getElementById('tagCat');
       const tagW = document.getElementById('tagWeight');
       const tagP = document.getElementById('tagPrice');
       const tagH = document.getElementById('tagHsd');
-      if (tagC) tagC.textContent = category.replace('Nông sản ', '');
+      if (tagC) tagC.textContent = category.replace('🌾 ', '').replace('🍯 ', '').replace('🍵 ', '').replace('🍶 ', '').replace('🥫 ', '').replace('🍌 ', '').replace('🥬 ', '').replace('🫘 ', '').replace('🏷️ ', '');
       if (tagW) tagW.textContent = weight.replace('Túi zip ', '');
       if (tagP) tagP.textContent = price;
       if (tagH) tagH.textContent = hsd;
@@ -5627,7 +6083,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       generatePostContent();
     }
 
-    // Tạo nội dung bài viết tự động theo dữ liệu sản phẩm nhập tay
+    // Tạo nội dung bài viết tự động theo dữ liệu sản phẩm nhập tay và nguồn gốc
     function generatePostContent(preset = null) {
       if (preset) draftProductData.postPreset = preset;
       const p = draftProductData;
@@ -5637,11 +6093,11 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       let text = "";
 
       if (p.postPreset === 'tet') {
-        text = `🎋 ${pUpper} - VỤ TẾT VỪA RA LÒ\n\nChào các bác, mẻ ${pLower} vụ Tết của nhà em vừa ra lò thơm nức mũi!\n- Danh mục: ${p.category} (${p.cert}).\n- Quy cách đóng gói: ${p.weight} tiện lợi bảo quản.\n- Thành phần: ${p.ingredients}\n- Hạn sử dụng: ${p.hsd}.\n- Giá bà con: ${p.price}/${p.unit} (${p.promo}).\n\nBác nào lấy biếu Tết hoặc thưởng thức nhắn em mang qua tận ngõ liền nhé!`;
+        text = `🎋 ${pUpper} - VỤ TẾT VỪA RA LÒ\n\nChào các bác, mẻ ${pLower} vụ Tết của nhà em vừa ra lò thơm nức mũi!\n📍 Nơi sản xuất: ${p.origin}.\n🏡 Hộ sản xuất: ${p.producer}.\n🛡️ Tiêu chuẩn: ${p.cert}.\n📦 Quy cách: ${p.weight} (${p.unit} chuẩn đóng gói bảo quản).\n📅 Ngày đóng gói: ${p.mfgDate} · HSD: ${p.hsd}.\n🌾 Thành phần: ${p.ingredients}\n💰 Giá bà con: ${p.price}/${p.unit} (${p.promo}).\n📦 Tình trạng: ${p.stock}.\n\n👉 ${p.commitment}\nBác nào lấy biếu Tết hoặc thưởng thức nhắn em mang qua tận ngõ liền nhé!`;
       } else if (p.postPreset === 'si') {
-        text = `📦 CUNG CẤP SỈ & LẺ: ${pUpper} (${p.cert})\n\nHợp tác xã Đồng Cát xuất kho số lượng lớn ${pLower}:\n- Tiêu chuẩn chất lượng: ${p.cert}.\n- Quy cách: ${p.weight} (${p.unit} chuẩn xuất xưởng).\n- Thành phần: ${p.ingredients}\n- Hạn dùng: ${p.hsd}.\n- Giá bán lẻ: ${p.price}/${p.unit}.\n- Chính sách đại lý: Giảm giá sỉ cho đơn số lượng lớn, bao vận chuyển nội tỉnh (${p.promo}).\n\nQuý đại lý và cô bác liên hệ Bác Ba để nhận mẫu thử miễn phí!`;
+        text = `📦 CUNG CẤP SỈ & LẺ: ${pUpper}\n\n${p.producer} xuất kho số lượng lớn ${pLower}:\n📍 Vùng trồng: ${p.origin}.\n🛡️ Chứng nhận & Tiêu chuẩn: ${p.cert}.\n📦 Quy cách: ${p.weight} / ${p.unit} chuẩn xuất xưởng.\n📅 NSX: ${p.mfgDate} · HSD: ${p.hsd}.\n🌾 Thành phần: ${p.ingredients}\n💰 Giá bán lẻ: ${p.price}/${p.unit}. Tồn kho: ${p.stock}.\n🚚 Chính sách đại lý: ${p.promo}.\n\n👉 ${p.commitment}\nQuý đại lý và cô bác liên hệ Bác Ba để nhận mẫu thử miễn phí!`;
       } else {
-        text = `🌿 NÔNG SẢN NHÀ VƯỜN SẠCH: ${pUpper}\n\n${pName} vườn nhà em trồng tự nhiên đạt chuẩn ${p.cert}, nay thu hoạch phục vụ bà con:\n- Quy cách: ${p.weight}.\n- Cam kết: ${p.ingredients}\n- Giá yêu thương: ${p.price}/${p.unit}.\n- Hạn dùng: ${p.hsd}.\n- Giao hàng: ${p.promo}.\n\nBà con để lại tin nhắn hoặc gọi em Bác Ba đem qua tận nơi nha!`;
+        text = `🌿 NÔNG SẢN NHÀ VƯỜN SẠCH: ${pUpper}\n\n${pName} vườn nhà em trồng tự nhiên tại ${p.origin}:\n🏡 Người sản xuất: ${p.producer}.\n🛡️ Chất lượng: ${p.cert}.\n📦 Đóng gói: ${p.weight} / ${p.unit}.\n🌾 Cam kết: ${p.ingredients}\n💰 Giá yêu thương: ${p.price}/${p.unit} (${p.promo}).\n📅 Mới đóng gói: ${p.mfgDate} · Dùng tốt trong ${p.hsd}.\n\n👉 ${p.commitment}\nBà con để lại tin nhắn hoặc gọi em Bác Ba đem qua tận ngõ nha!`;
       }
 
       const textarea = document.getElementById('finalPostTextarea');

@@ -410,6 +410,37 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 32: Tách Biệt Thẻ Thông Tin Thoáng Đãng & Quản Lý Danh Mục Nông Sản Tùy Biến + Nơi Sản Xuất
+- **Yêu cầu 67**: "giờ xét theo trường hợp user có thể tạo danh mục sản phẩm này hoặc mình đưa ra cho user các danh mục, rồi nhập nơi sản xuất, ... tư duy ra nhé, với cả làm trường nhập thông tin chia từng cái ra đang sát nhau quá".
+  - *Giải pháp*:
+    - **1. Khắc phục triệt để vấn đề các trường nhập liệu bị díu sát nhau**:
+      - Chia toàn bộ form nhập liệu ở Bước 2 thành **5 nhóm thẻ độc lập (`form-section-card`)**, mỗi thẻ có tiêu đề riêng, icon minh họa, badge phân loại và khoảng cách thoáng đãng (`margin-bottom: 18px`, `padding: 18px 16px`, khoảng cách giữa các trường `16px`).
+      - Chiều cao các ô nhập liệu nâng lên chuẩn `44px`, bo góc mềm mại 10px, hiệu ứng focus viền xanh lá nổi bật kèm bóng đổ nhẹ (`rgba(22, 163, 74, 0.15)`), tạo sự dễ chịu tuyệt đối cho người lớn tuổi.
+    - **2. Hệ thống Danh mục nông sản kép (Chọn có sẵn & Tự tạo danh mục mới)**:
+      - **Thư viện danh mục gợi ý chuẩn nông nghiệp**:
+        1. `🌾 Nông sản chế biến & sấy khô`
+        2. `🍯 Mật ong & Dược liệu rừng`
+        3. `🍵 Trà, Chè & Thảo mộc`
+        4. `🍶 Rượu truyền thống & Men lá`
+        5. `🥫 Bột dinh dưỡng & Tinh bột`
+        6. `🍌 Trái cây & Nông sản tươi`
+        7. `🥬 Rau củ quả sạch hữu cơ`
+        8. `🫘 Hạt ngũ cốc dinh dưỡng`
+      - **Tính năng tự tạo danh mục mới (`inline-add-cat-box`)**:
+        - Bác Ba có thể bấm `[➕ Tạo danh mục mới...]` để mở ô nhập tay nhanh ngay tại chỗ.
+        - Sau khi nhập và bấm `[Thêm]`, danh mục mới sẽ tự động được lưu vào danh sách, gắn chip chọn active và gán trực tiếp vào dữ liệu sản phẩm.
+    - **3. Bổ sung trường Nơi sản xuất, Vùng trồng & Minh bạch nguồn gốc OCOP**:
+      - 📍 **Nơi sản xuất / Vùng trồng**: Cho phép nhập địa chỉ chi tiết kèm 4 chip chọn nhanh (`🏡 Vườn đồi Đồng Cát`, `🌊 Bãi bồi ven sông Lục Nam`, `🏭 Xưởng sấy HTX`, `🌲 Rừng tự nhiên Ba Bể`).
+      - 👨‍🌾 **Hộ sản xuất / Hợp tác xã**: Ghi nhận hộ nông dân liên kết và hợp tác xã bảo trợ.
+      - 🛡️ **Mã số vùng trồng & Tiêu chuẩn OCOP / VietGAP**: Minh bạch mã vùng trồng truy xuất QR.
+      - 📅 **Ngày đóng gói (NSX) & HSD**: Ngày đóng gói thực tế để khách yên tâm nông sản mới ra lò.
+      - 📦 **Tồn kho sẵn bán**: Quản lý lượng hàng sẵn sàng giao (`100 gói`, `250 gói`, `1.5 tấn tại vườn`).
+      - 🌿 **Cam kết nhà vườn**: Lời hứa chất lượng của bác Ba giúp gia tăng độ tin cậy khi đăng lên Zalo.
+    - **4. Tự động đồng bộ toàn diện vào nội dung bài đăng AI (Bước 3) & Zalo**:
+      - Bài viết tự động kết hợp thông minh: Tên sản phẩm, Nơi sản xuất, Hộ sản xuất, Mã vùng trồng, Tiêu chuẩn chất lượng, Ngày đóng gói, Giá bán, Tồn kho và Cam kết của nhà vườn.
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

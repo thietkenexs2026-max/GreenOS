@@ -4215,7 +4215,7 @@
           <div class="fsc-field">
             <label class="fsc-label" for="selectCategoryDropdown">
               <span>Danh mục sản phẩm</span>
-              <span class="fsc-label-sub">Chọn danh mục</span>
+              <span class="fsc-label-sub">Chọn từ danh mục</span>
             </label>
             <select id="selectCategoryDropdown" class="fsc-select" onchange="onCategoryDropdownChange(this.value)">
               <option value="🌾 Nông sản chế biến & sấy khô">🌾 Nông sản chế biến & sấy khô</option>
@@ -4228,16 +4228,12 @@
               <option value="🫘 Hạt ngũ cốc dinh dưỡng">🫘 Hạt ngũ cốc dinh dưỡng</option>
               <option value="__NEW__">➕ Tạo danh mục mới của bác...</option>
             </select>
-            <input type="text" id="inputProdCategory" class="fsc-input" style="margin-top:8px" placeholder="Tên danh mục..." value="🌾 Nông sản chế biến & sấy khô" oninput="onProductDataChanged()">
-            
-            <div class="inline-add-cat-box" id="addCategoryBox">
-              <input type="text" id="newCatInput" class="fsc-input" style="height:38px;font-size:13.5px" placeholder="Nhập tên danh mục mới của bác...">
-              <button type="button" class="btn-dock-next" style="height:38px;padding:0 14px;font-size:13px;flex-shrink:0" onclick="saveNewCategory()">
-                <span>Thêm</span>
-              </button>
-              <button type="button" class="btn-dock-back" style="height:38px;padding:0 10px;font-size:13px;flex-shrink:0" onclick="toggleAddCategoryBox(false)">
-                <span>✕</span>
-              </button>
+            <div id="wrapCustomCategory" style="display:none;margin-top:8px">
+              <div style="font-size:12px;font-weight:700;color:var(--agri-green-dark);margin-bottom:4px">✍️ Nhập tên danh mục mới của bác:</div>
+              <div style="display:flex;gap:6px">
+                <input type="text" id="inputProdCategory" class="fsc-input" placeholder="Ví dụ: Đặc sản mùa vàng, Trái cây sấy dẻo..." value="🌾 Nông sản chế biến & sấy khô" oninput="onProductDataChanged()">
+                <button type="button" class="btn-dock-next" style="height:44px;padding:0 14px;font-size:13px;flex-shrink:0" onclick="saveNewCategory()">Lưu</button>
+              </div>
             </div>
           </div>
 
@@ -4245,7 +4241,7 @@
           <div class="fsc-field">
             <label class="fsc-label" for="selectUnitDropdown">
               <span>Đơn vị tính bán lẻ</span>
-              <span class="fsc-label-sub">Chọn hoặc gõ</span>
+              <span class="fsc-label-sub">Chọn đơn vị</span>
             </label>
             <select id="selectUnitDropdown" class="fsc-select" onchange="onUnitDropdownChange(this.value)">
               <option value="Gói">Gói (Túi zip / Bịch)</option>
@@ -4259,7 +4255,10 @@
               <option value="Thùng">Thùng (Xuất bán sỉ)</option>
               <option value="__CUSTOM__">Đơn vị khác (Tự gõ tay)...</option>
             </select>
-            <input type="text" id="inputProdUnit" class="fsc-input" style="margin-top:8px" placeholder="Gói, Hũ, Chai, Hộp, Kg..." value="Gói" oninput="onProductDataChanged()">
+            <div id="wrapCustomUnit" style="display:none;margin-top:8px">
+              <div style="font-size:12px;font-weight:700;color:var(--agri-green-dark);margin-bottom:4px">✍️ Nhập tay đơn vị tính khác:</div>
+              <input type="text" id="inputProdUnit" class="fsc-input" placeholder="Gói, Hũ, Chai, Hộp, Kg..." value="Gói" oninput="onProductDataChanged()">
+            </div>
           </div>
         </div>
 
@@ -4277,7 +4276,7 @@
           <div class="fsc-field">
             <label class="fsc-label" for="selectOriginDropdown">
               <span>Nơi sản xuất / Vùng trồng <span class="req">*</span></span>
-              <span class="fsc-label-sub">Chọn địa chỉ</span>
+              <span class="fsc-label-sub">Chọn vùng trồng</span>
             </label>
             <select id="selectOriginDropdown" class="fsc-select" onchange="onOriginDropdownChange(this.value)">
               <option value="Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang">🏡 Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Bắc Giang</option>
@@ -4286,7 +4285,10 @@
               <option value="Rừng tự nhiên Vườn Quốc gia Ba Bể, Bắc Kạn">🌲 Rừng tự nhiên Vườn Quốc gia Ba Bể</option>
               <option value="__CUSTOM__">📍 Địa chỉ khác (Tự gõ tay bên dưới)...</option>
             </select>
-            <input type="text" id="inputProdOrigin" class="fsc-input" style="margin-top:8px" placeholder="Địa chỉ nơi sản xuất..." value="Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang" oninput="onProductDataChanged()">
+            <div id="wrapCustomOrigin" style="display:none;margin-top:8px">
+              <div style="font-size:12px;font-weight:700;color:var(--agri-green-dark);margin-bottom:4px">✍️ Nhập tay địa chỉ vùng trồng / nơi sản xuất:</div>
+              <input type="text" id="inputProdOrigin" class="fsc-input" placeholder="Địa chỉ nơi sản xuất..." value="Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang" oninput="onProductDataChanged()">
+            </div>
           </div>
 
           <!-- Chủ thể / Hộ sản xuất -->
@@ -4311,37 +4313,46 @@
               <option value="Tiêu chuẩn An toàn Vệ sinh Thực phẩm Cấp Tỉnh">🛡️ Chuẩn An toàn Vệ sinh Thực phẩm</option>
               <option value="__CUSTOM__">Tiêu chuẩn khác (Tự gõ tay)...</option>
             </select>
-            <input type="text" id="inputProdCert" class="fsc-input" style="margin-top:8px" placeholder="OCOP, VietGAP, Hữu cơ..." value="MSVT: VN-BG-2026-DC08 · Tiêu chuẩn OCOP 4⭐" oninput="onProductDataChanged()">
+            <div id="wrapCustomCert" style="display:none;margin-top:8px">
+              <div style="font-size:12px;font-weight:700;color:var(--agri-green-dark);margin-bottom:4px">✍️ Nhập tay tiêu chuẩn / mã vùng trồng khác:</div>
+              <input type="text" id="inputProdCert" class="fsc-input" placeholder="OCOP, VietGAP, Hữu cơ..." value="MSVT: VN-BG-2026-DC08 · Tiêu chuẩn OCOP 4⭐" oninput="onProductDataChanged()">
+            </div>
           </div>
         </div>
 
-        <!-- THẺ 3: GIÁ BÁN & CHÍNH SÁCH BÁN HÀNG (DROPDOWN) -->
+        <!-- THẺ 3: GIÁ BÁN, SỐ LƯỢNG KHO & CHÍNH SÁCH ƯU ĐÃI (DROPDOWN) -->
         <div class="form-section-card">
           <div class="fsc-header">
             <div class="fsc-title">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
-              <span>3. Giá bán & Chính sách bán hàng</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>3. Giá bán, Tồn kho & Giao hàng</span>
             </div>
-            <span class="fsc-badge" style="background:#FEF3C7;color:#B45309">Ưu đãi bà con</span>
+            <span class="fsc-badge">Bán buôn & Lẻ</span>
           </div>
 
-          <!-- Giá bán ra -->
+          <!-- Giá bán lẻ -->
           <div class="fsc-field">
             <label class="fsc-label" for="inputProdPrice">
-              <span>Giá bán ra (VNĐ / Đơn vị) <span class="req">*</span></span>
-              <span class="fsc-label-sub">Bấm chọn nhanh hoặc gõ tay</span>
+              <span>Giá bán lẻ <span class="req">*</span></span>
+              <span class="fsc-label-sub">Giá bán cho 1 đơn vị</span>
             </label>
-            <input type="text" id="inputProdPrice" class="fsc-input price-input" placeholder="Ví dụ: 55.000 đ" value="55.000 đ" oninput="onProductDataChanged()">
-            <div class="wec-quick-chips" id="priceChipsContainer">
-              <!-- dynamic quick price chips -->
+            <input type="text" id="inputProdPrice" class="fsc-input price-highlight" placeholder="55.000 đ" value="55.000 đ" oninput="onProductDataChanged()">
+            
+            <!-- Nút chọn nhanh giá gợi ý -->
+            <div class="wec-quick-chips" id="priceChipsContainer" style="margin-top:8px">
+              <button type="button" class="wec-chip active" onclick="setQuickPrice('55.000 đ')">55k</button>
+              <button type="button" class="wec-chip" onclick="setQuickPrice('60.000 đ')">60k</button>
+              <button type="button" class="wec-chip" onclick="setQuickPrice('80.000 đ')">80k</button>
+              <button type="button" class="wec-chip" onclick="setQuickPrice('100.000 đ')">100k</button>
+              <button type="button" class="wec-chip" onclick="setQuickPrice('120.000 đ')">120k</button>
             </div>
           </div>
 
-          <!-- Số lượng sẵn có - Tồn kho (Dropdown) -->
+          <!-- Tồn kho (Dropdown) -->
           <div class="fsc-field">
             <label class="fsc-label" for="selectStockDropdown">
-              <span>Số lượng sẵn có để bán (Tồn kho)</span>
-              <span class="fsc-label-sub">Chọn lượng hàng</span>
+              <span>Số lượng sẵn có tại vườn / kho</span>
+              <span class="fsc-label-sub">Chọn mức sẵn hàng</span>
             </label>
             <select id="selectStockDropdown" class="fsc-select" onchange="onStockDropdownChange(this.value)">
               <option value="250 gói sẵn tại xưởng sấy HTX">250 gói sẵn tại xưởng sấy HTX</option>
@@ -4351,7 +4362,10 @@
               <option value="50 hũ có sẵn trong kho">50 hũ có sẵn trong kho</option>
               <option value="__CUSTOM__">Số lượng khác (Tự gõ tay)...</option>
             </select>
-            <input type="text" id="inputProdStock" class="fsc-input" style="margin-top:8px" placeholder="Ví dụ: 250 gói sẵn tại kho..." value="250 gói sẵn tại xưởng sấy HTX" oninput="onProductDataChanged()">
+            <div id="wrapCustomStock" style="display:none;margin-top:8px">
+              <div style="font-size:12px;font-weight:700;color:var(--agri-green-dark);margin-bottom:4px">✍️ Nhập tay số lượng sẵn có trong kho:</div>
+              <input type="text" id="inputProdStock" class="fsc-input" placeholder="Ví dụ: 250 gói sẵn tại kho..." value="250 gói sẵn tại xưởng sấy HTX" oninput="onProductDataChanged()">
+            </div>
           </div>
 
           <!-- Chính sách ưu đãi & Vận chuyển (Dropdown) -->
@@ -4367,7 +4381,10 @@
               <option value="Hỗ trợ 50% phí ship toàn quốc cho đơn từ 500k">📦 Hỗ trợ 50% phí ship đơn từ 500k</option>
               <option value="__CUSTOM__">Chính sách khác (Tự gõ tay)...</option>
             </select>
-            <input type="text" id="inputProdPromo" class="fsc-input" style="margin-top:8px" placeholder="Ưu đãi freeship, quà tặng..." value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
+            <div id="wrapCustomPromo" style="display:none;margin-top:8px">
+              <div style="font-size:12px;font-weight:700;color:var(--agri-green-dark);margin-bottom:4px">✍️ Nhập tay chính sách ưu đãi & giao hàng:</div>
+              <input type="text" id="inputProdPromo" class="fsc-input" placeholder="Ưu đãi freeship, quà tặng..." value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
+            </div>
           </div>
         </div>
 
@@ -4397,7 +4414,10 @@
               <option value="Thùng 20 gói">Thùng 20 gói xuất đại lý</option>
               <option value="__CUSTOM__">Quy cách khác (Tự gõ tay)...</option>
             </select>
-            <input type="text" id="inputProdWeight" class="fsc-input" style="margin-top:8px" placeholder="Túi zip 250g, Hũ 500ml..." value="Túi zip 250g" oninput="onProductDataChanged()">
+            <div id="wrapCustomWeight" style="display:none;margin-top:8px">
+              <div style="font-size:12px;font-weight:700;color:var(--agri-green-dark);margin-bottom:4px">✍️ Nhập tay quy cách đóng gói khác:</div>
+              <input type="text" id="inputProdWeight" class="fsc-input" placeholder="Túi zip 250g, Hũ 500ml..." value="Túi zip 250g" oninput="onProductDataChanged()">
+            </div>
           </div>
 
           <div class="fsc-grid-2col">
@@ -4424,7 +4444,10 @@
                 <option value="Tươi ngon dùng trong 7-10 ngày">Tươi ngon dùng trong 7-10 ngày</option>
                 <option value="__CUSTOM__">Thời hạn khác (Tự gõ tay)...</option>
               </select>
-              <input type="text" id="inputProdHsd" class="fsc-input" style="margin-top:8px" placeholder="12 tháng, 6 tháng..." value="12 tháng" oninput="onProductDataChanged()">
+              <div id="wrapCustomHsd" style="display:none;margin-top:8px">
+                <div style="font-size:12px;font-weight:700;color:var(--agri-green-dark);margin-bottom:4px">✍️ Nhập tay hạn sử dụng khác:</div>
+                <input type="text" id="inputProdHsd" class="fsc-input" placeholder="12 tháng, 6 tháng..." value="12 tháng" oninput="onProductDataChanged()">
+              </div>
             </div>
           </div>
         </div>
@@ -5851,9 +5874,23 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       if (inputMfgDate) inputMfgDate.value = "12/10/2026 (Mới đóng gói)";
       if (inputCommitment) inputCommitment.value = "Nông sản vườn nhà tự trồng, không chất bảo quản, bao đổi trả nếu không ưng ý!";
 
-      // Đồng bộ giá trị vào các dropdown
+      // Đồng bộ giá trị vào các dropdown và ẨN tất cả các ô nhập tùy biến
+      const wrapsToHide = ['wrapCustomCategory', 'wrapCustomUnit', 'wrapCustomOrigin', 'wrapCustomCert', 'wrapCustomStock', 'wrapCustomPromo', 'wrapCustomWeight', 'wrapCustomHsd'];
+      wrapsToHide.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
       const dCatalog = document.getElementById('selectCatalogDropdown');
       if (dCatalog) dCatalog.value = prod.id;
+      const dCat = document.getElementById('selectCategoryDropdown');
+      if (dCat) {
+        for (let opt of dCat.options) {
+          if (opt.value === prod.category || prod.category.includes(opt.value.slice(2, 8))) {
+            dCat.value = opt.value; break;
+          }
+        }
+      }
       const dUnit = document.getElementById('selectUnitDropdown');
       if (dUnit) dUnit.value = prod.unit;
       const dWeight = document.getElementById('selectWeightDropdown');
@@ -5886,33 +5923,60 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       triggerToast('Đã nạp mẫu: ' + prod.name);
     }
 
-    // Tự nhập nông sản mới hoàn toàn
+    // Tự nhập nông sản mới hoàn toàn (Mở bảng tự nhập tay)
     function selectCustomNewProduct() {
-      document.querySelectorAll('.pcb-scroll-chips .pcb-chip').forEach(c => c.classList.remove('active'));
+      const dCatalog = document.getElementById('selectCatalogDropdown');
+      if (dCatalog) dCatalog.value = 'custom';
+
+      // Chuyển các dropdown sang mục tùy biến hoặc mở ô gõ tay
+      const wrapsToShow = ['wrapCustomCategory', 'wrapCustomUnit', 'wrapCustomOrigin', 'wrapCustomCert', 'wrapCustomStock', 'wrapCustomPromo', 'wrapCustomWeight', 'wrapCustomHsd'];
+      wrapsToShow.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'block';
+      });
+
+      const dCat = document.getElementById('selectCategoryDropdown');
+      if (dCat) dCat.value = '__NEW__';
+      const dUnit = document.getElementById('selectUnitDropdown');
+      if (dUnit) dUnit.value = '__CUSTOM__';
+      const dOrigin = document.getElementById('selectOriginDropdown');
+      if (dOrigin) dOrigin.value = '__CUSTOM__';
+      const dCert = document.getElementById('selectCertDropdown');
+      if (dCert) dCert.value = '__CUSTOM__';
+      const dStock = document.getElementById('selectStockDropdown');
+      if (dStock) dStock.value = '__CUSTOM__';
+      const dPromo = document.getElementById('selectPromoDropdown');
+      if (dPromo) dPromo.value = '__CUSTOM__';
+      const dWeight = document.getElementById('selectWeightDropdown');
+      if (dWeight) dWeight.value = '__CUSTOM__';
+      const dHsd = document.getElementById('selectHsdDropdown');
+      if (dHsd) dHsd.value = '__CUSTOM__';
 
       const inputName = document.getElementById('inputProdName');
       const inputCat = document.getElementById('inputProdCategory');
       const inputUnit = document.getElementById('inputProdUnit');
       const inputPrice = document.getElementById('inputProdPrice');
+      const inputOrigin = document.getElementById('inputProdOrigin');
+      const inputCert = document.getElementById('inputProdCert');
       const inputWeight = document.getElementById('inputProdWeight');
       const inputHsd = document.getElementById('inputProdHsd');
-      const inputCert = document.getElementById('inputProdCert');
-      const inputIngr = document.getElementById('inputProdIngredients');
+      const inputStock = document.getElementById('inputProdStock');
       const inputPromo = document.getElementById('inputProdPromo');
 
       if (inputName) { inputName.value = ''; inputName.focus(); }
-      if (inputCat) inputCat.value = 'Nông sản tự trồng';
+      if (inputCat) inputCat.value = 'Nông sản sạch nhà vườn';
       if (inputUnit) inputUnit.value = 'Kg';
       if (inputPrice) inputPrice.value = '0 đ';
+      if (inputOrigin) inputOrigin.value = 'Vườn nhà Bác Ba, Thôn Đồng Cát';
+      if (inputCert) inputCert.value = 'Nông sản canh tác tự nhiên';
       if (inputWeight) inputWeight.value = '1 kg';
-      if (inputHsd) inputHsd.value = 'Tươi dùng trong 7 ngày';
-      if (inputCert) inputCert.value = 'Nông sản sạch gia đình';
-      if (inputIngr) inputIngr.value = 'Nông sản vườn nhà trồng tự nhiên, thu hoạch tươi sạch trong ngày.';
+      if (inputHsd) inputHsd.value = 'Ăn tươi 7 ngày';
+      if (inputStock) inputStock.value = 'Có sẵn tại vườn';
       if (inputPromo) inputPromo.value = 'Bà con lấy nhắn em đem qua tận ngõ!';
 
       renderQuickPriceChips(['30.000 đ', '50.000 đ', '80.000 đ', '100.000 đ', '150.000 đ'], '0 đ');
       onProductDataChanged();
-      triggerToast('Bác có thể tự gõ nhập tay các thông tin sản phẩm mới!');
+      triggerToast('Đã mở bảng tự nhập tay các trường thông tin sản phẩm mới!');
     }
 
     // Hiển thị các nút giá chọn nhanh
@@ -6052,20 +6116,202 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       triggerToast('Hạn sử dụng: ' + hsdVal);
     }
 
-    // Khi người dùng chỉnh sửa nhập tay thông tin ở Bước 2
+    // Helper: Đọc giá trị thông minh (từ ô gõ tay nếu đang mở, hoặc từ dropdown)
+    
+    // =========================================================================
+    // XỬ LÝ DROPDOWN THÔNG MINH - CHỈ HIỆN Ô TỰ NHẬP KHI CHỌN MỤC KHÁC
+    // =========================================================================
+    function onCatalogDropdownChange(val) {
+      if (val === 'custom') {
+        selectCustomNewProduct();
+      } else {
+        selectCatalogProduct(val);
+      }
+    }
+
+    function onCategoryDropdownChange(val) {
+      const wrap = document.getElementById('wrapCustomCategory');
+      const input = document.getElementById('inputProdCategory');
+      if (val === '__NEW__' || val === '__CUSTOM__') {
+        if (wrap) {
+          wrap.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      } else {
+        if (wrap) wrap.style.display = 'none';
+        if (input) input.value = val;
+      }
+      onProductDataChanged();
+    }
+
+    function onUnitDropdownChange(val) {
+      const wrap = document.getElementById('wrapCustomUnit');
+      const input = document.getElementById('inputProdUnit');
+      if (val === '__CUSTOM__') {
+        if (wrap) {
+          wrap.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      } else {
+        if (wrap) wrap.style.display = 'none';
+        if (input) input.value = val;
+      }
+      onProductDataChanged();
+    }
+
+    function onOriginDropdownChange(val) {
+      const wrap = document.getElementById('wrapCustomOrigin');
+      const input = document.getElementById('inputProdOrigin');
+      if (val === '__CUSTOM__') {
+        if (wrap) {
+          wrap.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      } else {
+        if (wrap) wrap.style.display = 'none';
+        if (input) input.value = val;
+      }
+      onProductDataChanged();
+    }
+
+    function onCertDropdownChange(val) {
+      const wrap = document.getElementById('wrapCustomCert');
+      const input = document.getElementById('inputProdCert');
+      if (val === '__CUSTOM__') {
+        if (wrap) {
+          wrap.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      } else {
+        if (wrap) wrap.style.display = 'none';
+        if (input) input.value = val;
+      }
+      onProductDataChanged();
+    }
+
+    function onStockDropdownChange(val) {
+      const wrap = document.getElementById('wrapCustomStock');
+      const input = document.getElementById('inputProdStock');
+      if (val === '__CUSTOM__') {
+        if (wrap) {
+          wrap.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      } else {
+        if (wrap) wrap.style.display = 'none';
+        if (input) input.value = val;
+      }
+      onProductDataChanged();
+    }
+
+    function onPromoDropdownChange(val) {
+      const wrap = document.getElementById('wrapCustomPromo');
+      const input = document.getElementById('inputProdPromo');
+      if (val === '__CUSTOM__') {
+        if (wrap) {
+          wrap.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      } else {
+        if (wrap) wrap.style.display = 'none';
+        if (input) input.value = val;
+      }
+      onProductDataChanged();
+    }
+
+    function onWeightDropdownChange(val) {
+      const wrap = document.getElementById('wrapCustomWeight');
+      const input = document.getElementById('inputProdWeight');
+      if (val === '__CUSTOM__') {
+        if (wrap) {
+          wrap.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      } else {
+        if (wrap) wrap.style.display = 'none';
+        if (input) input.value = val;
+      }
+      onProductDataChanged();
+    }
+
+    function onHsdDropdownChange(val) {
+      const wrap = document.getElementById('wrapCustomHsd');
+      const input = document.getElementById('inputProdHsd');
+      if (val === '__CUSTOM__') {
+        if (wrap) {
+          wrap.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      } else {
+        if (wrap) wrap.style.display = 'none';
+        if (input) input.value = val;
+      }
+      onProductDataChanged();
+    }
+
+    // Lưu danh mục mới do bác Ba tạo
+    function saveNewCategory() {
+      const input = document.getElementById('inputProdCategory');
+      if (!input || !input.value.trim()) {
+        triggerToast('Bác vui lòng nhập tên danh mục nông sản');
+        return;
+      }
+      let newName = input.value.trim();
+      if (!newName.startsWith('🏷️') && !newName.startsWith('🌾') && !newName.startsWith('✨')) {
+        newName = '🏷️ ' + newName;
+      }
+      const select = document.getElementById('selectCategoryDropdown');
+      if (select) {
+        const newOpt = document.createElement('option');
+        newOpt.value = newName;
+        newOpt.textContent = newName;
+        const lastOpt = select.querySelector('option[value="__NEW__"]');
+        if (lastOpt) {
+          select.insertBefore(newOpt, lastOpt);
+        } else {
+          select.appendChild(newOpt);
+        }
+        select.value = newName;
+      }
+      const wrap = document.getElementById('wrapCustomCategory');
+      if (wrap) wrap.style.display = 'none';
+      if (!CATEGORY_LIST.includes(newName)) {
+        CATEGORY_LIST.unshift(newName);
+      }
+      onProductDataChanged();
+      triggerToast('Đã thêm danh mục mới: ' + newName);
+    }
+
+    function resolveFieldValue(selectId, wrapId, inputId, defaultVal = '') {
+      const wrap = document.getElementById(wrapId);
+      const input = document.getElementById(inputId);
+      const select = document.getElementById(selectId);
+      if (wrap && wrap.style.display !== 'none' && input && input.value.trim() !== '') {
+        return input.value.trim();
+      }
+      if (select && select.value !== '__CUSTOM__' && select.value !== '__NEW__') {
+        return select.value;
+      }
+      if (input && input.value.trim() !== '') {
+        return input.value.trim();
+      }
+      return defaultVal;
+    }
+
+    // Khi người dùng chỉnh sửa thông tin ở Bước 2
     function onProductDataChanged() {
       const name = document.getElementById('inputProdName') ? document.getElementById('inputProdName').value : draftProductData.name;
-      const category = document.getElementById('inputProdCategory') ? document.getElementById('inputProdCategory').value : draftProductData.category;
-      const unit = document.getElementById('inputProdUnit') ? document.getElementById('inputProdUnit').value : draftProductData.unit;
+      const category = resolveFieldValue('selectCategoryDropdown', 'wrapCustomCategory', 'inputProdCategory', draftProductData.category);
+      const unit = resolveFieldValue('selectUnitDropdown', 'wrapCustomUnit', 'inputProdUnit', draftProductData.unit);
       const price = document.getElementById('inputProdPrice') ? document.getElementById('inputProdPrice').value : draftProductData.price;
-      const origin = document.getElementById('inputProdOrigin') ? document.getElementById('inputProdOrigin').value : draftProductData.origin;
+      const origin = resolveFieldValue('selectOriginDropdown', 'wrapCustomOrigin', 'inputProdOrigin', draftProductData.origin);
       const producer = document.getElementById('inputProdProducer') ? document.getElementById('inputProdProducer').value : draftProductData.producer;
-      const cert = document.getElementById('inputProdCert') ? document.getElementById('inputProdCert').value : draftProductData.cert;
-      const stock = document.getElementById('inputProdStock') ? document.getElementById('inputProdStock').value : draftProductData.stock;
-      const promo = document.getElementById('inputProdPromo') ? document.getElementById('inputProdPromo').value : draftProductData.promo;
-      const weight = document.getElementById('inputProdWeight') ? document.getElementById('inputProdWeight').value : draftProductData.weight;
+      const cert = resolveFieldValue('selectCertDropdown', 'wrapCustomCert', 'inputProdCert', draftProductData.cert);
+      const stock = resolveFieldValue('selectStockDropdown', 'wrapCustomStock', 'inputProdStock', draftProductData.stock);
+      const promo = resolveFieldValue('selectPromoDropdown', 'wrapCustomPromo', 'inputProdPromo', draftProductData.promo);
+      const weight = resolveFieldValue('selectWeightDropdown', 'wrapCustomWeight', 'inputProdWeight', draftProductData.weight);
       const mfgDate = document.getElementById('inputProdMfgDate') ? document.getElementById('inputProdMfgDate').value : draftProductData.mfgDate;
-      const hsd = document.getElementById('inputProdHsd') ? document.getElementById('inputProdHsd').value : draftProductData.hsd;
+      const hsd = resolveFieldValue('selectHsdDropdown', 'wrapCustomHsd', 'inputProdHsd', draftProductData.hsd);
       const ingredients = document.getElementById('inputProdIngredients') ? document.getElementById('inputProdIngredients').value : draftProductData.ingredients;
       const commitment = document.getElementById('inputProdCommitment') ? document.getElementById('inputProdCommitment').value : draftProductData.commitment;
 

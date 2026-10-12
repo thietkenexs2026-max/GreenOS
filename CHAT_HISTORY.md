@@ -470,6 +470,22 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+
+### Giai đoạn 34: Khắc phục triệt để hiển thị trùng lặp Dropdown - Chỉ hiện ô nhập gõ tay khi chọn mục "Khác" hoặc chế độ "Bảng tự nhập" (12/10/2026)
+- **Vấn đề người dùng phản hồi**: Khi đã có Dropdown để chọn, bên dưới vẫn hiển thị song song một ô input lặp lại giá trị giống hệt, gây rối mắt và thừa thãi.
+- **Giải pháp thiết kế & kỹ thuật hoàn thiện**:
+  1. **Ẩn mặc định toàn bộ 8 ô nhập tay (`display: none`)**:
+     - Khi bác Ba chọn bất kỳ mục có sẵn nào trong Dropdown (`Danh mục`, `Đơn vị tính`, `Nơi sản xuất`, `Tiêu chuẩn OCOP`, `Tồn kho`, `Ưu đãi giao hàng`, `Quy cách`, `Hạn sử dụng`), màn hình chỉ hiển thị duy nhất Dropdown gọn gàng, sạch sẽ, không có bất kỳ ô nhập liệu thừa thãi nào bên dưới.
+  2. **Tự động hiện ô gõ tay chuyên biệt khi chọn `Khác (Tự gõ tay)...` hoặc `➕ Tạo danh mục mới...`**:
+     - Khi chọn mục tùy biến, một khung nhập liệu có nhãn hướng dẫn `✍️ Nhập tay...` lập tức trượt mở mượt mà bên dưới Dropdown, tự động focus con trỏ để bác Ba gõ nhanh.
+     - Với danh mục mới: Có nút `Lưu` trực quan giúp thêm tức thì danh mục tự tạo vào đầu danh sách lựa chọn của HTX.
+  3. **Chế độ 'Bảng tự nhập' toàn diện (`➕ Tự nhập sản phẩm mới hoàn toàn...`)**:
+     - Khi chọn mục này ở Dropdown mẫu nông sản đầu trang, hệ thống sẽ mở đồng loạt tất cả các ô nhập liệu tùy biến để bác Ba có thể tự nhập toàn bộ thông tin sản phẩm từ A đến Z như một bảng biểu hoàn chỉnh.
+  4. **Bộ xử lý đọc dữ liệu thông minh (`resolveFieldValue`)**:
+     - Tự động ưu tiên giá trị nhập tay nếu ô tùy biến đang mở, hoặc lấy trực tiếp giá trị của Dropdown đang chọn nếu đang ở chế độ chọn sẵn, đảm bảo dữ liệu hiển thị ở Bước 3 (thành phẩm, bài đăng Zalo) luôn chính xác 100%.
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

@@ -402,6 +402,402 @@
     }
     .btn-wizard-close:active { background: #E2E8F0; }
 
+    /* =========================================================================
+       THANH ĐIỂM TIẾN TRÌNH STEP-BY-STEP Ở TRÊN CÙNG (WIZARD STEPPER)
+       ========================================================================= */
+    .wizard-stepper-wrap {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 12px 14px 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+    .wsw-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .wsw-title-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .wsw-tag {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--agri-green);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .wsw-sub {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .stepper-dots-bar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+    }
+    .sdb-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      flex: 0 0 76px;
+      transition: all 200ms ease;
+    }
+    .sdb-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #F1F5F9;
+      border: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+      font-weight: 800;
+      font-size: 13.5px;
+      transition: all 220ms ease;
+    }
+    .sdb-circle .sdb-check {
+      display: none;
+    }
+    .sdb-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748B;
+      text-align: center;
+      line-height: 1.25;
+      white-space: nowrap;
+      transition: color 200ms ease;
+    }
+    /* Trạng thái Active */
+    .sdb-step.active .sdb-circle {
+      background: var(--agri-green);
+      border-color: var(--agri-green);
+      color: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.2);
+      transform: scale(1.06);
+    }
+    .sdb-step.active .sdb-label {
+      color: var(--agri-green);
+      font-weight: 800;
+    }
+    /* Trạng thái Completed (Đã hoàn thành bước trước) */
+    .sdb-step.completed .sdb-circle {
+      background: #ECFDF5;
+      border-color: #10B981;
+      color: #059669;
+    }
+    .sdb-step.completed .sdb-num {
+      display: none;
+    }
+    .sdb-step.completed .sdb-check {
+      display: block;
+      stroke: #059669;
+    }
+    .sdb-step.completed .sdb-label {
+      color: #059669;
+      font-weight: 700;
+    }
+    /* Thanh nối giữa các điểm */
+    .sdb-line {
+      flex: 1;
+      height: 3px;
+      background: #E2E8F0;
+      position: relative;
+      top: 14px;
+      margin: 0 -4px;
+      z-index: 1;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .sdb-line-fill {
+      width: 0%;
+      height: 100%;
+      background: #10B981;
+      transition: width 250ms ease;
+    }
+    .sdb-line.completed .sdb-line-fill {
+      width: 100%;
+    }
+
+    /* =========================================================================
+       KHỐI CHỈNH SỬA THÔNG TIN SẢN PHẨM BƯỚC 2 (WIZARD EDIT CARD)
+       ========================================================================= */
+    .wizard-edit-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 14px;
+      margin-top: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+    .wec-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .wec-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .wec-title svg {
+      color: var(--agri-green);
+    }
+    .wec-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0284C7;
+      background: #E0F2FE;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .wec-field-group {
+      margin-bottom: 12px;
+    }
+    .wec-field-group:last-child {
+      margin-bottom: 0;
+    }
+    .wec-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 5px;
+    }
+    .wec-input-wrap {
+      position: relative;
+    }
+    .wec-input {
+      width: 100%;
+      height: 42px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      padding: 0 12px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      background: #FAFAFA;
+      transition: all 180ms ease;
+    }
+    .wec-input:focus {
+      border-color: var(--agri-green);
+      background: #FFFFFF;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+    }
+    .wec-input.price-input {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--agri-green);
+    }
+    .wec-quick-chips {
+      display: flex;
+      gap: 6px;
+      margin-top: 7px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .wec-chip {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 150ms ease;
+    }
+    .wec-chip:active {
+      transform: scale(0.96);
+    }
+    .wec-chip.active {
+      background: #DCFCE7;
+      border-color: #86EFAC;
+      color: #15803D;
+      font-weight: 800;
+    }
+    .wec-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .wec-mini-chips {
+      display: flex;
+      gap: 4px;
+      margin-top: 5px;
+      flex-wrap: wrap;
+    }
+    .wec-mini-chip {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+    }
+    .wec-mini-chip:active {
+      background: #E2E8F0;
+    }
+
+    /* =========================================================================
+       KHỐI CHỈNH SỬA BÀI VIẾT BƯỚC 3 (POST TEXT EDITOR)
+       ========================================================================= */
+    .post-edit-container {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      transition: border-color 200ms ease;
+    }
+    .post-edit-container:focus-within {
+      border-color: var(--agri-green);
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+    }
+    .pec-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .pec-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .pec-title svg {
+      color: var(--agri-green);
+    }
+    .pec-hint-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #15803D;
+      background: #DCFCE7;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .post-text-editor {
+      width: 100%;
+      min-height: 175px;
+      border: none;
+      background: transparent;
+      resize: vertical;
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-main);
+      padding: 4px 0;
+      outline: none;
+      white-space: pre-wrap;
+    }
+    .post-text-editor::placeholder {
+      color: #94A3B8;
+    }
+    .pec-actions-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px dashed #E2E8F0;
+      margin-top: 6px;
+    }
+    .pec-ai-presets {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .pap-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #64748B;
+      text-transform: uppercase;
+    }
+    .pap-btn {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+    .pap-btn.active {
+      background: #DCFCE7;
+      border-color: #86EFAC;
+      color: #15803D;
+    }
+    .pap-btn:active {
+      transform: scale(0.96);
+    }
+    .pec-btn-voice-insert {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1D4ED8;
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+    .pec-btn-voice-insert:active {
+      background: #DBEAFE;
+    }
+    .pec-footer-note {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #64748B;
+      margin-top: 8px;
+    }
+    .pec-footer-note svg {
+      flex-shrink: 0;
+      color: #10B981;
+    }
+
+
     /* Typography theo bước */
     .step-main-title {
       font-size: 22.5px;
@@ -2711,9 +3107,31 @@
            PANEL 2: BƯỚC 1 CHỤP ẢNH
            ========================================================================= -->
       <section id="panel-step1" class="view-panel">
-        <div class="wizard-top-header">
-          <span class="wizard-step-indicator">BƯỚC 1 / 3 · HÌNH ẢNH</span>
-          <button type="button" class="btn-wizard-close" onclick="exitWizardToHome()" aria-label="Đóng"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        <!-- THANH ĐIỂM TIẾN TRÌNH STEP-BY-STEP (BƯỚC 1/3) -->
+        <div class="wizard-stepper-wrap">
+          <div class="wsw-header">
+            <div class="wsw-title-col">
+              <span class="wsw-tag">QUY TRÌNH ĐĂNG BÁN NÔNG SẢN</span>
+              <div class="wsw-sub">Bước 1 / 3 · Chụp ảnh sản phẩm thực tế</div>
+            </div>
+            <button type="button" class="btn-wizard-close" onclick="exitWizardToHome()" aria-label="Thoát"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+          </div>
+          <div class="stepper-dots-bar">
+            <div class="sdb-step active" data-step="1" onclick="goToWizardStep(1)">
+              <div class="sdb-circle"><span class="sdb-num">1</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Chụp ảnh</span>
+            </div>
+            <div class="sdb-line" data-line="1"><div class="sdb-line-fill"></div></div>
+            <div class="sdb-step" data-step="2" onclick="goToWizardStep(2)">
+              <div class="sdb-circle"><span class="sdb-num">2</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Sửa giá & Tin</span>
+            </div>
+            <div class="sdb-line" data-line="2"><div class="sdb-line-fill"></div></div>
+            <div class="sdb-step" data-step="3" onclick="goToWizardStep(3)">
+              <div class="sdb-circle"><span class="sdb-num">3</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Đăng bán</span>
+            </div>
+          </div>
         </div>
 
         <h1 class="step-main-title">Bác chụp các góc ảnh sản phẩm nhé (4 ảnh)</h1>
@@ -2769,9 +3187,31 @@
            PANEL 3: BƯỚC 2 NÓI GIÁ BÁN
            ========================================================================= -->
       <section id="panel-step2" class="view-panel">
-        <div class="wizard-top-header">
-          <span class="wizard-step-indicator">BƯỚC 2 / 3 · GIÁ BÁN</span>
-          <button type="button" class="btn-wizard-close" onclick="exitWizardToHome()" aria-label="Đóng"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        <!-- THANH ĐIỂM TIẾN TRÌNH STEP-BY-STEP (BƯỚC 2/3) -->
+        <div class="wizard-stepper-wrap">
+          <div class="wsw-header">
+            <div class="wsw-title-col">
+              <span class="wsw-tag">QUY TRÌNH ĐĂNG BÁN NÔNG SẢN</span>
+              <div class="wsw-sub">Bước 2 / 3 · Nói giá bán & Chỉnh sửa thông tin</div>
+            </div>
+            <button type="button" class="btn-wizard-close" onclick="exitWizardToHome()" aria-label="Thoát"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+          </div>
+          <div class="stepper-dots-bar">
+            <div class="sdb-step completed" data-step="1" onclick="goToWizardStep(1)">
+              <div class="sdb-circle"><span class="sdb-num">1</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Chụp ảnh</span>
+            </div>
+            <div class="sdb-line completed" data-line="1"><div class="sdb-line-fill"></div></div>
+            <div class="sdb-step active" data-step="2" onclick="goToWizardStep(2)">
+              <div class="sdb-circle"><span class="sdb-num">2</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Sửa giá & Tin</span>
+            </div>
+            <div class="sdb-line" data-line="2"><div class="sdb-line-fill"></div></div>
+            <div class="sdb-step" data-step="3" onclick="goToWizardStep(3)">
+              <div class="sdb-circle"><span class="sdb-num">3</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Đăng bán</span>
+            </div>
+          </div>
         </div>
 
         <h1 class="step-main-title">Bác muốn bán giá bao nhiêu?</h1>
@@ -2789,14 +3229,71 @@
 
           <div class="extracted-result-card">
             <div style="font-size:12.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">Máy vừa nghe được:</div>
-            <div class="extracted-speech-quote">
+            <div class="extracted-speech-quote" id="extractedSpeechQuote">
               "Chuối sấy giòn <span class="highlight">túi 250 gam</span>, bán <span class="highlight">55 nghìn một gói</span>..."
             </div>
             <div class="tags-horizontal-list">
-              <span class="single-tag-chip">Khối lượng: <b>250g</b></span>
-              <span class="single-tag-chip">Giá bán: <b>55.000 đ</b></span>
-              <span class="single-tag-chip">HSD: <b>12 tháng</b></span>
+              <span class="single-tag-chip">Khối lượng: <b id="tagWeight">250g</b></span>
+              <span class="single-tag-chip">Giá bán: <b id="tagPrice">55.000 đ</b></span>
+              <span class="single-tag-chip">HSD: <b id="tagHsd">12 tháng</b></span>
             </div>
+          </div>
+        </div>
+
+        <!-- KHỐI CHỈNH SỬA THÔNG TIN SẢN PHẨM TRỰC TIẾP CHO BÁC BA -->
+        <div class="wizard-edit-card">
+          <div class="wec-header">
+            <div class="wec-title">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              <span>Chỉnh sửa thông tin sản phẩm</span>
+            </div>
+            <span class="wec-badge">✏️ Bác có thể sửa tùy ý</span>
+          </div>
+
+          <!-- Tên sản phẩm -->
+          <div class="wec-field-group">
+            <label class="wec-label" for="inputProdName">Tên sản phẩm nông sản:</label>
+            <input type="text" id="inputProdName" class="wec-input" value="Chuối sấy giòn Đồng Cát" oninput="onProductDataChanged()">
+          </div>
+
+          <!-- Giá bán -->
+          <div class="wec-field-group">
+            <label class="wec-label" for="inputProdPrice">Giá bán mỗi gói (VNĐ):</label>
+            <input type="text" id="inputProdPrice" class="wec-input price-input" value="55.000 đ" oninput="onProductDataChanged()">
+            <div class="wec-quick-chips">
+              <button type="button" class="wec-chip" onclick="setQuickPrice('45.000 đ')">45.000đ</button>
+              <button type="button" class="wec-chip" onclick="setQuickPrice('50.000 đ')">50.000đ</button>
+              <button type="button" class="wec-chip active" id="chipPrice55" onclick="setQuickPrice('55.000 đ')">55.000đ</button>
+              <button type="button" class="wec-chip" onclick="setQuickPrice('60.000 đ')">60.000đ</button>
+              <button type="button" class="wec-chip" onclick="setQuickPrice('70.000 đ')">70.000đ</button>
+            </div>
+          </div>
+
+          <!-- Quy cách & HSD -->
+          <div class="wec-grid-2col">
+            <div class="wec-field-group">
+              <label class="wec-label" for="inputProdWeight">Quy cách đóng gói:</label>
+              <input type="text" id="inputProdWeight" class="wec-input" value="Túi zip 250g" oninput="onProductDataChanged()">
+              <div class="wec-mini-chips">
+                <button type="button" class="wec-mini-chip" onclick="setQuickWeight('Túi zip 250g')">250g</button>
+                <button type="button" class="wec-mini-chip" onclick="setQuickWeight('Túi zip 500g')">500g</button>
+                <button type="button" class="wec-mini-chip" onclick="setQuickWeight('Hộp 1 kg')">1kg</button>
+              </div>
+            </div>
+            <div class="wec-field-group">
+              <label class="wec-label" for="inputProdHsd">Hạn sử dụng:</label>
+              <input type="text" id="inputProdHsd" class="wec-input" value="12 tháng" oninput="onProductDataChanged()">
+              <div class="wec-mini-chips">
+                <button type="button" class="wec-mini-chip" onclick="setQuickHsd('6 tháng')">6 tháng</button>
+                <button type="button" class="wec-mini-chip" onclick="setQuickHsd('12 tháng')">12 tháng</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chính sách ưu đãi -->
+          <div class="wec-field-group">
+            <label class="wec-label" for="inputProdPromo">Ưu đãi / Giao hàng:</label>
+            <input type="text" id="inputProdPromo" class="wec-input" value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
           </div>
         </div>
       </section>
@@ -2805,9 +3302,31 @@
            PANEL 4: BƯỚC 3 THÀNH PHẨM & XEM BÀI ĐĂNG (BỘ SƯU TẬP NHIỀU ẢNH)
            ========================================================================= -->
       <section id="panel-step3" class="view-panel">
-        <div class="wizard-top-header">
-          <span class="wizard-step-indicator" style="background:#DCFCE7;color:#15803D;border-color:#BBF7D0">BƯỚC 3 / 3 · HOÀN TẤT</span>
-          <button type="button" class="btn-wizard-close" onclick="exitWizardToHome()" aria-label="Đóng"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        <!-- THANH ĐIỂM TIẾN TRÌNH STEP-BY-STEP (BƯỚC 3/3) -->
+        <div class="wizard-stepper-wrap">
+          <div class="wsw-header">
+            <div class="wsw-title-col">
+              <span class="wsw-tag" style="color:#15803D">HOÀN TẤT BÀI ĐĂNG</span>
+              <div class="wsw-sub">Bước 3 / 3 · Xem lại & Chỉnh sửa nội dung trước khi đăng</div>
+            </div>
+            <button type="button" class="btn-wizard-close" onclick="exitWizardToHome()" aria-label="Thoát"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+          </div>
+          <div class="stepper-dots-bar">
+            <div class="sdb-step completed" data-step="1" onclick="goToWizardStep(1)">
+              <div class="sdb-circle"><span class="sdb-num">1</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Chụp ảnh</span>
+            </div>
+            <div class="sdb-line completed" data-line="1"><div class="sdb-line-fill"></div></div>
+            <div class="sdb-step completed" data-step="2" onclick="goToWizardStep(2)">
+              <div class="sdb-circle"><span class="sdb-num">2</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Sửa giá & Tin</span>
+            </div>
+            <div class="sdb-line completed" data-line="2"><div class="sdb-line-fill"></div></div>
+            <div class="sdb-step active completed" data-step="3" onclick="goToWizardStep(3)">
+              <div class="sdb-circle"><span class="sdb-num">3</span><svg class="sdb-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="sdb-label">Đăng bán</span>
+            </div>
+          </div>
         </div>
 
         <h1 class="step-main-title">Bài đăng của bác đã sẵn sàng!</h1>
@@ -2836,11 +3355,22 @@
           </div>
 
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 12px">
-            <span style="font-size:17px;font-weight:800">Chuối sấy giòn Đồng Cát (250g)</span>
-            <span style="font-size:18.5px;font-weight:800;color:var(--agri-green)">55.000 đ</span>
+            <span style="font-size:16.5px;font-weight:800;color:var(--text-main)" id="step3ProdName">Chuối sấy giòn Đồng Cát (250g)</span>
+            <span style="font-size:18px;font-weight:800;color:var(--agri-green)" id="step3ProdPrice">55.000 đ</span>
           </div>
 
-          <div class="post-text-box-scout" id="finalPostText">🎋 CHUỐI SẤY GIÒN ĐỒNG CÁT - VỤ TẾT VỪA RA LÒ
+          <!-- KHỐI CHỈNH SỬA NỘI DUNG BÀI VIẾT TRỰC TIẾP -->
+          <div class="post-edit-container">
+            <div class="pec-toolbar">
+              <div class="pec-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <span>Nội dung bài viết:</span>
+              </div>
+              <span class="pec-hint-badge">✏️ Bác chạm để sửa chữ</span>
+            </div>
+
+            <!-- Textarea cho phép gõ sửa trực tiếp -->
+            <textarea id="finalPostTextarea" class="post-text-editor" rows="8" oninput="onPostTextareaInput()" placeholder="Bác nhập nội dung bài bán nông sản vào đây...">🎋 CHUỐI SẤY GIÒN ĐỒNG CÁT - VỤ TẾT VỪA RA LÒ
 
 Chào các bác, mẻ chuối tiêu hồng sấy giòn vụ Tết của nhà em vừa ra lò thơm nức mũi!
 - Đóng gói: Túi zip 250g tiện lợi.
@@ -2848,7 +3378,27 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn vụ Tết của nhà em 
 - Hạn dùng: 12 tháng kể từ ngày đóng gói.
 - Giá bà con: 55.000đ/gói (Mua từ 5 gói em miễn phí giao tận nhà trong xã).
 
-Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</div>
+Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</textarea>
+
+            <!-- Thanh trợ năng AI & Phím tắt nhanh -->
+            <div class="pec-actions-bar">
+              <div class="pec-ai-presets">
+                <span class="pap-label">Mẫu gợi ý:</span>
+                <button type="button" class="pap-btn active" id="btnPresetTet" onclick="applyPostPreset('tet')">🏮 Vụ Tết</button>
+                <button type="button" class="pap-btn" id="btnPresetSi" onclick="applyPostPreset('si')">📦 Bán sỉ</button>
+                <button type="button" class="pap-btn" id="btnPresetMoc" onclick="applyPostPreset('moc')">🌿 Mộc mạc</button>
+              </div>
+              <button type="button" class="pec-btn-voice-insert" onclick="dictateIntoPostText()" title="Nói thêm một câu vào bài viết">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                <span>Đọc thêm giọng nói vào bài</span>
+              </button>
+            </div>
+
+            <div class="pec-footer-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>Mọi chỉnh sửa chữ ở đây sẽ tự động đồng bộ sang bài đăng Zalo.</span>
+            </div>
+          </div>
 
           <button type="button" class="btn-listen-article" onclick="listenAudioArticle()">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
@@ -2884,9 +3434,9 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
                 <div class="zalo-time">Vừa xong · 🌐 Công khai</div>
               </div>
             </div>
-            <div style="font-size:15px;line-height:1.6;margin-bottom:12px">
-              🎋 CHUỐI SẤY GIÒN ĐỒNG CÁT - VỤ TẾT VỪA RA LÒ<br>
-              Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói 250g. Em đính kèm ảnh túi hàng và đĩa chuối sấy vừa bóc thử giòn rụm bên dưới nhé!
+            <div style="font-size:15px;line-height:1.6;margin-bottom:12px;white-space:pre-line" id="zaloFeedPostContent">
+🎋 CHUỐI SẤY GIÒN ĐỒNG CÁT - VỤ TẾT VỪA RA LÒ
+Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói 250g. Em đính kèm ảnh túi hàng và đĩa chuối sấy vừa bóc thử giòn rụm bên dưới nhé!
             </div>
 
             <!-- Lưới ghép 3 ảnh chuẩn Zalo -->
@@ -2917,7 +3467,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
             </div>
             <div style="background:#EBF3FF;border:1px solid #CCE0FF;border-radius:14px;padding:12px;margin-bottom:14px;display:flex;gap:10px">
               <img src="banana_front.jpg" alt="Ảnh chat" style="width:68px;height:68px;border-radius:8px;object-fit:cover">
-              <div style="font-size:14.5px;line-height:1.55">
+              <div style="font-size:14.5px;line-height:1.55" id="zaloChatMessageText">
                 <b>Bác Ba:</b> Mẻ chuối sấy Tết vừa ra lò thơm giòn lắm bà con ơi, 55k/gói 250g, ai lấy nhắn em nha!
               </div>
             </div>
@@ -2927,7 +3477,10 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           </div>
         </div>
 
-        <button type="button" class="btn-dock-back" style="width:100%;margin-top:14px;height:52px;font-size:16px" onclick="exitWizardToHome()">
+        <button type="button" class="btn-dock-back" style="width:100%;margin-top:10px;height:46px;font-size:14.5px" onclick="goToWizardStep(3)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Quay lại sửa nội dung bài viết
+        </button>
+        <button type="button" class="btn-dock-back" style="width:100%;margin-top:8px;height:48px;font-size:15px;background:#F8FAFC" onclick="exitWizardToHome()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Hoàn tất & Về Trang chủ
         </button>
       </section>
@@ -3725,18 +4278,18 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Hủy
       </button>
       <button type="button" class="btn-dock-next" onclick="goToWizardStep(2)">
-        <span>Tiếp: Nói giá bán</span>
+        <span>Tiếp: Sửa giá & Tin</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </button>
     </div>
 
-    <!-- Dock cho Bước 2: Nói giá bán -->
+    <!-- Dock cho Bước 2: Nói giá bán & Chỉnh sửa -->
     <div class="wizard-sticky-dock" id="dockStep2">
       <button type="button" class="btn-dock-back" onclick="goToWizardStep(1)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Chụp ảnh
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Ảnh sản phẩm
       </button>
       <button type="button" class="btn-dock-next" onclick="goToWizardStep(3)">
-        <span>Tiếp: Xem bài viết</span>
+        <span>Tiếp: Xem & Sửa bài</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </button>
     </div>
@@ -3744,7 +4297,7 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
     <!-- Dock cho Bước 3: Xem bài & Chuyển Zalo -->
     <div class="wizard-sticky-dock" id="dockStep3">
       <button type="button" class="btn-dock-back" onclick="goToWizardStep(2)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Sửa giá
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Sửa giá & Tin
       </button>
       <button type="button" class="btn-dock-next btn-dock-zalo" onclick="openZaloPreview()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.87 1.5 5.43 3.84 7.08L5 22l4.35-1.45C10.22 20.81 11.09 21 12 21c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
@@ -3799,6 +4352,43 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       goToWizardStep(1);
     }
 
+    // =========================================================================
+    // DỮ LIỆU BÀI ĐĂNG NÔNG SẢN BÁC BA & ĐỒNG BỘ NỘI DUNG CHỈNH SỬA
+    // =========================================================================
+    const draftProductData = {
+      name: "Chuối sấy giòn Đồng Cát",
+      price: "55.000 đ",
+      weight: "Túi zip 250g",
+      hsd: "12 tháng",
+      promo: "Mua từ 5 gói em miễn phí giao tận nhà trong xã",
+      postPreset: "tet"
+    };
+
+    // Đồng bộ trạng thái Stepper Step-by-Step ở đầu trang
+    function updateWizardStepper(stepNum) {
+      for (let i = 1; i <= 3; i++) {
+        const nodes = document.querySelectorAll('.sdb-step[data-step="' + i + '"]');
+        nodes.forEach(node => {
+          node.classList.remove('active', 'completed');
+          if (i < stepNum) {
+            node.classList.add('completed');
+          } else if (i === stepNum) {
+            node.classList.add('active');
+          }
+        });
+      }
+      for (let l = 1; l <= 2; l++) {
+        const lines = document.querySelectorAll('.sdb-line[data-line="' + l + '"]');
+        lines.forEach(line => {
+          if (l < stepNum) {
+            line.classList.add('completed');
+          } else {
+            line.classList.remove('completed');
+          }
+        });
+      }
+    }
+
     // Chuyển các bước trong Wizard
     function goToWizardStep(stepNum) {
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
@@ -3811,6 +4401,8 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       dockStep3.classList.remove('dock-visible');
       bodyElem.className = 'has-wizard-dock';
 
+      updateWizardStepper(stepNum);
+
       if (stepNum === 1) {
         document.getElementById('panel-step1').classList.add('active');
         dockStep1.classList.add('dock-visible');
@@ -3820,8 +4412,147 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
       } else if (stepNum === 3) {
         document.getElementById('panel-step3').classList.add('active');
         dockStep3.classList.add('dock-visible');
+        syncProductDraftToStep3();
       }
       document.querySelector('.screen-container').scrollTo(0, 0);
+    }
+
+    // Chọn nhanh mức giá bán
+    function setQuickPrice(priceVal) {
+      const input = document.getElementById('inputProdPrice');
+      if (input) input.value = priceVal;
+      document.querySelectorAll('.wec-quick-chips .wec-chip').forEach(btn => {
+        if (btn.textContent.trim().includes(priceVal.replace('.000 đ', 'k')) || btn.textContent.trim() === priceVal.replace(' đ', 'đ')) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      onProductDataChanged();
+      triggerToast('Đã chọn giá: ' + priceVal);
+    }
+
+    // Chọn nhanh quy cách đóng gói
+    function setQuickWeight(weightVal) {
+      const input = document.getElementById('inputProdWeight');
+      if (input) input.value = weightVal;
+      onProductDataChanged();
+      triggerToast('Quy cách: ' + weightVal);
+    }
+
+    // Chọn nhanh hạn sử dụng
+    function setQuickHsd(hsdVal) {
+      const input = document.getElementById('inputProdHsd');
+      if (input) input.value = hsdVal;
+      onProductDataChanged();
+      triggerToast('Hạn sử dụng: ' + hsdVal);
+    }
+
+    // Khi người dùng chỉnh sửa thông tin ở Bước 2
+    function onProductDataChanged() {
+      const name = document.getElementById('inputProdName') ? document.getElementById('inputProdName').value : draftProductData.name;
+      const price = document.getElementById('inputProdPrice') ? document.getElementById('inputProdPrice').value : draftProductData.price;
+      const weight = document.getElementById('inputProdWeight') ? document.getElementById('inputProdWeight').value : draftProductData.weight;
+      const hsd = document.getElementById('inputProdHsd') ? document.getElementById('inputProdHsd').value : draftProductData.hsd;
+      const promo = document.getElementById('inputProdPromo') ? document.getElementById('inputProdPromo').value : draftProductData.promo;
+
+      draftProductData.name = name;
+      draftProductData.price = price;
+      draftProductData.weight = weight;
+      draftProductData.hsd = hsd;
+      draftProductData.promo = promo;
+
+      // Cập nhật tag ở bước 2
+      const tagW = document.getElementById('tagWeight');
+      const tagP = document.getElementById('tagPrice');
+      const tagH = document.getElementById('tagHsd');
+      if (tagW) tagW.textContent = weight.replace('Túi zip ', '');
+      if (tagP) tagP.textContent = price;
+      if (tagH) tagH.textContent = hsd;
+
+      // Tái tạo nội dung bài viết bước 3 nếu chưa sửa tay phức tạp
+      generatePostContent();
+    }
+
+    // Tạo nội dung bài viết tự động theo dữ liệu sản phẩm
+    function generatePostContent(preset = null) {
+      if (preset) draftProductData.postPreset = preset;
+      const p = draftProductData;
+      let text = "";
+
+      if (p.postPreset === 'tet') {
+        text = `🎋 ${p.name.toUpperCase()} - VỤ TẾT VỪA RA LÒ\n\nChào các bác, mẻ ${p.name.toLowerCase()} vụ Tết của nhà em vừa ra lò thơm nức mũi!\n- Đóng gói: ${p.weight} tiện lợi bảo quản.\n- Thành phần: 100% chuối tiêu hồng tuyển chọn, sấy nhiệt giòn xốp tự nhiên, không tẩm đường hoá học.\n- Hạn dùng: ${p.hsd} kể từ ngày đóng gói.\n- Giá bà con: ${p.price}/gói (${p.promo}).\n\nBác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!`;
+      } else if (p.postPreset === 'si') {
+        text = `📦 CUNG CẤP SỈ & LẺ: ${p.name.toUpperCase()} OCOP 4 SAO\n\nHợp tác xã Đồng Cát xuất kho lô ${p.name.toLowerCase()}:\n- Quy cách: ${p.weight}, thùng 20 gói chuẩn xuất xưởng.\n- Hạn sử dụng: ${p.hsd}.\n- Giá bán lẻ: ${p.price}/gói.\n- Chính sách đại lý: Giảm thêm 15% cho đơn từ 2 thùng trở lên, bao vận chuyển nội tỉnh.\n\nQuý đại lý và cô bác liên hệ Bác Ba để nhận mẫu thử miễn phí!`;
+      } else {
+        text = `🌿 NÔNG SẢN NHÀ VƯỜN: ${p.name.toUpperCase()}\n\nChuối vườn nhà trồng tự nhiên, nay em đem sấy giòn thơm phục vụ bà con:\n- Quy cách: ${p.weight}.\n- Giá yêu thương: ${p.price}/gói.\n- Hạn dùng: ${p.hsd}.\n- Cam kết: Chuối sạch 100%, ngọt thanh vị trái cây đồi.\n\nBà con để lại tin nhắn hoặc gọi em giao tận ngõ nha!`;
+      }
+
+      const textarea = document.getElementById('finalPostTextarea');
+      if (textarea) textarea.value = text;
+      syncZaloPreview();
+    }
+
+    // Đồng bộ dữ liệu sang Bước 3
+    function syncProductDraftToStep3() {
+      const p = draftProductData;
+      const nameEl = document.getElementById('step3ProdName');
+      const priceEl = document.getElementById('step3ProdPrice');
+      if (nameEl) nameEl.textContent = `${p.name} (${p.weight.replace('Túi zip ', '')})`;
+      if (priceEl) priceEl.textContent = p.price;
+      syncZaloPreview();
+    }
+
+    // Áp dụng mẫu AI bài viết
+    function applyPostPreset(presetKey) {
+      document.querySelectorAll('.pec-ai-presets .pap-btn').forEach(b => b.classList.remove('active'));
+      if (presetKey === 'tet') {
+        const b = document.getElementById('btnPresetTet');
+        if (b) b.classList.add('active');
+      } else if (presetKey === 'si') {
+        const b = document.getElementById('btnPresetSi');
+        if (b) b.classList.add('active');
+      } else if (presetKey === 'moc') {
+        const b = document.getElementById('btnPresetMoc');
+        if (b) b.classList.add('active');
+      }
+      generatePostContent(presetKey);
+      triggerToast('Đã áp dụng mẫu bài: ' + (presetKey === 'tet' ? 'Vụ Tết' : presetKey === 'si' ? 'Bán sỉ' : 'Mộc mạc'));
+    }
+
+    // Khi người dùng trực tiếp gõ sửa bài viết ở Bước 3
+    function onPostTextareaInput() {
+      syncZaloPreview();
+    }
+
+    // Đồng bộ nội dung sang Zalo Feed và Zalo Chat
+    function syncZaloPreview() {
+      const textarea = document.getElementById('finalPostTextarea');
+      const text = textarea ? textarea.value : "";
+      
+      const feedEl = document.getElementById('zaloFeedPostContent');
+      if (feedEl && text) {
+        // Lấy đoạn mở đầu bài viết để hiển thị trên status Zalo
+        feedEl.textContent = text;
+      }
+
+      const chatEl = document.getElementById('zaloChatMessageText');
+      if (chatEl) {
+        const p = draftProductData;
+        chatEl.innerHTML = `<b>Bác Ba:</b> Mẻ ${p.name.toLowerCase()} vừa ra lò thơm giòn lắm bà con ơi, ${p.price.replace('.000 đ', 'k')}/${p.weight.replace('Túi zip ', '')}, ai lấy nhắn em nha!`;
+      }
+    }
+
+    // Giọng nói đọc thêm câu vào bài viết
+    function dictateIntoPostText() {
+      const textarea = document.getElementById('finalPostTextarea');
+      if (!textarea) return;
+      const extraSentence = "\n\n(Chuối thơm giòn tự nhiên, mời bà con an tâm dùng thử nha!)";
+      if (!textarea.value.includes("an tâm dùng thử")) {
+        textarea.value += extraSentence;
+      }
+      syncZaloPreview();
+      triggerToast('Đã thêm câu giọng nói vào cuối bài!');
     }
 
     // Mở màn hình mô phỏng Zalo
@@ -3871,14 +4602,18 @@ Bác nào lấy biếu Tết hoặc ăn vặt nhắn em mang qua liền nhé!</d
           isRecordingVoice = false;
           mic.classList.remove('recording');
           txt.textContent = "Đã nghe xong!";
-          triggerToast("Đã ghi nhận giá 55.000đ và túi 250g!");
+          // Cập nhật trường nhập liệu tự động
+          setQuickPrice('55.000 đ');
+          setQuickWeight('Túi zip 250g');
+          triggerToast("Đã ghi nhận giá 55.000đ và túi 250g vào ô sửa!");
         }, 1800);
       }
     }
 
     // Đọc to bài viết
     function listenAudioArticle() {
-      const text = document.getElementById('finalPostText').innerText;
+      const textarea = document.getElementById('finalPostTextarea');
+      const text = textarea ? textarea.value : (document.getElementById('finalPostText') ? document.getElementById('finalPostText').innerText : "");
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);

@@ -346,6 +346,40 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 30: Nâng Cấp Quy Trình Đăng Bán Step-by-Step & Cho Phép Chỉnh Sửa Trực Tiếp Nội Dung Text
+- **Yêu cầu 65**: "trong quá trình đăng tải sản phẩm của bác ba có thể chỉnh sửa được nội dung text chứ, với cả giờ làm các step là các thanh điểm ở trên cùng nhé, kiểu step by step".
+  - *Giải pháp*:
+    - **1. Thanh điểm tiến trình Step-by-Step ở đầu trang (Wizard Stepper)**:
+      - Thiết kế thanh tiến trình 3 điểm nối chuẩn mực cho người lớn tuổi:
+        - `Điểm 1 (Chụp ảnh)`: Vòng tròn số 1 hiển thị trạng thái đang thực hiện (xanh đậm, viền nổi) và tự động chuyển sang tích xanh (`✓`) khi hoàn thành.
+        - `Thanh nối 1-2`: Tự động lấp đầy dải xanh khi hoàn tất bước 1.
+        - `Điểm 2 (Sửa giá & Tin)`: Vòng tròn số 2 kích hoạt khi đến bước thiết lập giá và thông tin.
+        - `Thanh nối 2-3`: Kết nối từ bước 2 sang bước 3.
+        - `Điểm 3 (Đăng bán)`: Vòng tròn số 3 hoàn tất bài viết và đưa lên Zalo.
+      - Hỗ trợ bấm trực tiếp vào từng điểm tròn để quay lại hoặc chuyển bước nhanh chóng (`goToWizardStep(1|2|3)`).
+      - Đồng bộ trạng thái tự động qua hàm `updateWizardStepper(stepNum)` trên toàn bộ các bước.
+    - **2. Cho phép chỉnh sửa thông tin sản phẩm trực tiếp ở Bước 2**:
+      - Thêm thẻ `wizard-edit-card` với các ô nhập liệu trực quan:
+        - `Tên sản phẩm nông sản`: Ô nhập gõ chữ hoặc nhận diện tự động từ giọng nói.
+        - `Giá bán (VNĐ / gói)`: Ô nhập giá nổi bật kèm hàng nút bấm chọn nhanh trực quan (`45.000đ`, `50.000đ`, `55.000đ`, `60.000đ`, `70.000đ`).
+        - `Quy cách đóng gói`: Ô nhập kèm chip chọn nhanh (`250g`, `500g`, `1kg`).
+        - `Hạn sử dụng`: Ô nhập kèm chip chọn nhanh (`6 tháng`, `12 tháng`).
+        - `Chính sách ưu đãi / Vận chuyển`: Nhập ưu đãi giao hàng tận nhà trong xã.
+      - Khi Bác Ba bấm nút thu âm mô phỏng giọng nói (`recordVoiceSimulate()`), hệ thống tự động điền các thông số nhận diện vào các ô nhập liệu và cho phép Bác Ba sửa đổi bất kỳ lúc nào.
+    - **3. Khối soạn thảo bài viết trực tiếp ở Bước 3 (Post Text Editor)**:
+      - Chuyển đổi khối hiển thị văn bản tĩnh thành ô soạn thảo trực tiếp `post-text-editor` (`textarea`) cỡ chữ 14.5px, giãn dòng thoáng đãng, có viền highlight xanh khi chạm vào.
+      - **Bộ 3 mẫu AI gợi ý tức thì (`pec-ai-presets`)**:
+        - `🏮 Mẫu Vụ Tết`: Giọng văn ấm áp mừng năm mới, biếu Tết họ hàng.
+        - `📦 Mẫu Bán sỉ`: Giọng văn hợp tác xã xuất buôn cho các đại lý, quán ăn, tạp hóa.
+        - `🌿 Mẫu Mộc mạc`: Giọng văn chân chất của người nông dân nhà vườn truyền thống.
+      - **Nút chèn giọng nói (`dictateIntoPostText`)**: Cho phép Bác Ba đọc thêm một câu cam kết chất lượng vào cuối bài mà không cần bấm phím ảo.
+      - **Đọc to bài viết (`listenAudioArticle`)**: Luôn đọc nội dung văn bản mới nhất sau khi bác chỉnh sửa để bác nghe lại bằng tai.
+    - **4. Đồng bộ Real-time sang Giao diện Zalo**:
+      - Bất kỳ thay đổi nào về tên, giá hoặc nội dung bài viết đều tự động đồng bộ sang Nhật ký Zalo (`#zaloFeedPostContent`) và Tin nhắn nhóm chợ xã (`#zaloChatMessageText`).
+      - Bổ sung nút `Quay lại sửa nội dung bài viết` trực tiếp từ màn hình Zalo để bác Ba dễ dàng tinh chỉnh tiếp nếu chưa ưng ý.
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

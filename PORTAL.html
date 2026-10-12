@@ -1489,6 +1489,28 @@
       background: #FAFAFA;
       transition: all 180ms ease;
     }
+        .fsc-select {
+      width: 100%;
+      height: 44px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      padding: 0 36px 0 14px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      background: #FAFAFA url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      transition: all 180ms ease;
+    }
+    .fsc-select:focus {
+      border-color: var(--agri-green);
+      background-color: #FFFFFF;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+    }
+
     .fsc-input:focus {
       border-color: var(--agri-green);
       background: #FFFFFF;
@@ -4123,66 +4145,22 @@
         <h1 class="step-main-title">Thông tin & Giá bán sản phẩm</h1>
         <p class="step-sub-desc">Bác có thể chọn nhanh từ danh mục nông sản của bác, hoặc tự gõ nhập tay các thông tin bên dưới:</p>
 
-        <!-- THANH CHỌN MẪU NÔNG SẢN MỞ RỘNG CỦA BÁC BA & HTX -->
+        <!-- THANH CHỌN MẪU NÔNG SẢN CỦA HTX (DROPDOWN GỌN GÀNG) -->
         <div class="product-catalog-bar">
           <div class="pcb-header">
-            <span class="pcb-title">🌾 Chọn nhanh mẫu nông sản HTX:</span>
-            <button type="button" class="pcb-btn-custom" onclick="selectCustomNewProduct()">
-              <span>➕ Tự nhập mới</span>
-            </button>
+            <span class="pcb-title">🌾 Chọn mẫu nông sản mẫu của HTX:</span>
+            <span class="fsc-badge" style="background:#DCFCE7;color:#15803D">Chọn nhanh 1 chạm</span>
           </div>
-          <div class="pcb-scroll-chips" id="catalogChipsContainer">
-            <!-- Rendered by JS or default pills -->
-            <div class="pcb-chip active" id="chipProd_banana_crisp" onclick="selectCatalogProduct('banana_crisp')">
-              <img src="banana_front.jpg" alt="Chuối sấy" class="pcb-chip-thumb">
-              <div class="pcb-chip-info">
-                <span class="pcb-chip-name">Chuối sấy giòn</span>
-                <span class="pcb-chip-price">55.000 đ</span>
-              </div>
-            </div>
-            <div class="pcb-chip" id="chipProd_banana_chewy" onclick="selectCatalogProduct('banana_chewy')">
-              <img src="banana_plate.jpg" alt="Chuối dẻo" class="pcb-chip-thumb">
-              <div class="pcb-chip-info">
-                <span class="pcb-chip-name">Chuối sấy dẻo</span>
-                <span class="pcb-chip-price">60.000 đ</span>
-              </div>
-            </div>
-            <div class="pcb-chip" id="chipProd_honey_wild" onclick="selectCatalogProduct('honey_wild')">
-              <img src="honey_front.jpg" alt="Mật ong" class="pcb-chip-thumb">
-              <div class="pcb-chip-info">
-                <span class="pcb-chip-name">Mật ong hoa rừng</span>
-                <span class="pcb-chip-price">180.000 đ</span>
-              </div>
-            </div>
-            <div class="pcb-chip" id="chipProd_tea_battiene" onclick="selectCatalogProduct('tea_battiene')">
-              <img src="tea_front.jpg" alt="Trà Bát Tiên" class="pcb-chip-thumb">
-              <div class="pcb-chip-info">
-                <span class="pcb-chip-name">Trà Bát Tiên</span>
-                <span class="pcb-chip-price">120.000 đ</span>
-              </div>
-            </div>
-            <div class="pcb-chip" id="chipProd_wine_banana" onclick="selectCatalogProduct('wine_banana')">
-              <img src="banana_back.jpg" alt="Rượu chuối" class="pcb-chip-thumb">
-              <div class="pcb-chip-info">
-                <span class="pcb-chip-name">Rượu chuối hột</span>
-                <span class="pcb-chip-price">150.000 đ</span>
-              </div>
-            </div>
-            <div class="pcb-chip" id="chipProd_flour_banana" onclick="selectCatalogProduct('flour_banana')">
-              <img src="banana_front.jpg" alt="Bột chuối" class="pcb-chip-thumb">
-              <div class="pcb-chip-info">
-                <span class="pcb-chip-name">Bột chuối xanh</span>
-                <span class="pcb-chip-price">85.000 đ</span>
-              </div>
-            </div>
-            <div class="pcb-chip" id="chipProd_banana_fresh" onclick="selectCatalogProduct('banana_fresh')">
-              <img src="banana_plate.jpg" alt="Chuối ngự tươi" class="pcb-chip-thumb">
-              <div class="pcb-chip-info">
-                <span class="pcb-chip-name">Chuối ngự tươi</span>
-                <span class="pcb-chip-price">25.000 đ</span>
-              </div>
-            </div>
-          </div>
+          <select id="selectCatalogDropdown" class="fsc-select" onchange="onCatalogDropdownChange(this.value)">
+            <option value="banana_crisp">🍌 Chuối sấy giòn Đồng Cát — 55.000 đ (Túi 250g · OCOP 4⭐)</option>
+            <option value="banana_chewy">🍌 Chuối tiêu hồng sấy dẻo OCOP — 60.000 đ (Túi 500g · VietGAP)</option>
+            <option value="honey_wild">🍯 Mật ong hoa rừng tự nhiên — 180.000 đ (Hũ 500ml · Rừng đồi cao)</option>
+            <option value="tea_battiene">🍵 Trà Bát Tiên Thái Nguyên — 120.000 đ (Túi 500g · OCOP Tỉnh)</option>
+            <option value="wine_banana">🍶 Rượu chuối hột rừng ngâm chum — 150.000 đ (Bình 1L · Men lá)</option>
+            <option value="flour_banana">🌾 Bột chuối xanh sấy lạnh — 85.000 đ (Hộp 400g · Chuẩn VSATTP)</option>
+            <option value="banana_fresh">🍌 Buồng chuối ngự tiến vua chín cây — 25.000 đ (1 kg · Cắt tại vườn)</option>
+            <option value="custom">➕ Tự nhập sản phẩm mới hoàn toàn...</option>
+          </select>
         </div>
 
         <!-- MÔ PHỎNG THU ÂM GIỌNG NÓI -->
@@ -4214,7 +4192,7 @@
              HỆ THỐNG CÁC THẺ THÔNG TIN TÁCH BIỆT THOÁNG ĐÃNG CHO BÁC BA
              ========================================================================= -->
 
-        <!-- THẺ 1: TÊN & DANH MỤC NÔNG SẢN (HỖ TRỢ CHỌN CÓ SẴN HOẶC TỰ TẠO MỚI) -->
+        <!-- THẺ 1: TÊN & DANH MỤC NÔNG SẢN (DROPDOWN CHỌN NHANH & TỰ TẠO MỚI) -->
         <div class="form-section-card">
           <div class="fsc-header">
             <div class="fsc-title">
@@ -4233,25 +4211,25 @@
             <input type="text" id="inputProdName" class="fsc-input" placeholder="Ví dụ: Chuối sấy giòn, Mật ong hoa rừng..." value="Chuối sấy giòn Đồng Cát" oninput="onProductDataChanged()">
           </div>
 
-          <!-- Danh mục sản phẩm (Chọn có sẵn hoặc Tự tạo mới) -->
+          <!-- Danh mục sản phẩm (Dropdown) -->
           <div class="fsc-field">
-            <label class="fsc-label" for="inputProdCategory">
+            <label class="fsc-label" for="selectCategoryDropdown">
               <span>Danh mục sản phẩm</span>
-              <span class="fsc-label-sub">Chọn dưới hoặc tự tạo</span>
+              <span class="fsc-label-sub">Chọn danh mục</span>
             </label>
-            <input type="text" id="inputProdCategory" class="fsc-input" placeholder="Ví dụ: Nông sản chế biến & sấy khô..." value="Nông sản chế biến & sấy khô" oninput="onProductDataChanged()">
+            <select id="selectCategoryDropdown" class="fsc-select" onchange="onCategoryDropdownChange(this.value)">
+              <option value="🌾 Nông sản chế biến & sấy khô">🌾 Nông sản chế biến & sấy khô</option>
+              <option value="🍯 Mật ong & Dược liệu rừng">🍯 Mật ong & Dược liệu rừng</option>
+              <option value="🍵 Trà, Chè & Thảo mộc">🍵 Trà, Chè & Thảo mộc</option>
+              <option value="🍶 Rượu truyền thống & Men lá">🍶 Rượu truyền thống & Men lá</option>
+              <option value="🥫 Bột dinh dưỡng & Tinh bột">🥫 Bột dinh dưỡng & Tinh bột</option>
+              <option value="🍌 Trái cây & Nông sản tươi">🍌 Trái cây & Nông sản tươi</option>
+              <option value="🥬 Rau củ quả sạch hữu cơ">🥬 Rau củ quả sạch hữu cơ</option>
+              <option value="🫘 Hạt ngũ cốc dinh dưỡng">🫘 Hạt ngũ cốc dinh dưỡng</option>
+              <option value="__NEW__">➕ Tạo danh mục mới của bác...</option>
+            </select>
+            <input type="text" id="inputProdCategory" class="fsc-input" style="margin-top:8px" placeholder="Tên danh mục..." value="🌾 Nông sản chế biến & sấy khô" oninput="onProductDataChanged()">
             
-            <!-- Danh sách chip danh mục gợi ý sẵn -->
-            <div class="fsc-chips-wrap" id="categoryChipsWrap">
-              <!-- Rendered via JS -->
-            </div>
-
-            <!-- Nút & Khung tạo danh mục mới -->
-            <div style="margin-top: 10px;">
-              <button type="button" class="pcb-btn-custom" onclick="toggleAddCategoryBox()">
-                <span>➕ Tạo danh mục mới...</span>
-              </button>
-            </div>
             <div class="inline-add-cat-box" id="addCategoryBox">
               <input type="text" id="newCatInput" class="fsc-input" style="height:38px;font-size:13.5px" placeholder="Nhập tên danh mục mới của bác...">
               <button type="button" class="btn-dock-next" style="height:38px;padding:0 14px;font-size:13px;flex-shrink:0" onclick="saveNewCategory()">
@@ -4263,24 +4241,29 @@
             </div>
           </div>
 
-          <!-- Đơn vị tính -->
+          <!-- Đơn vị tính (Dropdown) -->
           <div class="fsc-field">
-            <label class="fsc-label" for="inputProdUnit">
+            <label class="fsc-label" for="selectUnitDropdown">
               <span>Đơn vị tính bán lẻ</span>
+              <span class="fsc-label-sub">Chọn hoặc gõ</span>
             </label>
-            <input type="text" id="inputProdUnit" class="fsc-input" placeholder="Gói, Hũ, Chai, Hộp, Kg, Buồng..." value="Gói" oninput="onProductDataChanged()">
-            <div class="fsc-chips-wrap">
-              <button type="button" class="fsc-chip active" id="chipUnit_Goi" onclick="setQuickUnit('Gói')">Gói</button>
-              <button type="button" class="fsc-chip" id="chipUnit_Hu" onclick="setQuickUnit('Hũ')">Hũ</button>
-              <button type="button" class="fsc-chip" id="chipUnit_Binh" onclick="setQuickUnit('Bình')">Bình</button>
-              <button type="button" class="fsc-chip" id="chipUnit_Hop" onclick="setQuickUnit('Hộp')">Hộp</button>
-              <button type="button" class="fsc-chip" id="chipUnit_Kg" onclick="setQuickUnit('Kg')">Kg</button>
-              <button type="button" class="fsc-chip" id="chipUnit_Buong" onclick="setQuickUnit('Buồng')">Buồng</button>
-            </div>
+            <select id="selectUnitDropdown" class="fsc-select" onchange="onUnitDropdownChange(this.value)">
+              <option value="Gói">Gói (Túi zip / Bịch)</option>
+              <option value="Hũ">Hũ (Hũ thuỷ tinh / nhựa)</option>
+              <option value="Bình">Bình (Bình sành, gốm, can)</option>
+              <option value="Chai">Chai (Chai thuỷ tinh / PET)</option>
+              <option value="Hộp">Hộp (Hộp giấy / carton)</option>
+              <option value="Kg">Kg (Theo cân / ký)</option>
+              <option value="Buồng">Buồng (Chuối buồng)</option>
+              <option value="Nải">Nải (Chuối nải)</option>
+              <option value="Thùng">Thùng (Xuất bán sỉ)</option>
+              <option value="__CUSTOM__">Đơn vị khác (Tự gõ tay)...</option>
+            </select>
+            <input type="text" id="inputProdUnit" class="fsc-input" style="margin-top:8px" placeholder="Gói, Hũ, Chai, Hộp, Kg..." value="Gói" oninput="onProductDataChanged()">
           </div>
         </div>
 
-        <!-- THẺ 2: NGUỒN GỐC, VÙNG TRỒNG & NƠI SẢN XUẤT -->
+        <!-- THẺ 2: NGUỒN GỐC, VÙNG TRỒNG & NƠI SẢN XUẤT (DROPDOWN) -->
         <div class="form-section-card">
           <div class="fsc-header">
             <div class="fsc-title">
@@ -4290,19 +4273,20 @@
             <span class="fsc-badge" style="background:#ECFDF5;color:#059669">Minh bạch OCOP</span>
           </div>
 
-          <!-- Nơi sản xuất / Vùng trồng -->
+          <!-- Nơi sản xuất / Vùng trồng (Dropdown) -->
           <div class="fsc-field">
-            <label class="fsc-label" for="inputProdOrigin">
+            <label class="fsc-label" for="selectOriginDropdown">
               <span>Nơi sản xuất / Vùng trồng <span class="req">*</span></span>
-              <span class="fsc-label-sub">Địa chỉ thực tế</span>
+              <span class="fsc-label-sub">Chọn địa chỉ</span>
             </label>
-            <input type="text" id="inputProdOrigin" class="fsc-input" placeholder="Ví dụ: Vườn đồi Thôn Đồng Cát, Xã Yên Bình..." value="Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang" oninput="onProductDataChanged()">
-            <div class="fsc-chips-wrap">
-              <button type="button" class="fsc-chip active" onclick="setQuickOrigin('Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Tỉnh Bắc Giang')">🏡 Vườn đồi Đồng Cát</button>
-              <button type="button" class="fsc-chip" onclick="setQuickOrigin('Bãi bồi ven sông Lục Nam, Xã Yên Bình')">🌊 Bãi bồi ven sông</button>
-              <button type="button" class="fsc-chip" onclick="setQuickOrigin('Xưởng chế biến & sấy dẻo HTX Đồng Cát')">🏭 Xưởng sấy HTX</button>
-              <button type="button" class="fsc-chip" onclick="setQuickOrigin('Rừng tự nhiên Vườn Quốc gia Ba Bể')">🌲 Rừng tự nhiên</button>
-            </div>
+            <select id="selectOriginDropdown" class="fsc-select" onchange="onOriginDropdownChange(this.value)">
+              <option value="Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang">🏡 Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Bắc Giang</option>
+              <option value="Bãi bồi ven sông Lục Nam, Xã Yên Bình, Huyện Yên Dũng">🌊 Bãi bồi ven sông Lục Nam, Xã Yên Bình</option>
+              <option value="Xưởng chế biến & sấy dẻo nông sản HTX Đồng Cát">🏭 Xưởng chế biến & sấy dẻo HTX Đồng Cát</option>
+              <option value="Rừng tự nhiên Vườn Quốc gia Ba Bể, Bắc Kạn">🌲 Rừng tự nhiên Vườn Quốc gia Ba Bể</option>
+              <option value="__CUSTOM__">📍 Địa chỉ khác (Tự gõ tay bên dưới)...</option>
+            </select>
+            <input type="text" id="inputProdOrigin" class="fsc-input" style="margin-top:8px" placeholder="Địa chỉ nơi sản xuất..." value="Vườn đồi Thôn Đồng Cát, Xã Yên Bình, Huyện Yên Dũng, Tỉnh Bắc Giang" oninput="onProductDataChanged()">
           </div>
 
           <!-- Chủ thể / Hộ sản xuất -->
@@ -4313,23 +4297,25 @@
             <input type="text" id="inputProdProducer" class="fsc-input" placeholder="Tên hộ nông dân, HTX..." value="Hộ kinh doanh Bác Ba · Hợp tác xã Nông Nghiệp Đồng Cát" oninput="onProductDataChanged()">
           </div>
 
-          <!-- Mã vùng trồng & Tiêu chuẩn OCOP / VietGAP -->
+          <!-- Mã vùng trồng & Tiêu chuẩn OCOP / VietGAP (Dropdown) -->
           <div class="fsc-field">
-            <label class="fsc-label" for="inputProdCert">
+            <label class="fsc-label" for="selectCertDropdown">
               <span>Tiêu chuẩn & Mã vùng trồng</span>
               <span class="fsc-label-sub">Chứng thực chất lượng</span>
             </label>
-            <input type="text" id="inputProdCert" class="fsc-input" placeholder="OCOP 4 Sao, VietGAP, Hữu cơ..." value="MSVT: VN-BG-2026-DC08 · Tiêu chuẩn OCOP 4⭐" oninput="onProductDataChanged()">
-            <div class="fsc-chips-wrap">
-              <button type="button" class="fsc-chip active" onclick="setQuickCert('OCOP 4 Sao Tỉnh Bắc Giang')">⭐ OCOP 4 Sao</button>
-              <button type="button" class="fsc-chip" onclick="setQuickCert('Chuẩn VietGAP Vùng Trồng Sạch')">🌿 Chuẩn VietGAP</button>
-              <button type="button" class="fsc-chip" onclick="setQuickCert('Hữu cơ Canh tác Tự nhiên')">🍃 Canh tác Hữu cơ</button>
-              <button type="button" class="fsc-chip" onclick="setQuickCert('Có mã QR Truy xuất Nguồn gốc')">📱 Tem QR Truy xuất</button>
-            </div>
+            <select id="selectCertDropdown" class="fsc-select" onchange="onCertDropdownChange(this.value)">
+              <option value="MSVT: VN-BG-2026-DC08 · Tiêu chuẩn OCOP 4⭐ Tỉnh Bắc Giang">⭐ MSVT: VN-BG-2026-DC08 · Tiêu chuẩn OCOP 4⭐ Tỉnh Bắc Giang</option>
+              <option value="Chuẩn VietGAP Vùng Trồng Nông Sản Sạch">🌿 Chuẩn VietGAP Vùng Trồng Nông Sản Sạch</option>
+              <option value="Canh tác Hữu cơ (Organic) Không Hóa Chất">🍃 Canh tác Hữu cơ (Organic) Không Hóa Chất</option>
+              <option value="Có mã QR Truy xuất Nguồn gốc Xuất xứ">📱 Có mã QR Truy xuất Nguồn gốc Xuất xứ</option>
+              <option value="Tiêu chuẩn An toàn Vệ sinh Thực phẩm Cấp Tỉnh">🛡️ Chuẩn An toàn Vệ sinh Thực phẩm</option>
+              <option value="__CUSTOM__">Tiêu chuẩn khác (Tự gõ tay)...</option>
+            </select>
+            <input type="text" id="inputProdCert" class="fsc-input" style="margin-top:8px" placeholder="OCOP, VietGAP, Hữu cơ..." value="MSVT: VN-BG-2026-DC08 · Tiêu chuẩn OCOP 4⭐" oninput="onProductDataChanged()">
           </div>
         </div>
 
-        <!-- THẺ 3: GIÁ BÁN & CHÍNH SÁCH BÁN HÀNG -->
+        <!-- THẺ 3: GIÁ BÁN & CHÍNH SÁCH BÁN HÀNG (DROPDOWN) -->
         <div class="form-section-card">
           <div class="fsc-header">
             <div class="fsc-title">
@@ -4351,36 +4337,41 @@
             </div>
           </div>
 
-          <!-- Số lượng sẵn có (Tồn kho) -->
+          <!-- Số lượng sẵn có - Tồn kho (Dropdown) -->
           <div class="fsc-field">
-            <label class="fsc-label" for="inputProdStock">
+            <label class="fsc-label" for="selectStockDropdown">
               <span>Số lượng sẵn có để bán (Tồn kho)</span>
-              <span class="fsc-label-sub">Giúp HTX gom đơn</span>
+              <span class="fsc-label-sub">Chọn lượng hàng</span>
             </label>
-            <input type="text" id="inputProdStock" class="fsc-input" placeholder="Ví dụ: 250 gói, 1.5 tấn tại vườn..." value="250 gói sẵn tại xưởng sấy HTX" oninput="onProductDataChanged()">
-            <div class="fsc-chips-wrap">
-              <button type="button" class="fsc-chip" onclick="setQuickStock('100 gói sẵn sàng')">100 gói</button>
-              <button type="button" class="fsc-chip active" onclick="setQuickStock('250 gói sẵn tại xưởng sấy HTX')">250 gói</button>
-              <button type="button" class="fsc-chip" onclick="setQuickStock('500 gói sẵn sàng')">500 gói</button>
-              <button type="button" class="fsc-chip" onclick="setQuickStock('1.5 tấn tại vườn đồi')">1.5 tấn tại vườn</button>
-            </div>
+            <select id="selectStockDropdown" class="fsc-select" onchange="onStockDropdownChange(this.value)">
+              <option value="250 gói sẵn tại xưởng sấy HTX">250 gói sẵn tại xưởng sấy HTX</option>
+              <option value="100 gói sẵn sàng xuất ngay">100 gói sẵn sàng xuất ngay</option>
+              <option value="500 gói chuẩn bị sẵn phục vụ Tết">500 gói chuẩn bị sẵn phục vụ Tết</option>
+              <option value="1.5 tấn tại vườn đồi Đồng Cát">1.5 tấn tại vườn đồi Đồng Cát</option>
+              <option value="50 hũ có sẵn trong kho">50 hũ có sẵn trong kho</option>
+              <option value="__CUSTOM__">Số lượng khác (Tự gõ tay)...</option>
+            </select>
+            <input type="text" id="inputProdStock" class="fsc-input" style="margin-top:8px" placeholder="Ví dụ: 250 gói sẵn tại kho..." value="250 gói sẵn tại xưởng sấy HTX" oninput="onProductDataChanged()">
           </div>
 
-          <!-- Chính sách ưu đãi & Vận chuyển -->
+          <!-- Chính sách ưu đãi & Vận chuyển (Dropdown) -->
           <div class="fsc-field">
-            <label class="fsc-label" for="inputProdPromo">
+            <label class="fsc-label" for="selectPromoDropdown">
               <span>Ưu đãi khuyến mại & Giao hàng</span>
+              <span class="fsc-label-sub">Chọn chính sách</span>
             </label>
-            <input type="text" id="inputProdPromo" class="fsc-input" placeholder="Ví dụ: Mua từ 5 gói miễn phí giao tận nhà trong xã..." value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
-            <div class="fsc-chips-wrap">
-              <button type="button" class="fsc-chip active" onclick="setQuickPromo('Mua từ 5 gói em miễn phí giao tận nhà trong xã')">🚚 Freeship từ 5 gói</button>
-              <button type="button" class="fsc-chip" onclick="setQuickPromo('Mua 10 tặng 1 gói ăn thử')">🎁 Mua 10 tặng 1</button>
-              <button type="button" class="fsc-chip" onclick="setQuickPromo('Giảm 10% cho khách mua trực tiếp tại vườn')">🌾 Giảm 10% tại vườn</button>
-            </div>
+            <select id="selectPromoDropdown" class="fsc-select" onchange="onPromoDropdownChange(this.value)">
+              <option value="Mua từ 5 gói em miễn phí giao tận nhà trong xã">🚚 Mua từ 5 gói miễn phí giao tận nhà trong xã</option>
+              <option value="Mua 10 tặng 1 gói ăn thử miễn phí">🎁 Mua 10 tặng 1 gói ăn thử miễn phí</option>
+              <option value="Giảm 10% cho khách mua trực tiếp tại vườn">🌾 Giảm 10% cho khách mua trực tiếp tại vườn</option>
+              <option value="Hỗ trợ 50% phí ship toàn quốc cho đơn từ 500k">📦 Hỗ trợ 50% phí ship đơn từ 500k</option>
+              <option value="__CUSTOM__">Chính sách khác (Tự gõ tay)...</option>
+            </select>
+            <input type="text" id="inputProdPromo" class="fsc-input" style="margin-top:8px" placeholder="Ưu đãi freeship, quà tặng..." value="Mua từ 5 gói em miễn phí giao tận nhà trong xã" oninput="onProductDataChanged()">
           </div>
         </div>
 
-        <!-- THẺ 4: QUY CÁCH ĐÓNG GÓI & THỜI HẠN SỬ DỤNG -->
+        <!-- THẺ 4: QUY CÁCH ĐÓNG GÓI & THỜI HẠN SỬ DỤNG (DROPDOWN) -->
         <div class="form-section-card">
           <div class="fsc-header">
             <div class="fsc-title">
@@ -4390,19 +4381,23 @@
             <span class="fsc-badge">Bảo quản</span>
           </div>
 
-          <!-- Quy cách / Khối lượng -->
+          <!-- Quy cách / Khối lượng (Dropdown) -->
           <div class="fsc-field">
-            <label class="fsc-label" for="inputProdWeight">
+            <label class="fsc-label" for="selectWeightDropdown">
               <span>Quy cách bao bì / Trọng lượng</span>
+              <span class="fsc-label-sub">Chọn mẫu quy cách</span>
             </label>
-            <input type="text" id="inputProdWeight" class="fsc-input" placeholder="Túi zip 250g, Hũ 500ml..." value="Túi zip 250g" oninput="onProductDataChanged()">
-            <div class="fsc-chips-wrap">
-              <button type="button" class="fsc-chip active" onclick="setQuickWeight('Túi zip 250g')">Túi zip 250g</button>
-              <button type="button" class="fsc-chip" onclick="setQuickWeight('Túi zip 500g')">Túi zip 500g</button>
-              <button type="button" class="fsc-chip" onclick="setQuickWeight('Hũ thuỷ tinh 500ml')">Hũ thuỷ tinh 500ml</button>
-              <button type="button" class="fsc-chip" onclick="setQuickWeight('Bình sành 1 Lít')">Bình sành 1L</button>
-              <button type="button" class="fsc-chip" onclick="setQuickWeight('Thùng 20 gói')">Thùng 20 gói</button>
-            </div>
+            <select id="selectWeightDropdown" class="fsc-select" onchange="onWeightDropdownChange(this.value)">
+              <option value="Túi zip 250g">Túi zip 250g tiện lợi</option>
+              <option value="Túi zip 500g">Túi zip 500g tiết kiệm</option>
+              <option value="Hũ thuỷ tinh 500ml">Hũ thuỷ tinh 500ml cao cấp</option>
+              <option value="Bình sành 1 Lít">Bình sành 1 Lít truyền thống</option>
+              <option value="Hộp giấy thân thiện 400g">Hộp giấy thân thiện 400g</option>
+              <option value="1 kg (nguyên buồng / nải tươi)">1 kg (nguyên buồng / nải tươi)</option>
+              <option value="Thùng 20 gói">Thùng 20 gói xuất đại lý</option>
+              <option value="__CUSTOM__">Quy cách khác (Tự gõ tay)...</option>
+            </select>
+            <input type="text" id="inputProdWeight" class="fsc-input" style="margin-top:8px" placeholder="Túi zip 250g, Hũ 500ml..." value="Túi zip 250g" oninput="onProductDataChanged()">
           </div>
 
           <div class="fsc-grid-2col">
@@ -4414,19 +4409,23 @@
               <input type="text" id="inputProdMfgDate" class="fsc-input" placeholder="12/10/2026..." value="12/10/2026 (Mới đóng gói)" oninput="onProductDataChanged()">
             </div>
 
-            <!-- Hạn sử dụng -->
+            <!-- Hạn sử dụng (Dropdown) -->
             <div class="fsc-field" style="margin-bottom:0">
-              <label class="fsc-label" for="inputProdHsd">
+              <label class="fsc-label" for="selectHsdDropdown">
                 <span>Hạn sử dụng (HSD)</span>
               </label>
-              <input type="text" id="inputProdHsd" class="fsc-input" placeholder="12 tháng, 6 tháng..." value="12 tháng" oninput="onProductDataChanged()">
+              <select id="selectHsdDropdown" class="fsc-select" onchange="onHsdDropdownChange(this.value)">
+                <option value="12 tháng">12 tháng kể từ ngày đóng gói</option>
+                <option value="6 tháng">6 tháng kể từ ngày đóng gói</option>
+                <option value="9 tháng">9 tháng (bảo quản thoáng mát)</option>
+                <option value="18 tháng">18 tháng (hút chân không)</option>
+                <option value="24 tháng">24 tháng (mật ong, dược liệu)</option>
+                <option value="Càng để lâu càng thơm ngon">Càng để lâu càng ngon (Rượu chum)</option>
+                <option value="Tươi ngon dùng trong 7-10 ngày">Tươi ngon dùng trong 7-10 ngày</option>
+                <option value="__CUSTOM__">Thời hạn khác (Tự gõ tay)...</option>
+              </select>
+              <input type="text" id="inputProdHsd" class="fsc-input" style="margin-top:8px" placeholder="12 tháng, 6 tháng..." value="12 tháng" oninput="onProductDataChanged()">
             </div>
-          </div>
-          <div class="fsc-chips-wrap" style="margin-top:10px">
-            <button type="button" class="fsc-chip" onclick="setQuickHsd('6 tháng')">HSD 6 tháng</button>
-            <button type="button" class="fsc-chip active" onclick="setQuickHsd('12 tháng')">HSD 12 tháng</button>
-            <button type="button" class="fsc-chip" onclick="setQuickHsd('24 tháng')">HSD 24 tháng</button>
-            <button type="button" class="fsc-chip" onclick="setQuickHsd('Tươi dùng trong 7-10 ngày')">Ăn tươi 7 ngày</button>
           </div>
         </div>
 
@@ -5852,7 +5851,23 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       if (inputMfgDate) inputMfgDate.value = "12/10/2026 (Mới đóng gói)";
       if (inputCommitment) inputCommitment.value = "Nông sản vườn nhà tự trồng, không chất bảo quản, bao đổi trả nếu không ưng ý!";
 
-      renderCategoryChips();
+      // Đồng bộ giá trị vào các dropdown
+      const dCatalog = document.getElementById('selectCatalogDropdown');
+      if (dCatalog) dCatalog.value = prod.id;
+      const dUnit = document.getElementById('selectUnitDropdown');
+      if (dUnit) dUnit.value = prod.unit;
+      const dWeight = document.getElementById('selectWeightDropdown');
+      if (dWeight) {
+        for (let opt of dWeight.options) {
+          if (opt.value === prod.weight) { dWeight.value = prod.weight; break; }
+        }
+      }
+      const dHsd = document.getElementById('selectHsdDropdown');
+      if (dHsd) {
+        for (let opt of dHsd.options) {
+          if (opt.value === prod.hsd) { dHsd.value = prod.hsd; break; }
+        }
+      }
 
       // Cập nhật dãy nút chọn nhanh giá tương ứng
       renderQuickPriceChips(prod.quickPrices, prod.price);

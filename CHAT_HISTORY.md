@@ -441,6 +441,35 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 33: Chuyển Đổi 100% Select Chip Dài Sang Dropdown Tinh Gọn & Hiện Đại
+- **Yêu cầu 68**: "khi chọn thông tin để dropdown đi chứ để select chip dài quá".
+  - *Giải pháp*:
+    - **1. Thay thế thanh cuộn ngang sản phẩm mẫu HTX bằng Dropdown gọn gàng**:
+      - Chuyển toàn bộ 7 thẻ sản phẩm ngang cồng kềnh ở đầu Bước 2 thành 1 thanh Dropdown chọn nhanh duy nhất (`selectCatalogDropdown`):
+        - `🍌 Chuối sấy giòn Đồng Cát (55.000 đ · Túi zip 250g · OCOP 4⭐)`
+        - `🍌 Chuối tiêu hồng sấy dẻo OCOP (60.000 đ · Túi 500g · VietGAP)`
+        - `🍯 Mật ong hoa rừng tự nhiên (180.000 đ · Hũ 500ml · Rừng đồi cao)`
+        - `🍵 Trà Bát Tiên Thái Nguyên (120.000 đ · Gói 500g · OCOP Tỉnh)`
+        - `🍶 Rượu chuối hột rừng ngâm chum (150.000 đ · Bình 1L · Men lá)`
+        - `🌾 Bột chuối xanh sấy lạnh (85.000 đ · Hộp 400g · Chuẩn VSATTP)`
+        - `🍌 Buồng chuối ngự tiến vua chín cây (25.000 đ · 1 kg · Cắt tại vườn)`
+        - `➕ Tự nhập sản phẩm mới hoàn toàn...`
+    - **2. Chuyển đổi toàn bộ chip chọn dài trong 5 thẻ sang Dropdown chuyên nghiệp**:
+      - 🏷️ **Danh mục nông sản (`selectCategoryDropdown`)**: Danh sách thả xuống 8 danh mục nông sản chuẩn + tùy chọn `➕ Tạo danh mục mới của bác...`.
+      - 📦 **Đơn vị tính bán lẻ (`selectUnitDropdown`)**: Gói, Hũ, Bình, Chai, Hộp, Kg, Buồng, Nải, Thùng, Đơn vị khác...
+      - 📍 **Nơi sản xuất / Vùng trồng (`selectOriginDropdown`)**: Chọn nhanh 4 vùng trồng chuẩn hoặc chọn `Địa chỉ khác (Tự gõ)...`.
+      - 🛡️ **Tiêu chuẩn & Mã vùng trồng (`selectCertDropdown`)**: Chọn OCOP 4⭐, VietGAP, Hữu cơ, Tem QR truy xuất hoặc tiêu chuẩn khác.
+      - 📊 **Tồn kho sẵn bán (`selectStockDropdown`)**: 100 gói, 250 gói, 500 gói, 1.5 tấn, 50 hũ...
+      - 🚚 **Ưu đãi & Vận chuyển (`selectPromoDropdown`)**: Freeship từ 5 gói, Mua 10 tặng 1, Giảm 10% tại vườn, Hỗ trợ 50% ship...
+      - ⚖️ **Quy cách bao bì (`selectWeightDropdown`)**: Túi zip 250g, 500g, Hũ 500ml, Bình 1L, Hộp 400g, Buồng 1kg, Thùng 20 gói...
+      - ⏳ **Hạn sử dụng (`selectHsdDropdown`)**: 12 tháng, 6 tháng, 9 tháng, 18 tháng, 24 tháng, Ăn tươi 7-10 ngày, Càng để lâu càng ngon...
+    - **3. Cơ chế tương tác kép (Chọn Dropdown & Tự do gõ tay)**:
+      - Bấm chọn bất kỳ mục nào trong Dropdown sẽ lập tức cập nhật giá trị vào ô input bên dưới.
+      - Chọn mục `Khác (Tự gõ tay)...` sẽ tự động dọn trống ô input và focus con trỏ để bác Ba tự do nhập theo ý thích.
+      - Giao diện được thu gọn chiều cao hơn 40%, không còn các hàng chip quấn dòng lộn xộn, đạt chuẩn thẩm mỹ cao cấp.
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

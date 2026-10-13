@@ -1762,88 +1762,181 @@
       margin: 0;
       line-height: 1.35;
     }
+    /* 3. Doanh thu theo kênh: Modern 2-Tier Cards (Không bị cắt chữ, thanh dài thoáng) */
     .gvos-rev-channel-list {
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 9px;
     }
-    .gvos-rev-channel-row {
+    .gvos-rev-channel-card {
+      background: #F8FAFC;
+      border: 1px solid #F1F5F9;
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.2s;
+    }
+    .gvos-rev-channel-card:hover {
+      border-color: #E2E8F0;
+    }
+    .gvos-rev-ch-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .gvos-rev-ch-left {
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-    .gvos-rev-channel-info {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      width: auto;
-      min-width: 90px;
-      max-width: 110px;
-      flex-shrink: 0;
+      min-width: 0;
     }
     .gvos-rev-channel-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 7px;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
-    .gvos-rev-channel-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-main);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      min-width: 0;
-    }
-    .gvos-rev-channel-bar-wrap {
-      flex: 1;
-      min-width: 35px;
-      height: 9px;
-      background: #F1F5F9;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-    .gvos-rev-channel-bar {
-      height: 100%;
-      border-radius: 999px;
-      transition: width 0.3s ease;
-    }
-    .gvos-rev-channel-vnd {
-      font-size: 13px;
+    .gvos-rev-ch-title {
+      font-size: 13.5px;
       font-weight: 700;
-      color: var(--text-main);
-      font-variant-numeric: tabular-nums;
+      color: #0F172A;
       white-space: nowrap;
-      text-align: right;
-      width: auto;
-      min-width: 78px;
+    }
+    .gvos-rev-ch-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       flex-shrink: 0;
     }
-    .gvos-rev-table {
-      width: 100%;
-      border-collapse: collapse;
+    .gvos-rev-channel-vnd {
       font-size: 13.5px;
-    }
-    .gvos-rev-table th, .gvos-rev-table td {
-      padding: 9px 0;
-      border-top: 1px solid #F1F5F9;
+      font-weight: 800;
+      color: #0F172A;
       font-variant-numeric: tabular-nums;
-      vertical-align: middle;
+      white-space: nowrap;
     }
-    .gvos-rev-table thead th {
-      border-top: none;
-      font-size: 12px;
+    .gvos-rev-ch-pct {
+      font-size: 11px;
       font-weight: 700;
-      color: var(--text-muted);
-      padding: 4px 0 6px;
+      color: #64748B;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 1px 6px;
+      border-radius: 999px;
     }
-    .gvos-rev-table tbody th {
+    .gvos-rev-ch-track {
+      width: 100%;
+      height: 7px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .gvos-rev-ch-bar {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    /* 4. 7 Ngày gần nhất: Biểu đồ mini 7 cột + Danh sách gọn gàng (Tiết kiệm chiều cao scroll) */
+    .gvos-7d-chart-wrap {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 10px 4px 6px;
+      height: 96px;
+      border-bottom: 1px dashed #E2E8F0;
+      margin-bottom: 8px;
+    }
+    .gvos-7d-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      height: 100%;
+      justify-content: flex-end;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .gvos-7d-val {
+      font-size: 10px;
+      font-weight: 700;
+      color: #64748B;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .gvos-7d-bar-body {
+      width: 100%;
+      max-width: 26px;
+      border-radius: 5px 5px 2px 2px;
+      background: #CBD5E1;
+      transition: height 0.3s ease, background 0.2s ease, transform 0.15s ease;
+      min-height: 5px;
+    }
+    .gvos-7d-col:hover .gvos-7d-bar-body,
+    .gvos-7d-col:active .gvos-7d-bar-body {
+      transform: scaleY(1.05);
+    }
+    .gvos-7d-col.today .gvos-7d-bar-body {
+      background: var(--agri-green);
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.35);
+    }
+    .gvos-7d-lbl {
+      font-size: 11px;
       font-weight: 600;
-      color: var(--text-main);
+      color: #64748B;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .gvos-7d-col.today .gvos-7d-lbl {
+      color: var(--agri-green);
+      font-weight: 800;
+    }
+    .gvos-7d-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .gvos-7d-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 4px;
+      font-size: 13px;
+      border-radius: 6px;
+    }
+    .gvos-7d-row:hover {
+      background: #F8FAFC;
+    }
+    .gvos-7d-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 100%;
+      padding: 7px 10px;
+      margin-top: 4px;
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .gvos-7d-toggle-btn:hover {
+      background: #F1F5F9;
+      border-color: #94A3B8;
+      color: #0F172A;
     }
     .gvos-rev-payout-pill {
       display: flex;
@@ -7842,122 +7935,198 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
 
-        <!-- 3. Doanh thu theo kênh (dt-kenh) -->
+        <!-- 3. Doanh thu theo kênh (dt-kenh): Modern 2-Tier Cards (Không bị cắt chữ, thanh dài thoáng) -->
         <section class="gvos-rev-card" aria-labelledby="dt-kenh">
           <div class="gvos-rev-section-header">
-            <h2 id="dt-kenh" class="gvos-rev-section-title">Doanh thu theo kênh</h2>
-            <p class="gvos-rev-section-sub">Triệu đồng, đơn đã bán trong tháng. Kênh dưới 1 triệu ghi đủ số.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <h2 id="dt-kenh" class="gvos-rev-section-title">Doanh thu theo kênh</h2>
+              <span style="font-size:11.5px;font-weight:700;color:var(--agri-green);background:#ECFDF5;padding:3px 8px;border-radius:6px;border:1px solid #BBF7D0">4 Kênh Bán</span>
+            </div>
+            <p class="gvos-rev-section-sub">Đóng góp doanh thu của nông hộ trong tháng 10/2026</p>
           </div>
           <div class="gvos-rev-channel-list">
-            <!-- Chợ Xanh Xã -->
-            <div class="gvos-rev-channel-row">
-              <div class="gvos-rev-channel-info">
-                <span class="gvos-rev-channel-icon" style="background:#ECFDF5;color:#16A34A;">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                </span>
-                <span class="gvos-rev-channel-name">Chợ Xanh Xã</span>
+            <!-- Chợ Xanh HTX -->
+            <div class="gvos-rev-channel-card">
+              <div class="gvos-rev-ch-head">
+                <div class="gvos-rev-ch-left">
+                  <span class="gvos-rev-channel-icon" style="background:#ECFDF5;color:#16A34A;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  </span>
+                  <span class="gvos-rev-ch-title">Chợ Xanh HTX</span>
+                </div>
+                <div class="gvos-rev-ch-right">
+                  <span class="gvos-rev-channel-vnd" id="revChanChoXanh">1.850.000 đ</span>
+                  <span class="gvos-rev-ch-pct" id="revPctChoXanh">48%</span>
+                </div>
               </div>
-              <div class="gvos-rev-channel-bar-wrap">
-                <div class="gvos-rev-channel-bar" style="width:48%;background:#16A34A;"></div>
+              <div class="gvos-rev-ch-track">
+                <div class="gvos-rev-ch-bar" id="revBarChoXanh" style="width:48%;background:#16A34A;"></div>
               </div>
-              <span class="gvos-rev-channel-vnd" id="revChanChoXanh">1.850.000 đ</span>
             </div>
 
-            <!-- Zalo App -->
-            <div class="gvos-rev-channel-row">
-              <div class="gvos-rev-channel-info">
-                <span class="gvos-rev-channel-icon" style="background:#E0F2FE;color:#0284C7;">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                </span>
-                <span class="gvos-rev-channel-name">Zalo App</span>
+            <!-- Zalo Nông Dân -->
+            <div class="gvos-rev-channel-card">
+              <div class="gvos-rev-ch-head">
+                <div class="gvos-rev-ch-left">
+                  <span class="gvos-rev-channel-icon" style="background:#E0F2FE;color:#0284C7;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                  </span>
+                  <span class="gvos-rev-ch-title">Zalo Nông Dân</span>
+                </div>
+                <div class="gvos-rev-ch-right">
+                  <span class="gvos-rev-channel-vnd" id="revChanZalo">1.200.000 đ</span>
+                  <span class="gvos-rev-ch-pct" id="revPctZalo">31%</span>
+                </div>
               </div>
-              <div class="gvos-rev-channel-bar-wrap">
-                <div class="gvos-rev-channel-bar" style="width:31%;background:#0284C7;"></div>
+              <div class="gvos-rev-ch-track">
+                <div class="gvos-rev-ch-bar" id="revBarZalo" style="width:31%;background:#0284C7;"></div>
               </div>
-              <span class="gvos-rev-channel-vnd" id="revChanZalo">1.200.000 đ</span>
             </div>
 
-            <!-- Shopee -->
-            <div class="gvos-rev-channel-row">
-              <div class="gvos-rev-channel-info">
-                <span class="gvos-rev-channel-icon" style="background:#FFF7ED;color:#EA580C;">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                </span>
-                <span class="gvos-rev-channel-name">Shopee</span>
+            <!-- Đơn Sỉ Shopee -->
+            <div class="gvos-rev-channel-card">
+              <div class="gvos-rev-ch-head">
+                <div class="gvos-rev-ch-left">
+                  <span class="gvos-rev-channel-icon" style="background:#FFF7ED;color:#EA580C;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                  </span>
+                  <span class="gvos-rev-ch-title">Đơn Sỉ Shopee</span>
+                </div>
+                <div class="gvos-rev-ch-right">
+                  <span class="gvos-rev-channel-vnd" id="revChanShopee">560.000 đ</span>
+                  <span class="gvos-rev-ch-pct" id="revPctShopee">15%</span>
+                </div>
               </div>
-              <div class="gvos-rev-channel-bar-wrap">
-                <div class="gvos-rev-channel-bar" style="width:15%;background:#EA580C;"></div>
+              <div class="gvos-rev-ch-track">
+                <div class="gvos-rev-ch-bar" id="revBarShopee" style="width:15%;background:#EA580C;"></div>
               </div>
-              <span class="gvos-rev-channel-vnd" id="revChanShopee">560.000 đ</span>
             </div>
 
-            <!-- Tại vườn -->
-            <div class="gvos-rev-channel-row">
-              <div class="gvos-rev-channel-info">
-                <span class="gvos-rev-channel-icon" style="background:#ECFDF5;color:#059669;">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                </span>
-                <span class="gvos-rev-channel-name">Tại vườn</span>
+            <!-- Bán Tại Vườn -->
+            <div class="gvos-rev-channel-card">
+              <div class="gvos-rev-ch-head">
+                <div class="gvos-rev-ch-left">
+                  <span class="gvos-rev-channel-icon" style="background:#ECFDF5;color:#059669;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </span>
+                  <span class="gvos-rev-ch-title">Bán Tại Vườn</span>
+                </div>
+                <div class="gvos-rev-ch-right">
+                  <span class="gvos-rev-channel-vnd" id="revChanGarden">240.000 đ</span>
+                  <span class="gvos-rev-ch-pct" id="revPctGarden">6%</span>
+                </div>
               </div>
-              <div class="gvos-rev-channel-bar-wrap">
-                <div class="gvos-rev-channel-bar" style="width:6%;background:#059669;"></div>
+              <div class="gvos-rev-ch-track">
+                <div class="gvos-rev-ch-bar" id="revBarGarden" style="width:6%;background:#059669;"></div>
               </div>
-              <span class="gvos-rev-channel-vnd" id="revChanGarden">240.000 đ</span>
             </div>
           </div>
         </section>
 
-        <!-- 4. 7 ngày gần nhất (dt-ngay) -->
+        <!-- 4. 7 ngày gần nhất (dt-ngay) - Biểu đồ mini 7 ngày + Danh sách gọn gàng (Tiết kiệm chiều cao scroll) -->
         <section class="gvos-rev-card" aria-labelledby="dt-ngay">
-          <div class="gvos-rev-section-header" style="margin-bottom:8px">
-            <h2 id="dt-ngay" class="gvos-rev-section-title">7 ngày gần nhất</h2>
+          <div class="gvos-rev-section-header" style="margin-bottom:6px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <h2 id="dt-ngay" class="gvos-rev-section-title">7 ngày gần nhất</h2>
+              <span style="font-size:12px;font-weight:700;color:#0F172A">Tổng: <strong style="color:var(--agri-green)">3.850.000 đ</strong></span>
+            </div>
+            <p class="gvos-rev-section-sub">Biểu đồ doanh thu tuần & đơn bán thực tế</p>
           </div>
-          <table class="gvos-rev-table">
-            <thead>
-              <tr>
-                <th scope="col" style="text-align:left">Ngày</th>
-                <th scope="col" style="text-align:center">Đơn bán</th>
-                <th scope="col" style="text-align:right">Thành tiền</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Hôm nay (13/10)</th>
-                <td style="text-align:center">3 đơn</td>
-                <td style="text-align:right;font-weight:700;color:var(--agri-green)">420.000 đ</td>
-              </tr>
-              <tr>
-                <th scope="row">Hôm qua (12/10)</th>
-                <td style="text-align:center">2 đơn</td>
-                <td style="text-align:right;font-weight:700;color:var(--text-main)">275.000 đ</td>
-              </tr>
-              <tr>
-                <th scope="row">11/10</th>
-                <td style="text-align:center">4 đơn</td>
-                <td style="text-align:right;font-weight:700;color:var(--text-main)">910.000 đ</td>
-              </tr>
-              <tr>
-                <th scope="row">10/10</th>
-                <td style="text-align:center">3 đơn</td>
-                <td style="text-align:right;font-weight:700;color:var(--text-main)">550.000 đ</td>
-              </tr>
-              <tr>
-                <th scope="row">09/10</th>
-                <td style="text-align:center">2 đơn</td>
-                <td style="text-align:right;font-weight:700;color:var(--text-main)">340.000 đ</td>
-              </tr>
-              <tr>
-                <th scope="row">08/10</th>
-                <td style="text-align:center">1 đơn</td>
-                <td style="text-align:right;font-weight:700;color:var(--text-main)">185.000 đ</td>
-              </tr>
-              <tr>
-                <th scope="row">07/10</th>
-                <td style="text-align:center">3 đơn</td>
-                <td style="text-align:right;font-weight:700;color:var(--text-main)">1.170.000 đ</td>
-              </tr>
-            </tbody>
-          </table>
+
+          <!-- Biểu đồ cột mini 7 ngày trực quan (Chỉ 96px chiều cao) -->
+          <div class="gvos-7d-chart-wrap" aria-label="Biểu đồ cột 7 ngày">
+            <div class="gvos-7d-col" onclick="highlightDay7D('07/10', '1.170.000 đ', '3 đơn')" title="07/10: 1.170.000 đ (3 đơn)">
+              <span class="gvos-7d-val">1.17M</span>
+              <div class="gvos-7d-bar-body" style="height:55px;"></div>
+              <span class="gvos-7d-lbl">07</span>
+            </div>
+            <div class="gvos-7d-col" onclick="highlightDay7D('08/10', '185.000 đ', '1 đơn')" title="08/10: 185.000 đ (1 đơn)">
+              <span class="gvos-7d-val">185k</span>
+              <div class="gvos-7d-bar-body" style="height:12px;"></div>
+              <span class="gvos-7d-lbl">08</span>
+            </div>
+            <div class="gvos-7d-col" onclick="highlightDay7D('09/10', '340.000 đ', '2 đơn')" title="09/10: 340.000 đ (2 đơn)">
+              <span class="gvos-7d-val">340k</span>
+              <div class="gvos-7d-bar-body" style="height:18px;"></div>
+              <span class="gvos-7d-lbl">09</span>
+            </div>
+            <div class="gvos-7d-col" onclick="highlightDay7D('10/10', '550.000 đ', '3 đơn')" title="10/10: 550.000 đ (3 đơn)">
+              <span class="gvos-7d-val">550k</span>
+              <div class="gvos-7d-bar-body" style="height:28px;"></div>
+              <span class="gvos-7d-lbl">10</span>
+            </div>
+            <div class="gvos-7d-col" onclick="highlightDay7D('11/10', '910.000 đ', '4 đơn')" title="11/10: 910.000 đ (4 đơn)">
+              <span class="gvos-7d-val">910k</span>
+              <div class="gvos-7d-bar-body" style="height:44px;"></div>
+              <span class="gvos-7d-lbl">11</span>
+            </div>
+            <div class="gvos-7d-col" onclick="highlightDay7D('12/10', '275.000 đ', '2 đơn')" title="12/10: 275.000 đ (2 đơn)">
+              <span class="gvos-7d-val">275k</span>
+              <div class="gvos-7d-bar-body" style="height:15px;"></div>
+              <span class="gvos-7d-lbl">12</span>
+            </div>
+            <div class="gvos-7d-col today" onclick="highlightDay7D('Hôm nay (13/10)', '420.000 đ', '3 đơn')" title="Hôm nay: 420.000 đ (3 đơn)">
+              <span class="gvos-7d-val" style="color:var(--agri-green)">420k</span>
+              <div class="gvos-7d-bar-body" style="height:23px;"></div>
+              <span class="gvos-7d-lbl">Nay</span>
+            </div>
+          </div>
+
+          <!-- Danh sách tóm tắt cực gọn: Chỉ hiện 2 ngày gần nhất mặc định -->
+          <div class="gvos-7d-list">
+            <div class="gvos-7d-row">
+              <div style="display:flex;align-items:center;gap:6px">
+                <span style="display:inline-block;width:6px;height:6px;border-radius:999px;background:var(--agri-green)"></span>
+                <span style="font-weight:700;color:#0F172A">Hôm nay (13/10)</span>
+              </div>
+              <span style="font-size:12px;color:#64748B">3 đơn</span>
+              <span style="font-weight:700;color:var(--agri-green);font-variant-numeric:tabular-nums">420.000 đ</span>
+            </div>
+
+            <div class="gvos-7d-row">
+              <div style="display:flex;align-items:center;gap:6px">
+                <span style="display:inline-block;width:6px;height:6px;border-radius:999px;background:#CBD5E1"></span>
+                <span style="font-weight:600;color:#334155">Hôm qua (12/10)</span>
+              </div>
+              <span style="font-size:12px;color:#64748B">2 đơn</span>
+              <span style="font-weight:700;color:#0F172A;font-variant-numeric:tabular-nums">275.000 đ</span>
+            </div>
+
+            <!-- Các ngày trước được gom vào phần mở rộng (Accordion) -->
+            <div id="gvos7dExpandedRows" style="display:none;flex-direction:column;gap:4px;padding-top:4px;border-top:1px dashed #F1F5F9">
+              <div class="gvos-7d-row">
+                <span style="font-weight:500;color:#475569">11/10</span>
+                <span style="font-size:12px;color:#64748B">4 đơn</span>
+                <span style="font-weight:700;color:#0F172A;font-variant-numeric:tabular-nums">910.000 đ</span>
+              </div>
+              <div class="gvos-7d-row">
+                <span style="font-weight:500;color:#475569">10/10</span>
+                <span style="font-size:12px;color:#64748B">3 đơn</span>
+                <span style="font-weight:700;color:#0F172A;font-variant-numeric:tabular-nums">550.000 đ</span>
+              </div>
+              <div class="gvos-7d-row">
+                <span style="font-weight:500;color:#475569">09/10</span>
+                <span style="font-size:12px;color:#64748B">2 đơn</span>
+                <span style="font-weight:700;color:#0F172A;font-variant-numeric:tabular-nums">340.000 đ</span>
+              </div>
+              <div class="gvos-7d-row">
+                <span style="font-weight:500;color:#475569">08/10</span>
+                <span style="font-size:12px;color:#64748B">1 đơn</span>
+                <span style="font-weight:700;color:#0F172A;font-variant-numeric:tabular-nums">185.000 đ</span>
+              </div>
+              <div class="gvos-7d-row">
+                <span style="font-weight:500;color:#475569">07/10</span>
+                <span style="font-size:12px;color:#64748B">3 đơn</span>
+                <span style="font-weight:700;color:#0F172A;font-variant-numeric:tabular-nums">1.170.000 đ</span>
+              </div>
+            </div>
+
+            <!-- Nút bấm thu gọn / mở rộng tiện lợi -->
+            <button type="button" class="gvos-7d-toggle-btn" id="btnToggle7D" onclick="toggle7DayDetails()">
+              <span id="txtToggle7D">Xem chi tiết 5 ngày trước (11/10 – 07/10)</span>
+              <svg id="iconToggle7D" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.2s"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
         </section>
 
         <!-- 5. Chợ Xanh · tiền Đối tác đã nhận (dt-doi-tac) -->
@@ -8416,6 +8585,16 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       const chanGarden = document.getElementById('revChanGarden');
       const payoutTotal = document.getElementById('revPayoutTotal');
 
+      // Pct & Bar elements
+      const pctChoXanh = document.getElementById('revPctChoXanh');
+      const pctZalo = document.getElementById('revPctZalo');
+      const pctShopee = document.getElementById('revPctShopee');
+      const pctGarden = document.getElementById('revPctGarden');
+      const barChoXanh = document.getElementById('revBarChoXanh');
+      const barZalo = document.getElementById('revBarZalo');
+      const barShopee = document.getElementById('revBarShopee');
+      const barGarden = document.getElementById('revBarGarden');
+
       if (monthVal === '2026-10') {
         if (heading) heading.textContent = 'Doanh thu tháng 10';
         if (amount) amount.textContent = '3.850.000 đ';
@@ -8429,6 +8608,15 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         if (chanShopee) chanShopee.textContent = '560.000 đ';
         if (chanGarden) chanGarden.textContent = '240.000 đ';
         if (payoutTotal) payoutTotal.textContent = '3.850.000 đ · 18 đơn';
+
+        if (pctChoXanh) pctChoXanh.textContent = '48%';
+        if (pctZalo) pctZalo.textContent = '31%';
+        if (pctShopee) pctShopee.textContent = '15%';
+        if (pctGarden) pctGarden.textContent = '6%';
+        if (barChoXanh) barChoXanh.style.width = '48%';
+        if (barZalo) barZalo.style.width = '31%';
+        if (barShopee) barShopee.style.width = '15%';
+        if (barGarden) barGarden.style.width = '6%';
       } else if (monthVal === '2026-09') {
         if (heading) heading.textContent = 'Doanh thu tháng 09';
         if (amount) amount.textContent = '4.620.000 đ';
@@ -8442,6 +8630,15 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         if (chanShopee) chanShopee.textContent = '620.000 đ';
         if (chanGarden) chanGarden.textContent = '300.000 đ';
         if (payoutTotal) payoutTotal.textContent = '4.620.000 đ · 22 đơn';
+
+        if (pctChoXanh) pctChoXanh.textContent = '49%';
+        if (pctZalo) pctZalo.textContent = '31%';
+        if (pctShopee) pctShopee.textContent = '13%';
+        if (pctGarden) pctGarden.textContent = '7%';
+        if (barChoXanh) barChoXanh.style.width = '49%';
+        if (barZalo) barZalo.style.width = '31%';
+        if (barShopee) barShopee.style.width = '13%';
+        if (barGarden) barGarden.style.width = '7%';
       } else if (monthVal === '2026-08') {
         if (heading) heading.textContent = 'Doanh thu tháng 08';
         if (amount) amount.textContent = '3.150.000 đ';
@@ -8455,7 +8652,38 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         if (chanShopee) chanShopee.textContent = '400.000 đ';
         if (chanGarden) chanGarden.textContent = '200.000 đ';
         if (payoutTotal) payoutTotal.textContent = '3.150.000 đ · 15 đơn';
+
+        if (pctChoXanh) pctChoXanh.textContent = '51%';
+        if (pctZalo) pctZalo.textContent = '30%';
+        if (pctShopee) pctShopee.textContent = '13%';
+        if (pctGarden) pctGarden.textContent = '6%';
+        if (barChoXanh) barChoXanh.style.width = '51%';
+        if (barZalo) barZalo.style.width = '30%';
+        if (barShopee) barShopee.style.width = '13%';
+        if (barGarden) barGarden.style.width = '6%';
       }
+    }
+
+    // Đóng / mở rộng 5 ngày trước của danh sách 7 ngày (Tiết kiệm chiều dài scroll)
+    function toggle7DayDetails() {
+      const rows = document.getElementById('gvos7dExpandedRows');
+      const txt = document.getElementById('txtToggle7D');
+      const icon = document.getElementById('iconToggle7D');
+      if (!rows) return;
+      if (rows.style.display === 'none' || rows.style.display === '') {
+        rows.style.display = 'flex';
+        if (txt) txt.textContent = 'Thu gọn danh sách 7 ngày';
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      } else {
+        rows.style.display = 'none';
+        if (txt) txt.textContent = 'Xem chi tiết 5 ngày trước (11/10 – 07/10)';
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Chạm cột biểu đồ 7 ngày hiển thị thông tin
+    function highlightDay7D(dayLabel, amount, orders) {
+      triggerToast(`📅 ${dayLabel}: ${orders} · Doanh thu ${amount}`);
     }
 
     // Bắt đầu luồng Tạo bài đăng 3 bước (Wizard)

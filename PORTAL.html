@@ -2114,25 +2114,322 @@
       line-height: 1.4;
     }
 
-    .revenue-stat-hero {
-      background: linear-gradient(135deg, #15803D 0%, #166534 100%);
-      color: #FFFFFF;
-      border-radius: 20px;
-      padding: 20px 18px;
-      margin-bottom: 14px;
-      box-shadow: 0 6px 20px rgba(21, 128, 61, 0.25);
+    /* =========================================================================
+       GVOS REVENUE SCREEN STYLES (Chuẩn Production gvos.greenfi.vn/doanh-thu)
+       ========================================================================= */
+    .gvos-rev-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
     }
-    .revenue-split-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .gvos-rev-header-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .gvos-rev-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .gvos-rev-subtitle {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 2px 0 0;
+      line-height: 1.3;
+    }
+    .gvos-rev-month-bar {
+      display: flex;
+      align-items: flex-end;
       gap: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-    .revenue-split-box {
+    .gvos-rev-select-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+    .gvos-rev-select-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .gvos-rev-select {
+      width: 100%;
+      height: 44px;
+      padding: 0 12px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
       background: #FFFFFF;
       border: 1px solid var(--border-line);
-      border-radius: 16px;
-      padding: 13px 15px;
+      border-radius: 12px;
+      outline: none;
+      cursor: pointer;
+    }
+    .gvos-rev-running-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 44px;
+      padding: 0 12px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1D4ED8;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 12px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .gvos-rev-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-line);
+      border-radius: 18px;
+      padding: 14px 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+    }
+    .gvos-rev-hero-card {
+      padding: 0;
+      overflow: hidden;
+    }
+    .gvos-rev-ambient-wrap {
+      position: relative;
+      width: 100%;
+      height: 84px;
+      background: #064E3B;
+      overflow: hidden;
+    }
+    .gvos-rev-ambient-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.88;
+    }
+    .gvos-rev-ambient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+    }
+    .gvos-rev-hero-body {
+      padding: 14px 15px;
+    }
+    .gvos-rev-hero-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .gvos-rev-hero-heading {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0;
+    }
+    .gvos-badge-cx {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #DCFCE7;
+      color: #15803D;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid #BBF7D0;
+    }
+    .gvos-rev-hero-amount {
+      font-size: 30px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      color: var(--agri-green);
+      font-variant-numeric: tabular-nums;
+      margin: 4px 0 6px;
+      line-height: 1.15;
+    }
+    .gvos-rev-hero-sub {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.35;
+    }
+    .gvos-rev-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .gvos-rev-kpi-pill {
+      background: #FFFFFF;
+      border: 1px solid var(--border-line);
+      border-radius: 14px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+    .gvos-rev-kpi-val {
+      display: block;
+      font-size: 22px;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+    }
+    .gvos-rev-kpi-lbl {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 3px;
+      line-height: 1.2;
+    }
+    .gvos-rev-section-header {
+      margin-bottom: 12px;
+    }
+    .gvos-rev-section-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0 0 3px;
+      line-height: 1.3;
+    }
+    .gvos-rev-section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.35;
+    }
+    .gvos-rev-channel-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .gvos-rev-channel-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .gvos-rev-channel-info {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 108px;
+      flex-shrink: 0;
+    }
+    .gvos-rev-channel-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .gvos-rev-channel-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gvos-rev-channel-bar-wrap {
+      flex: 1;
+      min-width: 40px;
+      height: 10px;
+      background: #F1F5F9;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .gvos-rev-channel-bar {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+    .gvos-rev-channel-vnd {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      text-align: right;
+      width: 90px;
+      flex-shrink: 0;
+    }
+    .gvos-rev-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .gvos-rev-table th, .gvos-rev-table td {
+      padding: 10px 0;
+      border-top: 1px solid #F1F5F9;
+      font-variant-numeric: tabular-nums;
+      vertical-align: middle;
+    }
+    .gvos-rev-table thead th {
+      border-top: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      padding: 4px 0 8px;
+    }
+    .gvos-rev-table tbody th {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .gvos-rev-payout-pill {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-line);
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin: 10px 0 12px;
+      font-size: 13px;
+    }
+    .payout-badge-tag {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .payout-dot {
+      color: #94A3B8;
+      font-size: 10px;
+    }
+    .gvos-rev-payout-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-line);
+      gap: 10px;
+    }
+    .gvos-rev-payout-label {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .gvos-rev-payout-val {
+      font-size: 15px;
+      font-weight: 850;
+      color: var(--text-main);
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+    .gvos-rev-payout-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 8px 0 0;
     }
 
     /* Danh sách Kho hàng của Bác Ba */
@@ -6262,7 +6559,7 @@
           </div>
 
           <!-- Card 2: Doanh thu tạm tính -->
-          <div class="metric-card-interactive" onclick="switchNavTab('dashboard')" title="Bấm xem sổ doanh thu & dòng tiền">
+          <div class="metric-card-interactive" onclick="openRevenueView()" title="Bấm xem chi tiết doanh thu & dòng tiền">
             <div class="metric-card-label">DOANH THU THÁNG</div>
             <div class="metric-card-value">3.850.000 đ</div>
             <div class="metric-card-sub-hint" style="color:#0284C7">
@@ -7557,68 +7854,213 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       <!-- =========================================================================
            PANEL 10: MÀN HÌNH DOANH THU & SỔ THU TIỀN (REVENUE SCREEN)
            ========================================================================= -->
+      <!-- =========================================================================
+           PANEL 10: MÀN HÌNH DOANH THU & SỔ THU TIỀN (CHUẨN GVOS PRODUCTION)
+           ========================================================================= -->
       <section id="panel-revenue" class="view-panel">
-        <div class="wizard-top-header">
-          <button type="button" class="btn-dock-back" style="height:42px;padding:0 16px;font-size:14.5px" onclick="switchNavTab('home')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Về Trang chủ
+        <!-- GVOS Top Header Bar -->
+        <div class="gvos-rev-header">
+          <button type="button" class="btn-dock-back" onclick="switchNavTab('home')" style="height:42px;padding:0 15px;font-size:14px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Trang chủ
           </button>
-          <span class="wizard-step-indicator" style="background:#ECFDF5;color:#15803D;border-color:#BBF7D0">SỔ THU TIỀN</span>
-        </div>
-
-        <h1 class="step-main-title" style="font-size:22px;margin-top:8px">Doanh thu vụ Tết</h1>
-        <p class="step-sub-desc">Thống kê chi tiết tiền bán nông sản của Bác Ba:</p>
-
-        <!-- Thẻ Hero Doanh thu -->
-        <div class="revenue-stat-hero">
-          <div style="font-size:13px;font-weight:700;color:#BBF7D0;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px">TỔNG TIỀN THÁNG NÀY</div>
-          <div style="font-size:32px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px">3.850.000 đ</div>
-          <div style="font-size:13.5px;color:#ECFDF5;display:flex;align-items:center;gap:6px">
-            <span>↗ Tăng +420.000đ so với tuần trước</span>
+          <div class="gvos-rev-header-text">
+            <h1 class="gvos-rev-title">Doanh thu</h1>
+            <p class="gvos-rev-subtitle">Tháng này bán được bao nhiêu</p>
           </div>
         </div>
 
-        <!-- Phân loại hình thức nhận tiền -->
-        <div class="revenue-split-grid">
-          <div class="revenue-split-box">
-            <div style="font-size:12.5px;color:var(--text-muted);font-weight:700;margin-bottom:4px">TIỀN MẶT TẬN TAY</div>
-            <div style="font-size:18.5px;font-weight:800;color:var(--text-main);margin-bottom:3px">2.100.000 đ</div>
-            <div style="font-size:12.5px;color:var(--agri-green);font-weight:700">55% tổng thu</div>
+        <!-- Month Filter Bar (GVOS) -->
+        <div class="gvos-rev-month-bar">
+          <div class="gvos-rev-select-wrap">
+            <label class="gvos-rev-select-label" for="gvosRevenueMonth">Tháng</label>
+            <select id="gvosRevenueMonth" class="gvos-rev-select" onchange="onRevenueMonthChange(this.value)">
+              <option value="2026-10" selected>Tháng 10/2026</option>
+              <option value="2026-09">Tháng 09/2026</option>
+              <option value="2026-08">Tháng 08/2026</option>
+            </select>
           </div>
-          <div class="revenue-split-box">
-            <div style="font-size:12.5px;color:var(--text-muted);font-weight:700;margin-bottom:4px">CHUYỂN KHOẢN QR</div>
-            <div style="font-size:18.5px;font-weight:800;color:var(--text-main);margin-bottom:3px">1.750.000 đ</div>
-            <div style="font-size:12.5px;color:#0284C7;font-weight:700">45% tổng thu</div>
+          <div id="gvosRevenueRunningBadge" class="gvos-rev-running-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>Chưa đủ tháng</span>
           </div>
         </div>
 
-        <!-- Lịch sử giao dịch gần nhất -->
-        <div class="section-title-line">
-          <span>Lịch sử tiền về gần đây</span>
+        <!-- 1. Ambient Banner Hero Card (dt-chinh) -->
+        <div class="gvos-rev-card gvos-rev-hero-card" aria-labelledby="dt-chinh">
+          <div class="gvos-rev-ambient-wrap">
+            <img src="tet_banner.jpg" alt="Vụ nông sản Tết Bác Ba" class="gvos-rev-ambient-img">
+            <div class="gvos-rev-ambient-overlay"></div>
+          </div>
+          <div class="gvos-rev-hero-body">
+            <div class="gvos-rev-hero-topline">
+              <h2 id="dt-chinh" class="gvos-rev-hero-heading">Doanh thu tháng 10</h2>
+              <span class="gvos-badge-cx">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Chợ Xanh
+              </span>
+            </div>
+            <div class="gvos-rev-hero-amount" id="revMainAmount">3.850.000 đ</div>
+            <p class="gvos-rev-hero-sub" id="revMainOrdersDesc">18 đơn đã bán. Không tính phí giao, đơn huỷ và trả hàng.</p>
+          </div>
         </div>
 
-        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px">
-          <div style="flex:1;min-width:0">
-            <div style="font-size:14.5px;font-weight:700;margin-bottom:3px;line-height:1.35;word-break:break-word">Cô Lan trả tiền 5 túi chuối</div>
-            <div style="font-size:12.5px;color:var(--text-muted);line-height:1.25">Hôm nay 10:20 · Tiền mặt</div>
+        <!-- 2. 3 Status KPI Pills (Đơn trong tháng) -->
+        <div class="gvos-rev-kpi-grid" aria-label="Đơn trong tháng">
+          <div class="gvos-rev-kpi-pill">
+            <span class="gvos-rev-kpi-val" id="revKpiCompleted" style="color:var(--agri-green)">18</span>
+            <span class="gvos-rev-kpi-lbl">Hoàn thành</span>
           </div>
-          <div style="font-size:16px;font-weight:800;color:var(--agri-green);white-space:nowrap;flex-shrink:0">+275.000 đ</div>
+          <div class="gvos-rev-kpi-pill">
+            <span class="gvos-rev-kpi-val" id="revKpiProcessing" style="color:#0284C7">44</span>
+            <span class="gvos-rev-kpi-lbl">Đang xử lý</span>
+          </div>
+          <div class="gvos-rev-kpi-pill">
+            <span class="gvos-rev-kpi-val" id="revKpiCanceled" style="color:#64748B">1</span>
+            <span class="gvos-rev-kpi-lbl">Huỷ, trả hàng</span>
+          </div>
         </div>
 
-        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px">
-          <div style="flex:1;min-width:0">
-            <div style="font-size:14.5px;font-weight:700;margin-bottom:3px;line-height:1.35;word-break:break-word">Chị Mai ck cọc 10 túi chuối</div>
-            <div style="font-size:12.5px;color:var(--text-muted);line-height:1.25">Hôm nay 08:35 · VietinBank QR</div>
+        <!-- 3. Doanh thu theo kênh (dt-kenh) -->
+        <section class="gvos-rev-card" aria-labelledby="dt-kenh">
+          <div class="gvos-rev-section-header">
+            <h2 id="dt-kenh" class="gvos-rev-section-title">Doanh thu theo kênh</h2>
+            <p class="gvos-rev-section-sub">Triệu đồng, đơn đã bán trong tháng. Kênh dưới 1 triệu ghi đủ số.</p>
           </div>
-          <div style="font-size:16px;font-weight:800;color:var(--agri-green);white-space:nowrap;flex-shrink:0">+910.000 đ</div>
-        </div>
+          <div class="gvos-rev-channel-list">
+            <!-- Chợ Xanh Xã -->
+            <div class="gvos-rev-channel-row">
+              <div class="gvos-rev-channel-info">
+                <span class="gvos-rev-channel-icon" style="background:#ECFDF5;color:#16A34A;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                </span>
+                <span class="gvos-rev-channel-name">Chợ Xanh Xã</span>
+              </div>
+              <div class="gvos-rev-channel-bar-wrap">
+                <div class="gvos-rev-channel-bar" style="width:48%;background:#16A34A;"></div>
+              </div>
+              <span class="gvos-rev-channel-vnd" id="revChanChoXanh">1.850.000 đ</span>
+            </div>
 
-        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px">
-          <div style="flex:1;min-width:0">
-            <div style="font-size:14.5px;font-weight:700;margin-bottom:3px;line-height:1.35;word-break:break-word">Cháu Tuấn ck mua 2 gói trà</div>
-            <div style="font-size:12.5px;color:var(--text-muted);line-height:1.25">Hôm qua 11:10 · Agribank QR</div>
+            <!-- Zalo Mini App -->
+            <div class="gvos-rev-channel-row">
+              <div class="gvos-rev-channel-info">
+                <span class="gvos-rev-channel-icon" style="background:#E0F2FE;color:#0284C7;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                </span>
+                <span class="gvos-rev-channel-name">Zalo Mini App</span>
+              </div>
+              <div class="gvos-rev-channel-bar-wrap">
+                <div class="gvos-rev-channel-bar" style="width:31%;background:#0284C7;"></div>
+              </div>
+              <span class="gvos-rev-channel-vnd" id="revChanZalo">1.200.000 đ</span>
+            </div>
+
+            <!-- Shopee -->
+            <div class="gvos-rev-channel-row">
+              <div class="gvos-rev-channel-info">
+                <span class="gvos-rev-channel-icon" style="background:#FFF7ED;color:#EA580C;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                </span>
+                <span class="gvos-rev-channel-name">Shopee</span>
+              </div>
+              <div class="gvos-rev-channel-bar-wrap">
+                <div class="gvos-rev-channel-bar" style="width:15%;background:#EA580C;"></div>
+              </div>
+              <span class="gvos-rev-channel-vnd" id="revChanShopee">560.000 đ</span>
+            </div>
+
+            <!-- Tại vườn -->
+            <div class="gvos-rev-channel-row">
+              <div class="gvos-rev-channel-info">
+                <span class="gvos-rev-channel-icon" style="background:#ECFDF5;color:#059669;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span class="gvos-rev-channel-name">Tại vườn</span>
+              </div>
+              <div class="gvos-rev-channel-bar-wrap">
+                <div class="gvos-rev-channel-bar" style="width:6%;background:#059669;"></div>
+              </div>
+              <span class="gvos-rev-channel-vnd" id="revChanGarden">240.000 đ</span>
+            </div>
           </div>
-          <div style="font-size:16px;font-weight:800;color:var(--agri-green);white-space:nowrap;flex-shrink:0">+240.000 đ</div>
-        </div>
+        </section>
+
+        <!-- 4. 7 ngày gần nhất (dt-ngay) -->
+        <section class="gvos-rev-card" aria-labelledby="dt-ngay">
+          <div class="gvos-rev-section-header" style="margin-bottom:8px">
+            <h2 id="dt-ngay" class="gvos-rev-section-title">7 ngày gần nhất</h2>
+          </div>
+          <table class="gvos-rev-table">
+            <thead>
+              <tr>
+                <th scope="col" style="text-align:left">Ngày</th>
+                <th scope="col" style="text-align:right">Đơn đã bán</th>
+                <th scope="col" style="text-align:right">Tiền</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Hôm nay (13/10)</th>
+                <td style="text-align:right">3 đơn</td>
+                <td style="text-align:right;font-weight:700;color:var(--agri-green)">420.000 đ</td>
+              </tr>
+              <tr>
+                <th scope="row">Hôm qua (12/10)</th>
+                <td style="text-align:right">2 đơn</td>
+                <td style="text-align:right;font-weight:700;color:var(--text-main)">275.000 đ</td>
+              </tr>
+              <tr>
+                <th scope="row">11/10</th>
+                <td style="text-align:right">4 đơn</td>
+                <td style="text-align:right;font-weight:700;color:var(--text-main)">910.000 đ</td>
+              </tr>
+              <tr>
+                <th scope="row">10/10</th>
+                <td style="text-align:right">3 đơn</td>
+                <td style="text-align:right;font-weight:700;color:var(--text-main)">550.000 đ</td>
+              </tr>
+              <tr>
+                <th scope="row">09/10</th>
+                <td style="text-align:right">2 đơn</td>
+                <td style="text-align:right;font-weight:700;color:var(--text-main)">340.000 đ</td>
+              </tr>
+              <tr>
+                <th scope="row">08/10</th>
+                <td style="text-align:right">1 đơn</td>
+                <td style="text-align:right;font-weight:700;color:var(--text-main)">185.000 đ</td>
+              </tr>
+              <tr>
+                <th scope="row">07/10</th>
+                <td style="text-align:right">3 đơn</td>
+                <td style="text-align:right;font-weight:700;color:var(--text-main)">1.170.000 đ</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 5. Chợ Xanh · tiền Đối tác đã nhận (dt-doi-tac) -->
+        <section class="gvos-rev-card" aria-labelledby="dt-doi-tac" style="margin-bottom:20px;">
+          <div class="gvos-rev-section-header">
+            <h2 id="dt-doi-tac" class="gvos-rev-section-title">Chợ Xanh · tiền Đối tác đã nhận</h2>
+          </div>
+          <!-- MoneyPath Status Tag -->
+          <div class="gvos-rev-payout-pill">
+            <span class="payout-badge-tag">Chuyển khoản đối tác HTX</span>
+            <span class="payout-dot">●</span>
+            <span class="payout-badge-tag" style="background:#DCFCE7;color:#15803D;padding:2px 8px;border-radius:6px;font-weight:700;">Đã nhận</span>
+            <span class="payout-dot">●</span>
+            <span class="payout-badge-tag">Đơn đã giao</span>
+          </div>
+
+          <div class="gvos-rev-payout-row">
+            <span class="gvos-rev-payout-label">Đơn hoàn thành trong tháng</span>
+            <span class="gvos-rev-payout-val" id="revPayoutTotal">3.850.000 đ · 18 đơn</span>
+          </div>
+
+          <p class="gvos-rev-payout-note">
+            Người mua đã chuyển cho Đối tác, chưa trừ phí. Đối tác đối soát rồi trả cho bạn.
+          </p>
+        </section>
       </section>
 
       <!-- =========================================================================
@@ -8146,8 +8588,72 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } else if (tabName === 'account') {
         document.getElementById('panel-account').classList.add('active');
         if (document.getElementById('tabAccount')) document.getElementById('tabAccount').classList.add('active');
+      } else if (tabName === 'revenue') {
+        document.getElementById('panel-revenue').classList.add('active');
       }
       document.querySelector('.screen-container').scrollTo(0, 0);
+    }
+
+    // Mở trực tiếp màn hình Doanh thu chuẩn GVOS
+    function openRevenueView() {
+      switchNavTab('revenue');
+    }
+
+    // Xử lý chuyển đổi tháng trên màn hình Doanh thu GVOS
+    function onRevenueMonthChange(monthVal) {
+      const heading = document.getElementById('dt-chinh');
+      const amount = document.getElementById('revMainAmount');
+      const ordersDesc = document.getElementById('revMainOrdersDesc');
+      const kpiDone = document.getElementById('revKpiCompleted');
+      const kpiProc = document.getElementById('revKpiProcessing');
+      const kpiCancel = document.getElementById('revKpiCanceled');
+      const runningBadge = document.getElementById('gvosRevenueRunningBadge');
+      const chanChoXanh = document.getElementById('revChanChoXanh');
+      const chanZalo = document.getElementById('revChanZalo');
+      const chanShopee = document.getElementById('revChanShopee');
+      const chanGarden = document.getElementById('revChanGarden');
+      const payoutTotal = document.getElementById('revPayoutTotal');
+
+      if (monthVal === '2026-10') {
+        if (heading) heading.textContent = 'Doanh thu tháng 10';
+        if (amount) amount.textContent = '3.850.000 đ';
+        if (ordersDesc) ordersDesc.textContent = '18 đơn đã bán. Không tính phí giao, đơn huỷ và trả hàng.';
+        if (kpiDone) kpiDone.textContent = '18';
+        if (kpiProc) kpiProc.textContent = '44';
+        if (kpiCancel) kpiCancel.textContent = '1';
+        if (runningBadge) runningBadge.style.display = 'inline-flex';
+        if (chanChoXanh) chanChoXanh.textContent = '1.850.000 đ';
+        if (chanZalo) chanZalo.textContent = '1.200.000 đ';
+        if (chanShopee) chanShopee.textContent = '560.000 đ';
+        if (chanGarden) chanGarden.textContent = '240.000 đ';
+        if (payoutTotal) payoutTotal.textContent = '3.850.000 đ · 18 đơn';
+      } else if (monthVal === '2026-09') {
+        if (heading) heading.textContent = 'Doanh thu tháng 09';
+        if (amount) amount.textContent = '4.620.000 đ';
+        if (ordersDesc) ordersDesc.textContent = '22 đơn đã bán. Không tính phí giao, đơn huỷ và trả hàng.';
+        if (kpiDone) kpiDone.textContent = '22';
+        if (kpiProc) kpiProc.textContent = '0';
+        if (kpiCancel) kpiCancel.textContent = '2';
+        if (runningBadge) runningBadge.style.display = 'none';
+        if (chanChoXanh) chanChoXanh.textContent = '2.250.000 đ';
+        if (chanZalo) chanZalo.textContent = '1.450.000 đ';
+        if (chanShopee) chanShopee.textContent = '620.000 đ';
+        if (chanGarden) chanGarden.textContent = '300.000 đ';
+        if (payoutTotal) payoutTotal.textContent = '4.620.000 đ · 22 đơn';
+      } else if (monthVal === '2026-08') {
+        if (heading) heading.textContent = 'Doanh thu tháng 08';
+        if (amount) amount.textContent = '3.150.000 đ';
+        if (ordersDesc) ordersDesc.textContent = '15 đơn đã bán. Không tính phí giao, đơn huỷ và trả hàng.';
+        if (kpiDone) kpiDone.textContent = '15';
+        if (kpiProc) kpiProc.textContent = '0';
+        if (kpiCancel) kpiCancel.textContent = '0';
+        if (runningBadge) runningBadge.style.display = 'none';
+        if (chanChoXanh) chanChoXanh.textContent = '1.600.000 đ';
+        if (chanZalo) chanZalo.textContent = '950.000 đ';
+        if (chanShopee) chanShopee.textContent = '400.000 đ';
+        if (chanGarden) chanGarden.textContent = '200.000 đ';
+        if (payoutTotal) payoutTotal.textContent = '3.150.000 đ · 15 đơn';
+      }
     }
 
     // Bắt đầu luồng Tạo bài đăng 3 bước (Wizard)

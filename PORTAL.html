@@ -5418,6 +5418,189 @@
     #panel-onboarding.active {
       display: flex;
     }
+
+    /* Màn Chào Đón Riêng Biệt (Luma Style: Chợ Xanh AI OS) */
+    #obpScreenWelcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 12px 18px 20px;
+      min-height: 100%;
+      background: radial-gradient(circle at 50% 18%, #E0F2FE 0%, #F0FDF4 45%, #FFFFFF 85%);
+      box-sizing: border-box;
+      animation: obpFadeIn 0.35s ease;
+    }
+    .luma-top-nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .luma-tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #065F46;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid #A7F3D0;
+      padding: 3px 9px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.08);
+    }
+    .luma-skip-link {
+      background: transparent;
+      border: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #64748B;
+      cursor: pointer;
+      padding: 3px 6px;
+    }
+    .luma-orbit-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 230px;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .luma-orbit-glow {
+      position: absolute;
+      inset: 8%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(14, 165, 233, 0.18) 50%, transparent 70%);
+      filter: blur(20px);
+      border-radius: 50%;
+      z-index: 0;
+      animation: lumaPulse 4s ease-in-out infinite alternate;
+    }
+    @keyframes lumaPulse {
+      0% { transform: scale(0.92); opacity: 0.6; }
+      100% { transform: scale(1.08); opacity: 0.95; }
+    }
+    .luma-orbit-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+      animation: lumaFloat 5s ease-in-out infinite;
+    }
+    @keyframes lumaFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .luma-brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 4px;
+    }
+    .luma-brand-text {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0F172A;
+    }
+    .luma-spark {
+      font-size: 15px;
+      color: #059669;
+      animation: lumaSparkle 2s ease infinite;
+    }
+    @keyframes lumaSparkle {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.25) rotate(15deg); opacity: 0.8; }
+    }
+    .luma-hero-title {
+      font-size: 23px;
+      font-weight: 900;
+      line-height: 1.22;
+      letter-spacing: -0.5px;
+      color: #0F172A;
+      margin: 0 0 6px;
+    }
+    .luma-gradient-text {
+      background: linear-gradient(90deg, #059669 0%, #0284C7 52%, #EA580C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .luma-hero-desc {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: #475569;
+      margin: 0 0 12px;
+      max-width: 320px;
+    }
+    .luma-feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 16px;
+    }
+    .luma-fp-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1E293B;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 4px 9px;
+      border-radius: 999px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .luma-btn-primary {
+      width: 100%;
+      height: 48px;
+      border-radius: 999px;
+      background: #0F172A;
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.3);
+      transition: transform 0.15s ease, background 0.2s ease;
+      margin-bottom: 6px;
+    }
+    .luma-btn-primary:active {
+      transform: scale(0.98);
+      background: #000000;
+    }
+    .luma-btn-secondary {
+      background: transparent;
+      border: none;
+      color: #059669;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: color 0.15s;
+    }
+    .luma-btn-secondary:hover {
+      color: #047857;
+      text-decoration: underline;
+    }
+
     .obp-top-bar {
       display: flex;
       align-items: center;
@@ -6888,19 +7071,76 @@
            PANEL ONBOARDING TỪNG MÀN HÌNH ĐỘC LẬP (KHÔNG POPUP, CHUẨN GVOS)
            ========================================================================= -->
       <section id="panel-onboarding" class="view-panel">
-        <!-- Top Navigation Bar -->
-        <div class="obp-top-bar">
-          <button type="button" class="obp-back-btn" id="obpBackBtn" onclick="prevOnboardScreen()" style="visibility:hidden">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <!-- =========================================================================
+             1. MÀN CHÀO ĐÓN RIÊNG BIỆT (LUMA STYLE: CHỢ XANH AI SALE OS)
+             ========================================================================= -->
+        <div id="obpScreenWelcome">
+          <!-- Top Navigation Bar -->
+          <div class="luma-top-nav">
+            <span class="luma-tag-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Chợ Xanh AI OS
+            </span>
+            <button type="button" class="luma-skip-link" onclick="finishOnboarding()">Bỏ qua ✕</button>
+          </div>
+
+          <!-- 3D Orbital Elements Graphic (AI Gen) -->
+          <div class="luma-orbit-wrap">
+            <div class="luma-orbit-glow"></div>
+            <img src="onboard_orbit_hero.jpg" alt="Hệ sinh thái Nông nghiệp Số Chợ Xanh" class="luma-orbit-img" />
+          </div>
+
+          <!-- Brand Logo & Sparkle -->
+          <div class="luma-brand-logo">
+            <span class="luma-brand-text">chợ xanh</span>
+            <span class="luma-spark">✦</span>
+          </div>
+
+          <!-- Inspiring Bold Title -->
+          <h1 class="luma-hero-title">
+            Nông Sản Tận Vườn<br/>
+            <span class="luma-gradient-text">Bán Sỉ Bằng AI</span>
+          </h1>
+
+          <!-- Catchy Product Description -->
+          <p class="luma-hero-desc">
+            Hệ điều hành số thông minh kết nối Nông dân, HTX và Vựa sỉ B2B toàn quốc: Chụp ảnh cân ký, AI đăng bài đa kênh, xe gom tận vườn và chốt đơn sỉ trong 1 chạm.
+          </p>
+
+          <!-- 3 Highlights Value Badges -->
+          <div class="luma-feature-pills">
+            <span class="luma-fp-item">⚡ 30s Đăng Bán AI</span>
+            <span class="luma-fp-item">🚚 Xe HTX Gom Hàng</span>
+            <span class="luma-fp-item">💵 Tiền Về Tức Thì</span>
+          </div>
+
+          <!-- Call to Action Buttons -->
+          <button type="button" class="luma-btn-primary" onclick="finishOnboarding()">
+            Bắt Đầu Ngay
           </button>
-          <div class="obp-step-badge" id="obpStepBadge">Bước 1 trên 4</div>
-          <button type="button" class="obp-skip-btn" onclick="finishOnboarding()">Bỏ qua</button>
+          <button type="button" class="luma-btn-secondary" onclick="openOnboardGuide()">
+            <span>Xem 4 bước vận hành chi tiết</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
 
-        <!-- Progress Bar -->
-        <div class="obp-progress-track">
-          <div class="obp-progress-fill" id="obpProgressFill" style="width:25%"></div>
-        </div>
+        <!-- =========================================================================
+             2. PHẦN HƯỚNG DẪN 4 BƯỚC CHI TIẾT (KHI BẤM "XEM 4 BƯỚC")
+             ========================================================================= -->
+        <div id="obpGuideWrap" style="display:none;flex-direction:column;min-height:100%">
+          <!-- Top Navigation Bar -->
+          <div class="obp-top-bar">
+            <button type="button" class="obp-back-btn" id="obpBackBtn" onclick="prevOnboardScreen()" style="visibility:visible">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="obp-step-badge" id="obpStepBadge">Bước 1 trên 4</div>
+            <button type="button" class="obp-skip-btn" onclick="finishOnboarding()">Bỏ qua</button>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="obp-progress-track">
+            <div class="obp-progress-fill" id="obpProgressFill" style="width:25%"></div>
+          </div>
 
         <!-- Screen Content Container -->
         <div class="obp-screen-content">
@@ -7097,7 +7337,8 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
         </div>
-      </section>
+      </div> <!-- /#obpGuideWrap -->
+    </section>
 
       <section id="panel-home" class="view-panel active">
         <div class="home-user-header">
@@ -11709,7 +11950,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
   
     // =========================================================================
-    // HỆ THỐNG ONBOARDING TỪNG MÀN HÌNH ĐỘC LẬP (CHUẨN GVOS)
+    // HỆ THỐNG ONBOARDING LUMA STYLE & 4 BƯỚC HƯỚNG DẪN (CHUẨN GVOS)
     // =========================================================================
     let currentObpScreen = 0;
     const totalObpScreens = 4;
@@ -11722,7 +11963,31 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       
       const panel = document.getElementById('panel-onboarding');
       if (panel) panel.classList.add('active');
+
+      // Mặc định mở Màn Chào Đón Hero Luma Style
+      const welcome = document.getElementById('obpScreenWelcome');
+      const guide = document.getElementById('obpGuideWrap');
+      if (welcome) welcome.style.display = 'flex';
+      if (guide) guide.style.display = 'none';
+
+      document.querySelector('.screen-container').scrollTo(0, 0);
+    }
+
+    // Mở màn hình hướng dẫn 4 bước từ màn Welcome
+    function openOnboardGuide() {
+      const welcome = document.getElementById('obpScreenWelcome');
+      const guide = document.getElementById('obpGuideWrap');
+      if (welcome) welcome.style.display = 'none';
+      if (guide) guide.style.display = 'flex';
       setObpScreen(0);
+    }
+
+    // Quay lại màn Welcome từ bước 1 của hướng dẫn
+    function backToWelcome() {
+      const welcome = document.getElementById('obpScreenWelcome');
+      const guide = document.getElementById('obpGuideWrap');
+      if (welcome) welcome.style.display = 'flex';
+      if (guide) guide.style.display = 'none';
       document.querySelector('.screen-container').scrollTo(0, 0);
     }
 
@@ -11746,8 +12011,8 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       // Nút Back
       const backBtn = document.getElementById('obpBackBtn');
       const prevBtn = document.getElementById('btnObpPrev');
-      if (backBtn) backBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
-      if (prevBtn) prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+      if (backBtn) backBtn.style.visibility = 'visible';
+      if (prevBtn) prevBtn.style.visibility = 'visible';
 
       // Nút Next
       const nextBtn = document.getElementById('btnObpNext');
@@ -11772,6 +12037,8 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     function prevOnboardScreen() {
       if (currentObpScreen > 0) {
         setObpScreen(currentObpScreen - 1);
+      } else {
+        backToWelcome();
       }
     }
 
@@ -11780,7 +12047,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         localStorage.setItem('greenos_bacba_onboarded', 'true');
       } catch (e) {}
       switchNavTab('home');
-      triggerToast('Bác Ba đã sẵn sàng đăng bán nông sản!');
+      triggerToast('Chào mừng Bác Ba đến với Chợ Xanh AI OS! 🌾✨');
     }
 
     // Tự động mở Onboarding lần đầu tiên vào app

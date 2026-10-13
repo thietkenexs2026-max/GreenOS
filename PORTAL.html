@@ -5405,6 +5405,450 @@
       max-width: 100%;
     }
 
+  
+    /* =========================================================================
+       TINH CHỈNH BỐ CỤC & TYPOGRAPHY TRANG CHỦ & TẤT CẢ CÁC MÀN (CHỐNG VỠ LAYOUT)
+       ========================================================================= */
+
+    /* Trang chủ: Header Bác Ba */
+    .home-user-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .user-profile-meta {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .user-profile-meta > div {
+      min-width: 0;
+      flex: 1;
+    }
+    .user-name-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .user-address-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn-guide-onboard {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      color: var(--agri-green-dark);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    /* Trang chủ: Promo Banners */
+    .promo-banner-section {
+      margin-bottom: 12px;
+      width: 100%;
+    }
+    .promo-carousel-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+      border: 1px solid var(--border-line);
+      background: #FFFFFF;
+      height: 110px;
+      width: 100%;
+    }
+
+    /* Trang chủ: 2 Card Đơn hàng & Doanh thu */
+    .metric-duo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .metric-card-interactive {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-line);
+      border-radius: 16px;
+      padding: 12px 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 92px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: all 160ms ease;
+      min-width: 0;
+    }
+    .metric-card-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+    }
+    .metric-card-value {
+      font-size: clamp(16px, 4.4vw, 19px);
+      font-weight: 900;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 3px 0;
+      line-height: 1.25;
+    }
+    .metric-card-sub-hint {
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      min-width: 0;
+    }
+    .metric-card-sub-hint > span:first-child {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+      flex: 1;
+    }
+    .metric-card-sub-hint > span:last-child {
+      flex-shrink: 0;
+    }
+
+    /* Trang chủ: Việc Cần Làm */
+    .vcl-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 16px 16px 6px;
+      margin-bottom: 14px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    }
+    .vcl-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .vcl-item-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.35;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+    .vcl-item-hint {
+      font-size: 12.5px;
+      color: #64748B;
+      margin-top: 2px;
+      line-height: 1.35;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Trang chủ: Chợ Xanh & Đăng Bán Nông Sản (Section Ghép) */
+    .home-unified-market-publish-section {
+      background: #FFFFFF;
+      border: 1.5px solid #A7F3D0;
+      border-radius: 20px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.08);
+    }
+    .hump-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #D1FAE5;
+      gap: 8px;
+    }
+    .hump-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
+    }
+    .hump-header-left > div {
+      min-width: 0;
+      flex: 1;
+    }
+    .hump-main-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #065F46;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+    .hump-sub-title {
+      font-size: 11.5px;
+      color: #047857;
+      margin-top: 1px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .hump-card-text {
+      min-width: 0;
+      flex: 1;
+    }
+    .hump-card-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+    .hump-card-desc {
+      font-size: 11px;
+      color: #64748B;
+      margin-top: 3px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .hump-spotlight-match {
+      background: #FEF3C7;
+      border: 1px solid #FDE68A;
+      border-radius: 12px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+    .hsm-info {
+      flex: 1;
+      min-width: 0;
+      font-size: 11.5px;
+      color: #92400E;
+      line-height: 1.35;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .hsm-buyer {
+      font-weight: 800;
+      color: #78350F;
+    }
+    .hsm-need {
+      font-size: 11.5px;
+      color: #92400E;
+    }
+    .hsm-link {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #B45309;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* Trang chủ: Banner Lối Tắt Thống Kê */
+    .home-dashboard-banner {
+      background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+      border: 1.5px solid #86EFAC;
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+      gap: 10px;
+    }
+    .hdb-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+    .hdb-info {
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+    .hdb-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--agri-green-dark);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .hdb-desc {
+      font-size: 12px;
+      color: #166534;
+      font-weight: 500;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+    .btn-hdb-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: var(--agri-green);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* CHỢ XANH 4 CHỈ SỐ NGUỒN LỰC */
+    .choxanh-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .cx-stat-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 8px 2px;
+      text-align: center;
+      min-width: 0;
+    }
+    .cx-stat-num {
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+    .cx-stat-lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #64748B;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cx-tab-btn {
+      font-size: 11.5px;
+      padding: 8px 3px;
+      line-height: 1.25;
+      word-break: break-word;
+    }
+
+    /* ĐƠN HÀNG: SUBTABS QUẢN LÝ ĐƠN HÀNG & QUẢN LÝ KHO HÀNG */
+    .orders-top-segment-tabs {
+      display: flex;
+      background: #F1F5F9;
+      border-radius: 14px;
+      padding: 4px;
+      margin-bottom: 12px;
+      gap: 4px;
+      border: 1px solid #E2E8F0;
+    }
+    .ot-segment-btn {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 8px 4px;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: #64748B;
+      font-size: clamp(11.5px, 3.2vw, 12.5px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: all 180ms ease;
+      font-family: var(--font-sans);
+    }
+    .ot-segment-btn > span:not(.ot-badge-pill) {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .ot-badge-pill {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: #EF4444;
+      color: #FFFFFF;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .ot-badge-pill.secondary {
+      background: #0284C7;
+    }
+    .orders-sub-view {
+      width: 100%;
+    }
+
+    /* ĐĂNG BÁN STEP 2: GIÁ BÁN NỔI BẬT */
+    .price-highlight {
+      font-weight: 800;
+      color: #059669;
+    }
+
+    /* THANH ĐIỀU HƯỚNG DƯỚI (BOTTOM NAV) */
+    .tab-text {
+      white-space: nowrap;
+      font-size: 11.5px;
+      letter-spacing: -0.01em;
+    }
+
+    /* QUY TẮC BẢO VỆ CHUNG CHO TẤT CẢ CÁC MÀN */
+    .view-panel {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    .phone-device {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6, p, label,
+    .step-main-title, .step-sub-desc, .wsw-tag, .wsw-sub,
+    .obp-title, .obp-desc, .obp-item-title, .obp-item-sub {
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
   </style>
 </head>
 <body class="has-bottom-nav">
@@ -5674,24 +6118,41 @@
           </button>
         </div>
 
-        <!-- Banner Lối Tắt Vào Thống Kê Nông Hộ -->
-        <div class="home-dashboard-banner" onclick="switchNavTab('dashboard')" title="Bấm mở Bảng Thống Kê Nông Hộ Bác Ba">
-          <div class="hdb-left">
-            <div class="hdb-icon-box">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-            </div>
-            <div class="hdb-info">
-              <div class="hdb-title">Thống Kê Nông Hộ</div>
-              <div class="hdb-desc">18.450.000 đ vụ Tết · 42 đơn · Đạt 70% vụ chuối</div>
+        <!-- =========================================================================
+             BANNER CÁC CHƯƠNG TRÌNH KHUYẾN MẠI / KÍCH CẦU NÔNG SẢN
+             ========================================================================= -->
+        <div class="promo-banner-section">
+          <div class="promo-carousel-container" id="promoCarousel">
+            <div class="promo-slides-track" id="promoTrack">
+              
+              <!-- Banner 1: Hội Chợ Nông Sản Tết 2024 -->
+              <div class="promo-slide-card" onclick="openPromoDetail('tet')">
+                <img src="tet_banner.jpg" alt="Hội Chợ Nông Sản Tết 2024">
+              </div>
+
+              <!-- Banner 2: Hội Chợ Nông Sản Hữu Cơ & OCOP -->
+              <div class="promo-slide-card" onclick="openPromoDetail('ocop')">
+                <img src="ocop_banner.jpg" alt="Hội Chợ Nông Sản Hữu Cơ & OCOP">
+              </div>
+
             </div>
           </div>
-          <button type="button" class="btn-hdb-open" aria-label="Mở Thống Kê">
-            <span>Mở</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
 
-                <!-- =========================================================================
+        <!-- =========================================================================
+             SECTION 2 CARD: ĐƠN HÀNG BÁN ĐƯỢC & DOANH THU (BẤM CHUYỂN MÀN HÌNH)
+             ========================================================================= -->
+        <div class="metric-duo-grid">
+          <!-- Card 1: Đơn hàng đã bán -->
+          <div class="metric-card-interactive" onclick="openOrdersView()" title="Bấm xem danh sách đơn hàng">
+            <div class="metric-card-label">ĐƠN ĐÃ BÁN</div>
+            <div class="metric-card-value">18 đơn</div>
+            <div class="metric-card-sub-hint" style="color:var(--agri-green)">
+              <span>● +3 đơn hôm nay</span>
+              <span style="color:var(--text-muted);font-weight:700">➔</span>
+            </div>
+          </div>
+
+        <!-- =========================================================================
              CARD VIỆC CẦN LÀM (CHÍNH XÁC 100% THEO GVOS VÀ ẢNH CHỤP MÀN HÌNH)
              ========================================================================= -->
         <div class="vcl-card">
@@ -5787,7 +6248,7 @@
           </div>
         </div>
 
-<!-- =========================================================================
+        <!-- =========================================================================
              SECTION GHÉP: CHỢ XANH & ĐĂNG BÁN NÔNG SẢN (HỢP NHẤT 2 TRONG 1)
              ========================================================================= -->
         <div class="home-unified-market-publish-section">
@@ -5847,59 +6308,22 @@
           </div>
         </div>
 
-<!-- =========================================================================
-             BANNER CÁC CHƯƠNG TRÌNH KHUYẾN MẠI / KÍCH CẦU NÔNG SẢN
-             ========================================================================= -->
-        <div class="promo-banner-section">
-          <div class="promo-carousel-container" id="promoCarousel">
-            <div class="promo-slides-track" id="promoTrack">
-              
-              <!-- Banner 1: Hội Chợ Nông Sản Tết 2024 -->
-              <div class="promo-slide-card" onclick="openPromoDetail('tet')">
-                <img src="tet_banner.jpg" alt="Hội Chợ Nông Sản Tết 2024">
-              </div>
-
-              <!-- Banner 2: Hội Chợ Nông Sản Hữu Cơ & OCOP -->
-              <div class="promo-slide-card" onclick="openPromoDetail('ocop')">
-                <img src="ocop_banner.jpg" alt="Hội Chợ Nông Sản Hữu Cơ & OCOP">
-              </div>
-
+        <!-- Banner Lối Tắt Vào Thống Kê Nông Hộ -->
+        <div class="home-dashboard-banner" onclick="switchNavTab('dashboard')" title="Bấm mở Bảng Thống Kê Nông Hộ Bác Ba">
+          <div class="hdb-left">
+            <div class="hdb-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div class="hdb-info">
+              <div class="hdb-title">Thống Kê Nông Hộ</div>
+              <div class="hdb-desc">18.450.000 đ vụ Tết · 42 đơn · Đạt 70% vụ chuối</div>
             </div>
           </div>
-
-          <!-- Indicator dots -->
-          <div class="promo-dots-indicator" id="promoDots">
-            <span class="promo-dot active" onclick="jumpPromoSlide(0)"></span>
-            <span class="promo-dot" onclick="jumpPromoSlide(1)"></span>
-          </div>
+          <button type="button" class="btn-hdb-open" aria-label="Mở Thống Kê">
+            <span>Mở</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
-
-        <!-- =========================================================================
-             SECTION 2 CARD: ĐƠN HÀNG BÁN ĐƯỢC & DOANH THU (BẤM CHUYỂN MÀN HÌNH)
-             ========================================================================= -->
-        <div class="metric-duo-grid">
-          <!-- Card 1: Đơn hàng đã bán -->
-          <div class="metric-card-interactive" onclick="openOrdersView()" title="Bấm xem danh sách đơn hàng">
-            <div class="metric-card-label">ĐƠN ĐÃ BÁN</div>
-            <div class="metric-card-value">18 đơn</div>
-            <div class="metric-card-sub-hint" style="color:var(--agri-green)">
-              <span>● +3 đơn hôm nay</span>
-              <span style="color:var(--text-muted);font-weight:700">➔</span>
-            </div>
-          </div>
-
-          <!-- Card 2: Doanh thu tạm tính -->
-          <div class="metric-card-interactive" onclick="openRevenueView()" title="Bấm xem sổ doanh thu & dòng tiền">
-            <div class="metric-card-label">DOANH THU THÁNG</div>
-            <div class="metric-card-value">3.850.000 đ</div>
-            <div class="metric-card-sub-hint" style="color:#0284C7">
-              <span>● +420k tuần này</span>
-              <span style="color:var(--text-muted);font-weight:700">➔</span>
-            </div>
-          </div>
-        </div>
-
-
       </section>
 
       <!-- =========================================================================
@@ -6408,9 +6832,9 @@
             </div>
           </div>
 
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 12px">
-            <span style="font-size:16.5px;font-weight:800;color:var(--text-main)" id="step3ProdName">Chuối sấy giòn Đồng Cát (250g)</span>
-            <span style="font-size:18px;font-weight:800;color:var(--agri-green)" id="step3ProdPrice">55.000 đ</span>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 12px;gap:10px">
+            <span style="font-size:16px;font-weight:800;color:var(--text-main);flex:1;min-width:0;word-break:break-word" id="step3ProdName">Chuối sấy giòn Đồng Cát (250g)</span>
+            <span style="font-size:17.5px;font-weight:800;color:var(--agri-green);white-space:nowrap;flex-shrink:0" id="step3ProdPrice">55.000 đ</span>
           </div>
 
           <!-- KHỐI CHỈNH SỬA NỘI DUNG BÀI VIẾT TRỰC TIẾP -->
@@ -7064,28 +7488,28 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           <span>Lịch sử tiền về gần đây</span>
         </div>
 
-        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:13px 15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div style="font-size:15.5px;font-weight:700;margin-bottom:3px">Cô Lan trả tiền 5 túi chuối</div>
-            <div style="font-size:13px;color:var(--text-muted)">Hôm nay 10:20 · Tiền mặt</div>
+        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14.5px;font-weight:700;margin-bottom:3px;line-height:1.35;word-break:break-word">Cô Lan trả tiền 5 túi chuối</div>
+            <div style="font-size:12.5px;color:var(--text-muted);line-height:1.25">Hôm nay 10:20 · Tiền mặt</div>
           </div>
-          <div style="font-size:17px;font-weight:800;color:var(--agri-green)">+275.000 đ</div>
+          <div style="font-size:16px;font-weight:800;color:var(--agri-green);white-space:nowrap;flex-shrink:0">+275.000 đ</div>
         </div>
 
-        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:13px 15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div style="font-size:15.5px;font-weight:700;margin-bottom:3px">Chị Mai ck cọc 10 túi chuối</div>
-            <div style="font-size:13px;color:var(--text-muted)">Hôm nay 08:35 · VietinBank QR</div>
+        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14.5px;font-weight:700;margin-bottom:3px;line-height:1.35;word-break:break-word">Chị Mai ck cọc 10 túi chuối</div>
+            <div style="font-size:12.5px;color:var(--text-muted);line-height:1.25">Hôm nay 08:35 · VietinBank QR</div>
           </div>
-          <div style="font-size:17px;font-weight:800;color:var(--agri-green)">+910.000 đ</div>
+          <div style="font-size:16px;font-weight:800;color:var(--agri-green);white-space:nowrap;flex-shrink:0">+910.000 đ</div>
         </div>
 
-        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:13px 15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div style="font-size:15.5px;font-weight:700;margin-bottom:3px">Cháu Tuấn ck mua 2 gói trà</div>
-            <div style="font-size:13px;color:var(--text-muted)">Hôm qua 11:10 · Agribank QR</div>
+        <div style="background:#FFF;border:1px solid var(--border-line);border-radius:16px;padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14.5px;font-weight:700;margin-bottom:3px;line-height:1.35;word-break:break-word">Cháu Tuấn ck mua 2 gói trà</div>
+            <div style="font-size:12.5px;color:var(--text-muted);line-height:1.25">Hôm qua 11:10 · Agribank QR</div>
           </div>
-          <div style="font-size:17px;font-weight:800;color:var(--agri-green)">+240.000 đ</div>
+          <div style="font-size:16px;font-weight:800;color:var(--agri-green);white-space:nowrap;flex-shrink:0">+240.000 đ</div>
         </div>
       </section>
 

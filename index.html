@@ -4798,15 +4798,27 @@
     /* =========================================================================
        MÀN HÌNH ONBOARDING ĐỘC LẬP (KHÔNG POPUP, CHUẨN GVOS)
        ========================================================================= */
+    /* =========================================================================
+       HỆ THỐNG ONBOARDING FULL-SCREEN 4 BƯỚC + ĐĂNG NHẬP (CHUẨN GVOS STYLE)
+       ========================================================================= */
+    .is-onboarding .screen-container {
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+    .is-onboarding .top-dev-bar {
+      display: none !important;
+    }
+
     #panel-onboarding {
-      background: #F8FAF9;
-      min-height: 100%;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       display: none;
-      flex-direction: column;
-      position: relative;
-      box-sizing: border-box;
-      padding: 4px 2px 20px;
-      color: #0F172A;
+      background: #0B132B;
+      overflow: hidden;
+      z-index: 100;
+      border-radius: 36px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
     #panel-onboarding.active {
@@ -4814,339 +4826,209 @@
     }
 
     /* Hiệu ứng Fade chuyển màn mượt mà */
-    @keyframes gvosStepFade {
+    @keyframes gvosFsFade {
       0% {
         opacity: 0;
-        transform: translateY(8px);
+        transform: scale(1.02);
       }
       100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
       }
     }
-    .gvos-fade-in {
-      animation: gvosStepFade 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    .gvos-fs-fade {
+      animation: gvosFsFade 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Top Navigation Bar cho các bước chào mừng */
-    .gvos-nav-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      height: 44px;
-      margin-bottom: 8px;
-    }
-    .gvos-nav-back-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: none;
-      background: transparent;
-      color: #1E293B;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.15s ease;
-      flex-shrink: 0;
-    }
-    .gvos-nav-back-btn:hover {
-      background: rgba(27, 110, 54, 0.08);
-    }
-    .gvos-nav-back-btn.hidden {
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    /* Thanh tiến trình Segmented Bar (4 đoạn) */
-    .gvos-progress-track {
-      flex: 1;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      align-items: center;
-    }
-    .gvos-progress-seg {
-      height: 5px;
-      background: #E2E8F0;
-      border-radius: 999px;
-      overflow: hidden;
-      position: relative;
-    }
-    .gvos-progress-fill {
+    /* Container từng màn hình full-screen */
+    .gvos-fs-pane {
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 0%;
-      background: #1B6E36;
-      border-radius: 999px;
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .gvos-progress-seg.active .gvos-progress-fill {
+      inset: 0;
       width: 100%;
-    }
-
-    .gvos-step-counter {
-      font-size: 13px;
-      font-weight: 700;
-      color: #64748B;
-      white-space: nowrap;
-      min-width: 26px;
-      text-align: center;
-    }
-
-    .gvos-skip-btn {
-      background: transparent;
-      border: none;
-      color: #1B6E36;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 5px 8px;
-      border-radius: 999px;
-      transition: background 0.15s ease;
-      white-space: nowrap;
-    }
-    .gvos-skip-btn:hover {
-      background: rgba(27, 110, 54, 0.08);
-    }
-
-    /* Container từng màn hình */
-    .gvos-screen-pane {
+      height: 100%;
       display: none;
       flex-direction: column;
-      flex: 1;
+      justify-content: space-between;
+      overflow: hidden;
     }
-    .gvos-screen-pane.active {
+    .gvos-fs-pane.active {
       display: flex;
     }
 
-    /* Card Nghệ Thuật / Hình ảnh phía trên */
-    .gvos-hero-card {
-      width: 100%;
-      background: #FFFFFF;
-      border: 1px solid rgba(27, 110, 54, 0.16);
-      border-radius: 22px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 16px -4px rgba(27, 110, 54, 0.08);
-      margin-bottom: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-    .gvos-hero-card.step1-hero {
-      padding: 12px;
-      background: radial-gradient(circle at 50% 20%, #ECFDF5 0%, #FFFFFF 80%);
-    }
-    .gvos-hero-img-wrap {
-      position: relative;
-      width: 145px;
-      height: 145px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.12);
-    }
-    .gvos-hero-img {
+    /* Ảnh nền Full-Screen chất lượng cao */
+    .gvos-fs-bg {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      z-index: 1;
+      pointer-events: none;
     }
 
-    /* Stepper Quy Trình 3 Bước */
-    .gvos-stepper-row {
+    /* Lớp phủ chuyển sắc Scrim bảo đảm tương phản hoàn hảo cho chữ và nút */
+    .gvos-fs-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.5) 0%,
+        rgba(15, 23, 42, 0.05) 26%,
+        rgba(15, 23, 42, 0.3) 50%,
+        rgba(15, 23, 42, 0.84) 70%,
+        #07120C 94%,
+        #07120C 100%
+      );
+    }
+
+    /* Floating Top Bar trong suốt với hiệu ứng Frosted Glass */
+    .gvos-fs-topbar {
+      position: relative;
+      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
-      gap: 2px;
-    }
-    .gvos-stepper-node {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 4px;
-    }
-    .gvos-stepper-icon {
-      width: 48px;
+      padding: 16px 18px 0;
       height: 48px;
-      border-radius: 14px;
-      background: #E8F5E9;
-      color: #1B6E36;
+    }
+    .gvos-fs-back {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
-      box-shadow: 0 2px 6px rgba(27, 110, 54, 0.08);
+      cursor: pointer;
+      transition: background 0.15s ease;
     }
-    .gvos-stepper-label {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #1E293B;
-      line-height: 1.25;
-      max-width: 85px;
+    .gvos-fs-back:hover {
+      background: rgba(0, 0, 0, 0.6);
     }
-    .gvos-stepper-arrow {
-      color: #86EFAC;
-      font-size: 15px;
-      margin-bottom: 16px;
+    .gvos-fs-back-placeholder {
+      width: 38px;
+      height: 38px;
     }
 
-    /* Typography & Tiêu đề màn hình */
-    .gvos-eyebrow {
-      font-size: 11.5px;
-      font-weight: 800;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      color: #1B6E36;
-      margin-bottom: 4px;
+    /* Indicators / Dots tiến trình 4 bước */
+    .gvos-fs-indicators {
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .gvos-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #0F172A;
-      line-height: 1.25;
-      letter-spacing: -0.4px;
-      margin-bottom: 6px;
+    .gvos-fs-dash {
+      width: 8px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.35);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .gvos-desc {
-      font-size: 13.5px;
-      color: #475569;
-      line-height: 1.45;
-      margin-bottom: 14px;
+    .gvos-fs-dash.active {
+      width: 26px;
+      background: #4ADE80;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
     }
 
-    /* Badge thời gian / dự kiến */
-    .gvos-pill-badge {
+    .gvos-fs-skip {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .gvos-fs-skip:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Bottom Card chứa nội dung súc tích (ít chữ) & Nút CTA */
+    .gvos-fs-bottom-card {
+      position: relative;
+      z-index: 10;
+      padding: 0 20px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .gvos-fs-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #1B6E36;
-      background: #E8F5E9;
-      border: 1px solid rgba(27, 110, 54, 0.2);
-      padding: 3px 9px;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #86EFAC;
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      padding: 4px 10px;
       border-radius: 999px;
-      margin-bottom: 12px;
+      width: fit-content;
+      margin-bottom: 10px;
+      backdrop-filter: blur(6px);
     }
-
-    /* Hộp danh sách tính năng */
-    .gvos-feature-list {
-      background: #FFFFFF;
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      border-radius: 18px;
-      overflow: hidden;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-    }
-    .gvos-feature-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 12px;
-      border-bottom: 1px solid #F1F5F9;
-    }
-    .gvos-feature-item:last-child {
-      border-bottom: none;
-    }
-    .gvos-feature-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      background: #E8F5E9;
-      color: #1B6E36;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 19px;
-    }
-    .gvos-feature-text {
-      flex: 1;
-      min-width: 0;
-    }
-    .gvos-feature-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: #0F172A;
-      line-height: 1.3;
-    }
-    .gvos-feature-sub {
-      font-size: 12px;
-      color: #64748B;
-      line-height: 1.35;
-      margin-top: 1px;
-    }
-
-    /* Thẻ cảnh báo / Ghi chú an toàn */
-    .gvos-note-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-      font-size: 12.5px;
-      line-height: 1.4;
-      color: #475569;
-      background: #F0FDF4;
-      border: 1px solid #BBF7D0;
-      padding: 10px 12px;
-      border-radius: 14px;
-      margin-bottom: 14px;
-    }
-    .gvos-note-icon {
-      font-size: 15px;
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: #1B6E36;
-    }
-
-    /* Nút CTA Bottom */
-    .gvos-bottom-action {
-      margin-top: auto;
-      padding-top: 6px;
-    }
-    .gvos-primary-cta {
-      width: 100%;
-      height: 48px;
-      border-radius: 14px;
-      background: #1B6E36;
+    .gvos-fs-title {
+      font-size: 24px;
+      font-weight: 900;
       color: #FFFFFF;
-      font-size: 15px;
-      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      margin: 0 0 8px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .gvos-fs-desc {
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0 0 20px;
+    }
+    .gvos-fs-cta {
+      width: 100%;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #1B6E36 0%, #15803D 100%);
+      color: #FFFFFF;
+      font-size: 15.5px;
+      font-weight: 800;
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       cursor: pointer;
-      box-shadow: 0 4px 14px -2px rgba(27, 110, 54, 0.3);
-      transition: background 0.15s ease, transform 0.15s ease;
+      box-shadow: 0 8px 24px -2px rgba(27, 110, 54, 0.5);
+      transition: transform 0.15s ease, filter 0.15s ease;
     }
-    .gvos-primary-cta:hover {
-      background: #14532D;
+    .gvos-fs-cta:hover {
+      filter: brightness(1.1);
     }
-    .gvos-primary-cta:active {
+    .gvos-fs-cta:active {
       transform: scale(0.98);
     }
 
     /* =========================================================================
-       MÀN ĐĂNG NHẬP: VÀO GREENVILLAGEOS (CHÍNH XÁC LINK gvos.greenfi.vn/dang-nhap)
+       MÀN ĐĂNG NHẬP FULL-SCREEN: VÀO GREENVILLAGEOS (CHUẨN GVOS)
        ========================================================================= */
     #gvosScreenLogin {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #FFFFFF;
+      z-index: 20;
       display: none;
       flex-direction: column;
-      flex: 1;
-      padding-bottom: 6px;
+      padding: 16px 20px 24px;
+      box-sizing: border-box;
+      overflow-y: auto;
     }
     #gvosScreenLogin.active {
       display: flex;
@@ -6800,7 +6682,7 @@
 <body class="has-bottom-nav">
 
   <!-- Nhãn định vị bên ngoài thiết bị & Nút chuyển đổi vai trò -->
-  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; justify-content: center;">
+  <div class="top-dev-bar" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; justify-content: center;">
     <div class="device-caption-bar" style="margin-bottom: 0;">
       <div class="status-dot"></div>
       <span>GreenVillageOS · Giao diện di động Hộ Nông Dân (Bác Ba)</span>
@@ -6836,279 +6718,146 @@
       <!-- =========================================================================
            PANEL ONBOARDING: 4 BƯỚC CHÀO MỪNG + MÀN ĐĂNG NHẬP (CHUẨN GVOS)
            ========================================================================= -->
+      <!-- =========================================================================
+           PANEL ONBOARDING: FULL SCREEN VISUAL ONBOARDING + ĐĂNG NHẬP (CHUẨN GVOS)
+           ========================================================================= -->
       <section id="panel-onboarding" class="view-panel">
-        
-        <!-- TOP NAVIGATION BAR DÙNG CHO CÁC BƯỚC 1 -> 4 -->
-        <div class="gvos-nav-header" id="gvosNavHeader">
-          <button type="button" class="gvos-nav-back-btn hidden" id="gvosNavBackBtn" onclick="prevGvosStep()" aria-label="Quay lại">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          
-          <div class="gvos-progress-track" aria-label="Tiến trình chào mừng">
-            <div class="gvos-progress-seg active" id="gvosProgSeg1"><div class="gvos-progress-fill"></div></div>
-            <div class="gvos-progress-seg" id="gvosProgSeg2"><div class="gvos-progress-fill"></div></div>
-            <div class="gvos-progress-seg" id="gvosProgSeg3"><div class="gvos-progress-fill"></div></div>
-            <div class="gvos-progress-seg" id="gvosProgSeg4"><div class="gvos-progress-fill"></div></div>
-          </div>
-
-          <span class="gvos-step-counter" id="gvosStepCounter">1/4</span>
-          <button type="button" class="gvos-skip-btn" id="gvosSkipBtn" onclick="skipToLogin()">Bỏ qua</button>
-        </div>
 
         <!-- =========================================================================
-             BƯỚC 1/4: CÔNG CỤ SỐ CHO KINH TẾ XÃ (https://gvos.greenfi.vn/chao-mung?tu=%2F)
+             MÀN FULLSCREEN 1/4: CÔNG CỤ SỐ KINH TẾ XÃ (https://gvos.greenfi.vn/chao-mung)
              ========================================================================= -->
-        <div class="gvos-screen-pane active gvos-fade-in" id="gvosPaneStep1">
-          <!-- 3D Orbital Elements Graphic -->
-          <div class="gvos-hero-card step1-hero">
-            <div class="gvos-hero-img-wrap">
-              <img src="onboard_orbit_hero.jpg" alt="GreenVillageOS Hệ sinh thái Nông nghiệp số" class="gvos-hero-img">
+        <div class="gvos-fs-pane active gvos-fs-fade" id="gvosPaneStep1">
+          <img src="onboard_step1_gvos.jpg" alt="GreenVillageOS Công cụ số cho kinh tế xã" class="gvos-fs-bg">
+          <div class="gvos-fs-scrim"></div>
+
+          <!-- Floating Top Bar -->
+          <div class="gvos-fs-topbar">
+            <div class="gvos-fs-back-placeholder"></div>
+            <div class="gvos-fs-indicators">
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash"></span>
+              <span class="gvos-fs-dash"></span>
+              <span class="gvos-fs-dash"></span>
             </div>
+            <button type="button" class="gvos-fs-skip" onclick="skipToLogin()">Bỏ qua</button>
           </div>
 
-          <div class="gvos-eyebrow">
-            <span>GREENFI · GREENVILLAGEOS</span>
-          </div>
-          <h1 class="gvos-title">Công cụ số cho kinh tế xã</h1>
-          <p class="gvos-desc">Ba sản phẩm cho hộ, HTX và cán bộ xã, một tài khoản GreenFi. Đăng nhập bằng Google.</p>
-
-          <div class="gvos-feature-list">
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">🤝</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Hub xã làm thay khi bạn cần</div>
-                <div class="gvos-feature-sub">Cán bộ HTX hỗ trợ làm hộ mọi bước trên app khi bác chưa rành máy móc.</div>
-              </div>
+          <!-- Bottom Content Card (ít chữ, súc tích, ấn tượng) -->
+          <div class="gvos-fs-bottom-card">
+            <div class="gvos-fs-eyebrow">
+              <span>🌱 GREENFI · GREENVILLAGEOS</span>
             </div>
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">📶</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Mạng yếu vẫn làm được, có mạng tự gửi</div>
-                <div class="gvos-feature-sub">Ra vườn đồi mất sóng vẫn chụp ảnh và nói giá, ứng dụng tự lưu trữ và gửi khi có mạng.</div>
-              </div>
-            </div>
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">✨</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Trợ lý Phi Phi hỏi đáp mỗi bước</div>
-                <div class="gvos-feature-sub">Trợ lý thông minh đồng hành, hướng dẫn bằng tiếng Việt mộc mạc, dễ hiểu.</div>
-              </div>
-            </div>
-          </div>
+            <h1 class="gvos-fs-title">Công cụ số cho kinh tế xã</h1>
+            <p class="gvos-fs-desc">Ba sản phẩm cho Hộ nông dân, HTX và Cán bộ trên một nền tảng số đồng bộ duy nhất.</p>
 
-          <div class="gvos-note-card">
-            <span class="gvos-note-icon">🌾</span>
-            <span>Hệ điều hành kinh tế xã hỗ trợ hộ nông dân, ban quản trị HTX và cán bộ nông nghiệp xã Yên Bình.</span>
-          </div>
-
-          <div class="gvos-bottom-action">
-            <button type="button" class="gvos-primary-cta" onclick="nextGvosStep()">
+            <button type="button" class="gvos-fs-cta" onclick="nextGvosStep()">
               <span>Tiếp tục</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>
         </div>
 
         <!-- =========================================================================
-             BƯỚC 2/4: TRỢ LÝ ĐĂNG BÁN (https://gvos.greenfi.vn/chao-mung?tu=%2F&buoc=2)
+             MÀN FULLSCREEN 2/4: TRỢ LÝ ĐĂNG BÁN AI (https://gvos.greenfi.vn/chao-mung?buoc=2)
              ========================================================================= -->
-        <div class="gvos-screen-pane gvos-fade-in" id="gvosPaneStep2">
-          <!-- Stepper 3 Bước -->
-          <div class="gvos-hero-card">
-            <div class="gvos-stepper-row">
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">📷</div>
-                <div class="gvos-stepper-label">Chụp nhãn hoặc nói</div>
-              </div>
-              <div class="gvos-stepper-arrow">➔</div>
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">✨</div>
-                <div class="gvos-stepper-label">Trợ lý soạn</div>
-              </div>
-              <div class="gvos-stepper-arrow">➔</div>
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">📦</div>
-                <div class="gvos-stepper-label">Bạn duyệt</div>
-              </div>
+        <div class="gvos-fs-pane gvos-fs-fade" id="gvosPaneStep2">
+          <img src="onboard_step2_sell.jpg" alt="Trợ lý đăng bán AI" class="gvos-fs-bg">
+          <div class="gvos-fs-scrim"></div>
+
+          <!-- Floating Top Bar -->
+          <div class="gvos-fs-topbar">
+            <button type="button" class="gvos-fs-back" onclick="prevGvosStep()" aria-label="Quay lại">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="gvos-fs-indicators">
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash"></span>
+              <span class="gvos-fs-dash"></span>
             </div>
+            <button type="button" class="gvos-fs-skip" onclick="skipToLogin()">Bỏ qua</button>
           </div>
 
-          <div class="gvos-eyebrow">
-            <span>TRỢ LÝ ĐĂNG BÁN</span>
-          </div>
-          <h1 class="gvos-title">Vài tấm ảnh, có ngay bộ đăng bán</h1>
-          <div class="gvos-pill-badge">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <span>≤ 3 phút (Dự kiến)</span>
-          </div>
-
-          <div class="gvos-feature-list">
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">📊</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Bảng thông số</div>
-                <div class="gvos-feature-sub">Thông tin trên nhãn, gọn một bảng</div>
-              </div>
+          <div class="gvos-fs-bottom-card">
+            <div class="gvos-fs-eyebrow">
+              <span>⚡ TRỢ LÝ ĐĂNG BÁN AI</span>
             </div>
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">📝</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Bài viết</div>
-                <div class="gvos-feature-sub">Cho sàn và mạng xã hội, hai giọng</div>
-              </div>
-            </div>
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">🖼️</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Ảnh nền trắng</div>
-                <div class="gvos-feature-sub">Sản phẩm thật, chỉ thay nền</div>
-              </div>
-            </div>
-          </div>
+            <h1 class="gvos-fs-title">Vài tấm ảnh, có ngay bộ đăng bán</h1>
+            <p class="gvos-fs-desc">Chụp ảnh cân ký tại vườn, AI tự động soạn bài đa kênh và tách nền trắng chuẩn sàn B2B.</p>
 
-          <div class="gvos-note-card">
-            <span class="gvos-note-icon">🛡️</span>
-            <span>Chỉ dùng nhãn và lời bạn nói. Bạn duyệt rồi mới đăng, app không tự đăng.</span>
-          </div>
-
-          <div class="gvos-bottom-action">
-            <button type="button" class="gvos-primary-cta" onclick="nextGvosStep()">
+            <button type="button" class="gvos-fs-cta" onclick="nextGvosStep()">
               <span>Tiếp tục</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>
         </div>
 
         <!-- =========================================================================
-             BƯỚC 3/4: CHỢ XANH (https://gvos.greenfi.vn/chao-mung?tu=%2F&buoc=3)
+             MÀN FULLSCREEN 3/4: CHỢ XANH (https://gvos.greenfi.vn/chao-mung?buoc=3)
              ========================================================================= -->
-        <div class="gvos-screen-pane gvos-fade-in" id="gvosPaneStep3">
-          <!-- Stepper 3 Bước -->
-          <div class="gvos-hero-card">
-            <div class="gvos-stepper-row">
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">🎙️</div>
-                <div class="gvos-stepper-label">Nói có gì, cần gì</div>
-              </div>
-              <div class="gvos-stepper-arrow">➔</div>
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">🔄</div>
-                <div class="gvos-stepper-label">Chợ Xanh ghép nối</div>
-              </div>
-              <div class="gvos-stepper-arrow">➔</div>
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">🤝</div>
-                <div class="gvos-stepper-label">Bạn liên hệ</div>
-              </div>
+        <div class="gvos-fs-pane gvos-fs-fade" id="gvosPaneStep3">
+          <img src="onboard_step3_market.jpg" alt="Chợ Xanh" class="gvos-fs-bg">
+          <div class="gvos-fs-scrim"></div>
+
+          <!-- Floating Top Bar -->
+          <div class="gvos-fs-topbar">
+            <button type="button" class="gvos-fs-back" onclick="prevGvosStep()" aria-label="Quay lại">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="gvos-fs-indicators">
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash"></span>
             </div>
+            <button type="button" class="gvos-fs-skip" onclick="skipToLogin()">Bỏ qua</button>
           </div>
 
-          <div class="gvos-eyebrow">
-            <span>CHỢ XANH</span>
-          </div>
-          <h1 class="gvos-title">Có gì, cần gì, ghép nối gần nhà</h1>
-          <p class="gvos-desc">Sàn kết nối nông sản số, tìm đúng thương lái và đối tác thu mua quanh xã Yên Bình.</p>
-
-          <div class="gvos-feature-list">
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">📦</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Hộp Tài Nguyên</div>
-                <div class="gvos-feature-sub">Thẻ có gì, cần gì, ý tưởng của hộ</div>
-              </div>
+          <div class="gvos-fs-bottom-card">
+            <div class="gvos-fs-eyebrow">
+              <span>🔄 CHỢ XANH NÔNG SẢN</span>
             </div>
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">🔗</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Ghép nối</div>
-                <div class="gvos-feature-sub">Nơi phù hợp gần nhà, nói rõ vì sao</div>
-              </div>
-            </div>
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">💡</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Cơ hội</div>
-                <div class="gvos-feature-sub">Bán chéo, làm chung, chỗ nghẽn của xã</div>
-              </div>
-            </div>
-          </div>
+            <h1 class="gvos-fs-title">Có gì, cần gì, ghép nối gần nhà</h1>
+            <p class="gvos-fs-desc">Ghép nối thương lái và cơ sở thu mua quanh xã Yên Bình, giao dịch trực tiếp minh bạch.</p>
 
-          <div class="gvos-note-card">
-            <span class="gvos-note-icon">🛡️</span>
-            <span>Mua bán qua Đối tác. App không giữ tiền.</span>
-          </div>
-
-          <div class="gvos-bottom-action">
-            <button type="button" class="gvos-primary-cta" onclick="nextGvosStep()">
+            <button type="button" class="gvos-fs-cta" onclick="nextGvosStep()">
               <span>Tiếp tục</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>
         </div>
 
         <!-- =========================================================================
-             BƯỚC 4/4: ANCUJOB (https://gvos.greenfi.vn/chao-mung?tu=%2F&buoc=4)
+             MÀN FULLSCREEN 4/4: AN CƯ JOB & XE HTX (https://gvos.greenfi.vn/chao-mung?buoc=4)
              ========================================================================= -->
-        <div class="gvos-screen-pane gvos-fade-in" id="gvosPaneStep4">
-          <!-- Stepper 3 Bước -->
-          <div class="gvos-hero-card">
-            <div class="gvos-stepper-row">
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">🎙️</div>
-                <div class="gvos-stepper-label">Khai hồ sơ bằng lời</div>
-              </div>
-              <div class="gvos-stepper-arrow">➔</div>
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">✋</div>
-                <div class="gvos-stepper-label">Bấm Tôi đang rảnh</div>
-              </div>
-              <div class="gvos-stepper-arrow">➔</div>
-              <div class="gvos-stepper-node">
-                <div class="gvos-stepper-icon">💼</div>
-                <div class="gvos-stepper-label">Nhận việc gần nhà</div>
-              </div>
+        <div class="gvos-fs-pane gvos-fs-fade" id="gvosPaneStep4">
+          <img src="onboard_step4_job.jpg" alt="An Cư Job & Xe HTX" class="gvos-fs-bg">
+          <div class="gvos-fs-scrim"></div>
+
+          <!-- Floating Top Bar -->
+          <div class="gvos-fs-topbar">
+            <button type="button" class="gvos-fs-back" onclick="prevGvosStep()" aria-label="Quay lại">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="gvos-fs-indicators">
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash active"></span>
+              <span class="gvos-fs-dash active"></span>
             </div>
+            <div style="width:54px"></div>
           </div>
 
-          <div class="gvos-eyebrow">
-            <span>ANCUJOB</span>
-          </div>
-          <h1 class="gvos-title">Việc làm ngay tại xã</h1>
-          <p class="gvos-desc">Kết nối nhân lực thu hoạch nông nhàn và điều phối cơ hội việc làm mùa vụ trong xã.</p>
-
-          <div class="gvos-feature-list">
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">💼</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Việc gần nhà</div>
-                <div class="gvos-feature-sub">Xem việc trong xã, ứng tuyển một chạm</div>
-              </div>
+          <div class="gvos-fs-bottom-card">
+            <div class="gvos-fs-eyebrow">
+              <span>💼 AN CƯ JOB & XE HTX</span>
             </div>
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">📢</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Đăng tin tuyển</div>
-                <div class="gvos-feature-sub">Nói hoặc gõ vài câu, có ngay tin</div>
-              </div>
-            </div>
-            <div class="gvos-feature-item">
-              <div class="gvos-feature-icon">⭐</div>
-              <div class="gvos-feature-text">
-                <div class="gvos-feature-title">Đánh giá hai chiều</div>
-                <div class="gvos-feature-sub">Người làm và người tuyển chấm nhau</div>
-              </div>
-            </div>
-          </div>
+            <h1 class="gvos-fs-title">Việc làm tại xã, xe gom tận vườn</h1>
+            <p class="gvos-fs-desc">Nhận việc mùa vụ ngay trong xã và điều phối xe tải HTX đến gom nông sản hàng ngày.</p>
 
-          <div class="gvos-note-card">
-            <span class="gvos-note-icon">🔒</span>
-            <span>Số điện thoại chỉ hiện khi hai bên đã kết nối. Xem lại phần giới thiệu ở Trang chủ.</span>
-          </div>
-
-          <div class="gvos-bottom-action">
-            <button type="button" class="gvos-primary-cta" onclick="skipToLogin()">
+            <button type="button" class="gvos-fs-cta" onclick="skipToLogin()">
               <span>Vào ứng dụng</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>
         </div>
@@ -7116,10 +6865,10 @@
         <!-- =========================================================================
              MÀN ĐĂNG NHẬP: VÀO GREENVILLAGEOS (https://gvos.greenfi.vn/dang-nhap?tu=%2F)
              ========================================================================= -->
-        <div class="gvos-screen-pane gvos-fade-in" id="gvosScreenLogin">
+        <div class="gvos-fs-fade" id="gvosScreenLogin">
           <div class="gvos-login-top-bar">
-            <button type="button" class="gvos-nav-back-btn" onclick="switchGvosStep(4)" aria-label="Quay lại bước 4">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <button type="button" class="gvos-fs-back" style="color:#0F172A;border-color:#E2E8F0;background:#F1F5F9" onclick="switchGvosStep(4)" aria-label="Quay lại bước 4">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
             <span class="gvos-login-brand-chip">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -11749,7 +11498,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
       if (bottomNav) bottomNav.classList.add('nav-hidden');
-      if (bodyElem) bodyElem.className = 'has-wizard-dock';
+      if (bodyElem) bodyElem.className = 'is-onboarding';
       
       const panel = document.getElementById('panel-onboarding');
       if (panel) panel.classList.add('active');
@@ -11759,58 +11508,34 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       if (sc) sc.scrollTo(0, 0);
     }
 
-    // Chuyển đổi giữa các bước với hiệu ứng Fade mượt mà
+    // Chuyển đổi giữa các bước full-screen với hiệu ứng Fade mượt mà
     function switchGvosStep(step) {
       currentGvosStep = step;
-      const navHeader = document.getElementById('gvosNavHeader');
       const stepPanes = [1, 2, 3, 4];
       const loginPane = document.getElementById('gvosScreenLogin');
 
       if (step === 'login') {
         // Màn Đăng Nhập
-        if (navHeader) navHeader.style.display = 'none';
         stepPanes.forEach(s => {
           const p = document.getElementById('gvosPaneStep' + s);
           if (p) p.classList.remove('active');
         });
         if (loginPane) {
-          loginPane.classList.remove('gvos-fade-in');
+          loginPane.classList.remove('gvos-fs-fade');
           void loginPane.offsetWidth; // Trigger reflow cho animation Fade
-          loginPane.classList.add('active', 'gvos-fade-in');
+          loginPane.classList.add('active', 'gvos-fs-fade');
         }
       } else {
-        // Các bước 1..4
-        if (navHeader) navHeader.style.display = 'flex';
+        // Các bước 1..4 Full Screen
         if (loginPane) loginPane.classList.remove('active');
 
-        // Cập nhật segmented progress bar
-        for (let i = 1; i <= 4; i++) {
-          const seg = document.getElementById('gvosProgSeg' + i);
-          if (seg) {
-            if (i <= step) seg.classList.add('active');
-            else seg.classList.remove('active');
-          }
-        }
-
-        // Cập nhật text counter "1/4", "2/4", ...
-        const counter = document.getElementById('gvosStepCounter');
-        if (counter) counter.textContent = `${step}/4`;
-
-        // Nút Back
-        const backBtn = document.getElementById('gvosNavBackBtn');
-        if (backBtn) {
-          if (step > 1) backBtn.classList.remove('hidden');
-          else backBtn.classList.add('hidden');
-        }
-
-        // Kích hoạt pane tương ứng với hiệu ứng Fade
         stepPanes.forEach(s => {
           const p = document.getElementById('gvosPaneStep' + s);
           if (p) {
             if (s === step) {
-              p.classList.remove('gvos-fade-in');
+              p.classList.remove('gvos-fs-fade');
               void p.offsetWidth; // Trigger reflow cho animation Fade
-              p.classList.add('active', 'gvos-fade-in');
+              p.classList.add('active', 'gvos-fs-fade');
             } else {
               p.classList.remove('active');
             }

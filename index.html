@@ -3897,6 +3897,307 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
 
+  
+    /* =========================================================================
+       MÀN HÌNH ONBOARDING ĐỘC LẬP (KHÔNG POPUP, CHUẨN GVOS)
+       ========================================================================= */
+    #panel-onboarding {
+      background: #FFFFFF;
+      min-height: 100%;
+      display: none;
+      flex-direction: column;
+    }
+    #panel-onboarding.active {
+      display: flex;
+    }
+    .obp-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 4px 10px;
+    }
+    .obp-back-btn {
+      background: transparent;
+      border: none;
+      color: #64748B;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 6px;
+      border-radius: 8px;
+    }
+    .obp-step-badge {
+      font-size: 13px;
+      font-weight: 700;
+      color: #059669;
+      background: #ECFDF5;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .obp-skip-btn {
+      background: transparent;
+      border: none;
+      color: #64748B;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 6px 10px;
+    }
+    .obp-progress-track {
+      width: 100%;
+      height: 4px;
+      background: #E2E8F0;
+      border-radius: 2px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .obp-progress-fill {
+      height: 100%;
+      background: #059669;
+      border-radius: 2px;
+      transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .obp-screen-content {
+      flex: 1;
+      padding-bottom: 24px;
+    }
+    .obp-screen {
+      display: none;
+      animation: obpFadeIn 0.3s ease;
+    }
+    .obp-screen.active {
+      display: block;
+    }
+    @keyframes obpFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .obp-eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #059669;
+      margin-bottom: 6px;
+    }
+    .obp-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .obp-desc {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .obp-card-box {
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .obp-item-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .obp-item-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .obp-item-row:first-child {
+      padding-top: 0;
+    }
+    .obp-icon-chip {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: #DCFCE7;
+      color: #15803D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .obp-item-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.35;
+    }
+    .obp-item-sub {
+      font-size: 12.5px;
+      color: #64748B;
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+    .obp-note-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12.5px;
+      color: #475569;
+      background: #F1F5F9;
+      padding: 10px 14px;
+      border-radius: 12px;
+      line-height: 1.45;
+      margin-top: 14px;
+    }
+    .obp-bottom-dock {
+      display: flex;
+      gap: 10px;
+      padding: 14px 0 20px;
+      background: #FFFFFF;
+      border-top: 1px solid #F1F5F9;
+    }
+
+    /* =========================================================================
+       CARD VIỆC CẦN LÀM (CHÍNH XÁC THEO ẢNH CHỤP MÀN HÌNH CỦA NGƯỜI DÙNG)
+       ========================================================================= */
+    .vcl-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 18px 18px 6px;
+      margin-bottom: 16px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    }
+    .vcl-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .vcl-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.3px;
+      margin: 0;
+    }
+    .vcl-badge-pill {
+      background: #D8ECE0;
+      color: #166534;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 20px;
+    }
+    .vcl-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .vcl-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 4px;
+      border-bottom: 1px solid #F1F5F9;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      border-radius: 12px;
+    }
+    .vcl-row:last-child {
+      border-bottom: none;
+    }
+    .vcl-row:hover {
+      background: #F8FAFC;
+    }
+    .vcl-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .vcl-icon-box.vcl-tan {
+      background: #F7EADB;
+      color: #935B29;
+    }
+    .vcl-icon-box.vcl-blue {
+      background: #E5F0FF;
+      color: #1E62D0;
+    }
+    .vcl-icon-box.vcl-green {
+      background: #DDEFE4;
+      color: #2E6C45;
+    }
+    .vcl-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .vcl-item-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.35;
+    }
+    .vcl-item-hint {
+      font-size: 13px;
+      color: #64748B;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .vcl-circle-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #E2EFE7;
+      color: #215838;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .vcl-circle-btn:hover {
+      background: #CBE3D5;
+      transform: scale(1.05);
+    }
+
+    /* GIAO DIỆN PHIẾU SOẠN HÀNG PICK-LIST */
+    .picklist-item-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .picklist-item-card.done {
+      background: #F1F5F9;
+      opacity: 0.65;
+    }
+    .picklist-item-card.done .pl-name {
+      text-decoration: line-through;
+      color: #94A3B8;
+    }
+    .pl-name {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+    }
+    .pl-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
   </style>
 </head>
 <body class="has-bottom-nav">
@@ -3935,6 +4236,221 @@
       <!-- =========================================================================
            PANEL 1: TRANG CHỦ (HOME TAB)
            ========================================================================= -->
+      <!-- =========================================================================
+           PANEL ONBOARDING TỪNG MÀN HÌNH ĐỘC LẬP (KHÔNG POPUP, CHUẨN GVOS)
+           ========================================================================= -->
+      <section id="panel-onboarding" class="view-panel">
+        <!-- Top Navigation Bar -->
+        <div class="obp-top-bar">
+          <button type="button" class="obp-back-btn" id="obpBackBtn" onclick="prevOnboardScreen()" style="visibility:hidden">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="obp-step-badge" id="obpStepBadge">Bước 1 trên 4</div>
+          <button type="button" class="obp-skip-btn" onclick="finishOnboarding()">Bỏ qua</button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="obp-progress-track">
+          <div class="obp-progress-fill" id="obpProgressFill" style="width:25%"></div>
+        </div>
+
+        <!-- Screen Content Container -->
+        <div class="obp-screen-content">
+          <!-- MÀN 1: CÔNG CỤ SỐ KINH TẾ XÃ -->
+          <div class="obp-screen active" id="obpScreen0">
+            <div class="obp-eyebrow">GreenFi · GreenVillageOS</div>
+            <h1 class="obp-title">Công cụ số cho kinh tế xã</h1>
+            <p class="obp-desc">Ba sản phẩm cho hộ nông dân, hợp tác xã và cán bộ xã, vận hành trên một tài khoản tiện lợi.</p>
+            
+            <div class="obp-card-box">
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">🤝</span>
+                <div>
+                  <div class="obp-item-title">Hub xã làm thay khi bạn cần</div>
+                  <div class="obp-item-sub">Cán bộ HTX hỗ trợ làm hộ mọi bước trên app khi bác chưa rành máy móc.</div>
+                </div>
+              </div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">📶</span>
+                <div>
+                  <div class="obp-item-title">Mạng yếu vẫn làm được, có mạng tự gửi</div>
+                  <div class="obp-item-sub">Ra vườn đồi mất sóng vẫn chụp ảnh và nói giá, ứng dụng tự lưu trữ và gửi khi có mạng.</div>
+                </div>
+              </div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">🤖</span>
+                <div>
+                  <div class="obp-item-title">Trợ lý Phi Phi hỏi đáp mỗi bước</div>
+                  <div class="obp-item-sub">Trợ lý thông minh đồng hành, hướng dẫn bằng tiếng Việt mộc mạc, dễ hiểu.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="obp-note-alert">
+              <span>🌾</span>
+              <span>Dành riêng cho Hộ sản xuất Bác Ba · Hợp tác xã Nông nghiệp Đồng Cát, Xã Yên Bình.</span>
+            </div>
+          </div>
+
+          <!-- MÀN 2: TRỢ LÝ ĐĂNG BÁN -->
+          <div class="obp-screen" id="obpScreen1">
+            <div class="obp-eyebrow">Trợ lý đăng bán</div>
+            <h1 class="obp-title">Vài tấm ảnh, có ngay bộ đăng bán</h1>
+            <p class="obp-desc">Không cần gõ bàn phím, chỉ cần chụp ảnh và bấm nói giá là có ngay bài đăng đa kênh.</p>
+            
+            <!-- 3 Bước Quy Trình -->
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;background:#F0FDF4;padding:12px;border-radius:14px;border:1px solid #BBF7D0">
+              <div style="text-align:center;flex:1">
+                <div style="font-size:20px">📷</div>
+                <div style="font-size:11.5px;font-weight:700;color:#166534;margin-top:2px">1. Chụp nhãn/nói</div>
+              </div>
+              <div style="color:#86EFAC">➔</div>
+              <div style="text-align:center;flex:1">
+                <div style="font-size:20px">✨</div>
+                <div style="font-size:11.5px;font-weight:700;color:#166534;margin-top:2px">2. Trợ lý soạn</div>
+              </div>
+              <div style="color:#86EFAC">➔</div>
+              <div style="text-align:center;flex:1">
+                <div style="font-size:20px">👁️</div>
+                <div style="font-size:11.5px;font-weight:700;color:#166534;margin-top:2px">3. Bác duyệt</div>
+              </div>
+            </div>
+
+            <div class="obp-card-box">
+              <div style="font-size:12px;font-weight:800;color:#059669;margin-bottom:8px;text-transform:uppercase">Ba đầu ra hoàn thiện (≤ 3 phút)</div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">📊</span>
+                <div>
+                  <div class="obp-item-title">Bảng thông số nông sản</div>
+                  <div class="obp-item-sub">Thông tin nguồn gốc, hạn sử dụng, tiêu chuẩn OCOP gọn gàng trong 1 bảng.</div>
+                </div>
+              </div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">✍️</span>
+                <div>
+                  <div class="obp-item-title">Bài viết bán hàng đa phong cách</div>
+                  <div class="obp-item-sub">Tự động soạn sẵn bài đăng cho Zalo, Facebook và Shopee với giọng điệu mộc mạc.</div>
+                </div>
+              </div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">🖼️</span>
+                <div>
+                  <div class="obp-item-title">Ảnh nền trắng vuông 1:1</div>
+                  <div class="obp-item-sub">Ảnh sản phẩm thật tại vườn, tự động tách nền trắng chuẩn sàn thương mại điện tử.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="obp-note-alert">
+              <span>🛡️</span>
+              <span>Chỉ dùng nhãn và lời bác nói. Bác duyệt xong mới đăng, ứng dụng không tự đăng thay bác.</span>
+            </div>
+          </div>
+
+          <!-- MÀN 3: CHỢ XANH XÃ -->
+          <div class="obp-screen" id="obpScreen2">
+            <div class="obp-eyebrow">Chợ Xanh</div>
+            <h1 class="obp-title">Có gì, cần gì, ghép nối gần nhà</h1>
+            <p class="obp-desc">Sàn kết nối nông sản số, tìm đúng thương lái và đối tác thu mua quanh xã Yên Bình.</p>
+            
+            <!-- 3 Bước Chợ Xanh -->
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;background:#EFF6FF;padding:12px;border-radius:14px;border:1px solid #BFDBFE">
+              <div style="text-align:center;flex:1">
+                <div style="font-size:20px">🎙️</div>
+                <div style="font-size:11.5px;font-weight:700;color:#1E40AF;margin-top:2px">1. Nói có gì, cần gì</div>
+              </div>
+              <div style="color:#93C5FD">➔</div>
+              <div style="text-align:center;flex:1">
+                <div style="font-size:20px">🔄</div>
+                <div style="font-size:11.5px;font-weight:700;color:#1E40AF;margin-top:2px">2. Chợ Xanh ghép</div>
+              </div>
+              <div style="color:#93C5FD">➔</div>
+              <div style="text-align:center;flex:1">
+                <div style="font-size:20px">🤝</div>
+                <div style="font-size:11.5px;font-weight:700;color:#1E40AF;margin-top:2px">3. Bác liên hệ</div>
+              </div>
+            </div>
+
+            <div class="obp-card-box">
+              <div style="font-size:12px;font-weight:800;color:#1E40AF;margin-bottom:8px;text-transform:uppercase">Chợ Xanh có gì?</div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip" style="background:#DBEAFE;color:#1E40AF">📦</span>
+                <div>
+                  <div class="obp-item-title">Hộp Tài Nguyên nông hộ</div>
+                  <div class="obp-item-sub">Thẻ CÓ nông sản bán, thẻ CẦN mua vật tư, ý tưởng liên kết của bà con.</div>
+                </div>
+              </div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip" style="background:#DBEAFE;color:#1E40AF">🔗</span>
+                <div>
+                  <div class="obp-item-title">Ghép nối thương lái gần nhà</div>
+                  <div class="obp-item-sub">Tìm đúng cơ sở chế biến, xưởng mứt cách 3-5km đang cần thu mua chuối của bác.</div>
+                </div>
+              </div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip" style="background:#DBEAFE;color:#1E40AF">💡</span>
+                <div>
+                  <div class="obp-item-title">Cơ hội bán chéo & giải cứu</div>
+                  <div class="obp-item-sub">Gom đơn bán chung, giải tỏa điểm nghẽn tiêu thụ mùa vụ của toàn xã.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="obp-note-alert">
+              <span>🤝</span>
+              <span>Mua bán trực tiếp qua Đối tác và Hub xã. Ứng dụng không giữ tiền của bà con.</span>
+            </div>
+          </div>
+
+          <!-- MÀN 4: VIỆC LÀM & ĐIỀU PHỐI HUB XE TẢI -->
+          <div class="obp-screen" id="obpScreen3">
+            <div class="obp-eyebrow">An Cư Job & Xe tải HTX</div>
+            <h1 class="obp-title">Việc làm mùa vụ & Xe tải gom hàng</h1>
+            <p class="obp-desc">Kết nối nhân lực thu hoạch nông nhàn và điều phối xe tải HTX gom nông sản tận thôn.</p>
+            
+            <div class="obp-card-box">
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">💼</span>
+                <div>
+                  <div class="obp-item-title">Việc làm ngay tại xã</div>
+                  <div class="obp-item-sub">Xem việc bẻ chuối, hái chè, bốc xếp trong xã và ứng tuyển chỉ với 1 chạm.</div>
+                </div>
+              </div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">🚚</span>
+                <div>
+                  <div class="obp-item-title">Xe tải HTX thu gom hàng ngày</div>
+                  <div class="obp-item-sub">Chú Hùng xe tải đến điểm tập kết Nhà văn hóa Thôn Đồng Cát chở chuối đi giao.</div>
+                </div>
+              </div>
+              <div class="obp-item-row">
+                <span class="obp-icon-chip">💳</span>
+                <div>
+                  <div class="obp-item-title">Tiền về thẳng tài khoản Agribank</div>
+                  <div class="obp-item-sub">Mã VietQR cá nhân của Bác Ba giúp nhận tiền hàng minh bạch, không lo công nợ.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="obp-note-alert">
+              <span>✨</span>
+              <span>Bác Ba đã sẵn sàng! Bấm nút bên dưới để bắt đầu sử dụng ngay.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Bottom Dock -->
+        <div class="obp-bottom-dock">
+          <button type="button" class="btn-dock-back" id="btnObpPrev" style="flex:1;height:48px;font-size:14px;border-radius:14px;visibility:hidden" onclick="prevOnboardScreen()">
+            Quay lại
+          </button>
+          <button type="button" class="btn-dock-next" id="btnObpNext" style="flex:2;height:48px;font-size:15px;border-radius:14px;background:#059669" onclick="nextOnboardScreen()">
+            <span>Tiếp tục</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </section>
+
       <section id="panel-home" class="view-panel active">
         <div class="home-user-header">
           <div class="user-profile-meta">
@@ -3945,7 +4461,7 @@
             </div>
           </div>
           <!-- Nút xem lại Onboarding Hướng Dẫn -->
-          <button type="button" class="btn-guide-onboard" onclick="openOnboardingModal()" title="Xem lại hướng dẫn">
+          <button type="button" class="btn-guide-onboard" onclick="goToOnboarding()" title="Xem lại hướng dẫn">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             <span>Hướng dẫn</span>
           </button>
@@ -3969,63 +4485,102 @@
         </div>
 
                 <!-- =========================================================================
-             CARD NHỮNG VIỆC CẦN LÀM HÔM NAY (TO-DO ITEMS CHUẨN GVOS)
+             CARD VIỆC CẦN LÀM (CHÍNH XÁC 100% THEO GVOS VÀ ẢNH CHỤP MÀN HÌNH)
              ========================================================================= -->
-        <div class="home-tasks-card">
-          <div class="htc-header">
-            <div class="htc-title-group">
-              <span class="htc-icon">📌</span>
-              <div>
-                <div class="htc-title">Việc cần làm hôm nay</div>
-                <div class="htc-sub">Bác có việc quan trọng cần xử lý</div>
-              </div>
-            </div>
-            <span class="htc-badge" id="tasksCountBadge">3 việc đang chờ</span>
+        <div class="vcl-card">
+          <div class="vcl-header">
+            <h2 class="vcl-title">Việc cần làm</h2>
+            <span class="vcl-badge-pill" id="vclTotalBadge">6 việc</span>
           </div>
 
-          <div class="htc-list">
-            <!-- Việc 1 -->
-            <div class="htc-item" id="taskItem1">
-              <label class="htc-check-box">
-                <input type="checkbox" onchange="toggleTaskDone(1, this.checked)">
-                <span class="htc-custom-check"></span>
-              </label>
-              <div class="htc-item-body">
-                <div class="htc-item-name">Soạn 3 đơn hàng mới chờ giao</div>
-                <div class="htc-item-desc">#ĐH-8901, #ĐH-8902, #ĐH-8903 · Tổng 15 gói chuối + 2 hũ mật ong</div>
+          <div class="vcl-list">
+            <!-- Mục 1: 5 đơn quá hạn -->
+            <div class="vcl-row" onclick="openOrdersFiltered('qua_han')">
+              <span class="vcl-icon-box vcl-tan">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="12" y1="12" x2="16" y2="14"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+              </span>
+              <div class="vcl-content">
+                <div class="vcl-item-title">5 đơn quá hạn</div>
+                <div class="vcl-item-hint">Xử lý trước để không mất đơn</div>
               </div>
-              <button type="button" class="htc-act-btn" onclick="openOrdersView()">Soạn ngay</button>
+              <button type="button" class="vcl-circle-btn" aria-label="Xem 5 đơn quá hạn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
 
-            <!-- Việc 2 -->
-            <div class="htc-item" id="taskItem2">
-              <label class="htc-check-box">
-                <input type="checkbox" onchange="toggleTaskDone(2, this.checked)">
-                <span class="htc-custom-check"></span>
-              </label>
-              <div class="htc-item-body">
-                <div class="htc-item-name">Xuất 500kg chuối cho xe tải HTX</div>
-                <div class="htc-item-desc">Chú Hùng xe tải đến Nhà văn hóa thôn lúc 14h00 chiều nay</div>
+            <!-- Mục 2: 44 đơn chờ xác nhận -->
+            <div class="vcl-row" onclick="openOrdersFiltered('cho_xac_nhan')">
+              <span class="vcl-icon-box vcl-blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </span>
+              <div class="vcl-content">
+                <div class="vcl-item-title">44 đơn chờ xác nhận</div>
+                <div class="vcl-item-hint">Xác nhận để bắt đầu đóng gói</div>
               </div>
-              <button type="button" class="htc-act-btn" onclick="confirmTaskTruck()">Báo sẵn sàng</button>
+              <button type="button" class="vcl-circle-btn" aria-label="Xem 44 đơn chờ xác nhận">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
 
-            <!-- Việc 3 -->
-            <div class="htc-item" id="taskItem3">
-              <label class="htc-check-box">
-                <input type="checkbox" onchange="toggleTaskDone(3, this.checked)">
-                <span class="htc-custom-check"></span>
-              </label>
-              <div class="htc-item-body">
-                <div class="htc-item-name">Bổ sung HSD cho Trà Bát Tiên</div>
-                <div class="htc-item-desc">Sản phẩm đang ở trạng thái Nháp, cần hoàn thiện trước khi đăng</div>
+            <!-- Mục 3: 9 đơn chờ đóng gói -->
+            <div class="vcl-row" onclick="openPickListView()">
+              <span class="vcl-icon-box vcl-blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </span>
+              <div class="vcl-content">
+                <div class="vcl-item-title">9 đơn chờ đóng gói</div>
+                <div class="vcl-item-hint">Soạn hàng rồi đóng gói</div>
               </div>
-              <button type="button" class="htc-act-btn" onclick="goToWizardStep(2)">Sửa nháp</button>
+              <button type="button" class="vcl-circle-btn" aria-label="Soạn 9 đơn chờ đóng gói">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+
+            <!-- Mục 4: 2 đơn có khiếu nại -->
+            <div class="vcl-row" onclick="openOrdersFiltered('khieu_nai')">
+              <span class="vcl-icon-box vcl-blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="12" y1="8" x2="12.01" y2="8"/><line x1="12" y1="12" x2="12" y2="12"/></svg>
+              </span>
+              <div class="vcl-content">
+                <div class="vcl-item-title">2 đơn có khiếu nại</div>
+                <div class="vcl-item-hint">Mở đơn để xem khiếu nại</div>
+              </div>
+              <button type="button" class="vcl-circle-btn" aria-label="Xem 2 đơn có khiếu nại">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+
+            <!-- Mục 5: 2 sản phẩm đang là Nháp -->
+            <div class="vcl-row" onclick="goToWizardStep(2)">
+              <span class="vcl-icon-box vcl-tan">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+              </span>
+              <div class="vcl-content">
+                <div class="vcl-item-title">2 sản phẩm đang là Nháp</div>
+                <div class="vcl-item-hint">Xem hồ sơ rồi lấy bộ đăng bán</div>
+              </div>
+              <button type="button" class="vcl-circle-btn" aria-label="Sửa 2 sản phẩm nháp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+
+            <!-- Mục 6: GFKey chưa liên kết -->
+            <div class="vcl-row" onclick="openFarmerQRModal()">
+              <span class="vcl-icon-box vcl-green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/><line x1="12" y1="14" x2="12" y2="17"/></svg>
+              </span>
+              <div class="vcl-content">
+                <div class="vcl-item-title">GFKey chưa liên kết</div>
+                <div class="vcl-item-hint">Không bắt buộc</div>
+              </div>
+              <button type="button" class="vcl-circle-btn" aria-label="Xem liên kết GFKey">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- =========================================================================
+<!-- =========================================================================
              CARD LỐI TẮT VÀO CHỢ XANH XÃ YÊN BÌNH (TÍNH NĂNG CÓ / CẦN & GHÉP NỐI)
              ========================================================================= -->
         <div class="home-choxanh-banner" onclick="switchNavTab('market')" title="Bấm mở Chợ Xanh Xã">
@@ -5124,6 +5679,92 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
         <div id="orderDetailContentContainer">
           <!-- Injected dynamically by openOrderDetail(id) -->
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           PANEL PHIẾU SOẠN HÀNG (PICK-LIST GOM ĐƠN THEO GVOS)
+           ========================================================================= -->
+      <section id="panel-picklist" class="view-panel">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <button type="button" class="btn-dock-back" style="height:36px;padding:0 12px;font-size:13px;border-radius:10px" onclick="closePickListView()">
+            ← Về Trang Chủ
+          </button>
+          <span class="fsc-badge" style="background:#DCFCE7;color:#15803D">9 đơn chờ đóng gói</span>
+        </div>
+
+        <h1 class="step-main-title" style="margin-bottom:2px">Phiếu Soạn Hàng</h1>
+        <p class="step-sub-desc" style="margin-bottom:14px">Gom tổng nông sản cần lấy trong vườn/kho để đóng gói cho 9 đơn hôm nay:</p>
+
+        <!-- Tóm tắt số lượng -->
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:14px;font-weight:700;color:var(--text-main)">Tổng 24 món · 4 loại nông sản</span>
+          <span style="font-size:13px;color:#059669;font-weight:700" id="picklistDoneCount">Đã lấy: 0/4 loại</span>
+        </div>
+
+        <!-- Danh sách món cần lấy -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+          <!-- Món 1 -->
+          <div class="picklist-item-card" id="plItem1" onclick="togglePicklistItem(1)">
+            <input type="checkbox" id="plCheck1" style="width:22px;height:22px;accent-color:#059669;cursor:pointer">
+            <div style="flex:1;min-width:0">
+              <div class="pl-name">🍌 Chuối tiêu hồng sấy dẻo OCOP (Túi 500g)</div>
+              <div class="pl-sub">5 đơn đặt hàng · Giao chuyến chiều 14h</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:18px;font-weight:800;color:var(--text-main)">× 12</div>
+              <div style="font-size:12px;color:var(--text-muted)">gói</div>
+            </div>
+          </div>
+
+          <!-- Món 2 -->
+          <div class="picklist-item-card" id="plItem2" onclick="togglePicklistItem(2)">
+            <input type="checkbox" id="plCheck2" style="width:22px;height:22px;accent-color:#059669;cursor:pointer">
+            <div style="flex:1;min-width:0">
+              <div class="pl-name">🍌 Chuối sấy giòn Đồng Cát (Túi 250g)</div>
+              <div class="pl-sub">3 đơn đặt hàng · Khách mua lẻ Zalo</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:18px;font-weight:800;color:var(--text-main)">× 6</div>
+              <div style="font-size:12px;color:var(--text-muted)">gói</div>
+            </div>
+          </div>
+
+          <!-- Món 3 -->
+          <div class="picklist-item-card" id="plItem3" onclick="togglePicklistItem(3)">
+            <input type="checkbox" id="plCheck3" style="width:22px;height:22px;accent-color:#059669;cursor:pointer">
+            <div style="flex:1;min-width:0">
+              <div class="pl-name">🍯 Mật ong hoa rừng tự nhiên (Hũ 500ml)</div>
+              <div class="pl-sub">2 đơn đặt hàng · Đóng chống sốc kỹ</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:18px;font-weight:800;color:var(--text-main)">× 4</div>
+              <div style="font-size:12px;color:var(--text-muted)">hũ</div>
+            </div>
+          </div>
+
+          <!-- Món 4 -->
+          <div class="picklist-item-card" id="plItem4" onclick="togglePicklistItem(4)">
+            <input type="checkbox" id="plCheck4" style="width:22px;height:22px;accent-color:#059669;cursor:pointer">
+            <div style="flex:1;min-width:0">
+              <div class="pl-name">🍵 Trà Bát Tiên Thái Nguyên (Gói 500g)</div>
+              <div class="pl-sub">1 đơn đặt hàng · Kèm quà tặng ăn thử</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:18px;font-weight:800;color:var(--text-main)">× 2</div>
+              <div style="font-size:12px;color:var(--text-muted)">gói</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky buttons đáy -->
+        <div style="display:flex;gap:10px;margin-bottom:24px">
+          <button type="button" class="btn-dock-back" style="flex:1;height:46px;font-size:14px;border-radius:12px" onclick="window.print()">
+            🖨️ In Phiếu Soạn
+          </button>
+          <button type="button" class="btn-dock-next" style="flex:1.4;height:46px;font-size:14px;border-radius:12px;background:#059669" onclick="confirmAllPacked()">
+            ✓ Đã Đóng Gói 9 Đơn
+          </button>
         </div>
       </section>
 
@@ -7680,7 +8321,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     let currentOnboardSlide = 0;
     const totalOnboardSlides = 3;
 
-    function openOnboardingModal() {
+    function goToOnboarding() {
       const modal = document.getElementById('onboardModal');
       if (modal) {
         modal.classList.add('show');
@@ -7734,7 +8375,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       try {
         if (!localStorage.getItem('greenos_bacba_onboarded')) {
           setTimeout(() => {
-            openOnboardingModal();
+            goToOnboarding();
           }, 600);
         }
       } catch (e) {}
@@ -7855,6 +8496,154 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       triggerToast('✓ Đã mở kết nối Zalo với ' + partnerName + ' (' + phone + ')!');
     }
 
+  
+    // =========================================================================
+    // HỆ THỐNG ONBOARDING TỪNG MÀN HÌNH ĐỘC LẬP (CHUẨN GVOS)
+    // =========================================================================
+    let currentObpScreen = 0;
+    const totalObpScreens = 4;
+
+    function goToOnboarding() {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
+      bottomNav.classList.add('nav-hidden');
+      bodyElem.className = 'has-wizard-dock';
+      
+      const panel = document.getElementById('panel-onboarding');
+      if (panel) panel.classList.add('active');
+      setObpScreen(0);
+      document.querySelector('.screen-container').scrollTo(0, 0);
+    }
+
+    function setObpScreen(index) {
+      currentObpScreen = index;
+      for (let i = 0; i < totalObpScreens; i++) {
+        const sc = document.getElementById('obpScreen' + i);
+        if (sc) {
+          if (i === index) sc.classList.add('active');
+          else sc.classList.remove('active');
+        }
+      }
+
+      // Cập nhật badge & progress bar
+      const badge = document.getElementById('obpStepBadge');
+      if (badge) badge.textContent = `Bước ${index + 1} trên ${totalObpScreens}`;
+      
+      const bar = document.getElementById('obpProgressFill');
+      if (bar) bar.style.width = ((index + 1) / totalObpScreens * 100) + '%';
+
+      // Nút Back
+      const backBtn = document.getElementById('obpBackBtn');
+      const prevBtn = document.getElementById('btnObpPrev');
+      if (backBtn) backBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+      if (prevBtn) prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+
+      // Nút Next
+      const nextBtn = document.getElementById('btnObpNext');
+      if (nextBtn) {
+        if (index === totalObpScreens - 1) {
+          nextBtn.innerHTML = '<span>Vào ứng dụng ngay</span>';
+        } else {
+          nextBtn.innerHTML = '<span>Tiếp tục</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>';
+        }
+      }
+      document.querySelector('.screen-container').scrollTo(0, 0);
+    }
+
+    function nextOnboardScreen() {
+      if (currentObpScreen < totalObpScreens - 1) {
+        setObpScreen(currentObpScreen + 1);
+      } else {
+        finishOnboarding();
+      }
+    }
+
+    function prevOnboardScreen() {
+      if (currentObpScreen > 0) {
+        setObpScreen(currentObpScreen - 1);
+      }
+    }
+
+    function finishOnboarding() {
+      try {
+        localStorage.setItem('greenos_bacba_onboarded', 'true');
+      } catch (e) {}
+      switchNavTab('home');
+      triggerToast('Bác Ba đã sẵn sàng đăng bán nông sản!');
+    }
+
+    // Tự động mở Onboarding lần đầu tiên vào app
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        if (!localStorage.getItem('greenos_bacba_onboarded')) {
+          setTimeout(() => {
+            goToOnboarding();
+          }, 300);
+        }
+      } catch (e) {}
+    });
+
+    // Mở đơn hàng theo filter từ Card Việc cần làm
+    function openOrdersFiltered(filterType) {
+      openOrdersView();
+      if (filterType === 'qua_han') {
+        triggerToast('Lọc: 5 đơn hàng quá hạn cần giao gấp!');
+      } else if (filterType === 'cho_xac_nhan') {
+        triggerToast('Lọc: 44 đơn hàng đang chờ xác nhận');
+      } else if (filterType === 'khieu_nai') {
+        triggerToast('Lọc: 2 đơn hàng có khiếu nại (1 thiếu hàng, 1 kiểm tra)');
+      }
+    }
+
+    // Màn hình Soạn Hàng (Pick-list)
+    function openPickListView() {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
+      bottomNav.classList.add('nav-hidden');
+      bodyElem.className = 'has-wizard-dock';
+      
+      const pl = document.getElementById('panel-picklist');
+      if (pl) pl.classList.add('active');
+      document.querySelector('.screen-container').scrollTo(0, 0);
+      triggerToast('Đã mở Phiếu Soạn Hàng cho 9 đơn hôm nay!');
+    }
+
+    function closePickListView() {
+      switchNavTab('home');
+    }
+
+    let plPicked = new Set();
+    function togglePicklistItem(num) {
+      const card = document.getElementById('plItem' + num);
+      const cb = document.getElementById('plCheck' + num);
+      if (!card || !cb) return;
+
+      cb.checked = !cb.checked;
+      if (cb.checked) {
+        plPicked.add(num);
+        card.classList.add('done');
+      } else {
+        plPicked.delete(num);
+        card.classList.remove('done');
+      }
+
+      const countEl = document.getElementById('picklistDoneCount');
+      if (countEl) {
+        countEl.textContent = `Đã lấy: ${plPicked.size}/4 loại`;
+        if (plPicked.size === 4) {
+          countEl.textContent = '✓ Đã gom đủ 4/4 loại nông sản!';
+          triggerToast('Tuyệt vời! Bác đã lấy đủ toàn bộ nông sản cần đóng gói!');
+        }
+      }
+    }
+
+    function confirmAllPacked() {
+      triggerToast('✓ Đã đóng gói thành công 9 đơn hàng! Sẵn sàng xuất giao cho Chú Hùng xe tải!');
+      setTimeout(() => {
+        closePickListView();
+      }, 1000);
+    }
+
   </script>
 
   <!-- Modal VietQR Nhận Tiền Bác Ba -->
@@ -7877,99 +8666,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       </button>
     </div>
   </div>
-  <!-- =========================================================================
-       MODAL ONBOARDING BÁC BA (3 SLIDES HƯỚNG DẪN BẮT ĐẦU CHUẨN GVOS)
-       ========================================================================= -->
-  <div class="onboard-modal-overlay" id="onboardModal" onclick="closeOnboardingModal()">
-    <div class="onboard-modal-card" onclick="event.stopPropagation()">
-      <div class="onboard-close-btn" onclick="closeOnboardingModal()">✕</div>
-      
-      <!-- Slide Track -->
-      <div class="onboard-slides-container">
-        <!-- Slide 1 -->
-        <div class="onboard-slide active" id="onboardSlide0">
-          <div class="onboard-badge">XIN CHÀO BÁC BA</div>
-          <div class="onboard-illus-box">
-            <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="onboard-avatar-large">
-            <div class="onboard-plant-icon">🌾</div>
-          </div>
-          <h2 class="onboard-slide-title">Chào mừng Bác Ba đến với GreenOS!</h2>
-          <p class="onboard-slide-desc">
-            Trợ lý số dành riêng cho bà con nông dân xã Yên Bình. Đưa nông sản vườn nhà lên mạng bán buôn bán lẻ chỉ trong 3 phút, không cần rành công nghệ.
-          </p>
-          <div class="onboard-feature-tags">
-            <span class="oft-tag">✓ Thân thiện dễ dùng</span>
-            <span class="oft-tag">✓ Hợp tác xã Đồng Cát</span>
-            <span class="oft-tag">✓ Minh bạch OCOP</span>
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="onboard-slide" id="onboardSlide1">
-          <div class="onboard-badge">QUY TRÌNH 3 BƯỚC</div>
-          <div class="onboard-steps-visual">
-            <div class="osv-step">
-              <div class="osv-circle">1</div>
-              <div class="osv-text">Chụp ảnh thật</div>
-            </div>
-            <div class="osv-arrow">➔</div>
-            <div class="osv-step">
-              <div class="osv-circle">2</div>
-              <div class="osv-text">Nói giá bán</div>
-            </div>
-            <div class="osv-arrow">➔</div>
-            <div class="osv-step">
-              <div class="osv-circle">3</div>
-              <div class="osv-text">Duyệt & Đăng</div>
-            </div>
-          </div>
-          <h2 class="onboard-slide-title">Đăng bán bằng giọng nói & chụp ảnh</h2>
-          <p class="onboard-slide-desc">
-            Bác chỉ cần bấm micro và nói tự nhiên: <i>"Chuối sấy giòn túi 250 gam, bán năm mươi lăm nghìn một gói"</i>. Máy tự soạn bài đăng chuẩn cho Zalo, Facebook và Shopee.
-          </p>
-          <div class="onboard-feature-tags">
-            <span class="oft-tag">🎙️ Nhận diện giọng nói</span>
-            <span class="oft-tag">🖼️ Ảnh tách nền 1:1</span>
-            <span class="oft-tag">💬 1 chạm chia sẻ Zalo</span>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="onboard-slide" id="onboardSlide2">
-          <div class="onboard-badge">KẾT NỐI TOÀN XÃ</div>
-          <div class="onboard-illus-box" style="font-size:52px;height:104px">
-            🚛 🌿 🤝
-          </div>
-          <h2 class="onboard-slide-title">Chợ Xanh & Xe tải HTX gom hàng</h2>
-          <p class="onboard-slide-desc">
-            Đăng thẻ <b>"Có nông sản gì"</b> để ghép nối thương lái gần nhà. Xe tải HTX thu gom chuối tận nhà văn hóa thôn, tiền bán nông sản chuyển thẳng vào mã VietQR Agribank của bác!
-          </p>
-          <div class="onboard-feature-tags">
-            <span class="oft-tag">🌿 Ghép nối Chợ Xanh</span>
-            <span class="oft-tag">🚚 Xe tải gom hàng thôn</span>
-            <span class="oft-tag">💳 Tiền về VietQR</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Controls & Dots -->
-      <div class="onboard-footer">
-        <div class="onboard-dots">
-          <span class="onboard-dot active" onclick="jumpOnboardSlide(0)"></span>
-          <span class="onboard-dot" onclick="jumpOnboardSlide(1)"></span>
-          <span class="onboard-dot" onclick="jumpOnboardSlide(2)"></span>
-        </div>
-        <div class="onboard-btns-row">
-          <button type="button" class="btn-onboard-skip" onclick="closeOnboardingModal()">Bỏ qua</button>
-          <button type="button" class="btn-onboard-next" id="btnOnboardNext" onclick="nextOnboardSlide()">
-            <span>Tiếp tục</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- =========================================================================
        MODAL KHAI BÁO THẺ MỚI TRÊN CHỢ XANH (CÓ / CẦN)
        ========================================================================= -->

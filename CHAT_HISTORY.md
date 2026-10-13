@@ -516,6 +516,38 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 37: Chuyển Onboarding thành từng màn hình độc lập (bỏ popup) và Tái hiện chính xác Card "Việc cần làm" theo ảnh chụp màn hình (13/10/2026)
+- **Yêu cầu của người dùng**:
+  1. Onboarding làm thành từng màn hình độc lập, không dùng popup modal.
+  2. Tự truy cập và đối chiếu toàn bộ các luồng trong link `https://gvos.greenfi.vn/`.
+  3. Cập nhật Card "Việc cần làm" chính xác theo ảnh chụp màn hình thực tế gồm 6 mục: `5 đơn quá hạn`, `44 đơn chờ xác nhận`, `9 đơn chờ đóng gói`, `2 đơn có khiếu nại`, `2 sản phẩm đang là Nháp`, `GFKey chưa liên kết`.
+- **Giải pháp thiết kế & triển khai chi tiết**:
+  1. **Màn hình Onboarding độc lập (`panel-onboarding`, xóa bỏ 100% popup modal)**:
+     - Hoạt động như một màn hình View Panel độc lập toàn màn hình (Full-Screen Native View) tương tự `WelcomePage` của GVOS.
+     - Thanh trên cùng: Nút `[Quay lại]` (ẩn ở màn 1), nhãn tiến trình `Bước 1 trên 4`, nút `[Bỏ qua]` vào thẳng Trang chủ, và thanh vạch tiến trình xanh lá trượt mượt mà.
+     - 4 Màn hình lật trang chuẩn theo cấu trúc gốc của GVOS:
+       - *Màn 1: Công cụ số cho kinh tế xã* (3 cam kết: Hub xã làm thay khi cần, Mạng yếu vẫn làm được có mạng tự gửi, Trợ lý Phi Phi hỏi đáp mỗi bước).
+       - *Màn 2: Trợ lý đăng bán* (3 bước quy trình: Chụp nhãn hoặc nói $ightarrow$ Trợ lý soạn $ightarrow$ Bác duyệt; 3 đầu ra: Bảng thông số, Bài viết đa kênh, Ảnh nền trắng 1:1).
+       - *Màn 3: Chợ Xanh* (Có gì, cần gì, ghép nối gần nhà; 3 bước: Nói có gì cần gì $ightarrow$ Chợ Xanh ghép nối $ightarrow$ Bác liên hệ; Thẻ Có/Cần, Ghép nối thương lái gần nhà, Bán chéo).
+       - *Màn 4: An Cư Job & Xe tải HTX gom hàng* (Việc làm mùa vụ nông thôn, Xe tải HTX gom nông sản tận thôn, Tiền về VietQR Agribank).
+     - Thanh điều hướng dưới chân: Nút `[Quay lại]` và nút `[Tiếp tục]` (màn cuối chuyển thành `[Vào ứng dụng ngay]`).
+     - Tự động hiển thị khi mở app lần đầu và có nút `[📖 Hướng dẫn]` ở Header để Bác Ba xem lại bất cứ lúc nào.
+  2. **Tái hiện chuẩn xác 100% Card "Việc cần làm" theo ảnh chụp màn hình (`vcl-card`)**:
+     - Thiết kế card trắng bo góc lớn (`border-radius: 24px`), đổ bóng nhẹ, phân cách bằng vạch kẻ mảnh.
+     - Header: Tiêu đề **Việc cần làm** (19px, bold) + Huy hiệu bo tròn **`6 việc`** (nền mint `#D8ECE0`, chữ xanh đậm `#166534`).
+     - 6 hàng chức năng chuẩn icon, màu sắc và nội dung theo ảnh:
+       - 1. ⚠️ Icon nâu cam `#F7EADB`: **`5 đơn quá hạn`** — *Xử lý trước để không mất đơn* (bấm nút tròn `>` mở đơn quá hạn cần giao gấp).
+       - 2. 📄 Icon xanh dương `#E5F0FF`: **`44 đơn chờ xác nhận`** — *Xác nhận để bắt đầu đóng gói* (bấm `>` mở danh sách đơn chờ xác nhận).
+       - 3. 📦 Icon xanh dương `#E6F2FF`: **`9 đơn chờ đóng gói`** — *Soạn hàng rồi đóng gói* (bấm `>` mở Màn hình Soạn hàng Pick-list).
+       - 4. 💬 Icon xanh dương `#E8F1FC`: **`2 đơn có khiếu nại`** — *Mở đơn để xem khiếu nại* (bấm `>` mở đơn có khiếu nại).
+       - 5. ✏️ Icon nâu cam `#F9ECE0`: **`2 sản phẩm đang là Nháp`** — *Xem hồ sơ rồi lấy bộ đăng bán* (bấm `>` mở Wizard sửa nháp).
+       - 6. 🛡️ Icon xanh lá `#DDEFE4`: **`GFKey chưa liên kết`** — *Không bắt buộc* (bấm `>` xem thông tin mã khóa số).
+  3. **Màn hình Phiếu Soạn Hàng Pick-list chuẩn GVOS (`panel-picklist`)**:
+     - Mở trực tiếp từ mục "9 đơn chờ đóng gói": Gom 24 món của 4 loại nông sản (chuối sấy dẻo, chuối sấy giòn, mật ong, trà).
+     - Checkbox tương tác lớn gạch ngang khi đã lấy xong, thanh tiến trình `Đã lấy: n/4 loại`, nút `[🖨️ In Phiếu Soạn]` và nút `[✓ Đã Đóng Gói 9 Đơn]`.
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

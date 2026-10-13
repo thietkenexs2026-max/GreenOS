@@ -3243,6 +3243,660 @@
       box-shadow: 0 4px 10px rgba(238, 77, 45, 0.25);
     }
 
+  
+    /* =========================================================================
+       ONBOARDING BÁC BA & TO-DO TASKS & CHỢ XANH XÃ YÊN BÌNH (CHUẨN GVOS)
+       ========================================================================= */
+    .btn-guide-onboard {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      color: var(--agri-green-dark);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .btn-guide-onboard:hover {
+      background: #DCFCE7;
+      transform: translateY(-1px);
+    }
+
+    /* CARD NHỮNG VIỆC CẦN LÀM HÔM NAY (TO-DO) */
+    .home-tasks-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+    .htc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .htc-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .htc-icon {
+      font-size: 20px;
+    }
+    .htc-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .htc-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+    .htc-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #FEF3C7;
+      color: #B45309;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .htc-badge.all-done {
+      background: #DCFCE7;
+      color: #15803D;
+    }
+    .htc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .htc-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      transition: all 0.25s ease;
+    }
+    .htc-item.done {
+      background: #F1F5F9;
+      opacity: 0.65;
+    }
+    .htc-item.done .htc-item-name {
+      text-decoration: line-through;
+      color: #94A3B8;
+    }
+    .htc-check-box {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .htc-check-box input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .htc-custom-check {
+      display: block;
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      border: 2px solid #CBD5E1;
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+    }
+    .htc-check-box input:checked ~ .htc-custom-check {
+      background: #059669;
+      border-color: #059669;
+    }
+    .htc-check-box input:checked ~ .htc-custom-check::after {
+      content: '✓';
+      display: block;
+      color: white;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 20px;
+    }
+    .htc-item-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .htc-item-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+    }
+    .htc-item-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .htc-act-btn {
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: var(--text-main);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .htc-act-btn:hover {
+      background: #059669;
+      color: #FFFFFF;
+      border-color: #059669;
+    }
+
+    /* CARD LỐI TẮT CHỢ XANH TRÊN HOME */
+    .home-choxanh-banner {
+      background: linear-gradient(135deg, #ECFDF5 0%, #F0FDF4 100%);
+      border: 1.5px solid #BBF7D0;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .home-choxanh-banner:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.12);
+    }
+    .hcb-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .hcb-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: #DCFCE7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .hcb-info {
+      min-width: 0;
+    }
+    .hcb-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #065F46;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .hcb-badge-hot {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 8px;
+      background: #DC2626;
+      color: #FFFFFF;
+      font-weight: 800;
+    }
+    .hcb-desc {
+      font-size: 12.5px;
+      color: #047857;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn-hcb-open {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: #059669;
+      color: #FFFFFF;
+      padding: 7px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* MODAL ONBOARDING BÁC BA */
+    .onboard-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .onboard-modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .onboard-modal-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 390px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.92);
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .onboard-modal-overlay.show .onboard-modal-card {
+      transform: scale(1);
+    }
+    .onboard-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #F1F5F9;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .onboard-close-btn:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+    .onboard-slides-container {
+      padding: 26px 20px 10px;
+      min-height: 350px;
+      position: relative;
+    }
+    .onboard-slide {
+      display: none;
+      text-align: center;
+      animation: fadeInSlide 0.3s ease;
+    }
+    .onboard-slide.active {
+      display: block;
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .onboard-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #ECFDF5;
+      color: #059669;
+      margin-bottom: 12px;
+    }
+    .onboard-illus-box {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .onboard-avatar-large {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3.5px solid #059669;
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.25);
+    }
+    .onboard-plant-icon {
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      font-size: 26px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      line-height: 1;
+      padding: 2px;
+    }
+    .onboard-steps-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 12px 0 16px;
+    }
+    .osv-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .osv-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #059669;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25);
+    }
+    .osv-text {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .osv-arrow {
+      font-size: 14px;
+      color: #94A3B8;
+      margin-top: -16px;
+    }
+    .onboard-slide-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .onboard-slide-desc {
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0 0 16px;
+    }
+    .onboard-slide-desc i {
+      color: #059669;
+      font-weight: 600;
+    }
+    .onboard-feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+    .oft-tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: #F1F5F9;
+      color: #334155;
+    }
+    .onboard-footer {
+      padding: 14px 20px 20px;
+      background: #F8FAFC;
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .onboard-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+    .onboard-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 4px;
+      background: #CBD5E1;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .onboard-dot.active {
+      width: 24px;
+      background: #059669;
+    }
+    .onboard-btns-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .btn-onboard-skip {
+      background: transparent;
+      border: none;
+      color: #64748B;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 8px 12px;
+    }
+    .btn-onboard-next {
+      flex: 1;
+      height: 46px;
+      border-radius: 14px;
+      background: #059669;
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+      transition: background 0.2s;
+    }
+    .btn-onboard-next:hover {
+      background: #047857;
+    }
+
+    /* GIAO DIỆN CHỢ XANH XÃ YÊN BÌNH (PANEL-MARKET) */
+    .choxanh-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .cx-stat-box {
+      background: #FFFFFF;
+      border-radius: 14px;
+      padding: 10px 4px;
+      text-align: center;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .cx-stat-num {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .cx-stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-weight: 600;
+    }
+    .cx-tabs-nav {
+      display: flex;
+      background: #F1F5F9;
+      padding: 4px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      gap: 4px;
+    }
+    .cx-tab-btn {
+      flex: 1;
+      padding: 8px 4px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: #64748B;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .cx-tab-btn.active {
+      background: #FFFFFF;
+      color: #065F46;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .cx-tab-pane {
+      display: none;
+    }
+    .cx-tab-pane.active {
+      display: block;
+    }
+    .cx-card-item {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+    }
+    .cx-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .cx-badge-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 8px;
+    }
+    .cx-badge-co {
+      background: #DCFCE7;
+      color: #15803D;
+    }
+    .cx-badge-can {
+      background: #DBEAFE;
+      color: #1E40AF;
+    }
+    .cx-badge-match {
+      background: #FEF3C7;
+      color: #B45309;
+    }
+    .cx-card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .cx-card-sub {
+      font-size: 13px;
+      color: #64748B;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .cx-card-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #E2E8F0;
+      font-size: 12.5px;
+      color: #475569;
+    }
+    .cx-btn-action {
+      padding: 7px 13px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: none;
+      transition: all 0.2s;
+    }
+    .cx-btn-green {
+      background: #059669;
+      color: #FFFFFF;
+    }
+    .cx-btn-green:hover {
+      background: #047857;
+    }
+    .cx-btn-outline {
+      background: #FFFFFF;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+    }
+
+    /* MODAL ĐĂNG THẺ MỚI CHỢ XANH */
+    .cx-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .cx-modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cx-modal-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
   </style>
 </head>
 <body class="has-bottom-nav">
@@ -3290,6 +3944,11 @@
               <div class="user-address-sub">Xã Yên Bình · HTX Đồng Cát</div>
             </div>
           </div>
+          <!-- Nút xem lại Onboarding Hướng Dẫn -->
+          <button type="button" class="btn-guide-onboard" onclick="openOnboardingModal()" title="Xem lại hướng dẫn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span>Hướng dẫn</span>
+          </button>
         </div>
 
         <!-- Banner Lối Tắt Vào Thống Kê Nông Hộ -->
@@ -3309,7 +3968,81 @@
           </button>
         </div>
 
+                <!-- =========================================================================
+             CARD NHỮNG VIỆC CẦN LÀM HÔM NAY (TO-DO ITEMS CHUẨN GVOS)
+             ========================================================================= -->
+        <div class="home-tasks-card">
+          <div class="htc-header">
+            <div class="htc-title-group">
+              <span class="htc-icon">📌</span>
+              <div>
+                <div class="htc-title">Việc cần làm hôm nay</div>
+                <div class="htc-sub">Bác có việc quan trọng cần xử lý</div>
+              </div>
+            </div>
+            <span class="htc-badge" id="tasksCountBadge">3 việc đang chờ</span>
+          </div>
+
+          <div class="htc-list">
+            <!-- Việc 1 -->
+            <div class="htc-item" id="taskItem1">
+              <label class="htc-check-box">
+                <input type="checkbox" onchange="toggleTaskDone(1, this.checked)">
+                <span class="htc-custom-check"></span>
+              </label>
+              <div class="htc-item-body">
+                <div class="htc-item-name">Soạn 3 đơn hàng mới chờ giao</div>
+                <div class="htc-item-desc">#ĐH-8901, #ĐH-8902, #ĐH-8903 · Tổng 15 gói chuối + 2 hũ mật ong</div>
+              </div>
+              <button type="button" class="htc-act-btn" onclick="openOrdersView()">Soạn ngay</button>
+            </div>
+
+            <!-- Việc 2 -->
+            <div class="htc-item" id="taskItem2">
+              <label class="htc-check-box">
+                <input type="checkbox" onchange="toggleTaskDone(2, this.checked)">
+                <span class="htc-custom-check"></span>
+              </label>
+              <div class="htc-item-body">
+                <div class="htc-item-name">Xuất 500kg chuối cho xe tải HTX</div>
+                <div class="htc-item-desc">Chú Hùng xe tải đến Nhà văn hóa thôn lúc 14h00 chiều nay</div>
+              </div>
+              <button type="button" class="htc-act-btn" onclick="confirmTaskTruck()">Báo sẵn sàng</button>
+            </div>
+
+            <!-- Việc 3 -->
+            <div class="htc-item" id="taskItem3">
+              <label class="htc-check-box">
+                <input type="checkbox" onchange="toggleTaskDone(3, this.checked)">
+                <span class="htc-custom-check"></span>
+              </label>
+              <div class="htc-item-body">
+                <div class="htc-item-name">Bổ sung HSD cho Trà Bát Tiên</div>
+                <div class="htc-item-desc">Sản phẩm đang ở trạng thái Nháp, cần hoàn thiện trước khi đăng</div>
+              </div>
+              <button type="button" class="htc-act-btn" onclick="goToWizardStep(2)">Sửa nháp</button>
+            </div>
+          </div>
+        </div>
+
         <!-- =========================================================================
+             CARD LỐI TẮT VÀO CHỢ XANH XÃ YÊN BÌNH (TÍNH NĂNG CÓ / CẦN & GHÉP NỐI)
+             ========================================================================= -->
+        <div class="home-choxanh-banner" onclick="switchNavTab('market')" title="Bấm mở Chợ Xanh Xã">
+          <div class="hcb-left">
+            <div class="hcb-icon-box">🌿</div>
+            <div class="hcb-info">
+              <div class="hcb-title">Chợ Xanh Xã Yên Bình <span class="hcb-badge-hot">2 Ghép nối mới</span></div>
+              <div class="hcb-desc">Có 1,2 tấn chuối cần mua · Xưởng mứt Hải Hà cách 3.2km đang tìm Bác Ba</div>
+            </div>
+          </div>
+          <button type="button" class="btn-hcb-open">
+            <span>Vào Chợ</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+<!-- =========================================================================
              BANNER CÁC CHƯƠNG TRÌNH KHUYẾN MẠI / KÍCH CẦU NÔNG SẢN
              ========================================================================= -->
         <div class="promo-banner-section">
@@ -4133,63 +4866,173 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
            PANEL 7: TAB CHỢ XÃ (COMMUNITY ACTIVITY FEED)
            ========================================================================= -->
       <section id="panel-market" class="view-panel">
-        <h1 class="step-main-title">Chợ Nông Sản Xã</h1>
-        <p class="step-sub-desc">Nhật ký hoạt động và giao dịch thực tế của bà con xã Yên Bình:</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div>
+            <h1 class="step-main-title" style="margin-bottom:2px">🌿 Chợ Xanh Xã Yên Bình</h1>
+            <p class="step-sub-desc" style="margin-bottom:0">Sàn kết nối nông sản số & Ghép nối cung - cầu thương lái địa bàn:</p>
+          </div>
+          <button type="button" class="btn-dock-next" style="height:38px;padding:0 12px;font-size:12.5px;border-radius:12px;flex-shrink:0" onclick="openNewCxCardModal()">
+            <span>➕ Đăng Thẻ Mới</span>
+          </button>
+        </div>
 
-        <div class="commune-metric-grid">
-          <div class="metric-badge-box">
-            <div class="metric-num">25</div>
-            <div class="metric-lbl">Hộ tham gia</div>
+        <!-- 4 CHỈ SỐ NGUỒN LỰC CHỢ XANH (CHUẨN GVOS) -->
+        <div class="choxanh-stats-grid">
+          <div class="cx-stat-box">
+            <div class="cx-stat-num" style="color:#15803D" id="cxStatCo">18</div>
+            <div class="cx-stat-lbl">🟢 Thẻ CÓ</div>
           </div>
-          <div class="metric-badge-box">
-            <div class="metric-num">48</div>
-            <div class="metric-lbl">Sản phẩm số</div>
+          <div class="cx-stat-box">
+            <div class="cx-stat-num" style="color:#1E40AF" id="cxStatCan">7</div>
+            <div class="cx-stat-lbl">🔵 Thẻ CẦN</div>
           </div>
-          <div class="metric-badge-box">
-            <div class="metric-num">640</div>
-            <div class="metric-lbl">Túi chuối sấy</div>
+          <div class="cx-stat-box">
+            <div class="cx-stat-num" style="color:#B45309">12</div>
+            <div class="cx-stat-lbl">🤝 Ghép nối</div>
+          </div>
+          <div class="cx-stat-box">
+            <div class="cx-stat-num" style="color:#059669">2</div>
+            <div class="cx-stat-lbl">🚛 Hub xe tải</div>
           </div>
         </div>
 
-        <div class="section-title-line">
-          <span>Hoạt động mới hôm nay</span>
-          <span style="font-size:13px;color:var(--agri-green);font-weight:700">● Trực tiếp</span>
+        <!-- 3 TAB ĐIỀU HƯỚNG CHỢ XANH -->
+        <div class="cx-tabs-nav">
+          <button type="button" class="cx-tab-btn active" id="cxTabBtn_cards" onclick="switchCxTab('cards')">Thẻ của Bác Ba (3)</button>
+          <button type="button" class="cx-tab-btn" id="cxTabBtn_matches" onclick="switchCxTab('matches')">Cơ hội ghép nối (2)</button>
+          <button type="button" class="cx-tab-btn" id="cxTabBtn_feed" onclick="switchCxTab('feed')">Bản tin toàn xã</button>
         </div>
 
-        <div class="feed-item-card">
-          <div class="feed-item-header">
-            <span>Bác Ba Đồng Cát · 9:42</span>
-            <span style="color:var(--agri-green);font-weight:700">Vừa đăng Zalo</span>
+        <!-- TAB 1: THẺ CỦA BÁC BA -->
+        <div class="cx-tab-pane active" id="cxPane_cards">
+          <!-- Thẻ Có 1 -->
+          <div class="cx-card-item">
+            <div class="cx-card-header">
+              <span class="cx-badge-tag cx-badge-co">🟢 THẺ CÓ NÔNG SẢN</span>
+              <span style="font-size:12px;color:#15803D;font-weight:700">✓ Sẵn sàng xuất vườn</span>
+            </div>
+            <div class="cx-card-title">🍌 500 kg Chuối tiêu hồng tươi cắt tại vườn</div>
+            <div class="cx-card-sub">Chuối quả đều đẹp, tiêu chuẩn VietGAP canh tác tự nhiên bãi bồi sông Lục Nam. Nhận cắt tươi theo yêu cầu.</div>
+            <div class="cx-card-meta-row">
+              <span>📍 Vườn đồi Thôn Đồng Cát</span>
+              <span>💰 Giá đề xuất: <b>25.000 đ/kg</b></span>
+              <button type="button" class="cx-btn-action cx-btn-outline" onclick="triggerToast('Thẻ CÓ của bác đang mở công khai trên Chợ Xanh!')">Đang chào bán</button>
+            </div>
           </div>
-          <div class="feed-item-content">
-            Xuất mẻ 50 túi chuối sấy giòn OCOP 4 sao phục vụ bà con dịp Tết.
+
+          <!-- Thẻ Có 2 -->
+          <div class="cx-card-item">
+            <div class="cx-card-header">
+              <span class="cx-badge-tag cx-badge-co">🟢 THẺ CÓ NÔNG SẢN</span>
+              <span style="font-size:12px;color:#059669;font-weight:700">⭐ OCOP 4 Sao</span>
+            </div>
+            <div class="cx-card-title">🍯 30 hũ Mật ong hoa rừng tự nhiên 500ml</div>
+            <div class="cx-card-sub">Mật ong đặc quánh, khai thác từ rừng tự nhiên, đã kiểm định VSATTP, đóng hũ thủy tinh niêm phong.</div>
+            <div class="cx-card-meta-row">
+              <span>📍 Kho xưởng Bác Ba</span>
+              <span>💰 Giá: <b>180.000 đ/hũ</b></span>
+              <button type="button" class="cx-btn-action cx-btn-outline" onclick="triggerToast('Thẻ Mật ong rừng đang hiển thị cho các thương lái!')">Đang chào bán</button>
+            </div>
+          </div>
+
+          <!-- Thẻ Cần 3 -->
+          <div class="cx-card-item">
+            <div class="cx-card-header">
+              <span class="cx-badge-tag cx-badge-can">🔵 THẺ CẦN MUA CHUNG</span>
+              <span style="font-size:12px;color:#1E40AF;font-weight:700">Vật tư vụ Tết</span>
+            </div>
+            <div class="cx-card-title">📦 Cần mua chung 500 túi zip bạc 250g đựng chuối sấy</div>
+            <div class="cx-card-sub">Bác Ba tìm hộ nông dân hoặc xưởng trong xã cùng ghép đơn mua 2.000 túi để hưởng giá sỉ chiết khấu 20%.</div>
+            <div class="cx-card-meta-row">
+              <span>📍 Thôn Đồng Cát</span>
+              <span>Hạn ghép: <b>Trước 20/10</b></span>
+              <button type="button" class="cx-btn-action cx-btn-outline" onclick="triggerToast('Đã có 2 hộ cùng đăng ký ghép đơn túi zip!')">Đã có 2 hộ ghép</button>
+            </div>
+          </div>
+
+          <button type="button" class="btn-dock-next" style="width:100%;height:46px;margin-top:4px;border-radius:14px" onclick="openNewCxCardModal()">
+            <span>➕ Khai Báo Thẻ Có / Cần Mới</span>
+          </button>
+        </div>
+
+        <!-- TAB 2: CƠ HỘI GHÉP NỐI THƯƠNG LÁI (MATCHES) -->
+        <div class="cx-tab-pane" id="cxPane_matches">
+          <!-- Ghép nối 1 -->
+          <div class="cx-card-item" style="border:1.5px solid #FCD34D;background:#FFFDF7">
+            <div class="cx-card-header">
+              <span class="cx-badge-tag cx-badge-match">🤝 GHÉP NỐI KHỚP 98%</span>
+              <span style="font-size:12px;color:#B45309;font-weight:700">Cách bác 3.2 km</span>
+            </div>
+            <div class="cx-card-title">🏭 Cơ sở Bánh mứt kẹo Tết Hải Hà (Yên Dũng)</div>
+            <div class="cx-card-sub">
+              <b>Nhu cầu CẦN MUA:</b> Cần thu mua <b>1,2 tấn chuối tiêu hồng</b> (chuối tươi & chuối sấy dẻo) làm mứt phục vụ vụ Tết 2026. Có xe tải đến tận vườn thu mua hoặc nhận tại Hub xã.
+            </div>
+            <div class="cx-card-meta-row" style="background:#FEF9C3;margin:-4px -14px -14px;padding:12px 14px;border-radius:0 0 14px 14px">
+              <span style="color:#78350F;font-weight:600">Khớp với: <b>500kg Chuối của Bác Ba</b></span>
+              <div style="display:flex;gap:6px">
+                <button type="button" class="cx-btn-action cx-btn-green" onclick="connectMatchZalo('Cơ sở Mứt Tết Hải Hà', '0912.845.678')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
+                  <span>Kết nối Zalo</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ghép nối 2 -->
+          <div class="cx-card-item" style="border:1.5px solid #FCD34D;background:#FFFDF7">
+            <div class="cx-card-header">
+              <span class="cx-badge-tag cx-badge-match">🤝 GHÉP NỐI KHỚP 95%</span>
+              <span style="font-size:12px;color:#B45309;font-weight:700">Cách bác 5.1 km</span>
+            </div>
+            <div class="cx-card-title">🍃 Cửa hàng Nông sản An Toàn Bắc Giang</div>
+            <div class="cx-card-sub">
+              <b>Nhu cầu CẦN MUA:</b> Cần <b>50 hũ Mật ong hoa rừng nguyên chất</b> đóng hộp quà biếu OCOP cho cơ quan ban ngành.
+            </div>
+            <div class="cx-card-meta-row" style="background:#FEF9C3;margin:-4px -14px -14px;padding:12px 14px;border-radius:0 0 14px 14px">
+              <span style="color:#78350F;font-weight:600">Khớp với: <b>30 hũ Mật ong Bác Ba</b></span>
+              <div style="display:flex;gap:6px">
+                <button type="button" class="cx-btn-action cx-btn-green" onclick="connectMatchZalo('Cửa hàng Nông sản An Toàn', '0988.332.119')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
+                  <span>Kết nối Zalo</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="feed-item-card">
-          <div class="feed-item-header">
-            <span>Cô Lan (Tổ 1) · 8:15</span>
-            <span style="color:#0052FF;font-weight:700">Đã chốt đơn</span>
+        <!-- TAB 3: BẢN TIN CHỢ TOÀN XÃ -->
+        <div class="cx-tab-pane" id="cxPane_feed">
+          <div class="feed-item-card">
+            <div class="feed-item-header">
+              <span>Bác Ba Đồng Cát · 9:42</span>
+              <span style="color:var(--agri-green);font-weight:700">Vừa đăng Zalo</span>
+            </div>
+            <div class="feed-item-content">
+              Xuất mẻ 50 túi chuối sấy giòn OCOP 4 sao phục vụ bà con dịp Tết.
+            </div>
           </div>
-          <div class="feed-item-content">
-            Khách đặt 12 chai mật ong rừng hoa nhãn giao về thành phố.
-          </div>
-        </div>
 
-        <div class="feed-item-card">
-          <div class="feed-item-header">
-            <span>Xưởng Thành Phát (Cách 18km) · 7:30</span>
-            <span style="color:#D97706;font-weight:700">Liên kết HTX</span>
+          <div class="feed-item-card">
+            <div class="feed-item-header">
+              <span>Cô Lan (Thôn Bãi Sen) · 8:15</span>
+              <span style="color:#0052FF;font-weight:700">Đã chốt đơn</span>
+            </div>
+            <div class="feed-item-content">
+              Khách đặt 12 chai mật ong rừng hoa nhãn giao về thành phố Bắc Giang.
+            </div>
           </div>
-          <div class="feed-item-content">
-            Nhận đơn gia công 5.000 hộp quà Tết cho Hợp tác xã Đồng Cát.
+
+          <div class="feed-item-card">
+            <div class="feed-item-header">
+              <span>Xưởng Thành Phát (Cách 18km) · 7:30</span>
+              <span style="color:#D97706;font-weight:700">Liên kết HTX</span>
+            </div>
+            <div class="feed-item-content">
+              Nhận đơn gia công 5.000 hộp quà Tết cho Hợp tác xã Đồng Cát.
+            </div>
           </div>
         </div>
       </section>
-
-      <!-- =========================================================================
-           PANEL 8: TAB HỖ TRỢ HUB XÃ (SUPPORT TAB)
-           ========================================================================= -->
       <section id="panel-support" class="view-panel">
         <h1 class="step-main-title">Hub Xã Hỗ Trợ</h1>
         <p class="step-sub-desc">Bác gặp khó khăn khi chụp ảnh hoặc đăng bài? Đội thanh niên xã luôn sẵn sàng hỗ trợ:</p>
@@ -6830,6 +7673,188 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     function closeFarmerQRModal() {
       document.getElementById('farmerQRModal').classList.remove('show');
     }
+  
+    // =========================================================================
+    // HỖ TRỢ ONBOARDING BÁC BA & TO-DO TASKS & CHỢ XANH (CHUẨN GVOS)
+    // =========================================================================
+    let currentOnboardSlide = 0;
+    const totalOnboardSlides = 3;
+
+    function openOnboardingModal() {
+      const modal = document.getElementById('onboardModal');
+      if (modal) {
+        modal.classList.add('show');
+        jumpOnboardSlide(0);
+      }
+    }
+
+    function closeOnboardingModal() {
+      const modal = document.getElementById('onboardModal');
+      if (modal) modal.classList.remove('show');
+      try {
+        localStorage.setItem('greenos_bacba_onboarded', 'true');
+      } catch (e) {}
+    }
+
+    function jumpOnboardSlide(index) {
+      currentOnboardSlide = index;
+      for (let i = 0; i < totalOnboardSlides; i++) {
+        const slide = document.getElementById('onboardSlide' + i);
+        if (slide) {
+          if (i === index) slide.classList.add('active');
+          else slide.classList.remove('active');
+        }
+      }
+      document.querySelectorAll('.onboard-dot').forEach((dot, idx) => {
+        if (idx === index) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+
+      const nextBtn = document.getElementById('btnOnboardNext');
+      if (nextBtn) {
+        if (index === totalOnboardSlides - 1) {
+          nextBtn.innerHTML = '<span>Bắt đầu ngay cùng Bác Ba</span>';
+        } else {
+          nextBtn.innerHTML = '<span>Tiếp tục</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>';
+        }
+      }
+    }
+
+    function nextOnboardSlide() {
+      if (currentOnboardSlide < totalOnboardSlides - 1) {
+        jumpOnboardSlide(currentOnboardSlide + 1);
+      } else {
+        closeOnboardingModal();
+        triggerToast('Bác Ba đã sẵn sàng đăng bán nông sản!');
+      }
+    }
+
+    // Tự động mở Onboarding lần đầu nếu người dùng chưa xem
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        if (!localStorage.getItem('greenos_bacba_onboarded')) {
+          setTimeout(() => {
+            openOnboardingModal();
+          }, 600);
+        }
+      } catch (e) {}
+    });
+
+    // TO-DO TASKS HÀNH ĐỘNG HÔM NAY
+    let completedTasks = new Set();
+    function toggleTaskDone(taskNum, isChecked) {
+      const item = document.getElementById('taskItem' + taskNum);
+      if (isChecked) {
+        completedTasks.add(taskNum);
+        if (item) item.classList.add('done');
+      } else {
+        completedTasks.delete(taskNum);
+        if (item) item.classList.remove('done');
+      }
+
+      const remaining = 3 - completedTasks.size;
+      const badge = document.getElementById('tasksCountBadge');
+      if (badge) {
+        if (remaining === 0) {
+          badge.textContent = '✓ Đã xong hết việc!';
+          badge.className = 'htc-badge all-done';
+          triggerToast('Tuyệt vời Bác Ba ơi! Bác đã hoàn thành toàn bộ việc hôm nay!');
+        } else {
+          badge.textContent = remaining + ' việc đang chờ';
+          badge.className = 'htc-badge';
+          triggerToast(isChecked ? 'Đã hoàn thành 1 việc!' : 'Đã bỏ hoàn thành');
+        }
+      }
+    }
+
+    function confirmTaskTruck() {
+      triggerToast('✓ Đã báo tin Zalo: Bác Ba đã sẵn sàng 500kg chuối cho Chú Hùng!');
+      const cb = document.querySelector('#taskItem2 input[type="checkbox"]');
+      if (cb && !cb.checked) {
+        cb.checked = true;
+        toggleTaskDone(2, true);
+      }
+    }
+
+    // CHỢ XANH XÃ YÊN BÌNH (TABS & THẺ CÓ / CẦN)
+    function switchCxTab(tabName) {
+      ['cards', 'matches', 'feed'].forEach(t => {
+        const btn = document.getElementById('cxTabBtn_' + t);
+        const pane = document.getElementById('cxPane_' + t);
+        if (btn) {
+          if (t === tabName) btn.classList.add('active');
+          else btn.classList.remove('active');
+        }
+        if (pane) {
+          if (t === tabName) pane.classList.add('active');
+          else pane.classList.remove('active');
+        }
+      });
+    }
+
+    function openNewCxCardModal() {
+      const modal = document.getElementById('cxCardModal');
+      if (modal) modal.classList.add('show');
+    }
+
+    function closeNewCxCardModal() {
+      const modal = document.getElementById('cxCardModal');
+      if (modal) modal.classList.remove('show');
+    }
+
+    function submitNewCxCard() {
+      const nameInput = document.getElementById('inputCxCardName');
+      const qtyInput = document.getElementById('inputCxCardQty');
+      const priceInput = document.getElementById('inputCxCardPrice');
+      const noteInput = document.getElementById('inputCxCardNote');
+
+      const nameVal = nameInput ? nameInput.value.trim() : '';
+      if (!nameVal) {
+        triggerToast('Bác vui lòng nhập tên nông sản / mặt hàng!');
+        return;
+      }
+
+      const typeRadio = document.querySelector('input[name="cxCardType"]:checked');
+      const isCo = !typeRadio || typeRadio.value === 'co';
+
+      const paneCards = document.getElementById('cxPane_cards');
+      if (paneCards) {
+        const newCard = document.createElement('div');
+        newCard.className = 'cx-card-item';
+        newCard.innerHTML = `
+          <div class="cx-card-header">
+            <span class="cx-badge-tag ${isCo ? 'cx-badge-co' : 'cx-badge-can'}">${isCo ? '🟢 THẺ CÓ NÔNG SẢN' : '🔵 THẺ CẦN MUA'}</span>
+            <span style="font-size:12px;color:#15803D;font-weight:700">Vừa đăng xong</span>
+          </div>
+          <div class="cx-card-title">${isCo ? '🌾' : '📦'} ${nameVal}</div>
+          <div class="cx-card-sub">${noteInput ? noteInput.value : 'Nông sản vườn nhà Bác Ba'}</div>
+          <div class="cx-card-meta-row">
+            <span>Số lượng: <b>${qtyInput && qtyInput.value ? qtyInput.value : 'Theo thoả thuận'}</b></span>
+            <span>Giá: <b>${priceInput && priceInput.value ? priceInput.value : 'Thương lượng'}</b></span>
+            <button type="button" class="cx-btn-action cx-btn-outline" onclick="triggerToast('Thẻ của bác đang tìm ghép nối trên Chợ Xanh!')">Đang tìm ghép</button>
+          </div>
+        `;
+        paneCards.insertBefore(newCard, paneCards.firstChild);
+      }
+
+      // Cập nhật số liệu stat
+      if (isCo) {
+        const s = document.getElementById('cxStatCo');
+        if (s) s.textContent = (parseInt(s.textContent) || 18) + 1;
+      } else {
+        const s = document.getElementById('cxStatCan');
+        if (s) s.textContent = (parseInt(s.textContent) || 7) + 1;
+      }
+
+      closeNewCxCardModal();
+      switchCxTab('cards');
+      triggerToast('Đã đăng thẻ ' + (isCo ? 'CÓ' : 'CẦN') + ' lên Chợ Xanh xã Yên Bình thành công!');
+    }
+
+    function connectMatchZalo(partnerName, phone) {
+      triggerToast('✓ Đã mở kết nối Zalo với ' + partnerName + ' (' + phone + ')!');
+    }
+
   </script>
 
   <!-- Modal VietQR Nhận Tiền Bác Ba -->
@@ -6849,6 +7874,146 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
       <button type="button" class="btn-dock-next" style="width:100%;height:46px;margin-top:16px" onclick="closeFarmerQRModal()">
         <span>Đóng lại</span>
+      </button>
+    </div>
+  </div>
+  <!-- =========================================================================
+       MODAL ONBOARDING BÁC BA (3 SLIDES HƯỚNG DẪN BẮT ĐẦU CHUẨN GVOS)
+       ========================================================================= -->
+  <div class="onboard-modal-overlay" id="onboardModal" onclick="closeOnboardingModal()">
+    <div class="onboard-modal-card" onclick="event.stopPropagation()">
+      <div class="onboard-close-btn" onclick="closeOnboardingModal()">✕</div>
+      
+      <!-- Slide Track -->
+      <div class="onboard-slides-container">
+        <!-- Slide 1 -->
+        <div class="onboard-slide active" id="onboardSlide0">
+          <div class="onboard-badge">XIN CHÀO BÁC BA</div>
+          <div class="onboard-illus-box">
+            <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="onboard-avatar-large">
+            <div class="onboard-plant-icon">🌾</div>
+          </div>
+          <h2 class="onboard-slide-title">Chào mừng Bác Ba đến với GreenOS!</h2>
+          <p class="onboard-slide-desc">
+            Trợ lý số dành riêng cho bà con nông dân xã Yên Bình. Đưa nông sản vườn nhà lên mạng bán buôn bán lẻ chỉ trong 3 phút, không cần rành công nghệ.
+          </p>
+          <div class="onboard-feature-tags">
+            <span class="oft-tag">✓ Thân thiện dễ dùng</span>
+            <span class="oft-tag">✓ Hợp tác xã Đồng Cát</span>
+            <span class="oft-tag">✓ Minh bạch OCOP</span>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="onboard-slide" id="onboardSlide1">
+          <div class="onboard-badge">QUY TRÌNH 3 BƯỚC</div>
+          <div class="onboard-steps-visual">
+            <div class="osv-step">
+              <div class="osv-circle">1</div>
+              <div class="osv-text">Chụp ảnh thật</div>
+            </div>
+            <div class="osv-arrow">➔</div>
+            <div class="osv-step">
+              <div class="osv-circle">2</div>
+              <div class="osv-text">Nói giá bán</div>
+            </div>
+            <div class="osv-arrow">➔</div>
+            <div class="osv-step">
+              <div class="osv-circle">3</div>
+              <div class="osv-text">Duyệt & Đăng</div>
+            </div>
+          </div>
+          <h2 class="onboard-slide-title">Đăng bán bằng giọng nói & chụp ảnh</h2>
+          <p class="onboard-slide-desc">
+            Bác chỉ cần bấm micro và nói tự nhiên: <i>"Chuối sấy giòn túi 250 gam, bán năm mươi lăm nghìn một gói"</i>. Máy tự soạn bài đăng chuẩn cho Zalo, Facebook và Shopee.
+          </p>
+          <div class="onboard-feature-tags">
+            <span class="oft-tag">🎙️ Nhận diện giọng nói</span>
+            <span class="oft-tag">🖼️ Ảnh tách nền 1:1</span>
+            <span class="oft-tag">💬 1 chạm chia sẻ Zalo</span>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="onboard-slide" id="onboardSlide2">
+          <div class="onboard-badge">KẾT NỐI TOÀN XÃ</div>
+          <div class="onboard-illus-box" style="font-size:52px;height:104px">
+            🚛 🌿 🤝
+          </div>
+          <h2 class="onboard-slide-title">Chợ Xanh & Xe tải HTX gom hàng</h2>
+          <p class="onboard-slide-desc">
+            Đăng thẻ <b>"Có nông sản gì"</b> để ghép nối thương lái gần nhà. Xe tải HTX thu gom chuối tận nhà văn hóa thôn, tiền bán nông sản chuyển thẳng vào mã VietQR Agribank của bác!
+          </p>
+          <div class="onboard-feature-tags">
+            <span class="oft-tag">🌿 Ghép nối Chợ Xanh</span>
+            <span class="oft-tag">🚚 Xe tải gom hàng thôn</span>
+            <span class="oft-tag">💳 Tiền về VietQR</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Dots -->
+      <div class="onboard-footer">
+        <div class="onboard-dots">
+          <span class="onboard-dot active" onclick="jumpOnboardSlide(0)"></span>
+          <span class="onboard-dot" onclick="jumpOnboardSlide(1)"></span>
+          <span class="onboard-dot" onclick="jumpOnboardSlide(2)"></span>
+        </div>
+        <div class="onboard-btns-row">
+          <button type="button" class="btn-onboard-skip" onclick="closeOnboardingModal()">Bỏ qua</button>
+          <button type="button" class="btn-onboard-next" id="btnOnboardNext" onclick="nextOnboardSlide()">
+            <span>Tiếp tục</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL KHAI BÁO THẺ MỚI TRÊN CHỢ XANH (CÓ / CẦN)
+       ========================================================================= -->
+  <div class="cx-modal-overlay" id="cxCardModal" onclick="closeNewCxCardModal()">
+    <div class="cx-modal-card" onclick="event.stopPropagation()">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div style="font-size:17px;font-weight:800;color:var(--text-main)">🌿 Khai báo thẻ Chợ Xanh mới</div>
+        <div style="cursor:pointer;font-size:16px;color:#64748B" onclick="closeNewCxCardModal()">✕</div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-bottom:14px">
+        <label style="flex:1;display:flex;align-items:center;gap:6px;padding:10px;border-radius:12px;background:#F0FDF4;border:1.5px solid #86EFAC;cursor:pointer">
+          <input type="radio" name="cxCardType" value="co" checked>
+          <span style="font-size:13px;font-weight:800;color:#15803D">🟢 Tôi CÓ hàng</span>
+        </label>
+        <label style="flex:1;display:flex;align-items:center;gap:6px;padding:10px;border-radius:12px;background:#EFF6FF;border:1.5px solid #93C5FD;cursor:pointer">
+          <input type="radio" name="cxCardType" value="can">
+          <span style="font-size:13px;font-weight:800;color:#1E40AF">🔵 Tôi CẦN mua</span>
+        </label>
+      </div>
+
+      <div class="fsc-field" style="margin-bottom:12px">
+        <label class="fsc-label"><span>Tên nông sản / mặt hàng</span></label>
+        <input type="text" id="inputCxCardName" class="fsc-input" placeholder="Ví dụ: 3 tạ Chuối ngự tươi, 50 gói Chuối sấy...">
+      </div>
+
+      <div class="fsc-grid-2col" style="margin-bottom:12px">
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Số lượng</span></label>
+          <input type="text" id="inputCxCardQty" class="fsc-input" placeholder="500 kg, 30 hũ...">
+        </div>
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Giá mong muốn</span></label>
+          <input type="text" id="inputCxCardPrice" class="fsc-input" placeholder="25.000 đ/kg...">
+        </div>
+      </div>
+
+      <div class="fsc-field" style="margin-bottom:16px">
+        <label class="fsc-label"><span>Địa chỉ vườn / kho hoặc ghi chú</span></label>
+        <input type="text" id="inputCxCardNote" class="fsc-input" placeholder="Vườn Thôn Đồng Cát, nhận cắt tươi..." value="Vườn đồi Thôn Đồng Cát, sẵn sàng xuất ngay">
+      </div>
+
+      <button type="button" class="btn-dock-next" style="width:100%;height:46px;border-radius:14px" onclick="submitNewCxCard()">
+        <span>Đăng Thẻ Lên Chợ Xanh</span>
       </button>
     </div>
   </div>

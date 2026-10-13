@@ -486,6 +486,36 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 36: Bổ sung Onboarding Bác Ba, Card "Việc cần làm" và Nâng cấp Chợ Xanh Xã Yên Bình chuẩn GVOS (13/10/2026)
+- **Yêu cầu của người dùng**:
+  1. Bổ sung Onboarding hướng dẫn lần đầu cho Bác Ba.
+  2. Thêm Card "Những việc cần làm hôm nay" (To-do items) trên màn hình chính như `gvos.greenfi.vn`.
+  3. Tham khảo `https://gvos.greenfi.vn/cho-xanh` để bổ sung tính năng Chợ Xanh vào Mobile App của Bác Ba.
+- **Giải pháp thiết kế & triển khai chi tiết**:
+  1. **Modal Onboarding 3 Slide trực quan (`onboardModal`)**:
+     - *Slide 1: Chào mừng Bác Ba đến với GreenOS* (Trợ lý số đưa nông sản quê lên mạng chỉ trong 3 phút, minh bạch chuẩn OCOP).
+     - *Slide 2: Đăng bán 3 bước bằng giọng nói & chụp ảnh* (Chụp ảnh vườn nhà, bấm nói giá, nhận ngay bài viết chuẩn Zalo/Facebook/Shopee).
+     - *Slide 3: Chợ Xanh & Xe tải HTX gom hàng* (Khai báo thẻ "Có / Cần" để ghép nối thương lái gần nhà; xe tải HTX gom hàng tận thôn, tiền về VietQR Agribank).
+     - Có nút `[📖 Hướng dẫn]` cố định trên Header để Bác Ba xem lại bất kỳ lúc nào, cùng nút `[Bỏ qua]` và `[Bắt đầu ngay cùng Bác Ba]`.
+  2. **Card "Những việc cần làm hôm nay" trên Dashboard (`home-tasks-card`)**:
+     - Header hiển thị huy hiệu đếm: `3 việc đang chờ` (hoặc `✓ Đã xong hết việc!` khi hoàn thành).
+     - Danh sách 3 đầu việc thực tế của nông hộ Bác Ba:
+       - 📦 *Soạn 3 đơn hàng mới chờ giao* (#ĐH-8901, #ĐH-8902, #ĐH-8903) kèm nút `[Soạn ngay]`.
+       - 🚚 *Xuất 500kg chuối cho xe tải HTX lúc 14h00* kèm nút `[Báo sẵn sàng]` (gửi tin Zalo cho Chú Hùng lái xe).
+       - 🏷️ *Bổ sung HSD cho Trà Bát Tiên* (sản phẩm nháp) kèm nút `[Sửa nháp]`.
+     - Tích hợp Checkbox tương tác lớn (72px touch-friendly), gạch ngang việc đã làm và tự động cập nhật số việc còn lại.
+  3. **Nâng cấp toàn diện tính năng "Chợ Xanh Xã Yên Bình" (`panel-market`)**:
+     - Thanh chỉ số nguồn lực xã chuẩn GVOS: `18 Thẻ CÓ` · `7 Thẻ CẦN` · `12 Ghép nối` · `2 Hub xe tải`.
+     - Card lối tắt nổi bật trên Trang chủ: *Chợ Xanh Xã Yên Bình (2 Ghép nối mới)*.
+     - **Tab 1: Thẻ của Bác Ba**: Quản lý các thẻ nông sản nông hộ đang chào bán (500kg chuối tiêu hồng, 30 hũ mật ong rừng OCOP) và thẻ cần mua chung bao bì zip. Có modal `[➕ Khai báo thẻ Có / Cần mới]` giúp Bác Ba đăng nhanh nhu cầu lên Chợ Xanh xã.
+     - **Tab 2: Cơ hội Ghép Nối Thương Lái (Matches)**:
+       - Khớp 98%: Cơ sở Mứt Tết Hải Hà (Yên Dũng - cách 3.2km) cần mua 1,2 tấn chuối làm mứt Tết.
+       - Khớp 95%: Cửa hàng Nông sản An Toàn Bắc Giang (cách 5.1km) cần 50 hũ mật ong rừng làm giỏ quà.
+       - Nút hành động 1 chạm: **[📞 Kết nối Zalo]** để trao đổi hợp đồng trực tiếp.
+     - **Tab 3: Bản tin Chợ Toàn Xã**: Nhật ký giao thương thời gian thực giữa các thôn (Thôn Bãi Sen, Thôn Khe Trúc, Thôn Đồng Cát).
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

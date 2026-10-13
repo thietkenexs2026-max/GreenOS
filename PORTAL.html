@@ -5840,8 +5840,26 @@
       overflow-x: hidden;
     }
     .phone-device {
-      max-width: 100%;
-      overflow-x: hidden;
+      max-width: 414px !important;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0;
+        background-color: var(--bg-page);
+      }
+      .phone-device {
+        max-width: 100% !important;
+        height: 100vh;
+        height: 100dvh;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+      }
+      .device-notch {
+        display: none;
+      }
     }
     h1, h2, h3, h4, h5, h6, p, label,
     .step-main-title, .step-sub-desc, .wsw-tag, .wsw-sub,

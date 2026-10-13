@@ -2583,6 +2583,38 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    .btn-dash-rev-cta {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 13px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 12px;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.15s ease;
+    }
+    .btn-dash-rev-cta:active {
+      background: rgba(255, 255, 255, 0.28);
+      transform: scale(0.985);
+    }
+    .bdrc-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .bdrc-arrow {
+      font-weight: 800;
+      color: #BBF7D0;
+      font-variant-numeric: tabular-nums;
+      font-size: 13px;
+    }
 
     /* 4 KPI Grid */
     .dash-kpi-4grid {
@@ -7571,6 +7603,15 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <div class="drh-split-sub">Quyết toán 23 Tết ➔</div>
             </div>
           </div>
+
+          <!-- Nút CTA xem chi tiết Doanh thu tháng chuẩn GVOS -->
+          <button type="button" class="btn-dash-rev-cta" onclick="openRevenueView()" title="Bấm xem sổ Doanh thu tháng của Bác Ba">
+            <div class="bdrc-left">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>Xem Sổ Doanh thu tháng (GVOS)</span>
+            </div>
+            <span class="bdrc-arrow">3.850.000 đ ➔</span>
+          </button>
         </div>
 
         <!-- Lưới 4 Thẻ Chỉ Số Vận Hành -->

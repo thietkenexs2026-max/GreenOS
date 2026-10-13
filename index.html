@@ -5514,7 +5514,7 @@
           <div class="user-profile-meta">
             <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="user-avatar-img">
             <div>
-              <div class="user-name-text">Chào Bác Ba!</div>
+              <div class="user-name-text">Chào Bác Ba! 👋</div>
               <div class="user-address-sub">Xã Yên Bình · HTX Đồng Cát</div>
             </div>
           </div>
@@ -5545,19 +5545,37 @@
             </div>
           </div>
 
+          <!-- Indicator dots -->
+          <div class="promo-dots-indicator" id="promoDots">
+            <span class="promo-dot active" onclick="jumpPromoSlide(0)"></span>
+            <span class="promo-dot" onclick="jumpPromoSlide(1)"></span>
+          </div>
+        </div>
+
         <!-- =========================================================================
              SECTION 2 CARD: ĐƠN HÀNG BÁN ĐƯỢC & DOANH THU (BẤM CHUYỂN MÀN HÌNH)
              ========================================================================= -->
         <div class="metric-duo-grid">
           <!-- Card 1: Đơn hàng đã bán -->
-          <div class="metric-card-interactive" onclick="openOrdersView()" title="Bấm xem danh sách đơn hàng">
-            <div class="metric-card-label">ĐƠN ĐÃ BÁN</div>
+          <div class="metric-card-interactive" onclick="switchNavTab('orders')" title="Bấm xem danh sách đơn hàng">
+            <div class="metric-card-label">ĐƠN ĐÃ BÁN (THÁNG)</div>
             <div class="metric-card-value">18 đơn</div>
             <div class="metric-card-sub-hint" style="color:var(--agri-green)">
-              <span>● +3 đơn hôm nay</span>
+              <span>● +12% tháng này</span>
               <span style="color:var(--text-muted);font-weight:700">➔</span>
             </div>
           </div>
+
+          <!-- Card 2: Doanh thu tạm tính -->
+          <div class="metric-card-interactive" onclick="switchNavTab('dashboard')" title="Bấm xem sổ doanh thu & dòng tiền">
+            <div class="metric-card-label">DOANH THU THÁNG</div>
+            <div class="metric-card-value">3.850.000 đ</div>
+            <div class="metric-card-sub-hint" style="color:#0284C7">
+              <span>● Chi tiết dòng tiền</span>
+              <span style="color:var(--text-muted);font-weight:700">➔</span>
+            </div>
+          </div>
+        </div>
 
         <!-- =========================================================================
              CARD VIỆC CẦN LÀM (CHÍNH XÁC 100% THEO GVOS VÀ ẢNH CHỤP MÀN HÌNH)
@@ -9290,15 +9308,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     }
 
     // Tự động mở Onboarding lần đầu nếu người dùng chưa xem
-    window.addEventListener('DOMContentLoaded', () => {
-      try {
-        if (!localStorage.getItem('greenos_bacba_onboarded')) {
-          setTimeout(() => {
-            goToOnboarding();
-          }, 600);
-        }
-      } catch (e) {}
-    });
+    // DOMContentLoaded ready
 
     // TO-DO TASKS HÀNH ĐỘNG HÔM NAY
     let completedTasks = new Set();
@@ -9492,15 +9502,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     }
 
     // Tự động mở Onboarding lần đầu tiên vào app
-    window.addEventListener('DOMContentLoaded', () => {
-      try {
-        if (!localStorage.getItem('greenos_bacba_onboarded')) {
-          setTimeout(() => {
-            goToOnboarding();
-          }, 300);
-        }
-      } catch (e) {}
-    });
+    // DOMContentLoaded ready
 
     // Mở đơn hàng theo filter từ Card Việc cần làm
     function openOrdersFiltered(filterType) {

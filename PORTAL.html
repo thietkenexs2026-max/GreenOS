@@ -3677,30 +3677,32 @@
     }
   
     /* =========================================================================
-       SHOPEE FOOD / SHOPEE PARTNER MERCHANT ORDERS STYLES (PIXEL-PERFECT MOBILE)
+       HỆ THỐNG ĐƠN THU MUA NÔNG SẢN HTX (CHỢ XANH AI SALE OS)
+       Phù hợp bối cảnh nông hộ Bác Ba: Đơn sỉ HTX (WinMart, Mega Market),
+       Thương lái cân tại vườn, Khách sỉ & lẻ OCOP Zalo, Xe tải gom nông sản 2.5T.
        ========================================================================= */
-    .shopee-order-header {
+    .agri-order-header, .shopee-order-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 2px 0 10px 0;
+      padding: 4px 0 10px 0;
       border-bottom: 1px solid #E2E8F0;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       gap: 8px;
     }
-    .shopee-header-left {
+    .aoh-left, .shopee-header-left {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       min-width: 0;
       flex: 1;
     }
-    .shopee-back-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: none;
-      background: transparent;
+    .aoh-back-btn, .shopee-back-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid #E2E8F0;
+      background: #FFFFFF;
       color: #0F172A;
       display: flex;
       align-items: center;
@@ -3708,113 +3710,131 @@
       cursor: pointer;
       flex-shrink: 0;
       padding: 0;
-      transition: background 150ms;
+      transition: all 140ms ease;
     }
-    .shopee-back-btn:active {
-      background: #E2E8F0;
+    .aoh-back-btn:active, .shopee-back-btn:active {
+      background: #F1F5F9;
+      transform: scale(0.96);
     }
-    .shopee-header-title-text {
-      font-size: 16.5px;
+    .aoh-title-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .aoh-title-text, .shopee-header-title-text {
+      font-size: 17px;
       font-weight: 800;
       color: #0F172A;
       white-space: nowrap;
       letter-spacing: -0.02em;
+      line-height: 1.25;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .shopee-open-badge {
+    .agri-status-badge, .shopee-open-badge {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      font-size: 12px;
+      gap: 5px;
+      font-size: 11.5px;
       font-weight: 700;
-      color: #16A34A;
-      background: #DCFCE7;
+      color: #059669;
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
       padding: 2px 8px;
       border-radius: 999px;
       cursor: pointer;
       white-space: nowrap;
-      flex-shrink: 0;
+      margin-top: 2px;
+      width: fit-content;
+      transition: all 140ms ease;
     }
-    .shopee-open-dot {
-      width: 6px;
-      height: 6px;
+    .agri-status-badge:active {
+      transform: scale(0.97);
+    }
+    .agri-status-dot, .shopee-open-dot {
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: #16A34A;
-      box-shadow: 0 0 5px #16A34A;
+      background: #059669;
+      box-shadow: 0 0 6px rgba(5, 150, 105, 0.7);
     }
-    .shopee-header-actions {
+    .aoh-actions, .shopee-header-actions {
       display: flex;
       align-items: center;
       gap: 6px;
       flex-shrink: 0;
     }
-    .shopee-header-btn {
-      width: 32px;
-      height: 32px;
-      background: none;
-      border: none;
+    .aoh-action-btn, .shopee-header-btn {
+      width: 34px;
+      height: 34px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
       cursor: pointer;
-      color: #475569;
+      color: #334155;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
+      border-radius: 10px;
       padding: 0;
-      transition: background 150ms;
+      transition: all 140ms ease;
     }
-    .shopee-header-btn:active {
+    .aoh-action-btn:active, .shopee-header-btn:active {
       background: #E2E8F0;
+      transform: scale(0.96);
     }
 
-    /* Shopee Status Tabs */
-    .shopee-status-tabs-container {
-      margin: 0 -18px 10px -18px;
+    /* Tabs Quy Trình Nông Sản HTX (Không dùng màu cam Shopee) */
+    .agri-status-tabs-container, .shopee-status-tabs-container {
+      margin: 0 -18px 12px -18px;
       padding: 0 18px;
       border-bottom: 1px solid #E2E8F0;
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
+      background: #FFFFFF;
     }
-    .shopee-status-tabs-container::-webkit-scrollbar {
+    .agri-status-tabs-container::-webkit-scrollbar, .shopee-status-tabs-container::-webkit-scrollbar {
       display: none;
     }
-    .shopee-status-tabs {
+    .agri-status-tabs, .shopee-status-tabs {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       min-width: max-content;
-      padding-bottom: 1px;
+      padding-bottom: 2px;
     }
-    .shopee-tab-item {
-      font-size: 14.5px;
+    .agri-tab-item, .shopee-tab-item {
+      font-size: 13.5px;
       font-weight: 700;
       color: #64748B;
-      padding: 6px 2px 8px 2px;
+      padding: 7px 4px 10px 4px;
       cursor: pointer;
       border-bottom: 3px solid transparent;
       white-space: nowrap;
       transition: all 140ms ease;
     }
-    .shopee-tab-item.active {
-      color: #EE4D2D;
-      border-bottom-color: #EE4D2D;
+    .agri-tab-item:hover {
+      color: #059669;
+    }
+    .agri-tab-item.active, .shopee-tab-item.active {
+      color: #059669;
+      border-bottom-color: #059669;
       font-weight: 800;
     }
 
-    /* Shopee Filter Toolbar (No wrapping, auto ellipsis) */
-    .shopee-filter-toolbar {
+    /* Thanh Lọc Nông Vụ (Toolbar Lọc Ngày & Kênh Thu Mua) */
+    .agri-filter-toolbar, .shopee-filter-toolbar {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 12px;
     }
-    .shopee-date-btn {
+    .agri-date-btn, .shopee-date-btn {
       flex: 1;
       min-width: 0;
-      background: #FFF5F1;
-      border: 1.5px solid #EE4D2D;
-      border-radius: 8px;
-      padding: 7px 8px 7px 20px;
+      background: #F0FDF4;
+      border: 1.5px solid #059669;
+      border-radius: 9px;
+      padding: 7px 10px 7px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -3822,292 +3842,664 @@
       cursor: pointer;
       position: relative;
     }
-    .shopee-date-check-tag {
+    .agri-date-check-tag, .shopee-date-check-tag {
       position: absolute;
       top: -1px;
       left: -1px;
-      width: 14px;
-      height: 14px;
-      background: #EE4D2D;
-      border-radius: 6px 0 6px 0;
+      width: 15px;
+      height: 15px;
+      background: #059669;
+      border-radius: 7px 0 7px 0;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #FFF;
-      font-size: 8.5px;
+      font-size: 9px;
       font-weight: 900;
       line-height: 1;
     }
-    .shopee-date-text {
+    .agri-date-text, .shopee-date-text {
       font-size: 12.5px;
       font-weight: 700;
-      color: #EE4D2D;
+      color: #047857;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       text-align: left;
       flex: 1;
     }
-    .shopee-dropdown-filter {
+    .agri-dropdown-filter, .shopee-dropdown-filter {
       background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      border-radius: 8px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 9px;
       padding: 7px 10px;
       font-size: 12.5px;
-      font-weight: 600;
-      color: #475569;
+      font-weight: 700;
+      color: #334155;
       cursor: pointer;
       display: flex;
       align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 140ms ease;
+    }
+    .agri-dropdown-filter:hover {
+      border-color: #059669;
+      color: #059669;
+    }
+
+    /* Thẻ Lối Tắt Phiếu Gom Hàng HTX (Pick-list) */
+    .agri-picklist-shortcut-card, .order-picklist-shortcut-card {
+      background: linear-gradient(135deg, #ECFDF5 0%, #F0FDF4 100%);
+      border: 1.5px solid #A7F3D0;
+      border-radius: 12px;
+      padding: 9px 12px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 140ms ease;
+    }
+    .agri-picklist-shortcut-card:hover {
+      border-color: #059669;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.08);
+    }
+    .apsc-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+    }
+    .apsc-icon {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .apsc-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #065F46;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .apsc-desc {
+      font-size: 11px;
+      color: #047857;
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn-apsc-view {
+      background: #059669;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 5px 9px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+    }
+
+    /* Thẻ Đơn Thu Mua Nông Sản Trong Danh Sách (Chuẩn Nông Nghiệp, Không vỡ layout) */
+    .agri-order-card, .shopee-order-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 11px 13px;
+      margin-bottom: 9px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+      transition: all 140ms ease;
+      position: relative;
+    }
+    .agri-order-card:hover {
+      border-color: #059669;
+      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.08);
+    }
+    .agri-order-card:active, .shopee-order-card:active {
+      transform: scale(0.99);
+      background: #FAFAFA;
+    }
+    .aoc-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+    .aoc-id-badges {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+      flex: 1;
+    }
+    .aoc-order-code {
+      font-size: 13.5px;
+      font-weight: 900;
+      color: #0F172A;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .aoc-channel-pill {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 1.5px 6px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .aoc-status-pill {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2.5px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .aoc-buyer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .aoc-buyer-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+      flex: 1;
+    }
+    .aoc-order-time {
+      font-size: 11.5px;
+      color: #64748B;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .aoc-produce-box {
+      background: #F8FAFC;
+      border: 1px solid #F1F5F9;
+      border-radius: 8px;
+      padding: 7px 9px;
+      margin-bottom: 7px;
+    }
+    .aoc-produce-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      color: #1E293B;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .aoc-produce-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      min-width: 0;
+    }
+    .aoc-logistics-line {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      color: #475569;
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .aoc-logistics-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      min-width: 0;
+    }
+    .aoc-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      border-top: 1px dashed #E2E8F0;
+      padding-top: 6px;
+      margin-top: 2px;
+    }
+    .aoc-payout-left {
+      display: flex;
+      align-items: baseline;
       gap: 4px;
+      min-width: 0;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .aoc-payout-label {
+      font-size: 12px;
+      color: #64748B;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .aoc-payout-val {
+      font-size: 15.5px;
+      font-weight: 900;
+      color: #059669;
+      white-space: nowrap;
+    }
+    .aoc-payment-badge, .aoc-payment-status {
+      font-size: 11px;
+      font-weight: 700;
+      color: #047857;
+      background: #ECFDF5;
+      padding: 2px 7px;
+      border-radius: 5px;
       white-space: nowrap;
       flex-shrink: 0;
     }
 
-    /* Shopee Order Card Item (Strictly matching Screenshot 1) */
-    .shopee-order-card {
-      background: #FFFFFF;
+    /* =========================================================================
+       MÀN HÌNH CHI TIẾT ĐƠN HÀNG (TIẾT CHẾ ĐƠN GIẢN CHUẨN GVOS)
+       Thiết kế tối giản, sạch sẽ, trực quan theo wireframe thực tế
+       ========================================================================= */
+    .det-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 0 12px 0;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #F1F5F9;
+      gap: 10px;
+    }
+    .det-back-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 13px 15px;
-      margin-bottom: 10px;
+      background: #FFFFFF;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      flex-shrink: 0;
+      padding: 0;
       transition: all 140ms ease;
     }
-    .shopee-order-card:active {
-      transform: scale(0.99);
-      background: #F8FAFC;
+    .det-back-icon-btn:active {
+      background: #F1F5F9;
+      transform: scale(0.96);
     }
-    .soc-top-row {
+    .det-top-title-box {
+      flex: 1;
+      min-width: 0;
+    }
+    .det-top-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+    .det-top-code {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #64748B;
+      margin-top: 1px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .det-bell-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid #E2E8F0;
+      background: #FFFFFF;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
+      transition: all 140ms ease;
+    }
+    .det-bell-icon-btn:active {
+      background: #F1F5F9;
+      transform: scale(0.96);
+    }
+
+    /* Banner Nông Trại / Nông Sản */
+    .det-hero-banner {
+      position: relative;
+      width: 100%;
+      height: 135px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+      border: 1px solid #E2E8F0;
+    }
+    .det-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .det-hero-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: #FFFFFF;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #0F172A;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      white-space: nowrap;
+    }
+
+    /* Thẻ Card Tối Giản */
+    .det-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
+    }
+    .det-card-heading {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Stepper Hành Trình Đơn (Vertical Timeline) */
+    .det-stepper {
+      display: flex;
+      flex-direction: column;
+    }
+    .det-step {
+      display: flex;
+      gap: 12px;
+    }
+    .det-step-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 32px;
+      flex-shrink: 0;
+    }
+    .det-step-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 140ms ease;
+    }
+    .det-step.completed .det-step-circle {
+      background: #0F172A;
+      color: #FFFFFF;
+    }
+    .det-step.active .det-step-circle {
+      background: #059669;
+      color: #FFFFFF;
+      box-shadow: 0 0 0 5px #D1FAE5;
+    }
+    .det-step.pending .det-step-circle {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      color: #64748B;
+    }
+    .det-step-line {
+      width: 2px;
+      flex: 1;
+      min-height: 24px;
+      background: #E2E8F0;
+      margin: 4px 0;
+    }
+    .det-step.completed .det-step-line {
+      background: #0F172A;
+    }
+    .det-step.active .det-step-line {
+      background: #A7F3D0;
+    }
+    .det-step-content {
+      flex: 1;
+      min-width: 0;
+      padding-bottom: 18px;
+    }
+    .det-step:last-child .det-step-content {
+      padding-bottom: 6px;
+    }
+    .det-step-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.3;
+    }
+    .det-step.pending .det-step-title {
+      color: #64748B;
+      font-weight: 600;
+    }
+    .det-step-sub {
+      font-size: 12px;
+      color: #64748B;
+      margin-top: 2px;
+    }
+    .det-step-status {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #059669;
+      margin-top: 2px;
+    }
+
+    /* Meta Divider & Meta Rows */
+    .det-meta-divider {
+      height: 1px;
+      background: #F1F5F9;
+      margin: 12px 0;
+    }
+    .det-meta-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 3px;
-    }
-    .soc-order-num {
-      font-size: 20px;
-      font-weight: 800;
-      color: #0F172A;
-      letter-spacing: -0.01em;
-    }
-    .soc-status-text {
       font-size: 13.5px;
-      font-weight: 600;
-      color: #64748B;
+      margin-bottom: 8px;
+      gap: 10px;
     }
-    .soc-time-row {
-      font-size: 13px;
-      color: #64748B;
-      margin-bottom: 5px;
-      font-weight: 400;
+    .det-meta-row:last-child {
+      margin-bottom: 0;
     }
-    .soc-meta-row {
-      font-size: 13.5px;
-      color: #334155;
+    .det-meta-label {
+      color: #64748B;
       font-weight: 500;
-      margin-bottom: 5px;
+      flex-shrink: 0;
+    }
+    .det-meta-val {
+      color: #0F172A;
+      font-weight: 700;
+      text-align: right;
       display: flex;
       align-items: center;
       gap: 6px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
-    .soc-meta-sep {
-      color: #CBD5E1;
-      font-weight: 300;
-    }
-    .soc-payout-row {
-      font-size: 14px;
-      font-weight: 600;
-      color: #0F172A;
-      display: flex;
-      align-items: baseline;
-      gap: 5px;
-      padding-top: 2px;
-    }
-    .soc-payout-label {
-      color: #334155;
-      font-weight: 500;
-    }
-    .soc-payout-val {
-      font-size: 15px;
+    .det-meta-pill {
+      font-size: 11px;
       font-weight: 700;
-      color: #0F172A;
+      color: #047857;
+      background: #ECFDF5;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #A7F3D0;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
     }
 
-    /* Shopee Order Detail Screen (Strictly matching Screenshot 2) */
-    .shopee-detail-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 14px;
-      padding: 14px 16px;
-      margin-bottom: 11px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-    }
-    .sdc-driver-row {
+    /* Bảng Thông Tin Người Nhận */
+    .det-info-list {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 10px;
     }
-    .sdc-driver-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-      flex: 1;
-    }
-    .sdc-driver-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid #059669;
-      flex-shrink: 0;
-    }
-    .sdc-driver-name {
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #0F172A;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .sdc-driver-sub {
-      font-size: 12.5px;
-      color: #64748B;
-      font-weight: 500;
-      margin-top: 1px;
-    }
-    .sdc-customer-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-    .sdc-customer-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #FEF3C7;
-      color: #D97706;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-    .sdc-customer-name {
-      font-size: 15px;
-      font-weight: 800;
-      color: #0F172A;
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .sdc-note-box {
-      background: #FEF9C3;
-      border-radius: 8px;
-      padding: 10px 12px;
-      font-size: 13px;
-      color: #854D0E;
-      line-height: 1.45;
-      margin-bottom: 12px;
-      word-break: break-word;
-    }
-    .sdc-items-list {
-      border-bottom: 1px solid #F1F5F9;
-      padding-bottom: 10px;
-      margin-bottom: 10px;
-    }
-    .sdc-item-row {
+    .det-info-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 8px;
-      gap: 12px;
-    }
-    .sdc-item-name {
       font-size: 13.5px;
-      color: #1E293B;
-      line-height: 1.4;
+      gap: 14px;
+    }
+    .det-info-label {
+      color: #64748B;
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 80px;
+    }
+    .det-info-val {
+      color: #0F172A;
+      font-weight: 700;
+      text-align: right;
+      flex: 1;
+      word-break: break-word;
+      line-height: 1.35;
+    }
+
+    /* Danh Sách Món Hàng */
+    .det-item-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 0;
+    }
+    .det-item-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid #E2E8F0;
+      flex-shrink: 0;
+    }
+    .det-item-info {
       flex: 1;
       min-width: 0;
     }
-    .sdc-item-price {
-      font-size: 13.5px;
+    .det-item-name {
+      font-size: 14px;
       font-weight: 700;
       color: #0F172A;
+      line-height: 1.3;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .det-item-spec {
+      font-size: 12px;
+      color: #64748B;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .det-item-price-box {
+      text-align: right;
       flex-shrink: 0;
     }
-    .sdc-breakdown-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 7px;
-      font-size: 13.5px;
-      color: #475569;
+    .det-item-qty {
+      font-size: 12px;
+      color: #64748B;
+      font-weight: 600;
     }
-    .sdc-breakdown-row strong {
+    .det-item-price {
+      font-size: 14px;
+      font-weight: 800;
       color: #0F172A;
-      font-weight: 700;
+      margin-top: 2px;
     }
-    .sdc-final-row {
+    .det-total-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding-top: 10px;
-      border-top: 1px solid #F1F5F9;
-      margin-top: 6px;
-    }
-    .sdc-final-label {
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 800;
       color: #0F172A;
     }
-    .sdc-final-val {
-      font-size: 17px;
+    .det-total-price {
+      font-size: 17.5px;
       font-weight: 900;
-      color: #EE4D2D;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .sdc-other-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      font-size: 13px;
-      color: #64748B;
-      gap: 8px;
-    }
-    .sdc-other-row-label {
-      flex-shrink: 0;
-      color: #64748B;
-    }
-    .sdc-other-row-val {
-      color: #0F172A;
-      font-weight: 600;
-      text-align: right;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .sdc-copy-btn {
-      color: #EE4D2D;
-      font-weight: 800;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 12px;
-      padding-left: 5px;
+      color: #059669;
     }
 
-    /* Date Filter Modal / Bottom Sheet */
+    /* Fixed / Sticky Bottom Action Bar */
+    .det-bottom-bar {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 10px 0 14px 0;
+      margin-top: 12px;
+      z-index: 30;
+      border-top: 1px solid #F1F5F9;
+    }
+    .det-btn-confirm {
+      width: 100%;
+      height: 48px;
+      background: #059669;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.28);
+      transition: all 140ms ease;
+    }
+    .det-btn-confirm:active {
+      transform: scale(0.98);
+      background: #047857;
+    }
+
+    /* Date Filter Modal / Bottom Sheet (Green Agriculture Theme) */
     .order-filter-backdrop {
       position: absolute;
       inset: 0;
@@ -4176,13 +4568,13 @@
       transition: all 140ms ease;
     }
     .ofs-option-item:hover {
-      border-color: #EE4D2D;
-      background: #FFF5F1;
+      border-color: #059669;
+      background: #F0FDF4;
     }
     .ofs-option-item.selected {
-      border-color: #EE4D2D;
-      background: #FFF5F1;
-      color: #EE4D2D;
+      border-color: #059669;
+      background: #F0FDF4;
+      color: #059669;
     }
     .ofs-radio-circle {
       width: 17px;
@@ -4194,8 +4586,8 @@
       justify-content: center;
     }
     .ofs-option-item.selected .ofs-radio-circle {
-      border-color: #EE4D2D;
-      background: #EE4D2D;
+      border-color: #059669;
+      background: #059669;
     }
     .ofs-radio-inner {
       width: 5px;
@@ -4255,7 +4647,7 @@
     }
     .ofs-btn-apply {
       flex: 2;
-      background: #EE4D2D;
+      background: #059669;
       color: #FFFFFF;
       border: none;
       border-radius: 10px;
@@ -4263,7 +4655,7 @@
       font-size: 14px;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(238, 77, 45, 0.25);
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25);
     }
 
   
@@ -7678,78 +8070,81 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       <!-- =========================================================================
            PANEL 9: MÀN HÌNH ĐƠN HÀNG BÁN ĐƯỢC (ORDERS SCREEN)
            ========================================================================= -->
-            <!-- =========================================================================
-           PANEL 9: MÀN HÌNH ĐƠN HÀNG BÁC BA (CHUẨN SHOPEE MERCHANT PARTNER)
+      <!-- =========================================================================
+           PANEL 9: MÀN HÌNH ĐƠN THU MUA NÔNG SẢN HTX (CHỢ XANH AI SALE OS)
            ========================================================================= -->
-            <section id="panel-orders" class="view-panel">
-        <!-- Top Bar Header -->
-        <div class="shopee-order-header">
-          <div class="shopee-header-left">
-            <button type="button" class="shopee-back-btn" onclick="closeOrdersView()" title="Quay lại">
+      <section id="panel-orders" class="view-panel">
+        <!-- Top Bar Header Nông Nghiệp HTX -->
+        <div class="agri-order-header">
+          <div class="aoh-left">
+            <button type="button" class="aoh-back-btn" onclick="closeOrdersView()" title="Quay lại">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             </button>
-            <span class="shopee-header-title-text" id="orderHeaderTitle">Đơn hàng</span>
-            <div class="shopee-open-badge" onclick="toggleStoreOpen(this)">
-              <span class="shopee-open-dot"></span>
-              <span id="storeOpenText">Mở cửa ›</span>
+            <div class="aoh-title-group">
+              <span class="aoh-title-text" id="orderHeaderTitle">Đơn Thu Mua Nông Sản</span>
+              <div class="agri-status-badge" onclick="toggleFarmHarvestStatus(this)" title="Chạm để đổi trạng thái xuất vườn nông hộ">
+                <span class="agri-status-dot"></span>
+                <span id="farmHarvestStatusText">Sẵn sàng xuất vườn ›</span>
+              </div>
             </div>
           </div>
-          <div class="shopee-header-actions">
-            <button type="button" class="shopee-header-btn" onclick="openOrderSearchPrompt()" title="Tìm kiếm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-            <button type="button" class="shopee-header-btn" onclick="triggerToast('Hỗ trợ HTX Yên Bình: 0988.123.456')" title="Trợ giúp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></button>
-            <button type="button" class="shopee-header-btn" onclick="triggerToast('Cài đặt thông báo')" title="Cài đặt"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
+          <div class="aoh-actions">
+            <button type="button" class="aoh-action-btn" onclick="openOrderSearchPrompt()" title="Tìm đơn thu mua"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+            <button type="button" class="aoh-action-btn" onclick="openTruckScheduleShortcut()" title="Lịch xe tải gom hàng HTX"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></button>
+            <button type="button" class="aoh-action-btn" onclick="triggerToast('Hỗ trợ HTX Yên Bình: 0988.123.456')" title="Gọi hỗ trợ HTX"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></button>
           </div>
         </div>
 
-        <!-- MENU TAB Ở TRÊN: QUẢN LÝ ĐƠN HÀNG VÀ QUẢN LÝ KHO HÀNG -->
+        <!-- MENU TAB Ở TRÊN: ĐƠN HÀNG VÀ KHO HÀNG -->
         <div class="orders-top-segment-tabs">
           <button type="button" class="ot-segment-btn active" id="btnSubtabOrders" onclick="switchOrderSubTab('orders')">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            <span>Quản lý đơn hàng</span>
-            <span class="ot-badge-pill" id="subtabOrderBadge">44</span>
+            <span>Đơn hàng</span>
+            <span class="ot-badge-pill" id="subtabOrderBadge">10</span>
           </button>
           <button type="button" class="ot-segment-btn" id="btnSubtabWarehouse" onclick="switchOrderSubTab('warehouse')">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
-            <span>Quản lý kho hàng</span>
-            <span class="ot-badge-pill secondary">7 SP</span>
+            <span>Kho hàng</span>
+            <span class="ot-badge-pill secondary">7</span>
           </button>
         </div>
 
-        <!-- SUB-VIEW 1: QUẢN LÝ ĐƠN HÀNG -->
+        <!-- SUB-VIEW 1: QUẢN LÝ ĐƠN HÀNG NÔNG SẢN -->
         <div id="ordersSubView_orders" class="orders-sub-view active">
-          <!-- Horizontal Scrollable Tabs matching Shopee -->
-          <div class="shopee-status-tabs-container">
-            <div class="shopee-status-tabs">
-              <div class="shopee-tab-item active" data-tab="all" onclick="selectOrderStatusTab('all')">Tất cả</div>
-              <div class="shopee-tab-item" data-tab="new" onclick="selectOrderStatusTab('new')">Mới (44)</div>
-              <div class="shopee-tab-item" data-tab="preparing" onclick="selectOrderStatusTab('preparing')">Đang làm (9)</div>
-              <div class="shopee-tab-item" data-tab="done" onclick="selectOrderStatusTab('done')">Làm xong</div>
-              <div class="shopee-tab-item" data-tab="shipping" onclick="selectOrderStatusTab('shipping')">Đang giao</div>
-              <div class="shopee-tab-item" data-tab="history" onclick="selectOrderStatusTab('history')">Lịch sử</div>
+          <!-- Horizontal Scrollable Tabs: Quy trình thu mua & xuất bán Nông sản HTX (Ngắn gọn, không rớt dòng) -->
+          <div class="agri-status-tabs-container">
+            <div class="agri-status-tabs">
+              <div class="agri-tab-item active" data-tab="all" onclick="selectOrderStatusTab('all')">Tất cả (10)</div>
+              <div class="agri-tab-item" data-tab="new" onclick="selectOrderStatusTab('new')">Chờ duyệt (2)</div>
+              <div class="agri-tab-item" data-tab="harvesting" onclick="selectOrderStatusTab('harvesting')">Thu hoạch (2)</div>
+              <div class="agri-tab-item" data-tab="pickup" onclick="selectOrderStatusTab('pickup')">Chờ xe gom (2)</div>
+              <div class="agri-tab-item" data-tab="shipping" onclick="selectOrderStatusTab('shipping')">Đang giao (1)</div>
+              <div class="agri-tab-item" data-tab="delivered" onclick="selectOrderStatusTab('delivered')">Hoàn tất (3)</div>
             </div>
           </div>
 
-          <!-- Lối tắt in Phiếu Soạn Hàng (Pick-list Gom Đơn) -->
-          <div class="order-picklist-shortcut-card" onclick="openPickListView()">
-            <div class="opsc-left">
-              <div class="opsc-icon">📦</div>
-              <div>
-                <div class="opsc-title">Phiếu Soạn Hàng (Pick-list) · 9 đơn cần đóng</div>
-                <div class="opsc-desc">Gom tổng số lượng 4 loại nông sản để đóng gói nhanh</div>
+          <!-- Lối tắt Phiếu Gom Hàng Xuất Kho (Gọn gàng, vừa vặn không vỡ layout) -->
+          <div class="agri-picklist-shortcut-card" onclick="openPickListView()">
+            <div class="apsc-left">
+              <div class="apsc-icon">🚛</div>
+              <div style="min-width:0;flex:1">
+                <div class="apsc-title">Phiếu Gom Hàng (7 đơn chờ bốc)</div>
+                <div class="apsc-desc">537 kg chuối & 35 thùng OCOP · Xe gom 08:30</div>
               </div>
             </div>
-            <button type="button" class="btn-opsc-view">In phiếu ➔</button>
+            <button type="button" class="btn-apsc-view">Xem phiếu ➔</button>
           </div>
 
-          <!-- Sub-filter Toolbar (Date Dropdown + Status Dropdown) -->
-          <div class="shopee-filter-toolbar">
-            <button type="button" class="shopee-date-btn" onclick="openOrderDateFilterModal()" title="Bấm chọn khoảng thời gian lọc">
-              <span class="shopee-date-check-tag">✓</span>
-              <span class="shopee-date-text" id="shopeeDateFilterLabel">01/10/2026 - 31/10/2026</span>
+          <!-- Sub-filter Toolbar (Date Dropdown + Agricultural Channel Dropdown) -->
+          <div class="agri-filter-toolbar">
+            <button type="button" class="agri-date-btn" onclick="openOrderDateFilterModal()" title="Bấm chọn khoảng thời gian nông vụ">
+              <span class="agri-date-check-tag">✓</span>
+              <span class="agri-date-text" id="shopeeDateFilterLabel">Tháng 10/2026</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
-            <button type="button" class="shopee-dropdown-filter" onclick="toggleChannelFilter(this)">
-              <span id="shopeeChannelFilterLabel">Tất cả kênh</span>
+            <button type="button" class="agri-dropdown-filter" onclick="toggleChannelFilter(this)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+              <span id="shopeeChannelFilterLabel">Tất cả nguồn</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
           </div>
@@ -7804,17 +8199,21 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       </section>
 
       <!-- =========================================================================
-           PANEL 9.1: CHI TIẾT ĐƠN HÀNG (MATCHING SCREENSHOT 2)
+           PANEL 9.1: CHI TIẾT ĐƠN HÀNG (TIẾT CHẾ ĐƠN GIẢN CHUẨN GVOS)
            ========================================================================= -->
-      <section id="panel-order-detail" class="view-panel">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:2px 0 12px 0;border-bottom:1px solid #E2E8F0;margin-bottom:12px">
-          <div style="display:flex;align-items:center;gap:6px">
-            <button type="button" class="shopee-back-btn" onclick="closeOrderDetail()" title="Quay lại">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            </button>
-            <h1 style="font-size:18px;font-weight:800;color:#0F172A;margin:0">Chi tiết đơn hàng</h1>
+      <section id="panel-order-detail" class="view-panel" style="padding-bottom: 24px;">
+        <!-- Header chuẩn theo wireframe: Back button + Chi tiết đơn + Mã đơn + Icon Chuông -->
+        <div class="det-top-bar">
+          <button type="button" class="det-back-icon-btn" onclick="closeOrderDetail()" title="Quay lại">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="det-top-title-box">
+            <h1 class="det-top-title">Chi tiết đơn</h1>
+            <span class="det-top-code" id="orderDetailSubtitle">FB-2610-0063</span>
           </div>
-          <button type="button" class="shopee-header-btn" onclick="triggerToast('Tùy chọn: In phiếu giao / Báo cáo HTX')" style="color:#EE4D2D;font-size:18px;font-weight:900">•••</button>
+          <button type="button" class="det-bell-icon-btn" onclick="triggerToast('Không có thông báo mới cho đơn này')" title="Thông báo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </button>
         </div>
 
         <div id="orderDetailContentContainer">
@@ -8508,7 +8907,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       <button type="button" class="nav-tab-item" id="tabOrders" onclick="switchNavTab('orders')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         <span class="tab-text">Đơn hàng</span>
-        <span class="tab-badge" style="background:#EF4444;color:#fff">44</span>
+        <span class="tab-badge" style="background:#059669;color:#fff">10</span>
       </button>
 
       <!-- Tab 5: Tài khoản (Thay thế Chợ Xanh ở Menu đáy theo yêu cầu) -->
@@ -9695,508 +10094,702 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     // =========================================================================
     
     // =========================================================================
-    // DỮ LIỆU ĐƠN HÀNG BÁC BA & QUẢN LÝ ĐƠN HÀNG CHUẨN SHOPEE MERCHANT
+    // DỮ LIỆU ĐƠN THU MUA NÔNG SẢN BÁC BA & QUẢN LÝ ĐƠN HÀNG HTX YÊN BÌNH
+    // Phù hợp bối cảnh nông hộ: Đơn sỉ WinMart B2B, Siêu thị, Thương lái cân vườn,
+    // Bếp ăn học đường, Quà biếu OCOP, Xe tải thu gom 2.5T của HTX.
     // =========================================================================
     let previousOrdersPanel = 'home';
-    let currentOrderStatusTab = 'history'; // 'all', 'new', 'preparing', 'done', 'shipping', 'history'
+    let currentOrderStatusTab = 'all'; // 'all', 'new', 'harvesting', 'pickup', 'shipping', 'delivered'
     let currentOrderDateFilter = 'month'; // 'today', 'yesterday', '3days', '7days', 'month', 'custom'
-    let customDateRange = { from: '2026-10-01', to: '2026-10-09' };
-    let isStoreOpen = true;
+    let customDateRange = { from: '2026-10-01', to: '2026-10-31' };
+    let currentChannelFilter = 'all';
+    let farmHarvestStatus = 'ready'; // 'ready', 'harvesting', 'off'
 
     const BAC_BA_ORDERS = [
       {
-        id: "2785",
+        id: "WM2610-01",
         seq: 1,
-        code: "26109-707524465",
+        code: "HĐ-WM/2610-01",
+        shortCode: "WM-01",
+        channel: "b2b",
+        channelName: "HỢP ĐỒNG SỈ B2B",
+        shortChannel: "B2B Sỉ",
+        channelBadgeBg: "#DCFCE7",
+        channelBadgeColor: "#15803D",
         date: "2026-10-09",
-        time: "22:05",
+        time: "08:30 Sáng",
+        shortTime: "Hôm nay 08:30",
         status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Nguyễn Văn Đạt",
-          code: "3287",
-          phone: "0912.448.910",
-          vehicle: "Xe gom HTX (29H-3287)"
-        },
-        customer: {
-          name: "Chị Lan (WinMart Cầu Giấy)",
-          maskName: "L***",
+        statusText: "Đã giao & Nhập kho",
+        shortStatus: "Đã giao",
+        statusBadgeBg: "#DCFCE7",
+        statusBadgeColor: "#166534",
+        produceSummary: "15 thùng · Chuối sấy giòn OCOP",
+        logisticsSummary: "Xe gom HTX 08:30 · Nhà VH Thôn",
+        buyer: {
+          name: "Siêu thị WinMart Cầu Giấy",
+          subName: "Chuỗi bán lẻ WinCommerce",
+          contact: "Chị Lan (Phụ trách thu mua Nông sản miền Bắc)",
           phone: "0988.***.214",
-          distance: "9.2km",
-          address: "WinMart Cầu Giấy - Số 122 Trần Duy Hưng, Hà Nội"
+          hubAddress: "Kho trung chuyển WinMart Cầu Giấy - 122 Trần Duy Hưng, Hà Nội",
+          distance: "Giao xe tải HTX"
         },
-        note: "Đóng thùng xốp dán tem truy xuất OCOP 4 sao, kiểm tra độ giòn túi zip trước khi chuyển xe.",
+        transport: {
+          type: "truck",
+          title: "Xe tải thu gom nông sản HTX (2.5 tấn)",
+          plate: "29H-882.14",
+          driver: "Chú Nguyễn Văn Hùng",
+          driverPhone: "0988.123.456",
+          gatheringPoint: "Điểm gom Nhà văn hóa Thôn Đông Cát",
+          pickupTime: "08:30 Sáng 10/10/2026 (Cữ gom 1)"
+        },
+        standards: ["OCOP 4 Sao", "VietGAP Yên Bình", "Mã vùng: VN-YBI-024"],
+        qualityNote: "Đóng 15 thùng carton 5 lớp dán tem QR truy xuất nguồn gốc HTX, túi zip hút ẩm đạt độ giòn >95%, hạn sử dụng 12 tháng.",
         items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Túi Zip 250g OCOP 4★)", qty: 2, price: 55000 }
+          { name: "Chuối Sấy Giòn Yên Bình (Thùng sỉ 10 túi zip 250g OCOP 4★)", qty: 15, unit: "thùng", weight: "37.5 kg", price: 500000 }
         ],
-        price: {
-          raw: 110000,
-          discount: -5000,
-          commission: -5500,
-          tax: -1000,
-          final: 98500
+        finance: {
+          rawTotal: 7500000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 7500000,
+          paymentMethod: "Chuyển khoản VietQR Agribank",
+          paymentStatus: "paid",
+          paymentStatusText: "✓ Đã nhận về Agribank"
         },
+        shortPayment: "✓ Agribank",
         timeline: {
-          ordered: "09/10/2026 19:39",
-          distance: "9.2km (WinMart Cầu Giấy)",
-          confirmed: "09/10/2026 19:39",
-          prepared: "09/10/2026 19:45",
-          pickup: "09/10/2026 19:53",
-          delivered: "09/10/2026 22:05",
-          payment: "Chuyển khoản VietQR Agribank (Đã nhận tiền)"
+          created: "08/10/2026 14:00 (HTX phân bổ hợp đồng WinMart)",
+          harvested: "09/10/2026 07:30 (Sấy mẻ chuối giòn tại lò HTX)",
+          packaged: "09/10/2026 16:30 (Đóng thùng dán tem QR truy xuất)",
+          dispatched: "10/10/2026 08:30 (Xe tải HTX cân & bốc tại Nhà VH Thôn)",
+          completed: "10/10/2026 11:30 (WinMart Cầu Giấy ký biên bản nhận hàng)"
         }
       },
       {
-        id: "4465",
+        id: "BT2610-02",
         seq: 2,
-        code: "26109-881923014",
+        code: "HĐ-BT/2610-02",
+        shortCode: "BT-02",
+        channel: "b2b",
+        channelName: "HỢP ĐỒNG SỈ B2B",
+        shortChannel: "B2B Sỉ",
+        channelBadgeBg: "#DCFCE7",
+        channelBadgeColor: "#15803D",
         date: "2026-10-09",
-        time: "20:27",
-        status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Nguyễn Văn Đạt",
-          code: "3287",
-          phone: "0912.448.910",
-          vehicle: "Xe gom HTX (29H-3287)"
-        },
-        customer: {
-          name: "Chị Thảo (Phố Cũ)",
-          maskName: "1***",
-          phone: "0904.***.892",
-          distance: "4.8km",
-          address: "Tổ 4 Phố Cũ, TT. Yên Bình"
-        },
-        note: "Khách lấy 1 hộp chuối dẻo làm quà biếu, bọc túi giấy kraft lịch sự.",
-        items: [
-          { name: "Chuối Dẻo Đóng Hộp Chân Không (Hộp 500g OCOP 3★)", qty: 1, price: 75000 }
-        ],
-        price: {
-          raw: 75000,
-          discount: 0,
-          commission: -6000,
-          tax: -1500,
-          final: 67500
-        },
-        timeline: {
-          ordered: "09/10/2026 19:39",
-          distance: "4.8km",
-          confirmed: "09/10/2026 19:39",
-          prepared: "09/10/2026 19:39",
-          pickup: "09/10/2026 19:53",
-          delivered: "09/10/2026 20:27",
-          payment: "Chuyển khoản Agribank (Đã nhận tiền)"
-        }
-      },
-      {
-        id: "8729",
-        seq: 3,
-        code: "26109-441209341",
-        date: "2026-10-09",
-        time: "19:51",
-        status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Trần Hữu Nam",
-          code: "1104",
-          phone: "0976.223.441",
-          vehicle: "Xe gom HTX (29X1-542.11)"
-        },
-        customer: {
-          name: "Anh Hùng (Chợ Xã)",
-          maskName: "h***",
-          phone: "0934.***.771",
-          distance: "3.2km",
-          address: "Kiot 14 Chợ Xã Yên Bình"
-        },
-        note: "Lấy chuối sấy mẻ sáng sớm mới ra lò, giao trước 20h cho sạp nông sản chợ xã.",
-        items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Túi Zip 250g OCOP 4★)", qty: 1, price: 55000 }
-        ],
-        price: {
-          raw: 55000,
-          discount: 0,
-          commission: -4500,
-          tax: -1000,
-          final: 49500
-        },
-        timeline: {
-          ordered: "09/10/2026 18:40",
-          distance: "3.2km",
-          confirmed: "09/10/2026 18:42",
-          prepared: "09/10/2026 19:00",
-          pickup: "09/10/2026 19:25",
-          delivered: "09/10/2026 19:51",
-          payment: "Ví điện tử MoMo (Đã thanh toán)"
-        }
-      },
-      {
-        id: "1471",
-        seq: 4,
-        code: "26109-112349021",
-        date: "2026-10-09",
-        time: "19:28",
-        status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Phạm Văn Quang",
-          code: "2044",
-          phone: "0982.551.992",
-          vehicle: "Xe máy giao nhận (29H-110.45)"
-        },
-        customer: {
-          name: "Cô Mai (Đồng Cát)",
-          maskName: "M***",
-          phone: "0912.***.334",
-          distance: "1.8km",
-          address: "Xóm Giữa, Thôn Đồng Cát, Xã Yên Bình"
-        },
-        note: "Bác Ba gửi hàng kèm 1 gói chuối sấy ăn thử cho cô Mai chi hội phụ nữ thôn.",
-        items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Túi Zip 250g)", qty: 2, price: 55000 },
-          { name: "Mật Ong Hoa Rừng Tự Nhiên (Chai 500ml OCOP 4★)", qty: 1, price: 220000 }
-        ],
-        price: {
-          raw: 330000,
-          discount: -15000,
-          commission: -14000,
-          tax: -3000,
-          final: 298000
-        },
-        timeline: {
-          ordered: "09/10/2026 18:10",
-          distance: "1.8km",
-          confirmed: "09/10/2026 18:15",
-          prepared: "09/10/2026 18:35",
-          pickup: "09/10/2026 19:05",
-          delivered: "09/10/2026 19:28",
-          payment: "Tiền mặt khi nhận hàng (Đã thu)"
-        }
-      },
-      {
-        id: "1042",
-        seq: 5,
-        code: "26109-992144312",
-        date: "2026-10-09",
-        time: "15:40",
-        status: "shipping",
-        statusText: "Đang giao",
-        orderType: "shipping",
-        driver: {
-          name: "Đội xe HTX Yên Bình",
-          code: "HTX-01",
-          phone: "0988.123.456",
-          vehicle: "Xe tải thùng 2.5T (29H-882.14)"
-        },
-        customer: {
-          name: "WinMart Royal City",
-          maskName: "W***",
-          phone: "024.***.8899",
-          distance: "14.5km",
-          address: "Tầng B2 Royal City, Thanh Xuân, Hà Nội"
-        },
-        note: "Đơn sỉ WinMart 20 thùng chuối sấy OCOP, kèm phiếu kiểm nghiệm chất lượng VietGAP.",
-        items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Thùng sỉ 20 túi 250g)", qty: 1, price: 1100000 }
-        ],
-        price: {
-          raw: 1100000,
-          discount: -50000,
-          commission: -55000,
-          tax: -10000,
-          final: 985000
-        },
-        timeline: {
-          ordered: "09/10/2026 14:00",
-          distance: "14.5km",
-          confirmed: "09/10/2026 14:10",
-          prepared: "09/10/2026 14:40",
-          pickup: "09/10/2026 15:15",
-          delivered: "Dự kiến 16:30",
-          payment: "Chuyển khoản hợp đồng B2B"
-        }
-      },
-      {
-        id: "0922",
-        seq: 6,
-        code: "26108-992144312",
-        date: "2026-10-08",
-        time: "17:40",
-        status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Nguyễn Văn Đạt",
-          code: "3287",
-          phone: "0912.448.910",
-          vehicle: "Xe gom HTX (29H-3287)"
-        },
-        customer: {
-          name: "Bác Thành (Yên Hưng)",
-          maskName: "T***",
-          phone: "0903.***.112",
-          distance: "6.5km",
-          address: "Thôn Phúc Thịnh, Xã Yên Hưng"
-        },
-        note: "2 chai rượu chuối hột rừng ngâm 1 năm hạ thổ chum sành, bọc màng xốp chống vỡ.",
-        items: [
-          { name: "Rượu Chuối Hột Rừng Ngâm Chum (Chai 750ml)", qty: 2, price: 85000 },
-          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 2, price: 55000 }
-        ],
-        price: {
-          raw: 280000,
-          discount: -10000,
-          commission: -18000,
-          tax: -4000,
-          final: 248000
-        },
-        timeline: {
-          ordered: "08/10/2026 15:30",
-          distance: "6.5km",
-          confirmed: "08/10/2026 15:35",
-          prepared: "08/10/2026 16:10",
-          pickup: "08/10/2026 16:50",
-          delivered: "08/10/2026 17:40",
-          payment: "Tiền mặt khi nhận hàng (Đã thu)"
-        }
-      },
-      {
-        id: "0814",
-        seq: 7,
-        code: "26108-331209841",
-        date: "2026-10-08",
-        time: "11:20",
-        status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Đoàn Thanh Niên Xã",
-          code: "TN01",
-          phone: "0977.***.889",
-          vehicle: "Đoàn xã hỗ trợ ship"
-        },
-        customer: {
-          name: "Cháu Tuấn (Đoàn Xã)",
-          maskName: "T***",
-          phone: "0977.***.889",
-          distance: "2.0km",
-          address: "UBND Xã Yên Bình"
-        },
-        note: "Đơn liên hoan hội nghị hội nông dân xã Yên Bình, đóng túi zip 250g tiện chia phần.",
-        items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 5, price: 55000 }
-        ],
-        price: {
-          raw: 275000,
-          discount: -15000,
-          commission: -10000,
-          tax: -2500,
-          final: 247500
-        },
-        timeline: {
-          ordered: "08/10/2026 09:10",
-          distance: "2.0km",
-          confirmed: "08/10/2026 09:15",
-          prepared: "08/10/2026 10:00",
-          pickup: "08/10/2026 10:45",
-          delivered: "08/10/2026 11:20",
-          payment: "Chuyển khoản VietQR Agribank (Đã nhận tiền)"
-        }
-      },
-      {
-        id: "0733",
-        seq: 8,
-        code: "26107-119482012",
-        date: "2026-10-07",
-        time: "16:05",
-        status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Nguyễn Văn Đạt",
-          code: "3287",
-          phone: "0912.448.910",
-          vehicle: "Xe gom HTX (29H-3287)"
-        },
-        customer: {
-          name: "Chị Hương (Bác Tôm)",
-          maskName: "H***",
+        time: "06:00 Sáng",
+        shortTime: "Hôm nay 06:00",
+        status: "harvesting",
+        statusText: "Đang thu hoạch vườn",
+        shortStatus: "Đang hái",
+        statusBadgeBg: "#FEF3C7",
+        statusBadgeColor: "#92400E",
+        produceSummary: "12 buồng · Chuối ngự 180kg",
+        logisticsSummary: "Xe lạnh HTX 10:30 · Vườn bãi bồi",
+        buyer: {
+          name: "Chuỗi Thực Phẩm Sạch Bác Tôm",
+          subName: "Hệ thống bán lẻ nông sản sạch Hà Nội",
+          contact: "Anh Tuấn (Trưởng ban thu mua)",
           phone: "0981.***.552",
-          distance: "11.5km",
-          address: "Chuỗi Thực Phẩm Sạch Bác Tôm - Hà Nội"
+          hubAddress: "Tổng kho Bác Tôm - Hoàng Văn Thái, Thanh Xuân, Hà Nội",
+          distance: "Cắt trực tiếp tại vườn"
         },
-        note: "Chuỗi thực phẩm sạch Bác Tôm Hà Nội: Buồng chuối ngự quả đều, vỏ mướt, thu hoạch sáng sớm.",
+        transport: {
+          type: "truck",
+          title: "Xe thùng lạnh HTX Yên Bình (1.5 tấn)",
+          plate: "29C-441.89",
+          driver: "Anh Nguyễn Văn Đạt",
+          driverPhone: "0912.448.910",
+          gatheringPoint: "Vườn Bãi Bồi Sông Lục Nam (Bác Ba)",
+          pickupTime: "10:30 Sáng nay (Cắt sớm để vỏ tươi mướt)"
+        },
+        standards: ["VietGAP Yên Bình", "Chuối ngự loại 1", "Mã vùng: VN-YBI-024"],
+        qualityNote: "Buồng chuối quả đều vỏ mướt, độ già 85-90%, lót màng xốp giữa các nải chống dập gãy khi vận chuyển đường dài.",
         items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Thùng sỉ 10 túi)", qty: 1, price: 500000 },
-          { name: "Buồng Chuối Ngự Tiến Vua Tươi (Buồng 15kg)", qty: 1, price: 220000 }
+          { name: "Buồng Chuối Ngự Tiến Vua Tươi VietGAP (Cắt sáng)", qty: 12, unit: "buồng", weight: "180 kg", price: 330000 }
         ],
-        price: {
-          raw: 720000,
-          discount: -35000,
-          commission: -32000,
-          tax: -8000,
-          final: 645000
+        finance: {
+          rawTotal: 3960000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 3960000,
+          paymentMethod: "VietQR Agribank (Đã cọc 50%)",
+          paymentStatus: "partial",
+          paymentStatusText: "Đã nhận cọc 1.980.000đ"
         },
+        shortPayment: "Cọc 50%",
         timeline: {
-          ordered: "07/10/2026 10:00",
-          distance: "11.5km",
-          confirmed: "07/10/2026 10:10",
-          prepared: "07/10/2026 13:30",
-          pickup: "07/10/2026 14:45",
-          delivered: "07/10/2026 16:05",
-          payment: "Chuyển khoản VietinBank"
+          created: "09/10/2026 05:30 (Bác Tôm đặt đơn chuối tươi cữ sớm)",
+          harvested: "09/10/2026 06:15 (Đang cắt buồng tại Vườn Bãi Bồi)",
+          packaged: "Dự kiến 09:30 (Bọc xốp & gắn thẻ truy xuất)",
+          dispatched: "Dự kiến 10:30 (Xe lạnh HTX bốc hàng)",
+          completed: "Dự kiến 13:00 (Giao tại Tổng kho Hà Nội)"
         }
       },
       {
-        id: "0650",
-        seq: 9,
-        code: "26106-440219842",
-        date: "2026-10-06",
-        time: "14:30",
-        status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Nhà xe Hưng Long",
-          code: "HL99",
-          phone: "0915.***.668",
-          vehicle: "Xe khách tuyến Yên Bình - Mỹ Đình"
+        id: "TL2610-03",
+        seq: 3,
+        code: "ĐH-TL/2610-03",
+        shortCode: "TL-03",
+        channel: "trader",
+        channelName: "THƯƠNG LÁI CÂN VƯỜN",
+        shortChannel: "Thương lái",
+        channelBadgeBg: "#FEF3C7",
+        channelBadgeColor: "#B45309",
+        date: "2026-10-09",
+        time: "14:00 Chiều",
+        shortTime: "Hôm nay 14:00",
+        status: "new",
+        statusText: "Chờ chốt ngày bốc",
+        shortStatus: "Chờ chốt",
+        statusBadgeBg: "#EFF6FF",
+        statusBadgeColor: "#1D4ED8",
+        produceSummary: "25 buồng · Chuối tiêu hồng 380kg",
+        logisticsSummary: "Khách tự đánh xe cân tại vườn",
+        buyer: {
+          name: "Thương Lái Chú Bảy Cần Thơ",
+          subName: "Đoàn xe thu mua chuối tết miền Nam",
+          contact: "Chú Bảy (0903.***.112)",
+          phone: "0903.***.112",
+          hubAddress: "Bốc trực tiếp tại Vườn Đồi Đồng Cát",
+          distance: "Khách đánh xe đến vườn"
         },
-        customer: {
-          name: "Khách quen Hà Nội",
-          maskName: "K***",
+        transport: {
+          type: "pickup",
+          title: "Xe bán tải khách tự đến cân tại vườn",
+          plate: "65C-198.34",
+          driver: "Chú Bảy Cần Thơ",
+          driverPhone: "0903.***.112",
+          gatheringPoint: "Cổng Vườn Đồi Đồng Cát (Bác Ba)",
+          pickupTime: "14:00 Chiều mai (11/10)"
+        },
+        standards: ["Buồng chuối già loại 1", "Trọng lượng >15kg/buồng"],
+        qualityNote: "Gom buồng chuối già ráo nước, thương lái mang cân đồng hồ tự cân từng buồng và tính tiền mặt ngay tại gốc vườn.",
+        items: [
+          { name: "Buồng Chuối Tiêu Hồng Cắt Già (Loại A tuyển chọn)", qty: 25, unit: "buồng", weight: "380 kg", price: 273600 }
+        ],
+        finance: {
+          rawTotal: 6840000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 6840000,
+          paymentMethod: "Tiền mặt trao tay khi cân hàng",
+          paymentStatus: "pending",
+          paymentStatusText: "💵 Thu tiền mặt tại vườn"
+        },
+        shortPayment: "💵 Tiền mặt",
+        timeline: {
+          created: "09/10/2026 08:00 (Chú Bảy gọi chốt mua 25 buồng)",
+          harvested: "Dự kiến sáng mai 11/10 (Cắt 25 buồng vườn đồi)",
+          packaged: "Xếp rơm chống dập trên sàn xe bán tải",
+          dispatched: "Dự kiến 14:00 ngày 11/10 (Cân xe tại vườn)",
+          completed: "Thanh toán tiền mặt sau khi cân xong"
+        }
+      },
+      {
+        id: "MM2610-04",
+        seq: 4,
+        code: "HĐ-MM/2610-04",
+        shortCode: "MM-04",
+        channel: "b2b",
+        channelName: "HỢP ĐỒNG SỈ B2B",
+        shortChannel: "B2B Sỉ",
+        channelBadgeBg: "#DCFCE7",
+        channelBadgeColor: "#15803D",
+        date: "2026-10-08",
+        time: "15:30 Chiều",
+        shortTime: "08/10 15:30",
+        status: "pickup",
+        statusText: "Chờ xe tải HTX gom",
+        shortStatus: "Chờ gom",
+        statusBadgeBg: "#FEF3C7",
+        statusBadgeColor: "#92400E",
+        produceSummary: "20 thùng · Chuối dẻo đóng hộp OCOP",
+        logisticsSummary: "Xe tải HTX 08:30 sáng mai · Nhà VH",
+        buyer: {
+          name: "Đại Siêu Thị MM Mega Market Hà Đông",
+          subName: "Hợp đồng cung ứng Nông sản OCOP HTX",
+          contact: "Ban Điều Phối HTX Nông Nghiệp Yên Bình",
+          phone: "0988.123.456",
+          hubAddress: "MM Mega Market Hà Đông - Đường Tô Hiệu, Hà Đông, Hà Nội",
+          distance: "Tập kết điểm gom thôn"
+        },
+        transport: {
+          type: "truck",
+          title: "Xe tải chuyên dụng HTX Yên Bình (2.5 tấn)",
+          plate: "29H-882.14",
+          driver: "Chú Nguyễn Văn Hùng",
+          driverPhone: "0988.123.456",
+          gatheringPoint: "Nhà văn hóa Thôn Đồng Cát",
+          pickupTime: "08:30 Sáng mai (Chuyến xe gom liên thôn)"
+        },
+        standards: ["OCOP 3 Sao Tỉnh", "Hộp quà Tết OCOP", "Chứng nhận VSATTP"],
+        qualityNote: "200 hộp chuối dẻo đóng hộp giấy kraft lịch sự dán tem OCOP, đóng trong 20 thùng carton tiêu chuẩn có băng keo niêm phong HTX.",
+        items: [
+          { name: "Chuối Dẻo Đóng Hộp Chân Không (Hộp quà biếu 500g OCOP 3★)", qty: 20, unit: "thùng (200 hộp)", weight: "100 kg", price: 600000 }
+        ],
+        finance: {
+          rawTotal: 12000000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 12000000,
+          paymentMethod: "Quyết toán sổ công nợ HTX (Kỳ 23 Tết)",
+          paymentStatus: "credit",
+          paymentStatusText: "⏳ HTX quyết toán kỳ 23 Tết"
+        },
+        shortPayment: "⏳ Sổ HTX",
+        timeline: {
+          created: "07/10/2026 10:00 (HTX thông báo định mức đơn MM Mega Market)",
+          harvested: "08/10/2026 09:00 (Hoàn thành sấy dẻo 100kg chuối)",
+          packaged: "08/10/2026 17:00 (Đã đóng đủ 20 thùng carton dán tem QR)",
+          dispatched: "Sáng mai 08:30 (Đưa ra Nhà VH Thôn Đồng Cát)",
+          completed: "Dự kiến 14:00 (Giao tại tổng kho Mega Market)"
+        }
+      },
+      {
+        id: "BA2610-05",
+        seq: 5,
+        code: "ĐH-BA/2610-05",
+        shortCode: "BA-05",
+        channel: "school",
+        channelName: "NÔNG SẢN HỌC ĐƯỜNG",
+        shortChannel: "Bếp ăn",
+        channelBadgeBg: "#EFF6FF",
+        channelBadgeColor: "#1D4ED8",
+        date: "2026-10-08",
+        time: "06:30 Sáng",
+        shortTime: "08/10 06:30",
+        status: "shipping",
+        statusText: "Đang vận chuyển",
+        shortStatus: "Đang giao",
+        statusBadgeBg: "#E0F2FE",
+        statusBadgeColor: "#0369A1",
+        produceSummary: "80kg chuối chín · 20 hũ mật ong",
+        logisticsSummary: "Xe máy giao sớm · TH Yên Bình",
+        buyer: {
+          name: "Bếp Ăn Trường Tiểu Học Yên Bình",
+          subName: "Chương trình Bữa ăn học đường an toàn",
+          contact: "Cô Mai (Phụ trách dinh dưỡng bếp ăn)",
+          phone: "0912.***.334",
+          hubAddress: "Trường Tiểu Học Xã Yên Bình (Khu trung tâm)",
+          distance: "2.5 km"
+        },
+        transport: {
+          type: "bike",
+          title: "Đội xe máy thanh niên HTX giao sớm",
+          plate: "29X1-542.11",
+          driver: "Cháu Tuấn (Đoàn xã hỗ trợ)",
+          driverPhone: "0977.***.889",
+          gatheringPoint: "Kho nông sản Bác Ba",
+          pickupTime: "06:30 Sáng nay"
+        },
+        standards: ["VietGAP Yên Bình", "Chứng nhận ATTP học đường"],
+        qualityNote: "Chuối chín tự nhiên quả vàng đều làm món tráng miệng cho 1.200 học sinh; 20 hũ mật ong dùng pha trà chanh mật ong giữ ấm cho các cháu.",
+        items: [
+          { name: "Chuối Tiêu Hồng Chín Tự Nhiên (Nải tuyển chọn)", qty: 80, unit: "kg", weight: "80 kg", price: 20000 },
+          { name: "Mật Ong Hoa Rừng Tự Nhiên (Hũ thủy tinh 500ml)", qty: 20, unit: "hũ", weight: "10 lít", price: 100000 }
+        ],
+        finance: {
+          rawTotal: 3600000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 3600000,
+          paymentMethod: "Ủy nhiệm chi Agribank (Kho bạc xã)",
+          paymentStatus: "paid",
+          paymentStatusText: "✓ Đã nhận về Agribank"
+        },
+        shortPayment: "✓ Agribank",
+        timeline: {
+          created: "07/10/2026 15:00 (Nhà trường đặt suất ăn tuần mới)",
+          harvested: "07/10/2026 17:00 (Cắt chuối chín & chiết mật ong)",
+          packaged: "08/10/2026 06:00 (Đóng sọt nhựa thực phẩm sạch)",
+          dispatched: "08/10/2026 06:30 (Cháu Tuấn đang chở giao trường)",
+          completed: "Dự kiến 07:15 (Bàn giao bếp trưởng nhà trường)"
+        }
+      },
+      {
+        id: "ZL2610-06",
+        seq: 6,
+        code: "ĐH-ZL/2610-06",
+        shortCode: "ZL-06",
+        channel: "zalo",
+        channelName: "KHÁCH QUEN ZALO",
+        shortChannel: "Zalo OCOP",
+        channelBadgeBg: "#F3E8FF",
+        channelBadgeColor: "#7E22CE",
+        date: "2026-10-07",
+        time: "11:20 Trưa",
+        shortTime: "07/10 11:20",
+        status: "shipping",
+        statusText: "Đã gửi chành xe",
+        shortStatus: "Gửi xe",
+        statusBadgeBg: "#E0F2FE",
+        statusBadgeColor: "#0369A1",
+        produceSummary: "6 hộp chuối dẻo + rượu + trà",
+        logisticsSummary: "Xe Hưng Long 12:30 · Bưu điện",
+        buyer: {
+          name: "Chị Lan Anh (Khách Quen Hà Nội)",
+          subName: "Đặt quà Tết quê biếu người thân",
+          contact: "Chị Lan Anh (Zalo cá nhân)",
           phone: "0962.***.331",
-          distance: "8.0km",
-          address: "Bến xe Mỹ Đình, Hà Nội"
+          hubAddress: "Nhận tại Bến xe Mỹ Đình, Hà Nội (Nhà xe Hưng Long)",
+          distance: "Gửi xe khách liên tỉnh"
         },
-        note: "Gửi nhà xe Hưng Long chuyến 13h bến Mỹ Đình, dặn nhà xe xếp chuối dẻo ở khoang trên.",
+        transport: {
+          type: "bus",
+          title: "Nhà xe Hưng Long (Tuyến Yên Bình - BX Mỹ Đình)",
+          plate: "29B-088.92",
+          driver: "Bác tài Hưng Long",
+          driverPhone: "0915.***.668",
+          gatheringPoint: "Ngã ba bưu điện Xã Yên Bình",
+          pickupTime: "Chuyến trưa 12:30 xuất bến"
+        },
+        standards: ["Nông sản OCOP Yên Bình", "Hạ thổ chum sành 1 năm"],
+        qualityNote: "Khách quen dặn bọc xốp cẩn thận 2 chai rượu chuối hột chum sành tránh va đập trên xe khách; gửi kèm hướng dẫn pha trà Bát Tiên.",
         items: [
-          { name: "Chuối Dẻo Đóng Hộp Chân Không (500g)", qty: 4, price: 75000 },
-          { name: "Trà Bát Tiên Sao Chảo Gang (Túi 200g)", qty: 2, price: 120000 }
+          { name: "Chuối Dẻo Đóng Hộp Chân Không (Hộp 500g)", qty: 6, unit: "hộp", weight: "3.0 kg", price: 75000 },
+          { name: "Rượu Chuối Hột Rừng Chum Sành (Chai 750ml)", qty: 2, unit: "chai", weight: "1.5 lít", price: 95000 },
+          { name: "Trà Bát Tiên Sao Chảo Gang (Túi 200g)", qty: 2, unit: "túi", weight: "400 g", price: 105000 }
         ],
-        price: {
-          raw: 540000,
-          discount: -20000,
-          commission: -28000,
-          tax: -7000,
-          final: 485000
+        finance: {
+          rawTotal: 850000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 850000,
+          paymentMethod: "Chuyển khoản VietQR Agribank 100%",
+          paymentStatus: "paid",
+          paymentStatusText: "✓ Đã nhận qua VietQR"
         },
+        shortPayment: "✓ VietQR",
         timeline: {
-          ordered: "06/10/2026 08:30",
-          distance: "8.0km",
-          confirmed: "06/10/2026 08:45",
-          prepared: "06/10/2026 11:30",
-          pickup: "06/10/2026 12:45",
-          delivered: "06/10/2026 14:30",
-          payment: "Chuyển khoản VietQR Agribank"
+          created: "07/10/2026 09:30 (Chị Lan Anh nhắn Zalo chốt giỏ quà)",
+          harvested: "07/10/2026 10:30 (Đóng thùng xốp chống sốc)",
+          packaged: "07/10/2026 11:30 (Ghi tên & SĐT người nhận rõ ràng)",
+          dispatched: "07/10/2026 12:30 (Gửi xe khách Hưng Long chuyến trưa)",
+          completed: "Dự kiến 16:30 (Khách đón tại bến xe Mỹ Đình)"
         }
       },
       {
-        id: "0512",
-        seq: 10,
-        code: "26105-771239841",
-        date: "2026-10-05",
-        time: "16:20",
+        id: "CX2610-07",
+        seq: 7,
+        code: "ĐH-CX/2610-07",
+        shortCode: "CX-07",
+        channel: "market",
+        channelName: "CHỢ XÃ YÊN BÌNH",
+        shortChannel: "Chợ Xã",
+        channelBadgeBg: "#FEF3C7",
+        channelBadgeColor: "#B45309",
+        date: "2026-10-06",
+        time: "07:00 Sáng",
+        shortTime: "06/10 07:00",
         status: "delivered",
-        statusText: "Đã giao",
-        orderType: "history",
-        driver: {
-          name: "Nguyễn Văn Đạt",
-          code: "3287",
-          phone: "0912.448.910",
-          vehicle: "Xe gom HTX (29H-3287)"
+        statusText: "Đã hoàn tất",
+        shortStatus: "Hoàn tất",
+        statusBadgeBg: "#DCFCE7",
+        statusBadgeColor: "#166534",
+        produceSummary: "10 túi · Chuối sấy giòn OCOP",
+        logisticsSummary: "Bác Ba giao · Kiot 14 Chợ Xã",
+        buyer: {
+          name: "Anh Hùng (Kiot 14 Chợ Xã)",
+          subName: "Sạp nông sản OCOP Chợ Xã Yên Bình",
+          contact: "Anh Hùng (0934.***.771)",
+          phone: "0934.***.771",
+          hubAddress: "Kiot 14 đình chợ chính Xã Yên Bình",
+          distance: "1.2 km"
         },
-        customer: {
-          name: "WinMart Times City",
-          maskName: "W***",
-          phone: "024.***.7766",
-          distance: "16.0km",
-          address: "Siêu thị WinMart - Times City Minh Khai, Hà Nội"
+        transport: {
+          type: "bike",
+          title: "Bác Ba chở xe máy giao sạp",
+          plate: "Xe máy cá nhân",
+          driver: "Bác Ba",
+          driverPhone: "0988.123.456",
+          gatheringPoint: "Lò sấy chuối Bác Ba",
+          pickupTime: "07:00 Sáng sớm"
         },
-        note: "Chuối sấy giòn & bột chuối xanh lô xuất kho tuần đầu tháng 10 cho siêu thị WinMart Times City.",
+        standards: ["OCOP 4 Sao Tỉnh", "Túi zip 250g mới sấy"],
+        qualityNote: "Gao sạp chợ phiên phục vụ bà con mua cúng rằm, chuối mới ra lò giòn tan thơm lừng.",
         items: [
-          { name: "Chuối Sấy Giòn Yên Bình (Túi 250g)", qty: 15, price: 55000 },
-          { name: "Bột Chuối Xanh Kháng Tinh Bột (Hũ 400g)", qty: 2, price: 95000 }
+          { name: "Chuối Sấy Giòn Yên Bình (Túi Zip 250g OCOP 4★)", qty: 10, unit: "túi", weight: "2.5 kg", price: 50000 }
         ],
-        price: {
-          raw: 1015000,
-          discount: -40000,
-          commission: -50000,
-          tax: -10000,
-          final: 915000
+        finance: {
+          rawTotal: 500000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 500000,
+          paymentMethod: "Tiền mặt trao tay khi giao",
+          paymentStatus: "paid",
+          paymentStatusText: "💵 Tiền mặt đã nhận"
         },
+        shortPayment: "💵 Tiền mặt",
         timeline: {
-          ordered: "05/10/2026 09:00",
-          distance: "16.0km",
-          confirmed: "05/10/2026 09:15",
-          prepared: "05/10/2026 13:00",
-          pickup: "05/10/2026 14:30",
-          delivered: "05/10/2026 16:20",
-          payment: "Chuyển khoản VietinBank"
+          created: "05/10/2026 18:00 (Anh Hùng hẹn lấy 10 túi bán phiên chợ rằm)",
+          harvested: "06/10/2026 05:30 (Mẻ chuối sấy sáng sớm)",
+          packaged: "06/10/2026 06:30 (Đóng thùng carton nhỏ)",
+          dispatched: "06/10/2026 07:00 (Bác Ba chở giao sạp kiot 14)",
+          completed: "06/10/2026 07:15 (Đã giao hàng và nhận đủ 500k tiền mặt)"
+        }
+      },
+      {
+        id: "XK2610-08",
+        seq: 8,
+        code: "HĐ-XK/2610-08",
+        shortCode: "XK-08",
+        channel: "b2b",
+        channelName: "HTX BAO TIÊU CHẾ BIẾN",
+        shortChannel: "Chế biến",
+        channelBadgeBg: "#DCFCE7",
+        channelBadgeColor: "#15803D",
+        date: "2026-10-05",
+        time: "14:30 Chiều",
+        shortTime: "05/10 14:30",
+        status: "delivered",
+        statusText: "Đã giao & Đối soát",
+        shortStatus: "Đã giao",
+        statusBadgeBg: "#DCFCE7",
+        statusBadgeColor: "#166534",
+        produceSummary: "50 hũ bột chuối xanh sấy lạnh",
+        logisticsSummary: "Xe tải HTX · Xưởng chế biến sâu",
+        buyer: {
+          name: "Công Ty CP Dinh Dưỡng An Nam",
+          subName: "Đơn hàng bao tiêu nông sản qua HTX",
+          contact: "Ban Giám Đốc HTX Yên Bình",
+          phone: "0988.123.456",
+          hubAddress: "Nhà máy Chế biến Nông sản An Nam - KCN Quang Châu, Bắc Giang",
+          distance: "Giao tại xưởng HTX"
+        },
+        transport: {
+          type: "truck",
+          title: "Xe tải trung chuyển HTX (2.5 tấn)",
+          plate: "29H-882.14",
+          driver: "Chú Nguyễn Văn Hùng",
+          driverPhone: "0988.123.456",
+          gatheringPoint: "Xưởng chế biến sâu HTX Yên Bình",
+          pickupTime: "14:30 Chiều 05/10"
+        },
+        standards: ["Sấy lạnh thăng hoa khép kín", "Kháng tinh bột RS2"],
+        qualityNote: "50 hũ bột chuối xanh sấy lạnh đạt độ mịn <100 mesh, niêm phong màng nhôm nắp hũ, phục vụ đơn hàng thực phẩm dinh dưỡng xuất khẩu.",
+        items: [
+          { name: "Bột Chuối Xanh Kháng Tinh Bột (Hũ 400g sấy lạnh)", qty: 50, unit: "hũ", weight: "20 kg", price: 75000 }
+        ],
+        finance: {
+          rawTotal: 3750000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 3750000,
+          paymentMethod: "HTX quyết toán chuyển khoản Agribank",
+          paymentStatus: "paid",
+          paymentStatusText: "✓ Đã nhận về Agribank"
+        },
+        shortPayment: "✓ Agribank",
+        timeline: {
+          created: "04/10/2026 09:00 (HTX duyệt đơn chế biến sâu bột chuối)",
+          harvested: "04/10/2026 15:00 (Nghiền và sấy lạnh tại máy HTX)",
+          packaged: "05/10/2026 11:00 (Đóng hũ dán tem xuất xứ)",
+          dispatched: "05/10/2026 14:30 (Bốc lên xe tải giao nhà máy)",
+          completed: "05/10/2026 16:30 (Thủ quỹ HTX đã giải ngân về Agribank)"
+        }
+      },
+      {
+        id: "OP2610-09",
+        seq: 9,
+        code: "ĐH-OP/2610-09",
+        shortCode: "OP-09",
+        channel: "b2b",
+        channelName: "GIỎ QUÀ OCOP HUYỆN",
+        shortChannel: "Giỏ OCOP",
+        channelBadgeBg: "#FEF3C7",
+        channelBadgeColor: "#B45309",
+        date: "2026-10-04",
+        time: "10:00 Sáng",
+        shortTime: "04/10 10:00",
+        status: "delivered",
+        statusText: "Đã hoàn tất",
+        shortStatus: "Hoàn tất",
+        statusBadgeBg: "#DCFCE7",
+        statusBadgeColor: "#166534",
+        produceSummary: "10 giỏ mây quà Tết đặc sản HTX",
+        logisticsSummary: "Xe Huyện nhận tại Trụ sở HTX",
+        buyer: {
+          name: "Văn Phòng Nông Thôn Mới Huyện",
+          subName: "UBND Huyện Yên Bình đặt giỏ quà OCOP",
+          contact: "Đồng chí Phó Chánh Văn Phòng NTM",
+          phone: "024.***.8899",
+          hubAddress: "Trụ sở Huyện Ủy - HĐND - UBND Huyện Yên Bình",
+          distance: "Giao tại trụ sở HTX"
+        },
+        transport: {
+          type: "car",
+          title: "Xe công tác huyện nhận tại trụ sở HTX",
+          plate: "29A-003.88",
+          driver: "Đồng chí lái xe cơ quan",
+          driverPhone: "0976.***.441",
+          gatheringPoint: "Trụ sở HTX Nông Nghiệp Yên Bình",
+          pickupTime: "10:00 Sáng"
+        },
+        standards: ["Bộ sản phẩm OCOP 4 sao tiêu biểu 2026"],
+        qualityNote: "10 giỏ mây quà tặng Tết OCOP Yên Bình: Mỗi giỏ gồm 2 hộp chuối dẻo, 1 chai rượu chuối chum sành, 1 hũ mật ong rừng và 1 gói trà Bát Tiên.",
+        items: [
+          { name: "Giỏ Quà Tết Đặc Sản OCOP Yên Bình (Bộ cao cấp)", qty: 10, unit: "giỏ", weight: "25 kg", price: 450000 }
+        ],
+        finance: {
+          rawTotal: 4500000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 4500000,
+          paymentMethod: "Ủy nhiệm chi Agribank ngân sách huyện",
+          paymentStatus: "paid",
+          paymentStatusText: "✓ Đã nhận về Agribank"
+        },
+        shortPayment: "✓ Agribank",
+        timeline: {
+          created: "03/10/2026 14:00 (Văn phòng huyện đặt 10 giỏ quà OCOP)",
+          harvested: "03/10/2026 17:00 (Tập kết đủ các mặt hàng OCOP)",
+          packaged: "04/10/2026 08:30 (Đóng giỏ mây & thắt nơ đỏ truyền thống)",
+          dispatched: "04/10/2026 10:00 (Xe huyện bốc hàng tại HTX)",
+          completed: "04/10/2026 11:00 (Kế toán huyện chuyển khoản Agribank)"
+        }
+      },
+      {
+        id: "DC2610-10",
+        seq: 10,
+        code: "HĐ-CỌC/2610-10",
+        shortCode: "DC-10",
+        channel: "deposit",
+        channelName: "ĐẶT CỌC VỤ TẾT",
+        shortChannel: "Cọc Tết",
+        channelBadgeBg: "#F3E8FF",
+        channelBadgeColor: "#7E22CE",
+        date: "2026-10-03",
+        time: "16:00 Chiều",
+        shortTime: "03/10 16:00",
+        status: "new",
+        statusText: "Chờ cữ cắt 22 Tết",
+        shortStatus: "Cọc 22 Tết",
+        statusBadgeBg: "#EFF6FF",
+        statusBadgeColor: "#1D4ED8",
+        produceSummary: "100 buồng · Chuối ngự cúng Tết",
+        logisticsSummary: "Xe tải 5 tấn bốc tại Bãi Bồi",
+        buyer: {
+          name: "Đại Lý Nông Sản Miền Bắc",
+          subName: "Hợp đồng đặt cọc bao tiêu vườn trước 30 ngày",
+          contact: "Anh Hưng (Đại diện thu mua chuối Tết)",
+          phone: "0918.***.990",
+          hubAddress: "Bãi Bồi Sông Lục Nam, Xã Yên Bình",
+          distance: "Xe 5 tấn vào tận bãi bồi"
+        },
+        transport: {
+          type: "truck",
+          title: "Đoàn xe tải 5 tấn của đại lý vào bốc hàng",
+          plate: "29H-992.33",
+          driver: "Đội xe đại lý miền Bắc",
+          driverPhone: "0918.***.990",
+          gatheringPoint: "Vườn Chuối Bãi Bồi (Bác Ba)",
+          pickupTime: "Cữ sáng ngày 22 tháng Chạp (Âm lịch)"
+        },
+        standards: ["Buồng chuối già tiêu chuẩn", "Vỏ xanh mướt cúng Tết"],
+        qualityNote: "Bao tiêu toàn bộ 100 buồng chuối già bãi bồi; đại lý đã chuyển cọc 30% vào tài khoản Agribank của Bác Ba, phần còn lại thanh toán ngay khi cân xe.",
+        items: [
+          { name: "Buồng Chuối Ngự Đẹp Cúng Tết (Cắt cữ 22 tháng Chạp)", qty: 100, unit: "buồng", weight: "1.500 kg (1.5 tấn)", price: 300000 }
+        ],
+        finance: {
+          rawTotal: 30000000,
+          packagingSupport: 0,
+          qrStampFee: 0,
+          commission: 0,
+          farmerNet: 30000000,
+          paymentMethod: "VietQR Agribank (Đã nhận cọc 30%: 9.000.000đ)",
+          paymentStatus: "deposit_received",
+          paymentStatusText: "Đã nhận cọc 9.000.000đ"
+        },
+        shortPayment: "Đã cọc 30%",
+        timeline: {
+          created: "03/10/2026 15:30 (Ký hợp đồng bao tiêu vườn chuối bãi bồi)",
+          harvested: "Dự kiến 22 tháng Chạp (Cắt sớm 100 buồng chuối già)",
+          packaged: "Lót rơm xốp đóng thẳng lên xe tải đại lý",
+          dispatched: "Dự kiến 22 tháng Chạp (Cân trạm cân điện tử xã)",
+          completed: "Thanh toán nốt 70% còn lại (21.000.000đ) khi cân xong"
         }
       }
     ];
 
-    function openOrdersView(initialSubTab = 'orders') {
-      const activePanel = document.querySelector('.view-panel.active');
-      if (activePanel && activePanel.id !== 'panel-orders' && activePanel.id !== 'panel-order-detail') {
-        previousOrdersPanel = activePanel.id.replace('panel-', '');
-      }
-      switchNavTab('orders');
-      if (initialSubTab === 'warehouse') {
-        switchOrderSubTab('warehouse');
+    function toggleFarmHarvestStatus(badge) {
+      const text = document.getElementById('farmHarvestStatusText') || document.getElementById('storeOpenText');
+      const dot = badge ? badge.querySelector('.agri-status-dot, .shopee-open-dot') : null;
+      
+      if (farmHarvestStatus === 'ready') {
+        farmHarvestStatus = 'harvesting';
+        if (text) text.innerText = 'Đang thu hoạch vườn ›';
+        if (badge) {
+          badge.style.color = '#B45309';
+          badge.style.background = '#FEF3C7';
+          badge.style.borderColor = '#FDE68A';
+        }
+        if (dot) {
+          dot.style.background = '#D97706';
+          dot.style.boxShadow = '0 0 6px rgba(217, 119, 6, 0.7)';
+        }
+        triggerToast('🌾 Bác Ba: Đang tập trung cắt buồng & thu hoạch tại vườn');
+      } else if (farmHarvestStatus === 'harvesting') {
+        farmHarvestStatus = 'off';
+        if (text) text.innerText = 'Tạm ngơi nghỉ ›';
+        if (badge) {
+          badge.style.color = '#DC2626';
+          badge.style.background = '#FEE2E2';
+          badge.style.borderColor = '#FECACA';
+        }
+        if (dot) {
+          dot.style.background = '#DC2626';
+          dot.style.boxShadow = '0 0 6px rgba(220, 38, 38, 0.7)';
+        }
+        triggerToast('⏸ Bác Ba: Tạm nghỉ xuất hàng hôm nay');
       } else {
-        switchOrderSubTab('orders');
+        farmHarvestStatus = 'ready';
+        if (text) text.innerText = 'Sẵn sàng xuất vườn ›';
+        if (badge) {
+          badge.style.color = '#059669';
+          badge.style.background = '#ECFDF5';
+          badge.style.borderColor = '#A7F3D0';
+        }
+        if (dot) {
+          dot.style.background = '#059669';
+          dot.style.boxShadow = '0 0 6px rgba(5, 150, 105, 0.7)';
+        }
+        triggerToast('🟢 Bác Ba: Sẵn sàng nhận đơn thu mua & xuất vườn!');
       }
     }
-
-    function closeOrdersView() {
-      document.getElementById('panel-orders').classList.remove('active');
-      switchNavTab(previousOrdersPanel || 'home');
-    }
-
-    function toggleStoreOpen(badge) {
-      isStoreOpen = !isStoreOpen;
-      const text = document.getElementById('storeOpenText');
-      const dot = badge.querySelector('.shopee-open-dot');
-      if (isStoreOpen) {
-        text.innerText = 'Mở cửa ›';
-        badge.style.color = '#16A34A';
-        badge.style.background = '#DCFCE7';
-        dot.style.background = '#16A34A';
-        dot.style.boxShadow = '0 0 6px #16A34A';
-        triggerToast('🟢 Bác Ba đang mở cửa: Sẵn sàng nhận đơn sỉ & lẻ tự động!');
-      } else {
-        text.innerText = 'Tạm nghỉ ›';
-        badge.style.color = '#DC2626';
-        badge.style.background = '#FEE2E2';
-        dot.style.background = '#DC2626';
-        dot.style.boxShadow = '0 0 6px #DC2626';
-        triggerToast('⏸ Bác Ba tạm nghỉ nhận đơn mới trong hôm nay');
-      }
-    }
+    function toggleStoreOpen(badge) { toggleFarmHarvestStatus(badge); }
 
     function openOrderSearchPrompt() {
-      const q = prompt('Nhập mã đơn hàng hoặc tên khách hàng cần tìm:', '');
+      const q = prompt('Nhập mã đơn, tên đối tác (WinMart, Bác Tôm...) hoặc nông sản cần tìm:', '');
       if (q && q.trim()) {
         const query = q.trim().toLowerCase();
         const found = BAC_BA_ORDERS.filter(o => 
-          o.id.includes(query) || 
+          o.id.toLowerCase().includes(query) || 
           o.code.toLowerCase().includes(query) || 
-          o.customer.name.toLowerCase().includes(query) ||
-          o.customer.maskName.toLowerCase().includes(query)
+          o.buyer.name.toLowerCase().includes(query) ||
+          o.buyer.contact.toLowerCase().includes(query) ||
+          o.items.some(it => it.name.toLowerCase().includes(query))
         );
         renderFilteredOrders(found, `Tìm kiếm: "${q.trim()}"`);
       }
     }
 
+    function openTruckScheduleShortcut() {
+      triggerToast('🚚 Lịch xe gom HTX: 08:30 Sáng mai (Thứ 5) tại Nhà VH Thôn Đông Cát - Xe tải 2.5T Chú Hùng');
+    }
+
     function selectOrderStatusTab(tab) {
       currentOrderStatusTab = tab;
-      document.querySelectorAll('.shopee-tab-item').forEach(el => {
+      document.querySelectorAll('.agri-tab-item, .shopee-tab-item').forEach(el => {
         el.classList.toggle('active', el.getAttribute('data-tab') === tab);
       });
       renderOrdersList();
@@ -10241,10 +10834,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } else if (currentOrderDateFilter === '7days') {
         if (labelElem) labelElem.innerText = '7 ngày qua (03/10 - 09/10)';
       } else if (currentOrderDateFilter === 'month') {
-        if (labelElem) labelElem.innerText = '01/10/2026 - 31/10/2026';
+        if (labelElem) labelElem.innerText = 'Tháng này (01/10 - 31/10/2026)';
       } else if (currentOrderDateFilter === 'custom') {
         const fromVal = document.getElementById('orderCustomFrom').value || '2026-10-01';
-        const toVal = document.getElementById('orderCustomTo').value || '2026-10-09';
+        const toVal = document.getElementById('orderCustomTo').value || '2026-10-31';
         customDateRange = { from: fromVal, to: toVal };
         const fParts = fromVal.split('-');
         const tParts = toVal.split('-');
@@ -10252,15 +10845,26 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       }
 
       renderOrdersList();
-      triggerToast('Đã áp dụng bộ lọc ngày!');
+      triggerToast('Đã lọc theo khoảng thời gian nông vụ!');
     }
 
     function toggleChannelFilter(btn) {
-      const channels = ['Tất cả kênh', 'Zalo Khách Quen', 'Chợ Xã HTX', 'WinMart Sỉ'];
-      const cur = document.getElementById('shopeeChannelFilterLabel').innerText;
-      let nextIdx = (channels.indexOf(cur) + 1) % channels.length;
-      document.getElementById('shopeeChannelFilterLabel').innerText = channels[nextIdx];
-      triggerToast('Kênh bán: ' + channels[nextIdx]);
+      const channels = [
+        { label: 'Tất cả nguồn đơn', val: 'all' },
+        { label: 'Hợp đồng sỉ B2B', val: 'b2b' },
+        { label: 'Thương lái cân vườn', val: 'trader' },
+        { label: 'Nông sản học đường', val: 'school' },
+        { label: 'Khách quen Zalo OCOP', val: 'zalo' },
+        { label: 'Chợ Xã Yên Bình', val: 'market' },
+        { label: 'Đặt cọc vụ Tết', val: 'deposit' }
+      ];
+      const curText = document.getElementById('shopeeChannelFilterLabel').innerText;
+      let curIdx = channels.findIndex(c => c.label === curText);
+      let nextIdx = (curIdx + 1) % channels.length;
+      currentChannelFilter = channels[nextIdx].val;
+      document.getElementById('shopeeChannelFilterLabel').innerText = channels[nextIdx].label;
+      triggerToast('Nguồn đơn: ' + channels[nextIdx].label);
+      renderOrdersList();
     }
 
     function renderOrdersList() {
@@ -10279,17 +10883,22 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         filtered = filtered.filter(o => o.date >= customDateRange.from && o.date <= customDateRange.to);
       }
 
-      // 2. Filter by Status Tab
-      if (currentOrderStatusTab === 'history') {
-        filtered = filtered.filter(o => o.status === 'delivered');
+      // 2. Filter by Channel
+      if (currentChannelFilter !== 'all') {
+        filtered = filtered.filter(o => o.channel === currentChannelFilter);
+      }
+
+      // 3. Filter by Agricultural Status Tab
+      if (currentOrderStatusTab === 'new') {
+        filtered = filtered.filter(o => o.status === 'new');
+      } else if (currentOrderStatusTab === 'harvesting') {
+        filtered = filtered.filter(o => o.status === 'harvesting');
+      } else if (currentOrderStatusTab === 'pickup') {
+        filtered = filtered.filter(o => o.status === 'pickup');
       } else if (currentOrderStatusTab === 'shipping') {
         filtered = filtered.filter(o => o.status === 'shipping');
-      } else if (currentOrderStatusTab === 'preparing') {
-        filtered = filtered.filter(o => o.status === 'preparing');
-      } else if (currentOrderStatusTab === 'new') {
-        filtered = filtered.filter(o => o.status === 'new');
-      } else if (currentOrderStatusTab === 'done') {
-        filtered = filtered.filter(o => o.status === 'done' || o.status === 'delivered');
+      } else if (currentOrderStatusTab === 'delivered') {
+        filtered = filtered.filter(o => o.status === 'delivered');
       }
 
       renderFilteredOrders(filtered);
@@ -10301,10 +10910,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
       if (orders.length === 0) {
         container.innerHTML = `
-          <div style="background:#FFF;border:1px solid #E2E8F0;border-radius:12px;padding:32px 16px;text-align:center;color:#64748B;margin-top:8px">
+          <div style="background:#FFF;border:1px solid #E2E8F0;border-radius:14px;padding:36px 16px;text-align:center;color:#64748B;margin-top:8px">
             <div style="font-size:36px;margin-bottom:8px">🌾</div>
-            <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:4px">Không có đơn hàng nào</div>
-            <div style="font-size:13px">Không tìm thấy đơn hàng nông sản trong khoảng thời gian này.</div>
+            <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:4px">Không có đơn thu mua nào</div>
+            <div style="font-size:13px;line-height:1.4">Không tìm thấy đơn hàng nông sản trong bộ lọc đã chọn.</div>
             <button type="button" class="hero-pill-btn-green" style="margin-top:14px;padding:8px 16px;font-size:13px;display:inline-flex" onclick="resetDateFilter()">Xem Tất Cả Trong Tháng</button>
           </div>
         `;
@@ -10313,31 +10922,58 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
       let html = '';
       if (customTitle) {
-        html += `<div style="font-size:13px;font-weight:700;color:#475569;margin-bottom:8px">${customTitle} (${orders.length} đơn)</div>`;
+        html += `<div style="font-size:13px;font-weight:800;color:#059669;margin-bottom:10px">${customTitle} (${orders.length} đơn)</div>`;
       }
 
       orders.forEach(o => {
-        const itemCount = o.items.reduce((acc, it) => acc + it.qty, 0);
-        
+        const totalQty = o.items.reduce((acc, it) => acc + it.qty, 0);
+        const mainProduce = o.items[0];
+        const moreItems = o.items.length > 1 ? ` (+${o.items.length - 1} món)` : '';
+
+        const codeDisp = o.shortCode || (o.code ? o.code.replace(/^(HĐ-|ĐH-)/, '') : o.id);
+        const channelDisp = o.shortChannel || o.channelName;
+        const statusDisp = o.shortStatus || o.statusText;
+        const timeDisp = o.shortTime || o.time;
+        const produceDisp = o.produceSummary || `${mainProduce.qty} ${mainProduce.unit} · ${mainProduce.name}`;
+        const logisticsDisp = o.logisticsSummary || `${o.transport.title}: ${o.transport.pickupTime}`;
+        const paymentDisp = o.shortPayment || o.finance.paymentStatusText;
+
         html += `
-          <div class="shopee-order-card" onclick="openOrderDetail('${o.id}')">
-            <div class="soc-top-row">
-              <span class="soc-order-num">#${o.id}</span>
-              <span class="soc-status-text">${o.statusText}</span>
+          <div class="agri-order-card" onclick="openOrderDetail('${o.id}')">
+            <!-- Hàng 1: Mã đơn, Kênh thu mua, Trạng thái -->
+            <div class="aoc-header-row">
+              <div class="aoc-id-badges">
+                <span class="aoc-order-code">#${codeDisp}</span>
+                <span class="aoc-channel-pill" style="background:${o.channelBadgeBg};color:${o.channelBadgeColor}">${channelDisp}</span>
+              </div>
+              <span class="aoc-status-pill" style="background:${o.statusBadgeBg};color:${o.statusBadgeColor}">${statusDisp}</span>
             </div>
-            <div class="soc-time-row">
-              Giao lúc ${o.time} ${o.date.split('-').reverse().join('/')}
+
+            <!-- Hàng 2: Đối tác thu mua & Giờ nhận/giao -->
+            <div class="aoc-buyer-row">
+              <span class="aoc-buyer-name">${o.buyer.name}</span>
+              <span class="aoc-order-time">${timeDisp}</span>
             </div>
-            <div class="soc-meta-row">
-              <span>${itemCount} Món</span>
-              <span class="soc-meta-sep">|</span>
-              <span>${o.customer.maskName}</span>
-              <span class="soc-meta-sep">|</span>
-              <span>${o.customer.distance}</span>
+
+            <!-- Hàng 3: Hộp tóm tắt Nông sản & Vận tải xuất kho -->
+            <div class="aoc-produce-box">
+              <div class="aoc-produce-row">
+                <span style="flex-shrink:0;line-height:1">🌿</span>
+                <span class="aoc-produce-text"><b>${produceDisp}</b>${moreItems}</span>
+              </div>
+              <div class="aoc-logistics-line">
+                <span style="flex-shrink:0;line-height:1">🚚</span>
+                <span class="aoc-logistics-text">${logisticsDisp}</span>
+              </div>
             </div>
-            <div class="soc-payout-row">
-              <span class="soc-payout-label">Bác Ba nhận</span>
-              <span class="soc-payout-val">${o.price.final.toLocaleString('vi-VN')}đ</span>
+
+            <!-- Hàng 4: Bác Ba thực thu & Dòng tiền -->
+            <div class="aoc-footer-row">
+              <div class="aoc-payout-left">
+                <span class="aoc-payout-label">Thực thu:</span>
+                <span class="aoc-payout-val">${o.finance.farmerNet.toLocaleString('vi-VN')}đ</span>
+              </div>
+              <span class="aoc-payment-badge">${paymentDisp}</span>
             </div>
           </div>
         `;
@@ -10353,140 +10989,193 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       const container = document.getElementById('orderDetailContentContainer');
       if (!container) return;
 
-      let itemsHtml = '';
+      const subtitle = document.getElementById('orderDetailSubtitle');
+      if (subtitle) {
+        subtitle.innerText = order.code || `ĐH-${order.id}`;
+      }
+
+      // 1. Xác định trạng thái của Stepper 4 bước
+      const isDelivered = order.status === 'delivered';
+      const isShipping = order.status === 'shipping';
+      const isPickupOrHarvest = order.status === 'pickup' || order.status === 'harvesting';
+      const isNew = order.status === 'new';
+
+      let step1Cls = 'completed', step2Cls = 'pending', step3Cls = 'pending', step4Cls = 'pending';
+      let step2StatusText = 'Chờ xác nhận';
+      let step3StatusText = '';
+      let step4StatusText = '';
+
+      if (isDelivered) {
+        step1Cls = 'completed';
+        step2Cls = 'completed';
+        step3Cls = 'completed';
+        step4Cls = 'active';
+        step2StatusText = 'Đã đóng gói tem QR';
+        step3StatusText = 'Đã giao qua xe HTX';
+        step4StatusText = 'Đã ký biên bản nhận hàng';
+      } else if (isShipping) {
+        step1Cls = 'completed';
+        step2Cls = 'completed';
+        step3Cls = 'active';
+        step4Cls = 'pending';
+        step2StatusText = 'Đã đóng thùng xuất kho';
+        step3StatusText = 'Đang chuyển giao';
+      } else if (isPickupOrHarvest) {
+        step1Cls = 'completed';
+        step2Cls = 'active';
+        step3Cls = 'pending';
+        step4Cls = 'pending';
+        step2StatusText = order.status === 'harvesting' ? 'Đang thu hoạch vườn' : 'Chờ xe tải gom';
+      } else { // new
+        step1Cls = 'completed';
+        step2Cls = 'active';
+        step3Cls = 'pending';
+        step4Cls = 'pending';
+        step2StatusText = 'Chờ xác nhận';
+      }
+
+      // 2. Render danh sách món hàng
+      let produceCardsHtml = '';
       order.items.forEach(it => {
-        itemsHtml += `
-          <div class="sdc-item-row">
-            <div class="sdc-item-name">
-              <strong style="color:#0F172A">${it.qty} x </strong>${it.name}
+        let itemThumb = 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=200&q=80';
+        if (it.name.toLowerCase().includes('mật ong')) {
+          itemThumb = 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=200&q=80';
+        } else if (it.name.toLowerCase().includes('buồng')) {
+          itemThumb = 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=200&q=80';
+        }
+
+        produceCardsHtml += `
+          <div class="det-item-card">
+            <img src="${itemThumb}" alt="${it.name}" class="det-item-thumb">
+            <div class="det-item-info">
+              <div class="det-item-name">${it.name}</div>
+              <div class="det-item-spec">Quy cách: ${it.weight}</div>
             </div>
-            <div class="sdc-item-price">
-              ${(it.price * it.qty).toLocaleString('vi-VN')}đ
+            <div class="det-item-price-box">
+              <div class="det-item-qty">x ${it.qty} ${it.unit}</div>
+              <div class="det-item-price">${(it.price * it.qty).toLocaleString('vi-VN')}đ</div>
             </div>
           </div>
         `;
       });
 
-      const totalItemsCount = order.items.reduce((acc, it) => acc + it.qty, 0);
-
       container.innerHTML = `
-        <!-- Card 1: Tài xế vận chuyển (Ảnh 2) -->
-        <div class="shopee-detail-card">
-          <div class="sdc-driver-row">
-            <div class="sdc-driver-info">
-              <img src="bac_ba_avatar.jpg" alt="Tài xế" class="sdc-driver-avatar">
-              <div style="min-width:0;flex:1">
-                <div class="sdc-driver-name">Tài xế - ${order.driver.name} ${order.driver.code}</div>
-                <div class="sdc-driver-sub">${order.statusText}</div>
+        <!-- Card 1: Hành trình đơn (Stepper Vertical Timeline) -->
+        <div class="det-card">
+          <div class="det-card-heading">Hành trình đơn</div>
+          
+          <div class="det-stepper">
+            <!-- Bước 1: Đặt trên kênh -->
+            <div class="det-step ${step1Cls}">
+              <div class="det-step-indicator">
+                <div class="det-step-circle">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="det-step-line"></div>
+              </div>
+              <div class="det-step-content">
+                <div class="det-step-title">Đặt trên kênh</div>
+                <div class="det-step-sub">${order.date} · ${order.time}</div>
               </div>
             </div>
-            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
-              <button type="button" class="shopee-header-btn" onclick="triggerToast('Đang gọi tài xế ${order.driver.name}: ${order.driver.phone}')" style="background:#F1F5F9;color:#0F172A;border:1px solid #CBD5E1;border-radius:50%;width:28px;height:28px;font-size:13px;font-weight:700" title="Trợ giúp">?</button>
+
+            <!-- Bước 2: Xác nhận, đóng gói -->
+            <div class="det-step ${step2Cls}">
+              <div class="det-step-indicator">
+                <div class="det-step-circle">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+                </div>
+                <div class="det-step-line"></div>
+              </div>
+              <div class="det-step-content">
+                <div class="det-step-title">Xác nhận, đóng gói</div>
+                <div class="det-step-status">${step2StatusText}</div>
+              </div>
+            </div>
+
+            <!-- Bước 3: Giao -->
+            <div class="det-step ${step3Cls}">
+              <div class="det-step-indicator">
+                <div class="det-step-circle">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                </div>
+                <div class="det-step-line"></div>
+              </div>
+              <div class="det-step-content">
+                <div class="det-step-title">Giao</div>
+                ${step3StatusText ? `<div class="det-step-status">${step3StatusText}</div>` : ''}
+              </div>
+            </div>
+
+            <!-- Bước 4: Đã nhận -->
+            <div class="det-step ${step4Cls}">
+              <div class="det-step-indicator">
+                <div class="det-step-circle">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+              </div>
+              <div class="det-step-content">
+                <div class="det-step-title">Đã nhận</div>
+                ${step4StatusText ? `<div class="det-step-status">${step4StatusText}</div>` : ''}
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Card 2: Khách hàng, Ghi chú & Nông sản (Ảnh 2) -->
-        <div class="shopee-detail-card">
-          <div class="sdc-customer-header">
-            <div class="sdc-customer-avatar">🌾</div>
-            <div class="sdc-customer-name">Khách hàng - ${order.customer.maskName}</div>
+          <!-- Meta thời gian đặt & Hạn xử lý -->
+          <div class="det-meta-divider"></div>
+          <div class="det-meta-row">
+            <span class="det-meta-label">Đặt lúc</span>
+            <span class="det-meta-val">${order.date} ${order.time}</span>
           </div>
-
-          <!-- Ghi chú vàng -->
-          <div class="sdc-note-box">
-            <strong style="color:#A16207">Ghi chú:</strong> ${order.note}
-          </div>
-
-          <!-- Danh sách món -->
-          <div class="sdc-items-list">
-            ${itemsHtml}
-          </div>
-
-          <!-- Bảng kê chi phí -->
-          <div class="sdc-breakdown-row">
-            <span>Tổng tiền món (giá gốc)</span>
-            <strong>${order.price.raw.toLocaleString('vi-VN')}đ</strong>
-          </div>
-          <div class="sdc-breakdown-row" style="color:#64748B">
-            <span>Giảm giá</span>
-            <span>${order.price.discount.toLocaleString('vi-VN')}đ ∨</span>
-          </div>
-          <div class="sdc-breakdown-row" style="color:#64748B">
-            <span>Chiết khấu</span>
-            <span>${order.price.commission.toLocaleString('vi-VN')}đ</span>
-          </div>
-          <div class="sdc-breakdown-row" style="color:#64748B">
-            <span>Thuế khấu trừ</span>
-            <span>${order.price.tax.toLocaleString('vi-VN')}đ</span>
-          </div>
-
-          <div class="sdc-final-row">
-            <span class="sdc-final-label">Tổng tiền Bác Ba nhận (${totalItemsCount} món)</span>
-            <span class="sdc-final-val">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
-              ${order.price.final.toLocaleString('vi-VN')}đ
+          <div class="det-meta-row">
+            <span class="det-meta-label">Hạn xử lý</span>
+            <span class="det-meta-val">
+              10/10/2026 08:30 <span class="det-meta-pill">🕒 Còn 24 giờ</span>
             </span>
           </div>
         </div>
 
-        <!-- Card 3: Thông tin khác (Ảnh 2) -->
-        <div class="shopee-detail-card" style="margin-bottom:18px">
-          <div style="font-size:15px;font-weight:800;color:#0F172A;margin-bottom:12px">Thông tin khác</div>
-          
-          <div class="sdc-other-row">
-            <span class="sdc-other-row-label">Mã đơn hàng</span>
-            <div class="sdc-other-row-val">
-              <strong>${order.code}</strong>
-              <button type="button" class="sdc-copy-btn" onclick="copyOrderCode('${order.code}')">SAO CHÉP</button>
+        <!-- Card 2: Người nhận (Đối tác / Điểm giao) -->
+        <div class="det-card">
+          <div class="det-card-heading">Người nhận</div>
+          <div class="det-info-list">
+            <div class="det-info-row">
+              <span class="det-info-label">Tên</span>
+              <span class="det-info-val">${order.buyer.name}</span>
             </div>
-          </div>
-
-          <div class="sdc-other-row">
-            <span class="sdc-other-row-label">Thời gian đặt hàng</span>
-            <span class="sdc-other-row-val">${order.timeline.ordered}</span>
-          </div>
-
-          <div class="sdc-other-row">
-            <span class="sdc-other-row-label">Khoảng cách</span>
-            <span class="sdc-other-row-val">${order.customer.distance}</span>
-          </div>
-
-          <div class="sdc-other-row">
-            <span class="sdc-other-row-label">Thời gian xác nhận đơn</span>
-            <span class="sdc-other-row-val">${order.timeline.confirmed}</span>
-          </div>
-
-          <div class="sdc-other-row">
-            <span class="sdc-other-row-label">Thời gian chuẩn bị xong</span>
-            <span class="sdc-other-row-val">${order.timeline.prepared}</span>
-          </div>
-
-          <div class="sdc-other-row">
-            <span class="sdc-other-row-label">Thời gian lấy hàng</span>
-            <span class="sdc-other-row-val">${order.timeline.pickup}</span>
-          </div>
-
-          <div class="sdc-other-row">
-            <span class="sdc-other-row-label">Thời gian giao hàng</span>
-            <span class="sdc-other-row-val">${order.timeline.delivered}</span>
-          </div>
-
-          <div class="sdc-other-row" style="border-top:1px dashed #E2E8F0;padding-top:9px;margin-top:6px">
-            <span class="sdc-other-row-label">Thanh toán đơn hàng</span>
-            <span class="sdc-other-row-val" style="color:#64748B;font-weight:600" onclick="triggerToast('Thanh toán: Chuyển khoản VietQR Agribank (Đã nhận tiền)')">Chi tiết ›</span>
+            <div class="det-info-row">
+              <span class="det-info-label">Điện thoại</span>
+              <span class="det-info-val">${order.buyer.phone || '09•• ••• 444'}</span>
+            </div>
+            <div class="det-info-row">
+              <span class="det-info-label">Khu vực</span>
+              <span class="det-info-val">${order.buyer.hubAddress || 'Xã Yên Bình'}</span>
+            </div>
+            <div class="det-info-row">
+              <span class="det-info-label">Cách nhận</span>
+              <span class="det-info-val">${order.transport.title ? order.transport.title.replace('thu gom nông sản HTX', 'Xe HTX') : 'Kênh ngoài giao'}</span>
+            </div>
           </div>
         </div>
 
-        <!-- Sticky Action Buttons -->
-        <div style="display:flex;gap:10px;margin-bottom:20px">
-          <button type="button" class="btn-dock-next" style="flex:1;height:46px;font-size:14px;background:#059669;border-radius:12px" onclick="triggerToast('Đã gửi thông tin đơn #${order.id} vào nhóm Zalo HTX Yên Bình!')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
-            Chia Sẻ Zalo
-          </button>
-          <button type="button" class="btn-dock-back" style="flex:1;height:46px;font-size:14px;border-radius:12px" onclick="triggerToast('Đã tạo bản in phiếu giao hàng #${order.id}')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-            In Phiếu Đơn
+        <!-- Card 3: Món hàng -->
+        <div class="det-card">
+          <div class="det-card-heading">Món hàng</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            ${produceCardsHtml}
+          </div>
+          <div class="det-meta-divider"></div>
+          <div class="det-total-row">
+            <span>Thực nhận</span>
+            <span class="det-total-price">${order.finance.farmerNet.toLocaleString('vi-VN')}đ</span>
+          </div>
+        </div>
+
+        <!-- Sticky / Fixed Bottom Action: Nút Xác Nhận To Xanh Lá -->
+        <div class="det-bottom-bar">
+          <button type="button" class="det-btn-confirm" onclick="confirmOrderAction('${order.id}')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>${isDelivered ? 'Đã Hoàn Tất Đơn Hàng' : (isShipping ? 'Xem Lộ Trình Xe Giao' : 'Xác nhận')}</span>
           </button>
         </div>
       `;
@@ -10494,6 +11183,28 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
       document.getElementById('panel-order-detail').classList.add('active');
       document.querySelector('.screen-container').scrollTo(0, 0);
+    }
+
+    function confirmOrderAction(orderId) {
+      const order = BAC_BA_ORDERS.find(o => o.id === orderId);
+      if (!order) return;
+      if (order.status === 'delivered') {
+        triggerToast(`Đơn ${order.code} đã hoàn tất và quyết toán xong!`);
+      } else {
+        triggerToast(`✓ Đã xác nhận đơn hàng #${order.code}! Bác Ba tiến hành thu hoạch và đóng gói.`);
+        setTimeout(() => {
+          closeOrderDetail();
+        }, 1200);
+      }
+    }
+
+
+    function notifyTruckReady(orderId) {
+      triggerToast("✓ Đã gửi tin Zalo tới Chú Hùng lái xe: Bác Ba đã chuẩn bị đủ nông sản, sẵn sàng bốc lên xe!");
+    }
+
+    function printAgriQRCode(orderCode) {
+      triggerToast(`✓ Đã tạo lệnh in Tem QR Truy Xuất Nguồn Gốc OCOP dán thùng đơn ${orderCode}!`);
     }
 
     function closeOrderDetail() {
@@ -10511,6 +11222,24 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } else {
         triggerToast('Mã đơn: ' + code);
       }
+    }
+
+    function openOrdersView(initialSubTab = 'orders') {
+      const activePanel = document.querySelector('.view-panel.active');
+      if (activePanel && activePanel.id !== 'panel-orders' && activePanel.id !== 'panel-order-detail') {
+        previousOrdersPanel = activePanel.id.replace('panel-', '');
+      }
+      switchNavTab('orders');
+      if (initialSubTab === 'warehouse') {
+        switchOrderSubTab('warehouse');
+      } else {
+        switchOrderSubTab('orders');
+      }
+    }
+
+    function closeOrdersView() {
+      document.getElementById('panel-orders').classList.remove('active');
+      switchNavTab(previousOrdersPanel || 'home');
     }
 
 

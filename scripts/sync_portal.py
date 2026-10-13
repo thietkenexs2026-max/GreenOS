@@ -5,6 +5,10 @@ GreenOS - Script tự động đồng bộ index.html vào PORTAL.html và xuấ
 """
 import os
 import shutil
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX_FILE = os.path.join(REPO_DIR, "index.html")

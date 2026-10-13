@@ -7940,30 +7940,42 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       </div>
 
       <!-- =========================================================================
-           PANEL 10: MÀN HÌNH DOANH THU & SỔ THU TIỀN (CHUẨN GVOS - NÔNG HỘ BÁC BA)
+           PANEL DASHBOARD & DOANH THU NÔNG HỘ: TẤT CẢ TRONG 1 MÀN DUY NHẤT
            ========================================================================= -->
-      <section id="panel-revenue" class="view-panel">
-        <!-- GVOS Top Header Bar -->
-        <div class="gvos-rev-header">
-          <button type="button" class="btn-dock-back" onclick="switchNavTab('home')" style="height:42px;padding:0 15px;font-size:14px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Trang chủ
+      <section id="panel-dashboard" class="view-panel">
+        <!-- Top Action Bar -->
+        <div class="dash-top-bar">
+          <button type="button" class="btn-dock-back" style="height:38px;padding:0 12px;font-size:13px" onclick="switchNavTab('home')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Trang chủ
           </button>
-          <div class="gvos-rev-header-text">
-            <h1 class="gvos-rev-title">Doanh thu của Bác Ba</h1>
-            <p class="gvos-rev-subtitle">Tháng này bán được bao nhiêu · Vụ chuối Đồng Cát</p>
+          <span class="wizard-step-indicator" style="background:#ECFDF5;color:#15803D;border-color:#BBF7D0;font-size:11.5px;padding:5px 9px">THỐNG KÊ & DOANH THU</span>
+          <button type="button" class="btn-voice-brief" onclick="speakDashboardBrief()" title="Bấm nghe đọc tóm tắt bằng giọng nói">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            <span>Nghe đọc</span>
+          </button>
+        </div>
+
+        <!-- Thẻ Định Danh Nông Hộ Bác Ba -->
+        <div class="dash-farmer-badge-card" style="margin-bottom:14px">
+          <div class="dfb-user">
+            <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="dfb-avatar">
+            <div class="dfb-info">
+              <div class="dfb-name">Bác Ba (Nguyễn Văn Ba)</div>
+              <div class="dfb-role">Tổ trưởng Chuối OCOP · Thôn Đồng Cát</div>
+            </div>
+          </div>
+          <div class="dfb-bottom-row">
+            <span class="dfb-id-tag">Mã xã viên: <strong>XV-004</strong></span>
+            <div class="dfb-status-pill" onclick="toggleFarmStatus(this)" title="Chạm để chuyển trạng thái">
+              <span>●</span>
+              <span id="farmStatusText">Sẵn sàng xuất chuối</span>
+            </div>
           </div>
         </div>
 
-        <!-- Thẻ Định Danh Nông Hộ Bác Ba Trên Màn Doanh Thu -->
-        <div class="rev-farmer-profile-card">
-          <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="rfp-avatar">
-          <div class="rfp-info">
-            <div class="rfp-name-row">
-              <span class="rfp-name">Bác Ba (Nguyễn Văn Ba)</span>
-              <span class="rfp-tag">Mã: XV-004</span>
-            </div>
-            <div class="rfp-role">Tổ trưởng Chuối OCOP · Thôn Đồng Cát</div>
-          </div>
+        <!-- PHẦN 1: DOANH THU & DÒNG TIỀN NÔNG SẢN (CHUẨN GVOS) -->
+        <div class="section-title-line" style="margin-bottom:10px">
+          <span>💰 Doanh thu bán nông sản</span>
         </div>
 
         <!-- Month Filter Bar (GVOS) -->
@@ -8136,7 +8148,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         </section>
 
         <!-- 5. Chợ Xanh · tiền Đối tác đã nhận (dt-doi-tac) -->
-        <section class="gvos-rev-card" aria-labelledby="dt-doi-tac" style="margin-bottom:20px;">
+        <section class="gvos-rev-card" aria-labelledby="dt-doi-tac">
           <div class="gvos-rev-section-header">
             <h2 id="dt-doi-tac" class="gvos-rev-section-title">Chợ Xanh · tiền Đối tác đã nhận</h2>
           </div>
@@ -8158,71 +8170,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             Người mua đã chuyển cho Đối tác, chưa trừ phí. Đối tác đối soát rồi trả thẳng cho Bác Ba (XV-004).
           </p>
         </section>
-      </section>
 
-      <!-- =========================================================================
-           PANEL DASHBOARD NÔNG HỘ: BẢNG ĐIỀU KHIỂN BÁC BA
-           ========================================================================= -->
-      <section id="panel-dashboard" class="view-panel">
-        <!-- Top Action Bar -->
-        <div class="dash-top-bar">
-          <button type="button" class="btn-dock-back" style="height:38px;padding:0 12px;font-size:13px" onclick="switchNavTab('home')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Trang chủ
-          </button>
-          <span class="wizard-step-indicator" style="background:#ECFDF5;color:#15803D;border-color:#BBF7D0;font-size:11.5px;padding:5px 9px">THỐNG KÊ NÔNG HỘ</span>
-          <button type="button" class="btn-voice-brief" onclick="speakDashboardBrief()" title="Bấm nghe đọc tóm tắt bằng giọng nói">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-            <span>Nghe đọc</span>
-          </button>
-        </div>
-
-        <!-- Thẻ Định Danh Nông Hộ Bác Ba -->
-        <div class="dash-farmer-badge-card">
-          <div class="dfb-user">
-            <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="dfb-avatar">
-            <div class="dfb-info">
-              <div class="dfb-name">Bác Ba (Nguyễn Văn Ba)</div>
-              <div class="dfb-role">Tổ trưởng Chuối OCOP · Thôn Đồng Cát</div>
-            </div>
-          </div>
-          <div class="dfb-bottom-row">
-            <span class="dfb-id-tag">Mã xã viên: <strong>XV-004</strong></span>
-            <div class="dfb-status-pill" onclick="toggleFarmStatus(this)" title="Chạm để chuyển trạng thái">
-              <span>●</span>
-              <span id="farmStatusText">Sẵn sàng xuất chuối</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thẻ Hero Doanh Thu & Dòng Tiền Vụ Tết 2026 -->
-        <div class="dash-revenue-hero-card">
-          <div class="drh-label">TỔNG THU NHẬP NÔNG SẢN VỤ TẾT 2026</div>
-          <div class="drh-amount">18.450.000 đ</div>
-          <div class="drh-growth">
-            <span>↗ Tăng +15% so với năm 2025</span>
-            <span>· 42 đơn hoàn tất</span>
-          </div>
-          <div class="drh-split-row">
-            <div class="drh-split-item" onclick="openRevenueView()">
-              <div class="drh-split-lbl">ĐÃ VỀ AGRIBANK</div>
-              <div class="drh-split-val">14.600.000 đ</div>
-              <div class="drh-split-sub">14 đơn sỉ & lẻ ➔</div>
-            </div>
-            <div class="drh-split-item" onclick="triggerToast('Tiền tạm giữ HTX sẽ quyết toán vào ngày 23 tháng Chạp')">
-              <div class="drh-split-lbl">HTX CHỜ QUYẾT TOÁN</div>
-              <div class="drh-split-val">3.850.000 đ</div>
-              <div class="drh-split-sub">Quyết toán 23 Tết ➔</div>
-            </div>
-          </div>
-
-          <!-- Nút CTA xem chi tiết Doanh thu tháng chuẩn GVOS -->
-          <button type="button" class="btn-dash-rev-cta" onclick="openRevenueView()" title="Bấm xem sổ Doanh thu tháng của Bác Ba">
-            <div class="bdrc-left">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              <span>Xem Sổ Doanh thu tháng (GVOS)</span>
-            </div>
-            <span class="bdrc-arrow">3.850.000 đ ➔</span>
-          </button>
+        <!-- PHẦN 2: VẬN HÀNH MÙA VỤ & THU HOẠCH -->
+        <div class="section-title-line" style="margin-top:20px;margin-bottom:12px">
+          <span>🌾 Vận hành mùa vụ & Thu hoạch</span>
         </div>
 
         <!-- Lưới 4 Thẻ Chỉ Số Vận Hành -->
@@ -8331,75 +8282,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <div class="oi-right-val">1.4 Tấn</div>
               <div class="oi-right-status" style="color:#D97706">⏳ Dự kiến 20 Tết</div>
             </div>
-          </div>
-        </div>
-
-        <!-- Biểu Đồ Doanh Thu 6 Tháng Của Bác Ba -->
-        <div class="dash-card-section">
-          <div class="dcs-title-row">
-            <div class="dcs-title">
-              <span>📈 Doanh thu 6 tháng gần đây</span>
-            </div>
-            <span style="font-size:12px;color:var(--text-muted);font-weight:600">Đơn vị: Triệu VNĐ</span>
-          </div>
-
-          <div class="chart-bars-wrap">
-            <!-- T8 -->
-            <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 8/2025: 8.2 triệu đ (Bắt đầu vụ)')">
-              <span class="chart-bar-val">8.2</span>
-              <div class="chart-bar-track">
-                <div class="chart-bar-pillar" style="height: 44%"></div>
-              </div>
-              <span class="chart-bar-label">T8</span>
-            </div>
-
-            <!-- T9 -->
-            <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 9/2025: 11.5 triệu đ (Gom đơn WinMart)')">
-              <span class="chart-bar-val">11.5</span>
-              <div class="chart-bar-track">
-                <div class="chart-bar-pillar" style="height: 62%"></div>
-              </div>
-              <span class="chart-bar-label">T9</span>
-            </div>
-
-            <!-- T10 -->
-            <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 10/2025: 14.8 triệu đ (Mở rộng sấy dẻo)')">
-              <span class="chart-bar-val">14.8</span>
-              <div class="chart-bar-track">
-                <div class="chart-bar-pillar" style="height: 80%"></div>
-              </div>
-              <span class="chart-bar-label">T10</span>
-            </div>
-
-            <!-- T11 -->
-            <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 11/2025: 16.2 triệu đ (Hội chợ OCOP)')">
-              <span class="chart-bar-val">16.2</span>
-              <div class="chart-bar-track">
-                <div class="chart-bar-pillar" style="height: 88%"></div>
-              </div>
-              <span class="chart-bar-label">T11</span>
-            </div>
-
-            <!-- T12 -->
-            <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 12/2025: 17.5 triệu đ (Chuẩn bị hàng Tết)')">
-              <span class="chart-bar-val">17.5</span>
-              <div class="chart-bar-track">
-                <div class="chart-bar-pillar" style="height: 94%"></div>
-              </div>
-              <span class="chart-bar-label">T12</span>
-            </div>
-
-            <!-- T1 Tết -->
-            <div class="chart-bar-col" onclick="showChartBarDetail('Tháng 1/2026: 18.45 triệu đ (Đỉnh vụ Tết cao kỷ lục!)')">
-              <span class="chart-bar-val" style="color:var(--agri-green);font-weight:800">18.5</span>
-              <div class="chart-bar-track">
-                <div class="chart-bar-pillar highlight" style="height: 100%"></div>
-              </div>
-              <span class="chart-bar-label" style="color:var(--agri-green);font-weight:800">T1 ⭐</span>
-            </div>
-          </div>
-          <div style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:10px">
-            * Bác chạm vào từng cột để xem chi tiết doanh thu từng tháng
           </div>
         </div>
 
@@ -8695,14 +8577,15 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         document.getElementById('panel-account').classList.add('active');
         if (document.getElementById('tabAccount')) document.getElementById('tabAccount').classList.add('active');
       } else if (tabName === 'revenue') {
-        document.getElementById('panel-revenue').classList.add('active');
+        switchNavTab('dashboard');
+        return;
       }
       document.querySelector('.screen-container').scrollTo(0, 0);
     }
 
-    // Mở trực tiếp màn hình Doanh thu chuẩn GVOS
+    // Mở trực tiếp màn hình Thống kê & Doanh thu chuẩn GVOS
     function openRevenueView() {
-      switchNavTab('revenue');
+      switchNavTab('dashboard');
     }
 
     // Xử lý chuyển đổi tháng trên màn hình Doanh thu GVOS

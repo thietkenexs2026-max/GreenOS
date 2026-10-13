@@ -5573,179 +5573,104 @@
       overflow-wrap: break-word;
     }
 
-    /* =========================================================================
-       DANH MỤC QUẢN LÝ TÀI KHOẢN (CHUẨN GVOS THEO ẢNH CHỤP)
-       ========================================================================= */
-    .account-mgmt-section {
+    /* Trang chủ: Chợ Xanh & Đăng Bán Nông Sản (Section Ghép) */
+    .home-unified-market-publish-section {
       background: #FFFFFF;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 24px;
-      padding: 12px 14px 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border: 1.5px solid #A7F3D0;
+      border-radius: 20px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.08);
     }
-    .ams-sheet-handle {
-      width: 44px;
-      height: 4px;
-      background: #CBD5E1;
-      border-radius: 9999px;
-      margin: 2px auto 10px;
-    }
-    .ams-header {
+    .hump-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #F1F5F9;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #D1FAE5;
+      gap: 8px;
     }
-    .ams-title {
-      font-size: 19px;
-      font-weight: 800;
-      color: #0F172A;
-      letter-spacing: -0.02em;
-    }
-    .ams-close-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: none;
-      background: transparent;
-      color: #64748B;
+    .hump-header-left {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
+    }
+    .hump-header-left > div {
+      min-width: 0;
+      flex: 1;
+    }
+    .hump-main-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #065F46;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+    .hump-sub-title {
+      font-size: 11.5px;
+      color: #047857;
+      margin-top: 1px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .hump-card-text {
+      min-width: 0;
+      flex: 1;
+    }
+    .hump-card-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+    .hump-card-desc {
+      font-size: 11px;
+      color: #64748B;
+      margin-top: 3px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .hump-spotlight-match {
+      background: #FEF3C7;
+      border: 1px solid #FDE68A;
+      border-radius: 12px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
       cursor: pointer;
       transition: background 150ms ease;
     }
-    .ams-close-btn:hover {
-      background: #F1F5F9;
-    }
-    .ams-profile-box {
-      margin-bottom: 14px;
-      padding: 0 2px;
-    }
-    .ams-user-name {
-      font-size: 17px;
-      font-weight: 800;
-      color: #0F172A;
-      line-height: 1.3;
-    }
-    .ams-user-role {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #64748B;
-      margin-top: 3px;
-    }
-    .ams-group-card {
-      background: #FFFFFF;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 18px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-    }
-    .ams-item-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      border-bottom: 1px solid #F1F5F9;
-      cursor: pointer;
-      transition: background 140ms ease;
-    }
-    .ams-item-row:last-child {
-      border-bottom: none;
-    }
-    .ams-item-row:active {
-      background: #F8FAFC;
-    }
-    .ams-icon-box {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: #ECFDF5;
-      color: #15803D;
-      border: 1px solid #BBF7D0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .ams-item-content {
+    .hsm-info {
       flex: 1;
       min-width: 0;
-    }
-    .ams-item-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #0F172A;
-      line-height: 1.3;
-    }
-    .ams-item-sub {
-      font-size: 12.5px;
-      color: #64748B;
-      margin-top: 2px;
-      line-height: 1.3;
-      white-space: nowrap;
+      font-size: 11.5px;
+      color: #92400E;
+      line-height: 1.35;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    .ams-chevron {
-      color: #94A3B8;
+    .hsm-buyer {
+      font-weight: 800;
+      color: #78350F;
+    }
+    .hsm-need {
+      font-size: 11.5px;
+      color: #92400E;
+    }
+    .hsm-link {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #B45309;
       flex-shrink: 0;
-    }
-    .ams-toggle-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-    .ams-toggle-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #64748B;
-    }
-    .ams-switch-track {
-      width: 44px;
-      height: 26px;
-      background: #64748B;
-      border-radius: 9999px;
-      position: relative;
-      cursor: pointer;
-      transition: background 200ms ease;
-    }
-    .ams-switch-track.active {
-      background: #15803D;
-    }
-    .ams-switch-thumb {
-      width: 20px;
-      height: 20px;
-      background: #FFFFFF;
-      border-radius: 50%;
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
-    }
-    .ams-switch-track.active .ams-switch-thumb {
-      transform: translateX(18px);
-    }
-    .ams-logout-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 0 4px;
-      color: #991B1B;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: opacity 150ms ease;
-    }
-    .ams-logout-row:hover {
-      opacity: 0.8;
+      white-space: nowrap;
     }
 
     /* Trang chủ: Banner Lối Tắt Thống Kê */
@@ -5942,7 +5867,183 @@
       word-break: break-word;
       overflow-wrap: break-word;
     }
-  </style>
+  
+    /* =========================================================================
+       DANH MỤC QUẢN LÝ TÀI KHOẢN (CHUẨN GVOS THEO ẢNH CHỤP)
+       ========================================================================= */
+    .ams-container {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 24px;
+      padding: 12px 14px 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    .ams-sheet-handle {
+      width: 44px;
+      height: 4px;
+      background: #CBD5E1;
+      border-radius: 9999px;
+      margin: 2px auto 10px;
+    }
+    .ams-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .ams-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .ams-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+    .ams-close-btn:hover {
+      background: #F1F5F9;
+    }
+    .ams-profile-box {
+      margin-bottom: 14px;
+      padding: 0 2px;
+    }
+    .ams-user-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.3;
+    }
+    .ams-user-role {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #64748B;
+      margin-top: 3px;
+    }
+    .ams-group-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 18px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+    .ams-item-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #F1F5F9;
+      cursor: pointer;
+      transition: background 140ms ease;
+    }
+    .ams-item-row:last-child {
+      border-bottom: none;
+    }
+    .ams-item-row:active {
+      background: #F8FAFC;
+    }
+    .ams-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #ECFDF5;
+      color: #15803D;
+      border: 1px solid #BBF7D0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ams-item-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .ams-item-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.3;
+    }
+    .ams-item-sub {
+      font-size: 12.5px;
+      color: #64748B;
+      margin-top: 2px;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ams-chevron {
+      color: #94A3B8;
+      flex-shrink: 0;
+    }
+    .ams-toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .ams-toggle-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748B;
+    }
+    .ams-switch-track {
+      width: 44px;
+      height: 26px;
+      background: #64748B;
+      border-radius: 9999px;
+      position: relative;
+      cursor: pointer;
+      transition: background 200ms ease;
+    }
+    .ams-switch-track.active {
+      background: #15803D;
+    }
+    .ams-switch-thumb {
+      width: 20px;
+      height: 20px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    }
+    .ams-switch-track.active .ams-switch-thumb {
+      transform: translateX(18px);
+    }
+    .ams-logout-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 0 4px;
+      color: #991B1B;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 150ms ease;
+    }
+    .ams-logout-row:hover {
+      opacity: 0.8;
+    }
+</style>
 </head>
 <body class="has-bottom-nav">
 
@@ -6360,118 +6461,62 @@
         </div>
 
         <!-- =========================================================================
-             DANH MỤC QUẢN LÝ TÀI KHOẢN (THAY THẾ SECTION CHỢ XANH - CHUẨN GVOS)
+             SECTION GHÉP: CHỢ XANH & ĐĂNG BÁN NÔNG SẢN (HỢP NHẤT 2 TRONG 1)
              ========================================================================= -->
-        <div class="account-mgmt-section" id="accountMgmtSection">
-          <!-- Header Tài khoản & Thanh kéo -->
-          <div class="ams-sheet-handle"></div>
-          <div class="ams-header">
-            <div class="ams-title">Tài khoản</div>
-            <button type="button" class="ams-close-btn" onclick="triggerToast('Đang ở màn hình Tài khoản')" aria-label="Đóng"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        <div class="home-unified-market-publish-section">
+          <!-- Header của Section Ghép -->
+          <div class="hump-header">
+            <div class="hump-header-left">
+              <div class="hump-leaf-badge">🌿</div>
+              <div>
+                <div class="hump-main-title">Chợ Xanh & Đăng Bán Nông Sản</div>
+                <div class="hump-sub-title">Kết nối thương lái sỉ & Đăng bán đa kênh chuẩn OCOP</div>
+              </div>
+            </div>
+            <span class="hump-hot-chip" onclick="switchNavTab('market')" title="Bấm mở Chợ Xanh">2 Ghép nối mới</span>
           </div>
 
-          <!-- Thông tin chủ hộ -->
-          <div class="ams-profile-box">
-            <div class="ams-user-name">Nguyễn Thị Hoa</div>
-            <div class="ams-user-role">Thành viên HTX</div>
-          </div>
-
-          <!-- Nhóm 1: Gian hàng, Hồ sơ, Gói dịch vụ, Đổi tài khoản -->
-          <div class="ams-group-card">
-            <!-- Mục 1: Gian hàng -->
-            <div class="ams-item-row" onclick="switchNavTab('market')" title="Bật bán và đặt giá trên Chợ Xanh">
-              <div class="ams-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 10V7"/></svg>
+          <!-- 2 Card hành động song song / lưới trực quan -->
+          <div class="hump-grid-cards">
+            <!-- Card 1: Đăng Bán Nông Sản Mới (3 Bước Wizard) -->
+            <div class="hump-card-action hump-card-publish" onclick="startWizardFlow()">
+              <div class="hump-card-icon-wrap" style="background:#DCFCE7;color:#15803D">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
               </div>
-              <div class="ams-item-content">
-                <div class="ams-item-title">Gian hàng</div>
-                <div class="ams-item-sub">Bật bán và đặt giá trên Chợ Xanh</div>
+              <div class="hump-card-text">
+                <div class="hump-card-title">Đăng Bán Nhanh</div>
+                <div class="hump-card-desc">3 ảnh + Trợ lý AI định giá OCOP</div>
               </div>
-              <svg class="ams-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              <button type="button" class="btn-hump-go primary">
+                <span>Bắt đầu</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
 
-            <!-- Mục 2: Hồ sơ hộ -->
-            <div class="ams-item-row" onclick="openFarmerProfileModal()" title="Xem thông tin hồ sơ hộ">
-              <div class="ams-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>
+            <!-- Card 2: Vào Chợ Xanh Xã (Bản tin Cần / Có & Khớp Lệnh) -->
+            <div class="hump-card-action hump-card-market" onclick="switchNavTab('market')">
+              <div class="hump-card-icon-wrap" style="background:#DBEAFE;color:#1D4ED8">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
               </div>
-              <div class="ams-item-content">
-                <div class="ams-item-title">Hồ sơ hộ</div>
+              <div class="hump-card-text">
+                <div class="hump-card-title">Chợ Xanh Xã</div>
+                <div class="hump-card-desc">18 thẻ Có · 7 thẻ Cần thu mua</div>
               </div>
-              <svg class="ams-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-
-            <!-- Mục 3: Gói dịch vụ -->
-            <div class="ams-item-row" onclick="openServicePackageModal()" title="Xem gói dịch vụ xã viên HTX">
-              <div class="ams-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-              </div>
-              <div class="ams-item-content">
-                <div class="ams-item-title">Gói dịch vụ</div>
-              </div>
-              <svg class="ams-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-
-            <!-- Mục 4: Đổi tài khoản -->
-            <div class="ams-item-row" onclick="openSwitchAccountModal()" title="Chuyển đổi tài khoản nông hộ / HTX">
-              <div class="ams-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
-              </div>
-              <div class="ams-item-content">
-                <div class="ams-item-title">Đổi tài khoản</div>
-              </div>
-              <svg class="ams-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              <button type="button" class="btn-hump-go secondary">
+                <span>Vào Chợ</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
           </div>
 
-          <!-- Nhóm 2: Cài đặt giao diện & Mạng -->
-          <div class="ams-group-card">
-            <!-- Mục 5: Giao diện tối -->
-            <div class="ams-item-row" onclick="toggleDarkMode()" title="Bật/Tắt giao diện tối">
-              <div class="ams-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-              </div>
-              <div class="ams-item-content">
-                <div class="ams-item-title">Giao diện tối</div>
-              </div>
-              <svg class="ams-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          <!-- Dòng Khớp Nối Nóng (Thương lái đang tìm Bác Ba) -->
+          <div class="hump-spotlight-match" onclick="switchNavTab('market')" title="Bấm xem ghép nối này tại Chợ Xanh">
+            <div class="hsm-icon">⚡</div>
+            <div class="hsm-info">
+              <span class="hsm-buyer">Xưởng mứt Hải Hà (3.2km)</span>
+              <span class="hsm-need">cần mua gấp <strong>1,2 tấn chuối sấy dẻo</strong></span>
             </div>
-
-            <!-- Mục 6: Giả lập mất mạng -->
-            <div class="ams-item-row" onclick="toggleSimulateOffline()" title="Gạt bật/tắt giả lập mất mạng">
-              <div class="ams-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-              </div>
-              <div class="ams-item-content">
-                <div class="ams-item-title">Giả lập mất mạng</div>
-              </div>
-              <div class="ams-toggle-wrap">
-                <span class="ams-toggle-label" id="offlineSimLabel">Tắt</span>
-                <div class="ams-switch-track" id="offlineSimSwitch">
-                  <div class="ams-switch-thumb"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Nhóm 3: Dữ liệu hệ thống -->
-          <div class="ams-group-card">
-            <!-- Mục 7: Đặt lại dữ liệu mẫu -->
-            <div class="ams-item-row" onclick="resetDemoData()" title="Khôi phục dữ liệu ban đầu">
-              <div class="ams-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-              </div>
-              <div class="ams-item-content">
-                <div class="ams-item-title">Đặt lại dữ liệu mẫu</div>
-              </div>
-              <svg class="ams-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-          </div>
-
-          <!-- Nút Đăng xuất -->
-          <div class="ams-logout-row" onclick="handleFarmerLogout()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            <span>Đăng xuất</span>
+            <span class="hsm-link">Khớp đơn ➔</span>
           </div>
         </div>
 
@@ -7962,6 +8007,126 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         </div>
       </section>
 
+          <!-- =========================================================================
+           PANEL 15: DANH MỤC QUẢN LÝ TÀI KHOẢN (MENU ĐÁY - CHUẨN GVOS)
+           ========================================================================= -->
+      <section id="panel-account" class="view-panel">
+        <div class="ams-container">
+          <!-- Thanh kéo đỉnh sheet -->
+          <div class="ams-sheet-handle"></div>
+
+          <!-- Header Tài khoản & nút đóng về Home -->
+          <div class="ams-header">
+            <h1 class="ams-title">Tài khoản</h1>
+            <button type="button" class="ams-close-btn" onclick="switchNavTab('home')" aria-label="Đóng"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+          </div>
+
+          <!-- Thông tin chủ hộ -->
+          <div class="ams-profile-box">
+            <div class="ams-user-name">Nguyễn Thị Hoa</div>
+            <div class="ams-user-role">Thành viên HTX</div>
+          </div>
+
+          <!-- Nhóm 1: Gian hàng, Hồ sơ, Gói dịch vụ, Đổi tài khoản -->
+          <div class="ams-group-card">
+            <!-- Mục 1: Gian hàng -->
+            <div class="ams-item-row" onclick="switchNavTab('market')" title="Bật bán và đặt giá trên Chợ Xanh">
+              <div class="ams-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 10V7"/></svg>
+              </div>
+              <div class="ams-item-content">
+                <div class="ams-item-title">Gian hàng</div>
+                <div class="ams-item-sub">Bật bán và đặt giá trên Chợ Xanh</div>
+              </div>
+              <svg class="ams-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+
+            <!-- Mục 2: Hồ sơ hộ -->
+            <div class="ams-item-row" onclick="openFarmerProfileModal()" title="Xem thông tin hồ sơ hộ">
+              <div class="ams-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>
+              </div>
+              <div class="ams-item-content">
+                <div class="ams-item-title">Hồ sơ hộ</div>
+              </div>
+              <svg class="ams-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+
+            <!-- Mục 3: Gói dịch vụ -->
+            <div class="ams-item-row" onclick="openServicePackageModal()" title="Xem gói dịch vụ xã viên HTX">
+              <div class="ams-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <div class="ams-item-content">
+                <div class="ams-item-title">Gói dịch vụ</div>
+              </div>
+              <svg class="ams-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+
+            <!-- Mục 4: Đổi tài khoản -->
+            <div class="ams-item-row" onclick="openSwitchAccountModal()" title="Chuyển đổi tài khoản nông hộ / HTX">
+              <div class="ams-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
+              </div>
+              <div class="ams-item-content">
+                <div class="ams-item-title">Đổi tài khoản</div>
+              </div>
+              <svg class="ams-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+
+          <!-- Nhóm 2: Cài đặt giao diện & Mạng -->
+          <div class="ams-group-card">
+            <!-- Mục 5: Giao diện tối -->
+            <div class="ams-item-row" onclick="toggleDarkMode()" title="Bật/Tắt giao diện tối">
+              <div class="ams-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+              </div>
+              <div class="ams-item-content">
+                <div class="ams-item-title">Giao diện tối</div>
+              </div>
+              <svg class="ams-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+
+            <!-- Mục 6: Giả lập mất mạng -->
+            <div class="ams-item-row" onclick="toggleSimulateOffline()" title="Gạt bật/tắt giả lập mất mạng">
+              <div class="ams-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+              </div>
+              <div class="ams-item-content">
+                <div class="ams-item-title">Giả lập mất mạng</div>
+              </div>
+              <div class="ams-toggle-wrap">
+                <span class="ams-toggle-label" id="offlineSimLabel">Tắt</span>
+                <div class="ams-switch-track" id="offlineSimSwitch">
+                  <div class="ams-switch-thumb"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nhóm 3: Dữ liệu hệ thống -->
+          <div class="ams-group-card">
+            <!-- Mục 7: Đặt lại dữ liệu mẫu -->
+            <div class="ams-item-row" onclick="resetDemoData()" title="Khôi phục dữ liệu ban đầu">
+              <div class="ams-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              </div>
+              <div class="ams-item-content">
+                <div class="ams-item-title">Đặt lại dữ liệu mẫu</div>
+              </div>
+              <svg class="ams-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+
+          <!-- Nút Đăng xuất -->
+          <div class="ams-logout-row" onclick="handleFarmerLogout()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span>Đăng xuất</span>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- =========================================================================
@@ -7995,11 +8160,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         <span class="tab-badge" style="background:#EF4444;color:#fff">44</span>
       </button>
 
-      <!-- Tab 5: Chợ Xanh -->
-      <button type="button" class="nav-tab-item" id="tabMarket" onclick="switchNavTab('market')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span class="tab-text">Chợ Xanh</span>
-        <span class="tab-badge" style="background:#10B981;color:#fff">2</span>
+      <!-- Tab 5: Tài khoản (Thay thế Chợ Xanh ở Menu đáy theo yêu cầu) -->
+      <button type="button" class="nav-tab-item" id="tabAccount" onclick="switchNavTab('account')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="tab-text">Tài khoản</span>
       </button>
     </nav>
 
@@ -8083,6 +8247,9 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } else if (tabName === 'support') {
         document.getElementById('panel-support').classList.add('active');
         if (document.getElementById('tabSupport')) document.getElementById('tabSupport').classList.add('active');
+      } else if (tabName === 'account') {
+        document.getElementById('panel-account').classList.add('active');
+        if (document.getElementById('tabAccount')) document.getElementById('tabAccount').classList.add('active');
       }
       document.querySelector('.screen-container').scrollTo(0, 0);
     }
@@ -10246,19 +10413,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     // Tự động mở Onboarding lần đầu tiên vào app
     // DOMContentLoaded ready
 
-    // Mở đơn hàng theo filter từ Card Việc cần làm
-    function openOrdersFiltered(filterType) {
-      openOrdersView();
-      if (filterType === 'qua_han') {
-        triggerToast('Lọc: 5 đơn hàng quá hạn cần giao gấp!');
-      } else if (filterType === 'cho_xac_nhan') {
-        triggerToast('Lọc: 44 đơn hàng đang chờ xác nhận');
-      } else if (filterType === 'khieu_nai') {
-        triggerToast('Lọc: 2 đơn hàng có khiếu nại (1 thiếu hàng, 1 kiểm tra)');
-      }
-    }
-
+    
+    // ==========================================
     // CÁC HÀM XỬ LÝ TÀI KHOẢN (CHUẨN GVOS)
+    // ==========================================
     function openFarmerProfileModal() {
       triggerToast('Hồ sơ hộ: Nguyễn Thị Hoa · HTX Đồng Cát (Chuối OCOP)');
     }
@@ -10308,6 +10466,17 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
     function handleFarmerLogout() {
       triggerToast('Đăng xuất: Hẹn gặp lại Bác Ba (Nguyễn Thị Hoa)!');
+    }
+// Mở đơn hàng theo filter từ Card Việc cần làm
+    function openOrdersFiltered(filterType) {
+      openOrdersView();
+      if (filterType === 'qua_han') {
+        triggerToast('Lọc: 5 đơn hàng quá hạn cần giao gấp!');
+      } else if (filterType === 'cho_xac_nhan') {
+        triggerToast('Lọc: 44 đơn hàng đang chờ xác nhận');
+      } else if (filterType === 'khieu_nai') {
+        triggerToast('Lọc: 2 đơn hàng có khiếu nại (1 thiếu hàng, 1 kiểm tra)');
+      }
     }
 
     // Màn hình Soạn Hàng (Pick-list)

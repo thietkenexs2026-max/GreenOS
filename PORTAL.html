@@ -3993,6 +3993,98 @@
       color: #059669;
     }
 
+    /* Menu Dropdown Lọc Nguồn Đơn Hàng Thu Mua */
+    .agri-channel-dropdown-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .agri-channel-dropdown-wrap .ac-arrow {
+      transition: transform 180ms ease;
+    }
+    .agri-channel-dropdown-wrap.open .ac-arrow {
+      transform: rotate(180deg);
+    }
+    .agri-channel-dropdown-wrap.open .agri-dropdown-filter {
+      border-color: #059669;
+      color: #059669;
+      background: #F0FDF4;
+    }
+    .agri-channel-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      width: 250px;
+      max-width: 90vw;
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.18), 0 4px 10px -2px rgba(15, 23, 42, 0.08);
+      padding: 6px;
+      z-index: 120;
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+      animation: fadeInDown 150ms ease-out forwards;
+    }
+    .agri-channel-dropdown-wrap.open .agri-channel-menu {
+      display: flex;
+    }
+    .ac-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: background 120ms ease;
+      user-select: none;
+    }
+    .ac-item:hover {
+      background: #F8FAFC;
+    }
+    .ac-item.active {
+      background: #ECFDF5;
+    }
+    .ac-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .ac-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .ac-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1E293B;
+      line-height: 1.3;
+    }
+    .ac-item.active .ac-title {
+      color: #059669;
+      font-weight: 800;
+    }
+    .ac-sub {
+      font-size: 11px;
+      color: #64748B;
+      line-height: 1.25;
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ac-check {
+      font-size: 13px;
+      font-weight: 900;
+      color: #059669;
+      opacity: 0;
+      transition: opacity 120ms ease;
+    }
+    .ac-item.active .ac-check {
+      opacity: 1;
+    }
+
     /* Thẻ Lối Tắt Phiếu Gom Hàng HTX (Pick-list) */
     .agri-picklist-shortcut-card, .order-picklist-shortcut-card {
       background: linear-gradient(135deg, #ECFDF5 0%, #F0FDF4 100%);
@@ -8842,11 +8934,74 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <span class="agri-date-text" id="shopeeDateFilterLabel">Tháng 10/2026</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
-            <button type="button" class="agri-dropdown-filter" onclick="toggleChannelFilter(this)">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
-              <span id="shopeeChannelFilterLabel">Tất cả nguồn</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
+            <!-- DROPDOWN NGUỒN ĐƠN HÀNG THU MUA CHUYÊN DỤNG -->
+            <div class="agri-channel-dropdown-wrap" id="agriChannelDropdownWrap">
+              <button type="button" class="agri-dropdown-filter" id="btnChannelDropdownToggle" onclick="toggleChannelDropdown(event)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+                <span id="shopeeChannelFilterLabel">Tất cả nguồn</span>
+                <svg class="ac-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+
+              <!-- Menu Dropdown hiển thị đầy đủ danh sách các nguồn đơn -->
+              <div class="agri-channel-menu" id="agriChannelMenu">
+                <div class="ac-item active" data-val="all" onclick="selectChannelOption('all', 'Tất cả nguồn')">
+                  <span class="ac-icon">🌱</span>
+                  <div class="ac-info">
+                    <span class="ac-title">Tất cả nguồn đơn</span>
+                    <span class="ac-sub">Toàn bộ 10 đơn thu mua nông sản</span>
+                  </div>
+                  <span class="ac-check">✓</span>
+                </div>
+                <div class="ac-item" data-val="b2b" onclick="selectChannelOption('b2b', 'Hợp đồng sỉ B2B')">
+                  <span class="ac-icon">🏢</span>
+                  <div class="ac-info">
+                    <span class="ac-title">Hợp đồng sỉ B2B</span>
+                    <span class="ac-sub">WinMart, chuỗi siêu thị bán lẻ</span>
+                  </div>
+                  <span class="ac-check">✓</span>
+                </div>
+                <div class="ac-item" data-val="trader" onclick="selectChannelOption('trader', 'Thương lái cân vườn')">
+                  <span class="ac-icon">🚚</span>
+                  <div class="ac-info">
+                    <span class="ac-title">Thương lái cân vườn</span>
+                    <span class="ac-sub">Thu mua trực tiếp tại vườn Bác Ba</span>
+                  </div>
+                  <span class="ac-check">✓</span>
+                </div>
+                <div class="ac-item" data-val="school" onclick="selectChannelOption('school', 'Nông sản học đường')">
+                  <span class="ac-icon">🏫</span>
+                  <div class="ac-info">
+                    <span class="ac-title">Nông sản học đường</span>
+                    <span class="ac-sub">Bếp ăn trường học xã Yên Bình</span>
+                  </div>
+                  <span class="ac-check">✓</span>
+                </div>
+                <div class="ac-item" data-val="zalo" onclick="selectChannelOption('zalo', 'Khách quen Zalo OCOP')">
+                  <span class="ac-icon">💬</span>
+                  <div class="ac-info">
+                    <span class="ac-title">Khách quen Zalo OCOP</span>
+                    <span class="ac-sub">Zalo Mini App & đối tác quen</span>
+                  </div>
+                  <span class="ac-check">✓</span>
+                </div>
+                <div class="ac-item" data-val="market" onclick="selectChannelOption('market', 'Chợ Xã Yên Bình')">
+                  <span class="ac-icon">🛒</span>
+                  <div class="ac-info">
+                    <span class="ac-title">Chợ Xã Yên Bình</span>
+                    <span class="ac-sub">Giao dịch trực tiếp tại chợ xã</span>
+                  </div>
+                  <span class="ac-check">✓</span>
+                </div>
+                <div class="ac-item" data-val="deposit" onclick="selectChannelOption('deposit', 'Đặt cọc vụ Tết')">
+                  <span class="ac-icon">🧧</span>
+                  <div class="ac-info">
+                    <span class="ac-title">Đặt cọc vụ Tết</span>
+                    <span class="ac-sub">Chuối tiến vua & giỏ quà Tết</span>
+                  </div>
+                  <span class="ac-check">✓</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Order Cards List Container -->
@@ -11797,24 +11952,55 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       triggerToast('Đã lọc theo khoảng thời gian nông vụ!');
     }
 
-    function toggleChannelFilter(btn) {
-      const channels = [
-        { label: 'Tất cả nguồn đơn', val: 'all' },
-        { label: 'Hợp đồng sỉ B2B', val: 'b2b' },
-        { label: 'Thương lái cân vườn', val: 'trader' },
-        { label: 'Nông sản học đường', val: 'school' },
-        { label: 'Khách quen Zalo OCOP', val: 'zalo' },
-        { label: 'Chợ Xã Yên Bình', val: 'market' },
-        { label: 'Đặt cọc vụ Tết', val: 'deposit' }
-      ];
-      const curText = document.getElementById('shopeeChannelFilterLabel').innerText;
-      let curIdx = channels.findIndex(c => c.label === curText);
-      let nextIdx = (curIdx + 1) % channels.length;
-      currentChannelFilter = channels[nextIdx].val;
-      document.getElementById('shopeeChannelFilterLabel').innerText = channels[nextIdx].label;
-      triggerToast('Nguồn đơn: ' + channels[nextIdx].label);
+    // ==========================================
+    // DROPDOWN LỌC NGUỒN ĐƠN HÀNG THU MUA
+    // ==========================================
+    function toggleChannelDropdown(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      const wrap = document.getElementById('agriChannelDropdownWrap');
+      if (wrap) {
+        wrap.classList.toggle('open');
+      }
+    }
+
+    function closeChannelDropdown() {
+      const wrap = document.getElementById('agriChannelDropdownWrap');
+      if (wrap) {
+        wrap.classList.remove('open');
+      }
+    }
+
+    function selectChannelOption(val, label) {
+      currentChannelFilter = val;
+      const labelEl = document.getElementById('shopeeChannelFilterLabel');
+      if (labelEl) {
+        labelEl.innerText = label;
+      }
+
+      // Cập nhật class active cho các mục trong dropdown
+      const menu = document.getElementById('agriChannelMenu');
+      if (menu) {
+        menu.querySelectorAll('.ac-item').forEach(item => {
+          item.classList.toggle('active', item.getAttribute('data-val') === val);
+        });
+      }
+
+      closeChannelDropdown();
+      triggerToast('Nguồn đơn: ' + label);
       renderOrdersList();
     }
+
+    // Đóng dropdown khi click bên ngoài menu
+    document.addEventListener('click', (e) => {
+      const wrap = document.getElementById('agriChannelDropdownWrap');
+      if (wrap && wrap.classList.contains('open')) {
+        if (!wrap.contains(e.target)) {
+          closeChannelDropdown();
+        }
+      }
+    });
 
     function renderOrdersList() {
       let filtered = BAC_BA_ORDERS.slice();

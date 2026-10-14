@@ -6208,6 +6208,139 @@
       font-weight: 900;
     }
 
+    /* =========================================================================
+       THANH TÌM KIẾM ĐƠN HÀNG & KHO HÀNG (LIVE DEMO SEARCH)
+       ========================================================================= */
+    .orders-search-wrapper {
+      margin-bottom: 12px;
+    }
+    .orders-search-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 14px;
+      padding: 0 12px;
+      height: 44px;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+      transition: all 180ms ease;
+    }
+    .orders-search-bar:focus-within {
+      border-color: #059669;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+    }
+    .osb-search-icon {
+      color: #94A3B8;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+    .osb-input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #0F172A;
+      font-family: var(--font-sans);
+    }
+    .osb-input::placeholder {
+      color: #94A3B8;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .osb-clear-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #F1F5F9;
+      border: none;
+      color: #64748B;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-left: 6px;
+      transition: all 140ms ease;
+    }
+    .osb-clear-btn:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+    .osb-demo-suggestions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 2px;
+    }
+    .osb-demo-suggestions::-webkit-scrollbar {
+      display: none;
+    }
+    .osb-sug-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #64748B;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .osb-sug-tags {
+      display: flex;
+      gap: 6px;
+      min-width: max-content;
+    }
+    .osb-tag {
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+      background: #FFFFFF;
+      color: #334155;
+      font-size: 11.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 120ms ease;
+      user-select: none;
+    }
+    .osb-tag:hover {
+      background: #ECFDF5;
+      border-color: #A7F3D0;
+      color: #059669;
+    }
+    .osb-tag.active {
+      background: #DCFCE7;
+      border-color: #86EFAC;
+      color: #15803D;
+      font-weight: 700;
+    }
+    .search-empty-state {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 32px 16px;
+      text-align: center;
+      color: #64748B;
+      margin-top: 8px;
+    }
+    .btn-clear-search-action {
+      margin-top: 12px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: #059669;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.2);
+    }
+
     /* LỐI TẮT IN PHIẾU SOẠN HÀNG (PICK-LIST) TRONG ĐƠN HÀNG */
     .order-picklist-shortcut-card {
       background: linear-gradient(135deg, #ECFDF5 0%, #F0FDF4 100%);
@@ -8651,6 +8784,29 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           <button type="button" class="ot-segment-btn" id="btnSubtabWarehouse" onclick="switchOrderSubTab('warehouse')">
             <span>Kho hàng</span>
           </button>
+        </div>
+
+        <!-- THANH TÌM KIẾM THÔNG MINH CHO ĐƠN HÀNG & KHO HÀNG (LIVE DEMO SEARCH) -->
+        <div class="orders-search-wrapper" id="ordersSearchWrapper">
+          <div class="orders-search-bar">
+            <svg class="osb-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="orderSearchInput" class="osb-input" placeholder="Tìm theo mã đơn, khách mua, nông sản..." oninput="onOrderSearchInput(this.value)" autocomplete="off">
+            <button type="button" id="btnOrderSearchClear" class="osb-clear-btn" onclick="clearOrderSearch()" title="Xoá tìm kiếm" style="display:none">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          
+          <!-- Hàng gợi ý từ khoá demo tìm nhanh -->
+          <div class="osb-demo-suggestions" id="osbDemoSuggestions">
+            <span class="osb-sug-label">Gợi ý tìm nhanh:</span>
+            <div class="osb-sug-tags" id="osbSugTagsContainer">
+              <button type="button" class="osb-tag" onclick="applyDemoSearch('WinMart')">WinMart</button>
+              <button type="button" class="osb-tag" onclick="applyDemoSearch('Chuối sấy')">Chuối sấy</button>
+              <button type="button" class="osb-tag" onclick="applyDemoSearch('Anh Minh')">Anh Minh</button>
+              <button type="button" class="osb-tag" onclick="applyDemoSearch('Đã giao')">Đã giao</button>
+              <button type="button" class="osb-tag" onclick="applyDemoSearch('Xe gom HTX')">Xe gom HTX</button>
+            </div>
+          </div>
         </div>
 
         <!-- SUB-VIEW 1: QUẢN LÝ ĐƠN HÀNG NÔNG SẢN -->
@@ -11451,18 +11607,128 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     }
     function toggleStoreOpen(badge) { toggleFarmHarvestStatus(badge); }
 
+    // =========================================================================
+    // HỆ THỐNG TÌM KIẾM ĐƠN HÀNG & KHO HÀNG (LIVE REAL-TIME DEMO SEARCH)
+    // =========================================================================
+    let currentOrderSearchQuery = '';
+    let currentWarehouseSearchQuery = '';
+
+    // Chuẩn hoá tiếng Việt không dấu để tìm kiếm chuẩn xác
+    function removeVietnameseTones(str) {
+      if (!str) return '';
+      str = String(str).toLowerCase();
+      str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+      str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+      str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+      str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+      str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+      str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+      str = str.replace(/đ/g, "d");
+      return str.trim();
+    }
+
+    // Danh sách gợi ý từ khoá demo tìm nhanh
+    const SEARCH_DEMO_TAGS = {
+      orders: [
+        { label: 'WinMart', val: 'WinMart' },
+        { label: 'Chuối sấy', val: 'Chuối sấy' },
+        { label: 'Anh Minh', val: 'Anh Minh' },
+        { label: 'Đã giao', val: 'Đã giao' },
+        { label: 'Xe gom HTX', val: 'Xe gom' }
+      ],
+      warehouse: [
+        { label: 'Chuối tiêu hồng', val: 'Chuối tiêu hồng' },
+        { label: 'Mật ong', val: 'Mật ong' },
+        { label: 'OCOP 4 sao', val: 'OCOP 4 sao' },
+        { label: 'VietGAP', val: 'VietGAP' },
+        { label: 'Bản nháp', val: 'Bản nháp' }
+      ]
+    };
+
+    // Cập nhật giao diện thanh tìm kiếm khi chuyển giữa Đơn hàng và Kho hàng
+    function updateSearchUIForSubTab(subTab) {
+      const input = document.getElementById('orderSearchInput');
+      const clearBtn = document.getElementById('btnOrderSearchClear');
+      const tagsContainer = document.getElementById('osbSugTagsContainer');
+      if (!input || !tagsContainer) return;
+
+      const isWarehouse = (subTab === 'warehouse');
+      const currentQuery = isWarehouse ? currentWarehouseSearchQuery : currentOrderSearchQuery;
+
+      input.value = currentQuery;
+      input.placeholder = isWarehouse
+        ? 'Tìm theo tên hàng, quy cách, OCOP (VD: Chuối, Mật ong...)'
+        : 'Tìm theo mã đơn, khách mua, nông sản (VD: WinMart, WM-01...)';
+
+      if (clearBtn) {
+        clearBtn.style.display = currentQuery ? 'inline-flex' : 'none';
+      }
+
+      // Render các tag gợi ý demo
+      const tags = isWarehouse ? SEARCH_DEMO_TAGS.warehouse : SEARCH_DEMO_TAGS.orders;
+      let tagsHtml = '';
+      tags.forEach(t => {
+        const isActive = (currentQuery.toLowerCase() === t.val.toLowerCase());
+        tagsHtml += `<button type="button" class="osb-tag ${isActive ? 'active' : ''}" onclick="applyDemoSearch('${t.val}')">${t.label}</button>`;
+      });
+      tagsContainer.innerHTML = tagsHtml;
+    }
+
+    // Xử lý khi gõ vào ô tìm kiếm (tìm kiếm tức thì real-time)
+    function onOrderSearchInput(val) {
+      const clearBtn = document.getElementById('btnOrderSearchClear');
+      if (clearBtn) {
+        clearBtn.style.display = val && val.trim().length > 0 ? 'inline-flex' : 'none';
+      }
+
+      const isWarehouse = (currentOrderSubTab === 'warehouse');
+      if (isWarehouse) {
+        currentWarehouseSearchQuery = val ? val.trim() : '';
+        renderWarehouseList();
+      } else {
+        currentOrderSearchQuery = val ? val.trim() : '';
+        renderOrdersList();
+      }
+
+      // Cập nhật trạng thái active trên các tag gợi ý
+      updateActiveDemoTags(val ? val.trim() : '');
+    }
+
+    // Xoá từ khoá tìm kiếm
+    function clearOrderSearch() {
+      const input = document.getElementById('orderSearchInput');
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+      onOrderSearchInput('');
+    }
+
+    // Áp dụng từ khoá gợi ý demo khi click
+    function applyDemoSearch(tagVal) {
+      const input = document.getElementById('orderSearchInput');
+      if (input) {
+        input.value = tagVal;
+      }
+      onOrderSearchInput(tagVal);
+      triggerToast('🔍 Đã lọc nhanh: "' + tagVal + '"');
+    }
+
+    function updateActiveDemoTags(query) {
+      const tagsContainer = document.getElementById('osbSugTagsContainer');
+      if (!tagsContainer) return;
+      const lowerQ = query.toLowerCase();
+      tagsContainer.querySelectorAll('.osb-tag').forEach(btn => {
+        const text = btn.innerText.toLowerCase();
+        btn.classList.toggle('active', lowerQ !== '' && text.includes(lowerQ));
+      });
+    }
+
     function openOrderSearchPrompt() {
-      const q = prompt('Nhập mã đơn, tên đối tác (WinMart, Bác Tôm...) hoặc nông sản cần tìm:', '');
-      if (q && q.trim()) {
-        const query = q.trim().toLowerCase();
-        const found = BAC_BA_ORDERS.filter(o => 
-          o.id.toLowerCase().includes(query) || 
-          o.code.toLowerCase().includes(query) || 
-          o.buyer.name.toLowerCase().includes(query) ||
-          o.buyer.contact.toLowerCase().includes(query) ||
-          o.items.some(it => it.name.toLowerCase().includes(query))
-        );
-        renderFilteredOrders(found, `Tìm kiếm: "${q.trim()}"`);
+      const input = document.getElementById('orderSearchInput');
+      if (input) {
+        input.focus();
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
 
@@ -11584,6 +11850,32 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         filtered = filtered.filter(o => o.status === 'delivered');
       }
 
+      // 4. Filter by Search Query
+      if (currentOrderSearchQuery) {
+        const q = removeVietnameseTones(currentOrderSearchQuery);
+        filtered = filtered.filter(o => {
+          const codeMatch = removeVietnameseTones(o.code || '').includes(q) || 
+                            removeVietnameseTones(o.shortCode || '').includes(q) || 
+                            removeVietnameseTones(o.id || '').includes(q);
+          const buyerMatch = removeVietnameseTones(o.buyer?.name || '').includes(q) || 
+                             removeVietnameseTones(o.buyer?.contact || '').includes(q) || 
+                             (o.buyer?.phone || '').includes(q) || 
+                             removeVietnameseTones(o.buyer?.address || '').includes(q);
+          const produceMatch = removeVietnameseTones(o.produceSummary || '').includes(q);
+          const statusMatch = removeVietnameseTones(o.statusText || '').includes(q) || 
+                              removeVietnameseTones(o.shortStatus || '').includes(q);
+          const channelMatch = removeVietnameseTones(o.channelName || '').includes(q) || 
+                               removeVietnameseTones(o.shortChannel || '').includes(q);
+          const itemsMatch = (o.items || []).some(it => 
+            removeVietnameseTones(it.name || '').includes(q) || 
+            removeVietnameseTones(it.spec || '').includes(q)
+          );
+          return codeMatch || buyerMatch || produceMatch || statusMatch || channelMatch || itemsMatch;
+        });
+        renderFilteredOrders(filtered, `Kết quả tìm kiếm cho "${currentOrderSearchQuery}"`);
+        return;
+      }
+
       renderFilteredOrders(filtered);
     }
 
@@ -11592,6 +11884,17 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       if (!container) return;
 
       if (orders.length === 0) {
+        if (currentOrderSearchQuery) {
+          container.innerHTML = `
+            <div class="search-empty-state">
+              <div style="font-size:36px;margin-bottom:8px">🔍</div>
+              <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:4px">Không tìm thấy đơn hàng</div>
+              <div style="font-size:13px;line-height:1.4">Không có đơn hàng nào khớp với từ khoá "<strong>${currentOrderSearchQuery}</strong>".</div>
+              <button type="button" class="btn-clear-search-action" onclick="clearOrderSearch()">Xoá từ khoá tìm kiếm</button>
+            </div>
+          `;
+          return;
+        }
         container.innerHTML = `
           <div style="background:#FFF;border:1px solid #E2E8F0;border-radius:14px;padding:36px 16px;text-align:center;color:#64748B;margin-top:8px">
             <div style="font-size:36px;margin-bottom:8px">🌾</div>
@@ -12244,6 +12547,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         goToOnboarding(1);
       }
       initSwipeableChipContainers();
+      updateSearchUIForSubTab('orders');
     });
 
     
@@ -12568,6 +12872,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         if (viewOrders) viewOrders.style.display = 'none';
         if (viewWarehouse) viewWarehouse.style.display = 'block';
         if (headerTitle) headerTitle.innerText = 'Kho hàng';
+        updateSearchUIForSubTab('warehouse');
         renderWarehouseList();
         setTimeout(initSwipeableChipContainers, 50);
       } else {
@@ -12576,6 +12881,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         if (viewWarehouse) viewWarehouse.style.display = 'none';
         if (viewOrders) viewOrders.style.display = 'block';
         if (headerTitle) headerTitle.innerText = 'Đơn hàng';
+        updateSearchUIForSubTab('orders');
         renderOrdersList();
         setTimeout(initSwipeableChipContainers, 50);
       }
@@ -12601,6 +12907,31 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         list = list.filter(p => p.status === 'low');
       } else if (filter === 'draft') {
         list = list.filter(p => p.category === 'draft' || p.status === 'draft');
+      }
+
+      // Filter by Search Query
+      if (currentWarehouseSearchQuery) {
+        const q = removeVietnameseTones(currentWarehouseSearchQuery);
+        list = list.filter(p => {
+          const nameMatch = removeVietnameseTones(p.name || '').includes(q);
+          const pkgMatch = removeVietnameseTones(p.packaging || '').includes(q);
+          const certMatch = removeVietnameseTones(p.cert || '').includes(q);
+          const statusMatch = removeVietnameseTones(p.statusText || '').includes(q);
+          const unitMatch = removeVietnameseTones(p.unit || '').includes(q);
+          return nameMatch || pkgMatch || certMatch || statusMatch || unitMatch;
+        });
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="search-empty-state">
+            <div style="font-size:36px;margin-bottom:8px">📦</div>
+            <div style="font-size:16px;font-weight:800;color:#0F172A;margin-bottom:4px">Không tìm thấy mặt hàng</div>
+            <div style="font-size:13px;line-height:1.4">Không có nông sản nào trong kho khớp với "<strong>${currentWarehouseSearchQuery || filter}</strong>".</div>
+            <button type="button" class="btn-clear-search-action" onclick="clearOrderSearch()">Xem tất cả nông sản</button>
+          </div>
+        `;
+        return;
       }
 
       let html = '';

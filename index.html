@@ -4731,142 +4731,594 @@
       background: #047857;
     }
 
-    /* GIAO DIỆN CHỢ XANH XÃ YÊN BÌNH (PANEL-MARKET) */
-    .choxanh-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 16px;
+    /* =========================================================================
+       GIAO DIỆN PREVIEW GIAN HÀNG SỐ & KHÁM PHÁ GIAN HÀNG (PANEL-MARKET)
+       ========================================================================= */
+    .storefront-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #E2E8F0;
     }
-    .cx-stat-box {
-      background: #FFFFFF;
-      border-radius: 14px;
-      padding: 10px 4px;
-      text-align: center;
-      border: 1px solid #E2E8F0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    .storefront-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
     }
-    .cx-stat-num {
-      font-size: 18px;
+    .storefront-back-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #334155;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .storefront-back-btn:hover {
+      background: #E2E8F0;
+      color: #047857;
+    }
+    .storefront-header-title-box {
+      min-width: 0;
+    }
+    .storefront-header-title {
+      font-size: 17px;
       font-weight: 800;
       color: var(--text-main);
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .cx-stat-lbl {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
+    .storefront-header-sub {
+      font-size: 11.5px;
+      color: #64748B;
       font-weight: 600;
     }
-    .cx-tabs-nav {
-      display: flex;
-      background: #F1F5F9;
-      padding: 4px;
-      border-radius: 14px;
-      margin-bottom: 14px;
-      gap: 4px;
-    }
-    .cx-tab-btn {
-      flex: 1;
-      padding: 8px 4px;
-      border-radius: 10px;
-      font-size: 12.5px;
-      font-weight: 700;
-      border: none;
-      background: transparent;
-      color: #64748B;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-    .cx-tab-btn.active {
-      background: #FFFFFF;
-      color: #065F46;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-    .cx-tab-pane {
-      display: none;
-    }
-    .cx-tab-pane.active {
-      display: block;
-    }
-    .cx-card-item {
-      background: #FFFFFF;
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 12px;
-      border: 1.5px solid #E2E8F0;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
-    }
-    .cx-card-header {
+    .storefront-header-actions {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
+      gap: 6px;
+      flex-shrink: 0;
     }
-    .cx-badge-tag {
+    .storefront-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #334155;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .storefront-icon-btn:hover {
+      background: #E2E8F0;
+      color: #047857;
+    }
+
+    /* SECTION 1: GIAN HÀNG CỦA BẠN (PREVIEW CARD) */
+    .storefront-my-card {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      margin-bottom: 22px;
+      position: relative;
+    }
+    .storefront-cover-wrap {
+      position: relative;
+      height: 115px;
+      background: linear-gradient(135deg, #065F46, #047857);
+      overflow: hidden;
+    }
+    .storefront-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    .storefront-preview-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(6px);
+      color: #FEF08A;
       font-size: 11px;
       font-weight: 800;
-      padding: 3px 9px;
-      border-radius: 8px;
-    }
-    .cx-badge-co {
-      background: #DCFCE7;
-      color: #15803D;
-    }
-    .cx-badge-can {
-      background: #DBEAFE;
-      color: #1E40AF;
-    }
-    .cx-badge-match {
-      background: #FEF3C7;
-      color: #B45309;
-    }
-    .cx-card-title {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-    .cx-card-sub {
-      font-size: 13px;
-      color: #64748B;
-      line-height: 1.4;
-      margin-bottom: 10px;
-    }
-    .cx-card-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed #E2E8F0;
-      font-size: 12.5px;
-      color: #475569;
-    }
-    .cx-btn-action {
-      padding: 7px 13px;
-      border-radius: 10px;
-      font-size: 12.5px;
-      font-weight: 700;
-      cursor: pointer;
+      padding: 4px 10px;
+      border-radius: 20px;
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+    .storefront-profile-body {
+      padding: 0 14px 14px;
+      position: relative;
+    }
+    .storefront-avatar-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: -34px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+    }
+    .storefront-avatar-box {
+      position: relative;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 3.5px solid #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      flex-shrink: 0;
+      background: #FFF;
+    }
+    .storefront-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+    .storefront-status-pill {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+    .storefront-status-dot-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      display: inline-block;
+      box-shadow: 0 0 6px #10B981;
+    }
+    .storefront-store-name {
+      font-size: 17.5px;
+      font-weight: 900;
+      color: #0F172A;
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+    .storefront-store-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+    .storefront-meta-chip {
+      background: #F1F5F9;
+      color: #334155;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 11px;
+    }
+    .storefront-meta-chip.ocop {
+      background: #FEF3C7;
+      color: #92400E;
+    }
+
+    /* MINI STATS STRIP */
+    .storefront-mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 8px 6px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .sms-box {
+      min-width: 0;
+    }
+    .sms-num {
+      font-size: 15px;
+      font-weight: 900;
+      color: #0F172A;
+      line-height: 1.2;
+    }
+    .sms-lbl {
+      font-size: 10.5px;
+      color: #64748B;
+      font-weight: 600;
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ACTION BUTTONS (2 EQUAL COLUMNS - NEVER BREAK) */
+    .storefront-action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .btn-sfp-action {
+      height: 40px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
       border: none;
+      white-space: nowrap;
+      padding: 0 10px;
+      min-width: 0;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-sfp-primary {
+      background: #047857;
+      color: #FFFFFF;
+      box-shadow: 0 3px 8px rgba(4, 120, 87, 0.25);
+    }
+    .btn-sfp-primary:hover {
+      background: #065F46;
+    }
+    .btn-sfp-outline {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      color: #1E293B;
+    }
+    .btn-sfp-outline:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
+    }
+
+    /* PRODUCTS LIST INSIDE STOREFRONT PREVIEW */
+    .sfp-products-wrap {
+      border-top: 1px dashed #E2E8F0;
+      padding-top: 12px;
+    }
+    .sfp-sec-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .sfp-sec-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sfp-sec-badge {
+      font-size: 11px;
+      background: #DCFCE7;
+      color: #15803D;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+    .sfp-product-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 9px 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .sfp-product-item:hover {
+      border-color: #A7F3D0;
+      background: #F0FDF4;
+    }
+    .sfp-product-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid #E2E8F0;
+      background: #FFF;
+    }
+    .sfp-product-details {
+      flex: 1;
+      min-width: 0;
+    }
+    .sfp-product-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0F172A;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+    .sfp-product-sub {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #64748B;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sfp-product-price {
+      font-size: 13.5px;
+      font-weight: 900;
+      color: #B45309;
+      line-height: 1.2;
+    }
+    .sfp-product-btn {
+      height: 32px;
+      padding: 0 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 8px;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .sfp-product-btn:hover {
+      background: #ECFDF5;
+      color: #047857;
+      border-color: #6EE7B7;
+    }
+
+    /* =========================================================================
+       SECTION 2: KHÁM PHÁ CÁC GIAN HÀNG KHÁC (DISCOVER OTHER STORES)
+       ========================================================================= */
+    .explore-section-header {
+      margin-bottom: 10px;
+    }
+    .explore-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+    .explore-desc {
+      font-size: 12px;
+      color: #64748B;
+      margin-bottom: 0;
+    }
+
+    /* SWIPEABLE CATEGORY CHIP BAR */
+    .explore-chips-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+    .explore-chips-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .explore-chip {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #F1F5F9;
+      color: #475569;
+      border: 1px solid #E2E8F0;
+      white-space: nowrap;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .explore-chip.active {
+      background: #047857;
+      color: #FFFFFF;
+      border-color: #047857;
+      box-shadow: 0 2px 6px rgba(4, 120, 87, 0.2);
+    }
+
+    /* NEIGHBOR STORE CARDS */
+    .neighbor-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       transition: all 0.2s;
     }
-    .cx-btn-green {
-      background: #059669;
+    .neighbor-card:hover {
+      border-color: #94A3B8;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .neighbor-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .neighbor-card-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
+    }
+    .neighbor-avatar-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .neighbor-name-box {
+      min-width: 0;
+      flex: 1;
+    }
+    .neighbor-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .neighbor-meta-line {
+      font-size: 11.5px;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .neighbor-badge {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .neighbor-badge.green {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+    .neighbor-badge.amber {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+    }
+    .neighbor-badge.blue {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+
+    .neighbor-card-content {
+      background: #F8FAFC;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .neighbor-produce-tag {
+      color: #334155;
+      font-weight: 600;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .neighbor-price-tag {
+      font-weight: 800;
+      color: #B45309;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .neighbor-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .neighbor-rating-text {
+      font-size: 11.5px;
+      color: #64748B;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn-neighbor-visit {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      background: #FFFFFF;
+      border: 1.5px solid #047857;
+      color: #047857;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      flex-shrink: 0;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .btn-neighbor-visit:hover {
+      background: #047857;
       color: #FFFFFF;
     }
-    .cx-btn-green:hover {
-      background: #047857;
+    .btn-neighbor-partner {
+      background: #FEF3C7;
+      border-color: #F59E0B;
+      color: #B45309;
     }
-    .cx-btn-outline {
-      background: #FFFFFF;
-      color: #334155;
-      border: 1px solid #CBD5E1;
+    .btn-neighbor-partner:hover {
+      background: #F59E0B;
+      color: #FFFFFF;
     }
 
     /* MODAL ĐĂNG THẺ MỚI CHỢ XANH */
@@ -6617,42 +7069,7 @@
       white-space: nowrap;
       cursor: pointer;
     }
-    
-    /* CHỢ XANH 4 CHỈ SỐ NGUỒN LỰC */
-    .choxanh-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      margin-bottom: 14px;
-    }
-    .cx-stat-box {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 8px 2px;
-      text-align: center;
-      min-width: 0;
-    }
-    .cx-stat-num {
-      font-size: 17px;
-      font-weight: 900;
-      line-height: 1.2;
-    }
-    .cx-stat-lbl {
-      font-size: 10.5px;
-      font-weight: 700;
-      color: #64748B;
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .cx-tab-btn {
-      font-size: 11.5px;
-      padding: 8px 3px;
-      line-height: 1.25;
-      word-break: break-word;
-    }
+
 
     /* ĐƠN HÀNG: SUBTABS QUẢN LÝ ĐƠN HÀNG & QUẢN LÝ KHO HÀNG (TO RÕ) */
     .orders-top-segment-tabs {
@@ -8043,170 +8460,286 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       <!-- =========================================================================
            PANEL 7: TAB CHỢ XÃ (COMMUNITY ACTIVITY FEED)
            ========================================================================= -->
+      <!-- =========================================================================
+           PANEL 7: TAB GIAN HÀNG SỐ (PREVIEW GIAN HÀNG BÁC BA & KHÁM PHÁ GIAN HÀNG XÃ)
+           ========================================================================= -->
       <section id="panel-market" class="view-panel">
+        <!-- HEADER THANH ĐIỀU HƯỚNG MÀN GIAN HÀNG -->
+        <div class="storefront-header-bar">
+          <div class="storefront-header-left">
+            <button type="button" class="storefront-back-btn" onclick="switchNavTab('home')" title="Về trang chủ">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="storefront-header-title-box">
+              <div class="storefront-header-title">Gian Hàng Nông Sản Số</div>
+              <div class="storefront-header-sub">Hợp tác xã Yên Bình · Chợ Xanh GVOS</div>
+            </div>
+          </div>
+          <div class="storefront-header-actions">
+            <button type="button" class="storefront-icon-btn" onclick="shareMyStorefront()" title="Chia sẻ gian hàng">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            </button>
+            <button type="button" class="storefront-icon-btn" onclick="openNewCxCardModal()" title="Thêm mặt hàng mới">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- =======================================================================
+             PHẦN 1: GIAN HÀNG CỦA BẠN (PREVIEW GIAN HÀNG SỐ CỦA BÁC BA)
+             ======================================================================= -->
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-          <div>
-            <h1 class="step-main-title" style="margin-bottom:2px">🌿 Chợ Xanh Xã Yên Bình</h1>
-            <p class="step-sub-desc" style="margin-bottom:0">Sàn kết nối nông sản số & Ghép nối cung - cầu thương lái địa bàn:</p>
+          <div style="font-size:14.5px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+            <span>🏪 Gian hàng của bạn</span>
+            <span style="font-size:11px;background:#DCFCE7;color:#15803D;padding:2px 8px;border-radius:12px;font-weight:700">Mã: XV-004</span>
           </div>
-          <button type="button" class="btn-dock-next" style="height:38px;padding:0 12px;font-size:12.5px;border-radius:12px;flex-shrink:0" onclick="openNewCxCardModal()">
-            <span>➕ Đăng Thẻ Mới</span>
-          </button>
+          <span style="font-size:11.5px;color:#047857;font-weight:700;cursor:pointer" onclick="shareMyStorefront()">Xem link công khai ›</span>
         </div>
 
-        <!-- 4 CHỈ SỐ NGUỒN LỰC CHỢ XANH (CHUẨN GVOS) -->
-        <div class="choxanh-stats-grid">
-          <div class="cx-stat-box">
-            <div class="cx-stat-num" style="color:#15803D" id="cxStatCo">18</div>
-            <div class="cx-stat-lbl">🟢 Thẻ CÓ</div>
-          </div>
-          <div class="cx-stat-box">
-            <div class="cx-stat-num" style="color:#1E40AF" id="cxStatCan">7</div>
-            <div class="cx-stat-lbl">🔵 Thẻ CẦN</div>
-          </div>
-          <div class="cx-stat-box">
-            <div class="cx-stat-num" style="color:#B45309">12</div>
-            <div class="cx-stat-lbl">🤝 Ghép nối</div>
-          </div>
-          <div class="cx-stat-box">
-            <div class="cx-stat-num" style="color:#059669">2</div>
-            <div class="cx-stat-lbl">🚛 Hub xe tải</div>
-          </div>
-        </div>
-
-        <!-- 3 TAB ĐIỀU HƯỚNG CHỢ XANH -->
-        <div class="cx-tabs-nav">
-          <button type="button" class="cx-tab-btn active" id="cxTabBtn_cards" onclick="switchCxTab('cards')">Thẻ của Bác Ba (3)</button>
-          <button type="button" class="cx-tab-btn" id="cxTabBtn_matches" onclick="switchCxTab('matches')">Cơ hội ghép nối (2)</button>
-          <button type="button" class="cx-tab-btn" id="cxTabBtn_feed" onclick="switchCxTab('feed')">Bản tin toàn xã</button>
-        </div>
-
-        <!-- TAB 1: THẺ CỦA BÁC BA -->
-        <div class="cx-tab-pane active" id="cxPane_cards">
-          <!-- Thẻ Có 1 -->
-          <div class="cx-card-item">
-            <div class="cx-card-header">
-              <span class="cx-badge-tag cx-badge-co">🟢 THẺ CÓ NÔNG SẢN</span>
-              <span style="font-size:12px;color:#15803D;font-weight:700">✓ Sẵn sàng xuất vườn</span>
-            </div>
-            <div class="cx-card-title">🍌 500 kg Chuối tiêu hồng tươi cắt tại vườn</div>
-            <div class="cx-card-sub">Chuối quả đều đẹp, tiêu chuẩn VietGAP canh tác tự nhiên bãi bồi sông Lục Nam. Nhận cắt tươi theo yêu cầu.</div>
-            <div class="cx-card-meta-row">
-              <span>📍 Vườn đồi Thôn Đồng Cát</span>
-              <span>💰 Giá đề xuất: <b>25.000 đ/kg</b></span>
-              <button type="button" class="cx-btn-action cx-btn-outline" onclick="triggerToast('Thẻ CÓ của bác đang mở công khai trên Chợ Xanh!')">Đang chào bán</button>
+        <div class="storefront-my-card">
+          <!-- Cover Banner -->
+          <div class="storefront-cover-wrap">
+            <img src="tet_banner.jpg" alt="Ảnh bìa gian hàng Tết" class="storefront-cover-img" onerror="this.src='ocop_banner.jpg'">
+            <div class="storefront-preview-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Xem trước giao diện khách thấy</span>
             </div>
           </div>
 
-          <!-- Thẻ Có 2 -->
-          <div class="cx-card-item">
-            <div class="cx-card-header">
-              <span class="cx-badge-tag cx-badge-co">🟢 THẺ CÓ NÔNG SẢN</span>
-              <span style="font-size:12px;color:#059669;font-weight:700">⭐ OCOP 4 Sao</span>
-            </div>
-            <div class="cx-card-title">🍯 30 hũ Mật ong hoa rừng tự nhiên 500ml</div>
-            <div class="cx-card-sub">Mật ong đặc quánh, khai thác từ rừng tự nhiên, đã kiểm định VSATTP, đóng hũ thủy tinh niêm phong.</div>
-            <div class="cx-card-meta-row">
-              <span>📍 Kho xưởng Bác Ba</span>
-              <span>💰 Giá: <b>180.000 đ/hũ</b></span>
-              <button type="button" class="cx-btn-action cx-btn-outline" onclick="triggerToast('Thẻ Mật ong rừng đang hiển thị cho các thương lái!')">Đang chào bán</button>
-            </div>
-          </div>
-
-          <!-- Thẻ Cần 3 -->
-          <div class="cx-card-item">
-            <div class="cx-card-header">
-              <span class="cx-badge-tag cx-badge-can">🔵 THẺ CẦN MUA CHUNG</span>
-              <span style="font-size:12px;color:#1E40AF;font-weight:700">Vật tư vụ Tết</span>
-            </div>
-            <div class="cx-card-title">📦 Cần mua chung 500 túi zip bạc 250g đựng chuối sấy</div>
-            <div class="cx-card-sub">Bác Ba tìm hộ nông dân hoặc xưởng trong xã cùng ghép đơn mua 2.000 túi để hưởng giá sỉ chiết khấu 20%.</div>
-            <div class="cx-card-meta-row">
-              <span>📍 Thôn Đồng Cát</span>
-              <span>Hạn ghép: <b>Trước 20/10</b></span>
-              <button type="button" class="cx-btn-action cx-btn-outline" onclick="triggerToast('Đã có 2 hộ cùng đăng ký ghép đơn túi zip!')">Đã có 2 hộ ghép</button>
-            </div>
-          </div>
-
-          <button type="button" class="btn-dock-next" style="width:100%;height:46px;margin-top:4px;border-radius:14px" onclick="openNewCxCardModal()">
-            <span>➕ Khai Báo Thẻ Có / Cần Mới</span>
-          </button>
-        </div>
-
-        <!-- TAB 2: CƠ HỘI GHÉP NỐI THƯƠNG LÁI (MATCHES) -->
-        <div class="cx-tab-pane" id="cxPane_matches">
-          <!-- Ghép nối 1 -->
-          <div class="cx-card-item" style="border:1.5px solid #FCD34D;background:#FFFDF7">
-            <div class="cx-card-header">
-              <span class="cx-badge-tag cx-badge-match">🤝 GHÉP NỐI KHỚP 98%</span>
-              <span style="font-size:12px;color:#B45309;font-weight:700">Cách bác 3.2 km</span>
-            </div>
-            <div class="cx-card-title">🏭 Cơ sở Bánh mứt kẹo Tết Hải Hà (Yên Dũng)</div>
-            <div class="cx-card-sub">
-              <b>Nhu cầu CẦN MUA:</b> Cần thu mua <b>1,2 tấn chuối tiêu hồng</b> (chuối tươi & chuối sấy dẻo) làm mứt phục vụ vụ Tết 2026. Có xe tải đến tận vườn thu mua hoặc nhận tại Hub xã.
-            </div>
-            <div class="cx-card-meta-row" style="background:#FEF9C3;margin:-4px -14px -14px;padding:12px 14px;border-radius:0 0 14px 14px">
-              <span style="color:#78350F;font-weight:600">Khớp với: <b>500kg Chuối của Bác Ba</b></span>
-              <div style="display:flex;gap:6px">
-                <button type="button" class="cx-btn-action cx-btn-green" onclick="connectMatchZalo('Cơ sở Mứt Tết Hải Hà', '0912.845.678')">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
-                  <span>Kết nối Zalo</span>
-                </button>
+          <!-- Thông tin gian hàng Bác Ba -->
+          <div class="storefront-profile-body">
+            <div class="storefront-avatar-row">
+              <div class="storefront-avatar-box">
+                <img src="bac_ba_avatar.jpg" alt="Avatar Bác Ba" class="storefront-avatar-img" onerror="this.src='farmer_photo_produce.jpg'">
+              </div>
+              <div class="storefront-status-pill">
+                <span class="storefront-status-dot-green"></span>
+                <span>Đang mở bán</span>
               </div>
             </div>
-          </div>
 
-          <!-- Ghép nối 2 -->
-          <div class="cx-card-item" style="border:1.5px solid #FCD34D;background:#FFFDF7">
-            <div class="cx-card-header">
-              <span class="cx-badge-tag cx-badge-match">🤝 GHÉP NỐI KHỚP 95%</span>
-              <span style="font-size:12px;color:#B45309;font-weight:700">Cách bác 5.1 km</span>
+            <div class="storefront-store-name">Vườn Chuối & Nông Sản Bác Ba</div>
+            <div class="storefront-store-meta">
+              <span class="storefront-meta-chip ocop">⭐ OCOP 4 Sao</span>
+              <span class="storefront-meta-chip">📍 Thôn Đồng Cát</span>
+              <span class="storefront-meta-chip">🌿 HTX Yên Bình</span>
             </div>
-            <div class="cx-card-title">🍃 Cửa hàng Nông sản An Toàn Bắc Giang</div>
-            <div class="cx-card-sub">
-              <b>Nhu cầu CẦN MUA:</b> Cần <b>50 hũ Mật ong hoa rừng nguyên chất</b> đóng hộp quà biếu OCOP cho cơ quan ban ngành.
+
+            <!-- Dòng 3 chỉ số gọn gàng -->
+            <div class="storefront-mini-stats">
+              <div class="sms-box">
+                <div class="sms-num" style="color:#047857">3</div>
+                <div class="sms-lbl">Sản phẩm mở bán</div>
+              </div>
+              <div class="sms-box" style="border-left:1px solid #E2E8F0;border-right:1px solid #E2E8F0">
+                <div class="sms-num" style="color:#1D4ED8">18</div>
+                <div class="sms-lbl">Đơn đã chốt</div>
+              </div>
+              <div class="sms-box">
+                <div class="sms-num" style="color:#B45309">4.9 ⭐</div>
+                <div class="sms-lbl">48 đánh giá</div>
+              </div>
             </div>
-            <div class="cx-card-meta-row" style="background:#FEF9C3;margin:-4px -14px -14px;padding:12px 14px;border-radius:0 0 14px 14px">
-              <span style="color:#78350F;font-weight:600">Khớp với: <b>30 hũ Mật ong Bác Ba</b></span>
-              <div style="display:flex;gap:6px">
-                <button type="button" class="cx-btn-action cx-btn-green" onclick="connectMatchZalo('Cửa hàng Nông sản An Toàn', '0988.332.119')">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
-                  <span>Kết nối Zalo</span>
+
+            <!-- Nút hành động không vỡ layout -->
+            <div class="storefront-action-row">
+              <button type="button" class="btn-sfp-action btn-sfp-primary" onclick="shareMyStorefront()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                <span>Chia sẻ gian hàng</span>
+              </button>
+              <button type="button" class="btn-sfp-action btn-sfp-outline" onclick="openNewCxCardModal()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>Thêm sản phẩm</span>
+              </button>
+            </div>
+
+            <!-- Danh sách sản phẩm thật đang bán trong gian hàng -->
+            <div class="sfp-products-wrap">
+              <div class="sfp-sec-title-row">
+                <div class="sfp-sec-title">
+                  <span>Sản phẩm đang mở bán</span>
+                  <span class="sfp-sec-badge">3 món</span>
+                </div>
+                <span style="font-size:11.5px;color:#64748B;font-weight:600">Bấm xem chi tiết</span>
+              </div>
+
+              <!-- SP 1: Chuối sấy dẻo OCOP -->
+              <div class="sfp-product-item" onclick="openStoreProductDetail('Chuối sấy giòn OCOP 4 sao', '45.000 đ', 'banana_front.jpg')">
+                <img src="banana_front.jpg" alt="Chuối sấy giòn" class="sfp-product-thumb">
+                <div class="sfp-product-details">
+                  <div class="sfp-product-name">Chuối sấy giòn OCOP 4 sao</div>
+                  <div class="sfp-product-sub">
+                    <span style="color:#047857;font-weight:700">✓ OCOP 4 Sao</span>
+                    <span>· Túi zip 250g</span>
+                  </div>
+                  <div class="sfp-product-price">45.000 đ <span style="font-size:11px;font-weight:600;color:#64748B">/ túi</span></div>
+                </div>
+                <button type="button" class="sfp-product-btn" onclick="event.stopPropagation();openStoreProductDetail('Chuối sấy giòn OCOP 4 sao', '45.000 đ', 'banana_front.jpg')">
+                  <span>Sửa giá</span>
+                </button>
+              </div>
+
+              <!-- SP 2: Mật ong hoa rừng tự nhiên -->
+              <div class="sfp-product-item" onclick="openStoreProductDetail('Mật ong hoa rừng tự nhiên', '180.000 đ', 'honey_front.jpg')">
+                <img src="honey_front.jpg" alt="Mật ong hoa rừng" class="sfp-product-thumb">
+                <div class="sfp-product-details">
+                  <div class="sfp-product-name">Mật ong hoa rừng tự nhiên</div>
+                  <div class="sfp-product-sub">
+                    <span style="color:#047857;font-weight:700">🌿 Rừng tự nhiên</span>
+                    <span>· Còn 30 hũ 500ml</span>
+                  </div>
+                  <div class="sfp-product-price">180.000 đ <span style="font-size:11px;font-weight:600;color:#64748B">/ hũ</span></div>
+                </div>
+                <button type="button" class="sfp-product-btn" onclick="event.stopPropagation();openStoreProductDetail('Mật ong hoa rừng tự nhiên', '180.000 đ', 'honey_front.jpg')">
+                  <span>Sửa giá</span>
+                </button>
+              </div>
+
+              <!-- SP 3: Chuối tiêu hồng tươi cắt vườn -->
+              <div class="sfp-product-item" onclick="openStoreProductDetail('Chuối tiêu hồng tươi cắt vườn', '25.000 đ', 'banana_plate.jpg')">
+                <img src="banana_plate.jpg" alt="Chuối tiêu hồng tươi" class="sfp-product-thumb">
+                <div class="sfp-product-details">
+                  <div class="sfp-product-name">Chuối tiêu hồng tươi cắt vườn</div>
+                  <div class="sfp-product-sub">
+                    <span style="color:#1D4ED8;font-weight:700">🍃 VietGAP</span>
+                    <span>· Sẵn sàng xuất 500kg</span>
+                  </div>
+                  <div class="sfp-product-price">25.000 đ <span style="font-size:11px;font-weight:600;color:#64748B">/ kg</span></div>
+                </div>
+                <button type="button" class="sfp-product-btn" onclick="event.stopPropagation();openStoreProductDetail('Chuối tiêu hồng tươi cắt vườn', '25.000 đ', 'banana_plate.jpg')">
+                  <span>Sửa giá</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- TAB 3: BẢN TIN CHỢ TOÀN XÃ -->
-        <div class="cx-tab-pane" id="cxPane_feed">
-          <div class="feed-item-card">
-            <div class="feed-item-header">
-              <span>Bác Ba Đồng Cát · 9:42</span>
-              <span style="color:var(--agri-green);font-weight:700">Vừa đăng Zalo</span>
+        <!-- =======================================================================
+             PHẦN 2: KHÁM PHÁ CÁC GIAN HÀNG KHÁC (DISCOVER OTHER STORES)
+             ======================================================================= -->
+        <div class="explore-section-header">
+          <div class="explore-title">
+            <span>🌐 Khám phá các gian hàng khác</span>
+          </div>
+          <p class="explore-desc">Gian hàng xã viên HTX & đối tác nông sản trên địa bàn xã Yên Bình:</p>
+        </div>
+
+        <!-- Thanh phân loại ngành hàng swipeable & drag-to-scroll -->
+        <div class="explore-chips-bar" id="exploreChipsBar">
+          <button type="button" class="explore-chip active" onclick="filterNeighborStores('all', this)">Tất cả (8)</button>
+          <button type="button" class="explore-chip" onclick="filterNeighborStores('trai-cay', this)">Trái cây (3)</button>
+          <button type="button" class="explore-chip" onclick="filterNeighborStores('mat-ong-tra', this)">Mật ong & Trà (2)</button>
+          <button type="button" class="explore-chip" onclick="filterNeighborStores('nong-san-say', this)">Nông sản sấy (2)</button>
+          <button type="button" class="explore-chip" onclick="filterNeighborStores('rau-vietgap', this)">Rau VietGAP (1)</button>
+        </div>
+
+        <!-- Danh sách gian hàng vệ tinh / lân cận -->
+        <div id="neighborStoresList">
+          <!-- Gian hàng 1: Chị Lan Cam Sành -->
+          <div class="neighbor-card" data-cat="trai-cay">
+            <div class="neighbor-card-top">
+              <div class="neighbor-card-info">
+                <div class="neighbor-avatar-icon">🍊</div>
+                <div class="neighbor-name-box">
+                  <div class="neighbor-name">Vườn Cam Sành & Bưởi Chị Lan</div>
+                  <div class="neighbor-meta-line">
+                    <span>Thôn Khe Vang · Cách 1.8 km</span>
+                  </div>
+                </div>
+              </div>
+              <span class="neighbor-badge green">🟢 Đang thu hoạch</span>
             </div>
-            <div class="feed-item-content">
-              Xuất mẻ 50 túi chuối sấy giòn OCOP 4 sao phục vụ bà con dịp Tết.
+            <div class="neighbor-card-content">
+              <div class="neighbor-produce-tag">🌱 Cam sành hữu cơ, Bưởi da xanh ruột hồng</div>
+              <div class="neighbor-price-tag">Từ 35.000 đ/kg</div>
+            </div>
+            <div class="neighbor-card-bottom">
+              <div class="neighbor-rating-text">⭐ 4.8 (36 đánh giá) · OCOP 3 Sao</div>
+              <button type="button" class="btn-neighbor-visit" onclick="visitNeighborStore('Vườn Cam Sành Chị Lan')">
+                <span>Ghé xem gian hàng</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
           </div>
 
-          <div class="feed-item-card">
-            <div class="feed-item-header">
-              <span>Cô Lan (Thôn Bãi Sen) · 8:15</span>
-              <span style="color:#0052FF;font-weight:700">Đã chốt đơn</span>
+          <!-- Gian hàng 2: Trà Shan Tuyết & Mật Ong -->
+          <div class="neighbor-card" data-cat="mat-ong-tra nong-san-say">
+            <div class="neighbor-card-top">
+              <div class="neighbor-card-info">
+                <div class="neighbor-avatar-icon">🍵</div>
+                <div class="neighbor-name-box">
+                  <div class="neighbor-name">Rừng Ong & Trà Shan Tuyết Tuấn Mai</div>
+                  <div class="neighbor-meta-line">
+                    <span>HTX Yên Bình · Cách 3.2 km</span>
+                  </div>
+                </div>
+              </div>
+              <span class="neighbor-badge amber">⭐ OCOP 4 Sao</span>
             </div>
-            <div class="feed-item-content">
-              Khách đặt 12 chai mật ong rừng hoa nhãn giao về thành phố Bắc Giang.
+            <div class="neighbor-card-content">
+              <div class="neighbor-produce-tag">🌿 Trà Shan Tuyết cổ thụ, Mật ong hoa nhãn</div>
+              <div class="neighbor-price-tag">Từ 160.000 đ</div>
+            </div>
+            <div class="neighbor-card-bottom">
+              <div class="neighbor-rating-text">⭐ 4.9 (52 đánh giá) · Chứng nhận ATTP</div>
+              <button type="button" class="btn-neighbor-visit" onclick="visitNeighborStore('Rừng Ong & Trà Tuấn Mai')">
+                <span>Ghé xem gian hàng</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
           </div>
 
-          <div class="feed-item-card">
-            <div class="feed-item-header">
-              <span>Xưởng Thành Phát (Cách 18km) · 7:30</span>
-              <span style="color:#D97706;font-weight:700">Liên kết HTX</span>
+          <!-- Gian hàng 3: Vườn Rau Bác Năm -->
+          <div class="neighbor-card" data-cat="rau-vietgap">
+            <div class="neighbor-card-top">
+              <div class="neighbor-card-info">
+                <div class="neighbor-avatar-icon">🥬</div>
+                <div class="neighbor-name-box">
+                  <div class="neighbor-name">Vườn Rau Củ Hữu Cơ Bác Năm</div>
+                  <div class="neighbor-meta-line">
+                    <span>Thôn Ba Khe · Cách 4.5 km</span>
+                  </div>
+                </div>
+              </div>
+              <span class="neighbor-badge green">🌿 VietGAP</span>
             </div>
-            <div class="feed-item-content">
-              Nhận đơn gia công 5.000 hộp quà Tết cho Hợp tác xã Đồng Cát.
+            <div class="neighbor-card-content">
+              <div class="neighbor-produce-tag">🥕 Bí xanh thơm Ba Khe, Cải ngồng bãi sông</div>
+              <div class="neighbor-price-tag">Từ 18.000 đ/kg</div>
+            </div>
+            <div class="neighbor-card-bottom">
+              <div class="neighbor-rating-text">⭐ 4.7 (29 đánh giá) · Cắt trong ngày</div>
+              <button type="button" class="btn-neighbor-visit" onclick="visitNeighborStore('Vườn Rau Củ Bác Năm')">
+                <span>Ghé xem gian hàng</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Gian hàng 4: Xưởng Mứt Tết Hải Hà (B2B Đối tác) -->
+          <div class="neighbor-card" data-cat="nong-san-say trai-cay">
+            <div class="neighbor-card-top">
+              <div class="neighbor-card-info">
+                <div class="neighbor-avatar-icon">🏭</div>
+                <div class="neighbor-name-box">
+                  <div class="neighbor-name">Cơ Sở Bánh Mứt Sấy Dẻo Hải Hà</div>
+                  <div class="neighbor-meta-line">
+                    <span>KCN Yên Dũng · Cách 8 km</span>
+                  </div>
+                </div>
+              </div>
+              <span class="neighbor-badge blue">🤝 Thu mua sỉ</span>
+            </div>
+            <div class="neighbor-card-content">
+              <div class="neighbor-produce-tag">🍌 Cần thu mua 1,2 tấn chuối sấy dẻo làm mứt Tết 2026</div>
+              <div class="neighbor-price-tag" style="color:#1D4ED8">Hợp đồng HTX</div>
+            </div>
+            <div class="neighbor-card-bottom">
+              <div class="neighbor-rating-text" style="color:#047857;font-weight:700">Khớp với: 500kg Chuối của Bác Ba</div>
+              <button type="button" class="btn-neighbor-visit btn-neighbor-partner" onclick="connectPartnerTrade('Cơ sở Hải Hà', '0912.845.678', 'Chuối sấy dẻo')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
+                <span>Kết nối cung ứng</span>
+              </button>
             </div>
           </div>
         </div>
@@ -11988,6 +12521,89 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
     function connectMatchZalo(partnerName, phone) {
       triggerToast('✓ Đã mở kết nối Zalo với ' + partnerName + ' (' + phone + ')!');
+    }
+
+    // =========================================================================
+    // GIAN HÀNG SỐ BÁC BA & KHÁM PHÁ GIAN HÀNG XÃ (GVOS STOREFRONT)
+    // =========================================================================
+    function shareMyStorefront() {
+      const shareUrl = "https://greenos.vn/shop/bac-ba-xv004";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          triggerToast("✓ Đã sao chép link gian hàng: " + shareUrl + " (sẵn sàng dán gửi qua Zalo/Facebook)!");
+        }).catch(() => {
+          triggerToast("✓ Link gian hàng Bác Ba: " + shareUrl);
+        });
+      } else {
+        triggerToast("✓ Link gian hàng Bác Ba: " + shareUrl);
+      }
+    }
+
+    function openStoreProductDetail(name, price, img) {
+      triggerToast("📦 " + name + " (" + price + ") - Chạm 'Đăng bán' nếu bác muốn sửa giá bài hoặc cập nhật ảnh!");
+    }
+
+    function filterNeighborStores(category, btnElem) {
+      const container = document.getElementById('neighborStoresList');
+      const chipBar = document.getElementById('exploreChipsBar');
+      if (chipBar && btnElem) {
+        chipBar.querySelectorAll('.explore-chip').forEach(c => c.classList.remove('active'));
+        btnElem.classList.add('active');
+      }
+
+      if (!container) return;
+      const cards = container.querySelectorAll('.neighbor-card');
+      cards.forEach(card => {
+        const cats = (card.getAttribute('data-cat') || '').split(' ');
+        if (category === 'all' || cats.includes(category)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function visitNeighborStore(storeName) {
+      triggerToast("🏪 Đang mở xem gian hàng số của " + storeName + "...");
+    }
+
+    function connectPartnerTrade(partnerName, phone, product) {
+      triggerToast("✓ Đã mở kết nối Zalo với " + partnerName + " (" + phone + ") để cung ứng " + product + "!");
+    }
+
+    function initExploreChipsScroll() {
+      const bar = document.getElementById('exploreChipsBar');
+      if (!bar) return;
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      bar.addEventListener('mousedown', (e) => {
+        isDown = true;
+        bar.style.cursor = 'grabbing';
+        startX = e.pageX - bar.offsetLeft;
+        scrollLeft = bar.scrollLeft;
+      });
+      bar.addEventListener('mouseleave', () => {
+        isDown = false;
+        bar.style.cursor = 'grab';
+      });
+      bar.addEventListener('mouseup', () => {
+        isDown = false;
+        bar.style.cursor = 'grab';
+      });
+      bar.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - bar.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        bar.scrollLeft = scrollLeft - walk;
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initExploreChipsScroll);
+    } else {
+      initExploreChipsScroll();
     }
 
   

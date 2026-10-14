@@ -5822,6 +5822,118 @@
       line-height: 1.6;
     }
 
+    /* COMPACT PRODUCT DETAIL STYLES */
+    .epd-pill-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .epd-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 9px;
+      border-radius: 8px;
+      background: #F1F5F9;
+      color: #475569;
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+    .epd-pill b {
+      color: #0F172A;
+      font-weight: 700;
+    }
+    .epd-pill.green {
+      background: #ECFDF5;
+      color: #065F46;
+    }
+    .epd-pill.green b {
+      color: #059669;
+    }
+    .epd-pill.amber {
+      background: #FFFBEB;
+      color: #92400E;
+    }
+    .epd-pill.amber b {
+      color: #D97706;
+    }
+    .epd-clean-desc {
+      font-size: 13px;
+      color: #64748B;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .epd-compact-seller {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    .epd-seller-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .epd-seller-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1.5px solid #10B981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .epd-seller-info {
+      min-width: 0;
+    }
+    .epd-seller-name-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .epd-seller-name {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0F172A;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .epd-seller-sub {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #64748B;
+      margin-top: 1px;
+    }
+    .epd-seller-zalo-btn {
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 8px;
+      background: #0088FF;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
     /* SẢN PHẨM GỢI Ý (RELATED PRODUCTS) */
     .edm-related-panel {
       margin-bottom: 10px;
@@ -9431,7 +9543,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </button>
           <div class="det-top-title-box">
             <h1 class="det-top-title" id="epdHeaderTitle">Chi Tiết Nông Sản</h1>
-            <span class="det-top-code" id="epdSubtitle">HTX Nông Nghiệp Yên Bình</span>
+            <span class="det-top-code" id="epdSubtitle" style="display:none;">HTX Nông Nghiệp Yên Bình</span>
           </div>
           <div style="display:flex;align-items:center;gap:6px">
             <button type="button" class="det-back-icon-btn" onclick="shareCurrentEcomProduct()" title="Chia sẻ">
@@ -9459,12 +9571,17 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           <span class="edm-price-old" id="epdOldPrice">42.000 đ</span>
         </div>
         <div class="edm-title-name" id="epdTitle">Cam sành hữu cơ Khe Vang vỏ mỏng</div>
-        <div class="edm-stats-strip">
-          <span class="edm-rating-star">⭐ <span id="epdRating">4.8</span></span>
-          <span>·</span>
-          <span id="epdSold">Đã bán 320 kg</span>
-          <span>·</span>
-          <span style="color:#059669;font-weight:700">🚚 Giao nhanh trong ngày</span>
+
+        <!-- Tag pills rút gọn thay thế bảng thông số rườm rà -->
+        <div class="epd-pill-strip">
+          <span class="epd-pill">📍 <b id="epdOrigin">Mộc Châu</b></span>
+          <span class="epd-pill green">🌿 <b id="epdStandard">Hữu cơ PGS</b></span>
+          <span class="epd-pill amber">📦 Kho: <b id="epdStock">450 kg</b></span>
+        </div>
+
+        <!-- Mô tả nông sản ngắn gọn, thoáng đãng -->
+        <div class="epd-clean-desc" id="epdDesc">
+          Cam sành trồng tự nhiên trên đất đồi Khe Vang, vỏ mỏng, ngọt thanh mát tự nhiên.
         </div>
 
         <!-- TRẠNG THÁI MỞ BÁN / SỬA GIÁ (CHỈ HIỂN THỊ KHI XEM MÓN CỦA BÁC BA) -->
@@ -9482,83 +9599,42 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
 
-        <!-- 3. THÔNG TIN CHỦ SHOP (SELLER / FARMER PROFILE CARD) -->
-        <div class="edm-shop-card" id="epdShopCard">
-          <div class="edm-shop-header">
-            <div class="edm-shop-avatar" id="epdShopAvatar">
-              🍊
-              <div class="edm-shop-online-dot"></div>
-            </div>
-            <div class="edm-shop-info">
-              <div class="edm-shop-name">
-                <span id="epdShopName">Vườn Cam Sành Chị Lan</span>
-                <span class="edm-shop-verified">✓ Đã xác thực</span>
+        <!-- 3. THÔNG TIN CHỦ SHOP TỐI GIẢN (1 HÀNG GỌN GÀNG, KHÔNG DÀI DÒNG) -->
+        <div class="epd-compact-seller" id="epdShopCard">
+          <div class="epd-seller-left">
+            <div class="epd-seller-avatar" id="epdShopAvatar">🍊</div>
+            <div class="epd-seller-info">
+              <div class="epd-seller-name-row">
+                <span class="epd-seller-name" id="epdShopName">Vườn Cam Chị Lan</span>
+                <span class="edm-shop-verified">✓</span>
               </div>
-              <div class="edm-shop-role" id="epdShopRole">Xã viên Tổ 2 · HTX Nông nghiệp Yên Bình</div>
-              <div class="edm-shop-meta-row">
-                <span>📍 <span id="epdShopDist">1.8 km</span> (gần bạn)</span>
-                <span>⭐ <span id="epdShopRating">4.9</span></span>
-                <span>📦 <span id="epdShopProductsCount">6</span> nông sản</span>
+              <div class="epd-seller-sub">
+                <span>📍 <span id="epdShopDist">1.8 km</span></span>
+                <span>·</span>
+                <span style="color:#D97706;font-weight:700">⭐ <span id="epdShopRating">4.9</span></span>
               </div>
             </div>
           </div>
-          <div class="edm-shop-actions">
-            <button type="button" class="edm-shop-btn-zalo" onclick="chatWithShopOwner()">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              <span>Nhắn Zalo</span>
-            </button>
-            <button type="button" class="edm-shop-btn-outline" onclick="callShopOwner()">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>Gọi Nhà Vườn</span>
-            </button>
-          </div>
+          <button type="button" class="epd-seller-zalo-btn" onclick="chatWithShopOwner()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Nhắn Zalo</span>
+          </button>
         </div>
 
-        <!-- 4. NGUỒN GỐC & QUY TRÌNH CANH TÁC -->
-        <div class="edm-specs-panel">
-          <div class="edm-section-title">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-            <span>Nguồn Gốc & Quy Trình Canh Tác</span>
-          </div>
-          <div class="edm-spec-table">
-            <div class="edm-spec-row">
-              <span>Xuất xứ / Vườn:</span>
-              <b id="epdOrigin">Đồi Khe Vang, Mộc Châu, Sơn La</b>
-            </div>
-            <div class="edm-spec-row">
-              <span>Tiêu chuẩn canh tác:</span>
-              <b id="epdStandard" style="color:#059669">Hữu cơ PGS VN</b>
-            </div>
-            <div class="edm-spec-row">
-              <span>Thời điểm thu hái:</span>
-              <b id="epdHarvestDate">Sáng sớm hôm nay</b>
-            </div>
-            <div class="edm-spec-row">
-              <span>Quy cách đóng gói:</span>
-              <b id="epdPackage">Thùng carton thông hơi 5kg - 10kg</b>
-            </div>
-            <div class="edm-spec-row">
-              <span>Tồn kho vườn khả dụng:</span>
-              <b id="epdStock" style="color:#D97706">450 kg</b>
-            </div>
-          </div>
+        <!-- Giữ lại các ID hỗ trợ tương thích nếu cần -->
+        <div style="display:none;">
+          <span id="epdHarvestDate"></span>
+          <span id="epdPackage"></span>
+          <span id="epdRating">4.8</span>
+          <span id="epdSold">Đã bán 320 kg</span>
+          <span id="epdShopRole"></span>
+          <span id="epdShopProductsCount"></span>
         </div>
 
-        <!-- 5. MÔ TẢ NÔNG SẢN -->
-        <div class="edm-desc-panel">
-          <div class="edm-section-title">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            <span>Mô Tả Nông Sản</span>
-          </div>
-          <div class="edm-desc-content" id="epdDesc">
-            Cam sành trồng tự nhiên trên đất đồi Khe Vang, tưới nước suối khoáng tự nhiên. Vỏ mỏng, mọng nước, tép vàng óng, vị ngọt thanh mát, không dư lượng thuốc BVTV.
-          </div>
-        </div>
-
-        <!-- 6. CÁC SẢN PHẨM GỢI Ý (RELATED PRODUCE) -->
-        <div class="edm-related-panel" id="epdRelatedPanel">
-          <div class="edm-section-title">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+        <!-- 4. CÁC SẢN PHẨM GỢI Ý (RELATED PRODUCE) -->
+        <div class="edm-related-panel" id="epdRelatedPanel" style="margin-top:12px;">
+          <div class="edm-section-title" style="font-size:13px;color:#475569;margin-bottom:8px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
             <span>Gợi Ý Nông Sản Tương Tự Từ HTX</span>
           </div>
           <div class="edm-related-grid" id="epdRelatedGrid">
@@ -9566,7 +9642,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
 
-        <!-- 7. THANH MUA HÀNG CỐ ĐỊNH ĐÁY (BOTTOM DOCK) -->
+        <!-- 5. THANH MUA HÀNG CỐ ĐỊNH ĐÁY (BOTTOM DOCK) -->
         <div class="edm-bottom-dock" id="epdBottomDock">
           <button type="button" class="edm-btn-icon" onclick="chatWithShopOwner()" title="Chat Zalo">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0088FF" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -13512,14 +13588,14 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
         // Hiện thẻ chủ shop
         const shopCard = document.getElementById('epdShopCard');
-        if (shopCard) shopCard.style.display = 'block';
+        if (shopCard) shopCard.style.display = 'flex';
         const shopAvatar = document.getElementById('epdShopAvatar');
         const shopName = document.getElementById('epdShopName');
         const shopRole = document.getElementById('epdShopRole');
         const shopDist = document.getElementById('epdShopDist');
         const shopRating = document.getElementById('epdShopRating');
         const shopCount = document.getElementById('epdShopProductsCount');
-        if (shopAvatar) shopAvatar.innerHTML = prod.shop.avatar + '<div class="edm-shop-online-dot"></div>';
+        if (shopAvatar) shopAvatar.innerHTML = prod.shop.avatar;
         if (shopName) shopName.textContent = prod.shop.name;
         if (shopRole) shopRole.textContent = prod.shop.role;
         if (shopDist) shopDist.textContent = prod.shop.dist;

@@ -9421,241 +9421,167 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       </section>
 
       <!-- =========================================================================
-           MODAL CHI TIẾT SẢN PHẨM GIAN HÀNG CỦA TÔI (PRODUCT DETAIL BOTTOM SHEET)
+           PANEL 8: MÀN HÌNH CHI TIẾT NÔNG SẢN (CHUYỂN MÀN TOÀN DIỆN - ZERO POPUP)
            ========================================================================= -->
-      <div class="product-detail-modal-overlay" id="productDetailModal" onclick="closeProductDetailModal(event)">
-        <div class="product-detail-modal-card" onclick="event.stopPropagation()">
-          <div class="pdm-header">
-            <button type="button" class="pdm-back-btn" onclick="closeProductDetailModal()" title="Đóng">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
-            <div class="pdm-title">Chi Tiết Sản Phẩm</div>
-            <button type="button" class="pdm-back-btn" onclick="shareCurrentDetailProduct()" title="Chia sẻ sản phẩm">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
-            </button>
+      <section id="panel-product-detail" class="view-panel" style="padding-bottom: 85px;">
+        <!-- Top Bar Header chuẩn App: Nút quay lại + Tiêu đề + Chia sẻ + Giỏ hàng -->
+        <div class="det-top-bar" style="margin-bottom: 12px;">
+          <button type="button" class="det-back-icon-btn" onclick="closeProductDetailScreen()" title="Quay lại gian hàng">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="det-top-title-box">
+            <h1 class="det-top-title" id="epdHeaderTitle">Chi Tiết Nông Sản</h1>
+            <span class="det-top-code" id="epdSubtitle">HTX Nông Nghiệp Yên Bình</span>
           </div>
-          <div class="pdm-body">
-            <img id="pdmHeroImg" src="banana_front.jpg" alt="Sản phẩm" class="pdm-hero-img">
-            <div class="pdm-tag-row">
-              <span class="pdm-tag" id="pdmBadgeOcop">OCOP 4 Sao</span>
-              <span class="pdm-tag green" id="pdmBadgeVietgap">VietGAP</span>
-            </div>
-            <div class="pdm-name" id="pdmName">Chuối Sấy Giòn OCOP 4 Sao</div>
-            <div class="pdm-price-row">
-              <div>
-                <span class="pdm-price" id="pdmPrice">45.000 đ</span>
-                <span class="pdm-unit" id="pdmUnit"> / gói 500g</span>
-              </div>
-              <button type="button" onclick="quickEditDetailPrice()" style="font-size:12px;font-weight:700;color:#00B14F;background:#ECFDF5;border:1px solid #A7F3D0;padding:6px 12px;border-radius:8px;cursor:pointer">Sửa giá bán</button>
-            </div>
-
-            <!-- Bật/Tắt món trên gian hàng -->
-            <div class="pdm-status-box">
-              <div>
-                <div style="font-size:13.5px;font-weight:800;color:#0F172A">Trạng thái bán trên gian hàng</div>
-                <div style="font-size:11.5px;color:#64748B" id="pdmStatusDesc">Đang hiển thị cho khách đặt mua</div>
-              </div>
-              <label class="shopee-switch" onclick="event.stopPropagation()">
-                <input type="checkbox" id="pdmSwitchInput" checked onchange="onDetailModalToggle(this)">
-                <span class="shopee-slider"></span>
-              </label>
-            </div>
-
-            <!-- Thông số quy cách nông sản -->
-            <div class="pdm-spec-list">
-              <div class="pdm-spec-item">
-                <span>Mã sản phẩm:</span>
-                <b id="pdmCode">SP-OCOP-01</b>
-              </div>
-              <div class="pdm-spec-item">
-                <span>Xuất xứ / Vườn:</span>
-                <b id="pdmOrigin">Vườn Chuối Bác Ba - Lô B2, Mộc Châu</b>
-              </div>
-              <div class="pdm-spec-item">
-                <span>Quy cách:</span>
-                <b id="pdmPackage">Túi zip chân không 500g</b>
-              </div>
-              <div class="pdm-spec-item">
-                <span>Tồn kho:</span>
-                <b id="pdmStock" style="color:#00B14F">120 gói</b>
-              </div>
-              <div class="pdm-spec-item">
-                <span>Hạn sử dụng:</span>
-                <b id="pdmExpiry">6 tháng</b>
-              </div>
-            </div>
-
-            <!-- Mô tả sản phẩm -->
-            <div style="margin-bottom:18px">
-              <div style="font-size:13px;font-weight:800;color:#0F172A;margin-bottom:5px">Mô tả sản phẩm:</div>
-              <div class="pdm-desc-text" id="pdmDesc">
-                Chuối tiêu hồng sấy giòn nguyên chất không đường, đạt chuẩn OCOP 4 sao tỉnh Sơn La.
-              </div>
-            </div>
-
-            <!-- Nút thao tác -->
-            <div class="pdm-actions-col">
-              <button type="button" class="pdm-primary-btn" onclick="shareCurrentDetailProduct()">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
-                <span>Chia Sẻ Link Mua Hàng Lên Zalo</span>
-              </button>
-              <button type="button" class="pdm-outline-btn" onclick="closeProductDetailModal()">
-                <span>Quay lại gian hàng</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- =========================================================================
-           MODAL CHI TIẾT SẢN PHẨM KHÁM PHÁ (CHỦ SHOP, THÔNG TIN NÔNG SẢN, GỢI Ý)
-           ========================================================================= -->
-      <div class="ecom-detail-modal-overlay" id="ecomProductDetailModal" onclick="closeEcomProductDetailModal(event)">
-        <div class="ecom-detail-modal-card" onclick="event.stopPropagation()">
-          <!-- Top Header -->
-          <div class="edm-header">
-            <button type="button" class="edm-nav-btn" onclick="closeEcomProductDetailModal()" title="Quay lại">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button type="button" class="det-back-icon-btn" onclick="shareCurrentEcomProduct()" title="Chia sẻ">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
             </button>
-            <div class="edm-header-title">Chi Tiết Nông Sản</div>
-            <div class="edm-header-actions">
-              <button type="button" class="edm-nav-btn" onclick="shareCurrentEcomProduct()" title="Chia sẻ">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
-              </button>
-              <button type="button" class="edm-nav-btn" onclick="triggerToast('🛒 Giỏ hàng: Đang có 1 nông sản sẵn sàng đặt!')" title="Giỏ hàng">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- Body Content -->
-          <div class="edm-body">
-            <!-- Hero Image Banner with Certified Badges -->
-            <div class="edm-hero-container">
-              <img id="edmHeroImg" src="banana_plate.jpg" alt="Sản phẩm" class="edm-hero-img">
-              <div class="edm-hero-badge-wrap">
-                <span class="edm-badge-item" id="edmBadgeOcop">OCOP 3⭐</span>
-                <span class="edm-badge-item green" id="edmBadgeTag">Hữu cơ vi sinh</span>
-              </div>
-            </div>
-
-            <!-- Price & Title Section -->
-            <div class="edm-price-banner">
-              <span class="edm-price-current" id="edmPrice">35.000 đ</span>
-              <span class="edm-unit-text" id="edmUnit">/ kg</span>
-              <span class="edm-price-old" id="edmOldPrice">42.000 đ</span>
-            </div>
-            <div class="edm-title-name" id="edmTitle">Cam sành hữu cơ Khe Vang vỏ mỏng</div>
-            <div class="edm-stats-strip">
-              <span class="edm-rating-star">⭐ <span id="edmRating">4.8</span></span>
-              <span>·</span>
-              <span id="edmSold">Đã bán 320 kg</span>
-              <span>·</span>
-              <span style="color:#059669;font-weight:700">🚚 Giao nhanh trong ngày</span>
-            </div>
-
-            <!-- 1. THÔNG TIN CHỦ SHOP (SELLER PROFILE CARD) -->
-            <div class="edm-shop-card">
-              <div class="edm-shop-header">
-                <div class="edm-shop-avatar" id="edmShopAvatar">
-                  🍊
-                  <div class="edm-shop-online-dot"></div>
-                </div>
-                <div class="edm-shop-info">
-                  <div class="edm-shop-name">
-                    <span id="edmShopName">Vườn Cam Sành Chị Lan</span>
-                    <span class="edm-shop-verified">✓ Đã xác thực</span>
-                  </div>
-                  <div class="edm-shop-role" id="edmShopRole">Xã viên Tổ 2 · HTX Nông nghiệp Yên Bình</div>
-                  <div class="edm-shop-meta-row">
-                    <span>📍 <span id="edmShopDist">1.8 km</span> (gần bạn)</span>
-                    <span>⭐ <span id="edmShopRating">4.9</span></span>
-                    <span>📦 <span id="edmShopProductsCount">6</span> nông sản</span>
-                  </div>
-                </div>
-              </div>
-              <div class="edm-shop-actions">
-                <button type="button" class="edm-shop-btn-zalo" onclick="chatWithShopOwner()">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  <span>Nhắn Zalo</span>
-                </button>
-                <button type="button" class="edm-shop-btn-outline" onclick="callShopOwner()">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  <span>Gọi Nhà Vườn</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- 2. THÔNG TIN SẢN PHẨM & NGUỒN GỐC NÔNG SẢN -->
-            <div class="edm-specs-panel">
-              <div class="edm-section-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span>Nguồn Gốc & Quy Trình Canh Tác</span>
-              </div>
-              <div class="edm-spec-table">
-                <div class="edm-spec-row">
-                  <span>Xuất xứ / Vườn:</span>
-                  <b id="edmOrigin">Đồi Khe Vang, Mộc Châu, Sơn La</b>
-                </div>
-                <div class="edm-spec-row">
-                  <span>Tiêu chuẩn canh tác:</span>
-                  <b id="edmStandard" style="color:#059669">Hữu cơ PGS VN</b>
-                </div>
-                <div class="edm-spec-row">
-                  <span>Thời điểm thu hái:</span>
-                  <b id="edmHarvestDate">Sáng sớm hôm nay</b>
-                </div>
-                <div class="edm-spec-row">
-                  <span>Quy cách đóng gói:</span>
-                  <b id="edmPackage">Thùng carton thông hơi 5kg - 10kg</b>
-                </div>
-                <div class="edm-spec-row">
-                  <span>Tồn kho vườn khả dụng:</span>
-                  <b id="edmStock" style="color:#D97706">450 kg</b>
-                </div>
-              </div>
-            </div>
-
-            <!-- MÔ TẢ CHI TIẾT -->
-            <div class="edm-desc-panel">
-              <div class="edm-section-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                <span>Mô Tả Nông Sản</span>
-              </div>
-              <div class="edm-desc-content" id="edmDesc">
-                Cam sành trồng tự nhiên trên đất đồi Khe Vang, tưới nước suối khoáng tự nhiên. Vỏ mỏng, mọng nước, tép vàng óng, vị ngọt thanh mát, không dư lượng thuốc BVTV.
-              </div>
-            </div>
-
-            <!-- 3. CÁC SẢN PHẨM GỢI Ý (RELATED PRODUCE) -->
-            <div class="edm-related-panel">
-              <div class="edm-section-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
-                <span>Gợi Ý Nông Sản Tương Tự Từ HTX</span>
-              </div>
-              <div class="edm-related-grid" id="edmRelatedGrid">
-                <!-- Injected dynamically by openEcomProductDetailModal -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom Action Dock (Mua Ngay / Thêm Giỏ / Zalo) -->
-          <div class="edm-bottom-dock">
-            <button type="button" class="edm-btn-icon" onclick="chatWithShopOwner()" title="Chat Zalo">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0088FF" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              <span>Zalo</span>
-            </button>
-            <button type="button" class="edm-btn-add-cart" onclick="quickAddCurrentToCart()">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-              <span>Thêm Giỏ</span>
-            </button>
-            <button type="button" class="edm-btn-buy-now" onclick="quickOrderCurrentEcomProduct()">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-              <span>Đặt Mua Ngay</span>
+            <button type="button" class="det-back-icon-btn" onclick="triggerToast('🛒 Giỏ hàng: Đang có 1 nông sản sẵn sàng đặt!')" title="Giỏ hàng">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </button>
           </div>
         </div>
-      </div>
+
+        <!-- 1. Hero Image Container with Certified Badges -->
+        <div class="edm-hero-container">
+          <img id="epdHeroImg" src="banana_plate.jpg" alt="Sản phẩm" class="edm-hero-img">
+          <div class="edm-hero-badge-wrap">
+            <span class="edm-badge-item" id="epdBadgeOcop">OCOP 3⭐</span>
+            <span class="edm-badge-item green" id="epdBadgeTag">Hữu cơ vi sinh</span>
+          </div>
+        </div>
+
+        <!-- 2. Price & Title Section -->
+        <div class="edm-price-banner">
+          <span class="edm-price-current" id="epdPrice">35.000 đ</span>
+          <span class="edm-unit-text" id="epdUnit">/ kg</span>
+          <span class="edm-price-old" id="epdOldPrice">42.000 đ</span>
+        </div>
+        <div class="edm-title-name" id="epdTitle">Cam sành hữu cơ Khe Vang vỏ mỏng</div>
+        <div class="edm-stats-strip">
+          <span class="edm-rating-star">⭐ <span id="epdRating">4.8</span></span>
+          <span>·</span>
+          <span id="epdSold">Đã bán 320 kg</span>
+          <span>·</span>
+          <span style="color:#059669;font-weight:700">🚚 Giao nhanh trong ngày</span>
+        </div>
+
+        <!-- TRẠNG THÁI MỞ BÁN / SỬA GIÁ (CHỈ HIỂN THỊ KHI XEM MÓN CỦA BÁC BA) -->
+        <div class="pdm-status-box" id="epdMyStoreManageBox" style="display:none;margin-bottom:16px;">
+          <div>
+            <div style="font-size:13.5px;font-weight:800;color:#0F172A">Trạng thái bán trên gian hàng</div>
+            <div style="font-size:11.5px;color:#64748B" id="epdStatusDesc">Đang hiển thị cho khách đặt mua</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <button type="button" onclick="quickEditDetailPrice()" style="font-size:12px;font-weight:700;color:#00B14F;background:#ECFDF5;border:1px solid #A7F3D0;padding:6px 10px;border-radius:8px;cursor:pointer">Sửa giá</button>
+            <label class="shopee-switch" onclick="event.stopPropagation()">
+              <input type="checkbox" id="epdSwitchInput" checked onchange="onDetailScreenToggle(this)">
+              <span class="shopee-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 3. THÔNG TIN CHỦ SHOP (SELLER / FARMER PROFILE CARD) -->
+        <div class="edm-shop-card" id="epdShopCard">
+          <div class="edm-shop-header">
+            <div class="edm-shop-avatar" id="epdShopAvatar">
+              🍊
+              <div class="edm-shop-online-dot"></div>
+            </div>
+            <div class="edm-shop-info">
+              <div class="edm-shop-name">
+                <span id="epdShopName">Vườn Cam Sành Chị Lan</span>
+                <span class="edm-shop-verified">✓ Đã xác thực</span>
+              </div>
+              <div class="edm-shop-role" id="epdShopRole">Xã viên Tổ 2 · HTX Nông nghiệp Yên Bình</div>
+              <div class="edm-shop-meta-row">
+                <span>📍 <span id="epdShopDist">1.8 km</span> (gần bạn)</span>
+                <span>⭐ <span id="epdShopRating">4.9</span></span>
+                <span>📦 <span id="epdShopProductsCount">6</span> nông sản</span>
+              </div>
+            </div>
+          </div>
+          <div class="edm-shop-actions">
+            <button type="button" class="edm-shop-btn-zalo" onclick="chatWithShopOwner()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Nhắn Zalo</span>
+            </button>
+            <button type="button" class="edm-shop-btn-outline" onclick="callShopOwner()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Gọi Nhà Vườn</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. NGUỒN GỐC & QUY TRÌNH CANH TÁC -->
+        <div class="edm-specs-panel">
+          <div class="edm-section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>Nguồn Gốc & Quy Trình Canh Tác</span>
+          </div>
+          <div class="edm-spec-table">
+            <div class="edm-spec-row">
+              <span>Xuất xứ / Vườn:</span>
+              <b id="epdOrigin">Đồi Khe Vang, Mộc Châu, Sơn La</b>
+            </div>
+            <div class="edm-spec-row">
+              <span>Tiêu chuẩn canh tác:</span>
+              <b id="epdStandard" style="color:#059669">Hữu cơ PGS VN</b>
+            </div>
+            <div class="edm-spec-row">
+              <span>Thời điểm thu hái:</span>
+              <b id="epdHarvestDate">Sáng sớm hôm nay</b>
+            </div>
+            <div class="edm-spec-row">
+              <span>Quy cách đóng gói:</span>
+              <b id="epdPackage">Thùng carton thông hơi 5kg - 10kg</b>
+            </div>
+            <div class="edm-spec-row">
+              <span>Tồn kho vườn khả dụng:</span>
+              <b id="epdStock" style="color:#D97706">450 kg</b>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. MÔ TẢ NÔNG SẢN -->
+        <div class="edm-desc-panel">
+          <div class="edm-section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span>Mô Tả Nông Sản</span>
+          </div>
+          <div class="edm-desc-content" id="epdDesc">
+            Cam sành trồng tự nhiên trên đất đồi Khe Vang, tưới nước suối khoáng tự nhiên. Vỏ mỏng, mọng nước, tép vàng óng, vị ngọt thanh mát, không dư lượng thuốc BVTV.
+          </div>
+        </div>
+
+        <!-- 6. CÁC SẢN PHẨM GỢI Ý (RELATED PRODUCE) -->
+        <div class="edm-related-panel" id="epdRelatedPanel">
+          <div class="edm-section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+            <span>Gợi Ý Nông Sản Tương Tự Từ HTX</span>
+          </div>
+          <div class="edm-related-grid" id="epdRelatedGrid">
+            <!-- Injected dynamically by openProductDetailScreen -->
+          </div>
+        </div>
+
+        <!-- 7. THANH MUA HÀNG CỐ ĐỊNH ĐÁY (BOTTOM DOCK) -->
+        <div class="edm-bottom-dock" id="epdBottomDock">
+          <button type="button" class="edm-btn-icon" onclick="chatWithShopOwner()" title="Chat Zalo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0088FF" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Zalo</span>
+          </button>
+          <button type="button" class="edm-btn-add-cart" onclick="quickAddCurrentToCart()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Thêm Giỏ</span>
+          </button>
+          <button type="button" class="edm-btn-buy-now" onclick="quickOrderCurrentEcomProduct()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Đặt Mua Ngay</span>
+          </button>
+        </div>
+      </section>
 
       <section id="panel-support" class="view-panel">
         <h1 class="step-main-title">Hub Xã Hỗ Trợ</h1>
@@ -13538,60 +13464,214 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
     let currentDetailProductId = null;
 
-    // Mở Modal Chi Tiết Sản Phẩm (Slide up Sheet khi bấm vào dòng món)
-    function openProductDetailModal(id) {
-      const prod = BAC_BA_PRODUCTS[id];
-      if (!prod) return;
-      currentDetailProductId = id;
+    // Biến lưu subtab trước đó của gian hàng ('myStore' hoặc 'explore')
+    let lastMarketSubTab = 'explore';
 
-      const heroImg = document.getElementById('pdmHeroImg');
-      const badgeOcop = document.getElementById('pdmBadgeOcop');
-      const badgeVietgap = document.getElementById('pdmBadgeVietgap');
-      const name = document.getElementById('pdmName');
-      const price = document.getElementById('pdmPrice');
-      const unit = document.getElementById('pdmUnit');
-      const code = document.getElementById('pdmCode');
-      const origin = document.getElementById('pdmOrigin');
-      const pkg = document.getElementById('pdmPackage');
-      const stock = document.getElementById('pdmStock');
-      const expiry = document.getElementById('pdmExpiry');
-      const desc = document.getElementById('pdmDesc');
-      const switchInput = document.getElementById('pdmSwitchInput');
-      const statusDesc = document.getElementById('pdmStatusDesc');
+    // Chuyển sang Màn hình Chi tiết Sản phẩm riêng biệt (CHUYỂN MÀN TOÀN DIỆN - ZERO POPUP)
+    function openProductDetailScreen(id, fromTab = 'explore') {
+      lastMarketSubTab = fromTab;
 
-      if (heroImg) heroImg.src = prod.image;
-      if (badgeOcop) badgeOcop.textContent = prod.ocop;
-      if (badgeVietgap) badgeVietgap.textContent = prod.vietgap;
-      if (name) name.textContent = prod.name;
-      if (price) price.textContent = prod.priceStr;
-      if (unit) unit.textContent = prod.unit;
-      if (code) code.textContent = prod.code;
-      if (origin) origin.textContent = prod.origin;
-      if (pkg) pkg.textContent = prod.package;
-      if (stock) stock.textContent = prod.stock;
-      if (expiry) expiry.textContent = prod.expiry;
-      if (desc) desc.textContent = prod.desc;
+      if (fromTab === 'explore') {
+        const prod = ECOM_EXPLORE_PRODUCTS[id] || ECOM_EXPLORE_PRODUCTS[1];
+        currentEcomDetailId = prod.id;
 
-      if (switchInput) switchInput.checked = !!prod.active;
-      if (statusDesc) {
-        statusDesc.textContent = prod.active ? 'Đang hiển thị cho khách đặt mua' : 'Đang tạm ẩn trên gian hàng';
+        // Header info
+        const headerTitle = document.getElementById('epdHeaderTitle');
+        const subtitle = document.getElementById('epdSubtitle');
+        if (headerTitle) headerTitle.textContent = 'Chi Tiết Nông Sản';
+        if (subtitle) subtitle.textContent = prod.shop.name;
+
+        // Ảnh và nhãn
+        const heroImg = document.getElementById('epdHeroImg');
+        const badgeOcop = document.getElementById('epdBadgeOcop');
+        const badgeTag = document.getElementById('epdBadgeTag');
+        if (heroImg) heroImg.src = prod.image;
+        if (badgeOcop) badgeOcop.textContent = prod.badgeOcop;
+        if (badgeTag) badgeTag.textContent = prod.badgeTag;
+
+        // Giá và tên
+        const price = document.getElementById('epdPrice');
+        const unit = document.getElementById('epdUnit');
+        const oldPrice = document.getElementById('epdOldPrice');
+        const title = document.getElementById('epdTitle');
+        const rating = document.getElementById('epdRating');
+        const sold = document.getElementById('epdSold');
+        if (price) price.textContent = prod.price;
+        if (unit) unit.textContent = prod.unit;
+        if (oldPrice) {
+          oldPrice.textContent = prod.oldPrice;
+          oldPrice.style.display = 'inline';
+        }
+        if (title) title.textContent = prod.title;
+        if (rating) rating.textContent = prod.rating;
+        if (sold) sold.textContent = prod.sold;
+
+        // Ẩn hộp quản lý món Bác Ba
+        const myStoreBox = document.getElementById('epdMyStoreManageBox');
+        if (myStoreBox) myStoreBox.style.display = 'none';
+
+        // Hiện thẻ chủ shop
+        const shopCard = document.getElementById('epdShopCard');
+        if (shopCard) shopCard.style.display = 'block';
+        const shopAvatar = document.getElementById('epdShopAvatar');
+        const shopName = document.getElementById('epdShopName');
+        const shopRole = document.getElementById('epdShopRole');
+        const shopDist = document.getElementById('epdShopDist');
+        const shopRating = document.getElementById('epdShopRating');
+        const shopCount = document.getElementById('epdShopProductsCount');
+        if (shopAvatar) shopAvatar.innerHTML = prod.shop.avatar + '<div class="edm-shop-online-dot"></div>';
+        if (shopName) shopName.textContent = prod.shop.name;
+        if (shopRole) shopRole.textContent = prod.shop.role;
+        if (shopDist) shopDist.textContent = prod.shop.dist;
+        if (shopRating) shopRating.textContent = prod.shop.rating;
+        if (shopCount) shopCount.textContent = prod.shop.productsCount;
+
+        // Nguồn gốc & Thông số
+        const origin = document.getElementById('epdOrigin');
+        const standard = document.getElementById('epdStandard');
+        const harvestDate = document.getElementById('epdHarvestDate');
+        const pkg = document.getElementById('epdPackage');
+        const stock = document.getElementById('epdStock');
+        const desc = document.getElementById('epdDesc');
+        if (origin) origin.textContent = prod.origin;
+        if (standard) standard.textContent = prod.standard;
+        if (harvestDate) harvestDate.textContent = prod.harvestDate;
+        if (pkg) pkg.textContent = prod.package;
+        if (stock) stock.textContent = prod.stock;
+        if (desc) desc.textContent = prod.desc;
+
+        // Hiện khối gợi ý sản phẩm
+        const relPanel = document.getElementById('epdRelatedPanel');
+        if (relPanel) relPanel.style.display = 'block';
+        const relatedGrid = document.getElementById('epdRelatedGrid');
+        if (relatedGrid && prod.relatedIds) {
+          relatedGrid.innerHTML = '';
+          prod.relatedIds.forEach(relId => {
+            const rProd = ECOM_EXPLORE_PRODUCTS[relId];
+            if (!rProd) return;
+            const card = document.createElement('div');
+            card.className = 'edm-related-card';
+            card.onclick = () => openProductDetailScreen(rProd.id, 'explore');
+            card.innerHTML = `
+              <img src="${rProd.image}" alt="${rProd.title}" class="edm-related-img">
+              <div class="edm-related-title">${rProd.title}</div>
+              <div class="edm-related-price">${rProd.price}</div>
+            `;
+            relatedGrid.appendChild(card);
+          });
+        }
+
+        // Hiện thanh mua hàng
+        const bottomDock = document.getElementById('epdBottomDock');
+        if (bottomDock) bottomDock.style.display = 'flex';
+
+      } else {
+        // Mở từ Gian hàng của tôi (Sản phẩm của Bác Ba)
+        const prod = BAC_BA_PRODUCTS[id] || BAC_BA_PRODUCTS[1];
+        currentDetailProductId = prod.id;
+
+        const headerTitle = document.getElementById('epdHeaderTitle');
+        const subtitle = document.getElementById('epdSubtitle');
+        if (headerTitle) headerTitle.textContent = 'Chi Tiết Sản Phẩm Của Tôi';
+        if (subtitle) subtitle.textContent = 'Gian Hàng Bác Ba · Xã Viên 004';
+
+        const heroImg = document.getElementById('epdHeroImg');
+        const badgeOcop = document.getElementById('epdBadgeOcop');
+        const badgeTag = document.getElementById('epdBadgeTag');
+        if (heroImg) heroImg.src = prod.image;
+        if (badgeOcop) badgeOcop.textContent = prod.ocop;
+        if (badgeTag) badgeTag.textContent = prod.vietgap;
+
+        const price = document.getElementById('epdPrice');
+        const unit = document.getElementById('epdUnit');
+        const oldPrice = document.getElementById('epdOldPrice');
+        const title = document.getElementById('epdTitle');
+        const rating = document.getElementById('epdRating');
+        const sold = document.getElementById('epdSold');
+        if (price) price.textContent = prod.priceStr;
+        if (unit) unit.textContent = prod.unit;
+        if (oldPrice) oldPrice.style.display = 'none';
+        if (title) title.textContent = prod.name;
+        if (rating) rating.textContent = '5.0';
+        if (sold) sold.textContent = 'Đang quản lý trên kệ';
+
+        // Hiện hộp quản lý bật/tắt & sửa giá Bác Ba
+        const myStoreBox = document.getElementById('epdMyStoreManageBox');
+        if (myStoreBox) myStoreBox.style.display = 'flex';
+        const switchInput = document.getElementById('epdSwitchInput');
+        const statusDesc = document.getElementById('epdStatusDesc');
+        if (switchInput) switchInput.checked = !!prod.active;
+        if (statusDesc) {
+          statusDesc.textContent = prod.active ? 'Đang hiển thị cho khách đặt mua' : 'Đang tạm ẩn trên gian hàng';
+        }
+
+        // Ẩn thẻ chủ shop (vì là shop của mình)
+        const shopCard = document.getElementById('epdShopCard');
+        if (shopCard) shopCard.style.display = 'none';
+
+        // Nguồn gốc & Thông số
+        const origin = document.getElementById('epdOrigin');
+        const standard = document.getElementById('epdStandard');
+        const harvestDate = document.getElementById('epdHarvestDate');
+        const pkg = document.getElementById('epdPackage');
+        const stock = document.getElementById('epdStock');
+        const desc = document.getElementById('epdDesc');
+        if (origin) origin.textContent = prod.origin;
+        if (standard) standard.textContent = 'VietGAP & OCOP tỉnh Sơn La';
+        if (harvestDate) harvestDate.textContent = 'Hạn dùng: ' + prod.expiry;
+        if (pkg) pkg.textContent = prod.package;
+        if (stock) stock.textContent = prod.stock;
+        if (desc) desc.textContent = prod.desc;
+
+        // Ẩn gợi ý và dock mua hàng bên ngoài
+        const relPanel = document.getElementById('epdRelatedPanel');
+        if (relPanel) relPanel.style.display = 'none';
+        const bottomDock = document.getElementById('epdBottomDock');
+        if (bottomDock) bottomDock.style.display = 'none';
       }
 
-      const modal = document.getElementById('productDetailModal');
-      if (modal) {
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
+      // CHUYỂN MÀN HÌNH NATIVE (ZERO POPUP)
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      const detailPanel = document.getElementById('panel-product-detail');
+      if (detailPanel) {
+        detailPanel.classList.add('active');
+      }
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Quay lại màn hình gian hàng (giữ đúng subtab trước đó)
+    function closeProductDetailScreen() {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      const marketPanel = document.getElementById('panel-market');
+      if (marketPanel) {
+        marketPanel.classList.add('active');
+      }
+      switchMarketSubTab(lastMarketSubTab);
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Bật/tắt công tắc món Bác Ba ngay trên màn hình chi tiết
+    function onDetailScreenToggle(inputElem) {
+      if (!currentDetailProductId) return;
+      const listSwitch = document.getElementById('pmgSwitch_' + currentDetailProductId);
+      if (listSwitch) {
+        listSwitch.checked = inputElem.checked;
+      }
+      toggleProductMenuSwitch(currentDetailProductId, inputElem);
+      const statusDesc = document.getElementById('epdStatusDesc');
+      if (statusDesc) {
+        statusDesc.textContent = inputElem.checked ? 'Đang hiển thị cho khách đặt mua' : 'Đang tạm ẩn trên gian hàng';
       }
     }
 
-    // Đóng Modal Chi Tiết Sản Phẩm
-    function closeProductDetailModal(event) {
-      if (event && event.target && event.target.id !== 'productDetailModal') return;
-      const modal = document.getElementById('productDetailModal');
-      if (modal) {
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-      }
+    // Tương thích ngược:
+    function openProductDetailModal(id) {
+      openProductDetailScreen(id, 'myStore');
+    }
+    function closeProductDetailModal() {
+      closeProductDetailScreen();
     }
 
     // Bật/tắt món trực tiếp từ switch trong danh sách thực đơn Shopee Partner
@@ -13609,12 +13689,12 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         }
       }
 
-      // Đồng bộ nếu modal chi tiết đang mở đúng sản phẩm này
+      // Đồng bộ nếu màn hình chi tiết đang mở đúng sản phẩm này
       if (currentDetailProductId === id) {
-        const pdmSwitch = document.getElementById('pdmSwitchInput');
-        const pdmStatus = document.getElementById('pdmStatusDesc');
-        if (pdmSwitch) pdmSwitch.checked = isChecked;
-        if (pdmStatus) pdmStatus.textContent = isChecked ? 'Đang hiển thị cho khách đặt mua' : 'Đang tạm ẩn trên gian hàng';
+        const epdSwitch = document.getElementById('epdSwitchInput');
+        const epdStatus = document.getElementById('epdStatusDesc');
+        if (epdSwitch) epdSwitch.checked = isChecked;
+        if (epdStatus) epdStatus.textContent = isChecked ? 'Đang hiển thị cho khách đặt mua' : 'Đang tạm ẩn trên gian hàng';
       }
 
       updateMenuCategoryCounts();
@@ -13970,95 +14050,14 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
     let currentEcomDetailId = 1;
 
-    // Mở Modal Chi Tiết Sản Phẩm Khám Phá (Chủ shop, Thông tin sản phẩm, Gợi ý)
+    // Mở Màn hình Chi tiết Nông sản Khám Phá (Chuyển sang màn riêng - Không popup)
     function openEcomProductDetailModal(id) {
-      const prod = ECOM_EXPLORE_PRODUCTS[id] || ECOM_EXPLORE_PRODUCTS[1];
-      currentEcomDetailId = prod.id;
-
-      const heroImg = document.getElementById('edmHeroImg');
-      const badgeOcop = document.getElementById('edmBadgeOcop');
-      const badgeTag = document.getElementById('edmBadgeTag');
-      const price = document.getElementById('edmPrice');
-      const unit = document.getElementById('edmUnit');
-      const oldPrice = document.getElementById('edmOldPrice');
-      const title = document.getElementById('edmTitle');
-      const rating = document.getElementById('edmRating');
-      const sold = document.getElementById('edmSold');
-
-      if (heroImg) heroImg.src = prod.image;
-      if (badgeOcop) badgeOcop.textContent = prod.badgeOcop;
-      if (badgeTag) badgeTag.textContent = prod.badgeTag;
-      if (price) price.textContent = prod.price;
-      if (unit) unit.textContent = prod.unit;
-      if (oldPrice) oldPrice.textContent = prod.oldPrice;
-      if (title) title.textContent = prod.title;
-      if (rating) rating.textContent = prod.rating;
-      if (sold) sold.textContent = prod.sold;
-
-      // Chủ shop info
-      const shopAvatar = document.getElementById('edmShopAvatar');
-      const shopName = document.getElementById('edmShopName');
-      const shopRole = document.getElementById('edmShopRole');
-      const shopDist = document.getElementById('edmShopDist');
-      const shopRating = document.getElementById('edmShopRating');
-      const shopCount = document.getElementById('edmShopProductsCount');
-
-      if (shopAvatar) shopAvatar.innerHTML = prod.shop.avatar + '<div class="edm-shop-online-dot"></div>';
-      if (shopName) shopName.textContent = prod.shop.name;
-      if (shopRole) shopRole.textContent = prod.shop.role;
-      if (shopDist) shopDist.textContent = prod.shop.dist;
-      if (shopRating) shopRating.textContent = prod.shop.rating;
-      if (shopCount) shopCount.textContent = prod.shop.productsCount;
-
-      // Nguồn gốc & Thông số
-      const origin = document.getElementById('edmOrigin');
-      const standard = document.getElementById('edmStandard');
-      const harvestDate = document.getElementById('edmHarvestDate');
-      const pkg = document.getElementById('edmPackage');
-      const stock = document.getElementById('edmStock');
-      const desc = document.getElementById('edmDesc');
-
-      if (origin) origin.textContent = prod.origin;
-      if (standard) standard.textContent = prod.standard;
-      if (harvestDate) harvestDate.textContent = prod.harvestDate;
-      if (pkg) pkg.textContent = prod.package;
-      if (stock) stock.textContent = prod.stock;
-      if (desc) desc.textContent = prod.desc;
-
-      // Render Sản Phẩm Gợi Ý
-      const relatedGrid = document.getElementById('edmRelatedGrid');
-      if (relatedGrid && prod.relatedIds) {
-        relatedGrid.innerHTML = '';
-        prod.relatedIds.forEach(relId => {
-          const rProd = ECOM_EXPLORE_PRODUCTS[relId];
-          if (!rProd) return;
-          const card = document.createElement('div');
-          card.className = 'edm-related-card';
-          card.onclick = () => openEcomProductDetailModal(rProd.id);
-          card.innerHTML = `
-            <img src="${rProd.image}" alt="${rProd.title}" class="edm-related-img">
-            <div class="edm-related-title">${rProd.title}</div>
-            <div class="edm-related-price">${rProd.price}</div>
-          `;
-          relatedGrid.appendChild(card);
-        });
-      }
-
-      const modal = document.getElementById('ecomProductDetailModal');
-      if (modal) {
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      }
+      openProductDetailScreen(id, 'explore');
     }
 
-    // Đóng Modal Chi Tiết Sản Phẩm Khám Phá
-    function closeEcomProductDetailModal(event) {
-      if (event && event.target && event.target.id !== 'ecomProductDetailModal') return;
-      const modal = document.getElementById('ecomProductDetailModal');
-      if (modal) {
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-      }
+    // Đóng Màn hình Chi tiết Nông sản Khám Phá
+    function closeEcomProductDetailModal() {
+      closeProductDetailScreen();
     }
 
     // Nhắn Zalo cho chủ shop

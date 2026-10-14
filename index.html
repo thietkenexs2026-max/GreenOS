@@ -4847,299 +4847,429 @@
     }
 
     /* =========================================================================
-       SUB-VIEW 1: GIAN HÀNG CỦA TÔI (SELLER MANAGEMENT & PRODUCT TOGGLE)
+       SUB-VIEW 1: GIAN HÀNG CỦA TÔI (THEO CHUẨN MENU SHOPEE PARTNER / THỰC ĐƠN)
        ========================================================================= */
-    .ms-shop-card {
-      background: #FFFFFF;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 18px;
-      padding: 12px 14px;
-      margin-bottom: 14px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
-    }
-    .ms-shop-header {
+    /* BANNER THÔNG BÁO MÀU VÀNG NHẠT (SHOPEE STYLE) */
+    .partner-notice-banner {
+      background: #FEF9C3;
+      border: 1px solid #FEF08A;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      align-items: flex-start;
       gap: 10px;
+      font-size: 12.5px;
+      color: #713F12;
+      line-height: 1.45;
     }
-    .ms-shop-profile {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .ms-shop-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 2px solid #059669;
-      object-fit: cover;
+    .pnb-icon {
+      font-size: 16px;
       flex-shrink: 0;
+      margin-top: 1px;
     }
-    .ms-shop-info {
+    .pnb-text {
+      flex: 1;
       min-width: 0;
     }
-    .ms-shop-name {
-      font-size: 15px;
-      font-weight: 800;
-      color: #0F172A;
-      line-height: 1.25;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .ms-shop-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11.5px;
+    .pnb-link {
       color: #059669;
       font-weight: 700;
-      margin-top: 2px;
-    }
-    .ms-shop-actions {
-      display: flex;
-      gap: 6px;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed #E2E8F0;
-    }
-    .btn-ms-hdr {
-      flex: 1;
-      height: 34px;
-      border-radius: 10px;
-      font-size: 12px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
+      text-decoration: underline;
       cursor: pointer;
-      border: 1px solid #CBD5E1;
-      background: #F8FAFC;
-      color: #334155;
-      transition: all 0.15s;
     }
-    .btn-ms-hdr:hover {
-      background: #F1F5F9;
-      border-color: #94A3B8;
-    }
-
-    /* BỘ LỌC TRẠNG THÁI SẢN PHẨM TRONG GIAN HÀNG CỦA TÔI */
-    .ms-status-chips-bar {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 12px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .ms-status-chips-bar::-webkit-scrollbar {
-      display: none;
-    }
-    .ms-status-chip {
-      padding: 6px 12px;
-      border-radius: 18px;
-      font-size: 12px;
-      font-weight: 700;
-      background: #F1F5F9;
-      color: #475569;
-      border: 1px solid #E2E8F0;
-      white-space: nowrap;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: all 0.15s;
-    }
-    .ms-status-chip.active {
-      background: #047857;
-      color: #FFFFFF;
-      border-color: #047857;
-    }
-
-    /* THẺ SẢN PHẨM QUẢN LÝ (SELLER PRODUCT ITEM) */
-    .ms-product-card {
-      background: #FFFFFF;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 16px;
-      padding: 12px;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      transition: all 0.2s;
-    }
-    .ms-product-card.is-paused {
-      background: #F8FAFC;
-      border-color: #CBD5E1;
-    }
-    .ms-product-card.is-paused .ms-prod-thumb {
-      opacity: 0.55;
-      filter: grayscale(40%);
-    }
-    .ms-product-card.is-paused .ms-prod-title {
-      color: #64748B;
-    }
-
-    .ms-prod-top {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .ms-prod-thumb {
-      width: 62px;
-      height: 62px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 1px solid #E2E8F0;
-      flex-shrink: 0;
-      transition: all 0.2s;
-    }
-    .ms-prod-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .ms-prod-title {
+    .pnb-close {
+      background: transparent;
+      border: none;
+      color: #92400E;
       font-size: 14px;
-      font-weight: 800;
-      color: #0F172A;
-      line-height: 1.3;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 4px;
-    }
-    .ms-prod-price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      margin-bottom: 4px;
-    }
-    .ms-prod-price {
-      font-size: 15px;
-      font-weight: 900;
-      color: #047857;
-    }
-    .ms-prod-unit {
-      font-size: 11px;
-      color: #64748B;
-      font-weight: 600;
-    }
-    .ms-prod-stock {
-      font-size: 11px;
-      color: #64748B;
-      font-weight: 600;
+      cursor: pointer;
+      padding: 0 4px;
+      flex-shrink: 0;
     }
 
-    /* HÀNG BẬT/TẮT MỞ BÁN & HÀNH ĐỘNG */
-    .ms-prod-bottom {
+    /* NHÓM SẢN PHẨM / THỰC ĐƠN ACCORDION (CHUẨN SHOPEE) */
+    .partner-menu-group {
+      margin-bottom: 12px;
+      background: #FFFFFF;
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+    .pmg-header {
+      padding: 11px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      padding-top: 10px;
-      border-top: 1px dashed #E2E8F0;
-    }
-    .sale-toggle-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
+      background: #F8FAFC;
+      border-bottom: 1px solid #F1F5F9;
       cursor: pointer;
       user-select: none;
     }
-    .sale-toggle-switch {
-      position: relative;
-      width: 42px;
-      height: 24px;
-      display: inline-block;
+    .pmg-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1E293B;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
     }
-    .sale-toggle-switch input {
+    .pmg-meta {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pmg-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .pmg-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-bottom: 1px solid #F1F5F9;
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+    .pmg-item:last-child {
+      border-bottom: none;
+    }
+    .pmg-item:hover {
+      background: #F8FAFC;
+    }
+    .pmg-item.is-paused {
+      background: #FAFAFA;
+    }
+    .pmg-item.is-paused .pmg-thumb {
+      opacity: 0.55;
+      filter: grayscale(40%);
+    }
+    .pmg-item.is-paused .pmg-item-name {
+      color: #64748B;
+    }
+    .pmg-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 0;
+    }
+    .pmg-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid #E2E8F0;
+    }
+    .pmg-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .pmg-item-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pmg-item-name > span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pmg-arrow {
+      color: #94A3B8;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .pmg-item-price {
+      font-size: 14px;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 3px;
+    }
+
+    /* TOGGLE SWITCH GIỐNG 100% SHOPEE PARTNER */
+    .shopee-switch {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 28px;
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+    .shopee-switch input {
       opacity: 0;
       width: 0;
       height: 0;
     }
-    .sale-toggle-slider {
+    .shopee-slider {
       position: absolute;
       cursor: pointer;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #CBD5E1;
+      inset: 0;
+      background-color: #E2E8F0;
       transition: .22s;
-      border-radius: 24px;
+      border-radius: 28px;
+      border: 1px solid #CBD5E1;
     }
-    .sale-toggle-slider:before {
+    .shopee-slider:before {
       position: absolute;
       content: "";
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
+      height: 22px;
+      width: 22px;
+      left: 2px;
+      bottom: 2px;
+      background-color: #FFFFFF;
       transition: .22s;
       border-radius: 50%;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.22);
     }
-    .sale-toggle-switch input:checked + .sale-toggle-slider {
-      background-color: #059669;
+    .shopee-switch input:checked + .shopee-slider {
+      background-color: #00B14F;
+      border-color: #00B14F;
     }
-    .sale-toggle-switch input:checked + .sale-toggle-slider:before {
-      transform: translateX(18px);
-    }
-    .sale-toggle-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #64748B;
-      transition: color .2s;
-    }
-    .sale-toggle-label.active {
-      color: #059669;
+    .shopee-switch input:checked + .shopee-slider:before {
+      transform: translateX(20px);
     }
 
-    .ms-btn-group {
-      display: flex;
-      align-items: center;
+    /* THANH CÔNG CỤ CỐ ĐỊNH ĐÁY (4 NÚT SHOPEE STYLE) */
+    .partner-bottom-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 6px;
-    }
-    .ms-action-btn {
-      height: 32px;
-      padding: 0 10px;
-      border-radius: 8px;
-      font-size: 11.5px;
-      font-weight: 700;
       background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      color: #334155;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 8px 6px;
+      margin-top: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .pbb-btn {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
+      gap: 3px;
+      height: 48px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.15s;
       white-space: nowrap;
     }
-    .ms-action-btn:hover {
+    .pbb-btn:hover {
       background: #F1F5F9;
-      color: #047857;
-      border-color: #A7F3D0;
+      color: #0F172A;
+    }
+    .pbb-btn.add-btn {
+      border: 1.5px solid #00B14F;
+      background: #ECFDF5;
+      color: #00B14F;
+    }
+    .pbb-btn.add-btn:hover {
+      background: #00B14F;
+      color: #FFFFFF;
     }
 
-    .btn-ms-add-new {
+    /* MODAL CHI TIẾT SẢN PHẨM (PRODUCT DETAIL SHEET) */
+    .product-detail-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 99999;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .product-detail-modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .product-detail-modal-card {
       width: 100%;
-      height: 46px;
+      max-width: 480px;
+      max-height: 88vh;
+      background: #FFFFFF;
+      border-radius: 22px 22px 0 0;
+      overflow-y: auto;
+      box-shadow: 0 -8px 30px rgba(0,0,0,0.25);
+      transform: translateY(100%);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .product-detail-modal-overlay.show .product-detail-modal-card {
+      transform: translateY(0);
+    }
+    .pdm-header {
+      position: sticky;
+      top: 0;
+      background: #FFFFFF;
+      z-index: 10;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .pdm-back-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #F1F5F9;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #334155;
+    }
+    .pdm-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .pdm-body {
+      padding: 16px;
+    }
+    .pdm-hero-img {
+      width: 100%;
+      height: 200px;
+      border-radius: 16px;
+      object-fit: cover;
+      margin-bottom: 14px;
+      border: 1px solid #E2E8F0;
+    }
+    .pdm-tag-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .pdm-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 8px;
+      background: #FEF3C7;
+      color: #92400E;
+    }
+    .pdm-tag.green {
+      background: #ECFDF5;
+      color: #065F46;
+    }
+    .pdm-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .pdm-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .pdm-price {
+      font-size: 21px;
+      font-weight: 900;
+      color: #00B14F;
+    }
+    .pdm-unit {
+      font-size: 12.5px;
+      color: #64748B;
+      font-weight: 600;
+    }
+    .pdm-status-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
       border-radius: 14px;
-      background: #047857;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .pdm-spec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #FAFAFA;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+    .pdm-spec-item {
+      display: flex;
+      justify-content: space-between;
+      color: #475569;
+    }
+    .pdm-spec-item b {
+      color: #0F172A;
+      font-weight: 700;
+    }
+    .pdm-desc-text {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #334155;
+      margin-bottom: 20px;
+    }
+    .pdm-actions-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 10px;
+    }
+    .pdm-primary-btn {
+      height: 46px;
+      border-radius: 12px;
+      background: #00B14F;
       color: #FFFFFF;
       font-size: 14px;
       font-weight: 800;
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      border: none;
       cursor: pointer;
-      margin-top: 14px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 10px rgba(4, 120, 87, 0.25);
-      transition: all 0.2s;
     }
-    .btn-ms-add-new:hover {
-      background: #065F46;
+    .pdm-outline-btn {
+      height: 42px;
+      border-radius: 12px;
+      background: #FFFFFF;
+      color: #334155;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: 1.5px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
     }
 
     /* =========================================================================
@@ -8561,150 +8691,146 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         <!-- =======================================================================
              SUB-VIEW 1: GIAN HÀNG CỦA TÔI (QUẢN LÝ SẢN PHẨM & BẬT/TẮT MỞ BÁN)
              ======================================================================= -->
+        <!-- =======================================================================
+             SUB-VIEW 1: GIAN HÀNG CỦA TÔI (THEO CHUẨN MENU SHOPEE PARTNER / THỰC ĐƠN)
+             ======================================================================= -->
         <div class="market-sub-view" id="marketSubView_myStore">
-          <!-- Card Hồ Sơ Gian Hàng Của Bác Ba -->
-          <div class="ms-shop-card">
-            <div class="ms-shop-header">
-              <div class="ms-shop-profile">
-                <img src="bac_ba_avatar.jpg" alt="Avatar Bác Ba" class="ms-shop-avatar" onerror="this.src='farmer_photo_produce.jpg'">
-                <div class="ms-shop-info">
-                  <div class="ms-shop-name">Vườn Chuối & Nông Sản Bác Ba</div>
-                  <div class="ms-shop-status">
-                    <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10B981;box-shadow:0 0 6px #10B981"></span>
-                    <span>Đang mở cửa đón khách</span>
-                  </div>
-                </div>
-              </div>
+          <!-- Banner Thông Báo Vàng (Shopee Style) -->
+          <div class="partner-notice-banner" id="pnbNotice">
+            <div class="pnb-icon">🔔</div>
+            <div class="pnb-text">
+              Tính năng quản lý nông sản số và đồng bộ Zalo đã sẵn sàng trên Chợ Xanh Partner. <a href="javascript:void(0)" class="pnb-link" onclick="shareMyStorefront()">Sao chép liên kết</a> và mở trên trình duyệt máy tính hoặc chia sẻ ngay!
             </div>
-            <div class="ms-shop-actions">
-              <button type="button" class="btn-ms-hdr" onclick="triggerToast('👁️ Giao diện khách mua: Khách đang thấy 2 sản phẩm đang bật mở bán của Bác Ba!')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                <span>Xem dạng khách mua</span>
-              </button>
-              <button type="button" class="btn-ms-hdr" onclick="shareMyStorefront()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                <span>Chia sẻ link shop</span>
-              </button>
-            </div>
+            <button type="button" class="pnb-close" onclick="document.getElementById('pnbNotice').style.display='none'">✕</button>
           </div>
 
-          <!-- Thanh Lọc Trạng Thái Sản Phẩm Đã Đăng -->
-          <div class="ms-status-chips-bar" id="msStatusChipsBar">
-            <button type="button" class="ms-status-chip active" onclick="filterMyProductsStatus('all', this)" id="msFilterChip_all">Tất cả (<span id="msCountAll">3</span>)</button>
-            <button type="button" class="ms-status-chip" onclick="filterMyProductsStatus('active', this)" id="msFilterChip_active">Đang mở bán (<span id="msCountActive">2</span>)</button>
-            <button type="button" class="ms-status-chip" onclick="filterMyProductsStatus('paused', this)" id="msFilterChip_paused">Tạm ẩn (<span id="msCountPaused">1</span>)</button>
-          </div>
-
-          <!-- Danh sách Sản Phẩm Bác Ba Đã Đăng Lên -->
-          <div id="myProductsList">
-            <!-- Sản phẩm 1: Chuối sấy giòn OCOP -->
-            <div class="ms-product-card" id="myProdCard_1" data-status="active">
-              <div class="ms-prod-top">
-                <img src="banana_front.jpg" alt="Chuối sấy giòn OCOP" class="ms-prod-thumb">
-                <div class="ms-prod-info">
-                  <div class="ms-prod-title">Chuối sấy giòn OCOP 4 sao</div>
-                  <div class="ms-prod-price-row">
-                    <span class="ms-prod-price" id="myProdPrice_1">45.000 đ</span>
-                    <span class="ms-prod-unit">/ túi 250g</span>
-                  </div>
-                  <div class="ms-prod-stock">Đã bán 24 · Tồn kho 76 túi</div>
-                </div>
-              </div>
-              <div class="ms-prod-bottom">
-                <label class="sale-toggle-wrap">
-                  <div class="sale-toggle-switch">
-                    <input type="checkbox" checked onchange="toggleMyProductStatus(1, this, 'Chuối sấy giòn OCOP 4 sao')">
-                    <span class="sale-toggle-slider"></span>
-                  </div>
-                  <span class="sale-toggle-label active" id="saleToggleLbl_1">Đang mở bán</span>
-                </label>
-                <div class="ms-btn-group">
-                  <button type="button" class="ms-action-btn" onclick="quickEditMyProductPrice(1, 'Chuối sấy giòn OCOP 4 sao', 45000)">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    <span>Sửa giá</span>
-                  </button>
-                  <button type="button" class="ms-action-btn" onclick="shareMySingleProduct('Chuối sấy giòn OCOP 4 sao', '45.000 đ')">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                    <span>Chia sẻ</span>
-                  </button>
-                </div>
+          <!-- NHÓM 1: NÔNG SẢN OCOP 4 SAO -->
+          <div class="partner-menu-group" id="pmGroup_1">
+            <div class="pmg-header" onclick="toggleMenuAccordion('pmList_1', 'pmChevron_1')">
+              <span class="pmg-title">NÔNG SẢN OCOP 4 SAO</span>
+              <div class="pmg-meta">
+                <span id="pmGroupCount_1">2/2</span>
+                <span id="pmChevron_1" style="font-size:12px">⌃</span>
               </div>
             </div>
-
-            <!-- Sản phẩm 2: Mật ong hoa rừng tự nhiên -->
-            <div class="ms-product-card" id="myProdCard_2" data-status="active">
-              <div class="ms-prod-top">
-                <img src="honey_front.jpg" alt="Mật ong hoa rừng" class="ms-prod-thumb">
-                <div class="ms-prod-info">
-                  <div class="ms-prod-title">Mật ong hoa rừng tự nhiên 500ml</div>
-                  <div class="ms-prod-price-row">
-                    <span class="ms-prod-price" id="myProdPrice_2">180.000 đ</span>
-                    <span class="ms-prod-unit">/ hũ thủy tinh</span>
+            <div class="pmg-list" id="pmList_1">
+              <!-- Món 1: Chuối sấy giòn -->
+              <div class="pmg-item" id="pmgItem_1" onclick="openProductDetailModal(1)">
+                <div class="pmg-item-left">
+                  <img src="banana_front.jpg" alt="Chuối Sấy Giòn" class="pmg-thumb">
+                  <div class="pmg-item-info">
+                    <div class="pmg-item-name">
+                      <span>Chuối Sấy Giòn OCOP 4 Sao</span>
+                      <span class="pmg-arrow">›</span>
+                    </div>
+                    <div class="pmg-item-price" id="pmgPrice_1">45.000đ</div>
                   </div>
-                  <div class="ms-prod-stock">Đã bán 12 · Tồn kho 30 hũ</div>
                 </div>
-              </div>
-              <div class="ms-prod-bottom">
-                <label class="sale-toggle-wrap">
-                  <div class="sale-toggle-switch">
-                    <input type="checkbox" checked onchange="toggleMyProductStatus(2, this, 'Mật ong hoa rừng tự nhiên')">
-                    <span class="sale-toggle-slider"></span>
-                  </div>
-                  <span class="sale-toggle-label active" id="saleToggleLbl_2">Đang mở bán</span>
+                <label class="shopee-switch" onclick="event.stopPropagation()">
+                  <input type="checkbox" id="pmgSwitch_1" checked onchange="toggleProductMenuSwitch(1, this)">
+                  <span class="shopee-slider"></span>
                 </label>
-                <div class="ms-btn-group">
-                  <button type="button" class="ms-action-btn" onclick="quickEditMyProductPrice(2, 'Mật ong hoa rừng tự nhiên', 180000)">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    <span>Sửa giá</span>
-                  </button>
-                  <button type="button" class="ms-action-btn" onclick="shareMySingleProduct('Mật ong hoa rừng tự nhiên', '180.000 đ')">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                    <span>Chia sẻ</span>
-                  </button>
-                </div>
               </div>
-            </div>
 
-            <!-- Sản phẩm 3: Chuối tiêu hồng tươi cắt buồng (Mặc định Tạm ẩn) -->
-            <div class="ms-product-card is-paused" id="myProdCard_3" data-status="paused">
-              <div class="ms-prod-top">
-                <img src="banana_plate.jpg" alt="Chuối tiêu hồng tươi" class="ms-prod-thumb">
-                <div class="ms-prod-info">
-                  <div class="ms-prod-title">Chuối tiêu hồng tươi cắt tại vườn</div>
-                  <div class="ms-prod-price-row">
-                    <span class="ms-prod-price" id="myProdPrice_3" style="color:#64748B">25.000 đ</span>
-                    <span class="ms-prod-unit">/ kg VietGAP</span>
+              <!-- Món 2: Mật ong hoa rừng -->
+              <div class="pmg-item" id="pmgItem_2" onclick="openProductDetailModal(2)">
+                <div class="pmg-item-left">
+                  <img src="honey_front.jpg" alt="Mật Ong Hoa Rừng" class="pmg-thumb">
+                  <div class="pmg-item-info">
+                    <div class="pmg-item-name">
+                      <span>Mật Ong Hoa Rừng Tự Nhiên 500ml</span>
+                      <span class="pmg-arrow">›</span>
+                    </div>
+                    <div class="pmg-item-price" id="pmgPrice_2">180.000đ</div>
                   </div>
-                  <div class="ms-prod-stock">Chờ mẻ thu hoạch mới · Tồn 500 kg</div>
                 </div>
-              </div>
-              <div class="ms-prod-bottom">
-                <label class="sale-toggle-wrap">
-                  <div class="sale-toggle-switch">
-                    <input type="checkbox" onchange="toggleMyProductStatus(3, this, 'Chuối tiêu hồng tươi cắt vườn')">
-                    <span class="sale-toggle-slider"></span>
-                  </div>
-                  <span class="sale-toggle-label" id="saleToggleLbl_3">Tạm ẩn</span>
+                <label class="shopee-switch" onclick="event.stopPropagation()">
+                  <input type="checkbox" id="pmgSwitch_2" checked onchange="toggleProductMenuSwitch(2, this)">
+                  <span class="shopee-slider"></span>
                 </label>
-                <div class="ms-btn-group">
-                  <button type="button" class="ms-action-btn" onclick="quickEditMyProductPrice(3, 'Chuối tiêu hồng tươi cắt vườn', 25000)">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    <span>Sửa giá</span>
-                  </button>
-                  <button type="button" class="ms-action-btn" onclick="shareMySingleProduct('Chuối tiêu hồng tươi cắt vườn', '25.000 đ')">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                    <span>Chia sẻ</span>
-                  </button>
-                </div>
               </div>
             </div>
           </div>
 
-          <!-- Nút Thêm Sản Phẩm Mới -->
-          <button type="button" class="btn-ms-add-new" onclick="openNewCxCardModal()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            <span>➕ Đăng Thêm Nông Sản Mới</span>
-          </button>
+          <!-- NHÓM 2: NÔNG SẢN TƯƠI VIETGAP -->
+          <div class="partner-menu-group" id="pmGroup_2">
+            <div class="pmg-header" onclick="toggleMenuAccordion('pmList_2', 'pmChevron_2')">
+              <span class="pmg-title">NÔNG SẢN TƯƠI VIETGAP</span>
+              <div class="pmg-meta">
+                <span id="pmGroupCount_2">0/1</span>
+                <span id="pmChevron_2" style="font-size:12px">⌃</span>
+              </div>
+            </div>
+            <div class="pmg-list" id="pmList_2">
+              <!-- Món 3: Chuối tiêu hồng tươi cắt buồng -->
+              <div class="pmg-item is-paused" id="pmgItem_3" onclick="openProductDetailModal(3)">
+                <div class="pmg-item-left">
+                  <img src="banana_plate.jpg" alt="Chuối Tiêu Hồng Tươi" class="pmg-thumb">
+                  <div class="pmg-item-info">
+                    <div class="pmg-item-name">
+                      <span>Chuối Tiêu Hồng Tươi Cắt Buồng</span>
+                      <span class="pmg-arrow">›</span>
+                    </div>
+                    <div class="pmg-item-price" id="pmgPrice_3">25.000đ</div>
+                  </div>
+                </div>
+                <label class="shopee-switch" onclick="event.stopPropagation()">
+                  <input type="checkbox" id="pmgSwitch_3" onchange="toggleProductMenuSwitch(3, this)">
+                  <span class="shopee-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- NHÓM 3: ĐẶC SẢN NÔNG SẢN KHÁC -->
+          <div class="partner-menu-group" id="pmGroup_3">
+            <div class="pmg-header" onclick="toggleMenuAccordion('pmList_3', 'pmChevron_3')">
+              <span class="pmg-title">ĐẶC SẢN NÔNG SẢN KHÁC</span>
+              <div class="pmg-meta">
+                <span id="pmGroupCount_3">0/1</span>
+                <span id="pmChevron_3" style="font-size:12px">⌃</span>
+              </div>
+            </div>
+            <div class="pmg-list" id="pmList_3">
+              <!-- Món 4: Trà Shan Tuyết -->
+              <div class="pmg-item is-paused" id="pmgItem_4" onclick="openProductDetailModal(4)">
+                <div class="pmg-item-left">
+                  <img src="tea_front.jpg" alt="Trà Shan Tuyết Cổ Thụ" class="pmg-thumb">
+                  <div class="pmg-item-info">
+                    <div class="pmg-item-name">
+                      <span>Trà Shan Tuyết Cổ Thụ Búp Nõn</span>
+                      <span class="pmg-arrow">›</span>
+                    </div>
+                    <div class="pmg-item-price" id="pmgPrice_4">160.000đ</div>
+                  </div>
+                </div>
+                <label class="shopee-switch" onclick="event.stopPropagation()">
+                  <input type="checkbox" id="pmgSwitch_4" onchange="toggleProductMenuSwitch(4, this)">
+                  <span class="shopee-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- THANH CÔNG CỤ CỐ ĐỊNH ĐÁY (4 NÚT CHUẨN SHOPEE) -->
+          <div class="partner-bottom-bar">
+            <button type="button" class="pbb-btn" onclick="triggerToast('Tính năng sắp xếp thứ tự hiển thị món!')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              <span>Sắp xếp</span>
+            </button>
+            <button type="button" class="pbb-btn" onclick="triggerToast('Bác có thể thêm hoặc sửa nhóm danh mục nông sản!')">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              <span>Sửa danh mục</span>
+            </button>
+            <button type="button" class="pbb-btn" onclick="toggleAllProductsBulk()">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <span>Bật/Tắt món</span>
+            </button>
+            <button type="button" class="pbb-btn add-btn" onclick="openNewCxCardModal()">
+              <span style="font-size:16px;line-height:1;margin-bottom:-2px">+</span>
+              <span>Thêm</span>
+            </button>
+          </div>
         </div>
 
         <!-- =======================================================================
@@ -8887,6 +9013,94 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
       </section>
+
+      <!-- =========================================================================
+           MODAL CHI TIẾT SẢN PHẨM GIAN HÀNG CỦA TÔI (PRODUCT DETAIL BOTTOM SHEET)
+           ========================================================================= -->
+      <div class="product-detail-modal-overlay" id="productDetailModal" onclick="closeProductDetailModal(event)">
+        <div class="product-detail-modal-card" onclick="event.stopPropagation()">
+          <div class="pdm-header">
+            <button type="button" class="pdm-back-btn" onclick="closeProductDetailModal()" title="Đóng">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <div class="pdm-title">Chi Tiết Sản Phẩm</div>
+            <button type="button" class="pdm-back-btn" onclick="shareCurrentDetailProduct()" title="Chia sẻ sản phẩm">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+            </button>
+          </div>
+          <div class="pdm-body">
+            <img id="pdmHeroImg" src="banana_front.jpg" alt="Sản phẩm" class="pdm-hero-img">
+            <div class="pdm-tag-row">
+              <span class="pdm-tag" id="pdmBadgeOcop">OCOP 4 Sao</span>
+              <span class="pdm-tag green" id="pdmBadgeVietgap">VietGAP</span>
+            </div>
+            <div class="pdm-name" id="pdmName">Chuối Sấy Giòn OCOP 4 Sao</div>
+            <div class="pdm-price-row">
+              <div>
+                <span class="pdm-price" id="pdmPrice">45.000 đ</span>
+                <span class="pdm-unit" id="pdmUnit"> / gói 500g</span>
+              </div>
+              <button type="button" onclick="quickEditDetailPrice()" style="font-size:12px;font-weight:700;color:#00B14F;background:#ECFDF5;border:1px solid #A7F3D0;padding:6px 12px;border-radius:8px;cursor:pointer">Sửa giá bán</button>
+            </div>
+
+            <!-- Bật/Tắt món trên gian hàng -->
+            <div class="pdm-status-box">
+              <div>
+                <div style="font-size:13.5px;font-weight:800;color:#0F172A">Trạng thái bán trên gian hàng</div>
+                <div style="font-size:11.5px;color:#64748B" id="pdmStatusDesc">Đang hiển thị cho khách đặt mua</div>
+              </div>
+              <label class="shopee-switch" onclick="event.stopPropagation()">
+                <input type="checkbox" id="pdmSwitchInput" checked onchange="onDetailModalToggle(this)">
+                <span class="shopee-slider"></span>
+              </label>
+            </div>
+
+            <!-- Thông số quy cách nông sản -->
+            <div class="pdm-spec-list">
+              <div class="pdm-spec-item">
+                <span>Mã sản phẩm:</span>
+                <b id="pdmCode">SP-OCOP-01</b>
+              </div>
+              <div class="pdm-spec-item">
+                <span>Xuất xứ / Vườn:</span>
+                <b id="pdmOrigin">Vườn Chuối Bác Ba - Lô B2, Mộc Châu</b>
+              </div>
+              <div class="pdm-spec-item">
+                <span>Quy cách:</span>
+                <b id="pdmPackage">Túi zip chân không 500g</b>
+              </div>
+              <div class="pdm-spec-item">
+                <span>Tồn kho:</span>
+                <b id="pdmStock" style="color:#00B14F">120 gói</b>
+              </div>
+              <div class="pdm-spec-item">
+                <span>Hạn sử dụng:</span>
+                <b id="pdmExpiry">6 tháng</b>
+              </div>
+            </div>
+
+            <!-- Mô tả sản phẩm -->
+            <div style="margin-bottom:18px">
+              <div style="font-size:13px;font-weight:800;color:#0F172A;margin-bottom:5px">Mô tả sản phẩm:</div>
+              <div class="pdm-desc-text" id="pdmDesc">
+                Chuối tiêu hồng sấy giòn nguyên chất không đường, đạt chuẩn OCOP 4 sao tỉnh Sơn La.
+              </div>
+            </div>
+
+            <!-- Nút thao tác -->
+            <div class="pdm-actions-col">
+              <button type="button" class="pdm-primary-btn" onclick="shareCurrentDetailProduct()">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+                <span>Chia Sẻ Link Mua Hàng Lên Zalo</span>
+              </button>
+              <button type="button" class="pdm-outline-btn" onclick="closeProductDetailModal()">
+                <span>Quay lại gian hàng</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section id="panel-support" class="view-panel">
         <h1 class="step-main-title">Hub Xã Hỗ Trợ</h1>
         <p class="step-sub-desc">Bác gặp khó khăn khi chụp ảnh hoặc đăng bài? Đội thanh niên xã luôn sẵn sàng hỗ trợ:</p>
@@ -12688,90 +12902,278 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       }
     }
 
-    // Bật/tắt mở bán sản phẩm trên gian hàng số của Bác Ba
-    function toggleMyProductStatus(id, inputElem, prodName) {
+    // =========================================================================
+    // DỮ LIỆU SẢN PHẨM GIAN HÀNG SỐ BÁC BA & MODAL CHI TIẾT SẢN PHẨM
+    // =========================================================================
+    const BAC_BA_PRODUCTS = {
+      1: {
+        id: 1,
+        name: 'Chuối Sấy Giòn OCOP 4 Sao',
+        price: 45000,
+        priceStr: '45.000 đ',
+        unit: ' / gói 500g',
+        image: 'banana_front.jpg',
+        code: 'SP-OCOP-01',
+        origin: 'Vườn Chuối Bác Ba - Lô B2, Mộc Châu',
+        package: 'Túi zip tráng bạc hút chân không 500g',
+        stock: '120 gói',
+        expiry: '6 tháng kể từ ngày sản xuất',
+        desc: 'Chuối tiêu hồng sấy giòn nguyên chất không đường, giữ trọn vị ngọt tự nhiên và khoáng chất quý giá. Đạt chứng nhận OCOP 4 sao cấp tỉnh.',
+        ocop: 'OCOP 4 Sao',
+        vietgap: 'VietGAP',
+        active: true,
+        groupId: 1
+      },
+      2: {
+        id: 2,
+        name: 'Mật Ong Hoa Rừng Tự Nhiên 500ml',
+        price: 180000,
+        priceStr: '180.000 đ',
+        unit: ' / chai 500ml',
+        image: 'honey_front.jpg',
+        code: 'SP-OCOP-02',
+        origin: 'Trại ong rừng Bác Ba - Rừng Bản Áng, Mộc Châu',
+        package: 'Chai thủy tinh nắp thiếc niêm phong 500ml',
+        stock: '45 chai',
+        expiry: '24 tháng ở nhiệt độ phòng',
+        desc: 'Mật ong hoa rừng tự nhiên 100% nguyên chất, quay cầu thủ công vụ hoa nhãn - táo mèo, sánh mịn thơm lừng vị mật phấn rừng Tây Bắc.',
+        ocop: 'OCOP 4 Sao',
+        vietgap: 'Tự Nhiên 100%',
+        active: true,
+        groupId: 1
+      },
+      3: {
+        id: 3,
+        name: 'Chuối Tiêu Hồng Tươi Cắt Buồng',
+        price: 25000,
+        priceStr: '25.000 đ',
+        unit: ' / nải (~2kg)',
+        image: 'banana_plate.jpg',
+        code: 'SP-GAP-03',
+        origin: 'Vườn Chuối Tiêu Hồng Bác Ba - HTX Yên Bình',
+        package: 'Thùng carton lót rơm bảo vệ quả tươi 10-15kg',
+        stock: '85 nải',
+        expiry: '7 - 10 ngày sau thu hái',
+        desc: 'Chuối tiêu hồng quả đẫy, vỏ mỏng vàng ươm, ruột vàng cam thơm ngọt đậm đà. Canh tác chuẩn VietGAP kiểm soát nghiêm ngặt dư lượng thuốc BVTV.',
+        ocop: 'VietGAP',
+        vietgap: 'Nông Sản Tươi',
+        active: false,
+        groupId: 2
+      },
+      4: {
+        id: 4,
+        name: 'Trà Shan Tuyết Cổ Thụ Búp Nõn',
+        price: 160000,
+        priceStr: '160.000 đ',
+        unit: ' / túi 200g',
+        image: 'tea_front.jpg',
+        code: 'SP-TRA-04',
+        origin: 'Đỉnh núi Tà Xùa, độ cao >1600m',
+        package: 'Túi hút chân không đóng hộp quà biếu 200g',
+        stock: '30 hộp',
+        expiry: '12 tháng',
+        desc: 'Trà Shan tuyết cổ thụ 1 tôm 2 lá thu hái từ cây chè cổ thụ trên 100 năm tuổi trong mây mù Tây Bắc, sao thủ công giữ nguyên tuyết trắng và hương thơm ngát.',
+        ocop: 'Đặc Sản',
+        vietgap: 'Hữu Cơ',
+        active: false,
+        groupId: 3
+      }
+    };
+
+    let currentDetailProductId = null;
+
+    // Mở Modal Chi Tiết Sản Phẩm (Slide up Sheet khi bấm vào dòng món)
+    function openProductDetailModal(id) {
+      const prod = BAC_BA_PRODUCTS[id];
+      if (!prod) return;
+      currentDetailProductId = id;
+
+      const heroImg = document.getElementById('pdmHeroImg');
+      const badgeOcop = document.getElementById('pdmBadgeOcop');
+      const badgeVietgap = document.getElementById('pdmBadgeVietgap');
+      const name = document.getElementById('pdmName');
+      const price = document.getElementById('pdmPrice');
+      const unit = document.getElementById('pdmUnit');
+      const code = document.getElementById('pdmCode');
+      const origin = document.getElementById('pdmOrigin');
+      const pkg = document.getElementById('pdmPackage');
+      const stock = document.getElementById('pdmStock');
+      const expiry = document.getElementById('pdmExpiry');
+      const desc = document.getElementById('pdmDesc');
+      const switchInput = document.getElementById('pdmSwitchInput');
+      const statusDesc = document.getElementById('pdmStatusDesc');
+
+      if (heroImg) heroImg.src = prod.image;
+      if (badgeOcop) badgeOcop.textContent = prod.ocop;
+      if (badgeVietgap) badgeVietgap.textContent = prod.vietgap;
+      if (name) name.textContent = prod.name;
+      if (price) price.textContent = prod.priceStr;
+      if (unit) unit.textContent = prod.unit;
+      if (code) code.textContent = prod.code;
+      if (origin) origin.textContent = prod.origin;
+      if (pkg) pkg.textContent = prod.package;
+      if (stock) stock.textContent = prod.stock;
+      if (expiry) expiry.textContent = prod.expiry;
+      if (desc) desc.textContent = prod.desc;
+
+      if (switchInput) switchInput.checked = !!prod.active;
+      if (statusDesc) {
+        statusDesc.textContent = prod.active ? 'Đang hiển thị cho khách đặt mua' : 'Đang tạm ẩn trên gian hàng';
+      }
+
+      const modal = document.getElementById('productDetailModal');
+      if (modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Đóng Modal Chi Tiết Sản Phẩm
+    function closeProductDetailModal(event) {
+      if (event && event.target && event.target.id !== 'productDetailModal') return;
+      const modal = document.getElementById('productDetailModal');
+      if (modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Bật/tắt món trực tiếp từ switch trong danh sách thực đơn Shopee Partner
+    function toggleProductMenuSwitch(id, inputElem) {
       const isChecked = inputElem.checked;
-      const card = document.getElementById('myProdCard_' + id);
-      const label = document.getElementById('saleToggleLbl_' + id);
+      const prod = BAC_BA_PRODUCTS[id];
+      if (prod) prod.active = isChecked;
+
+      const itemElem = document.getElementById('pmgItem_' + id);
+      if (itemElem) {
+        if (isChecked) {
+          itemElem.classList.remove('is-paused');
+        } else {
+          itemElem.classList.add('is-paused');
+        }
+      }
+
+      // Đồng bộ nếu modal chi tiết đang mở đúng sản phẩm này
+      if (currentDetailProductId === id) {
+        const pdmSwitch = document.getElementById('pdmSwitchInput');
+        const pdmStatus = document.getElementById('pdmStatusDesc');
+        if (pdmSwitch) pdmSwitch.checked = isChecked;
+        if (pdmStatus) pdmStatus.textContent = isChecked ? 'Đang hiển thị cho khách đặt mua' : 'Đang tạm ẩn trên gian hàng';
+      }
+
+      updateMenuCategoryCounts();
 
       if (isChecked) {
-        if (card) {
-          card.classList.remove('is-paused');
-          card.setAttribute('data-status', 'active');
-        }
-        if (label) {
-          label.textContent = 'Đang mở bán';
-          label.classList.add('active');
-        }
-        triggerToast('✓ Đã BẬT mở bán "' + prodName + '" trên gian hàng!');
+        triggerToast('✓ Đã BẬT món "' + (prod ? prod.name : '') + '" trên gian hàng!');
       } else {
-        if (card) {
-          card.classList.add('is-paused');
-          card.setAttribute('data-status', 'paused');
-        }
-        if (label) {
-          label.textContent = 'Tạm ẩn';
-          label.classList.remove('active');
-        }
-        triggerToast('⚪ Đã TẠM ẨN "' + prodName + '" (không hiển thị ra ngoài)!');
+        triggerToast('⚪ Đã TẮT món "' + (prod ? prod.name : '') + '" (tạm ẩn)');
       }
-
-      updateMyStoreStatusCounts();
     }
 
-    // Cập nhật số đếm trên thanh chip lọc trạng thái
-    function updateMyStoreStatusCounts() {
-      const allCards = document.querySelectorAll('.ms-product-card');
-      let total = allCards.length;
-      let active = 0;
-      let paused = 0;
+    // Bật/tắt món từ bên trong Modal chi tiết sản phẩm
+    function onDetailModalToggle(inputElem) {
+      if (!currentDetailProductId) return;
+      const listSwitch = document.getElementById('pmgSwitch_' + currentDetailProductId);
+      if (listSwitch) {
+        listSwitch.checked = inputElem.checked;
+      }
+      toggleProductMenuSwitch(currentDetailProductId, inputElem);
+    }
 
-      allCards.forEach(c => {
-        if (c.getAttribute('data-status') === 'active') active++;
-        else if (c.getAttribute('data-status') === 'paused') paused++;
+    // Đóng/Mở nhóm thực đơn Accordion
+    function toggleMenuAccordion(listId, chevronId) {
+      const list = document.getElementById(listId);
+      const chevron = document.getElementById(chevronId);
+      if (!list) return;
+      if (list.style.display === 'none') {
+        list.style.display = 'flex';
+        if (chevron) chevron.textContent = '⌃';
+      } else {
+        list.style.display = 'none';
+        if (chevron) chevron.textContent = '⌄';
+      }
+    }
+
+    // Cập nhật số đếm theo nhóm thực đơn Shopee Partner (ví dụ: 2/2, 0/1)
+    function updateMenuCategoryCounts() {
+      // Nhóm 1: ID 1, 2
+      let g1Active = (BAC_BA_PRODUCTS[1].active ? 1 : 0) + (BAC_BA_PRODUCTS[2].active ? 1 : 0);
+      const g1Count = document.getElementById('pmGroupCount_1');
+      if (g1Count) g1Count.textContent = g1Active + '/2';
+
+      // Nhóm 2: ID 3
+      let g2Active = BAC_BA_PRODUCTS[3].active ? 1 : 0;
+      const g2Count = document.getElementById('pmGroupCount_2');
+      if (g2Count) g2Count.textContent = g2Active + '/1';
+
+      // Nhóm 3: ID 4
+      let g3Active = BAC_BA_PRODUCTS[4].active ? 1 : 0;
+      const g3Count = document.getElementById('pmGroupCount_3');
+      if (g3Count) g3Count.textContent = g3Active + '/1';
+    }
+
+    // Bật / Tắt tất cả món nhanh (nút Bật/Tắt món ở thanh công cụ đáy)
+    function toggleAllProductsBulk() {
+      const anyOff = Object.values(BAC_BA_PRODUCTS).some(p => !p.active);
+      const newStatus = anyOff; // nếu có món đang tắt -> bật hết, ngược lại tắt hết
+
+      Object.keys(BAC_BA_PRODUCTS).forEach(key => {
+        const id = parseInt(key);
+        BAC_BA_PRODUCTS[id].active = newStatus;
+        const sw = document.getElementById('pmgSwitch_' + id);
+        if (sw) sw.checked = newStatus;
+        const itemElem = document.getElementById('pmgItem_' + id);
+        if (itemElem) {
+          if (newStatus) itemElem.classList.remove('is-paused');
+          else itemElem.classList.add('is-paused');
+        }
       });
 
-      const elAll = document.getElementById('msCountAll');
-      const elAct = document.getElementById('msCountActive');
-      const elPau = document.getElementById('msCountPaused');
-      if (elAll) elAll.textContent = total;
-      if (elAct) elAct.textContent = active;
-      if (elPau) elPau.textContent = paused;
-    }
-
-    // Lọc sản phẩm của Bác Ba theo: Tất cả / Đang mở bán / Tạm ẩn
-    function filterMyProductsStatus(status, chipElem) {
-      const bar = document.getElementById('msStatusChipsBar');
-      if (bar && chipElem) {
-        bar.querySelectorAll('.ms-status-chip').forEach(c => c.classList.remove('active'));
-        chipElem.classList.add('active');
+      if (currentDetailProductId) {
+        const pdmSwitch = document.getElementById('pdmSwitchInput');
+        const pdmStatus = document.getElementById('pdmStatusDesc');
+        if (pdmSwitch) pdmSwitch.checked = newStatus;
+        if (pdmStatus) pdmStatus.textContent = newStatus ? 'Đang hiển thị cho khách đặt mua' : 'Đang tạm ẩn trên gian hàng';
       }
 
-      const cards = document.querySelectorAll('.ms-product-card');
-      cards.forEach(c => {
-        const cStatus = c.getAttribute('data-status') || 'active';
-        if (status === 'all' || cStatus === status) {
-          c.style.display = '';
-        } else {
-          c.style.display = 'none';
-        }
-      });
+      updateMenuCategoryCounts();
+      triggerToast(newStatus ? '✓ Đã BẬT hiển thị TẤT CẢ các món nông sản!' : '⚪ Đã TẮT TẤT CẢ các món nông sản!');
     }
 
-    // Sửa nhanh giá bán nông sản
-    function quickEditMyProductPrice(id, prodName, currentPrice) {
-      const newPriceStr = prompt('Nhập giá bán mới cho "' + prodName + '" (VNĐ):', currentPrice);
+    // Sửa nhanh giá bán từ màn chi tiết
+    function quickEditDetailPrice() {
+      if (!currentDetailProductId) return;
+      const prod = BAC_BA_PRODUCTS[currentDetailProductId];
+      const newPriceStr = prompt('Nhập giá bán mới cho "' + prod.name + '" (VNĐ):', prod.price);
       if (newPriceStr !== null && newPriceStr.trim() !== '') {
         const num = parseInt(newPriceStr.replace(/\D/g, ''));
         if (!isNaN(num) && num > 0) {
-          const priceElem = document.getElementById('myProdPrice_' + id);
-          if (priceElem) {
-            priceElem.textContent = num.toLocaleString('vi-VN') + ' đ';
-          }
-          triggerToast('✓ Đã cập nhật giá mới: ' + num.toLocaleString('vi-VN') + ' đ cho ' + prodName);
+          prod.price = num;
+          prod.priceStr = num.toLocaleString('vi-VN') + ' đ';
+          const pPrice = document.getElementById('pdmPrice');
+          if (pPrice) pPrice.textContent = prod.priceStr;
+          const listPrice = document.getElementById('pmgPrice_' + currentDetailProductId);
+          if (listPrice) listPrice.textContent = num.toLocaleString('vi-VN') + 'đ';
+          triggerToast('✓ Đã cập nhật giá mới: ' + prod.priceStr + ' cho ' + prod.name);
         } else {
           triggerToast('Giá nhập vào không hợp lệ!');
         }
+      }
+    }
+
+    // Chia sẻ sản phẩm đang xem chi tiết
+    function shareCurrentDetailProduct() {
+      if (!currentDetailProductId) return;
+      const prod = BAC_BA_PRODUCTS[currentDetailProductId];
+      const shareUrl = "https://greenos.vn/shop/bac-ba-xv004?sp=" + prod.code;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          triggerToast("✓ Đã sao chép link " + prod.name + ": " + shareUrl + " (sẵn sàng gửi Zalo)!");
+        }).catch(() => {
+          triggerToast("✓ Link: " + shareUrl);
+        });
+      } else {
+        triggerToast("✓ Link: " + shareUrl);
       }
     }
 

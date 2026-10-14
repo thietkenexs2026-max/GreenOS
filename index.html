@@ -3265,42 +3265,53 @@
       transform: scale(0.96);
     }
 
-    /* Tabs Quy Trình Nông Sản HTX (Không dùng màu cam Shopee) */
+    /* Tabs Quy Trình Nông Sản HTX (Menu chip trạng thái swipeable) */
     .agri-status-tabs-container, .shopee-status-tabs-container {
       margin: 0 -18px 12px -18px;
-      padding: 0 18px;
+      padding: 4px 18px 8px 18px;
       border-bottom: 1px solid #E2E8F0;
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
       background: #FFFFFF;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+      cursor: grab;
     }
     .agri-status-tabs-container::-webkit-scrollbar, .shopee-status-tabs-container::-webkit-scrollbar {
       display: none;
     }
     .agri-status-tabs, .shopee-status-tabs {
       display: flex;
-      gap: 14px;
+      gap: 8px;
       min-width: max-content;
       padding-bottom: 2px;
+      user-select: none;
     }
     .agri-tab-item, .shopee-tab-item {
-      font-size: 13.5px;
+      padding: 7px 14px;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
+      font-size: 13px;
       font-weight: 700;
-      color: #64748B;
-      padding: 7px 4px 10px 4px;
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
+      color: #475569;
       white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
       transition: all 140ms ease;
+      user-select: none;
     }
     .agri-tab-item:hover {
-      color: #059669;
+      border-color: #CBD5E1;
+      color: #1E293B;
     }
     .agri-tab-item.active, .shopee-tab-item.active {
-      color: #059669;
-      border-bottom-color: #059669;
+      background: #059669;
+      color: #FFFFFF;
+      border-color: #059669;
       font-weight: 800;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.2);
     }
 
     /* Thanh Lọc Nông Vụ (Toolbar Lọc Ngày & Kênh Thu Mua) */
@@ -5539,61 +5550,51 @@
 
   
     /* =========================================================================
-       TOP SEGMENT TABS: QUẢN LÝ ĐƠN HÀNG & QUẢN LÝ KHO HÀNG
+       TOP SEGMENT TABS: QUẢN LÝ ĐƠN HÀNG & QUẢN LÝ KHO HÀNG (TO RÕ, DỄ BẤM)
        ========================================================================= */
     .orders-top-segment-tabs {
       display: flex;
       background: #F1F5F9;
       border-radius: 14px;
-      padding: 4px;
-      margin-bottom: 12px;
-      gap: 4px;
+      padding: 5px;
+      margin-bottom: 14px;
+      gap: 6px;
       border: 1px solid #E2E8F0;
     }
     .ot-segment-btn {
       flex: 1;
+      min-width: 0;
+      height: 46px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      padding: 8px 6px;
+      padding: 0 12px;
       border-radius: 10px;
       border: none;
       background: transparent;
       color: #64748B;
-      font-size: 12.5px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
+      font-size: 16.5px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
       cursor: pointer;
       transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
       font-family: var(--font-sans);
     }
-    .ot-segment-btn svg {
-      flex-shrink: 0;
+    .ot-segment-btn span {
+      font-size: 16.5px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
     }
     .ot-segment-btn.active {
       background: #FFFFFF;
       color: var(--agri-green);
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
-      font-weight: 800;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
+      font-weight: 900;
     }
-    .ot-badge-pill {
-      font-size: 10.5px;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 10px;
-      background: #EF4444;
-      color: #FFFFFF;
-      flex-shrink: 0;
-    }
-    .ot-badge-pill.secondary {
-      background: #E2E8F0;
-      color: #334155;
-    }
-    .ot-segment-btn.active .ot-badge-pill.secondary {
-      background: #DCFCE7;
-      color: #15803D;
+    .ot-segment-btn.active span {
+      color: var(--agri-green);
+      font-weight: 900;
     }
 
     /* LỐI TẮT IN PHIẾU SOẠN HÀNG (PICK-LIST) TRONG ĐƠN HÀNG */
@@ -5713,52 +5714,77 @@
       font-weight: 600;
       line-height: 1.25;
     }
-    .wh-toolbar {
+    /* Nút Thêm Nông Sản Tách Riêng Khỏi Thanh Menu Chip */
+    .wh-add-row {
+      margin-bottom: 12px;
+    }
+    .btn-wh-add-standalone {
+      width: 100%;
+      height: 44px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 12px;
+      justify-content: center;
+      gap: 7px;
+      background: linear-gradient(135deg, #15803D 0%, #166534 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      font-size: 14.5px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(21, 128, 61, 0.22);
+      transition: all 150ms ease;
+    }
+    .btn-wh-add-standalone:active {
+      transform: scale(0.98);
+      filter: brightness(0.95);
+    }
+
+    /* Thanh Menu Chip Kho Hàng Swipeable */
+    .wh-filter-chips-container {
+      margin: 0 -18px 14px -18px;
+      padding: 4px 18px 8px 18px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+      cursor: grab;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .wh-filter-chips-container::-webkit-scrollbar {
+      display: none;
     }
     .wh-filter-chips {
       display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .wh-filter-chips::-webkit-scrollbar {
-      display: none;
+      gap: 8px;
+      min-width: max-content;
+      padding-bottom: 2px;
+      user-select: none;
     }
     .wh-chip {
-      padding: 6px 12px;
+      padding: 7px 14px;
       border-radius: 20px;
       border: 1px solid #E2E8F0;
-      background: #FFFFFF;
-      font-size: 12px;
+      background: #F8FAFC;
+      font-size: 13px;
       font-weight: 700;
       color: #475569;
       white-space: nowrap;
+      flex-shrink: 0;
       cursor: pointer;
-      transition: all 150ms ease;
+      transition: all 140ms ease;
+      user-select: none;
+    }
+    .wh-chip:hover {
+      border-color: #CBD5E1;
+      color: #1E293B;
     }
     .wh-chip.active {
       background: #059669;
       color: #FFFFFF;
       border-color: #059669;
-    }
-    .btn-wh-add {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      background: #059669;
-      color: #FFFFFF;
-      border: none;
-      border-radius: 12px;
-      padding: 7px 12px;
-      font-size: 12.5px;
-      font-weight: 700;
-      cursor: pointer;
-      flex-shrink: 0;
+      font-weight: 800;
       box-shadow: 0 2px 6px rgba(5, 150, 105, 0.2);
     }
     .wh-product-card {
@@ -6403,53 +6429,40 @@
       word-break: break-word;
     }
 
-    /* ĐƠN HÀNG: SUBTABS QUẢN LÝ ĐƠN HÀNG & QUẢN LÝ KHO HÀNG */
+    /* ĐƠN HÀNG: SUBTABS QUẢN LÝ ĐƠN HÀNG & QUẢN LÝ KHO HÀNG (TO RÕ) */
     .orders-top-segment-tabs {
       display: flex;
       background: #F1F5F9;
       border-radius: 14px;
-      padding: 4px;
-      margin-bottom: 12px;
-      gap: 4px;
+      padding: 5px;
+      margin-bottom: 14px;
+      gap: 6px;
       border: 1px solid #E2E8F0;
     }
     .ot-segment-btn {
       flex: 1;
       min-width: 0;
+      height: 46px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      padding: 8px 4px;
+      padding: 0 12px;
       border-radius: 10px;
       border: none;
       background: transparent;
       color: #64748B;
-      font-size: clamp(11.5px, 3.2vw, 12.5px);
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      font-size: 16.5px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
       cursor: pointer;
       transition: all 180ms ease;
       font-family: var(--font-sans);
     }
-    .ot-segment-btn > span:not(.ot-badge-pill) {
+    .ot-segment-btn > span {
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      min-width: 0;
-    }
-    .ot-badge-pill {
-      font-size: 10px;
+      font-size: 16.5px;
       font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 10px;
-      background: #EF4444;
-      color: #FFFFFF;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }
-    .ot-badge-pill.secondary {
-      background: #0284C7;
+      letter-spacing: -0.2px;
     }
     .orders-sub-view {
       width: 100%;
@@ -8019,24 +8032,20 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
 
-        <!-- MENU TAB Ở TRÊN: ĐƠN HÀNG VÀ KHO HÀNG -->
+        <!-- MENU TAB Ở TRÊN: ĐƠN HÀNG VÀ KHO HÀNG (CHỈ HIỂN THỊ 2 CHỮ TO RÕ) -->
         <div class="orders-top-segment-tabs">
           <button type="button" class="ot-segment-btn active" id="btnSubtabOrders" onclick="switchOrderSubTab('orders')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             <span>Đơn hàng</span>
-            <span class="ot-badge-pill" id="subtabOrderBadge">10</span>
           </button>
           <button type="button" class="ot-segment-btn" id="btnSubtabWarehouse" onclick="switchOrderSubTab('warehouse')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
             <span>Kho hàng</span>
-            <span class="ot-badge-pill secondary">7</span>
           </button>
         </div>
 
         <!-- SUB-VIEW 1: QUẢN LÝ ĐƠN HÀNG NÔNG SẢN -->
         <div id="ordersSubView_orders" class="orders-sub-view active">
-          <!-- Horizontal Scrollable Tabs: Quy trình thu mua & xuất bán Nông sản HTX (Ngắn gọn, không rớt dòng) -->
-          <div class="agri-status-tabs-container">
+          <!-- Horizontal Scrollable Tabs: Quy trình thu mua & xuất bán Nông sản HTX (Menu chip swipe ngang mượt mà) -->
+          <div class="agri-status-tabs-container" id="orderStatusTabsContainer">
             <div class="agri-status-tabs">
               <div class="agri-tab-item active" data-tab="all" onclick="selectOrderStatusTab('all')">Tất cả (10)</div>
               <div class="agri-tab-item" data-tab="new" onclick="selectOrderStatusTab('new')">Chờ duyệt (2)</div>
@@ -8101,18 +8110,22 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             </div>
           </div>
 
-          <!-- Thanh Công Cụ Kho: Thêm SP mới & Lọc danh mục -->
-          <div class="wh-toolbar">
+          <!-- Nút Thêm Nông Sản Tách Riêng Khỏi Thanh Menu Chip -->
+          <div class="wh-add-row">
+            <button type="button" class="btn-wh-add-standalone" onclick="startWizardFlow()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              <span>+ Thêm nông sản mới</span>
+            </button>
+          </div>
+
+          <!-- Thanh menu chip lọc danh mục kho hàng (swipe ngang mượt mà) -->
+          <div class="wh-filter-chips-container" id="whFilterChipsContainer">
             <div class="wh-filter-chips">
               <button type="button" class="wh-chip active" onclick="filterWarehouseCategory('all', this)">Tất cả (7)</button>
               <button type="button" class="wh-chip" onclick="filterWarehouseCategory('active', this)">Đang bán (5)</button>
               <button type="button" class="wh-chip" onclick="filterWarehouseCategory('low', this)">Sắp hết (2)</button>
               <button type="button" class="wh-chip" onclick="filterWarehouseCategory('draft', this)">Bản nháp (2)</button>
             </div>
-            <button type="button" class="btn-wh-add" onclick="startWizardFlow()">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              <span>Thêm nông sản</span>
-            </button>
           </div>
 
           <!-- Danh sách Sản Phẩm Kho Hàng -->
@@ -11294,6 +11307,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } else {
         switchOrderSubTab('orders');
       }
+      setTimeout(initSwipeableChipContainers, 50);
     }
 
     function closeOrdersView() {
@@ -11618,6 +11632,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } catch (e) {
         goToOnboarding(1);
       }
+      initSwipeableChipContainers();
     });
 
     
@@ -11850,6 +11865,83 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       }
     ];
 
+    // Kích hoạt tính năng kéo/vuốt ngang (Swipe & Drag-to-Scroll) cho thanh menu chip cả 2 bên (Đơn hàng & Kho hàng)
+    function initSwipeableChipContainers() {
+      const containerSelectors = [
+        '#orderStatusTabsContainer',
+        '#whFilterChipsContainer',
+        '.agri-status-tabs-container',
+        '.wh-filter-chips-container'
+      ];
+
+      const handledEls = new Set();
+
+      containerSelectors.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (!el || handledEls.has(el)) return;
+        handledEls.add(el);
+
+        let isDown = false;
+        let startX = 0;
+        let scrollStart = 0;
+        let hasMoved = false;
+
+        // Mouse Drag to Scroll (cho PC/Mac/Laptop chuột)
+        el.addEventListener('mousedown', (e) => {
+          isDown = true;
+          hasMoved = false;
+          el.style.cursor = 'grabbing';
+          startX = e.pageX - el.offsetLeft;
+          scrollStart = el.scrollLeft;
+        });
+
+        const endDrag = () => {
+          if (!isDown) return;
+          isDown = false;
+          el.style.cursor = 'grab';
+          if (hasMoved) {
+            const captureClick = (ev) => {
+              ev.stopImmediatePropagation();
+              ev.preventDefault();
+              window.removeEventListener('click', captureClick, true);
+            };
+            window.addEventListener('click', captureClick, true);
+          }
+        };
+
+        el.addEventListener('mouseleave', endDrag);
+        el.addEventListener('mouseup', endDrag);
+
+        el.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          const x = e.pageX - el.offsetLeft;
+          const walk = (x - startX) * 1.3;
+          if (Math.abs(walk) > 3) {
+            hasMoved = true;
+            e.preventDefault();
+            el.scrollLeft = scrollStart - walk;
+          }
+        });
+
+        // Touch Swipe (cho điện thoại / màn hình cảm ứng)
+        let touchStartX = 0;
+        let touchStartScroll = 0;
+        el.addEventListener('touchstart', (e) => {
+          if (e.touches && e.touches.length === 1) {
+            touchStartX = e.touches[0].pageX;
+            touchStartScroll = el.scrollLeft;
+          }
+        }, { passive: true });
+
+        el.addEventListener('touchmove', (e) => {
+          if (e.touches && e.touches.length === 1) {
+            const deltaX = touchStartX - e.touches[0].pageX;
+            el.scrollLeft = touchStartScroll + deltaX;
+          }
+        }, { passive: true });
+      });
+    }
+
     let currentOrderSubTab = 'orders';
     function switchOrderSubTab(subTab) {
       currentOrderSubTab = subTab;
@@ -11866,6 +11958,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         if (viewWarehouse) viewWarehouse.style.display = 'block';
         if (headerTitle) headerTitle.innerText = 'Kho hàng';
         renderWarehouseList();
+        setTimeout(initSwipeableChipContainers, 50);
       } else {
         if (btnWarehouse) btnWarehouse.classList.remove('active');
         if (btnOrders) btnOrders.classList.add('active');
@@ -11873,6 +11966,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         if (viewOrders) viewOrders.style.display = 'block';
         if (headerTitle) headerTitle.innerText = 'Đơn hàng';
         renderOrdersList();
+        setTimeout(initSwipeableChipContainers, 50);
       }
     }
 

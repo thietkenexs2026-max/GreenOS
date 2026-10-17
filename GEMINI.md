@@ -42,3 +42,21 @@
 - Mark completed tasks with `[x]`
 - Keep code minimal and focused
 - Vietnamese UI text throughout the app
+
+### 🛡️ Shopee UI & Mobile Layout Standards (BẮT BUỘC TUÂN THỦ 100%)
+- **Chống vỡ nút (Buttons)**:
+  - Tất cả các nút bấm đơn lẻ luôn có `white-space: nowrap !important;`, `text-overflow: ellipsis; overflow: hidden;`.
+  - Nút CTA chính: cao 48px, bo góc 8px, font 15px bold.
+  - Nút phụ: cao 38px, font 13.5px.
+  - Nút pill (nhỏ/hành động nhanh): cao 30px, bo tròn 999px, font 12px, `flex-shrink: 0`.
+- **Chống tràn thẻ (Cards & Grids)**:
+  - Mọi card và mọi container chứa chữ trong flexbox PHẢI có `min-width: 0 !important;` và `box-sizing: border-box;`.
+  - Tiêu đề card kẹp tối đa 1-2 dòng (`-webkit-line-clamp: 2; word-break: break-word;`).
+  - Dòng mô tả phụ kẹp 1 dòng `text-overflow: ellipsis;`.
+- **Lưới 3 Card Ngang Song Song (Shopee Subscription Plan Grid)**:
+  - 3 card nằm cạnh nhau trên 1 hàng (`grid-template-columns: repeat(3, 1fr)`), chiều cao bằng nhau, icon 38px, nút pill đáy.
+- **Bảo toàn Viewport Di Động**:
+  - Khung mobile chuẩn: `max-width: 430px; overflow-x: hidden;`.
+  - Các thanh cuộn tag/tab phải có `overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;`.
+  - Tuyệt đối không để xảy ra vỡ chữ, tràn ngang hoặc méo layout trên mọi kích thước (375px, 390px, 412px).
+

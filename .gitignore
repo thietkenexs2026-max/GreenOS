@@ -5,3 +5,26 @@ logs/
 scratch/
 mobile_chu_ba_standalone.html
 GreenOS_Mobile_Chu_Ba.zip
+node_modules/
+*.png
+*.bak
+*.zip
+*.txt
+audit_screens/
+
+# External folders & media
+assets/
+GFKey/
+Hệ sinh thái Nexs Group/
+Nexs Group/
+cho-xanh/
+
+# Temp build/test artifacts
+audit_report.json
+gvos_pages_data.json
+vercel_*
+dual-studio.html
+gfkey.html
+new_sections.html
+test_var*.html
+

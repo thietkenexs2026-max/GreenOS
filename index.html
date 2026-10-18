@@ -12795,10 +12795,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             <span class="gvos-rev-payout-label">Đơn hoàn thành trong tháng</span>
             <span class="gvos-rev-payout-val" id="revPayoutTotal">3.850.000 đ · 18 đơn</span>
           </div>
-
-          <p class="gvos-rev-payout-note">
-            Người mua đã chuyển cho Đối tác, chưa trừ phí. Đối tác đối soát rồi trả thẳng cho Bác Ba (XV-004).
-          </p>
         </section>
 
         <!-- PHẦN 2: VẬN HÀNH MÙA VỤ & THU HOẠCH -->
@@ -12816,7 +12812,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             </div>
             <div>
               <div class="dki-value">4.2 / 6 Tấn</div>
-              <div class="dki-label">Sản lượng chuối Tết</div>
             </div>
           </div>
 
@@ -12828,7 +12823,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             </div>
             <div>
               <div class="dki-value">24 Sỉ · 18 Lẻ</div>
-              <div class="dki-label">Đơn WinMart & Zalo</div>
             </div>
           </div>
 
@@ -12840,7 +12834,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             </div>
             <div>
               <div class="dki-value">7 Mặt Hàng</div>
-              <div class="dki-label">Sản phẩm chế biến</div>
             </div>
           </div>
 
@@ -12852,7 +12845,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             </div>
             <div>
               <div class="dki-value">88% Loại 1</div>
-              <div class="dki-label">1.200 cây buồng đẹp</div>
             </div>
           </div>
         </div>
@@ -12894,11 +12886,9 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           <div class="orchard-item">
             <div class="oi-left">
               <div class="oi-left-name">Vườn Đồi Đồng Cát (1.2 ha)</div>
-              <div class="oi-left-sub">Chuối tiêu hồng · Đã cắt đợt 1</div>
             </div>
             <div class="oi-right">
               <div class="oi-right-val">2.8 Tấn</div>
-              <div class="oi-right-status" style="color:var(--agri-green)">✓ Đang lò sấy HTX</div>
             </div>
           </div>
 
@@ -12906,11 +12896,9 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           <div class="orchard-item">
             <div class="oi-left">
               <div class="oi-left-name">Vườn Bãi Bồi Sông (0.8 ha)</div>
-              <div class="oi-left-sub">Chuối ngự chín cây · Cắt đợt 2</div>
             </div>
             <div class="oi-right">
               <div class="oi-right-val">1.4 Tấn</div>
-              <div class="oi-right-status" style="color:#D97706">⏳ Dự kiến 20 Tết</div>
             </div>
           </div>
         </div>
@@ -16645,10 +16633,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                 <span style="flex-shrink:0;line-height:1">🌿</span>
                 <span class="aoc-produce-text"><b>${produceDisp}</b>${moreItems}</span>
               </div>
-              <div class="aoc-logistics-line">
-                <span style="flex-shrink:0;line-height:1">🚚</span>
-                <span class="aoc-logistics-text">${logisticsDisp}</span>
-              </div>
             </div>
 
             <!-- Hàng 4: Bác Ba thực thu & Dòng tiền -->
@@ -18254,7 +18238,24 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         } else {
           const ob = document.getElementById('panel-onboarding');
           if (!urlParams.get('open_wh_adjust') && !urlParams.get('open_wh_stockcard')) {
-            switchNavTab('home');
+            const requestedTab = urlParams.get('tab') || 'home';
+            switchNavTab(requestedTab);
+            if (urlParams.get('subtab')) {
+              switchOrderSubTab(urlParams.get('subtab'));
+            }
+            setTimeout(() => {
+              if (urlParams.get('scroll_y')) {
+                const sc = document.querySelector('.screen-container');
+                if (sc) sc.scrollTop = parseInt(urlParams.get('scroll_y'), 10);
+              }
+              if (urlParams.get('scroll_to')) {
+                const sc = document.querySelector('.screen-container');
+                const el = document.querySelector(urlParams.get('scroll_to'));
+                if (sc && el) {
+                  sc.scrollTop = el.offsetTop - 40;
+                }
+              }
+            }, 100);
           }
           if (urlParams.get('open_job') === '1') {
             setTimeout(openAnCuJobModal, 300);
@@ -18903,17 +18904,9 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                   </div>
                   <span style="color:#64748B;font-size:13px;font-weight:700;flex-shrink:0">➔</span>
                 </div>
-                <div style="font-size:11.5px;color:#64748B;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                  ${p.packaging} · <span style="color:#059669;font-weight:700">${p.cert}</span>
-                </div>
-                <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">
-                  ${batchBadge}
-                  ${locBadge}
-                  ${fefoBadge}
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
-                  <div style="font-size:14px;font-weight:800;color:#059669">
-                    ${Number(p.price).toLocaleString('vi-VN')} đ <span style="font-size:11.5px;color:#64748B;font-weight:600">/ ${p.unit}</span>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+                  <div style="font-size:14.5px;font-weight:800;color:#059669">
+                    ${Number(p.price).toLocaleString('vi-VN')} đ <span style="font-size:12px;color:#64748B;font-weight:500">/ ${p.unit}</span>
                   </div>
                   <span class="wh-stock-pill ${pillClass}" style="flex-shrink:0">${pillText}</span>
                 </div>

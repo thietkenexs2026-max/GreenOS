@@ -8970,23 +8970,29 @@
        TRỢ LÝ AI PHI PHI - GREENVILLAGE OS (HOME CARD, FAB & CHAT MODAL)
        ========================================================================= */
     .phiphi-home-card {
-      margin: 12px 14px 16px;
+      margin: 0 0 12px 0;
+      width: 100%;
       background: linear-gradient(135deg, #ECFDF5 0%, #F0FDF4 55%, #E0F2FE 100%);
       border: 1.5px solid #86EFAC;
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.08);
+      border-radius: 16px;
+      padding: 12px 14px;
+      box-shadow: 0 3px 12px rgba(16, 185, 129, 0.08);
       position: relative;
       overflow: hidden;
       min-width: 0 !important;
       box-sizing: border-box !important;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .phiphi-home-card:active {
+      transform: scale(0.99);
     }
     .phiphi-card-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       min-width: 0 !important;
     }
     .phiphi-profile-row {
@@ -8998,13 +9004,13 @@
     }
     .phiphi-avatar-wrap {
       position: relative;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       flex-shrink: 0;
     }
     .phiphi-avatar-img {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: #FFFFFF;
       box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
@@ -9015,8 +9021,8 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: #10B981;
       border: 2px solid #FFFFFF;
@@ -9064,16 +9070,7 @@
       background: #DCFCE7;
     }
     .phiphi-speech-bubble {
-      background: #FFFFFF;
-      border: 1px solid #D1FAE5;
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-size: 13px;
-      line-height: 1.45;
-      color: #1E293B;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-      position: relative;
+      display: none;
     }
     .phiphi-chips-scroll {
       display: flex;
@@ -9081,8 +9078,8 @@
       overflow-x: auto;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
-      padding-bottom: 4px;
-      margin-bottom: 10px;
+      padding-bottom: 2px;
+      margin-bottom: 0;
       min-width: 0 !important;
     }
     .phiphi-chips-scroll::-webkit-scrollbar {
@@ -9092,12 +9089,12 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      height: 32px;
-      padding: 0 11px;
+      height: 30px;
+      padding: 0 10px;
       background: #FFFFFF;
       border: 1.5px solid #BBF7D0;
       border-radius: 999px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #065F46;
       white-space: nowrap !important;
@@ -10051,7 +10048,7 @@
         <!-- =========================================================================
              TRỢ LÝ AI PHI PHI - GREENVILLAGE OS (HERO CARD TRANG CHỦ)
              ========================================================================= -->
-        <div class="phiphi-home-card" id="phiphiHomeCard">
+        <div class="phiphi-home-card" id="phiphiHomeCard" onclick="openPhiPhiScreen()" title="Bấm để mở trợ lý Phi Phi">
           <div class="phiphi-card-header">
             <div class="phiphi-profile-row">
               <div class="phiphi-avatar-wrap">
@@ -10062,38 +10059,26 @@
                 <div class="phiphi-name-title">
                   <span>Trợ lý AI Phi Phi ✨</span>
                 </div>
-                <div class="phiphi-name-sub">Hỏi đáp & hỗ trợ Bác Ba 24/7</div>
+                <div class="phiphi-name-sub">Hỏi đáp nông vụ 24/7</div>
               </div>
             </div>
-            <button type="button" class="phiphi-mic-callout" onclick="openPhiPhiScreen(true)" title="Bấm để nói chuyện với Phi Phi">
+            <button type="button" class="phiphi-mic-callout" onclick="event.stopPropagation(); openPhiPhiScreen(true);" title="Bấm để nói chuyện với Phi Phi">
               <span style="font-size:14px;">🎙️</span>
               <span>Nói ngay</span>
             </button>
           </div>
 
-          <div class="phiphi-speech-bubble" onclick="openPhiPhiScreen()" style="cursor:pointer;" title="Bấm để mở màn hình trò chuyện">
-            <strong>Dạ Bác Ba!</strong> Con là Phi Phi đây ạ. Bác cần kiểm tra đơn, tra giá chuối hôm nay hay xem lịch sử hỏi đáp trước đây không ạ?
-          </div>
-
-          <div class="phiphi-chips-scroll">
+          <div class="phiphi-chips-scroll" onclick="event.stopPropagation()">
             <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('gia_nong_san')">
-              <span>🏷️</span> Giá chuối sấy hôm nay?
+              <span>🏷️</span> Giá chuối, cam hôm nay?
             </button>
             <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('kiem_kho')">
-              <span>📦</span> Kho còn bao nhiêu?
-            </button>
-            <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('soan_zalo')">
-              <span>✍️</span> Soạn bài bán Zalo
+              <span>📦</span> Kiểm tra tồn kho
             </button>
             <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('thoi_tiet')">
               <span>🌦️</span> Mai có mưa hái cam?
             </button>
           </div>
-
-          <button type="button" class="phiphi-cta-btn" onclick="openPhiPhiScreen()">
-            <span>💬 Mở Màn Hình Trợ Lý Phi Phi</span>
-            <span>➔</span>
-          </button>
         </div>
 
         <!-- =========================================================================

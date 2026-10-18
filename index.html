@@ -10639,35 +10639,35 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         <div id="ordersSubView_warehouse" class="orders-sub-view" style="display:none">
           <!-- 4 Thẻ Chỉ Số Nhanh Kho Hàng Chuẩn WMS Nông Nghiệp -->
           <div class="warehouse-kpi-grid">
-            <div class="wh-kpi-card">
+            <div class="wh-kpi-card" onclick="filterWarehouseCategory('all', document.getElementById('whChip_all'))" style="cursor:pointer" title="Xem tất cả">
               <div class="wh-kpi-value" id="whKpiTotalItems" style="color:#059669">7</div>
               <div class="wh-kpi-label">Tổng mặt hàng</div>
             </div>
-            <div class="wh-kpi-card">
+            <div class="wh-kpi-card" onclick="openWarehouseAuditScreen()" style="cursor:pointer" title="Kiểm kê kho thực tế">
               <div class="wh-kpi-value" id="whKpiTotalQty" style="color:#1D4ED8">679</div>
-              <div class="wh-kpi-label">Tồn kg/gói</div>
+              <div class="wh-kpi-label">Tồn kg/gói ➔</div>
             </div>
-            <div class="wh-kpi-card">
+            <div class="wh-kpi-card" onclick="filterWarehouseCategory('low', document.getElementById('whChip_low'))" style="cursor:pointer" title="Lọc hàng sắp hết">
               <div class="wh-kpi-value" id="whKpiLowCount" style="color:#DC2626">2</div>
               <div class="wh-kpi-label">Sắp hết hàng</div>
             </div>
-            <div class="wh-kpi-card">
+            <div class="wh-kpi-card" onclick="openWarehouseStockCardScreen('wh_banana')" style="cursor:pointer" title="Mở Sổ thẻ kho">
               <div class="wh-kpi-value" id="whKpiTotalValue" style="color:#B45309">52.9 tr</div>
-              <div class="wh-kpi-label">Giá trị tồn</div>
+              <div class="wh-kpi-label">Giá trị tồn ➔</div>
             </div>
           </div>
 
-          <!-- Thanh Công Cụ Thao Tác Nhanh WMS (Nhập nương - Kiểm kê - Quét QR) -->
+          <!-- Thanh Công Cụ Thao Tác Nhanh WMS (Chuyển Màn Hình Riêng Biệt - Zero Popup) -->
           <div class="wh-quick-actions-bar">
-            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseInboundModal()" title="Nhập kho nông sản thu hoạch">
+            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseInboundScreen()" title="Màn hình Nhập kho nông sản thu hoạch">
               <span class="wh-qa-icon">📥</span>
               <span class="wh-qa-text">Nhập nương</span>
             </button>
-            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseStockAuditModal()" title="Kiểm kê kho thực tế">
+            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseAuditScreen()" title="Màn hình Kiểm kê kho toàn diện">
               <span class="wh-qa-icon">⚖️</span>
               <span class="wh-qa-text">Kiểm kê kho</span>
             </button>
-            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseQRScanModal()" title="Quét mã QR / Barcode nông sản">
+            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseScannerScreen()" title="Màn hình Quét mã QR / Barcode nông sản">
               <span class="wh-qa-icon">📷</span>
               <span class="wh-qa-text">Quét mã QR</span>
             </button>
@@ -10862,6 +10862,355 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
       </div>
+
+      <!-- =========================================================================
+           PANEL WMS 1: MÀN HÌNH NHẬP KHO NÔNG SẢN (CHUYỂN MÀN CHÍNH THỨC - ZERO POPUP)
+           ========================================================================= -->
+      <section id="panel-wh-inbound" class="view-panel" style="padding-bottom: 90px;">
+        <div class="det-top-bar">
+          <button type="button" class="det-back-icon-btn" onclick="closeWarehouseScreens()" title="Quay lại Kho hàng">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="det-top-title-box">
+            <h1 class="det-top-title">Nhập kho nông sản</h1>
+            <span class="det-top-code">Thu hoạch & Bàn giao lô mới</span>
+          </div>
+          <button type="button" class="det-bell-icon-btn" onclick="triggerToast('Nhập bổ sung nông sản vào kho lưu trữ')" title="Trợ giúp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </button>
+        </div>
+
+        <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(15,23,42,0.04)">
+          <div class="fsc-field" style="margin-bottom:12px">
+            <label class="fsc-label"><span>Chọn mặt hàng nông sản</span></label>
+            <select id="whInboundProductSelectScreen" class="fsc-input" onchange="onWhInboundProductScreenChange()" style="font-weight:700">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+
+          <div id="whInboundInfoBannerScreen" style="background:#F0FDF4;border:1px solid #86EFAC;border-radius:12px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;font-size:12.5px">
+            <div>
+              <span style="color:#166534;font-weight:700">Tồn hiện tại: </span>
+              <strong id="whInboundCurrentStockScreen" style="color:#15803D;font-size:14px">85 gói</strong>
+            </div>
+            <div style="color:#0369A1;font-weight:700" id="whInboundCurrentLocScreen">📍 Kho mát KM-02</div>
+          </div>
+
+          <div class="fsc-field" style="margin-bottom:14px">
+            <label class="fsc-label"><span>Nguồn gốc lô hàng</span></label>
+            <select id="whInboundSourceScreen" class="fsc-input">
+              <option value="harvest">🌾 Thu hoạch nương/vườn nhà Bác Ba</option>
+              <option value="satellite">🚚 Thu gom hộ nông dân vệ tinh (Liên kết HTX)</option>
+              <option value="factory">🏭 Xưởng sấy / chế biến HTX bàn giao</option>
+              <option value="import">📦 Nhập bao bì / vật tư đóng gói</option>
+            </select>
+          </div>
+
+          <div class="fsc-grid-2col" style="margin-bottom:12px">
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Số lượng nhập</span></label>
+              <input type="number" id="whInboundQtyScreen" class="fsc-input" placeholder="Ví dụ: 20" value="20" min="1" style="font-weight:800;font-size:16px;color:#15803D">
+            </div>
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Đơn vị tính</span></label>
+              <input type="text" id="whInboundUnitScreen" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
+            </div>
+          </div>
+
+          <!-- Phím chọn nhanh số lượng -->
+          <div style="display:flex;gap:6px;margin-bottom:14px">
+            <button type="button" class="btn-wh-action" onclick="addWhInboundQuickQty(10)">+10</button>
+            <button type="button" class="btn-wh-action" onclick="addWhInboundQuickQty(20)">+20</button>
+            <button type="button" class="btn-wh-action" onclick="addWhInboundQuickQty(50)">+50</button>
+            <button type="button" class="btn-wh-action" onclick="addWhInboundQuickQty(100)">+100</button>
+          </div>
+
+          <div class="fsc-grid-2col" style="margin-bottom:14px">
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Mã lô thu hoạch</span></label>
+              <input type="text" id="whInboundBatchScreen" class="fsc-input" value="LOT-2026-CS18" style="font-family:monospace;font-weight:700">
+            </div>
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Vị trí kho lưu trữ</span></label>
+              <input type="text" id="whInboundLocationScreen" class="fsc-input" value="Kho mát KM-02">
+            </div>
+          </div>
+
+          <div class="fsc-field" style="margin-bottom:0">
+            <label class="fsc-label"><span>Ghi chú diễn giải</span></label>
+            <input type="text" id="whInboundNoteScreen" class="fsc-input" placeholder="Ví dụ: Thu hoạch đợt sáng sớm, đóng túi dán tem QR">
+          </div>
+        </div>
+
+        <button type="button" class="btn-dock-next" style="width:100%;height:48px;font-size:15px;font-weight:800;border-radius:12px;background:#15803D" onclick="submitWarehouseInboundScreen()">
+          <span>✓ Xác Nhận Nhập Kho Nông Sản</span>
+        </button>
+      </section>
+
+      <!-- =========================================================================
+           PANEL WMS 2: MÀN HÌNH XUẤT KHO NÔNG SẢN (CHUYỂN MÀN CHÍNH THỨC - ZERO POPUP)
+           ========================================================================= -->
+      <section id="panel-wh-outbound" class="view-panel" style="padding-bottom: 90px;">
+        <div class="det-top-bar">
+          <button type="button" class="det-back-icon-btn" onclick="closeWarehouseScreens()" title="Quay lại Kho hàng">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="det-top-title-box">
+            <h1 class="det-top-title">Xuất kho nông sản</h1>
+            <span class="det-top-code">Giao xe tải HTX & Bán lẻ</span>
+          </div>
+          <button type="button" class="det-bell-icon-btn" onclick="triggerToast('Xuất hàng cho xe tải HTX hoặc đơn bán lẻ')" title="Trợ giúp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </button>
+        </div>
+
+        <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(15,23,42,0.04)">
+          <div class="fsc-field" style="margin-bottom:12px">
+            <label class="fsc-label"><span>Mặt hàng xuất kho</span></label>
+            <select id="whOutboundProductSelectScreen" class="fsc-input" onchange="onWhOutboundProductScreenChange()" style="font-weight:700">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+
+          <div id="whOutboundInfoBannerScreen" style="background:#EFF6FF;border:1px solid #93C5FD;border-radius:12px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;font-size:12.5px">
+            <div>
+              <span style="color:#1E40AF;font-weight:700">Khả dụng: </span>
+              <strong id="whOutboundCurrentStockScreen" style="color:#1D4ED8;font-size:14px">85 gói</strong>
+            </div>
+            <div style="color:#92400E;font-weight:700" id="whOutboundFEFOScreen">⏳ HSD: 14/04/2027</div>
+          </div>
+
+          <div class="fsc-field" style="margin-bottom:14px">
+            <label class="fsc-label"><span>Mục đích / Điểm đến xuất kho</span></label>
+            <select id="whOutboundReasonScreen" class="fsc-input">
+              <option value="truck">🚛 Giao xe tải HTX Yên Bình gom đơn sỉ B2B</option>
+              <option value="retail">🛍️ Giao đơn bán lẻ Chợ Xanh / Khách Zalo</option>
+              <option value="loss">⚖️ Bù hao hụt tự nhiên / Loại nông sản dập nát</option>
+              <option value="sample">🎁 Gửi mẫu kiểm định OCOP huyện / Biếu tặng</option>
+            </select>
+          </div>
+
+          <div class="fsc-grid-2col" style="margin-bottom:12px">
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Số lượng xuất</span></label>
+              <input type="number" id="whOutboundQtyScreen" class="fsc-input" placeholder="Ví dụ: 10" value="10" min="1" style="font-weight:800;font-size:16px;color:#1D4ED8">
+            </div>
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Đơn vị tính</span></label>
+              <input type="text" id="whOutboundUnitScreen" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
+            </div>
+          </div>
+
+          <!-- Phím chọn nhanh xuất -->
+          <div style="display:flex;gap:6px;margin-bottom:14px">
+            <button type="button" class="btn-wh-action" onclick="setWhOutboundQuickQty(10)">10</button>
+            <button type="button" class="btn-wh-action" onclick="setWhOutboundQuickQty(20)">20</button>
+            <button type="button" class="btn-wh-action" onclick="setWhOutboundQuickQty(50)">50</button>
+            <button type="button" class="btn-wh-action" onclick="setWhOutboundAllQty()">Xuất hết lô</button>
+          </div>
+
+          <div class="fsc-field" style="margin-bottom:0">
+            <label class="fsc-label"><span>Ghi chú xuất kho</span></label>
+            <input type="text" id="whOutboundNoteScreen" class="fsc-input" placeholder="Ví dụ: Bàn giao xe tải Chú Hùng biển số 29H-1234">
+          </div>
+        </div>
+
+        <button type="button" class="btn-dock-next" style="width:100%;height:48px;font-size:15px;font-weight:800;border-radius:12px;background:#1D4ED8" onclick="submitWarehouseOutboundScreen()">
+          <span>✓ Xác Nhận Xuất Kho Nông Sản</span>
+        </button>
+      </section>
+
+      <!-- =========================================================================
+           PANEL WMS 3: MÀN HÌNH SỔ THẺ KHO ĐIỆN TỬ (CHUYỂN MÀN CHÍNH THỨC - ZERO POPUP)
+           ========================================================================= -->
+      <section id="panel-wh-stockcard" class="view-panel" style="padding-bottom: 90px;">
+        <div class="det-top-bar">
+          <button type="button" class="det-back-icon-btn" onclick="closeWarehouseScreens()" title="Quay lại Kho hàng">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="det-top-title-box">
+            <h1 class="det-top-title">Sổ thẻ kho điện tử</h1>
+            <span class="det-top-code">Nhật ký biến động xuất nhập tồn</span>
+          </div>
+          <button type="button" class="det-bell-icon-btn" onclick="shareStockCardToHTX()" title="Gửi HTX">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          </button>
+        </div>
+
+        <!-- Thông tin sản phẩm thẻ kho -->
+        <div id="whStockCardProductHeaderScreen" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(15,23,42,0.04)">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Filter loại giao dịch thẻ kho -->
+        <div class="wh-filter-chips-container" style="margin:0 0 12px 0;padding:0">
+          <div class="wh-filter-chips">
+            <button type="button" class="wh-chip active" onclick="filterStockCardScreen('all', this)">Tất cả</button>
+            <button type="button" class="wh-chip" onclick="filterStockCardScreen('in', this)">🟢 Nhập kho</button>
+            <button type="button" class="wh-chip" onclick="filterStockCardScreen('out', this)">🔵 Xuất kho</button>
+            <button type="button" class="wh-chip" onclick="filterStockCardScreen('loss', this)">🟠 Hao hụt</button>
+            <button type="button" class="wh-chip" onclick="filterStockCardScreen('audit', this)">⚖️ Kiểm kê</button>
+          </div>
+        </div>
+
+        <!-- Danh sách timeline giao dịch -->
+        <div class="wh-ledger-timeline" id="whStockCardTimelineScreen" style="max-height:none;margin-bottom:16px">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div style="display:flex;gap:8px;margin-bottom:10px">
+          <button type="button" class="btn-wh-action btn-wh-in" style="flex:1;height:42px;justify-content:center;font-size:13px" onclick="openWarehouseInboundScreen(currentStockCardProductId)">
+            📥 Nhập thêm lô này
+          </button>
+          <button type="button" class="btn-wh-action btn-wh-out" style="flex:1;height:42px;justify-content:center;font-size:13px" onclick="openWarehouseOutboundScreen(currentStockCardProductId)">
+            📤 Xuất lô này
+          </button>
+        </div>
+
+        <button type="button" class="shopee-primary-btn" style="width:100%;height:44px;font-size:13.5px;font-weight:700;border-radius:10px;background:#059669" onclick="shareStockCardToHTX()">
+          📤 Kết Xuất & Gửi Kế Toán HTX
+        </button>
+      </section>
+
+      <!-- =========================================================================
+           PANEL WMS 4: MÀN HÌNH QUÉT MÃ QR & BARCODE (CHUYỂN MÀN CHÍNH THỨC - ZERO POPUP)
+           ========================================================================= -->
+      <section id="panel-wh-scanner" class="view-panel" style="padding-bottom: 90px;">
+        <div class="det-top-bar">
+          <button type="button" class="det-back-icon-btn" onclick="closeWarehouseScreens()" title="Quay lại Kho hàng">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="det-top-title-box">
+            <h1 class="det-top-title">Máy quét tem QR / Barcode</h1>
+            <span class="det-top-code">Định danh lô hàng & Vị trí kho</span>
+          </div>
+          <button type="button" class="det-bell-icon-btn" onclick="triggerToast('Hướng camera về tem nông sản')" title="Trợ giúp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </button>
+        </div>
+
+        <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(15,23,42,0.04)">
+          <div class="wh-scanner-box" style="height:210px">
+            <div class="wh-scanner-frame" style="width:160px;height:160px">
+              <div class="wh-laser-line"></div>
+              <span style="font-size:36px;opacity:0.6">📦</span>
+            </div>
+          </div>
+          <div style="text-align:center;font-size:12.5px;color:#64748B;margin-bottom:14px">
+            Hướng camera vào tem QR OCOP, VietGAP hoặc mã vạch trên thùng carton
+          </div>
+
+          <div style="font-size:12.5px;font-weight:700;color:#334155;margin-bottom:8px">Mã test nhanh cho Bác Ba:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+            <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScanScreen('LOT-2026-CS08')">🏷️ Chuối sấy CS08</button>
+            <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScanScreen('LOT-2026-CY09')">🏷️ Cam sành CY09</button>
+            <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScanScreen('LOT-2026-MO12')">🏷️ Mật ong MO12</button>
+            <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScanScreen('LOT-2026-TB05')">🏷️ Trà Bát Tiên TB05</button>
+          </div>
+
+          <!-- Khung kết quả sau khi quét -->
+          <div id="whQRScanResultBoxScreen" style="display:none;background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:12px;padding:14px;margin-top:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <span style="font-size:14px;font-weight:800;color:#15803D" id="whQRResultNameScreen">Chuối sấy giòn</span>
+              <span class="wh-badge-batch" id="whQRResultBatchScreen">LOT-2026-CS08</span>
+            </div>
+            <div style="font-size:12.5px;color:#334155;margin-bottom:12px" id="whQRResultDetailsScreen">
+              Tồn kho: 85 gói · Vị trí: Kho mát KM-02 · HSD: 14/04/2027
+            </div>
+            <div style="display:flex;gap:8px">
+              <button type="button" class="btn-wh-action btn-wh-in" style="flex:1;height:40px;justify-content:center;font-size:12.5px" id="btnWhQRInScreen">📥 Nhập thêm lô này</button>
+              <button type="button" class="btn-wh-action btn-wh-out" style="flex:1;height:40px;justify-content:center;font-size:12.5px" id="btnWhQROutScreen">📤 Xuất lô này</button>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="shopee-secondary-btn" style="width:100%;height:44px;font-size:13.5px;border-radius:10px" onclick="closeWarehouseScreens()">
+          Đóng máy quét & Về kho hàng
+        </button>
+      </section>
+
+      <!-- =========================================================================
+           PANEL WMS 5: MÀN HÌNH KIỂM KÊ KHO TOÀN DIỆN (CHUYỂN MÀN CHÍNH THỨC - ZERO POPUP)
+           ========================================================================= -->
+      <section id="panel-wh-audit" class="view-panel" style="padding-bottom: 90px;">
+        <div class="det-top-bar">
+          <button type="button" class="det-back-icon-btn" onclick="closeWarehouseScreens()" title="Quay lại Kho hàng">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="det-top-title-box">
+            <h1 class="det-top-title">Kiểm kê kho toàn diện</h1>
+            <span class="det-top-code">Đối chiếu số thực tế với sổ sách</span>
+          </div>
+          <button type="button" class="det-bell-icon-btn" onclick="triggerToast('Đối soát tồn kho thực tế')" title="Trợ giúp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </button>
+        </div>
+
+        <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:14px;padding:12px 14px;margin-bottom:14px;font-size:12.5px;color:#92400E;line-height:1.4">
+          💡 Bác Ba nhập số lượng thực tế đếm được tại nương/kho. Hệ thống sẽ tự động đối chiếu chênh lệch và lập biên bản đối soát.
+        </div>
+
+        <div id="whAuditListContainerScreen" style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          <!-- Rendered by JS -->
+        </div>
+
+        <button type="button" class="btn-dock-next" style="width:100%;height:48px;font-size:15px;font-weight:800;border-radius:12px;background:#D97706" onclick="submitWarehouseStockAuditScreen()">
+          <span>✓ Cân Đối & Chốt Sổ Kiểm Kê Kỳ Này</span>
+        </button>
+      </section>
+
+      <!-- =========================================================================
+           PANEL WMS 6: MÀN HÌNH CHỈNH SỬA NÔNG SẢN KHO (CHUYỂN MÀN CHÍNH THỨC - ZERO POPUP)
+           ========================================================================= -->
+      <section id="panel-wh-adjust" class="view-panel" style="padding-bottom: 90px;">
+        <div class="det-top-bar">
+          <button type="button" class="det-back-icon-btn" onclick="closeWarehouseScreens()" title="Quay lại Kho hàng">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="det-top-title-box">
+            <h1 class="det-top-title">Chỉnh sửa nông sản</h1>
+            <span class="det-top-code">Cập nhật giá, tồn & vị trí</span>
+          </div>
+          <button type="button" class="det-bell-icon-btn" onclick="triggerToast('Chỉnh sửa thông tin nông sản trong kho')" title="Trợ giúp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </button>
+        </div>
+
+        <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 1px 4px rgba(15,23,42,0.04)">
+          <input type="hidden" id="whAdjustProductIdScreen">
+
+          <div class="fsc-field" style="margin-bottom:12px">
+            <label class="fsc-label"><span>Tên nông sản</span></label>
+            <input type="text" id="whAdjustNameScreen" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
+          </div>
+
+          <div class="fsc-grid-2col" style="margin-bottom:12px">
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Tồn kho hiện có</span></label>
+              <input type="number" id="whAdjustStockScreen" class="fsc-input" min="0" style="font-weight:800;font-size:16px">
+            </div>
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Giá bán lẻ (đ)</span></label>
+              <input type="number" id="whAdjustPriceScreen" class="fsc-input" min="1000" step="1000" style="font-weight:800;font-size:16px;color:#15803D">
+            </div>
+          </div>
+
+          <div class="fsc-grid-2col" style="margin-bottom:12px">
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Ngưỡng báo sắp hết</span></label>
+              <input type="number" id="whAdjustThresholdScreen" class="fsc-input" min="1">
+            </div>
+            <div class="fsc-field" style="margin-bottom:0">
+              <label class="fsc-label"><span>Vị trí lưu kho</span></label>
+              <input type="text" id="whAdjustLocationScreen" class="fsc-input">
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-dock-next" style="width:100%;height:48px;font-size:15px;font-weight:800;border-radius:12px;background:#15803D" onclick="submitWarehouseAdjustScreen()">
+          <span>✓ Lưu Thay Đổi Vào Kho</span>
+        </button>
+      </section>
 
       <!-- =========================================================================
            PANEL DASHBOARD & DOANH THU NÔNG HỘ: TẤT CẢ TRONG 1 MÀN DUY NHẤT
@@ -16482,10 +16831,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             <div class="wh-card-bottom">
               <span class="wh-stock-pill ${pillClass}">${pillText}</span>
               <div class="wh-card-actions">
-                <button type="button" class="btn-wh-action btn-wh-in" onclick="openWarehouseInboundModal('${p.id}')">📥 Nhập</button>
-                <button type="button" class="btn-wh-action btn-wh-out" onclick="openWarehouseOutboundModal('${p.id}')">📤 Xuất</button>
-                <button type="button" class="btn-wh-action btn-wh-card" onclick="openWarehouseStockCardModal('${p.id}')">📋 Thẻ kho</button>
-                <button type="button" class="btn-wh-action btn-wh-more" onclick="openWarehouseAdjustModal('${p.id}')" title="Chỉnh sửa nông sản">⚙️</button>
+                <button type="button" class="btn-wh-action btn-wh-in" onclick="openWarehouseInboundScreen('${p.id}')">📥 Nhập</button>
+                <button type="button" class="btn-wh-action btn-wh-out" onclick="openWarehouseOutboundScreen('${p.id}')">📤 Xuất</button>
+                <button type="button" class="btn-wh-action btn-wh-card" onclick="openWarehouseStockCardScreen('${p.id}')">📋 Thẻ kho</button>
+                <button type="button" class="btn-wh-action btn-wh-more" onclick="openWarehouseAdjustScreen('${p.id}')" title="Chỉnh sửa nông sản">⚙️</button>
               </div>
             </div>
           </div>
@@ -16496,59 +16845,82 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     }
 
     // =========================================================================
-    // MODAL HANDLERS: NHẬP KHO NÔNG SẢN (INBOUND)
+    // ĐIỀU HƯỚNG CHUNG: ĐÓNG MÀN HÌNH CON & VỀ LẠI KHO HÀNG (ZERO POPUP)
     // =========================================================================
-    function openWarehouseInboundModal(productId) {
-      const select = document.getElementById('whInboundProductSelect');
-      if (!select) return;
+    function closeWarehouseScreens() {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      const ordersPanel = document.getElementById('panel-orders');
+      if (ordersPanel) ordersPanel.classList.add('active');
 
-      select.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
-        <option value="${p.id}" ${p.id === productId ? 'selected' : ''}>${p.name} (${p.stock} ${p.unit})</option>
-      `).join('');
+      const btnOrdersNav = document.querySelector('.nav-tab-item[data-tab="orders"]');
+      if (btnOrdersNav) btnOrdersNav.classList.add('active');
 
-      onWhInboundProductChange();
-      const modal = document.getElementById('warehouseInboundModal');
-      if (modal) modal.classList.add('active');
+      switchOrderSubTab('warehouse');
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function closeWarehouseInboundModal() {
-      const modal = document.getElementById('warehouseInboundModal');
-      if (modal) modal.classList.remove('active');
+    // =========================================================================
+    // MÀN HÌNH WMS 1: NHẬP KHO NÔNG SẢN (FULL-SCREEN PANEL)
+    // =========================================================================
+    function openWarehouseInboundScreen(productId) {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
+
+      const select = document.getElementById('whInboundProductSelectScreen');
+      if (select) {
+        select.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
+          <option value="${p.id}" ${p.id === productId ? 'selected' : ''}>${p.name} (${p.stock} ${p.unit})</option>
+        `).join('');
+      }
+
+      onWhInboundProductScreenChange();
+
+      const panel = document.getElementById('panel-wh-inbound');
+      if (panel) panel.classList.add('active');
+
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function onWhInboundProductChange() {
-      const select = document.getElementById('whInboundProductSelect');
+    function onWhInboundProductScreenChange() {
+      const select = document.getElementById('whInboundProductSelectScreen');
       if (!select) return;
       const pid = select.value;
       const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === pid);
       if (!p) return;
 
-      const stockEl = document.getElementById('whInboundCurrentStock');
-      const locEl = document.getElementById('whInboundCurrentLoc');
-      const unitEl = document.getElementById('whInboundUnit');
-      const batchEl = document.getElementById('whInboundBatch');
-      const locationInput = document.getElementById('whInboundLocation');
+      const stockEl = document.getElementById('whInboundCurrentStockScreen');
+      const locEl = document.getElementById('whInboundCurrentLocScreen');
+      const unitEl = document.getElementById('whInboundUnitScreen');
+      const batchEl = document.getElementById('whInboundBatchScreen');
+      const locationInput = document.getElementById('whInboundLocationScreen');
 
       if (stockEl) stockEl.textContent = `${p.stock} ${p.unit}`;
       if (locEl) locEl.textContent = `📍 ${p.location || 'Kho mát'}`;
       if (unitEl) unitEl.value = p.unit;
       if (locationInput) locationInput.value = p.location || 'Kho mát KM-02';
 
-      // Sinh mã lô tự động theo ngày
       const now = new Date();
       const dayStr = String(now.getDate()).padStart(2, '0');
-      const monthStr = String(now.getMonth() + 1).padStart(2, '0');
       const suffix = p.id.replace('wh_', '').toUpperCase().slice(0, 2);
       if (batchEl) batchEl.value = `LOT-2026-${suffix}${dayStr}`;
     }
 
-    function submitWarehouseInbound() {
-      const select = document.getElementById('whInboundProductSelect');
-      const qtyInput = document.getElementById('whInboundQty');
-      const batchInput = document.getElementById('whInboundBatch');
-      const locInput = document.getElementById('whInboundLocation');
-      const noteInput = document.getElementById('whInboundNote');
-      const sourceSelect = document.getElementById('whInboundSource');
+    function addWhInboundQuickQty(delta) {
+      const qtyInput = document.getElementById('whInboundQtyScreen');
+      if (!qtyInput) return;
+      const cur = parseInt(qtyInput.value, 10) || 0;
+      qtyInput.value = cur + delta;
+    }
+
+    function submitWarehouseInboundScreen() {
+      const select = document.getElementById('whInboundProductSelectScreen');
+      const qtyInput = document.getElementById('whInboundQtyScreen');
+      const batchInput = document.getElementById('whInboundBatchScreen');
+      const locInput = document.getElementById('whInboundLocationScreen');
+      const noteInput = document.getElementById('whInboundNoteScreen');
+      const sourceSelect = document.getElementById('whInboundSourceScreen');
 
       if (!select || !qtyInput) return;
       const pid = select.value;
@@ -16566,7 +16938,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       const sourceText = sourceSelect ? sourceSelect.options[sourceSelect.selectedIndex].text : 'Thu hoạch';
       const note = noteInput && noteInput.value.trim() ? noteInput.value.trim() : `${sourceText} (Lô: ${batch})`;
 
-      // Cập nhật tồn kho & thông tin lô
       p.stock += qty;
       if (batch) p.batchCode = batch;
       if (loc) p.location = loc;
@@ -16574,7 +16945,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         p.status = 'active';
       }
 
-      // Thêm thẻ kho ledger
       const now = new Date();
       const timeStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
       if (!p.history) p.history = [];
@@ -16587,54 +16957,69 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         note: note
       });
 
-      closeWarehouseInboundModal();
+      closeWarehouseScreens();
       updateWarehouseKPIs();
       renderWarehouseList();
       triggerToast(`✅ Đã nhập kho thành công: +${qty} ${p.unit} "${p.name}" (Tồn mới: ${p.stock} ${p.unit})`);
     }
 
     // =========================================================================
-    // MODAL HANDLERS: XUẤT KHO NÔNG SẢN (OUTBOUND)
+    // MÀN HÌNH WMS 2: XUẤT KHO NÔNG SẢN (FULL-SCREEN PANEL)
     // =========================================================================
-    function openWarehouseOutboundModal(productId) {
-      const select = document.getElementById('whOutboundProductSelect');
-      if (!select) return;
+    function openWarehouseOutboundScreen(productId) {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
 
-      select.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
-        <option value="${p.id}" ${p.id === productId ? 'selected' : ''}>${p.name} (Tồn: ${p.stock} ${p.unit})</option>
-      `).join('');
+      const select = document.getElementById('whOutboundProductSelectScreen');
+      if (select) {
+        select.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
+          <option value="${p.id}" ${p.id === productId ? 'selected' : ''}>${p.name} (Tồn: ${p.stock} ${p.unit})</option>
+        `).join('');
+      }
 
-      onWhOutboundProductChange();
-      const modal = document.getElementById('warehouseOutboundModal');
-      if (modal) modal.classList.add('active');
+      onWhOutboundProductScreenChange();
+
+      const panel = document.getElementById('panel-wh-outbound');
+      if (panel) panel.classList.add('active');
+
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function closeWarehouseOutboundModal() {
-      const modal = document.getElementById('warehouseOutboundModal');
-      if (modal) modal.classList.remove('active');
-    }
-
-    function onWhOutboundProductChange() {
-      const select = document.getElementById('whOutboundProductSelect');
+    function onWhOutboundProductScreenChange() {
+      const select = document.getElementById('whOutboundProductSelectScreen');
       if (!select) return;
       const pid = select.value;
       const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === pid);
       if (!p) return;
 
-      const stockEl = document.getElementById('whOutboundCurrentStock');
-      const unitEl = document.getElementById('whOutboundUnit');
-      const fefoEl = document.getElementById('whOutboundFEFO');
+      const stockEl = document.getElementById('whOutboundCurrentStockScreen');
+      const unitEl = document.getElementById('whOutboundUnitScreen');
+      const fefoEl = document.getElementById('whOutboundFEFOScreen');
 
       if (stockEl) stockEl.textContent = `${p.stock} ${p.unit}`;
       if (unitEl) unitEl.value = p.unit;
       if (fefoEl) fefoEl.textContent = `⏳ HSD: ${p.expiryDate || 'N/A'}`;
     }
 
-    function submitWarehouseOutbound() {
-      const select = document.getElementById('whOutboundProductSelect');
-      const qtyInput = document.getElementById('whOutboundQty');
-      const reasonSelect = document.getElementById('whOutboundReason');
-      const noteInput = document.getElementById('whOutboundNote');
+    function setWhOutboundQuickQty(qty) {
+      const input = document.getElementById('whOutboundQtyScreen');
+      if (input) input.value = qty;
+    }
+
+    function setWhOutboundAllQty() {
+      const select = document.getElementById('whOutboundProductSelectScreen');
+      if (!select) return;
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === select.value);
+      const input = document.getElementById('whOutboundQtyScreen');
+      if (p && input) input.value = p.stock;
+    }
+
+    function submitWarehouseOutboundScreen() {
+      const select = document.getElementById('whOutboundProductSelectScreen');
+      const qtyInput = document.getElementById('whOutboundQtyScreen');
+      const reasonSelect = document.getElementById('whOutboundReasonScreen');
+      const noteInput = document.getElementById('whOutboundNoteScreen');
 
       if (!select || !qtyInput) return;
       const pid = select.value;
@@ -16657,13 +17042,11 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       const isLoss = (reasonType === 'loss');
       const note = noteInput && noteInput.value.trim() ? noteInput.value.trim() : reasonText;
 
-      // Trừ tồn kho
       p.stock -= qty;
       if (p.stock <= p.threshold && p.status !== 'draft') {
         p.status = 'low';
       }
 
-      // Ghi nhận thẻ kho ledger
       const now = new Date();
       const timeStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
       if (!p.history) p.history = [];
@@ -16676,72 +17059,78 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         note: note
       });
 
-      closeWarehouseOutboundModal();
+      closeWarehouseScreens();
       updateWarehouseKPIs();
       renderWarehouseList();
       triggerToast(`✅ Đã xuất kho thành công: -${qty} ${p.unit} "${p.name}" (Còn lại: ${p.stock} ${p.unit})`);
     }
 
     // =========================================================================
-    // MODAL HANDLERS: SỔ THẺ KHO ĐIỆN TỬ (STOCK CARD LEDGER)
+    // MÀN HÌNH WMS 3: SỔ THẺ KHO ĐIỆN TỬ (FULL-SCREEN PANEL)
     // =========================================================================
     let currentStockCardProductId = null;
     let currentStockCardFilter = 'all';
 
-    function openWarehouseStockCardModal(productId) {
+    function openWarehouseStockCardScreen(productId) {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
+
       currentStockCardProductId = productId || BAC_BA_WAREHOUSE_PRODUCTS[0].id;
       currentStockCardFilter = 'all';
-      renderStockCardContent();
-      const modal = document.getElementById('warehouseStockCardModal');
-      if (modal) modal.classList.add('active');
+      renderStockCardScreenContent();
+
+      const panel = document.getElementById('panel-wh-stockcard');
+      if (panel) panel.classList.add('active');
+
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function closeWarehouseStockCardModal() {
-      const modal = document.getElementById('warehouseStockCardModal');
-      if (modal) modal.classList.remove('active');
-    }
-
-    function filterStockCardModal(type, btn) {
+    function filterStockCardScreen(type, btn) {
       currentStockCardFilter = type;
-      const modal = document.getElementById('warehouseStockCardModal');
-      if (modal) {
-        modal.querySelectorAll('.wh-chip').forEach(c => c.classList.remove('active'));
+      const panel = document.getElementById('panel-wh-stockcard');
+      if (panel) {
+        panel.querySelectorAll('.wh-chip').forEach(c => c.classList.remove('active'));
       }
       if (btn) btn.classList.add('active');
-      renderStockCardContent();
+      renderStockCardScreenContent();
     }
 
-    function renderStockCardContent() {
+    function renderStockCardScreenContent() {
       const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === currentStockCardProductId);
       if (!p) return;
 
-      const headerEl = document.getElementById('whStockCardProductHeader');
-      const timelineEl = document.getElementById('whStockCardTimelineContainer');
+      const headerEl = document.getElementById('whStockCardProductHeaderScreen');
+      const timelineEl = document.getElementById('whStockCardTimelineScreen');
       if (!headerEl || !timelineEl) return;
 
       const totalVal = ((p.stock || 0) * (p.price || 0)).toLocaleString('vi-VN');
 
       headerEl.innerHTML = `
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-          <div style="font-size:26px">${p.isEmoji ? p.image : '📦'}</div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <div style="font-size:32px">${p.isEmoji ? p.image : '📦'}</div>
           <div style="min-width:0;flex:1">
-            <div style="font-size:14.5px;font-weight:800;color:#0F172A">${p.name}</div>
-            <div style="font-size:12px;color:#64748B">${p.packaging} · <span style="color:#059669;font-weight:700">${p.cert}</span></div>
+            <div style="font-size:16px;font-weight:800;color:#0F172A">${p.name}</div>
+            <div style="font-size:12.5px;color:#64748B">${p.packaging} · <span style="color:#059669;font-weight:700">${p.cert}</span></div>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:6px;background:#FFF;border:1px solid #E2E8F0;border-radius:8px;padding:8px 6px;text-align:center">
+        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:8px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:10px 8px;text-align:center">
           <div>
-            <div style="font-size:10px;color:#64748B">Mã Lô</div>
-            <div style="font-size:11.5px;font-weight:700;color:#0F172A;font-family:monospace">${p.batchCode || 'N/A'}</div>
+            <div style="font-size:11px;color:#64748B">Mã Lô</div>
+            <div style="font-size:12.5px;font-weight:800;color:#0F172A;font-family:monospace">${p.batchCode || 'N/A'}</div>
           </div>
           <div>
-            <div style="font-size:10px;color:#64748B">Tồn Hiện Tại</div>
-            <div style="font-size:12.5px;font-weight:800;color:#15803D">${p.stock} ${p.unit}</div>
+            <div style="font-size:11px;color:#64748B">Tồn Hiện Tại</div>
+            <div style="font-size:13.5px;font-weight:900;color:#15803D">${p.stock} ${p.unit}</div>
           </div>
           <div>
-            <div style="font-size:10px;color:#64748B">Giá Trị Tồn</div>
-            <div style="font-size:12px;font-weight:700;color:#B45309">${totalVal} đ</div>
+            <div style="font-size:11px;color:#64748B">Giá Trị Tồn</div>
+            <div style="font-size:13px;font-weight:800;color:#B45309">${totalVal} đ</div>
           </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:#64748B">
+          <span>Vị trí: <strong style="color:#0369A1">${p.location}</strong></span>
+          <span>HSD: <strong style="color:#92400E">${p.expiryDate}</strong></span>
         </div>
       `;
 
@@ -16752,9 +17141,9 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
       if (hist.length === 0) {
         timelineEl.innerHTML = `
-          <div style="text-align:center;padding:24px 10px;color:#64748B;font-size:12.5px">
-            <div>📋</div>
-            <div style="margin-top:4px">Chưa có giao dịch nào thuộc bộ lọc này</div>
+          <div style="text-align:center;padding:36px 12px;background:#FFFFFF;border:1px dashed #CBD5E1;border-radius:16px;color:#64748B;font-size:13px">
+            <div style="font-size:32px;margin-bottom:6px">📋</div>
+            <div>Chưa có giao dịch nào thuộc bộ lọc này</div>
           </div>
         `;
         return;
@@ -16779,16 +17168,16 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         }
 
         return `
-          <div class="wh-ledger-item">
+          <div class="wh-ledger-item" style="background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,0.03)">
             <div class="wh-ledger-head">
-              <span style="font-size:11px;font-weight:700;padding:2px 6px;border-radius:6px;background:#FFF;border:1px solid #E2E8F0">${typeBadge}</span>
+              <span style="font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;background:#F8FAFC;border:1px solid #E2E8F0">${typeBadge}</span>
               <span class="wh-ledger-date">${h.date}</span>
             </div>
-            <div class="wh-ledger-sub">
-              <span style="font-weight:600;flex:1;min-width:0;padding-right:8px">${h.note}</span>
-              <span class="wh-ledger-change ${changeClass}">${changeSign}${h.change} ${p.unit}</span>
+            <div class="wh-ledger-sub" style="margin-top:4px">
+              <span style="font-weight:600;flex:1;min-width:0;padding-right:8px;font-size:13px">${h.note}</span>
+              <span class="wh-ledger-change ${changeClass}" style="font-size:14px">${changeSign}${h.change} ${p.unit}</span>
             </div>
-            <div style="text-align:right;font-size:11px;color:#64748B">
+            <div style="text-align:right;font-size:11.5px;color:#64748B;margin-top:4px;border-top:1px dashed #F1F5F9;padding-top:4px">
               Tồn sau giao dịch: <strong style="color:#0F172A">${h.balance} ${p.unit}</strong>
             </div>
           </div>
@@ -16803,51 +17192,50 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     }
 
     // =========================================================================
-    // MODAL HANDLERS: QUÉT MÃ QR / BARCODE NÔNG SẢN
+    // MÀN HÌNH WMS 4: QUÉT MÃ QR & BARCODE (FULL-SCREEN PANEL)
     // =========================================================================
-    function openWarehouseQRScanModal() {
-      const resBox = document.getElementById('whQRScanResultBox');
+    function openWarehouseScannerScreen() {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
+
+      const resBox = document.getElementById('whQRScanResultBoxScreen');
       if (resBox) resBox.style.display = 'none';
-      const modal = document.getElementById('warehouseQRScanModal');
-      if (modal) modal.classList.add('active');
+
+      const panel = document.getElementById('panel-wh-scanner');
+      if (panel) panel.classList.add('active');
+
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function closeWarehouseQRScanModal() {
-      const modal = document.getElementById('warehouseQRScanModal');
-      if (modal) modal.classList.remove('active');
-    }
-
-    function simulateWarehouseQRScan(batchCode) {
+    function simulateWarehouseQRScanScreen(batchCode) {
       const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.batchCode === batchCode);
       if (!p) {
         triggerToast(`⚠️ Không tìm thấy nông sản tương ứng mã lô: ${batchCode}`);
         return;
       }
 
-      // Rung phản hồi haptic nếu trình duyệt hỗ trợ
       if (navigator.vibrate) navigator.vibrate(80);
 
-      const resBox = document.getElementById('whQRScanResultBox');
-      const nameEl = document.getElementById('whQRResultName');
-      const batchEl = document.getElementById('whQRResultBatch');
-      const detEl = document.getElementById('whQRResultDetails');
-      const btnIn = document.getElementById('btnWhQRIn');
-      const btnOut = document.getElementById('btnWhQROut');
+      const resBox = document.getElementById('whQRScanResultBoxScreen');
+      const nameEl = document.getElementById('whQRResultNameScreen');
+      const batchEl = document.getElementById('whQRResultBatchScreen');
+      const detEl = document.getElementById('whQRResultDetailsScreen');
+      const btnIn = document.getElementById('btnWhQRInScreen');
+      const btnOut = document.getElementById('btnWhQROutScreen');
 
       if (nameEl) nameEl.textContent = p.name;
       if (batchEl) batchEl.textContent = p.batchCode;
       if (detEl) detEl.textContent = `Tồn kho: ${p.stock} ${p.unit} · Vị trí: ${p.location} · HSD: ${p.expiryDate}`;
-      
+
       if (btnIn) {
         btnIn.onclick = () => {
-          closeWarehouseQRScanModal();
-          openWarehouseInboundModal(p.id);
+          openWarehouseInboundScreen(p.id);
         };
       }
       if (btnOut) {
         btnOut.onclick = () => {
-          closeWarehouseQRScanModal();
-          openWarehouseOutboundModal(p.id);
+          openWarehouseOutboundScreen(p.id);
         };
       }
 
@@ -16860,53 +17248,76 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     }
 
     // =========================================================================
-    // MODAL HANDLERS: KIỂM KÊ KHO TOÀN DIỆN (STOCK AUDIT)
+    // MÀN HÌNH WMS 5: KIỂM KÊ KHO TOÀN DIỆN (FULL-SCREEN PANEL)
     // =========================================================================
-    function openWarehouseStockAuditModal() {
-      const container = document.getElementById('whAuditListContainer');
-      if (!container) return;
+    function openWarehouseAuditScreen() {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
 
-      container.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
-        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px" id="auditRow_${p.id}">
-          <div style="flex:1;min-width:0">
-            <div style="font-size:13px;font-weight:700;color:#0F172A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</div>
-            <div style="font-size:11.5px;color:#64748B">Sổ sách: <strong style="color:#0F172A">${p.stock} ${p.unit}</strong> · 📍 ${p.location}</div>
+      const container = document.getElementById('whAuditListContainerScreen');
+      if (container) {
+        container.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
+          <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:14px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.03)" id="auditRowScreen_${p.id}">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <div style="flex:1;min-width:0;padding-right:8px">
+                <div style="font-size:14px;font-weight:800;color:#0F172A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</div>
+                <div style="font-size:12px;color:#64748B">Vị trí: <strong style="color:#0369A1">${p.location}</strong> · Mã lô: ${p.batchCode}</div>
+              </div>
+              <span class="wh-stock-pill good" id="auditDiffBadge_${p.id}" style="font-size:11px">✓ Khớp</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:8px 12px">
+              <span style="font-size:12.5px;color:#334155">Sổ sách: <strong style="color:#0F172A;font-size:14px">${p.stock}</strong> ${p.unit}</span>
+              <div style="display:flex;align-items:center;gap:6px">
+                <span style="font-size:12px;color:#64748B;font-weight:700">Đếm thực tế:</span>
+                <input type="number" class="fsc-input audit-screen-input" data-id="${p.id}" data-book="${p.stock}" value="${p.stock}" min="0" style="width:70px;height:38px;text-align:center;padding:4px;font-weight:900;font-size:15px" oninput="onAuditScreenInputDiff(this)">
+                <span style="font-size:12px;color:#64748B;font-weight:700">${p.unit}</span>
+              </div>
+            </div>
           </div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <input type="number" class="fsc-input audit-count-input" data-id="${p.id}" data-book="${p.stock}" value="${p.stock}" min="0" style="width:65px;height:36px;text-align:center;padding:4px;font-weight:800;font-size:13px" oninput="onAuditInputDiff(this)">
-            <span style="font-size:11.5px;color:#64748B">${p.unit}</span>
-          </div>
-        </div>
-      `).join('');
+        `).join('');
+      }
 
-      const modal = document.getElementById('warehouseStockAuditModal');
-      if (modal) modal.classList.add('active');
+      const panel = document.getElementById('panel-wh-audit');
+      if (panel) panel.classList.add('active');
+
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function closeWarehouseStockAuditModal() {
-      const modal = document.getElementById('warehouseStockAuditModal');
-      if (modal) modal.classList.remove('active');
-    }
-
-    function onAuditInputDiff(inputEl) {
+    function onAuditScreenInputDiff(inputEl) {
+      const pid = inputEl.getAttribute('data-id');
       const book = parseInt(inputEl.getAttribute('data-book'), 10) || 0;
       const actual = parseInt(inputEl.value, 10);
+      const badge = document.getElementById(`auditDiffBadge_${pid}`);
       if (isNaN(actual)) return;
+
       const diff = actual - book;
       if (diff === 0) {
         inputEl.style.borderColor = '#CBD5E1';
         inputEl.style.background = '#FFFFFF';
+        if (badge) {
+          badge.className = 'wh-stock-pill good';
+          badge.textContent = '✓ Khớp 100%';
+        }
       } else if (diff > 0) {
         inputEl.style.borderColor = '#10B981';
         inputEl.style.background = '#F0FDF4';
+        if (badge) {
+          badge.className = 'wh-stock-pill draft';
+          badge.textContent = `Thừa +${diff}`;
+        }
       } else {
         inputEl.style.borderColor = '#EF4444';
         inputEl.style.background = '#FEF2F2';
+        if (badge) {
+          badge.className = 'wh-stock-pill low';
+          badge.textContent = `Thiếu ${diff}`;
+        }
       }
     }
 
-    function submitWarehouseStockAudit() {
-      const inputs = document.querySelectorAll('.audit-count-input');
+    function submitWarehouseStockAuditScreen() {
+      const inputs = document.querySelectorAll('.audit-screen-input');
       let adjustedCount = 0;
       const now = new Date();
       const timeStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
@@ -16942,29 +17353,32 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         }
       });
 
-      closeWarehouseStockAuditModal();
+      closeWarehouseScreens();
       updateWarehouseKPIs();
       renderWarehouseList();
       if (adjustedCount > 0) {
-        triggerToast(`⚖️ Đã chốt số liệu kiểm kê: Đã cân đối lại ${adjustedCount} mặt hàng chênh lệch!`);
+        triggerToast(`⚖️ Đã chốt kiểm kê: Đã cân đối lại ${adjustedCount} mặt hàng chênh lệch!`);
       } else {
         triggerToast(`✓ Số liệu kiểm kê thực tế trùng khớp 100% với sổ sách kho!`);
       }
     }
 
     // =========================================================================
-    // MODAL HANDLERS: ĐIỀU CHỈNH THÔNG TIN NÔNG SẢN (ZERO PROMPT / ZERO POPUP)
+    // MÀN HÌNH WMS 6: CHỈNH SỬA NÔNG SẢN KHO (FULL-SCREEN PANEL)
     // =========================================================================
-    function openWarehouseAdjustModal(productId) {
+    function openWarehouseAdjustScreen(productId) {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
+
       const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === productId);
       if (!p) return;
 
-      const idInput = document.getElementById('whAdjustProductId');
-      const nameInput = document.getElementById('whAdjustName');
-      const stockInput = document.getElementById('whAdjustStock');
-      const priceInput = document.getElementById('whAdjustPrice');
-      const thresholdInput = document.getElementById('whAdjustThreshold');
-      const locInput = document.getElementById('whAdjustLocation');
+      const idInput = document.getElementById('whAdjustProductIdScreen');
+      const nameInput = document.getElementById('whAdjustNameScreen');
+      const stockInput = document.getElementById('whAdjustStockScreen');
+      const priceInput = document.getElementById('whAdjustPriceScreen');
+      const thresholdInput = document.getElementById('whAdjustThresholdScreen');
+      const locInput = document.getElementById('whAdjustLocationScreen');
 
       if (idInput) idInput.value = p.id;
       if (nameInput) nameInput.value = p.name;
@@ -16973,21 +17387,19 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       if (thresholdInput) thresholdInput.value = p.threshold;
       if (locInput) locInput.value = p.location || '';
 
-      const modal = document.getElementById('warehouseAdjustModal');
-      if (modal) modal.classList.add('active');
+      const panel = document.getElementById('panel-wh-adjust');
+      if (panel) panel.classList.add('active');
+
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function closeWarehouseAdjustModal() {
-      const modal = document.getElementById('warehouseAdjustModal');
-      if (modal) modal.classList.remove('active');
-    }
-
-    function submitWarehouseAdjust() {
-      const idInput = document.getElementById('whAdjustProductId');
-      const stockInput = document.getElementById('whAdjustStock');
-      const priceInput = document.getElementById('whAdjustPrice');
-      const thresholdInput = document.getElementById('whAdjustThreshold');
-      const locInput = document.getElementById('whAdjustLocation');
+    function submitWarehouseAdjustScreen() {
+      const idInput = document.getElementById('whAdjustProductIdScreen');
+      const stockInput = document.getElementById('whAdjustStockScreen');
+      const priceInput = document.getElementById('whAdjustPriceScreen');
+      const thresholdInput = document.getElementById('whAdjustThresholdScreen');
+      const locInput = document.getElementById('whAdjustLocationScreen');
 
       if (!idInput) return;
       const pid = idInput.value;
@@ -17010,19 +17422,41 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         p.status = 'active';
       }
 
-      closeWarehouseAdjustModal();
+      closeWarehouseScreens();
       updateWarehouseKPIs();
       renderWarehouseList();
       triggerToast(`✅ Đã cập nhật thành công nông sản: "${p.name}"`);
     }
 
-    // Tương thích ngược: Thay thế promptAdjust cũ bằng Modal Card
-    function promptAdjustStock(productId) {
-      openWarehouseAdjustModal(productId);
-    }
-    function promptAdjustPrice(productId) {
-      openWarehouseAdjustModal(productId);
-    }
+    // =========================================================================
+    // TƯƠNG THÍCH NGƯỢC: TOÀN BỘ LỜI GỌI MODAL CHUYỂN THÀNH MÀN HÌNH CHÍNH THỨC
+    // =========================================================================
+    function openWarehouseInboundModal(productId) { openWarehouseInboundScreen(productId); }
+    function closeWarehouseInboundModal() { closeWarehouseScreens(); }
+    function submitWarehouseInbound() { submitWarehouseInboundScreen(); }
+
+    function openWarehouseOutboundModal(productId) { openWarehouseOutboundScreen(productId); }
+    function closeWarehouseOutboundModal() { closeWarehouseScreens(); }
+    function submitWarehouseOutbound() { submitWarehouseOutboundScreen(); }
+
+    function openWarehouseStockCardModal(productId) { openWarehouseStockCardScreen(productId); }
+    function closeWarehouseStockCardModal() { closeWarehouseScreens(); }
+    function filterStockCardModal(type, btn) { filterStockCardScreen(type, btn); }
+
+    function openWarehouseQRScanModal() { openWarehouseScannerScreen(); }
+    function closeWarehouseQRScanModal() { closeWarehouseScreens(); }
+    function simulateWarehouseQRScan(batchCode) { simulateWarehouseQRScanScreen(batchCode); }
+
+    function openWarehouseStockAuditModal() { openWarehouseAuditScreen(); }
+    function closeWarehouseStockAuditModal() { closeWarehouseScreens(); }
+    function submitWarehouseStockAudit() { submitWarehouseStockAuditScreen(); }
+
+    function openWarehouseAdjustModal(productId) { openWarehouseAdjustScreen(productId); }
+    function closeWarehouseAdjustModal() { closeWarehouseScreens(); }
+    function submitWarehouseAdjust() { submitWarehouseAdjustScreen(); }
+
+    function promptAdjustStock(productId) { openWarehouseAdjustScreen(productId); }
+    function promptAdjustPrice(productId) { openWarehouseAdjustScreen(productId); }
 
   </script>
 
@@ -17325,339 +17759,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       <button type="button" class="gvos-sheet-confirm-btn" onclick="closeHubModal()">
         Đã hiểu
       </button>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       MODAL 1: NHẬP KHO NÔNG SẢN (INBOUND - THU HOẠCH NƯƠNG VƯỜN / VỆ TINH)
-       ========================================================================= -->
-  <div class="dash-qr-modal-overlay" id="warehouseInboundModal" onclick="closeWarehouseInboundModal()">
-    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:370px;text-align:left;padding:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
-        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
-          <span>📥</span>
-          <span>Nhập Nông Sản Vào Kho</span>
-        </div>
-        <button type="button" onclick="closeWarehouseInboundModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
-      </div>
-
-      <!-- Chọn Nông Sản -->
-      <div class="fsc-field" style="margin-bottom:10px">
-        <label class="fsc-label"><span>Chọn mặt hàng nông sản</span></label>
-        <select id="whInboundProductSelect" class="fsc-input" onchange="onWhInboundProductChange()">
-          <!-- Populated by JS -->
-        </select>
-      </div>
-
-      <!-- Banner Thông tin Tồn hiện tại & Vị trí -->
-      <div id="whInboundInfoBanner" style="background:#F0FDF4;border:1px solid #86EFAC;border-radius:10px;padding:8px 12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;font-size:12px">
-        <div>
-          <span style="color:#166534;font-weight:700">Tồn hiện tại: </span>
-          <strong id="whInboundCurrentStock">85 gói</strong>
-        </div>
-        <div style="color:#0369A1;font-weight:700" id="whInboundCurrentLoc">📍 Kho mát KM-02</div>
-      </div>
-
-      <!-- Nguồn nhập hàng -->
-      <div class="fsc-field" style="margin-bottom:10px">
-        <label class="fsc-label"><span>Nguồn gốc lô hàng</span></label>
-        <select id="whInboundSource" class="fsc-input">
-          <option value="harvest">🌾 Thu hoạch nương/vườn nhà Bác Ba</option>
-          <option value="satellite">🚚 Thu gom hộ nông dân vệ tinh (Liên kết HTX)</option>
-          <option value="factory">🏭 Xưởng sấy / chế biến HTX bàn giao</option>
-          <option value="import">📦 Nhập bao bì / vật tư đóng gói</option>
-        </select>
-      </div>
-
-      <!-- Số lượng & Đơn vị -->
-      <div class="fsc-grid-2col" style="margin-bottom:10px">
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Số lượng nhập</span></label>
-          <input type="number" id="whInboundQty" class="fsc-input" placeholder="Ví dụ: 20" value="20" min="1">
-        </div>
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Đơn vị tính</span></label>
-          <input type="text" id="whInboundUnit" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
-        </div>
-      </div>
-
-      <!-- Mã lô & Vị trí kho -->
-      <div class="fsc-grid-2col" style="margin-bottom:10px">
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Mã lô thu hoạch</span></label>
-          <input type="text" id="whInboundBatch" class="fsc-input" value="LOT-2026-CS09">
-        </div>
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Vị trí kho</span></label>
-          <input type="text" id="whInboundLocation" class="fsc-input" value="Kho mát KM-02">
-        </div>
-      </div>
-
-      <!-- Ghi chú nhập -->
-      <div class="fsc-field" style="margin-bottom:16px">
-        <label class="fsc-label"><span>Ghi chú / Diễn giải</span></label>
-        <input type="text" id="whInboundNote" class="fsc-input" placeholder="Ví dụ: Thu hoạch đợt sáng sớm, đóng túi dán tem QR">
-      </div>
-
-      <div style="display:flex;gap:8px">
-        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeWarehouseInboundModal()">
-          Hủy bỏ
-        </button>
-        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#15803D" onclick="submitWarehouseInbound()">
-          ✓ Xác nhận Nhập Kho
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       MODAL 2: XUẤT KHO NÔNG SẢN (OUTBOUND - XE TẢI HTX / BÁN LẺ / BÙ HAO HỤT)
-       ========================================================================= -->
-  <div class="dash-qr-modal-overlay" id="warehouseOutboundModal" onclick="closeWarehouseOutboundModal()">
-    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:370px;text-align:left;padding:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
-        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
-          <span>📤</span>
-          <span>Xuất Nông Sản Khỏi Kho</span>
-        </div>
-        <button type="button" onclick="closeWarehouseOutboundModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
-      </div>
-
-      <!-- Chọn Nông Sản -->
-      <div class="fsc-field" style="margin-bottom:10px">
-        <label class="fsc-label"><span>Mặt hàng xuất kho</span></label>
-        <select id="whOutboundProductSelect" class="fsc-input" onchange="onWhOutboundProductChange()">
-          <!-- Populated by JS -->
-        </select>
-      </div>
-
-      <!-- Banner Thông tin Tồn hiện tại & FEFO -->
-      <div id="whOutboundInfoBanner" style="background:#EFF6FF;border:1px solid #93C5FD;border-radius:10px;padding:8px 12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;font-size:12px">
-        <div>
-          <span style="color:#1E40AF;font-weight:700">Khả dụng: </span>
-          <strong id="whOutboundCurrentStock">85 gói</strong>
-        </div>
-        <div style="color:#92400E;font-weight:700" id="whOutboundFEFO">⏳ Ưu tiên xuất FEFO</div>
-      </div>
-
-      <!-- Mục đích xuất kho -->
-      <div class="fsc-field" style="margin-bottom:10px">
-        <label class="fsc-label"><span>Mục đích / Điểm đến xuất kho</span></label>
-        <select id="whOutboundReason">
-          <option value="truck">🚛 Giao xe tải HTX Yên Bình gom đơn sỉ B2B</option>
-          <option value="retail">🛍️ Giao đơn bán lẻ Chợ Xanh / Khách Zalo</option>
-          <option value="loss">⚖️ Bù hao hụt tự nhiên / Loại nông sản dập nát</option>
-          <option value="sample">🎁 Gửi mẫu kiểm định OCOP huyện / Biếu tặng</option>
-        </select>
-      </div>
-
-      <!-- Số lượng xuất & Đơn vị -->
-      <div class="fsc-grid-2col" style="margin-bottom:10px">
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Số lượng xuất</span></label>
-          <input type="number" id="whOutboundQty" class="fsc-input" placeholder="Ví dụ: 10" value="10" min="1">
-        </div>
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Đơn vị tính</span></label>
-          <input type="text" id="whOutboundUnit" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
-        </div>
-      </div>
-
-      <!-- Ghi chú xuất -->
-      <div class="fsc-field" style="margin-bottom:16px">
-        <label class="fsc-label"><span>Ghi chú xuất kho</span></label>
-        <input type="text" id="whOutboundNote" class="fsc-input" placeholder="Ví dụ: Bàn giao xe tải Chú Hùng biển số 29H-1234">
-      </div>
-
-      <div style="display:flex;gap:8px">
-        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeWarehouseOutboundModal()">
-          Hủy bỏ
-        </button>
-        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#1D4ED8" onclick="submitWarehouseOutbound()">
-          ✓ Xác nhận Xuất Kho
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       MODAL 3: SỔ THẺ KHO ĐIỆN TỬ (STOCK CARD LEDGER - LỊCH SỬ XUẤT NHẬP TỒN)
-       ========================================================================= -->
-  <div class="dash-qr-modal-overlay" id="warehouseStockCardModal" onclick="closeWarehouseStockCardModal()">
-    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:380px;text-align:left;padding:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
-        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
-          <span>📋</span>
-          <span>Sổ Thẻ Kho Điện Tử</span>
-        </div>
-        <button type="button" onclick="closeWarehouseStockCardModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
-      </div>
-
-      <!-- Thông tin sản phẩm thẻ kho -->
-      <div id="whStockCardProductHeader" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px;margin-bottom:12px">
-        <!-- Rendered by JS -->
-      </div>
-
-      <!-- Filter loại giao dịch thẻ kho -->
-      <div style="display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px">
-        <button type="button" class="wh-chip active" style="font-size:11.5px;padding:4px 10px" onclick="filterStockCardModal('all', this)">Tất cả</button>
-        <button type="button" class="wh-chip" style="font-size:11.5px;padding:4px 10px" onclick="filterStockCardModal('in', this)">🟢 Nhập kho</button>
-        <button type="button" class="wh-chip" style="font-size:11.5px;padding:4px 10px" onclick="filterStockCardModal('out', this)">🔵 Xuất kho</button>
-        <button type="button" class="wh-chip" style="font-size:11.5px;padding:4px 10px" onclick="filterStockCardModal('loss', this)">🟠 Hao hụt</button>
-      </div>
-
-      <!-- Danh sách lịch sử giao dịch -->
-      <div class="wh-ledger-timeline" id="whStockCardTimelineContainer">
-        <!-- Rendered by JS -->
-      </div>
-
-      <div style="display:flex;gap:8px;margin-top:12px">
-        <button type="button" class="shopee-secondary-btn" style="flex:1;height:40px;font-size:12px;border-radius:8px" onclick="closeWarehouseStockCardModal()">
-          Đóng lại
-        </button>
-        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:40px;font-size:12px;font-weight:700;border-radius:8px;background:#059669" onclick="shareStockCardToHTX()">
-          📤 Gửi Kế Toán HTX
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       MODAL 4: QUÉT MÃ QR / BARCODE NÔNG SẢN (CAMERA SIMULATOR)
-       ========================================================================= -->
-  <div class="dash-qr-modal-overlay" id="warehouseQRScanModal" onclick="closeWarehouseQRScanModal()">
-    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:370px;text-align:left;padding:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
-        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
-          <span>📷</span>
-          <span>Quét Mã Nông Sản / QR Lô</span>
-        </div>
-        <button type="button" onclick="closeWarehouseQRScanModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
-      </div>
-
-      <!-- Khung camera scanner mô phỏng -->
-      <div class="wh-scanner-box">
-        <div class="wh-scanner-frame">
-          <div class="wh-laser-line"></div>
-          <span style="font-size:32px;opacity:0.6">📦</span>
-        </div>
-      </div>
-      <div style="text-align:center;font-size:12px;color:#64748B;margin-bottom:12px">
-        Hướng camera vào tem QR OCOP, VietGAP hoặc mã vạch trên thùng
-      </div>
-
-      <!-- Mô phỏng bấm quét mã thực tế -->
-      <div style="font-size:12px;font-weight:700;color:#334155;margin-bottom:6px">Mã test nhanh cho Bác Ba:</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
-        <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScan('LOT-2026-CS08')">🏷️ Chuối sấy CS08</button>
-        <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScan('LOT-2026-CY09')">🏷️ Cam sành CY09</button>
-        <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScan('LOT-2026-MO12')">🏷️ Mật ong MO12</button>
-        <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScan('LOT-2026-TB05')">🏷️ Trà Bát Tiên TB05</button>
-      </div>
-
-      <!-- Khung kết quả sau khi quét -->
-      <div id="whQRScanResultBox" style="display:none;background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:12px;padding:12px;margin-bottom:14px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-          <span style="font-size:13px;font-weight:800;color:#15803D" id="whQRResultName">Chuối sấy giòn</span>
-          <span class="wh-badge-batch" id="whQRResultBatch">LOT-2026-CS08</span>
-        </div>
-        <div style="font-size:12px;color:#334155;margin-bottom:10px" id="whQRResultDetails">
-          Tồn kho: 85 gói · Vị trí: Kho mát KM-02
-        </div>
-        <div style="display:flex;gap:6px">
-          <button type="button" class="btn-wh-action btn-wh-in" style="flex:1;justify-content:center" id="btnWhQRIn">📥 Nhập thêm</button>
-          <button type="button" class="btn-wh-action btn-wh-out" style="flex:1;justify-content:center" id="btnWhQROut">📤 Xuất lô này</button>
-        </div>
-      </div>
-
-      <button type="button" class="shopee-secondary-btn" style="width:100%;height:42px;font-size:13px;border-radius:8px" onclick="closeWarehouseQRScanModal()">
-        Đóng máy quét
-      </button>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       MODAL 5: KIỂM KÊ KHO TOÀN DIỆN (STOCK AUDIT & RECONCILIATION)
-       ========================================================================= -->
-  <div class="dash-qr-modal-overlay" id="warehouseStockAuditModal" onclick="closeWarehouseStockAuditModal()">
-    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:390px;text-align:left;padding:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
-        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
-          <span>⚖️</span>
-          <span>Kiểm Kê Kho Toàn Diện</span>
-        </div>
-        <button type="button" onclick="closeWarehouseStockAuditModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
-      </div>
-
-      <div style="font-size:12px;color:#64748B;margin-bottom:12px">
-        Bác Ba nhập số lượng thực tế đếm được tại nương/kho. Hệ thống sẽ tự động đối chiếu chênh lệch với sổ sách.
-      </div>
-
-      <div id="whAuditListContainer" style="max-height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;margin-bottom:14px">
-        <!-- Rendered by JS -->
-      </div>
-
-      <div style="display:flex;gap:8px">
-        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeWarehouseStockAuditModal()">
-          Hủy bỏ
-        </button>
-        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#D97706" onclick="submitWarehouseStockAudit()">
-          ✓ Chốt Sổ Kiểm Kê
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       MODAL 6: CẬP NHẬT THÔNG TIN NÔNG SẢN (ĐIỀU CHỈNH GIÁ, TỒN, VỊ TRÍ - ZERO POPUP)
-       ========================================================================= -->
-  <div class="dash-qr-modal-overlay" id="warehouseAdjustModal" onclick="closeWarehouseAdjustModal()">
-    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:370px;text-align:left;padding:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
-        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
-          <span>⚙️</span>
-          <span>Chỉnh Sửa Nông Sản Kho</span>
-        </div>
-        <button type="button" onclick="closeWarehouseAdjustModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
-      </div>
-
-      <input type="hidden" id="whAdjustProductId">
-
-      <div class="fsc-field" style="margin-bottom:10px">
-        <label class="fsc-label"><span>Tên nông sản</span></label>
-        <input type="text" id="whAdjustName" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
-      </div>
-
-      <div class="fsc-grid-2col" style="margin-bottom:10px">
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Tồn kho hiện có</span></label>
-          <input type="number" id="whAdjustStock" class="fsc-input" min="0">
-        </div>
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Giá bán lẻ (đ)</span></label>
-          <input type="number" id="whAdjustPrice" class="fsc-input" min="1000" step="1000">
-        </div>
-      </div>
-
-      <div class="fsc-grid-2col" style="margin-bottom:10px">
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Ngưỡng báo sắp hết</span></label>
-          <input type="number" id="whAdjustThreshold" class="fsc-input" min="1">
-        </div>
-        <div class="fsc-field" style="margin-bottom:0">
-          <label class="fsc-label"><span>Vị trí lưu kho</span></label>
-          <input type="text" id="whAdjustLocation" class="fsc-input">
-        </div>
-      </div>
-
-      <div style="display:flex;gap:8px;margin-top:14px">
-        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeWarehouseAdjustModal()">
-          Đóng lại
-        </button>
-        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#15803D" onclick="submitWarehouseAdjust()">
-          ✓ Lưu Thay Đổi
-        </button>
-      </div>
     </div>
   </div>
 

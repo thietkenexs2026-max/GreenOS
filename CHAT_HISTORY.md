@@ -573,6 +573,11 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
      - Trước đây sử dụng `invert` toàn bộ thiết bị khiến các ảnh thực tế bị đảo màu âm bản (ảnh âm bản kinh dị).
      - Khắc phục bằng giải pháp CSS kép: duy trì nền tối dịu mắt cho các thành phần giao diện, đồng thời đảo ngược lại 100% đối với toàn bộ thẻ `img`, `video`, background banner và avatar (`filter: invert(1.08) hue-rotate(180deg) !important;`).
      - Đảm bảo 100% hình ảnh nông sản, chân dung Bác Ba, banner Tết OCOP hiển thị trung thực, màu sắc tươi sáng tự nhiên cả ở Light Mode và Dark Mode.
+  5. **Triển khai Production thành công lên Vercel & Đẩy lên Git Remote**:
+     - Kho mã nguồn GitHub: git@github.com:thietkenexs2026-max/GreenOS.git (nhánh main).
+     - Link Vercel Production chính thức: **[https://cho-xanh.vercel.app](https://cho-xanh.vercel.app)**
+     - Link Vercel Deployment trực tiếp: **[https://cho-xanh-pelurd2dw-nexs4.vercel.app](https://cho-xanh-pelurd2dw-nexs4.vercel.app)**
+     - Cấu hình .vercelignore loại trừ các tệp nén lớn và tệp chụp màn hình tạm, đảm bảo quá trình build và CDN phân phối tải trang siêu tốc.
 
 ---
 

@@ -1,0 +1,35 @@
+.DS_Store
+*.log
+logs/
+.system_generated/
+scratch/
+node_modules/
+*.zip
+*.bak
+*.txt
+*.json
+!package.json
+!vercel.json
+*.png
+!phiphi-chat.png
+audit_screens/
+assets/
+GFKey/
+Hệ sinh thái Nexs Group/
+Nexs Group/
+cho-xanh/
+test_*.js
+test_*.png
+shot_*.png
+screenshot_*.png
+inspect_*.js
+scrape_*.js
+verify_*.js
+dual-studio.html
+gfkey.html
+new_sections.html
+test_var*.html
+PORTAL.html
+htx-dashboard.html
+mobile_chu_ba.html
+.vercel

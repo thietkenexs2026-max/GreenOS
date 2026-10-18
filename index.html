@@ -8626,29 +8626,62 @@
 
     /* Nút CTA Chính (Chuẩn Shopee 48px Full CTA) */
     .shopee-primary-btn, .btn-primary-cta {
-      height: 48px !important;
-      min-height: 48px !important;
+      height: 48px;
+      min-height: 48px;
       border-radius: 8px !important;
-      font-size: 15px !important;
+      font-size: 15px;
       font-weight: 700 !important;
       color: #FFFFFF !important;
       background: var(--agri-green, #059669) !important;
-      width: 100% !important;
       border: none !important;
-      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25) !important;
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box !important;
     }
 
-    /* Nút Hành Động Phụ (Shopee Secondary 38px) */
+    /* Nút Hành Động Phụ (Shopee Secondary 38px mặc định, đồng bộ 48px khi ghép cặp) */
     .shopee-secondary-btn, .btn-secondary-action {
-      height: 38px !important;
-      min-height: 38px !important;
+      height: 38px;
+      min-height: 38px;
       border-radius: 8px !important;
-      font-size: 13.5px !important;
-      font-weight: 600 !important;
-      padding: 0 14px !important;
-      border: 1px solid #CBD5E1 !important;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 0 14px;
+      border: 1.5px solid #CBD5E1 !important;
       background: #FFFFFF !important;
       color: #334155 !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box !important;
+    }
+
+    /* Cặp Nút Hành Động Đáy Song Song Chuẩn Shopee (Đồng bộ tuyệt đối chiều cao 48px, không lệch) */
+    .shopee-btn-row, .shopee-btn-pair {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      margin-bottom: 16px !important;
+    }
+    .shopee-btn-row > button,
+    .shopee-btn-row > .btn,
+    .shopee-btn-pair > button,
+    .shopee-btn-pair > .btn {
+      height: 48px !important;
+      min-height: 48px !important;
+      line-height: normal !important;
+      border-radius: 8px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      vertical-align: middle !important;
     }
 
     /* Nút Pill Nhỏ Gọn (Shopee Action Pill: Bắt đầu, Vào Chợ, Sửa giá, In phiếu, Đang bật) */
@@ -11913,12 +11946,12 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           🔒 <b>Bảo mật thông tin nông hộ:</b> Số điện thoại và địa chỉ chỉ hiển thị khi cả người làm và người tuyển đã bấm đồng ý kết nối qua hệ thống xã.
         </div>
 
-        <!-- Khối 2 nút hành động đáy chuẩn Shopee -->
-        <div style="display:flex;gap:10px;margin-bottom:16px">
-          <button type="button" onclick="openAnCuJobPostScreen()" class="shopee-secondary-btn" style="flex:1;height:44px;font-size:13px;border-radius:10px">
+        <!-- Khối 2 nút hành động đáy chuẩn Shopee (Đồng bộ tuyệt đối 48px, căn đều không lệch) -->
+        <div class="shopee-btn-row">
+          <button type="button" onclick="openAnCuJobPostScreen()" class="shopee-secondary-btn" style="flex:1;height:48px !important;min-height:48px !important;font-size:14px;font-weight:700;border-radius:8px !important;box-sizing:border-box !important;">
             ➕ Đăng tin tuyển
           </button>
-          <button type="button" class="shopee-primary-btn" onclick="closeAnCuJobScreen()" style="flex:1;height:44px;font-size:13px;border-radius:10px">
+          <button type="button" class="shopee-primary-btn" onclick="closeAnCuJobScreen()" style="flex:1;height:48px !important;min-height:48px !important;font-size:14px;font-weight:700;border-radius:8px !important;box-sizing:border-box !important;">
             Quay lại Trang Chủ
           </button>
         </div>
@@ -12090,12 +12123,12 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
 
-        <!-- Khối 2 nút hành động đáy chuẩn Shopee -->
-        <div style="display:flex;gap:10px;margin-bottom:16px">
-          <button type="button" class="shopee-secondary-btn" onclick="closeAnCuJobPostScreen()" style="flex:0.8;height:48px;font-size:13px;border-radius:8px">
+        <!-- Khối 2 nút hành động đáy chuẩn Shopee (Đồng bộ tuyệt đối 48px, căn đều không lệch) -->
+        <div class="shopee-btn-row">
+          <button type="button" class="shopee-secondary-btn" onclick="closeAnCuJobPostScreen()" style="flex:0.8;height:48px !important;min-height:48px !important;font-size:13.5px;font-weight:700;border-radius:8px !important;box-sizing:border-box !important;">
             Hủy bỏ
           </button>
-          <button type="button" class="shopee-primary-btn" onclick="submitAnCuJobPost()" style="flex:1.2;height:48px;font-size:14.5px;font-weight:800;border-radius:8px;background:#15803D;">
+          <button type="button" class="shopee-primary-btn" onclick="submitAnCuJobPost()" style="flex:1.2;height:48px !important;min-height:48px !important;font-size:14.5px;font-weight:800;border-radius:8px !important;background:#15803D;box-sizing:border-box !important;">
             📢 Phát tin tuyển dụng
           </button>
         </div>
@@ -12327,12 +12360,12 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
 
-        <!-- Thanh Nút Hành Động Đáy (Sticky Shopee Buttons) -->
-        <div style="display:flex;gap:10px;margin-bottom:16px">
-          <button type="button" id="btnJobDetCall" onclick="callJobEmployer()" class="shopee-secondary-btn" style="flex:0.8;height:48px;font-size:13px;border-radius:8px;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;min-width:0 !important;box-sizing:border-box;">
+        <!-- Thanh Nút Hành Động Đáy (Sticky Shopee Buttons - Đồng bộ 48px không lệch) -->
+        <div class="shopee-btn-row">
+          <button type="button" id="btnJobDetCall" onclick="callJobEmployer()" class="shopee-secondary-btn" style="flex:0.8;height:48px !important;min-height:48px !important;font-size:13.5px;font-weight:700;border-radius:8px !important;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;min-width:0 !important;box-sizing:border-box !important;">
             📞 Gọi hỏi vườn
           </button>
-          <button type="button" id="btnJobDetApply" onclick="submitApplyCurrentJob()" class="shopee-primary-btn" style="flex:1.2;height:48px;font-size:14.5px;font-weight:800;border-radius:8px;background:#15803D;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;min-width:0 !important;box-sizing:border-box;">
+          <button type="button" id="btnJobDetApply" onclick="submitApplyCurrentJob()" class="shopee-primary-btn" style="flex:1.2;height:48px !important;min-height:48px !important;font-size:14.5px;font-weight:800;border-radius:8px !important;background:#15803D;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;min-width:0 !important;box-sizing:border-box !important;">
             📝 Ứng tuyển ngay
           </button>
         </div>

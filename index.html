@@ -8179,7 +8179,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
       margin-bottom: 14px;
     }
     .user-profile-meta {
@@ -8187,14 +8187,50 @@
       flex: 1;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
-    .user-profile-meta > div {
+    .user-avatar-wrap {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-avatar-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+      display: block;
+    }
+    .user-avatar-verified {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 16px;
+      height: 16px;
+      background: #059669;
+      border: 1.5px solid #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 9.5px;
+      font-weight: 900;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      pointer-events: none;
+    }
+    .user-profile-info {
       min-width: 0;
       flex: 1;
     }
     .user-name-text {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 800;
       color: var(--text-main);
       line-height: 1.25;
@@ -8204,7 +8240,7 @@
       text-overflow: ellipsis;
     }
     .user-address-sub {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
       font-weight: 600;
       line-height: 1.35;
@@ -8215,13 +8251,13 @@
     .btn-guide-onboard {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 6px 12px;
+      gap: 4px;
+      padding: 5px 10px;
       border-radius: 20px;
       background: #F0FDF4;
       border: 1px solid #BBF7D0;
       color: var(--agri-green-dark);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       flex-shrink: 0;
@@ -9231,6 +9267,7 @@
     .phone-device.dark-theme iframe,
     .phone-device.dark-theme [style*="background-image"],
     .phone-device.dark-theme .user-avatar-img,
+    .phone-device.dark-theme .user-avatar-verified,
     .phone-device.dark-theme .phiphi-avatar-img,
     .phone-device.dark-theme .banner-slider img,
     .phone-device.dark-theme .promo-slide-img,
@@ -10760,13 +10797,13 @@
       <section id="panel-home" class="view-panel active">
         <div class="home-user-header">
           <div class="user-profile-meta" onclick="openFarmerStorefront()" style="cursor:pointer;" title="Bấm xem gian hàng thương mại điện tử của Bác Ba">
-            <div style="position:relative;flex-shrink:0;">
+            <div class="user-avatar-wrap">
               <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="user-avatar-img">
-              <span style="position:absolute;bottom:-1px;right:-1px;width:15px;height:15px;background:#059669;border:1.5px solid #FFF;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FFF;font-size:9px;font-weight:900;">✓</span>
+              <span class="user-avatar-verified">✓</span>
             </div>
-            <div>
+            <div class="user-profile-info">
               <div class="user-name-text">Chào Bác Ba! 👋</div>
-              <div class="user-address-sub">Xã Yên Bình · HTX Đồng Cát <span style="display:inline-block;margin-left:4px;font-size:11px;font-weight:700;color:#059669;background:#ECFDF5;padding:1px 6px;border-radius:4px;border:1px solid #A7F3D0;">Gian hàng ➔</span></div>
+              <div class="user-address-sub">Xã Yên Bình · HTX Đồng Cát</div>
             </div>
           </div>
           <!-- Nút xem lại Onboarding Hướng Dẫn -->

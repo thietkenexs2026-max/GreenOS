@@ -9186,112 +9186,216 @@
       animation: phiphiFloat 3s ease-in-out infinite;
     }
 
-    /* Modal / Bottom Sheet Chat Dialog */
-    .phiphi-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: 9999;
-      display: none;
-      align-items: flex-end;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-    .phiphi-modal-overlay.active {
-      display: flex;
-      opacity: 1;
-    }
-    .phiphi-modal-sheet {
-      background: #FFFFFF;
-      width: 100%;
-      max-width: 430px;
-      height: 84vh;
-      max-height: 680px;
-      border-radius: 24px 24px 0 0;
-      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
+    /* =========================================================================
+       MÀN HÌNH TOÀN CẢNH TRỢ LÝ AI PHI PHI & LỊCH SỬ CHAT (CHUẨN MOBILE DEDICATED)
+       ========================================================================= */
+    .is-phiphi-screen .screen-container {
+      padding: 0 !important;
+      overflow-y: hidden !important;
       display: flex;
       flex-direction: column;
+      height: 100%;
+    }
+    body.is-phiphi-screen .phiphi-fab-container {
+      display: none !important;
+    }
+    #panel-phiphi {
+      display: none;
+      flex-direction: column;
+      height: 100%;
+      flex: 1;
+      background: #F8FAFC;
+      position: relative;
       overflow: hidden;
-      transform: translateY(100%);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+      min-width: 0 !important;
     }
-    .phiphi-modal-overlay.active .phiphi-modal-sheet {
-      transform: translateY(0);
+    #panel-phiphi.active {
+      display: flex !important;
     }
-    .phiphi-sheet-handle {
-      width: 40px;
-      height: 4px;
-      background: #CBD5E1;
-      border-radius: 999px;
-      margin: 8px auto 4px;
-      cursor: pointer;
-    }
-    .phiphi-sheet-header {
-      padding: 10px 16px 12px;
-      border-bottom: 1px solid #E2E8F0;
+
+    /* 1. Header Màn hình Phi Phi */
+    .phiphi-screen-header {
+      height: 54px;
+      min-height: 54px;
+      background: #FFFFFF;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding: 0 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #F8FAFC;
-    }
-    .phiphi-sheet-title-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      gap: 6px;
+      z-index: 20;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      box-sizing: border-box;
       min-width: 0 !important;
     }
-    .phiphi-sheet-title {
-      font-size: 15px;
-      font-weight: 800;
-      color: #0F172A;
+    .phiphi-back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 50%;
+      color: #1E293B;
+      cursor: pointer;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+    }
+    .phiphi-back-btn:active {
+      background: #E2E8F0;
+      transform: scale(0.94);
+    }
+    .phiphi-header-title-box {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      min-width: 0 !important;
+      flex: 1;
+      justify-content: center;
     }
-    .phiphi-sheet-subtitle {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #059669;
-    }
-    .phiphi-sheet-tools {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .phiphi-tool-btn {
+    .phiphi-header-avatar {
       width: 34px;
       height: 34px;
       border-radius: 50%;
+      background: #ECFDF5;
+      border: 1.5px solid #10B981;
+      object-fit: cover;
+      animation: phiphiFloat 3s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    .phiphi-header-name {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #065F46;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap !important;
+      line-height: 1.2;
+    }
+    .phiphi-header-status {
+      font-size: 10px;
+      font-weight: 600;
+      color: #059669;
+      white-space: nowrap !important;
+    }
+    .phiphi-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+    .phiphi-header-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      height: 34px;
+      padding: 0 9px;
       background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      color: #475569;
-      display: grid;
-      place-items: center;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #334155;
       cursor: pointer;
-      font-size: 13px;
+      white-space: nowrap !important;
+      flex-shrink: 0;
       transition: all 0.15s ease;
     }
-    .phiphi-tool-btn.active {
-      background: #ECFDF5;
-      border-color: #10B981;
-      color: #059669;
+    .phiphi-header-pill-btn.primary {
+      background: #059669;
+      border-color: #059669;
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.2);
     }
-    .phiphi-chat-body {
+    .phiphi-header-pill-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* 2. Thanh Session Info Bar */
+    .phiphi-session-bar {
+      padding: 6px 12px;
+      background: #F0FDF4;
+      border-bottom: 1px solid #DCFCE7;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 11.5px;
+      color: #166534;
+      min-width: 0 !important;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+    .phiphi-session-title {
+      font-weight: 700;
+      white-space: nowrap !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0 !important;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .phiphi-session-switch-btn {
+      font-size: 11px;
+      font-weight: 700;
+      color: #059669;
+      background: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap !important;
+      text-decoration: underline;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    /* 3. Vùng Cuộn Tin Nhắn Toàn Màn Hình */
+    .phiphi-screen-body {
       flex: 1;
       overflow-y: auto;
-      padding: 14px 16px;
+      padding: 12px 14px 16px;
       display: flex;
       flex-direction: column;
       gap: 12px;
       background: #F8FAFC;
+      scrollbar-width: none;
+      min-width: 0 !important;
+      box-sizing: border-box;
     }
+    .phiphi-screen-body::-webkit-scrollbar {
+      display: none;
+    }
+    .phiphi-time-divider {
+      text-align: center;
+      margin: 4px 0;
+    }
+    .phiphi-time-divider span {
+      background: #E2E8F0;
+      color: #64748B;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap !important;
+    }
+
+    /* 4. Khối Tin Nhắn */
     .phiphi-msg-row {
       display: flex;
       gap: 8px;
       max-width: 88%;
       align-items: flex-start;
+      animation: msgPop 0.2s ease-out;
+    }
+    @keyframes msgPop {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .phiphi-msg-row.ai {
       align-self: flex-start;
@@ -9301,16 +9405,16 @@
       flex-direction: row-reverse;
     }
     .phiphi-msg-bubble {
-      padding: 10px 14px;
+      padding: 11px 14px;
       border-radius: 16px;
-      font-size: 13.5px;
-      line-height: 1.45;
+      font-size: 14px;
+      line-height: 1.5;
       box-shadow: 0 1px 4px rgba(0,0,0,0.04);
       word-break: break-word;
     }
     .phiphi-msg-row.ai .phiphi-msg-bubble {
       background: #FFFFFF;
-      border: 1px solid #E2E8F0;
+      border: 1.5px solid #E2E8F0;
       color: #0F172A;
       border-top-left-radius: 4px;
     }
@@ -9322,55 +9426,20 @@
     .phiphi-msg-speak-btn {
       display: inline-flex;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
       background: #F1F5F9;
-      border: none;
+      border: 1px solid #E2E8F0;
       border-radius: 6px;
-      padding: 2px 7px;
-      font-size: 11px;
-      color: #475569;
+      padding: 3px 8px;
+      font-size: 11.5px;
+      color: #334155;
       cursor: pointer;
-      margin-top: 6px;
-      font-weight: 600;
-    }
-    .phiphi-quick-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin-top: 6px;
-    }
-    .phiphi-quick-card {
-      background: #FFFFFF;
-      border: 1px solid #D1FAE5;
-      border-radius: 12px;
-      padding: 10px 10px;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-      transition: all 0.15s ease;
-      min-width: 0 !important;
-    }
-    .phiphi-quick-card:active {
-      background: #ECFDF5;
-      border-color: #10B981;
-    }
-    .phiphi-quick-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-    .phiphi-quick-txt {
-      font-size: 12px;
+      margin-top: 8px;
       font-weight: 700;
-      color: #065F46;
-      line-height: 1.25;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      transition: all 0.15s ease;
+    }
+    .phiphi-msg-speak-btn:active {
+      background: #E2E8F0;
     }
     .phiphi-action-trigger-btn {
       display: inline-flex;
@@ -9378,25 +9447,77 @@
       justify-content: center;
       gap: 6px;
       margin-top: 8px;
-      padding: 7px 12px;
+      padding: 8px 14px;
       background: #059669;
       color: #FFFFFF;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       border-radius: 8px;
       border: none;
       cursor: pointer;
       white-space: nowrap !important;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
     }
-    .phiphi-input-bar {
-      padding: 10px 12px;
+    .phiphi-action-trigger-btn:active {
+      transform: scale(0.97);
+      background: #047857;
+    }
+
+    /* 5. Thanh Gợi Ý & Nhập Liệu Cố Định Ở Đáy */
+    .phiphi-screen-dock {
       background: #FFFFFF;
-      border-top: 1px solid #E2E8F0;
+      border-top: 1.5px solid #E2E8F0;
+      padding: 8px 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 20;
+      box-shadow: 0 -3px 12px rgba(0,0,0,0.04);
+      flex-shrink: 0;
+      box-sizing: border-box;
+      min-width: 0 !important;
+    }
+    .phiphi-quick-chips-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 2px;
+      min-width: 0 !important;
+    }
+    .phiphi-quick-chips-row::-webkit-scrollbar {
+      display: none;
+    }
+    .phiphi-screen-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      height: 30px;
+      padding: 0 10px;
+      background: #F0FDF4;
+      border: 1.5px solid #BBF7D0;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #065F46;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .phiphi-screen-chip:active {
+      background: #DCFCE7;
+      border-color: #10B981;
+      transform: translateY(-1px);
+    }
+    .phiphi-screen-input-row {
       display: flex;
       align-items: center;
       gap: 8px;
+      min-width: 0 !important;
     }
-    .phiphi-mic-action-btn {
+    .phiphi-screen-mic-btn {
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -9410,28 +9531,28 @@
       flex-shrink: 0;
       transition: all 0.2s ease;
     }
-    .phiphi-mic-action-btn.listening {
+    .phiphi-screen-mic-btn.listening {
       background: #EF4444;
       border-color: #DC2626;
       color: #FFFFFF;
       animation: phiphiPulse 1s infinite;
     }
-    .phiphi-input-field {
+    .phiphi-screen-input {
       flex: 1;
       height: 44px;
       border: 1.5px solid #CBD5E1;
       border-radius: 22px;
       padding: 0 14px;
-      font-size: 13.5px;
+      font-size: 14px;
       font-family: 'Lexend', sans-serif !important;
       outline: none;
       min-width: 0 !important;
     }
-    .phiphi-input-field:focus {
+    .phiphi-screen-input:focus {
       border-color: #059669;
       box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
     }
-    .phiphi-send-btn {
+    .phiphi-screen-send-btn {
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -9445,13 +9566,204 @@
       font-size: 16px;
       transition: all 0.15s ease;
     }
-    .phiphi-disclaimer-note {
-      padding: 6px 12px 10px;
-      background: #FFFFFF;
+    .phiphi-screen-send-btn:active {
+      transform: scale(0.92);
+      background: #047857;
+    }
+    .phiphi-screen-disclaimer {
       text-align: center;
       font-size: 11px;
       color: #64748B;
-      border-top: 1px solid #F1F5F9;
+      padding-top: 2px;
+    }
+
+    /* 6. Drawer Lịch Sử Chat Toàn Diện */
+    .phiphi-history-drawer {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .phiphi-history-drawer.active {
+      display: flex;
+    }
+    .phiphi-history-sheet {
+      background: #FFFFFF;
+      height: 80%;
+      border-radius: 24px 24px 0 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -8px 30px rgba(0,0,0,0.25);
+      overflow: hidden;
+      animation: slideUpHistory 0.25s ease-out;
+    }
+    @keyframes slideUpHistory {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .phiphi-history-header {
+      padding: 12px 16px;
+      border-bottom: 1.5px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #F8FAFC;
+    }
+    .phiphi-history-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phiphi-history-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #E2E8F0;
+      border: none;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #475569;
+      cursor: pointer;
+    }
+    .phiphi-new-chat-banner-btn {
+      margin: 12px 14px 6px;
+      height: 42px;
+      background: #ECFDF5;
+      border: 1.5px dashed #10B981;
+      border-radius: 12px;
+      color: #065F46;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .phiphi-new-chat-banner-btn:active {
+      background: #D1FAE5;
+      transform: scale(0.98);
+    }
+    .phiphi-history-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 6px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .phiphi-history-group-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 8px 4px 2px;
+    }
+    .phiphi-history-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: all 0.15s ease;
+      min-width: 0 !important;
+    }
+    .phiphi-history-card.active {
+      border-color: #10B981;
+      background: #F0FDF4;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+    }
+    .phiphi-history-card:active {
+      border-color: #10B981;
+    }
+    .phiphi-card-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .phiphi-card-meta {
+      flex: 1;
+      min-width: 0 !important;
+    }
+    .phiphi-card-topic {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 2px;
+      white-space: nowrap !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .phiphi-card-snippet {
+      font-size: 11.5px;
+      color: #64748B;
+      white-space: nowrap !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .phiphi-card-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .phiphi-card-time {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #94A3B8;
+      white-space: nowrap !important;
+    }
+    .phiphi-card-badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: #E2E8F0;
+      color: #475569;
+      padding: 2px 6px;
+      border-radius: 999px;
+      white-space: nowrap !important;
+    }
+    .phiphi-history-card.active .phiphi-card-badge {
+      background: #D1FAE5;
+      color: #065F46;
+    }
+    .phiphi-history-footer {
+      padding: 10px 16px;
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #F8FAFC;
+    }
+    .phiphi-clear-all-btn {
+      background: none;
+      border: none;
+      color: #EF4444;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .phiphi-clear-all-btn:active {
+      background: #FEE2E2;
     }
 
     @keyframes phiphiFloat {
@@ -9753,33 +10065,33 @@
                 <div class="phiphi-name-sub">Hỏi đáp & hỗ trợ Bác Ba 24/7</div>
               </div>
             </div>
-            <button type="button" class="phiphi-mic-callout" onclick="openPhiPhiChat(true)" title="Bấm để nói chuyện với Phi Phi">
+            <button type="button" class="phiphi-mic-callout" onclick="openPhiPhiScreen(true)" title="Bấm để nói chuyện với Phi Phi">
               <span style="font-size:14px;">🎙️</span>
               <span>Nói ngay</span>
             </button>
           </div>
 
-          <div class="phiphi-speech-bubble">
-            <strong>Dạ Bác Ba!</strong> Con là Phi Phi đây ạ. Bác cần kiểm tra đơn, tra giá chuối hôm nay hay nhờ con việc gì không ạ?
+          <div class="phiphi-speech-bubble" onclick="openPhiPhiScreen()" style="cursor:pointer;" title="Bấm để mở màn hình trò chuyện">
+            <strong>Dạ Bác Ba!</strong> Con là Phi Phi đây ạ. Bác cần kiểm tra đơn, tra giá chuối hôm nay hay xem lịch sử hỏi đáp trước đây không ạ?
           </div>
 
           <div class="phiphi-chips-scroll">
-            <button type="button" class="phiphi-chip-btn" onclick="askPhiPhiQuick('gia_nong_san')">
+            <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('gia_nong_san')">
               <span>🏷️</span> Giá chuối sấy hôm nay?
             </button>
-            <button type="button" class="phiphi-chip-btn" onclick="askPhiPhiQuick('kiem_kho')">
+            <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('kiem_kho')">
               <span>📦</span> Kho còn bao nhiêu?
             </button>
-            <button type="button" class="phiphi-chip-btn" onclick="askPhiPhiQuick('soan_zalo')">
+            <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('soan_zalo')">
               <span>✍️</span> Soạn bài bán Zalo
             </button>
-            <button type="button" class="phiphi-chip-btn" onclick="askPhiPhiQuick('thoi_tiet')">
+            <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('thoi_tiet')">
               <span>🌦️</span> Mai có mưa hái cam?
             </button>
           </div>
 
-          <button type="button" class="phiphi-cta-btn" onclick="openPhiPhiChat(false)">
-            <span>💬 Trò chuyện với Phi Phi</span>
+          <button type="button" class="phiphi-cta-btn" onclick="openPhiPhiScreen()">
+            <span>💬 Mở Màn Hình Trợ Lý Phi Phi</span>
             <span>➔</span>
           </button>
         </div>
@@ -13112,6 +13424,134 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         </div>
       </section>
 
+      <!-- =========================================================================
+           PANEL RIÊNG: TRỢ LÝ AI PHI PHI & LỊCH SỬ CHAT (DEDICATED FULL SCREEN)
+           ========================================================================= -->
+      <section id="panel-phiphi" class="view-panel">
+        
+        <!-- Header Thanh Điều Hướng Màn Phi Phi -->
+        <div class="phiphi-screen-header">
+          <button type="button" class="phiphi-back-btn" onclick="exitPhiPhiScreen()" title="Quay lại Trang chủ" aria-label="Quay lại Trang chủ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+
+          <div class="phiphi-header-title-box">
+            <img src="phiphi-chat.png" alt="Phi Phi" class="phiphi-header-avatar">
+            <div>
+              <div class="phiphi-header-name">
+                <span>Phi Phi AI</span>
+                <span class="phiphi-status-dot" style="position:static;display:inline-block;width:8px;height:8px;margin-left:2px;" title="Trực tuyến"></span>
+              </div>
+              <div class="phiphi-header-status">Trợ lý GreenVillage OS</div>
+            </div>
+          </div>
+
+          <div class="phiphi-header-actions">
+            <button type="button" class="phiphi-header-pill-btn" onclick="togglePhiPhiHistoryDrawer()" title="Xem lịch sử các cuộc hỏi đáp">
+              <span>🕒 Lịch sử</span>
+              <span id="phiphiHistoryCountBadge" style="background:#E2E8F0;color:#0F172A;font-size:10px;font-weight:800;padding:1px 5px;border-radius:999px;">5</span>
+            </button>
+            <button type="button" class="phiphi-header-pill-btn primary" onclick="startNewPhiPhiSession()" title="Bắt đầu cuộc trò chuyện mới">
+              <span>➕ Mới</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Thanh thông tin phiên chat đang xem -->
+        <div class="phiphi-session-bar">
+          <div class="phiphi-session-title" id="phiphiActiveSessionTitle">
+            <span>💬</span> <span id="phiphiActiveTitleText">Đang xem: Tra giá chuối sấy & cam</span>
+          </div>
+          <button type="button" class="phiphi-session-switch-btn" onclick="togglePhiPhiHistoryDrawer()">
+            Đổi đoạn chat ▾
+          </button>
+        </div>
+
+        <!-- Vùng hiển thị toàn bộ tin nhắn cuộc trò chuyện -->
+        <div class="phiphi-screen-body" id="phiphiScreenBody">
+          <!-- Render động qua renderActivePhiPhiSession() -->
+        </div>
+
+        <!-- Thanh Gợi Ý Nhanh & Nhập Liệu Cố Định Ở Đáy -->
+        <div class="phiphi-screen-dock">
+          
+          <!-- Chips gợi ý câu hỏi nhanh 1-chạm -->
+          <div class="phiphi-quick-chips-row">
+            <button type="button" class="phiphi-screen-chip" onclick="sendPhiPhiQuickPrompt('gia_nong_san')">
+              <span>🏷️</span> Giá chuối sấy hôm nay?
+            </button>
+            <button type="button" class="phiphi-screen-chip" onclick="sendPhiPhiQuickPrompt('kiem_kho')">
+              <span>📦</span> Kho còn bao nhiêu?
+            </button>
+            <button type="button" class="phiphi-screen-chip" onclick="sendPhiPhiQuickPrompt('soan_zalo')">
+              <span>✍️</span> Soạn bài bán Zalo
+            </button>
+            <button type="button" class="phiphi-screen-chip" onclick="sendPhiPhiQuickPrompt('thoi_tiet')">
+              <span>🌦️</span> Mai có mưa hái cam?
+            </button>
+            <button type="button" class="phiphi-screen-chip" onclick="sendPhiPhiQuickPrompt('don_thang')">
+              <span>📊</span> Đơn & Doanh thu
+            </button>
+            <button type="button" class="phiphi-screen-chip" onclick="sendPhiPhiQuickPrompt('nho_hub')">
+              <span>🏛️</span> Nhờ Hub xã
+            </button>
+          </div>
+
+          <!-- Thanh nhập liệu & Microphone lớn -->
+          <form class="phiphi-screen-input-row" id="phiphiScreenChatForm" onsubmit="handlePhiPhiScreenSubmit(event)">
+            <button type="button" class="phiphi-screen-mic-btn" id="btnPhiPhiScreenMic" onclick="triggerPhiPhiScreenVoiceInput()" title="Bấm vào đây để nói trực tiếp">
+              🎙️
+            </button>
+            <input type="text" id="phiphiScreenInput" class="phiphi-screen-input" placeholder="Hỏi Phi Phi hoặc bấm nói..." autocomplete="off">
+            <button type="submit" class="phiphi-screen-send-btn" title="Gửi câu hỏi">
+              ➤
+            </button>
+          </form>
+
+          <!-- Dòng cảnh báo chuẩn GVOS -->
+          <div class="phiphi-screen-disclaimer">
+            ℹ️ Phi Phi có thể nhầm. Cần người thật, bấm <a href="javascript:void(0)" onclick="sendPhiPhiQuickPrompt('nho_hub')" style="color:#059669;font-weight:700;text-decoration:underline;">“Nhờ Hub xã”</a>.
+          </div>
+        </div>
+
+        <!-- =====================================================================
+             DRAWER / SLIDE PANEL: LỊCH SỬ CÁC CUỘC TRÒ CHUYỆN (CHAT HISTORY)
+             ===================================================================== -->
+        <div class="phiphi-history-drawer" id="phiphiHistoryDrawer" onclick="togglePhiPhiHistoryDrawer(false)">
+          <div class="phiphi-history-sheet" onclick="event.stopPropagation()">
+            <div class="phiphi-history-header">
+              <div class="phiphi-history-title">
+                <span>🕒</span>
+                <span>Lịch sử hỏi đáp Phi Phi</span>
+              </div>
+              <button type="button" class="phiphi-history-close-btn" onclick="togglePhiPhiHistoryDrawer(false)" title="Đóng lịch sử">
+                ✕
+              </button>
+            </div>
+
+            <!-- Nút Bắt đầu cuộc trò chuyện mới -->
+            <button type="button" class="phiphi-new-chat-banner-btn" onclick="startNewPhiPhiSession()">
+              <span>➕ Bắt đầu đoạn chat mới</span>
+            </button>
+
+            <!-- Danh sách các phiên trò chuyện trước đây -->
+            <div class="phiphi-history-list" id="phiphiHistoryList">
+              <!-- Render động từ getPhiPhiSessions() -->
+            </div>
+
+            <!-- Footer dọn dẹp lịch sử -->
+            <div class="phiphi-history-footer">
+              <button type="button" class="phiphi-clear-all-btn" onclick="clearAllPhiPhiHistory()">
+                <span>🗑️</span>
+                <span>Xóa lịch sử trò chuyện</span>
+              </button>
+              <span style="font-size:11px;color:#94A3B8;">Lưu trên máy</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
     </main>
 
     <!-- =========================================================================
@@ -13192,92 +13632,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
          NÚT NỔI FAB TRỢ LÝ PHI PHI (FLOATING BUTTON CHUẨN GREENVILLAGE OS)
          ========================================================================= -->
     <div class="phiphi-fab-container" id="phiphiFabContainer">
-      <div class="phiphi-fab-pill">Hỏi Phi Phi 👋</div>
-      <button type="button" class="phiphi-fab-btn" onclick="openPhiPhiChat()" aria-label="Hỏi Trợ lý AI Phi Phi" title="Hỏi Trợ lý AI Phi Phi">
+      <div class="phiphi-fab-pill" onclick="openPhiPhiScreen()">Hỏi Phi Phi 👋</div>
+      <button type="button" class="phiphi-fab-btn" onclick="openPhiPhiScreen()" aria-label="Mở Màn Hình Trợ lý AI Phi Phi" title="Hỏi Trợ lý AI Phi Phi">
         <img src="phiphi-chat.png" alt="Phi Phi">
       </button>
-    </div>
-
-    <!-- =========================================================================
-         MODAL / BOTTOM SHEET HỘI THOẠI TRỢ LÝ AI PHI PHI (CHUẨN GVOS)
-         ========================================================================= -->
-    <div class="phiphi-modal-overlay" id="phiphiModalOverlay" onclick="closePhiPhiChat(event)">
-      <div class="phiphi-modal-sheet" onclick="event.stopPropagation()">
-        <div class="phiphi-sheet-handle" onclick="closePhiPhiChat()"></div>
-        
-        <!-- Header Sheet -->
-        <div class="phiphi-sheet-header">
-          <div class="phiphi-sheet-title-group">
-            <img src="phiphi-chat.png" alt="Phi Phi" style="width:36px;height:36px;border-radius:50%;background:#ECFDF5;padding:2px;border:1.5px solid #10B981;object-fit:cover;">
-            <div>
-              <div class="phiphi-sheet-title">
-                <span>Phi Phi</span>
-                <span style="font-size:10.5px;color:#059669;background:#ECFDF5;padding:1px 6px;border-radius:999px;font-weight:700;">Trợ lý AI GreenVillage</span>
-              </div>
-              <div class="phiphi-sheet-subtitle">🟢 Sẵn sàng trợ giúp Bác Ba</div>
-            </div>
-          </div>
-          <div class="phiphi-sheet-tools">
-            <button type="button" class="phiphi-tool-btn" id="btnPhiPhiVoiceToggle" onclick="togglePhiPhiAutoVoice()" title="Bật/Tắt đọc thành tiếng">
-              <span id="phiphiVoiceIcon">🔊</span>
-            </button>
-            <button type="button" class="phiphi-tool-btn" onclick="closePhiPhiChat()" title="Đóng">
-              ✕
-            </button>
-          </div>
-        </div>
-
-        <!-- Chat Body Message Stream -->
-        <div class="phiphi-chat-body" id="phiphiChatBody">
-          <!-- Initial AI Greeting -->
-          <div class="phiphi-msg-row ai">
-            <img src="phiphi-chat.png" style="width:28px;height:28px;border-radius:50%;margin-top:2px;">
-            <div class="phiphi-msg-bubble">
-              <div>Chào Bác Ba! Con là <b>Phi Phi</b>. Con giúp Bác đăng bán sản phẩm, xem sổ đơn hàng và kiểm tra kho bãi. Bác muốn làm gì hôm nay ạ?</div>
-              <button type="button" class="phiphi-msg-speak-btn" onclick="speakText('Chào Bác Ba! Con là Phi Phi. Con giúp Bác đăng bán sản phẩm, xem sổ đơn hàng và kiểm tra kho bãi. Bác muốn làm gì hôm nay ạ?')">
-                🔊 Nghe đọc
-              </button>
-            </div>
-          </div>
-
-          <!-- Quick Action Prompts Grid -->
-          <div class="phiphi-quick-grid" id="phiphiQuickGrid">
-            <div class="phiphi-quick-card" onclick="askPhiPhiQuick('dang_ban')">
-              <span class="phiphi-quick-icon">📸</span>
-              <span class="phiphi-quick-txt">Đăng bán món mới</span>
-            </div>
-            <div class="phiphi-quick-card" onclick="askPhiPhiQuick('don_thang')">
-              <span class="phiphi-quick-icon">📊</span>
-              <span class="phiphi-quick-txt">Đơn tháng này</span>
-            </div>
-            <div class="phiphi-quick-card" onclick="askPhiPhiQuick('gia_nong_san')">
-              <span class="phiphi-quick-icon">🍌</span>
-              <span class="phiphi-quick-txt">Tra giá chuối & cam</span>
-            </div>
-            <div class="phiphi-quick-card" onclick="askPhiPhiQuick('nho_hub')">
-              <span class="phiphi-quick-icon">🏛️</span>
-              <span class="phiphi-quick-txt">Nhờ Hub xã</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Input Bar with Mic & Send -->
-        <form class="phiphi-input-bar" id="phiphiChatForm" onsubmit="handlePhiPhiSubmit(event)">
-          <button type="button" class="phiphi-mic-action-btn" id="btnPhiPhiMic" onclick="triggerPhiPhiSpeechInput()" title="Bấm để nói trực tiếp">
-            🎙️
-          </button>
-          <input type="text" id="phiphiChatInput" class="phiphi-input-field" placeholder="Nhập câu hỏi hoặc bấm micro..." autocomplete="off">
-          <button type="submit" class="phiphi-send-btn" title="Gửi câu hỏi">
-            ➤
-          </button>
-        </form>
-
-        <!-- GVOS Disclaimer Note -->
-        <div class="phiphi-disclaimer-note">
-          ℹ️ Phi Phi có thể nhầm. Cần người thật, bấm <a href="javascript:void(0)" onclick="askPhiPhiQuick('nho_hub')" style="color:#059669;font-weight:700;text-decoration:underline;">“Nhờ Hub xã”</a>.
-        </div>
-
-      </div>
     </div>
 
   </div>
@@ -13290,227 +13648,471 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     const dockStep3 = document.getElementById('dockStep3');
 
     // =========================================================================
-    // LOGIC TRỢ LÝ AI PHI PHI (GREENVILLAGE OS)
+    // HỆ THỐNG TRỢ LÝ AI PHI PHI & LỊCH SỬ HỘI THOẠI (CHAT SESSIONS & HISTORY)
     // =========================================================================
     let phiphiAutoVoice = false;
     let phiphiRecognition = null;
     let phiphiIsListening = false;
+    let activePhiPhiSessionId = 'sess_today_1';
 
-    function openPhiPhiChat(autoListen = false) {
-      const modal = document.getElementById('phiphiModalOverlay');
-      if (modal) {
-        modal.classList.add('active');
-        const input = document.getElementById('phiphiChatInput');
-        if (input && !autoListen) setTimeout(() => input.focus(), 300);
+    const DEFAULT_PHIPHI_SESSIONS = [
+      {
+        id: 'sess_today_1',
+        title: 'Tra giá chuối sấy & cam sành',
+        group: 'Hôm nay',
+        date: '09:30 · Hôm nay',
+        timestamp: Date.now() - 1800000,
+        messages: [
+          {
+            sender: 'ai',
+            time: '09:30',
+            text: 'Chào Bác Ba! Con là <b>Phi Phi</b> - Trợ lý AI của GreenVillage OS & Chợ Xanh. Bác cần kiểm tra giá nông sản nào hôm nay ạ?'
+          },
+          {
+            sender: 'user',
+            time: '09:31',
+            text: 'Hôm nay giá chuối sấy và cam thế nào con?'
+          },
+          {
+            sender: 'ai',
+            time: '09:31',
+            text: 'Dạ Bác Ba, theo sàn Chợ Xanh và đề xuất HTX Đồng Cát hôm nay:<br>• 🍌 <b>Chuối sấy giòn</b>: <b>55.000 đ/gói 500g</b> (giá sỉ giao thương lái: 48.000 đ)<br>• 🍊 <b>Cam sành loại 1</b>: <b>32.000 đ/kg</b><br>• 🍈 <b>Bưởi da xanh</b>: <b>45.000 đ/kg</b><br>Giá chuối tuần này đang tăng 8% do đơn hàng Tết tăng cao bác nhé!',
+            actionBtn: `<button type="button" class="phiphi-action-trigger-btn" onclick="exitPhiPhiScreen(); startWizardFlow();">📸 Đăng Bán Chuối Sấy Ngay</button>`
+          }
+        ]
+      },
+      {
+        id: 'sess_today_2',
+        title: 'Kiểm tra tồn kho & đơn chờ',
+        group: 'Hôm nay',
+        date: '08:15 · Hôm nay',
+        timestamp: Date.now() - 5400000,
+        messages: [
+          {
+            sender: 'ai',
+            time: '08:15',
+            text: 'Dạ Bác Ba, con là Phi Phi. Bác cần kiểm tra kho hay đơn hàng ạ?'
+          },
+          {
+            sender: 'user',
+            time: '08:16',
+            text: 'Xem hộ bác trong kho còn bao nhiêu món?'
+          },
+          {
+            sender: 'ai',
+            time: '08:16',
+            text: 'Dạ Bác Ba, con vừa kiểm tra kho hàng của hộ mình:<br>• 🍌 <b>Chuối sấy giòn</b>: Còn <b>85 gói</b> (Đang có 12 đơn chờ giao)<br>• 🍊 <b>Cam sành Bến Tre</b>: Còn <b>450 kg</b> (Nên xuất trong 3 ngày tới)<br>• 🍯 <b>Mật ong hoa nhãn</b>: Còn <b>12 chai</b><br>Tất cả đều đã sẵn mã VietQR và tem truy xuất nguồn gốc ạ.',
+            actionBtn: `<button type="button" class="phiphi-action-trigger-btn" onclick="exitPhiPhiScreen(); switchNavTab('orders'); switchOrderSubTab('warehouse');">📦 Mở Quản Lý Kho</button>`
+          }
+        ]
+      },
+      {
+        id: 'sess_yesterday',
+        title: 'Nhờ soạn bài bán Zalo OCOP',
+        group: 'Hôm qua',
+        date: '16:45 · Hôm qua',
+        timestamp: Date.now() - 86400000,
+        messages: [
+          {
+            sender: 'ai',
+            time: '16:45',
+            text: 'Dạ con chào Bác Ba, Bác muốn soạn bài bán mặt hàng nào ạ?'
+          },
+          {
+            sender: 'user',
+            time: '16:46',
+            text: 'Soạn giúp bác một bài đăng bán Zalo'
+          },
+          {
+            sender: 'ai',
+            time: '16:46',
+            text: 'Dạ con soạn sẵn bài viết ngắn gọn, dễ thương cho Bác đây ạ:<br><br><i>"🌿 <b>CHUỐI SẤY GIÒN NGUYÊN BẢN NHÀ BÁC BA</b> 🍌<br>Vườn nhà tự sấy thủ công, giòn rụm thơm lừng, không tẩm đường hay phẩm màu. Đã đạt OCOP HTX Đồng Cát.<br>💰 Giá bà con: <b>55.000 đ/gói 500g</b>.<br>Mời bà con lối xóm nhắn Bác Ba giao tận cổng nhé!"</i>',
+            actionBtn: `<button type="button" class="phiphi-action-trigger-btn" onclick="exitPhiPhiScreen(); openZaloPreview();">📲 Mở Màn Đăng Zalo</button>`
+          }
+        ]
+      },
+      {
+        id: 'sess_past_weather',
+        title: 'Dự báo thời tiết thu hái cam',
+        group: 'Tuần này',
+        date: '15/10/2026',
+        timestamp: Date.now() - 259200000,
+        messages: [
+          {
+            sender: 'ai',
+            time: '07:10',
+            text: 'Dạ Phi Phi chào Bác Ba, con giúp gì được cho vụ mùa của Bác?'
+          },
+          {
+            sender: 'user',
+            time: '07:11',
+            text: 'Mai trời có mưa để hái cam không con?'
+          },
+          {
+            sender: 'ai',
+            time: '07:11',
+            text: 'Dạ Bác Ba, dự báo thời tiết tại xã Yên Bình ngày mai:<br>🌤️ <b>Trời nhiều mây, râm mát</b> (23°C – 28°C), xác suất mưa chỉ 10%.<br>Thời tiết rất thuận lợi để cắt chuối và hái cam bác nhé. Bác nên hái từ <b>6h30 đến 10h sáng</b> để quả tươi giòn nhất ạ!'
+          }
+        ]
+      },
+      {
+        id: 'sess_past_hub',
+        title: 'Liên hệ Hub xã hỗ trợ',
+        group: 'Tuần này',
+        date: '12/10/2026',
+        timestamp: Date.now() - 518400000,
+        messages: [
+          {
+            sender: 'ai',
+            time: '14:20',
+            text: 'Dạ con chào Bác Ba, Bác cần hỗ trợ đóng gói hay chuyển phát hàng hóa ạ?'
+          },
+          {
+            sender: 'user',
+            time: '14:21',
+            text: 'Ai ở xã hỗ trợ tôi đóng gói và vận chuyển?'
+          },
+          {
+            sender: 'ai',
+            time: '14:21',
+            text: 'Dạ Bác Ba, cán bộ điều phối Hub xã phụ trách hộ nhà mình là <b>Chú Tuấn (HTX Đồng Cát)</b>.<br>Hub xã hỗ trợ Bác: In tem mã QR, thùng đóng gói tiêu chuẩn, và gom hàng gửi xe tải giao khách.<br>📞 Bác có thể gọi trực tiếp: <b>0988.123.456</b> hoặc ghé văn phòng HTX ở đầu làng nhé!',
+            actionBtn: `<a href="tel:0988123456" class="phiphi-action-trigger-btn" style="text-decoration:none;">📞 Gọi Chú Tuấn Hub Xã</a>`
+          }
+        ]
       }
-      if (autoListen) {
-        setTimeout(() => triggerPhiPhiSpeechInput(), 400);
-      }
+    ];
+
+    function getPhiPhiSessions() {
+      try {
+        const stored = localStorage.getItem('greenos_phiphi_sessions');
+        if (stored) return JSON.parse(stored);
+      } catch(e) {}
+      localStorage.setItem('greenos_phiphi_sessions', JSON.stringify(DEFAULT_PHIPHI_SESSIONS));
+      return DEFAULT_PHIPHI_SESSIONS;
     }
 
-    function closePhiPhiChat(e) {
-      if (e && e.target && e.target.closest('.phiphi-modal-sheet') && !e.target.classList.contains('phiphi-sheet-handle')) {
-        return;
+    function savePhiPhiSessions(sessions) {
+      try {
+        localStorage.setItem('greenos_phiphi_sessions', JSON.stringify(sessions));
+      } catch(e) {}
+    }
+
+    function openPhiPhiScreen(topicKey = null) {
+      // Ẩn tất cả panels khác
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
+
+      // Ẩn bottom nav để toàn quyền hiển thị màn chat
+      if (bottomNav) bottomNav.classList.add('nav-hidden');
+      bodyElem.classList.add('is-phiphi-screen');
+
+      const panel = document.getElementById('panel-phiphi');
+      if (panel) panel.classList.add('active');
+
+      const sessions = getPhiPhiSessions();
+
+      if (topicKey === 'gia_nong_san') {
+        activePhiPhiSessionId = 'sess_today_1';
+      } else if (topicKey === 'kiem_kho') {
+        activePhiPhiSessionId = 'sess_today_2';
+      } else if (topicKey === 'soan_zalo') {
+        activePhiPhiSessionId = 'sess_yesterday';
+      } else if (topicKey === 'thoi_tiet') {
+        activePhiPhiSessionId = 'sess_past_weather';
+      } else if (topicKey === true) {
+        // Mở micro ngay
+        setTimeout(() => triggerPhiPhiScreenVoiceInput(), 400);
+      } else if (!activePhiPhiSessionId) {
+        activePhiPhiSessionId = sessions[0] ? sessions[0].id : 'sess_today_1';
       }
-      const modal = document.getElementById('phiphiModalOverlay');
-      if (modal) modal.classList.remove('active');
+
+      renderActivePhiPhiSession();
+      renderPhiPhiHistoryDrawer();
+
+      // Cuộn lên đầu thiết bị
+      const sc = document.querySelector('.screen-container');
+      if (sc) sc.scrollTo(0, 0);
+    }
+
+    function exitPhiPhiScreen() {
+      bodyElem.classList.remove('is-phiphi-screen');
       if (phiphiRecognition && phiphiIsListening) {
         phiphiRecognition.stop();
       }
+      switchNavTab('home');
     }
 
-    function togglePhiPhiAutoVoice() {
-      phiphiAutoVoice = !phiphiAutoVoice;
-      const btn = document.getElementById('btnPhiPhiVoiceToggle');
-      const icon = document.getElementById('phiphiVoiceIcon');
-      if (phiphiAutoVoice) {
-        if (btn) btn.classList.add('active');
-        if (icon) icon.textContent = '🔊';
-        triggerToast('Đã bật giọng nói Phi Phi');
-      } else {
-        if (btn) btn.classList.remove('active');
-        if (icon) icon.textContent = '🔈';
-        if (window.speechSynthesis) window.speechSynthesis.cancel();
-        triggerToast('Đã tắt giọng nói');
+    function renderActivePhiPhiSession() {
+      const sessions = getPhiPhiSessions();
+      let cur = sessions.find(s => s.id === activePhiPhiSessionId);
+      if (!cur) {
+        cur = sessions[0];
+        if (cur) activePhiPhiSessionId = cur.id;
       }
-    }
+      if (!cur) return;
 
-    function speakText(text) {
-      if (!('speechSynthesis' in window)) {
-        triggerToast('Thiết bị không hỗ trợ đọc giọng nói');
-        return;
-      }
-      window.speechSynthesis.cancel();
-      // Loại bỏ thẻ HTML và ký tự đặc biệt khi đọc
-      const cleanText = text.replace(/<[^>]*>?/gm, '').replace(/[*_#•]/g, ' ');
-      const utterance = new SpeechSynthesisUtterance(cleanText);
-      utterance.lang = 'vi-VN';
-      utterance.rate = 0.95; // Tốc độ vừa phải, rõ ràng cho người cao tuổi
-      utterance.pitch = 1.05; // Giọng ấm áp, thân thiện
+      const titleEl = document.getElementById('phiphiActiveTitleText');
+      if (titleEl) titleEl.textContent = `Đang xem: ${cur.title}`;
 
-      // Tìm voice tiếng Việt nếu có
-      const voices = window.speechSynthesis.getVoices();
-      const viVoice = voices.find(v => v.lang === 'vi-VN' || v.lang.startsWith('vi'));
-      if (viVoice) utterance.voice = viVoice;
+      const badgeCount = document.getElementById('phiphiHistoryCountBadge');
+      if (badgeCount) badgeCount.textContent = sessions.length;
 
-      window.speechSynthesis.speak(utterance);
-    }
-
-    function addPhiPhiMessage(sender, text, actionBtnHtml = '') {
-      const body = document.getElementById('phiphiChatBody');
+      const body = document.getElementById('phiphiScreenBody');
       if (!body) return;
 
-      const row = document.createElement('div');
-      row.className = `phiphi-msg-row ${sender}`;
+      let html = `
+        <div class="phiphi-time-divider">
+          <span>📅 ${cur.date || 'Hôm nay'} · ${cur.title}</span>
+        </div>
+      `;
 
-      if (sender === 'ai') {
-        const escapedForSpeech = text.replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, ' ');
-        row.innerHTML = `
-          <img src="phiphi-chat.png" style="width:28px;height:28px;border-radius:50%;margin-top:2px;flex-shrink:0;">
-          <div class="phiphi-msg-bubble">
-            <div>${text}</div>
-            ${actionBtnHtml}
-            <div>
-              <button type="button" class="phiphi-msg-speak-btn" onclick="speakText('${escapedForSpeech}')">
-                🔊 Nghe đọc
-              </button>
+      cur.messages.forEach(msg => {
+        const isAi = msg.sender === 'ai';
+        const escaped = msg.text.replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, ' ');
+        html += `
+          <div class="phiphi-msg-row ${isAi ? 'ai' : 'user'}">
+            ${isAi ? `<img src="phiphi-chat.png" style="width:30px;height:30px;border-radius:50%;margin-top:2px;flex-shrink:0;">` : ''}
+            <div class="phiphi-msg-bubble">
+              <div>${msg.text}</div>
+              ${msg.actionBtn ? msg.actionBtn : ''}
+              ${isAi ? `
+                <div>
+                  <button type="button" class="phiphi-msg-speak-btn" onclick="speakText('${escaped}')">
+                    🔊 Nghe đọc
+                  </button>
+                </div>
+              ` : ''}
             </div>
           </div>
         `;
-      } else {
-        row.innerHTML = `
-          <div class="phiphi-msg-bubble">
-            <div>${text}</div>
-          </div>
-        `;
-      }
+      });
 
-      body.appendChild(row);
+      body.innerHTML = html;
       setTimeout(() => {
         body.scrollTop = body.scrollHeight;
-        row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 50);
+    }
 
-      // Thu gọn lưới hỏi nhanh để chừa không gian trò chuyện
-      const qGrid = document.getElementById('phiphiQuickGrid');
-      if (qGrid && qGrid.style.display !== 'none') {
-        qGrid.style.display = 'none';
-      }
+    function renderPhiPhiHistoryDrawer() {
+      const listEl = document.getElementById('phiphiHistoryList');
+      if (!listEl) return;
+      const sessions = getPhiPhiSessions();
 
-      if (sender === 'ai' && phiphiAutoVoice) {
-        speakText(text);
+      let html = '';
+      let currentGroup = '';
+
+      sessions.forEach(sess => {
+        const group = sess.group || 'Gần đây';
+        if (group !== currentGroup) {
+          currentGroup = group;
+          html += `<div class="phiphi-history-group-title">${currentGroup}</div>`;
+        }
+        const isActive = sess.id === activePhiPhiSessionId;
+        const lastMsg = sess.messages[sess.messages.length - 1];
+        const snippet = lastMsg ? lastMsg.text.replace(/<[^>]*>?/gm, '').slice(0, 48) + '...' : 'Trò chuyện với Phi Phi';
+
+        html += `
+          <div class="phiphi-history-card ${isActive ? 'active' : ''}" onclick="switchPhiPhiSession('${sess.id}')">
+            <span class="phiphi-card-icon">💬</span>
+            <div class="phiphi-card-meta">
+              <div class="phiphi-card-topic">${sess.title}</div>
+              <div class="phiphi-card-snippet">${snippet}</div>
+            </div>
+            <div class="phiphi-card-right">
+              <span class="phiphi-card-time">${sess.date}</span>
+              <span class="phiphi-card-badge">${sess.messages.length} tin</span>
+            </div>
+          </div>
+        `;
+      });
+
+      listEl.innerHTML = html;
+    }
+
+    function togglePhiPhiHistoryDrawer(forceState) {
+      const drawer = document.getElementById('phiphiHistoryDrawer');
+      if (!drawer) return;
+      if (typeof forceState === 'boolean') {
+        if (forceState) {
+          renderPhiPhiHistoryDrawer();
+          drawer.classList.add('active');
+        } else {
+          drawer.classList.remove('active');
+        }
+      } else {
+        const isAct = drawer.classList.contains('active');
+        if (!isAct) renderPhiPhiHistoryDrawer();
+        drawer.classList.toggle('active');
       }
     }
 
-    function askPhiPhiQuick(actionKey) {
-      openPhiPhiChat();
-      if (actionKey === 'gia_nong_san') {
-        addPhiPhiMessage('user', 'Hôm nay giá chuối sấy và cam thế nào con?');
+    function startNewPhiPhiSession() {
+      const sessions = getPhiPhiSessions();
+      const newId = 'sess_' + Date.now();
+      const newSess = {
+        id: newId,
+        title: 'Cuộc trò chuyện mới',
+        group: 'Hôm nay',
+        date: 'Vừa xong',
+        timestamp: Date.now(),
+        messages: [
+          {
+            sender: 'ai',
+            time: 'Vừa xong',
+            text: 'Dạ Bác Ba! Con là <b>Phi Phi</b>. Bác cần kiểm tra đơn, tra giá nông sản hay nhờ con việc gì không ạ?'
+          }
+        ]
+      };
+      sessions.unshift(newSess);
+      savePhiPhiSessions(sessions);
+      activePhiPhiSessionId = newId;
+
+      togglePhiPhiHistoryDrawer(false);
+      renderActivePhiPhiSession();
+      triggerToast('Đã mở cuộc trò chuyện mới');
+    }
+
+    function switchPhiPhiSession(sessId) {
+      activePhiPhiSessionId = sessId;
+      togglePhiPhiHistoryDrawer(false);
+      renderActivePhiPhiSession();
+    }
+
+    function clearAllPhiPhiHistory() {
+      if (confirm('Bác có chắc muốn dọn sạch lịch sử các cuộc trò chuyện trước đây không?')) {
+        localStorage.removeItem('greenos_phiphi_sessions');
+        startNewPhiPhiSession();
+        triggerToast('Đã dọn dẹp lịch sử');
+      }
+    }
+
+    function sendPhiPhiQuickPrompt(promptKey) {
+      if (promptKey === 'gia_nong_san') {
+        appendMessageToActiveSession('Hôm nay giá chuối sấy và cam thế nào con?', 'user');
         setTimeout(() => {
           const aiResponse = `Dạ Bác Ba, theo sàn Chợ Xanh và đề xuất HTX Đồng Cát hôm nay:<br>
           • 🍌 <b>Chuối sấy giòn</b>: <b>55.000 đ/gói 500g</b> (giá sỉ giao thương lái: 48.000 đ)<br>
           • 🍊 <b>Cam sành loại 1</b>: <b>32.000 đ/kg</b><br>
           • 🍈 <b>Bưởi da xanh</b>: <b>45.000 đ/kg</b><br>
           Giá chuối tuần này đang tăng 8% do đơn hàng Tết tăng cao bác nhé!`;
-          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="closePhiPhiChat(); startWizardFlow();">📸 Đăng Bán Chuối Sấy Ngay</button>`;
-          addPhiPhiMessage('ai', aiResponse, btn);
+          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="exitPhiPhiScreen(); startWizardFlow();">📸 Đăng Bán Chuối Sấy Ngay</button>`;
+          appendMessageToActiveSession(aiResponse, 'ai', btn);
         }, 400);
-      } else if (actionKey === 'kiem_kho') {
-        addPhiPhiMessage('user', 'Xem hộ bác trong kho còn bao nhiêu món?');
+      } else if (promptKey === 'kiem_kho') {
+        appendMessageToActiveSession('Xem hộ bác trong kho còn bao nhiêu món?', 'user');
         setTimeout(() => {
           const aiResponse = `Dạ Bác Ba, con vừa kiểm tra kho hàng của hộ mình:<br>
           • 🍌 <b>Chuối sấy giòn</b>: Còn <b>85 gói</b> (Đang có 12 đơn chờ giao)<br>
           • 🍊 <b>Cam sành Bến Tre</b>: Còn <b>450 kg</b> (Nên xuất trong 3 ngày tới)<br>
           • 🍯 <b>Mật ong hoa nhãn</b>: Còn <b>12 chai</b><br>
           Tất cả đều đã sẵn mã VietQR và tem truy xuất nguồn gốc ạ.`;
-          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="closePhiPhiChat(); switchNavTab('orders'); switchOrderSubTab('warehouse');">📦 Mở Quản Lý Kho</button>`;
-          addPhiPhiMessage('ai', aiResponse, btn);
+          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="exitPhiPhiScreen(); switchNavTab('orders'); switchOrderSubTab('warehouse');">📦 Mở Quản Lý Kho</button>`;
+          appendMessageToActiveSession(aiResponse, 'ai', btn);
         }, 400);
-      } else if (actionKey === 'soan_zalo') {
-        addPhiPhiMessage('user', 'Soạn giúp bác một bài đăng bán Zalo');
+      } else if (promptKey === 'soan_zalo') {
+        appendMessageToActiveSession('Soạn giúp bác một bài đăng bán Zalo', 'user');
         setTimeout(() => {
           const aiResponse = `Dạ con soạn sẵn bài viết ngắn gọn, dễ thương cho Bác đây ạ:<br><br>
           <i>"🌿 <b>CHUỐI SẤY GIÒN NGUYÊN BẢN NHÀ BÁC BA</b> 🍌<br>
           Vườn nhà tự sấy thủ công, giòn rụm thơm lừng, không tẩm đường hay phẩm màu. Đã đạt OCOP HTX Đồng Cát.<br>
           💰 Giá bà con: <b>55.000 đ/gói 500g</b>.<br>
           Mời bà con lối xóm nhắn Bác Ba giao tận cổng nhé!"</i>`;
-          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="closePhiPhiChat(); openZaloPreview();">📲 Mở Màn Đăng Zalo</button>`;
-          addPhiPhiMessage('ai', aiResponse, btn);
+          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="exitPhiPhiScreen(); openZaloPreview();">📲 Mở Màn Đăng Zalo</button>`;
+          appendMessageToActiveSession(aiResponse, 'ai', btn);
         }, 400);
-      } else if (actionKey === 'thoi_tiet') {
-        addPhiPhiMessage('user', 'Mai trời có mưa để hái cam không con?');
+      } else if (promptKey === 'thoi_tiet') {
+        appendMessageToActiveSession('Mai trời có mưa để hái cam không con?', 'user');
         setTimeout(() => {
           const aiResponse = `Dạ Bác Ba, dự báo thời tiết tại xã Yên Bình ngày mai:<br>
           🌤️ <b>Trời nhiều mây, râm mát</b> (23°C – 28°C), xác suất mưa chỉ 10%.<br>
           Thời tiết rất thuận lợi để cắt chuối và hái cam bác nhé. Bác nên hái từ <b>6h30 đến 10h sáng</b> để quả tươi giòn nhất ạ!`;
-          addPhiPhiMessage('ai', aiResponse);
+          appendMessageToActiveSession(aiResponse, 'ai');
         }, 400);
-      } else if (actionKey === 'dang_ban') {
-        addPhiPhiMessage('user', 'Giúp tôi đăng bán 1 món mới');
-        setTimeout(() => {
-          const aiResponse = `Dạ con mở sẵn màn hình chụp ảnh cho Bác ngay đây ạ. Bác chỉ cần chụp 1 tấm ảnh, nói giá là con tự điền tên và tạo bài viết cho Bác luôn!`;
-          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="closePhiPhiChat(); startWizardFlow();">📸 Bấm Mở Chụp Ảnh Ngay</button>`;
-          addPhiPhiMessage('ai', aiResponse, btn);
-        }, 400);
-      } else if (actionKey === 'don_thang') {
-        addPhiPhiMessage('user', 'Tháng này bán được bao nhiêu đơn rồi con?');
+      } else if (promptKey === 'don_thang') {
+        appendMessageToActiveSession('Tháng này bán được bao nhiêu đơn rồi con?', 'user');
         setTimeout(() => {
           const aiResponse = `Dạ Bác Ba, tháng 10 này hộ mình bán rất khởi sắc:<br>
           • <b>18 đơn đã giao thành công</b><br>
           • <b>3.850.000 đ</b> doanh thu tạm tính<br>
           • <b>44 đơn mới</b> đang chờ Bác bấm xác nhận.<br>
           Bác bấm duyệt sớm để xe HTX ghé lấy hàng nhé!`;
-          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="closePhiPhiChat(); openOrdersFiltered('cho_xac_nhan');">📋 Xem 44 Đơn Chờ Xác Nhận</button>`;
-          addPhiPhiMessage('ai', aiResponse, btn);
+          const btn = `<button type="button" class="phiphi-action-trigger-btn" onclick="exitPhiPhiScreen(); openOrdersFiltered('cho_xac_nhan');">📋 Xem 44 Đơn Chờ Xác Nhận</button>`;
+          appendMessageToActiveSession(aiResponse, 'ai', btn);
         }, 400);
-      } else if (actionKey === 'nho_hub') {
-        addPhiPhiMessage('user', 'Ai ở xã hỗ trợ tôi đóng gói và vận chuyển?');
+      } else if (promptKey === 'nho_hub') {
+        appendMessageToActiveSession('Ai ở xã hỗ trợ tôi đóng gói và vận chuyển?', 'user');
         setTimeout(() => {
           const aiResponse = `Dạ Bác Ba, cán bộ điều phối Hub xã phụ trách hộ nhà mình là <b>Chú Tuấn (HTX Đồng Cát)</b>.<br>
           Hub xã hỗ trợ Bác: In tem mã QR, thùng đóng gói tiêu chuẩn, và gom hàng gửi xe tải giao khách.<br>
           📞 Bác có thể gọi trực tiếp: <b>0988.123.456</b> hoặc ghé văn phòng HTX ở đầu làng nhé!`;
           const btn = `<a href="tel:0988123456" class="phiphi-action-trigger-btn" style="text-decoration:none;">📞 Gọi Chú Tuấn Hub Xã</a>`;
-          addPhiPhiMessage('ai', aiResponse, btn);
+          appendMessageToActiveSession(aiResponse, 'ai', btn);
         }, 400);
       }
     }
 
-    function handlePhiPhiSubmit(e) {
+    function appendMessageToActiveSession(text, sender, actionBtnHtml = '') {
+      const sessions = getPhiPhiSessions();
+      let cur = sessions.find(s => s.id === activePhiPhiSessionId);
+      if (!cur) {
+        startNewPhiPhiSession();
+        return;
+      }
+
+      // Tự động đặt tên cho session nếu vẫn là "Cuộc trò chuyện mới"
+      if (cur.title === 'Cuộc trò chuyện mới' && sender === 'user') {
+        cur.title = text.slice(0, 24);
+      }
+
+      cur.messages.push({
+        sender,
+        time: 'Vừa xong',
+        text,
+        actionBtn: actionBtnHtml
+      });
+
+      savePhiPhiSessions(sessions);
+      renderActivePhiPhiSession();
+
+      if (sender === 'ai' && phiphiAutoVoice) {
+        speakText(text);
+      }
+    }
+
+    function handlePhiPhiScreenSubmit(e) {
       if (e) e.preventDefault();
-      const input = document.getElementById('phiphiChatInput');
+      const input = document.getElementById('phiphiScreenInput');
       if (!input) return;
       const text = input.value.trim();
       if (!text) return;
 
       input.value = '';
-      addPhiPhiMessage('user', text);
+      appendMessageToActiveSession(text, 'user');
 
       const lower = text.toLowerCase();
       setTimeout(() => {
         if (lower.includes('giá') || lower.includes('chuối') || lower.includes('bao nhiêu')) {
-          askPhiPhiQuick('gia_nong_san');
+          sendPhiPhiQuickPrompt('gia_nong_san');
         } else if (lower.includes('kho') || lower.includes('tồn') || lower.includes('hàng')) {
-          askPhiPhiQuick('kiem_kho');
+          sendPhiPhiQuickPrompt('kiem_kho');
         } else if (lower.includes('zalo') || lower.includes('bài') || lower.includes('viết') || lower.includes('soạn')) {
-          askPhiPhiQuick('soan_zalo');
+          sendPhiPhiQuickPrompt('soan_zalo');
         } else if (lower.includes('mưa') || lower.includes('nắng') || lower.includes('thời tiết') || lower.includes('hái')) {
-          askPhiPhiQuick('thoi_tiet');
-        } else if (lower.includes('đăng') || lower.includes('bán') || lower.includes('chụp')) {
-          askPhiPhiQuick('dang_ban');
+          sendPhiPhiQuickPrompt('thoi_tiet');
         } else if (lower.includes('đơn') || lower.includes('tiền') || lower.includes('doanh thu')) {
-          askPhiPhiQuick('don_thang');
+          sendPhiPhiQuickPrompt('don_thang');
         } else if (lower.includes('hub') || lower.includes('xã') || lower.includes('cán bộ') || lower.includes('giúp')) {
-          askPhiPhiQuick('nho_hub');
+          sendPhiPhiQuickPrompt('nho_hub');
         } else {
           const defaultReply = `Dạ Bác Ba, con Phi Phi đã nghe rõ: "<b>${text}</b>".<br>
           Để phục vụ Bác nhanh nhất, Bác có thể bấm chọn một trong các mục bên dưới hoặc bấm "Nhờ Hub xã" để cán bộ hỗ trợ Bác tận nhà nhé!`;
-          addPhiPhiMessage('ai', defaultReply);
+          appendMessageToActiveSession(defaultReply, 'ai');
         }
       }, 400);
     }
 
-    function triggerPhiPhiSpeechInput() {
-      const micBtn = document.getElementById('btnPhiPhiMic');
+    function triggerPhiPhiScreenVoiceInput() {
+      const micBtn = document.getElementById('btnPhiPhiScreenMic');
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
       if (!SpeechRecognition) {
@@ -13537,10 +14139,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
         phiphiRecognition.onresult = (event) => {
           const transcript = event.results[0][0].transcript;
-          const input = document.getElementById('phiphiChatInput');
+          const input = document.getElementById('phiphiScreenInput');
           if (input) {
             input.value = transcript;
-            handlePhiPhiSubmit();
+            handlePhiPhiScreenSubmit();
           }
         };
 
@@ -13561,6 +14163,25 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       }
     }
 
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) {
+        triggerToast('Thiết bị không hỗ trợ đọc giọng nói');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const cleanText = text.replace(/<[^>]*>?/gm, '').replace(/[*_#•]/g, ' ');
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.lang = 'vi-VN';
+      utterance.rate = 0.95;
+      utterance.pitch = 1.05;
+
+      const voices = window.speechSynthesis.getVoices();
+      const viVoice = voices.find(v => v.lang === 'vi-VN' || v.lang.startsWith('vi'));
+      if (viVoice) utterance.voice = viVoice;
+
+      window.speechSynthesis.speak(utterance);
+    }
+
     // Chuyển đổi giữa 4 Tab chính trên thanh Menu đáy
     function switchNavTab(tabName) {
       // Ẩn tất cả panels
@@ -13574,10 +14195,14 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       dockStep3.classList.remove('dock-visible');
 
       bodyElem.className = 'has-bottom-nav';
+      bodyElem.classList.remove('is-phiphi-screen');
 
       if (tabName === 'home') {
         document.getElementById('panel-home').classList.add('active');
         document.getElementById('tabHome').classList.add('active');
+      } else if (tabName === 'phiphi') {
+        openPhiPhiScreen();
+        return;
       } else if (tabName === 'dashboard') {
         document.getElementById('panel-dashboard').classList.add('active');
         if (document.getElementById('tabDashboard')) document.getElementById('tabDashboard').classList.add('active');

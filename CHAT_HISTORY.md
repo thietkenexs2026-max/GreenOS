@@ -543,8 +543,36 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
        - 5. ✏️ Icon nâu cam `#F9ECE0`: **`2 sản phẩm đang là Nháp`** — *Xem hồ sơ rồi lấy bộ đăng bán* (bấm `>` mở Wizard sửa nháp).
        - 6. 🛡️ Icon xanh lá `#DDEFE4`: **`GFKey chưa liên kết`** — *Không bắt buộc* (bấm `>` xem thông tin mã khóa số).
   3. **Màn hình Phiếu Soạn Hàng Pick-list chuẩn GVOS (`panel-picklist`)**:
-     - Mở trực tiếp từ mục "9 đơn chờ đóng gói": Gom 24 món của 4 loại nông sản (chuối sấy dẻo, chuối sấy giòn, mật ong, trà).
-     - Checkbox tương tác lớn gạch ngang khi đã lấy xong, thanh tiến trình `Đã lấy: n/4 loại`, nút `[🖨️ In Phiếu Soạn]` và nút `[✓ Đã Đóng Gói 9 Đơn]`.
+      - Mở trực tiếp từ mục "9 đơn chờ đóng gói": Gom 24 món của 4 loại nông sản (chuối sấy dẻo, chuối sấy giòn, mật ong, trà).
+      - Checkbox tương tác lớn gạch ngang khi đã lấy xong, thanh tiến trình `Đã lấy: n/4 loại`, nút `[🖨️ In Phiếu Soạn]` và nút `[✓ Đã Đóng Gói 9 Đơn]`.
+
+---
+
+### Giai đoạn 9: Hoàn Thiện Gian Hàng TMĐT Xã Viên, Khắc Phục Lỗi Dark Mode & Chuẩn Hóa Icon
+- **Yêu cầu của người dùng**:
+  1. Xóa các icon mũi tên (`›`) bị lỗi ở danh sách sản phẩm trong tab thực đơn/gian hàng.
+  2. Khi bấm vào avatar xã viên (Bác Ba) ở trang chủ thì hiển thị thông tin gian hàng cùng các sản phẩm như một sàn thương mại điện tử chuyên nghiệp (Shopee / TikTok Shop).
+  3. Đổi nút "Nói ngay" của Trợ lý Phi Phi thành button xanh lá solid đồng bộ CTA chính.
+  4. Sửa lỗi giao diện tối (Dark Mode) làm tất cả ảnh thực tế, avatar và banner bị đảo màu âm bản.
+  5. Đẩy toàn bộ mã nguồn, lịch sử chat lên Git và triển khai Production lên Vercel.
+- **Giải pháp thiết kế & triển khai chi tiết**:
+  1. **Khắc phục lỗi icon mũi tên (`›`)**:
+     - Loại bỏ hoàn toàn các ký tự mũi tên thô `›` bên cạnh tên sản phẩm trong `pmg-item`.
+     - Thay thế ký tự caret text `⌃ / ⌄` bằng icon vector SVG xoay chuyển mượt mà (`.pmg-chevron-box`).
+  2. **Gian Hàng Thương Mại Điện Tử Xã Viên Bác Ba (`#panel-farmer-store`)**:
+     - Khi bấm vào avatar Bác Ba ở Header Trang Chủ, hệ thống mở trực tiếp màn hình Gian Hàng TMĐT Nông Hộ.
+     - Cover banner nông trại sắc nét, Avatar Bác Ba kèm tick xanh xác thực HTX chính quy.
+     - Tên shop chuẩn TMĐT: **Gian Hàng Nông Hộ Bác Ba · HTX Đồng Cát** kèm nhãn vàng **OCOP YÊN BÌNH**.
+     - Bộ 4 chỉ số tín nhiệm: ⭐ 4.9 (128 đánh giá) | 18 đơn đã giao | 99% phản hồi | 4.2 tấn sản lượng.
+     - 4 cam kết chất lượng chuẩn nông sản sạch (Hái tận vườn, VietGAP, Truy xuất QR, Đổi trả nếu dập nát).
+     - Lưới 2 cột Shopee TMĐT hiển thị đầy đủ 8 nông sản thực tế (Chuối sấy giòn OCOP, Mật ong hoa rừng, Buồng chuối ngự tươi, Trà Shan Tuyết, Gạo nếp nương Tú Lệ, Cam sành Hàm Yên, Tinh bột nghệ đỏ, Mận hậu Mộc Châu sấy dẻo).
+     - Thanh điều hướng đáy gắn cố định với nút gọi điện đặt hàng sỉ trực tiếp cho Bác Ba và nút chia sẻ gian hàng qua Zalo.
+  3. **Nút "Nói ngay" Xanh Lá Đồng Bộ CTA**:
+     - Tái thiết kế `.phiphi-mic-callout` thành button xanh lá đậm (`#059669`), chữ trắng in đậm, kèm icon micro vector SVG trắng sắc nét và hiệu ứng shadow nổi bật.
+  4. **Khắc phục triệt để lỗi màu Dark Mode**:
+     - Trước đây sử dụng `invert` toàn bộ thiết bị khiến các ảnh thực tế bị đảo màu âm bản (ảnh âm bản kinh dị).
+     - Khắc phục bằng giải pháp CSS kép: duy trì nền tối dịu mắt cho các thành phần giao diện, đồng thời đảo ngược lại 100% đối với toàn bộ thẻ `img`, `video`, background banner và avatar (`filter: invert(1.08) hue-rotate(180deg) !important;`).
+     - Đảm bảo 100% hình ảnh nông sản, chân dung Bác Ba, banner Tết OCOP hiển thị trung thực, màu sắc tươi sáng tự nhiên cả ở Light Mode và Dark Mode.
 
 ---
 

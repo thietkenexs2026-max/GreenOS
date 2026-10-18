@@ -5246,11 +5246,14 @@
       white-space: normal;
       word-break: normal;
     }
-    .pmg-arrow {
-      color: #94A3B8;
-      font-size: 15px;
-      font-weight: 700;
-      flex-shrink: 0;
+    .pmg-chevron-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.22s ease;
+    }
+    .pmg-chevron-box.collapsed {
+      transform: rotate(180deg);
     }
     .pmg-item-price {
       font-size: 14px;
@@ -9216,6 +9219,477 @@
       scrollbar-width: none !important;
     }
     /* =========================================================================
+       GIAO DIỆN TỐI (DARK MODE) - CHUẨN ĐỒNG BỘ MÀU SẮC, GIỮ ẢNH THẬT 100%
+       ========================================================================= */
+    .phone-device.dark-theme {
+      filter: invert(0.92) hue-rotate(180deg);
+      background: #0B1320;
+    }
+    /* Đảo ngược lại 100% đối với ảnh, video, avatar, banner để bảo toàn màu ảnh tự nhiên, không bị âm bản */
+    .phone-device.dark-theme img,
+    .phone-device.dark-theme video,
+    .phone-device.dark-theme iframe,
+    .phone-device.dark-theme [style*="background-image"],
+    .phone-device.dark-theme .user-avatar-img,
+    .phone-device.dark-theme .phiphi-avatar-img,
+    .phone-device.dark-theme .banner-slider img,
+    .phone-device.dark-theme .promo-slide-img,
+    .phone-device.dark-theme .promo-carousel-container,
+    .phone-device.dark-theme .pmg-thumb,
+    .phone-device.dark-theme .ecom-img,
+    .phone-device.dark-theme .ecom-img-wrap,
+    .phone-device.dark-theme .ai-product-img,
+    .phone-device.dark-theme .product-img,
+    .phone-device.dark-theme .ob-slide-bg,
+    .phone-device.dark-theme .det-item-thumb,
+    .phone-device.dark-theme .wh-item-thumb,
+    .phone-device.dark-theme .wh-img-preview,
+    .phone-device.dark-theme .fs-cover-img,
+    .phone-device.dark-theme .fs-avatar-img,
+    .phone-device.dark-theme .fs-prod-img,
+    .phone-device.dark-theme .product-card-img {
+      filter: invert(1.08) hue-rotate(180deg) !important;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    /* =========================================================================
+       PANEL GIAN HÀNG THƯƠNG MẠI ĐIỆN TỬ XÃ VIÊN (BÁC BA · HTX ĐỒNG CÁT)
+       ========================================================================= */
+    #panel-farmer-store {
+      background: #F8FAFC;
+      padding-bottom: 95px;
+    }
+    .fs-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      position: sticky;
+      top: 0;
+      z-index: 80;
+    }
+    .fs-back-btn, .fs-action-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+    }
+    .fs-back-btn:active, .fs-action-btn:active {
+      transform: scale(0.95);
+      background: #F1F5F9;
+    }
+    .fs-search-box {
+      flex: 1;
+      margin: 0 10px;
+      position: relative;
+    }
+    .fs-search-box input {
+      width: 100%;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid #CBD5E1;
+      padding: 0 12px 0 34px;
+      font-size: 13px;
+      background: #F1F5F9;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .fs-search-box input:focus {
+      border-color: #059669;
+      background: #FFFFFF;
+    }
+    .fs-search-icon {
+      position: absolute;
+      left: 11px;
+      top: 10px;
+      color: #94A3B8;
+      pointer-events: none;
+    }
+    .fs-profile-card {
+      background: #FFFFFF;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding: 14px 14px 12px;
+      position: relative;
+    }
+    .fs-cover-banner {
+      width: 100%;
+      height: 85px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #065F46 0%, #047857 50%, #0D9488 100%);
+      margin-bottom: -32px;
+    }
+    .fs-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.65;
+    }
+    .fs-cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.55));
+      display: flex;
+      align-items: flex-end;
+      padding: 8px 12px;
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .fs-avatar-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 10px;
+      padding: 0 6px;
+    }
+    .fs-avatar-wrap {
+      position: relative;
+    }
+    .fs-avatar-img {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 3.5px solid #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      object-fit: cover;
+      background: #E2E8F0;
+    }
+    .fs-verified-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #059669;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 900;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .fs-shop-actions {
+      display: flex;
+      gap: 6px;
+    }
+    .fs-btn-follow {
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1.5px solid #059669;
+      background: #F0FDF4;
+      color: #059669;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      white-space: nowrap !important;
+    }
+    .fs-btn-chat {
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: none;
+      background: #059669;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      white-space: nowrap !important;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+    }
+    .fs-shop-name {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .fs-shop-badge-official {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.2px;
+      white-space: nowrap !important;
+    }
+    .fs-shop-sub {
+      font-size: 12.5px;
+      color: #64748B;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .fs-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 8px 6px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .fs-stat-num {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .fs-stat-label {
+      font-size: 10.5px;
+      color: #64748B;
+      margin-top: 1px;
+    }
+    .fs-commitments-row {
+      display: flex;
+      gap: 8px;
+      padding: 10px 14px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .fs-commit-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #047857;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+    }
+    .fs-tabs-bar {
+      display: flex;
+      background: #FFFFFF;
+      border-bottom: 1.5px solid #E2E8F0;
+      position: sticky;
+      top: 56px;
+      z-index: 70;
+    }
+    .fs-tab-btn {
+      flex: 1;
+      padding: 11px 6px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #64748B;
+      background: none;
+      border: none;
+      border-bottom: 2.5px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap !important;
+    }
+    .fs-tab-btn.active {
+      color: #059669;
+      border-bottom-color: #059669;
+      font-weight: 800;
+    }
+    .fs-product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 12px;
+    }
+    .fs-prod-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .fs-prod-card:active {
+      transform: scale(0.98);
+    }
+    .fs-prod-img-wrap {
+      width: 100%;
+      aspect-ratio: 1;
+      position: relative;
+      background: #F1F5F9;
+      overflow: hidden;
+    }
+    .fs-prod-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+    .fs-prod-badge {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      background: #059669;
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .fs-prod-badge.gold {
+      background: #D97706;
+    }
+    .fs-prod-badge.blue {
+      background: #2563EB;
+    }
+    .fs-prod-body {
+      padding: 8px 9px 10px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .fs-prod-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 35px;
+    }
+    .fs-prod-spec {
+      font-size: 11px;
+      color: #64748B;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .fs-prod-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+      margin-top: 6px;
+    }
+    .fs-prod-price {
+      font-size: 15px;
+      font-weight: 900;
+      color: #E11D48;
+    }
+    .fs-prod-unit {
+      font-size: 11px;
+      color: #64748B;
+    }
+    .fs-prod-bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed #F1F5F9;
+    }
+    .fs-prod-sold {
+      font-size: 11px;
+      color: #64748B;
+    }
+    .fs-btn-buy-mini {
+      height: 26px;
+      padding: 0 8px;
+      border-radius: 6px;
+      background: #059669;
+      color: #FFFFFF;
+      border: none;
+      font-size: 11.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      white-space: nowrap !important;
+    }
+    .fs-bottom-dock {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 430px;
+      background: #FFFFFF;
+      border-top: 1.5px solid #CBD5E1;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 100;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.06);
+      box-sizing: border-box;
+    }
+    .fs-dock-btn-secondary {
+      flex: 1;
+      height: 44px;
+      border-radius: 8px;
+      background: #F0FDF4;
+      color: #047857;
+      border: 1.5px solid #86EFAC;
+      font-size: 13.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      white-space: nowrap !important;
+    }
+    .fs-dock-btn-primary {
+      flex: 1.2;
+      height: 44px;
+      border-radius: 8px;
+      background: #059669;
+      color: #FFFFFF;
+      border: none;
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.35);
+      white-space: nowrap !important;
+    }
+
+    /* =========================================================================
        TRỢ LÝ AI PHI PHI - GREENVILLAGE OS (HOME CARD, FAB & CHAT MODAL)
        ========================================================================= */
     .phiphi-home-card {
@@ -9301,22 +9775,26 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      height: 32px;
-      padding: 0 10px;
-      background: #FFFFFF;
-      border: 1.5px solid #10B981;
+      height: 34px;
+      padding: 0 12px;
+      background: #059669;
+      border: none;
       border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #065F46;
+      font-size: 13px;
+      font-weight: 800;
+      color: #FFFFFF;
       cursor: pointer;
       flex-shrink: 0;
       white-space: nowrap !important;
-      box-shadow: 0 1px 4px rgba(16, 185, 129, 0.15);
-      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.35);
+      transition: all 0.18s ease;
     }
     .phiphi-mic-callout:hover {
-      background: #DCFCE7;
+      background: #047857;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.45);
+    }
+    .phiphi-mic-callout:active {
+      transform: scale(0.96);
     }
     .phiphi-speech-bubble {
       display: none;
@@ -10281,11 +10759,14 @@
 
       <section id="panel-home" class="view-panel active">
         <div class="home-user-header">
-          <div class="user-profile-meta">
-            <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="user-avatar-img">
+          <div class="user-profile-meta" onclick="openFarmerStorefront()" style="cursor:pointer;" title="Bấm xem gian hàng thương mại điện tử của Bác Ba">
+            <div style="position:relative;flex-shrink:0;">
+              <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="user-avatar-img">
+              <span style="position:absolute;bottom:-1px;right:-1px;width:15px;height:15px;background:#059669;border:1.5px solid #FFF;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FFF;font-size:9px;font-weight:900;">✓</span>
+            </div>
             <div>
               <div class="user-name-text">Chào Bác Ba! 👋</div>
-              <div class="user-address-sub">Xã Yên Bình · HTX Đồng Cát</div>
+              <div class="user-address-sub">Xã Yên Bình · HTX Đồng Cát <span style="display:inline-block;margin-left:4px;font-size:11px;font-weight:700;color:#059669;background:#ECFDF5;padding:1px 6px;border-radius:4px;border:1px solid #A7F3D0;">Gian hàng ➔</span></div>
             </div>
           </div>
           <!-- Nút xem lại Onboarding Hướng Dẫn -->
@@ -10313,20 +10794,23 @@
               </div>
             </div>
             <button type="button" class="phiphi-mic-callout" onclick="event.stopPropagation(); openPhiPhiScreen(true);" title="Bấm để nói chuyện với Phi Phi">
-              <span style="font-size:14px;">🎙️</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
               <span>Nói ngay</span>
             </button>
           </div>
 
           <div class="phiphi-chips-scroll" onclick="event.stopPropagation()">
             <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('gia_nong_san')">
-              <span>🏷️</span> Giá chuối, cam hôm nay?
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              <span>Giá chuối, cam hôm nay?</span>
             </button>
             <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('kiem_kho')">
-              <span>📦</span> Kiểm tra tồn kho
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              <span>Kiểm tra tồn kho</span>
             </button>
             <button type="button" class="phiphi-chip-btn" onclick="openPhiPhiScreen('thoi_tiet')">
-              <span>🌦️</span> Mai có mưa hái cam?
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+              <span>Mai có mưa hái cam?</span>
             </button>
           </div>
         </div>
@@ -10530,6 +11014,331 @@
               <button type="button" class="action-pill" onclick="event.stopPropagation(); openAnCuJobScreen()" style="background:#D97706;color:#FFFFFF;white-space:nowrap !important;min-width:0 !important;">Tìm ngay ›</button>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           PANEL GIAN HÀNG THƯƠNG MẠI ĐIỆN TỬ XÃ VIÊN (BÁC BA · HTX ĐỒNG CÁT)
+           ========================================================================= -->
+      <section id="panel-farmer-store" class="view-panel">
+        <!-- Top Bar Navigation -->
+        <div class="fs-header-bar">
+          <button type="button" class="fs-back-btn" onclick="closeFarmerStorefront()" title="Quay lại Trang chủ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="fs-search-box">
+            <svg class="fs-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="fsSearchInput" placeholder="Tìm nông sản trong gian hàng Bác Ba..." oninput="searchFarmerStore(this.value)">
+          </div>
+          <button type="button" class="fs-action-btn" onclick="shareFarmerStorefront()" title="Chia sẻ gian hàng">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          </button>
+        </div>
+
+        <!-- Shop Profile Header Card (Shopee Style) -->
+        <div class="fs-profile-card">
+          <div class="fs-cover-banner">
+            <img src="tet_banner.jpg" alt="Vườn Bác Ba" class="fs-cover-img">
+            <div class="fs-cover-overlay">
+              <span>🌾 Nông hộ tiêu biểu · HTX Đồng Cát Yên Bình</span>
+            </div>
+          </div>
+          <div class="fs-avatar-row">
+            <div class="fs-avatar-wrap">
+              <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="fs-avatar-img">
+              <span class="fs-verified-badge" title="Đã xác thực HTX">✓</span>
+            </div>
+            <div class="fs-shop-actions">
+              <button type="button" class="fs-btn-follow" onclick="triggerToast('✓ Đã theo dõi gian hàng Bác Ba!')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>Theo dõi</span>
+              </button>
+              <button type="button" class="fs-btn-chat" onclick="openPhiPhiScreen('tu_van_bac_ba')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>Tư vấn</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="fs-shop-name">
+            <span>Gian Hàng Nông Hộ Bác Ba</span>
+            <span class="fs-shop-badge-official">OCOP YÊN BÌNH</span>
+          </div>
+          <div class="fs-shop-sub">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Thôn 3, Xã Yên Bình, Tỉnh Yên Bái · HTX Nông Nghiệp Đồng Cát</span>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="fs-stats-grid">
+            <div>
+              <div class="fs-stat-num" style="color:#D97706;">⭐ 4.9</div>
+              <div class="fs-stat-label">128 Đánh giá</div>
+            </div>
+            <div>
+              <div class="fs-stat-num" style="color:#059669;">18 Đơn</div>
+              <div class="fs-stat-label">Đã giao tháng này</div>
+            </div>
+            <div>
+              <div class="fs-stat-num">99%</div>
+              <div class="fs-stat-label">Tỷ lệ phản hồi</div>
+            </div>
+            <div>
+              <div class="fs-stat-num" style="color:#2563EB;">4.2 Tấn</div>
+              <div class="fs-stat-label">Sản lượng vụ sớm</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Cam kết chất lượng -->
+        <div class="fs-commitments-row">
+          <div class="fs-commit-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>100% Cắt hái tại vườn</span>
+          </div>
+          <div class="fs-commit-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>Tiêu chuẩn VietGAP & OCOP</span>
+          </div>
+          <div class="fs-commit-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/></svg>
+            <span>Truy xuất QR nguồn gốc</span>
+          </div>
+          <div class="fs-commit-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <span>Đổi trả nếu dập nát</span>
+          </div>
+        </div>
+
+        <!-- Tabs lọc danh mục -->
+        <div class="fs-tabs-bar">
+          <button type="button" class="fs-tab-btn active" onclick="filterFarmerStore('all', this)">Tất cả (8)</button>
+          <button type="button" class="fs-tab-btn" onclick="filterFarmerStore('ocop', this)">OCOP 4⭐ (3)</button>
+          <button type="button" class="fs-tab-btn" onclick="filterFarmerStore('fresh', this)">Tươi VietGAP (3)</button>
+          <button type="button" class="fs-tab-btn" onclick="filterFarmerStore('dried', this)">Chế biến (2)</button>
+        </div>
+
+        <!-- Lưới sản phẩm TMĐT 2 cột -->
+        <div class="fs-product-grid" id="fsProductGrid">
+          <!-- Card 1 -->
+          <div class="fs-prod-card" data-cat="ocop" data-title="Chuối sấy giòn OCOP 4 sao" onclick="openProductDetailModal(1)">
+            <div class="fs-prod-img-wrap">
+              <img src="banana_front.jpg" alt="Chuối sấy giòn" class="fs-prod-img">
+              <span class="fs-prod-badge gold">OCOP 4⭐</span>
+            </div>
+            <div class="fs-prod-body">
+              <div>
+                <div class="fs-prod-title">Chuối Sấy Giòn OCOP 4 Sao Thượng Hạng</div>
+                <div class="fs-prod-spec">Túi zip 250g · Giòn tan không đường</div>
+              </div>
+              <div>
+                <div class="fs-prod-price-row">
+                  <span class="fs-prod-price">45.000 đ</span>
+                  <span class="fs-prod-unit">/ gói</span>
+                </div>
+                <div class="fs-prod-bottom-row">
+                  <span class="fs-prod-sold">Đã bán 230</span>
+                  <button type="button" class="fs-btn-buy-mini" onclick="event.stopPropagation(); quickBuyEcomProduct('Chuối Sấy Giòn OCOP 4 Sao', '45.000 đ')">
+                    <span>Chọn</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="fs-prod-card" data-cat="ocop" data-title="Mật ong hoa rừng tự nhiên" onclick="openProductDetailModal(2)">
+            <div class="fs-prod-img-wrap">
+              <img src="honey_front.jpg" alt="Mật ong hoa rừng" class="fs-prod-img">
+              <span class="fs-prod-badge gold">OCOP 4⭐</span>
+            </div>
+            <div class="fs-prod-body">
+              <div>
+                <div class="fs-prod-title">Mật Ong Hoa Rừng Tự Nhiên Nguyên Chất</div>
+                <div class="fs-prod-spec">Hũ thủy tinh 500ml · Mật đặc sánh</div>
+              </div>
+              <div>
+                <div class="fs-prod-price-row">
+                  <span class="fs-prod-price">180.000 đ</span>
+                  <span class="fs-prod-unit">/ hũ</span>
+                </div>
+                <div class="fs-prod-bottom-row">
+                  <span class="fs-prod-sold">Đã bán 85</span>
+                  <button type="button" class="fs-btn-buy-mini" onclick="event.stopPropagation(); quickBuyEcomProduct('Mật Ong Hoa Rừng Tự Nhiên', '180.000 đ')">
+                    <span>Chọn</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="fs-prod-card" data-cat="fresh" data-title="Chuối tiêu hồng tươi cắt buồng" onclick="openProductDetailModal(3)">
+            <div class="fs-prod-img-wrap">
+              <img src="banana_plate.jpg" alt="Chuối tiêu hồng tươi" class="fs-prod-img">
+              <span class="fs-prod-badge">VietGAP</span>
+            </div>
+            <div class="fs-prod-body">
+              <div>
+                <div class="fs-prod-title">Chuối Tiêu Hồng Tươi Cắt Buồng VietGAP</div>
+                <div class="fs-prod-spec">Cắt buồng hái sớm · Quả mập đều</div>
+              </div>
+              <div>
+                <div class="fs-prod-price-row">
+                  <span class="fs-prod-price">25.000 đ</span>
+                  <span class="fs-prod-unit">/ kg</span>
+                </div>
+                <div class="fs-prod-bottom-row">
+                  <span class="fs-prod-sold">Đã bán 520 kg</span>
+                  <button type="button" class="fs-btn-buy-mini" onclick="event.stopPropagation(); quickBuyEcomProduct('Chuối Tiêu Hồng Tươi Cắt Buồng', '25.000 đ')">
+                    <span>Chọn</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="fs-prod-card" data-cat="dried" data-title="Trà Shan Tuyết cổ thụ búp nõn" onclick="openProductDetailModal(4)">
+            <div class="fs-prod-img-wrap">
+              <img src="tea_front.jpg" alt="Trà Shan Tuyết" class="fs-prod-img">
+              <span class="fs-prod-badge blue">Đặc sản</span>
+            </div>
+            <div class="fs-prod-body">
+              <div>
+                <div class="fs-prod-title">Trà Shan Tuyết Cổ Thụ Búp Nõn Suối Giàng</div>
+                <div class="fs-prod-spec">Gói hút chân không 200g · Thơm sâu</div>
+              </div>
+              <div>
+                <div class="fs-prod-price-row">
+                  <span class="fs-prod-price">160.000 đ</span>
+                  <span class="fs-prod-unit">/ gói</span>
+                </div>
+                <div class="fs-prod-bottom-row">
+                  <span class="fs-prod-sold">Đã bán 140</span>
+                  <button type="button" class="fs-btn-buy-mini" onclick="event.stopPropagation(); quickBuyEcomProduct('Trà Shan Tuyết Cổ Thụ Búp Nõn', '160.000 đ')">
+                    <span>Chọn</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="fs-prod-card" data-cat="ocop" data-title="Gạo nếp nương Tú Lệ thơm dẻo">
+            <div class="fs-prod-img-wrap">
+              <img src="rice_product.jpg" alt="Gạo Nếp Nương Tú Lệ" class="fs-prod-img">
+              <span class="fs-prod-badge gold">OCOP 4⭐</span>
+            </div>
+            <div class="fs-prod-body">
+              <div>
+                <div class="fs-prod-title">Gạo Nếp Nương Tú Lệ Hạt Tròn Thơm Dẻo</div>
+                <div class="fs-prod-spec">Túi thổ cẩm 1kg · Vụ mùa mới thu hoạch</div>
+              </div>
+              <div>
+                <div class="fs-prod-price-row">
+                  <span class="fs-prod-price">55.000 đ</span>
+                  <span class="fs-prod-unit">/ kg</span>
+                </div>
+                <div class="fs-prod-bottom-row">
+                  <span class="fs-prod-sold">Đã bán 380 kg</span>
+                  <button type="button" class="fs-btn-buy-mini" onclick="event.stopPropagation(); quickBuyEcomProduct('Gạo Nếp Nương Tú Lệ Thơm Dẻo', '55.000 đ')">
+                    <span>Chọn</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="fs-prod-card" data-cat="fresh" data-title="Cam sành Hàm Yên mọng nước">
+            <div class="fs-prod-img-wrap">
+              <img src="orange_product.jpg" alt="Cam sành Hàm Yên" class="fs-prod-img">
+              <span class="fs-prod-badge">VietGAP</span>
+            </div>
+            <div class="fs-prod-body">
+              <div>
+                <div class="fs-prod-title">Cam Sành Hàm Yên Vỏ Mỏng Mọng Nước</div>
+                <div class="fs-prod-spec">Thu hái sáng sớm · Cân sỉ & lẻ</div>
+              </div>
+              <div>
+                <div class="fs-prod-price-row">
+                  <span class="fs-prod-price">35.000 đ</span>
+                  <span class="fs-prod-unit">/ kg</span>
+                </div>
+                <div class="fs-prod-bottom-row">
+                  <span class="fs-prod-sold">Đã bán 1.5 tấn</span>
+                  <button type="button" class="fs-btn-buy-mini" onclick="event.stopPropagation(); quickBuyEcomProduct('Cam Sành Hàm Yên Mọng Nước', '35.000 đ')">
+                    <span>Chọn</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="fs-prod-card" data-cat="fresh" data-title="Tinh bột nghệ đỏ nguyên chất">
+            <div class="fs-prod-img-wrap">
+              <img src="turmeric_product.jpg" alt="Tinh bột nghệ đỏ" class="fs-prod-img">
+              <span class="fs-prod-badge">VietGAP</span>
+            </div>
+            <div class="fs-prod-body">
+              <div>
+                <div class="fs-prod-title">Tinh Bột Nghệ Đỏ Nếp Nguyên Chất 100%</div>
+                <div class="fs-prod-spec">Hũ thủy tinh 200g · Giàu curcumin</div>
+              </div>
+              <div>
+                <div class="fs-prod-price-row">
+                  <span class="fs-prod-price">120.000 đ</span>
+                  <span class="fs-prod-unit">/ hũ</span>
+                </div>
+                <div class="fs-prod-bottom-row">
+                  <span class="fs-prod-sold">Đã bán 95 hũ</span>
+                  <button type="button" class="fs-btn-buy-mini" onclick="event.stopPropagation(); quickBuyEcomProduct('Tinh Bột Nghệ Đỏ Nguyên Chất', '120.000 đ')">
+                    <span>Chọn</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="fs-prod-card" data-cat="dried" data-title="Mận hậu Mộc Châu sấy dẻo">
+            <div class="fs-prod-img-wrap">
+              <img src="plum_product.jpg" alt="Mận hậu sấy dẻo" class="fs-prod-img">
+              <span class="fs-prod-badge gold">OCOP 3⭐</span>
+            </div>
+            <div class="fs-prod-body">
+              <div>
+                <div class="fs-prod-title">Mận Hậu Mộc Châu Sấy Dẻo Chua Ngọt</div>
+                <div class="fs-prod-spec">Hộp đứng 250g · Không chất bảo quản</div>
+              </div>
+              <div>
+                <div class="fs-prod-price-row">
+                  <span class="fs-prod-price">75.000 đ</span>
+                  <span class="fs-prod-unit">/ hộp</span>
+                </div>
+                <div class="fs-prod-bottom-row">
+                  <span class="fs-prod-sold">Đã bán 210</span>
+                  <button type="button" class="fs-btn-buy-mini" onclick="event.stopPropagation(); quickBuyEcomProduct('Mận Hậu Mộc Châu Sấy Dẻo', '75.000 đ')">
+                    <span>Chọn</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Bottom Contact & Order Bar -->
+        <div class="fs-bottom-dock">
+          <button type="button" class="fs-dock-btn-secondary" onclick="shareFarmerStorefront()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            <span>Chia sẻ gian hàng</span>
+          </button>
+          <button type="button" class="fs-dock-btn-primary" onclick="alert('📞 Gọi trực tiếp cho Bác Ba: 0984.629.892 (HTX Yên Bình)')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Gọi Đặt Đơn Sỉ</span>
+          </button>
         </div>
       </section>
 
@@ -11238,7 +12047,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <span class="pmg-title">NÔNG SẢN OCOP 4 SAO</span>
               <div class="pmg-meta">
                 <span id="pmGroupCount_1">2/2</span>
-                <span id="pmChevron_1" style="font-size:12px">⌃</span>
+                <span id="pmChevron_1" class="pmg-chevron-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></span>
               </div>
             </div>
             <div class="pmg-list" id="pmList_1">
@@ -11249,7 +12058,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                   <div class="pmg-item-info">
                     <div class="pmg-item-name">
                       <span>Chuối Sấy Giòn OCOP 4 Sao</span>
-                      <span class="pmg-arrow">›</span>
                     </div>
                     <div class="pmg-item-price" id="pmgPrice_1">45.000đ</div>
                   </div>
@@ -11267,7 +12075,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                   <div class="pmg-item-info">
                     <div class="pmg-item-name">
                       <span>Mật Ong Hoa Rừng Tự Nhiên 500ml</span>
-                      <span class="pmg-arrow">›</span>
                     </div>
                     <div class="pmg-item-price" id="pmgPrice_2">180.000đ</div>
                   </div>
@@ -11286,7 +12093,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <span class="pmg-title">NÔNG SẢN TƯƠI VIETGAP</span>
               <div class="pmg-meta">
                 <span id="pmGroupCount_2">0/1</span>
-                <span id="pmChevron_2" style="font-size:12px">⌃</span>
+                <span id="pmChevron_2" class="pmg-chevron-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></span>
               </div>
             </div>
             <div class="pmg-list" id="pmList_2">
@@ -11297,7 +12104,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                   <div class="pmg-item-info">
                     <div class="pmg-item-name">
                       <span>Chuối Tiêu Hồng Tươi Cắt Buồng</span>
-                      <span class="pmg-arrow">›</span>
                     </div>
                     <div class="pmg-item-price" id="pmgPrice_3">25.000đ</div>
                   </div>
@@ -11316,7 +12122,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <span class="pmg-title">ĐẶC SẢN NÔNG SẢN KHÁC</span>
               <div class="pmg-meta">
                 <span id="pmGroupCount_3">0/1</span>
-                <span id="pmChevron_3" style="font-size:12px">⌃</span>
+                <span id="pmChevron_3" class="pmg-chevron-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></span>
               </div>
             </div>
             <div class="pmg-list" id="pmList_3">
@@ -11327,7 +12133,6 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                   <div class="pmg-item-info">
                     <div class="pmg-item-name">
                       <span>Trà Shan Tuyết Cổ Thụ Búp Nõn</span>
-                      <span class="pmg-arrow">›</span>
                     </div>
                     <div class="pmg-item-price" id="pmgPrice_4">160.000đ</div>
                   </div>
@@ -14459,6 +15264,9 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } else if (tabName === 'market') {
         document.getElementById('panel-market').classList.add('active');
         if (document.getElementById('tabMarket')) document.getElementById('tabMarket').classList.add('active');
+      } else if (tabName === 'farmer-store') {
+        openFarmerStorefront();
+        return;
       } else if (tabName === 'support') {
         document.getElementById('panel-support').classList.add('active');
         if (document.getElementById('tabSupport')) document.getElementById('tabSupport').classList.add('active');
@@ -17753,10 +18561,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       if (!list) return;
       if (list.style.display === 'none') {
         list.style.display = 'flex';
-        if (chevron) chevron.textContent = '⌃';
+        if (chevron) chevron.classList.remove('collapsed');
       } else {
         list.style.display = 'none';
-        if (chevron) chevron.textContent = '⌄';
+        if (chevron) chevron.classList.add('collapsed');
       }
     }
 
@@ -17859,6 +18667,68 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         });
       } else {
         triggerToast("✓ Link gian hàng Bác Ba: " + shareUrl);
+      }
+    }
+
+    // GIAN HÀNG THƯƠNG MẠI ĐIỆN TỬ BÁC BA
+    function openFarmerStorefront() {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      const fs = document.getElementById('panel-farmer-store');
+      if (fs) {
+        fs.classList.add('active');
+        const sc = document.querySelector('.screen-container');
+        if (sc) sc.scrollTop = 0;
+      }
+      if (bottomNav) bottomNav.classList.add('nav-hidden');
+    }
+
+    function closeFarmerStorefront() {
+      switchNavTab('home');
+    }
+
+    function filterFarmerStore(cat, btn) {
+      document.querySelectorAll('.fs-tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const cards = document.querySelectorAll('.fs-prod-card');
+      cards.forEach(card => {
+        const cCat = card.getAttribute('data-cat') || '';
+        if (cat === 'all' || cCat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function searchFarmerStore(keyword) {
+      const q = (keyword || '').toLowerCase().trim();
+      const cards = document.querySelectorAll('.fs-prod-card');
+      cards.forEach(card => {
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        if (!q || title.includes(q)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function shareFarmerStorefront() {
+      const shareUrl = "https://greenos.vn/shop/bac-ba-xv004";
+      if (navigator.share) {
+        navigator.share({
+          title: 'Gian Hàng Nông Sản Bác Ba · HTX Đồng Cát',
+          text: 'Mời bà con và đối tác ghé thăm gian hàng nông sản sạch OCOP của Bác Ba tại Chợ Xanh GreenVillageOS!',
+          url: shareUrl
+        }).catch(() => {});
+      } else if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          triggerToast("✓ Đã sao chép link gian hàng Bác Ba: " + shareUrl);
+        }).catch(() => {
+          triggerToast("✓ Link gian hàng: " + shareUrl);
+        });
+      } else {
+        triggerToast("✓ Link gian hàng: " + shareUrl);
       }
     }
 
@@ -18370,6 +19240,12 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               toggleChannelDropdown();
             }, 300);
           }
+          if (urlParams.get('open_store') === '1') {
+            setTimeout(openFarmerStorefront, 200);
+          }
+          if (urlParams.get('dark') === '1') {
+            setTimeout(toggleDarkMode, 150);
+          }
         }
       } catch (e) {
         console.error('Init error:', e);
@@ -18453,12 +19329,16 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     let isDarkMode = false;
     function toggleDarkMode() {
       isDarkMode = !isDarkMode;
+      const pd = document.querySelector('.phone-device');
+      if (pd) {
+        pd.style.filter = '';
+        pd.classList.toggle('dark-theme', isDarkMode);
+      }
+      document.body.classList.toggle('dark-mode-active', isDarkMode);
       if (isDarkMode) {
-        document.querySelector('.phone-device').style.filter = 'invert(0.92) hue-rotate(180deg)';
-        triggerToast('Đã bật giao diện tối (Dark Mode)');
+        triggerToast('🌙 Đã bật giao diện tối (Dark Mode)');
       } else {
-        document.querySelector('.phone-device').style.filter = '';
-        triggerToast('Đã tắt giao diện tối');
+        triggerToast('☀️ Đã tắt giao diện tối');
       }
     }
 

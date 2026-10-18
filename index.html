@@ -3328,6 +3328,13 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 12px;
+      position: relative;
+      z-index: 50;
+      overflow: visible !important;
+    }
+    .agri-filter-toolbar:has(.open),
+    .agri-filter-toolbar.has-dropdown-open {
+      z-index: 250 !important;
     }
     .agri-date-btn, .shopee-date-btn {
       flex: 1;
@@ -3394,9 +3401,13 @@
     .agri-channel-dropdown-wrap {
       position: relative;
       flex-shrink: 0;
+      z-index: 100;
     }
     .agri-channel-dropdown-wrap .ac-arrow {
       transition: transform 180ms ease;
+    }
+    .agri-channel-dropdown-wrap.open {
+      z-index: 999;
     }
     .agri-channel-dropdown-wrap.open .ac-arrow {
       transform: rotate(180deg);
@@ -3415,13 +3426,12 @@
       background: #FFFFFF;
       border: 1.5px solid #CBD5E1;
       border-radius: 14px;
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.18), 0 4px 10px -2px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25), 0 4px 10px -2px rgba(15, 23, 42, 0.12);
       padding: 6px;
-      z-index: 120;
+      z-index: 9999;
       display: none;
       flex-direction: column;
       gap: 3px;
-      animation: fadeInDown 150ms ease-out forwards;
     }
     .agri-channel-dropdown-wrap.open .agri-channel-menu {
       display: flex;
@@ -8717,7 +8727,7 @@
       width: 100%;
       min-width: 0 !important;
       box-sizing: border-box !important;
-      overflow-x: hidden;
+      overflow: visible;
     }
 
     /* ĐĂNG BÁN STEP 2: GIÁ BÁN NỔI BẬT */
@@ -9199,7 +9209,7 @@
       max-width: 430px !important;
       overflow-x: hidden !important;
     }
-    .horizontal-scroll, .ecom-cat-chips, .agri-status-tabs-container, .agri-filter-toolbar, .osb-tags-row {
+    .horizontal-scroll, .ecom-cat-chips, .agri-status-tabs-container, .osb-tags-row {
       max-width: 100% !important;
       overflow-x: auto !important;
       -webkit-overflow-scrolling: touch !important;
@@ -11798,60 +11808,74 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <!-- Menu Dropdown hiển thị đầy đủ danh sách các nguồn đơn -->
               <div class="agri-channel-menu" id="agriChannelMenu">
                 <div class="ac-item active" data-val="all" onclick="selectChannelOption('all', 'Tất cả nguồn')">
-                  <span class="ac-icon">🌱</span>
+                  <span class="ac-icon" style="background:#ECFDF5">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4.1 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+                  </span>
                   <div class="ac-info">
                     <span class="ac-title">Tất cả nguồn đơn</span>
                     <span class="ac-sub">Toàn bộ 10 đơn thu mua nông sản</span>
                   </div>
-                  <span class="ac-check">✓</span>
+                  <span class="ac-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                 </div>
                 <div class="ac-item" data-val="b2b" onclick="selectChannelOption('b2b', 'Hợp đồng sỉ B2B')">
-                  <span class="ac-icon">🏢</span>
+                  <span class="ac-icon" style="background:#EFF6FF">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><line x1="8" y1="6" x2="8.01" y2="6"/><line x1="16" y1="6" x2="16.01" y2="6"/><line x1="12" y1="6" x2="12.01" y2="6"/><line x1="8" y1="10" x2="8.01" y2="10"/><line x1="12" y1="10" x2="12.01" y2="10"/><line x1="16" y1="10" x2="16.01" y2="10"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16.01" y2="14"/></svg>
+                  </span>
                   <div class="ac-info">
                     <span class="ac-title">Hợp đồng sỉ B2B</span>
                     <span class="ac-sub">WinMart, chuỗi siêu thị bán lẻ</span>
                   </div>
-                  <span class="ac-check">✓</span>
+                  <span class="ac-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                 </div>
                 <div class="ac-item" data-val="trader" onclick="selectChannelOption('trader', 'Thương lái cân vườn')">
-                  <span class="ac-icon">🚚</span>
+                  <span class="ac-icon" style="background:#FFFBEB">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                  </span>
                   <div class="ac-info">
                     <span class="ac-title">Thương lái cân vườn</span>
                     <span class="ac-sub">Thu mua trực tiếp tại vườn Bác Ba</span>
                   </div>
-                  <span class="ac-check">✓</span>
+                  <span class="ac-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                 </div>
                 <div class="ac-item" data-val="school" onclick="selectChannelOption('school', 'Nông sản học đường')">
-                  <span class="ac-icon">🏫</span>
+                  <span class="ac-icon" style="background:#F0F9FF">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </span>
                   <div class="ac-info">
                     <span class="ac-title">Nông sản học đường</span>
                     <span class="ac-sub">Bếp ăn trường học xã Yên Bình</span>
                   </div>
-                  <span class="ac-check">✓</span>
+                  <span class="ac-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                 </div>
                 <div class="ac-item" data-val="zalo" onclick="selectChannelOption('zalo', 'Khách quen Zalo OCOP')">
-                  <span class="ac-icon">💬</span>
+                  <span class="ac-icon" style="background:#F0FDFA">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </span>
                   <div class="ac-info">
                     <span class="ac-title">Khách quen Zalo OCOP</span>
                     <span class="ac-sub">Zalo Mini App & đối tác quen</span>
                   </div>
-                  <span class="ac-check">✓</span>
+                  <span class="ac-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                 </div>
                 <div class="ac-item" data-val="market" onclick="selectChannelOption('market', 'Chợ Xã Yên Bình')">
-                  <span class="ac-icon">🛒</span>
+                  <span class="ac-icon" style="background:#FAF5FF">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                  </span>
                   <div class="ac-info">
                     <span class="ac-title">Chợ Xã Yên Bình</span>
                     <span class="ac-sub">Giao dịch trực tiếp tại chợ xã</span>
                   </div>
-                  <span class="ac-check">✓</span>
+                  <span class="ac-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                 </div>
                 <div class="ac-item" data-val="deposit" onclick="selectChannelOption('deposit', 'Đặt cọc vụ Tết')">
-                  <span class="ac-icon">🧧</span>
+                  <span class="ac-icon" style="background:#FFF1F2">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                  </span>
                   <div class="ac-info">
                     <span class="ac-title">Đặt cọc vụ Tết</span>
                     <span class="ac-sub">Chuối tiến vua & giỏ quà Tết</span>
                   </div>
-                  <span class="ac-check">✓</span>
+                  <span class="ac-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                 </div>
               </div>
             </div>
@@ -16494,15 +16518,19 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         event.stopPropagation();
       }
       const wrap = document.getElementById('agriChannelDropdownWrap');
+      const toolbar = wrap ? wrap.closest('.agri-filter-toolbar') : null;
       if (wrap) {
-        wrap.classList.toggle('open');
+        const isOpen = wrap.classList.toggle('open');
+        if (toolbar) toolbar.classList.toggle('has-dropdown-open', isOpen);
       }
     }
 
     function closeChannelDropdown() {
       const wrap = document.getElementById('agriChannelDropdownWrap');
+      const toolbar = wrap ? wrap.closest('.agri-filter-toolbar') : null;
       if (wrap) {
         wrap.classList.remove('open');
+        if (toolbar) toolbar.classList.remove('has-dropdown-open');
       }
     }
 
@@ -18335,6 +18363,12 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                 }, 150);
               }
             }, 100);
+          }
+          if (urlParams.get('open_channel_dropdown') === '1') {
+            switchNavTab('orders');
+            setTimeout(() => {
+              toggleChannelDropdown();
+            }, 300);
           }
         }
       } catch (e) {

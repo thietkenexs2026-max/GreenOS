@@ -11204,8 +11204,8 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           </button>
           <div class="det-top-title-box">
-            <h1 class="det-top-title">Sổ thẻ kho điện tử</h1>
-            <span class="det-top-code">Nhật ký biến động xuất nhập tồn</span>
+            <h1 class="det-top-title">Sổ xuất nhập (Thẻ kho)</h1>
+            <span class="det-top-code">Lịch sử thu hoạch, xuất bán & biến động tồn</span>
           </div>
           <button type="button" class="det-bell-icon-btn" onclick="shareStockCardToHTX()" title="Gửi HTX">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
@@ -17029,14 +17029,23 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               </div>
             </div>
 
-            <!-- Dòng trạng thái & Các nút thao tác chuẩn Shopee (Đồng bộ 32px pill, không vỡ layout) -->
+            <!-- Hàng 1: Trạng thái tồn kho & Xem sổ xuất nhập -->
             <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px dashed #E2E8F0;gap:8px">
-              <span class="wh-stock-pill ${pillClass}" style="flex-shrink:0">${pillText}</span>
-              <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
-                <button type="button" class="btn-wh-action btn-wh-in" onclick="openWarehouseInboundScreen('${p.id}')" style="height:32px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:700">📥 Nhập</button>
-                <button type="button" class="btn-wh-action btn-wh-out" onclick="openWarehouseOutboundScreen('${p.id}')" style="height:32px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:700">📤 Xuất</button>
-                <button type="button" class="btn-wh-action btn-wh-card" onclick="openWarehouseStockCardScreen('${p.id}')" style="height:32px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:700">📋 Thẻ kho</button>
-              </div>
+              <span class="wh-stock-pill ${pillClass}" style="flex-shrink:0;max-width:65%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${pillText}</span>
+              <button type="button" class="btn-wh-card" onclick="openWarehouseStockCardScreen('${p.id}')" style="background:none;border:none;color:#2563EB;font-size:12px;font-weight:700;cursor:pointer;padding:0;white-space:nowrap;display:inline-flex;align-items:center;gap:3px;flex-shrink:0">
+                <span>📋 Sổ xuất nhập</span>
+                <span style="font-size:10.5px">➔</span>
+              </button>
+            </div>
+
+            <!-- Hàng 2: 2 nút hành động lớn, cân đối 50/50 chuẩn Shopee (Không bao giờ vỡ hay tràn viền) -->
+            <div style="display:flex;gap:8px;margin-top:8px;width:100%;box-sizing:border-box">
+              <button type="button" class="btn-wh-action btn-wh-in" onclick="openWarehouseInboundScreen('${p.id}')" style="flex:1;height:36px;border-radius:8px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:4px;background:#F0FDF4;color:#15803D;border:1.5px solid #86EFAC;box-sizing:border-box !important;">
+                <span>📥</span> Nhập nương
+              </button>
+              <button type="button" class="btn-wh-action btn-wh-out" onclick="openWarehouseOutboundScreen('${p.id}')" style="flex:1;height:36px;border-radius:8px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:4px;background:#15803D;color:#FFFFFF;border:none;box-sizing:border-box !important;">
+                <span>📤</span> Xuất kho
+              </button>
             </div>
           </div>
         `;

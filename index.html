@@ -3154,7 +3154,7 @@
       justify-content: center;
       padding: 20px;
     }
-    .dash-qr-modal-overlay.show { display: flex; }
+    .dash-qr-modal-overlay.show, .dash-qr-modal-overlay.active { display: flex; }
     .dash-qr-card {
       background: #FFFFFF;
       border-radius: 24px;
@@ -7515,20 +7515,221 @@
     .wh-card-actions {
       display: flex;
       gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
     }
     .btn-wh-action {
       background: #F8FAFC;
       border: 1px solid #CBD5E1;
-      padding: 5px 10px;
+      padding: 6px 10px;
       border-radius: 8px;
       font-size: 12px;
       font-weight: 700;
       color: #334155;
       cursor: pointer;
-      transition: background 150ms ease;
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 140ms ease;
     }
     .btn-wh-action:active {
-      background: #E2E8F0;
+      transform: scale(0.96);
+    }
+    .btn-wh-action.btn-wh-in {
+      background: #F0FDF4;
+      border-color: #86EFAC;
+      color: #166534;
+    }
+    .btn-wh-action.btn-wh-out {
+      background: #EFF6FF;
+      border-color: #93C5FD;
+      color: #1E40AF;
+    }
+    .btn-wh-action.btn-wh-card {
+      background: #FFFBEB;
+      border-color: #FDE68A;
+      color: #92400E;
+    }
+    .btn-wh-action.btn-wh-more {
+      background: #F8FAFC;
+      border-color: #E2E8F0;
+      color: #475569;
+      padding: 6px 8px;
+    }
+
+    /* Thanh Thao Tác Nhanh WMS (3 nút ngang cân đối chuẩn Shopee) */
+    .wh-quick-actions-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .wh-quick-action-btn {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 9px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 150ms ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      min-width: 0 !important;
+    }
+    .wh-quick-action-btn:active {
+      transform: scale(0.97);
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+    }
+    .wh-qa-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .wh-qa-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1E293B;
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    /* Nhãn định danh lô, kho lạnh và FEFO */
+    .wh-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 5px;
+      align-items: center;
+    }
+    .wh-badge-loc {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #0369A1;
+      background: #E0F2FE;
+      padding: 2px 7px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .wh-badge-batch {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      background: #F1F5F9;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-family: monospace;
+      white-space: nowrap;
+    }
+    .wh-badge-fefo {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #92400E;
+      background: #FEF3C7;
+      padding: 2px 7px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* Modal Sổ Thẻ Kho & Timeline Ledger */
+    .wh-ledger-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 320px;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin: 12px 0;
+    }
+    .wh-ledger-item {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+    }
+    .wh-ledger-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .wh-ledger-date {
+      font-size: 11.5px;
+      color: #64748B;
+      font-weight: 600;
+    }
+    .wh-ledger-change {
+      font-weight: 800;
+      font-size: 13.5px;
+    }
+    .wh-ledger-change.in { color: #166534; }
+    .wh-ledger-change.out { color: #1E40AF; }
+    .wh-ledger-change.loss { color: #DC2626; }
+    .wh-ledger-change.audit { color: #D97706; }
+    .wh-ledger-sub {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #334155;
+    }
+
+    /* Camera Scanner mô phỏng Laser */
+    .wh-scanner-box {
+      position: relative;
+      width: 100%;
+      height: 190px;
+      background: #0F172A;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      border: 2px solid #334155;
+    }
+    .wh-scanner-frame {
+      width: 140px;
+      height: 140px;
+      border: 2px dashed #22C55E;
+      border-radius: 12px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wh-laser-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: linear-gradient(90deg, transparent, #22C55E, transparent);
+      box-shadow: 0 0 10px #22C55E;
+      animation: whLaserScan 2s infinite ease-in-out;
+    }
+    @keyframes whLaserScan {
+      0% { top: 0%; opacity: 0.8; }
+      50% { top: 96%; opacity: 1; }
+      100% { top: 0%; opacity: 0.8; }
     }
 
     /* =========================================================================
@@ -8166,6 +8367,9 @@
     }
     .orders-sub-view {
       width: 100%;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+      overflow-x: hidden;
     }
 
     /* ĐĂNG BÁN STEP 2: GIÁ BÁN NỔI BẬT */
@@ -8960,7 +9164,7 @@
                 <div class="vcl-item-title">5 đơn quá hạn</div>
                 <div class="vcl-item-hint">Xử lý trước để không mất đơn</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Xem 5 đơn quá hạn">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openOrdersFiltered('qua_han')" aria-label="Xem 5 đơn quá hạn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -8974,7 +9178,7 @@
                 <div class="vcl-item-title">44 đơn chờ xác nhận</div>
                 <div class="vcl-item-hint">Xác nhận để bắt đầu đóng gói</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Xem 44 đơn chờ xác nhận">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openOrdersFiltered('cho_xac_nhan')" aria-label="Xem 44 đơn chờ xác nhận">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -8988,7 +9192,7 @@
                 <div class="vcl-item-title">9 đơn chờ đóng gói</div>
                 <div class="vcl-item-hint">Soạn hàng rồi đóng gói</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Soạn 9 đơn chờ đóng gói">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openPickListView()" aria-label="Soạn 9 đơn chờ đóng gói">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -9002,13 +9206,13 @@
                 <div class="vcl-item-title">2 đơn có khiếu nại</div>
                 <div class="vcl-item-hint">Mở đơn để xem khiếu nại</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Xem 2 đơn có khiếu nại">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openOrdersFiltered('khieu_nai')" aria-label="Xem 2 đơn có khiếu nại">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
 
             <!-- Mục 5: 2 sản phẩm đang là Nháp -->
-            <div class="vcl-row" onclick="goToWizardStep(2)">
+            <div class="vcl-row" onclick="openDraftProductResume()">
               <span class="vcl-icon-box vcl-tan">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
               </span>
@@ -9016,7 +9220,7 @@
                 <div class="vcl-item-title">2 sản phẩm đang là Nháp</div>
                 <div class="vcl-item-hint">Xem hồ sơ rồi lấy bộ đăng bán</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Sửa 2 sản phẩm nháp">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openDraftProductResume()" aria-label="Sửa 2 sản phẩm nháp">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -9030,7 +9234,7 @@
                 <div class="vcl-item-title">GFKey chưa liên kết</div>
                 <div class="vcl-item-hint">Không bắt buộc</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Xem liên kết GFKey">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openFarmerQRModal()" aria-label="Xem liên kết GFKey">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -9050,7 +9254,7 @@
                 <div class="hump-sub-title">3 tiện ích kinh tế số xã viên</div>
               </div>
             </div>
-            <span class="hump-hot-chip" onclick="openAnCuJobModal()" title="Bấm mở An Cư Job">Mới: An Cư Job</span>
+            <span class="hump-hot-chip" onclick="openAnCuJobScreen()" title="Bấm mở An Cư Job">Mới: An Cư Job</span>
           </div>
 
           <!-- 3 Card Ngang Song Song (Chuẩn Shopee Subscription Plan Grid: Đăng Bán · Chợ Xanh · An Cư Job) -->
@@ -9063,7 +9267,7 @@
               </div>
               <div class="card-title">Đăng Bán</div>
               <div class="card-sub">Chụp 3 ảnh</div>
-              <button type="button" class="action-pill" style="background:#059669;color:#FFFFFF;">Bắt đầu ›</button>
+              <button type="button" class="action-pill" onclick="event.stopPropagation(); startWizardFlow()" style="background:#059669;color:#FFFFFF;white-space:nowrap !important;min-width:0 !important;">Bắt đầu ›</button>
             </div>
 
             <!-- Card 2: Chợ Xanh Xã -->
@@ -9074,18 +9278,18 @@
               </div>
               <div class="card-title">Chợ Xanh</div>
               <div class="card-sub">Ghép sỉ xã</div>
-              <button type="button" class="action-pill" style="background:#2563EB;color:#FFFFFF;">Vào Chợ ›</button>
+              <button type="button" class="action-pill" onclick="event.stopPropagation(); switchNavTab('market')" style="background:#2563EB;color:#FFFFFF;white-space:nowrap !important;min-width:0 !important;">Vào Chợ ›</button>
             </div>
 
             <!-- Card 3: An Cư Job -->
-            <div class="shopee-plan-card" onclick="openAnCuJobModal()">
+            <div class="shopee-plan-card" onclick="openAnCuJobScreen()">
               <span class="top-badge amber">Việc mới</span>
               <div class="icon-circle" style="background:#FEF3C7;color:#D97706;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
               </div>
               <div class="card-title">An Cư Job</div>
               <div class="card-sub">Việc gần nhà</div>
-              <button type="button" class="action-pill" style="background:#D97706;color:#FFFFFF;">Tìm Việc ›</button>
+              <button type="button" class="action-pill" onclick="event.stopPropagation(); openAnCuJobScreen()" style="background:#D97706;color:#FFFFFF;white-space:nowrap !important;min-width:0 !important;">Tìm Việc ›</button>
             </div>
           </div>
         </div>
@@ -10228,21 +10432,36 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         </div>
       </section>
 
-      <section id="panel-support" class="view-panel">
-        <h1 class="step-main-title">Hub Xã Hỗ Trợ</h1>
-        <p class="step-sub-desc">Bác gặp khó khăn khi chụp ảnh hoặc đăng bài? Đội thanh niên xã luôn sẵn sàng hỗ trợ:</p>
-
-        <div class="hub-contact-card">
-          <div class="hub-avatar-large">🤝</div>
-          <div style="font-size:18.5px;font-weight:800;color:var(--text-main);margin-bottom:4px">Cháu Lê Tuấn — Đoàn Xã</div>
-          <div style="font-size:14px;color:var(--agri-green);font-weight:700;margin-bottom:14px">Phụ trách hỗ trợ số hóa OCOP Tổ 2</div>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.6;margin-bottom:20px">
-            Lịch hỗ trợ trực tiếp: Sáng Thứ 3 & Thứ 5 hàng tuần tại Nhà Văn Hóa Xã. Hoặc cháu sẽ qua tận xưởng giúp bác!
-          </p>
-          <button type="button" class="btn-dock-next" style="width:100%;height:54px;font-size:16px;background:var(--agri-green)" onclick="triggerToast('Đang gọi cho cháu Tuấn: 0988.123.456')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span>Gọi Cháu Tuấn Đến Giúp</span>
+      <section id="panel-support" class="view-panel" style="padding-bottom: 90px;">
+        <!-- Top Bar Header chuẩn Mobile: Nút quay lại + Tiêu đề -->
+        <div class="det-top-bar" style="margin-bottom: 14px;">
+          <button type="button" class="det-back-icon-btn" onclick="switchNavTab('home')" title="Quay lại Trang chủ">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           </button>
+          <div class="det-top-title-box">
+            <div class="det-top-title">Hub Xã Hỗ Trợ</div>
+            <span class="det-top-code">Tổ hỗ trợ kinh tế số & OCOP Xã Yên Bình</span>
+          </div>
+        </div>
+
+        <p class="step-sub-desc" style="margin-bottom:14px">Bác Ba gặp khó khăn khi chụp ảnh, chốt giá hoặc đơn hàng thu mua? Đội thanh niên xã luôn sẵn sàng hỗ trợ tận nơi:</p>
+
+        <div class="hub-contact-card" style="background:#FFF;border:1.5px solid #BBF7D0;border-radius:18px;padding:18px;box-shadow:0 4px 12px rgba(21,128,61,0.06);margin-bottom:14px">
+          <div class="hub-avatar-large" style="width:54px;height:54px;font-size:28px;background:#DCFCE7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px">🤝</div>
+          <div style="font-size:17.5px;font-weight:800;color:var(--text-main);margin-bottom:4px">Cháu Lê Tuấn — Đoàn Xã</div>
+          <div style="font-size:13.5px;color:var(--agri-green);font-weight:700;margin-bottom:10px">Phụ trách hỗ trợ số hóa OCOP & HTX Yên Bình (Tổ 2)</div>
+          <p style="font-size:13.5px;color:var(--text-muted);line-height:1.55;margin-bottom:16px">
+            📍 <b>Lịch trực tại xã:</b> Sáng Thứ 3 & Thứ 5 hàng tuần tại Nhà Văn Hóa Thôn 3. Hoặc cháu sẽ chạy xe qua tận vườn hỗ trợ Bác Ba kiểm tra nương, bấm máy chụp sản phẩm!
+          </p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button type="button" class="btn-dock-next" style="width:100%;height:48px;font-size:14.5px;font-weight:800;background:var(--agri-green);border-radius:10px;white-space:nowrap !important;" onclick="callYouthSupport()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Gọi Trực Tiếp: 0988.123.456</span>
+            </button>
+            <button type="button" class="shopee-secondary-btn" style="width:100%;height:44px;font-size:13px;border-radius:10px;white-space:nowrap !important;" onclick="switchNavTab('home')">
+              ← Quay về Trang chủ Bác Ba
+            </button>
+          </div>
         </div>
       </section>
 
@@ -10330,7 +10549,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                 <div class="apsc-desc">537 kg chuối & 35 thùng · Xe gom 08:30</div>
               </div>
             </div>
-            <button type="button" class="btn-apsc-view">Xem phiếu ➔</button>
+            <button type="button" class="btn-apsc-view" onclick="event.stopPropagation(); openPickListView()">Xem phiếu ➔</button>
           </div>
 
           <!-- Sub-filter Toolbar (Date Dropdown + Agricultural Channel Dropdown) -->
@@ -10418,41 +10637,57 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
         <!-- SUB-VIEW 2: QUẢN LÝ KHO HÀNG -->
         <div id="ordersSubView_warehouse" class="orders-sub-view" style="display:none">
-          <!-- 4 Thẻ Chỉ Số Nhanh Kho Hàng -->
+          <!-- 4 Thẻ Chỉ Số Nhanh Kho Hàng Chuẩn WMS Nông Nghiệp -->
           <div class="warehouse-kpi-grid">
             <div class="wh-kpi-card">
-              <div class="wh-kpi-value" style="color:#059669">7</div>
+              <div class="wh-kpi-value" id="whKpiTotalItems" style="color:#059669">7</div>
               <div class="wh-kpi-label">Tổng mặt hàng</div>
             </div>
             <div class="wh-kpi-card">
-              <div class="wh-kpi-value" style="color:#1D4ED8">1.450</div>
+              <div class="wh-kpi-value" id="whKpiTotalQty" style="color:#1D4ED8">679</div>
               <div class="wh-kpi-label">Tồn kg/gói</div>
             </div>
             <div class="wh-kpi-card">
-              <div class="wh-kpi-value" style="color:#DC2626">2</div>
+              <div class="wh-kpi-value" id="whKpiLowCount" style="color:#DC2626">2</div>
               <div class="wh-kpi-label">Sắp hết hàng</div>
             </div>
             <div class="wh-kpi-card">
-              <div class="wh-kpi-value" style="color:#B45309">48.2 tr</div>
+              <div class="wh-kpi-value" id="whKpiTotalValue" style="color:#B45309">52.9 tr</div>
               <div class="wh-kpi-label">Giá trị tồn</div>
             </div>
+          </div>
+
+          <!-- Thanh Công Cụ Thao Tác Nhanh WMS (Nhập nương - Kiểm kê - Quét QR) -->
+          <div class="wh-quick-actions-bar">
+            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseInboundModal()" title="Nhập kho nông sản thu hoạch">
+              <span class="wh-qa-icon">📥</span>
+              <span class="wh-qa-text">Nhập nương</span>
+            </button>
+            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseStockAuditModal()" title="Kiểm kê kho thực tế">
+              <span class="wh-qa-icon">⚖️</span>
+              <span class="wh-qa-text">Kiểm kê kho</span>
+            </button>
+            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseQRScanModal()" title="Quét mã QR / Barcode nông sản">
+              <span class="wh-qa-icon">📷</span>
+              <span class="wh-qa-text">Quét mã QR</span>
+            </button>
           </div>
 
           <!-- Nút Thêm Nông Sản Tách Riêng Khỏi Thanh Menu Chip -->
           <div class="wh-add-row">
             <button type="button" class="btn-wh-add-standalone" onclick="startWizardFlow()">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-              <span>+ Thêm nông sản mới</span>
+              <span>+ Khai báo thêm nông sản mới</span>
             </button>
           </div>
 
           <!-- Thanh menu chip lọc danh mục kho hàng (swipe ngang mượt mà) -->
           <div class="wh-filter-chips-container" id="whFilterChipsContainer">
             <div class="wh-filter-chips">
-              <button type="button" class="wh-chip active" onclick="filterWarehouseCategory('all', this)">Tất cả (7)</button>
-              <button type="button" class="wh-chip" onclick="filterWarehouseCategory('active', this)">Đang bán (5)</button>
-              <button type="button" class="wh-chip" onclick="filterWarehouseCategory('low', this)">Sắp hết (2)</button>
-              <button type="button" class="wh-chip" onclick="filterWarehouseCategory('draft', this)">Bản nháp (2)</button>
+              <button type="button" class="wh-chip active" id="whChip_all" onclick="filterWarehouseCategory('all', this)">Tất cả (7)</button>
+              <button type="button" class="wh-chip" id="whChip_active" onclick="filterWarehouseCategory('active', this)">Đang bán (5)</button>
+              <button type="button" class="wh-chip" id="whChip_low" onclick="filterWarehouseCategory('low', this)">Sắp hết (2)</button>
+              <button type="button" class="wh-chip" id="whChip_draft" onclick="filterWarehouseCategory('draft', this)">Bản nháp (2)</button>
             </div>
           </div>
 
@@ -15639,15 +15874,71 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
     // CÁC HÀM XỬ LÝ TÀI KHOẢN (CHUẨN GVOS)
     // ==========================================
     function openFarmerProfileModal() {
-      triggerToast('Hồ sơ hộ: Bác Ba (Nguyễn Văn Ba) · HTX Yên Bình (Cam sành & Chuối OCOP)');
+      const m = document.getElementById('farmerProfileModal');
+      if (m) m.classList.add('show');
+    }
+
+    function closeFarmerProfileModal() {
+      const m = document.getElementById('farmerProfileModal');
+      if (m) m.classList.remove('show');
     }
 
     function openServicePackageModal() {
-      triggerToast('Gói dịch vụ: Xã viên chính thức · Miễn phí gian hàng Chợ Xanh');
+      const m = document.getElementById('servicePackageModal');
+      if (m) m.classList.add('show');
+    }
+
+    function closeServicePackageModal() {
+      const m = document.getElementById('servicePackageModal');
+      if (m) m.classList.remove('show');
     }
 
     function openSwitchAccountModal() {
-      triggerToast('Đổi tài khoản: Hộ Bác Ba ⇄ Ban Quản Trị HTX');
+      const m = document.getElementById('switchAccountModal');
+      if (m) m.classList.add('show');
+    }
+
+    function closeSwitchAccountModal() {
+      const m = document.getElementById('switchAccountModal');
+      if (m) m.classList.remove('show');
+    }
+
+    function selectAccountRole(role) {
+      closeSwitchAccountModal();
+      if (role === 'farmer') {
+        triggerToast('✓ Đang ở tài khoản: Nông hộ Bác Ba (Xã viên HTX Yên Bình).');
+      } else if (role === 'htx') {
+        triggerToast('🔄 Đang chuyển sang Chế độ Quản trị Hợp Tác Xã Yên Bình...');
+        setTimeout(() => {
+          window.location.href = 'htx-dashboard.html';
+        }, 600);
+      } else if (role === 'daughter') {
+        triggerToast('✓ Đã chuyển sang chế độ hỗ trợ: Nguyễn Thị Mai (Phụ trách bán online & Zalo).');
+      }
+    }
+
+    function callYouthSupport() {
+      triggerToast('📞 Đang kết nối cuộc gọi tới Cháu Lê Tuấn (Đoàn Xã Yên Bình): 0988.123.456...');
+      setTimeout(() => {
+        window.location.href = 'tel:0988123456';
+      }, 700);
+    }
+
+    // Mở bản nháp sản phẩm đang làm dở
+    function openDraftProductResume() {
+      // Bác Ba đang có 2 bản nháp: 1. Bưởi da xanh Tân Lạc OCOP, 2. Mật ong hoa rừng
+      const priceInput = document.getElementById('step2PriceInput');
+      const weightInput = document.getElementById('step2WeightInput');
+      if (priceInput) priceInput.value = '38.000';
+      if (weightInput) weightInput.value = '150';
+      
+      const pName = document.getElementById('step3ProdName');
+      if (pName) pName.textContent = 'Bưởi da xanh Tân Lạc VietGAP (Vụ sớm)';
+      const pPrice = document.getElementById('step3ProdPrice');
+      if (pPrice) pPrice.textContent = '38.000 đ';
+
+      goToWizardStep(2);
+      triggerToast('📝 Đã mở bản nháp: "Bưởi da xanh Tân Lạc VietGAP" (AI đã trích xuất từ 3 ảnh chụp, mời Bác Ba kiểm tra lại giá)!');
     }
 
     let isDarkMode = false;
@@ -15684,15 +15975,39 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       } catch (e) {}
       triggerToast('Đã đặt lại dữ liệu mẫu ban đầu thành công!');
     }
-// Mở đơn hàng theo filter từ Card Việc cần làm
+
+    // Mở đơn hàng theo filter từ Card Việc cần làm
     function openOrdersFiltered(filterType) {
       openOrdersView();
+      const allOrders = (typeof BAC_BA_ORDERS !== 'undefined' && Array.isArray(BAC_BA_ORDERS)) ? BAC_BA_ORDERS : [];
       if (filterType === 'qua_han') {
-        triggerToast('Lọc: 5 đơn hàng quá hạn cần giao gấp!');
+        // 5 đơn quá hạn cần giao gấp
+        selectOrderStatusTab('all');
+        const overdueList = allOrders.slice(0, 5).map(o => ({
+          ...o,
+          statusText: '⚠️ Quá hạn đóng hàng',
+          statusBadgeBg: '#FEF2F2',
+          statusBadgeColor: '#DC2626',
+          shortStatus: '⚠️ Quá hạn'
+        }));
+        renderFilteredOrders(overdueList, '⚠️ 5 đơn hàng quá hạn cần giao gấp cho xe gom');
+        triggerToast('⚠️ Bác Ba chú ý: 5 đơn thu mua đã quá hạn, cần đóng thùng ngay trước 08:30!');
       } else if (filterType === 'cho_xac_nhan') {
-        triggerToast('Lọc: 44 đơn hàng đang chờ xác nhận');
+        // 44 đơn chờ xác nhận
+        selectOrderStatusTab('harvesting');
+        triggerToast('📋 Đang hiển thị danh sách đơn thu mua chờ Bác Ba bấm xác nhận!');
       } else if (filterType === 'khieu_nai') {
-        triggerToast('Lọc: 2 đơn hàng có khiếu nại (1 thiếu hàng, 1 kiểm tra)');
+        // 2 đơn có khiếu nại
+        selectOrderStatusTab('all');
+        const complaintList = allOrders.slice(0, 2).map((o, idx) => ({
+          ...o,
+          statusText: idx === 0 ? 'Khiếu nại: Móp vỏ chuối sấy' : 'Khiếu nại: Yêu cầu đổi 1 hũ mật',
+          statusBadgeBg: '#FEF2F2',
+          statusBadgeColor: '#DC2626',
+          shortStatus: '⚠️ Có khiếu nại'
+        }));
+        renderFilteredOrders(complaintList, '⚠️ 2 đơn hàng có khiếu nại đang chờ xử lý');
+        triggerToast('⚠️ Có 2 đơn hàng khách báo khiếu nại: 1 đơn móp thùng chuối, 1 đơn yêu cầu hỗ trợ đổi!');
       }
     }
 
@@ -15764,7 +16079,17 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         isEmoji: false,
         status: "low",
         statusText: "Sắp hết hàng",
-        salesToday: 12
+        salesToday: 12,
+        location: "Kho mát KM-02",
+        batchCode: "LOT-2026-CS08",
+        harvestDate: "14/10/2026",
+        expiryDate: "14/04/2027",
+        lossRate: 0.5,
+        history: [
+          { date: "18/10 07:15", type: "out", typeLabel: "Xuất bán", change: -15, balance: 85, note: "Xe tải HTX gom hàng giao B2B Hà Nội" },
+          { date: "17/10 16:30", type: "in", typeLabel: "Nhập sấy", change: +40, balance: 100, note: "Mẻ sấy chuối tiêu hồng lò sấy HTX" },
+          { date: "15/10 09:00", type: "in", typeLabel: "Khởi tạo", change: +60, balance: 60, note: "Đóng túi dán tem QR OCOP 4 sao" }
+        ]
       },
       {
         id: "wh_honey",
@@ -15780,7 +16105,16 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         isEmoji: false,
         status: "low",
         statusText: "Sắp hết hàng",
-        salesToday: 4
+        salesToday: 4,
+        location: "Kệ khô K1-04",
+        batchCode: "LOT-2026-MO12",
+        harvestDate: "05/10/2026",
+        expiryDate: "05/10/2028",
+        lossRate: 0,
+        history: [
+          { date: "18/10 08:00", type: "out", typeLabel: "Xuất bán", change: -6, balance: 24, note: "Đơn giao khách sỉ Chợ Xanh xã" },
+          { date: "16/10 14:00", type: "in", typeLabel: "Quay mật", change: +30, balance: 30, note: "Khai thác cầu ong đợt 3 mùa hoa rừng" }
+        ]
       },
       {
         id: "wh_tea",
@@ -15796,7 +16130,16 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         isEmoji: false,
         status: "active",
         statusText: "Tồn dồi dào",
-        salesToday: 8
+        salesToday: 8,
+        location: "Kho khô KK-01",
+        batchCode: "LOT-2026-TB05",
+        harvestDate: "10/10/2026",
+        expiryDate: "10/10/2027",
+        lossRate: 0.2,
+        history: [
+          { date: "17/10 11:00", type: "in", typeLabel: "Sao chè đóng gói", change: +50, balance: 120, note: "Búp chè 1 tôm 2 lá sao suốt thủ công" },
+          { date: "16/10 15:30", type: "out", typeLabel: "Xuất bán", change: -10, balance: 70, note: "Giao nhà hàng homestay Yên Bình" }
+        ]
       },
       {
         id: "wh_rice",
@@ -15812,7 +16155,15 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         isEmoji: true,
         status: "active",
         statusText: "Còn 45 bao",
-        salesToday: 3
+        salesToday: 3,
+        location: "Silo chứa S1-03",
+        batchCode: "LOT-2026-NL01",
+        harvestDate: "08/10/2026",
+        expiryDate: "08/04/2027",
+        lossRate: 1.2,
+        history: [
+          { date: "17/10 10:00", type: "in", typeLabel: "Xay xát đóng bao", change: +50, balance: 45, note: "Vụ mùa lúa nương Tú Lệ phơi đủ nắng" }
+        ]
       },
       {
         id: "wh_orange",
@@ -15828,7 +16179,16 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         isEmoji: true,
         status: "active",
         statusText: "Còn 350 kg",
-        salesToday: 25
+        salesToday: 25,
+        location: "Kho lạnh L1-02",
+        batchCode: "LOT-2026-CY09",
+        harvestDate: "16/10/2026",
+        expiryDate: "30/10/2026",
+        lossRate: 2.5,
+        history: [
+          { date: "18/10 06:30", type: "in", typeLabel: "Cắt vườn đồi", change: +150, balance: 350, note: "Thu hoạch đợt 2 cam sành đồi cao" },
+          { date: "17/10 17:00", type: "loss", typeLabel: "Loại dập nát", change: -5, balance: 200, note: "Kiểm tra loại bỏ 5kg quả bị cấn cuống" }
+        ]
       },
       {
         id: "wh_turmeric",
@@ -15844,7 +16204,15 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         isEmoji: true,
         status: "draft",
         statusText: "Bản nháp",
-        salesToday: 2
+        salesToday: 2,
+        location: "Kệ khô K2-01",
+        batchCode: "LOT-2026-NT03",
+        harvestDate: "01/10/2026",
+        expiryDate: "01/10/2028",
+        lossRate: 0,
+        history: [
+          { date: "15/10 09:30", type: "in", typeLabel: "Lắng lọc đóng hũ", change: +40, balance: 40, note: "Nghệ đỏ nương sấy thăng hoa đóng hộp" }
+        ]
       },
       {
         id: "wh_plum",
@@ -15860,9 +16228,64 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         isEmoji: true,
         status: "draft",
         statusText: "Bản nháp",
-        salesToday: 0
+        salesToday: 0,
+        location: "Kho mát KM-01",
+        batchCode: "LOT-2026-MH02",
+        harvestDate: "28/09/2026",
+        expiryDate: "28/03/2027",
+        lossRate: 0.8,
+        history: [
+          { date: "14/10 14:00", type: "out", typeLabel: "Gửi mẫu xét duyệt", change: -5, balance: 15, note: "Gửi mẫu kiểm nghiệm OCOP huyện" }
+        ]
       }
     ];
+
+    // Cập nhật các chỉ số nhanh KPI Kho Hàng (Real-time recalculation)
+    function updateWarehouseKPIs() {
+      const totalItems = BAC_BA_WAREHOUSE_PRODUCTS.length;
+      let totalQty = 0;
+      let lowCount = 0;
+      let totalValue = 0;
+      let activeCount = 0;
+      let draftCount = 0;
+
+      BAC_BA_WAREHOUSE_PRODUCTS.forEach(p => {
+        totalQty += (p.stock || 0);
+        totalValue += ((p.stock || 0) * (p.price || 0));
+        if (p.status === 'low' || (p.stock <= p.threshold && p.status !== 'draft')) {
+          lowCount++;
+        }
+        if (p.category === 'active' || p.status === 'active') {
+          activeCount++;
+        }
+        if (p.category === 'draft' || p.status === 'draft') {
+          draftCount++;
+        }
+      });
+
+      const elItems = document.getElementById('whKpiTotalItems');
+      const elQty = document.getElementById('whKpiTotalQty');
+      const elLow = document.getElementById('whKpiLowCount');
+      const elVal = document.getElementById('whKpiTotalValue');
+
+      if (elItems) elItems.textContent = totalItems;
+      if (elQty) elQty.textContent = totalQty.toLocaleString('vi-VN');
+      if (elLow) elLow.textContent = lowCount;
+      if (elVal) {
+        const valInMillions = (totalValue / 1000000).toFixed(1);
+        elVal.textContent = `${valInMillions} tr`;
+      }
+
+      // Cập nhật số đếm trên thanh chip
+      const chipAll = document.getElementById('whChip_all');
+      const chipActive = document.getElementById('whChip_active');
+      const chipLow = document.getElementById('whChip_low');
+      const chipDraft = document.getElementById('whChip_draft');
+      if (chipAll) chipAll.textContent = `Tất cả (${totalItems})`;
+      if (chipActive) chipActive.textContent = `Đang bán (${activeCount})`;
+      if (chipLow) chipLow.textContent = `Sắp hết (${lowCount})`;
+      if (chipDraft) chipDraft.textContent = `Bản nháp (${draftCount})`;
+    }
 
     // Kích hoạt tính năng kéo/vuốt ngang (Swipe & Drag-to-Scroll) cho thanh menu chip cả 2 bên (Đơn hàng & Kho hàng)
     function initSwipeableChipContainers() {
@@ -15957,6 +16380,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         if (viewWarehouse) viewWarehouse.style.display = 'block';
         if (headerTitle) headerTitle.innerText = 'Kho hàng';
         updateSearchUIForSubTab('warehouse');
+        updateWarehouseKPIs();
         renderWarehouseList();
         setTimeout(initSwipeableChipContainers, 50);
       } else {
@@ -16002,7 +16426,9 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           const certMatch = removeVietnameseTones(p.cert || '').includes(q);
           const statusMatch = removeVietnameseTones(p.statusText || '').includes(q);
           const unitMatch = removeVietnameseTones(p.unit || '').includes(q);
-          return nameMatch || pkgMatch || certMatch || statusMatch || unitMatch;
+          const locMatch = removeVietnameseTones(p.location || '').includes(q);
+          const batchMatch = removeVietnameseTones(p.batchCode || '').includes(q);
+          return nameMatch || pkgMatch || certMatch || statusMatch || unitMatch || locMatch || batchMatch;
         });
       }
 
@@ -16034,6 +16460,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           ? `<div class="wh-card-thumb">${p.image}</div>`
           : `<img src="${p.image}" alt="${p.name}" class="wh-card-thumb">`;
 
+        const batchBadge = p.batchCode ? `<span class="wh-badge-batch">${p.batchCode}</span>` : '';
+        const locBadge = p.location ? `<span class="wh-badge-loc">📍 ${p.location}</span>` : '';
+        const fefoBadge = p.expiryDate ? `<span class="wh-badge-fefo">⏳ HSD: ${p.expiryDate}</span>` : '';
+
         html += `
           <div class="wh-product-card" id="whCard_${p.id}">
             <div class="wh-card-top">
@@ -16041,15 +16471,21 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <div class="wh-card-info">
                 <div class="wh-card-title">${p.name}</div>
                 <div class="wh-card-meta">${p.packaging} · <span style="color:#059669;font-weight:700">${p.cert}</span></div>
-                <div class="wh-card-price">${Number(p.price).toLocaleString('vi-VN')} đ</div>
+                <div class="wh-badge-row">
+                  ${batchBadge}
+                  ${locBadge}
+                  ${fefoBadge}
+                </div>
+                <div class="wh-card-price">${Number(p.price).toLocaleString('vi-VN')} đ / ${p.unit}</div>
               </div>
             </div>
             <div class="wh-card-bottom">
               <span class="wh-stock-pill ${pillClass}">${pillText}</span>
               <div class="wh-card-actions">
-                <button type="button" class="btn-wh-action" onclick="promptAdjustStock('${p.id}')">✏️ Tồn kho</button>
-                <button type="button" class="btn-wh-action" onclick="promptAdjustPrice('${p.id}')">💰 Đổi giá</button>
-                <button type="button" class="btn-wh-action" style="color:#0284C7;border-color:#BAE6FD;background:#F0F9FF" onclick="triggerToast('Mở Zalo: Đã sao chép link đặt hàng ${p.name}')">📤 Zalo</button>
+                <button type="button" class="btn-wh-action btn-wh-in" onclick="openWarehouseInboundModal('${p.id}')">📥 Nhập</button>
+                <button type="button" class="btn-wh-action btn-wh-out" onclick="openWarehouseOutboundModal('${p.id}')">📤 Xuất</button>
+                <button type="button" class="btn-wh-action btn-wh-card" onclick="openWarehouseStockCardModal('${p.id}')">📋 Thẻ kho</button>
+                <button type="button" class="btn-wh-action btn-wh-more" onclick="openWarehouseAdjustModal('${p.id}')" title="Chỉnh sửa nông sản">⚙️</button>
               </div>
             </div>
           </div>
@@ -16059,43 +16495,533 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       container.innerHTML = html;
     }
 
-    function promptAdjustStock(productId) {
-      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === productId);
+    // =========================================================================
+    // MODAL HANDLERS: NHẬP KHO NÔNG SẢN (INBOUND)
+    // =========================================================================
+    function openWarehouseInboundModal(productId) {
+      const select = document.getElementById('whInboundProductSelect');
+      if (!select) return;
+
+      select.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
+        <option value="${p.id}" ${p.id === productId ? 'selected' : ''}>${p.name} (${p.stock} ${p.unit})</option>
+      `).join('');
+
+      onWhInboundProductChange();
+      const modal = document.getElementById('warehouseInboundModal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeWarehouseInboundModal() {
+      const modal = document.getElementById('warehouseInboundModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function onWhInboundProductChange() {
+      const select = document.getElementById('whInboundProductSelect');
+      if (!select) return;
+      const pid = select.value;
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === pid);
       if (!p) return;
-      const current = p.stock;
-      const input = prompt(`Cập nhật số lượng tồn kho cho "${p.name}" (hiện có ${current} ${p.unit}):`, current);
-      if (input !== null) {
-        const val = parseInt(input.trim(), 10);
-        if (!isNaN(val) && val >= 0) {
-          p.stock = val;
-          if (val <= p.threshold && p.status !== 'draft') {
-            p.status = 'low';
-          } else if (p.status !== 'draft') {
-            p.status = 'active';
-          }
-          renderWarehouseList();
-          triggerToast(`✅ Đã cập nhật tồn kho: ${p.name} = ${val} ${p.unit}`);
-        } else {
-          alert('Vui lòng nhập một số hợp lệ (lớn hơn hoặc bằng 0).');
+
+      const stockEl = document.getElementById('whInboundCurrentStock');
+      const locEl = document.getElementById('whInboundCurrentLoc');
+      const unitEl = document.getElementById('whInboundUnit');
+      const batchEl = document.getElementById('whInboundBatch');
+      const locationInput = document.getElementById('whInboundLocation');
+
+      if (stockEl) stockEl.textContent = `${p.stock} ${p.unit}`;
+      if (locEl) locEl.textContent = `📍 ${p.location || 'Kho mát'}`;
+      if (unitEl) unitEl.value = p.unit;
+      if (locationInput) locationInput.value = p.location || 'Kho mát KM-02';
+
+      // Sinh mã lô tự động theo ngày
+      const now = new Date();
+      const dayStr = String(now.getDate()).padStart(2, '0');
+      const monthStr = String(now.getMonth() + 1).padStart(2, '0');
+      const suffix = p.id.replace('wh_', '').toUpperCase().slice(0, 2);
+      if (batchEl) batchEl.value = `LOT-2026-${suffix}${dayStr}`;
+    }
+
+    function submitWarehouseInbound() {
+      const select = document.getElementById('whInboundProductSelect');
+      const qtyInput = document.getElementById('whInboundQty');
+      const batchInput = document.getElementById('whInboundBatch');
+      const locInput = document.getElementById('whInboundLocation');
+      const noteInput = document.getElementById('whInboundNote');
+      const sourceSelect = document.getElementById('whInboundSource');
+
+      if (!select || !qtyInput) return;
+      const pid = select.value;
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === pid);
+      if (!p) return;
+
+      const qty = parseInt(qtyInput.value, 10);
+      if (isNaN(qty) || qty <= 0) {
+        triggerToast('⚠️ Vui lòng nhập số lượng hợp lệ (lớn hơn 0)');
+        return;
+      }
+
+      const batch = batchInput ? batchInput.value.trim() : p.batchCode;
+      const loc = locInput ? locInput.value.trim() : p.location;
+      const sourceText = sourceSelect ? sourceSelect.options[sourceSelect.selectedIndex].text : 'Thu hoạch';
+      const note = noteInput && noteInput.value.trim() ? noteInput.value.trim() : `${sourceText} (Lô: ${batch})`;
+
+      // Cập nhật tồn kho & thông tin lô
+      p.stock += qty;
+      if (batch) p.batchCode = batch;
+      if (loc) p.location = loc;
+      if (p.stock > p.threshold && p.status === 'low') {
+        p.status = 'active';
+      }
+
+      // Thêm thẻ kho ledger
+      const now = new Date();
+      const timeStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+      if (!p.history) p.history = [];
+      p.history.unshift({
+        date: timeStr,
+        type: 'in',
+        typeLabel: 'Nhập kho',
+        change: +qty,
+        balance: p.stock,
+        note: note
+      });
+
+      closeWarehouseInboundModal();
+      updateWarehouseKPIs();
+      renderWarehouseList();
+      triggerToast(`✅ Đã nhập kho thành công: +${qty} ${p.unit} "${p.name}" (Tồn mới: ${p.stock} ${p.unit})`);
+    }
+
+    // =========================================================================
+    // MODAL HANDLERS: XUẤT KHO NÔNG SẢN (OUTBOUND)
+    // =========================================================================
+    function openWarehouseOutboundModal(productId) {
+      const select = document.getElementById('whOutboundProductSelect');
+      if (!select) return;
+
+      select.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
+        <option value="${p.id}" ${p.id === productId ? 'selected' : ''}>${p.name} (Tồn: ${p.stock} ${p.unit})</option>
+      `).join('');
+
+      onWhOutboundProductChange();
+      const modal = document.getElementById('warehouseOutboundModal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeWarehouseOutboundModal() {
+      const modal = document.getElementById('warehouseOutboundModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function onWhOutboundProductChange() {
+      const select = document.getElementById('whOutboundProductSelect');
+      if (!select) return;
+      const pid = select.value;
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === pid);
+      if (!p) return;
+
+      const stockEl = document.getElementById('whOutboundCurrentStock');
+      const unitEl = document.getElementById('whOutboundUnit');
+      const fefoEl = document.getElementById('whOutboundFEFO');
+
+      if (stockEl) stockEl.textContent = `${p.stock} ${p.unit}`;
+      if (unitEl) unitEl.value = p.unit;
+      if (fefoEl) fefoEl.textContent = `⏳ HSD: ${p.expiryDate || 'N/A'}`;
+    }
+
+    function submitWarehouseOutbound() {
+      const select = document.getElementById('whOutboundProductSelect');
+      const qtyInput = document.getElementById('whOutboundQty');
+      const reasonSelect = document.getElementById('whOutboundReason');
+      const noteInput = document.getElementById('whOutboundNote');
+
+      if (!select || !qtyInput) return;
+      const pid = select.value;
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === pid);
+      if (!p) return;
+
+      const qty = parseInt(qtyInput.value, 10);
+      if (isNaN(qty) || qty <= 0) {
+        triggerToast('⚠️ Vui lòng nhập số lượng hợp lệ');
+        return;
+      }
+
+      if (qty > p.stock) {
+        triggerToast(`⚠️ Tồn kho không đủ! Hiện chỉ còn ${p.stock} ${p.unit}`);
+        return;
+      }
+
+      const reasonType = reasonSelect ? reasonSelect.value : 'truck';
+      const reasonText = reasonSelect ? reasonSelect.options[reasonSelect.selectedIndex].text : 'Xuất kho';
+      const isLoss = (reasonType === 'loss');
+      const note = noteInput && noteInput.value.trim() ? noteInput.value.trim() : reasonText;
+
+      // Trừ tồn kho
+      p.stock -= qty;
+      if (p.stock <= p.threshold && p.status !== 'draft') {
+        p.status = 'low';
+      }
+
+      // Ghi nhận thẻ kho ledger
+      const now = new Date();
+      const timeStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+      if (!p.history) p.history = [];
+      p.history.unshift({
+        date: timeStr,
+        type: isLoss ? 'loss' : 'out',
+        typeLabel: isLoss ? 'Hao hụt/Loại bỏ' : 'Xuất kho',
+        change: -qty,
+        balance: p.stock,
+        note: note
+      });
+
+      closeWarehouseOutboundModal();
+      updateWarehouseKPIs();
+      renderWarehouseList();
+      triggerToast(`✅ Đã xuất kho thành công: -${qty} ${p.unit} "${p.name}" (Còn lại: ${p.stock} ${p.unit})`);
+    }
+
+    // =========================================================================
+    // MODAL HANDLERS: SỔ THẺ KHO ĐIỆN TỬ (STOCK CARD LEDGER)
+    // =========================================================================
+    let currentStockCardProductId = null;
+    let currentStockCardFilter = 'all';
+
+    function openWarehouseStockCardModal(productId) {
+      currentStockCardProductId = productId || BAC_BA_WAREHOUSE_PRODUCTS[0].id;
+      currentStockCardFilter = 'all';
+      renderStockCardContent();
+      const modal = document.getElementById('warehouseStockCardModal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeWarehouseStockCardModal() {
+      const modal = document.getElementById('warehouseStockCardModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function filterStockCardModal(type, btn) {
+      currentStockCardFilter = type;
+      const modal = document.getElementById('warehouseStockCardModal');
+      if (modal) {
+        modal.querySelectorAll('.wh-chip').forEach(c => c.classList.remove('active'));
+      }
+      if (btn) btn.classList.add('active');
+      renderStockCardContent();
+    }
+
+    function renderStockCardContent() {
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === currentStockCardProductId);
+      if (!p) return;
+
+      const headerEl = document.getElementById('whStockCardProductHeader');
+      const timelineEl = document.getElementById('whStockCardTimelineContainer');
+      if (!headerEl || !timelineEl) return;
+
+      const totalVal = ((p.stock || 0) * (p.price || 0)).toLocaleString('vi-VN');
+
+      headerEl.innerHTML = `
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <div style="font-size:26px">${p.isEmoji ? p.image : '📦'}</div>
+          <div style="min-width:0;flex:1">
+            <div style="font-size:14.5px;font-weight:800;color:#0F172A">${p.name}</div>
+            <div style="font-size:12px;color:#64748B">${p.packaging} · <span style="color:#059669;font-weight:700">${p.cert}</span></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:6px;background:#FFF;border:1px solid #E2E8F0;border-radius:8px;padding:8px 6px;text-align:center">
+          <div>
+            <div style="font-size:10px;color:#64748B">Mã Lô</div>
+            <div style="font-size:11.5px;font-weight:700;color:#0F172A;font-family:monospace">${p.batchCode || 'N/A'}</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:#64748B">Tồn Hiện Tại</div>
+            <div style="font-size:12.5px;font-weight:800;color:#15803D">${p.stock} ${p.unit}</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:#64748B">Giá Trị Tồn</div>
+            <div style="font-size:12px;font-weight:700;color:#B45309">${totalVal} đ</div>
+          </div>
+        </div>
+      `;
+
+      let hist = p.history || [];
+      if (currentStockCardFilter !== 'all') {
+        hist = hist.filter(h => h.type === currentStockCardFilter);
+      }
+
+      if (hist.length === 0) {
+        timelineEl.innerHTML = `
+          <div style="text-align:center;padding:24px 10px;color:#64748B;font-size:12.5px">
+            <div>📋</div>
+            <div style="margin-top:4px">Chưa có giao dịch nào thuộc bộ lọc này</div>
+          </div>
+        `;
+        return;
+      }
+
+      timelineEl.innerHTML = hist.map(h => {
+        let typeBadge = '🟢 Nhập kho';
+        let changeClass = 'in';
+        let changeSign = '+';
+        if (h.type === 'out') {
+          typeBadge = '🔵 Xuất kho';
+          changeClass = 'out';
+          changeSign = '';
+        } else if (h.type === 'loss') {
+          typeBadge = '🟠 Hao hụt';
+          changeClass = 'loss';
+          changeSign = '';
+        } else if (h.type === 'audit') {
+          typeBadge = '⚖️ Kiểm kê';
+          changeClass = 'audit';
+          changeSign = h.change > 0 ? '+' : '';
         }
+
+        return `
+          <div class="wh-ledger-item">
+            <div class="wh-ledger-head">
+              <span style="font-size:11px;font-weight:700;padding:2px 6px;border-radius:6px;background:#FFF;border:1px solid #E2E8F0">${typeBadge}</span>
+              <span class="wh-ledger-date">${h.date}</span>
+            </div>
+            <div class="wh-ledger-sub">
+              <span style="font-weight:600;flex:1;min-width:0;padding-right:8px">${h.note}</span>
+              <span class="wh-ledger-change ${changeClass}">${changeSign}${h.change} ${p.unit}</span>
+            </div>
+            <div style="text-align:right;font-size:11px;color:#64748B">
+              Tồn sau giao dịch: <strong style="color:#0F172A">${h.balance} ${p.unit}</strong>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function shareStockCardToHTX() {
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === currentStockCardProductId);
+      if (!p) return;
+      triggerToast(`✓ Đã kết xuất & gửi Sổ thẻ kho điện tử "${p.name}" tới Kế toán HTX Yên Bình thành công!`);
+    }
+
+    // =========================================================================
+    // MODAL HANDLERS: QUÉT MÃ QR / BARCODE NÔNG SẢN
+    // =========================================================================
+    function openWarehouseQRScanModal() {
+      const resBox = document.getElementById('whQRScanResultBox');
+      if (resBox) resBox.style.display = 'none';
+      const modal = document.getElementById('warehouseQRScanModal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeWarehouseQRScanModal() {
+      const modal = document.getElementById('warehouseQRScanModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function simulateWarehouseQRScan(batchCode) {
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.batchCode === batchCode);
+      if (!p) {
+        triggerToast(`⚠️ Không tìm thấy nông sản tương ứng mã lô: ${batchCode}`);
+        return;
+      }
+
+      // Rung phản hồi haptic nếu trình duyệt hỗ trợ
+      if (navigator.vibrate) navigator.vibrate(80);
+
+      const resBox = document.getElementById('whQRScanResultBox');
+      const nameEl = document.getElementById('whQRResultName');
+      const batchEl = document.getElementById('whQRResultBatch');
+      const detEl = document.getElementById('whQRResultDetails');
+      const btnIn = document.getElementById('btnWhQRIn');
+      const btnOut = document.getElementById('btnWhQROut');
+
+      if (nameEl) nameEl.textContent = p.name;
+      if (batchEl) batchEl.textContent = p.batchCode;
+      if (detEl) detEl.textContent = `Tồn kho: ${p.stock} ${p.unit} · Vị trí: ${p.location} · HSD: ${p.expiryDate}`;
+      
+      if (btnIn) {
+        btnIn.onclick = () => {
+          closeWarehouseQRScanModal();
+          openWarehouseInboundModal(p.id);
+        };
+      }
+      if (btnOut) {
+        btnOut.onclick = () => {
+          closeWarehouseQRScanModal();
+          openWarehouseOutboundModal(p.id);
+        };
+      }
+
+      if (resBox) {
+        resBox.style.display = 'block';
+        resBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      triggerToast(`📷 Quét thành công tem QR: "${p.name}" (Mã: ${batchCode})`);
+    }
+
+    // =========================================================================
+    // MODAL HANDLERS: KIỂM KÊ KHO TOÀN DIỆN (STOCK AUDIT)
+    // =========================================================================
+    function openWarehouseStockAuditModal() {
+      const container = document.getElementById('whAuditListContainer');
+      if (!container) return;
+
+      container.innerHTML = BAC_BA_WAREHOUSE_PRODUCTS.map(p => `
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px" id="auditRow_${p.id}">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:700;color:#0F172A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</div>
+            <div style="font-size:11.5px;color:#64748B">Sổ sách: <strong style="color:#0F172A">${p.stock} ${p.unit}</strong> · 📍 ${p.location}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <input type="number" class="fsc-input audit-count-input" data-id="${p.id}" data-book="${p.stock}" value="${p.stock}" min="0" style="width:65px;height:36px;text-align:center;padding:4px;font-weight:800;font-size:13px" oninput="onAuditInputDiff(this)">
+            <span style="font-size:11.5px;color:#64748B">${p.unit}</span>
+          </div>
+        </div>
+      `).join('');
+
+      const modal = document.getElementById('warehouseStockAuditModal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeWarehouseStockAuditModal() {
+      const modal = document.getElementById('warehouseStockAuditModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function onAuditInputDiff(inputEl) {
+      const book = parseInt(inputEl.getAttribute('data-book'), 10) || 0;
+      const actual = parseInt(inputEl.value, 10);
+      if (isNaN(actual)) return;
+      const diff = actual - book;
+      if (diff === 0) {
+        inputEl.style.borderColor = '#CBD5E1';
+        inputEl.style.background = '#FFFFFF';
+      } else if (diff > 0) {
+        inputEl.style.borderColor = '#10B981';
+        inputEl.style.background = '#F0FDF4';
+      } else {
+        inputEl.style.borderColor = '#EF4444';
+        inputEl.style.background = '#FEF2F2';
       }
     }
 
-    function promptAdjustPrice(productId) {
+    function submitWarehouseStockAudit() {
+      const inputs = document.querySelectorAll('.audit-count-input');
+      let adjustedCount = 0;
+      const now = new Date();
+      const timeStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+      inputs.forEach(inp => {
+        const pid = inp.getAttribute('data-id');
+        const book = parseInt(inp.getAttribute('data-book'), 10) || 0;
+        const actual = parseInt(inp.value, 10);
+        if (isNaN(actual) || actual < 0) return;
+
+        const diff = actual - book;
+        if (diff !== 0) {
+          adjustedCount++;
+          const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === pid);
+          if (p) {
+            p.stock = actual;
+            if (p.stock <= p.threshold && p.status !== 'draft') {
+              p.status = 'low';
+            } else if (p.status !== 'draft') {
+              p.status = 'active';
+            }
+
+            if (!p.history) p.history = [];
+            p.history.unshift({
+              date: timeStr,
+              type: 'audit',
+              typeLabel: 'Kiểm kê kho',
+              change: diff,
+              balance: actual,
+              note: `Cân đối kiểm kê kỳ (Sổ: ${book} -> Đếm thực tế: ${actual})`
+            });
+          }
+        }
+      });
+
+      closeWarehouseStockAuditModal();
+      updateWarehouseKPIs();
+      renderWarehouseList();
+      if (adjustedCount > 0) {
+        triggerToast(`⚖️ Đã chốt số liệu kiểm kê: Đã cân đối lại ${adjustedCount} mặt hàng chênh lệch!`);
+      } else {
+        triggerToast(`✓ Số liệu kiểm kê thực tế trùng khớp 100% với sổ sách kho!`);
+      }
+    }
+
+    // =========================================================================
+    // MODAL HANDLERS: ĐIỀU CHỈNH THÔNG TIN NÔNG SẢN (ZERO PROMPT / ZERO POPUP)
+    // =========================================================================
+    function openWarehouseAdjustModal(productId) {
       const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === productId);
       if (!p) return;
-      const current = p.price;
-      const input = prompt(`Cập nhật giá bán lẻ cho "${p.name}" (hiện tại: ${Number(current).toLocaleString('vi-VN')} đ):`, current);
-      if (input !== null) {
-        const val = parseInt(input.replace(/[^0-9]/g, ''), 10);
-        if (!isNaN(val) && val > 0) {
-          p.price = val;
-          renderWarehouseList();
-          triggerToast(`✅ Đã cập nhật giá bán: ${p.name} = ${Number(val).toLocaleString('vi-VN')} đ`);
-        } else {
-          alert('Vui lòng nhập giá bán hợp lệ.');
-        }
+
+      const idInput = document.getElementById('whAdjustProductId');
+      const nameInput = document.getElementById('whAdjustName');
+      const stockInput = document.getElementById('whAdjustStock');
+      const priceInput = document.getElementById('whAdjustPrice');
+      const thresholdInput = document.getElementById('whAdjustThreshold');
+      const locInput = document.getElementById('whAdjustLocation');
+
+      if (idInput) idInput.value = p.id;
+      if (nameInput) nameInput.value = p.name;
+      if (stockInput) stockInput.value = p.stock;
+      if (priceInput) priceInput.value = p.price;
+      if (thresholdInput) thresholdInput.value = p.threshold;
+      if (locInput) locInput.value = p.location || '';
+
+      const modal = document.getElementById('warehouseAdjustModal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeWarehouseAdjustModal() {
+      const modal = document.getElementById('warehouseAdjustModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function submitWarehouseAdjust() {
+      const idInput = document.getElementById('whAdjustProductId');
+      const stockInput = document.getElementById('whAdjustStock');
+      const priceInput = document.getElementById('whAdjustPrice');
+      const thresholdInput = document.getElementById('whAdjustThreshold');
+      const locInput = document.getElementById('whAdjustLocation');
+
+      if (!idInput) return;
+      const pid = idInput.value;
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === pid);
+      if (!p) return;
+
+      const newStock = parseInt(stockInput.value, 10);
+      const newPrice = parseInt(priceInput.value, 10);
+      const newThreshold = parseInt(thresholdInput.value, 10);
+      const newLoc = locInput.value.trim();
+
+      if (!isNaN(newStock) && newStock >= 0) p.stock = newStock;
+      if (!isNaN(newPrice) && newPrice > 0) p.price = newPrice;
+      if (!isNaN(newThreshold) && newThreshold > 0) p.threshold = newThreshold;
+      if (newLoc) p.location = newLoc;
+
+      if (p.stock <= p.threshold && p.status !== 'draft') {
+        p.status = 'low';
+      } else if (p.status !== 'draft') {
+        p.status = 'active';
       }
+
+      closeWarehouseAdjustModal();
+      updateWarehouseKPIs();
+      renderWarehouseList();
+      triggerToast(`✅ Đã cập nhật thành công nông sản: "${p.name}"`);
+    }
+
+    // Tương thích ngược: Thay thế promptAdjust cũ bằng Modal Card
+    function promptAdjustStock(productId) {
+      openWarehouseAdjustModal(productId);
+    }
+    function promptAdjustPrice(productId) {
+      openWarehouseAdjustModal(productId);
     }
 
   </script>
@@ -16137,6 +17063,151 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       </button>
     </div>
   </div>
+
+  <!-- Modal 1: Hồ Sơ Nông Hộ Bác Ba -->
+  <div class="dash-qr-modal-overlay" id="farmerProfileModal" onclick="closeFarmerProfileModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:350px;text-align:left;padding:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>🌾</span>
+          <span>Hồ Sơ Nông Hộ Xã Viên</span>
+        </div>
+        <button type="button" onclick="closeFarmerProfileModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;background:#F0FDF4;padding:10px 12px;border-radius:12px;border:1px solid #DCFCE7">
+        <div style="width:46px;height:46px;border-radius:50%;background:#15803D;color:#FFF;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">👨‍🌾</div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:15px;font-weight:800;color:#0F172A">Nguyễn Văn Ba (Bác Ba)</div>
+          <div style="font-size:12px;color:#15803D;font-weight:700">Mã hộ: HO-YENBINH-08 · 62 tuổi</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;color:#334155;margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;border-bottom:1px dashed #E2E8F0;padding-bottom:5px">
+          <span style="color:#64748B">Chi hội HTX:</span>
+          <b>HTX Nông Nghiệp Yên Bình</b>
+        </div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px dashed #E2E8F0;padding-bottom:5px">
+          <span style="color:#64748B">Địa bàn canh tác:</span>
+          <b>Thôn 3, Xã Yên Bình</b>
+        </div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px dashed #E2E8F0;padding-bottom:5px">
+          <span style="color:#64748B">Quy mô nương vườn:</span>
+          <b>1.5 Hecta (Chuối & Cam)</b>
+        </div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px dashed #E2E8F0;padding-bottom:5px">
+          <span style="color:#64748B">Chứng chỉ chất lượng:</span>
+          <span style="color:#15803D;font-weight:700">VietGAP (Số VG-2024-883)</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-bottom:2px">
+          <span style="color:#64748B">Khuyến nông viên:</span>
+          <b>Cháu Tuấn (0988.123.456)</b>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px">
+        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeFarmerProfileModal()">
+          Đóng lại
+        </button>
+        <button type="button" class="shopee-primary-btn" style="flex:1.2;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#15803D" onclick="callYouthSupport()">
+          📞 Báo Cán Bộ HTX
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Gói Dịch Vụ Xã Viên HTX -->
+  <div class="dash-qr-modal-overlay" id="servicePackageModal" onclick="closeServicePackageModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:350px;text-align:left;padding:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>📦</span>
+          <span>Gói Dịch Vụ Xã Viên</span>
+        </div>
+        <button type="button" onclick="closeServicePackageModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <!-- Thẻ gói hiện tại -->
+      <div style="background:#ECFDF5;border:1.5px solid #86EFAC;border-radius:14px;padding:12px;margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <span style="font-size:14.5px;font-weight:800;color:#15803D">Xã Viên Tiêu Chuẩn</span>
+          <span style="font-size:11px;background:#15803D;color:#FFF;padding:2px 8px;border-radius:999px;font-weight:700">Đang kích hoạt</span>
+        </div>
+        <div style="font-size:12px;color:#166534;margin-bottom:8px">Được tài trợ 100% bởi Liên minh Hợp tác xã & Đề án Chợ Xanh Xã</div>
+        <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:#334155">
+          <div style="display:flex;align-items:center;gap:6px"><span>✓</span><span>AI chụp ảnh nhận diện nông sản không giới hạn</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><span>✓</span><span>Gian hàng số Chợ Xanh xã Yên Bình</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><span>✓</span><span>Bảo hiểm tiền công mùa vụ An Cư Job 100%</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><span>✓</span><span>Xe tải HTX 2.5T thu gom nông sản tận nương</span></div>
+        </div>
+      </div>
+
+      <!-- Thẻ gói nâng cao -->
+      <div style="background:#FFF;border:1px dashed #CBD5E1;border-radius:14px;padding:12px;margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <span style="font-size:13.5px;font-weight:800;color:#0F172A">Gói Nâng Cao: OCOP 4-5 Sao</span>
+          <span style="font-size:10.5px;background:#FEF3C7;color:#D97706;padding:2px 6px;border-radius:4px;font-weight:700">Sắp ra mắt</span>
+        </div>
+        <div style="font-size:11.5px;color:#64748B">Tích hợp tem chống giả Blockchain, camera AI đo độ ngọt đất và ưu tiên xuất khẩu.</div>
+      </div>
+
+      <button type="button" class="btn-dock-next" style="width:100%;height:44px;font-size:13.5px" onclick="closeServicePackageModal()">
+        <span>Đã hiểu & Tiếp tục sử dụng</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal 3: Chuyển Đổi Tài Khoản / Vai Trò -->
+  <div class="dash-qr-modal-overlay" id="switchAccountModal" onclick="closeSwitchAccountModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:350px;text-align:left;padding:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>🔄</span>
+          <span>Chuyển Đổi Tài Khoản</span>
+        </div>
+        <button type="button" onclick="closeSwitchAccountModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <div style="font-size:12.5px;color:#64748B;margin-bottom:12px">Chọn vai trò bác muốn đăng nhập và làm việc:</div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+        <!-- Vai trò 1: Bác Ba (Hiện tại) -->
+        <div onclick="selectAccountRole('farmer')" style="display:flex;align-items:center;gap:10px;background:#F0FDF4;border:1.5px solid #10B981;border-radius:12px;padding:10px 12px;cursor:pointer">
+          <div style="font-size:24px">👨‍🌾</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:800;color:#0F172A">Nông Hộ Bác Ba (Hiện tại)</div>
+            <div style="font-size:11.5px;color:#15803D">Sản xuất, bán chuối/cam & tuyển thợ</div>
+          </div>
+          <span style="font-size:16px;color:#10B981;font-weight:800">✓</span>
+        </div>
+
+        <!-- Vai trò 2: Cán bộ Quản trị HTX -->
+        <div onclick="selectAccountRole('htx')" style="display:flex;align-items:center;gap:10px;background:#FFF;border:1.5px solid #E2E8F0;border-radius:12px;padding:10px 12px;cursor:pointer">
+          <div style="font-size:24px">🏢</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:800;color:#0F172A">Ban Quản Trị HTX Yên Bình</div>
+            <div style="font-size:11.5px;color:#64748B">Duyệt sản phẩm, điều phối xe gom, OCOP</div>
+          </div>
+          <span style="font-size:12px;color:#2563EB;font-weight:700">Mở Dashboard ➔</span>
+        </div>
+
+        <!-- Vai trò 3: Con gái phụ trách bán hàng Online -->
+        <div onclick="selectAccountRole('daughter')" style="display:flex;align-items:center;gap:10px;background:#FFF;border:1.5px solid #E2E8F0;border-radius:12px;padding:10px 12px;cursor:pointer">
+          <div style="font-size:24px">👩‍💼</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:800;color:#0F172A">Nguyễn Thị Mai (Con gái Bác Ba)</div>
+            <div style="font-size:11.5px;color:#64748B">Chốt đơn Zalo & livestream quảng bá</div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="shopee-secondary-btn" style="width:100%;height:42px;font-size:13px;border-radius:8px" onclick="closeSwitchAccountModal()">
+        Giữ nguyên tài khoản hiện tại
+      </button>
+    </div>
+  </div>
+
   <!-- =========================================================================
        MODAL KHAI BÁO THẺ MỚI TRÊN CHỢ XANH (CÓ / CẦN)
        ========================================================================= -->
@@ -16254,6 +17325,339 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       <button type="button" class="gvos-sheet-confirm-btn" onclick="closeHubModal()">
         Đã hiểu
       </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 1: NHẬP KHO NÔNG SẢN (INBOUND - THU HOẠCH NƯƠNG VƯỜN / VỆ TINH)
+       ========================================================================= -->
+  <div class="dash-qr-modal-overlay" id="warehouseInboundModal" onclick="closeWarehouseInboundModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:370px;text-align:left;padding:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>📥</span>
+          <span>Nhập Nông Sản Vào Kho</span>
+        </div>
+        <button type="button" onclick="closeWarehouseInboundModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <!-- Chọn Nông Sản -->
+      <div class="fsc-field" style="margin-bottom:10px">
+        <label class="fsc-label"><span>Chọn mặt hàng nông sản</span></label>
+        <select id="whInboundProductSelect" class="fsc-input" onchange="onWhInboundProductChange()">
+          <!-- Populated by JS -->
+        </select>
+      </div>
+
+      <!-- Banner Thông tin Tồn hiện tại & Vị trí -->
+      <div id="whInboundInfoBanner" style="background:#F0FDF4;border:1px solid #86EFAC;border-radius:10px;padding:8px 12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;font-size:12px">
+        <div>
+          <span style="color:#166534;font-weight:700">Tồn hiện tại: </span>
+          <strong id="whInboundCurrentStock">85 gói</strong>
+        </div>
+        <div style="color:#0369A1;font-weight:700" id="whInboundCurrentLoc">📍 Kho mát KM-02</div>
+      </div>
+
+      <!-- Nguồn nhập hàng -->
+      <div class="fsc-field" style="margin-bottom:10px">
+        <label class="fsc-label"><span>Nguồn gốc lô hàng</span></label>
+        <select id="whInboundSource" class="fsc-input">
+          <option value="harvest">🌾 Thu hoạch nương/vườn nhà Bác Ba</option>
+          <option value="satellite">🚚 Thu gom hộ nông dân vệ tinh (Liên kết HTX)</option>
+          <option value="factory">🏭 Xưởng sấy / chế biến HTX bàn giao</option>
+          <option value="import">📦 Nhập bao bì / vật tư đóng gói</option>
+        </select>
+      </div>
+
+      <!-- Số lượng & Đơn vị -->
+      <div class="fsc-grid-2col" style="margin-bottom:10px">
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Số lượng nhập</span></label>
+          <input type="number" id="whInboundQty" class="fsc-input" placeholder="Ví dụ: 20" value="20" min="1">
+        </div>
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Đơn vị tính</span></label>
+          <input type="text" id="whInboundUnit" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
+        </div>
+      </div>
+
+      <!-- Mã lô & Vị trí kho -->
+      <div class="fsc-grid-2col" style="margin-bottom:10px">
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Mã lô thu hoạch</span></label>
+          <input type="text" id="whInboundBatch" class="fsc-input" value="LOT-2026-CS09">
+        </div>
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Vị trí kho</span></label>
+          <input type="text" id="whInboundLocation" class="fsc-input" value="Kho mát KM-02">
+        </div>
+      </div>
+
+      <!-- Ghi chú nhập -->
+      <div class="fsc-field" style="margin-bottom:16px">
+        <label class="fsc-label"><span>Ghi chú / Diễn giải</span></label>
+        <input type="text" id="whInboundNote" class="fsc-input" placeholder="Ví dụ: Thu hoạch đợt sáng sớm, đóng túi dán tem QR">
+      </div>
+
+      <div style="display:flex;gap:8px">
+        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeWarehouseInboundModal()">
+          Hủy bỏ
+        </button>
+        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#15803D" onclick="submitWarehouseInbound()">
+          ✓ Xác nhận Nhập Kho
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: XUẤT KHO NÔNG SẢN (OUTBOUND - XE TẢI HTX / BÁN LẺ / BÙ HAO HỤT)
+       ========================================================================= -->
+  <div class="dash-qr-modal-overlay" id="warehouseOutboundModal" onclick="closeWarehouseOutboundModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:370px;text-align:left;padding:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>📤</span>
+          <span>Xuất Nông Sản Khỏi Kho</span>
+        </div>
+        <button type="button" onclick="closeWarehouseOutboundModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <!-- Chọn Nông Sản -->
+      <div class="fsc-field" style="margin-bottom:10px">
+        <label class="fsc-label"><span>Mặt hàng xuất kho</span></label>
+        <select id="whOutboundProductSelect" class="fsc-input" onchange="onWhOutboundProductChange()">
+          <!-- Populated by JS -->
+        </select>
+      </div>
+
+      <!-- Banner Thông tin Tồn hiện tại & FEFO -->
+      <div id="whOutboundInfoBanner" style="background:#EFF6FF;border:1px solid #93C5FD;border-radius:10px;padding:8px 12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;font-size:12px">
+        <div>
+          <span style="color:#1E40AF;font-weight:700">Khả dụng: </span>
+          <strong id="whOutboundCurrentStock">85 gói</strong>
+        </div>
+        <div style="color:#92400E;font-weight:700" id="whOutboundFEFO">⏳ Ưu tiên xuất FEFO</div>
+      </div>
+
+      <!-- Mục đích xuất kho -->
+      <div class="fsc-field" style="margin-bottom:10px">
+        <label class="fsc-label"><span>Mục đích / Điểm đến xuất kho</span></label>
+        <select id="whOutboundReason">
+          <option value="truck">🚛 Giao xe tải HTX Yên Bình gom đơn sỉ B2B</option>
+          <option value="retail">🛍️ Giao đơn bán lẻ Chợ Xanh / Khách Zalo</option>
+          <option value="loss">⚖️ Bù hao hụt tự nhiên / Loại nông sản dập nát</option>
+          <option value="sample">🎁 Gửi mẫu kiểm định OCOP huyện / Biếu tặng</option>
+        </select>
+      </div>
+
+      <!-- Số lượng xuất & Đơn vị -->
+      <div class="fsc-grid-2col" style="margin-bottom:10px">
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Số lượng xuất</span></label>
+          <input type="number" id="whOutboundQty" class="fsc-input" placeholder="Ví dụ: 10" value="10" min="1">
+        </div>
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Đơn vị tính</span></label>
+          <input type="text" id="whOutboundUnit" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
+        </div>
+      </div>
+
+      <!-- Ghi chú xuất -->
+      <div class="fsc-field" style="margin-bottom:16px">
+        <label class="fsc-label"><span>Ghi chú xuất kho</span></label>
+        <input type="text" id="whOutboundNote" class="fsc-input" placeholder="Ví dụ: Bàn giao xe tải Chú Hùng biển số 29H-1234">
+      </div>
+
+      <div style="display:flex;gap:8px">
+        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeWarehouseOutboundModal()">
+          Hủy bỏ
+        </button>
+        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#1D4ED8" onclick="submitWarehouseOutbound()">
+          ✓ Xác nhận Xuất Kho
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 3: SỔ THẺ KHO ĐIỆN TỬ (STOCK CARD LEDGER - LỊCH SỬ XUẤT NHẬP TỒN)
+       ========================================================================= -->
+  <div class="dash-qr-modal-overlay" id="warehouseStockCardModal" onclick="closeWarehouseStockCardModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:380px;text-align:left;padding:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>📋</span>
+          <span>Sổ Thẻ Kho Điện Tử</span>
+        </div>
+        <button type="button" onclick="closeWarehouseStockCardModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <!-- Thông tin sản phẩm thẻ kho -->
+      <div id="whStockCardProductHeader" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px;margin-bottom:12px">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Filter loại giao dịch thẻ kho -->
+      <div style="display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px">
+        <button type="button" class="wh-chip active" style="font-size:11.5px;padding:4px 10px" onclick="filterStockCardModal('all', this)">Tất cả</button>
+        <button type="button" class="wh-chip" style="font-size:11.5px;padding:4px 10px" onclick="filterStockCardModal('in', this)">🟢 Nhập kho</button>
+        <button type="button" class="wh-chip" style="font-size:11.5px;padding:4px 10px" onclick="filterStockCardModal('out', this)">🔵 Xuất kho</button>
+        <button type="button" class="wh-chip" style="font-size:11.5px;padding:4px 10px" onclick="filterStockCardModal('loss', this)">🟠 Hao hụt</button>
+      </div>
+
+      <!-- Danh sách lịch sử giao dịch -->
+      <div class="wh-ledger-timeline" id="whStockCardTimelineContainer">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button type="button" class="shopee-secondary-btn" style="flex:1;height:40px;font-size:12px;border-radius:8px" onclick="closeWarehouseStockCardModal()">
+          Đóng lại
+        </button>
+        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:40px;font-size:12px;font-weight:700;border-radius:8px;background:#059669" onclick="shareStockCardToHTX()">
+          📤 Gửi Kế Toán HTX
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 4: QUÉT MÃ QR / BARCODE NÔNG SẢN (CAMERA SIMULATOR)
+       ========================================================================= -->
+  <div class="dash-qr-modal-overlay" id="warehouseQRScanModal" onclick="closeWarehouseQRScanModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:370px;text-align:left;padding:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>📷</span>
+          <span>Quét Mã Nông Sản / QR Lô</span>
+        </div>
+        <button type="button" onclick="closeWarehouseQRScanModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <!-- Khung camera scanner mô phỏng -->
+      <div class="wh-scanner-box">
+        <div class="wh-scanner-frame">
+          <div class="wh-laser-line"></div>
+          <span style="font-size:32px;opacity:0.6">📦</span>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:12px;color:#64748B;margin-bottom:12px">
+        Hướng camera vào tem QR OCOP, VietGAP hoặc mã vạch trên thùng
+      </div>
+
+      <!-- Mô phỏng bấm quét mã thực tế -->
+      <div style="font-size:12px;font-weight:700;color:#334155;margin-bottom:6px">Mã test nhanh cho Bác Ba:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+        <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScan('LOT-2026-CS08')">🏷️ Chuối sấy CS08</button>
+        <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScan('LOT-2026-CY09')">🏷️ Cam sành CY09</button>
+        <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScan('LOT-2026-MO12')">🏷️ Mật ong MO12</button>
+        <button type="button" class="btn-wh-action" onclick="simulateWarehouseQRScan('LOT-2026-TB05')">🏷️ Trà Bát Tiên TB05</button>
+      </div>
+
+      <!-- Khung kết quả sau khi quét -->
+      <div id="whQRScanResultBox" style="display:none;background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:12px;padding:12px;margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <span style="font-size:13px;font-weight:800;color:#15803D" id="whQRResultName">Chuối sấy giòn</span>
+          <span class="wh-badge-batch" id="whQRResultBatch">LOT-2026-CS08</span>
+        </div>
+        <div style="font-size:12px;color:#334155;margin-bottom:10px" id="whQRResultDetails">
+          Tồn kho: 85 gói · Vị trí: Kho mát KM-02
+        </div>
+        <div style="display:flex;gap:6px">
+          <button type="button" class="btn-wh-action btn-wh-in" style="flex:1;justify-content:center" id="btnWhQRIn">📥 Nhập thêm</button>
+          <button type="button" class="btn-wh-action btn-wh-out" style="flex:1;justify-content:center" id="btnWhQROut">📤 Xuất lô này</button>
+        </div>
+      </div>
+
+      <button type="button" class="shopee-secondary-btn" style="width:100%;height:42px;font-size:13px;border-radius:8px" onclick="closeWarehouseQRScanModal()">
+        Đóng máy quét
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 5: KIỂM KÊ KHO TOÀN DIỆN (STOCK AUDIT & RECONCILIATION)
+       ========================================================================= -->
+  <div class="dash-qr-modal-overlay" id="warehouseStockAuditModal" onclick="closeWarehouseStockAuditModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:390px;text-align:left;padding:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>⚖️</span>
+          <span>Kiểm Kê Kho Toàn Diện</span>
+        </div>
+        <button type="button" onclick="closeWarehouseStockAuditModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <div style="font-size:12px;color:#64748B;margin-bottom:12px">
+        Bác Ba nhập số lượng thực tế đếm được tại nương/kho. Hệ thống sẽ tự động đối chiếu chênh lệch với sổ sách.
+      </div>
+
+      <div id="whAuditListContainer" style="max-height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;margin-bottom:14px">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div style="display:flex;gap:8px">
+        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeWarehouseStockAuditModal()">
+          Hủy bỏ
+        </button>
+        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#D97706" onclick="submitWarehouseStockAudit()">
+          ✓ Chốt Sổ Kiểm Kê
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 6: CẬP NHẬT THÔNG TIN NÔNG SẢN (ĐIỀU CHỈNH GIÁ, TỒN, VỊ TRÍ - ZERO POPUP)
+       ========================================================================= -->
+  <div class="dash-qr-modal-overlay" id="warehouseAdjustModal" onclick="closeWarehouseAdjustModal()">
+    <div class="dash-qr-card" onclick="event.stopPropagation()" style="max-width:370px;text-align:left;padding:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #E2E8F0;padding-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px">
+          <span>⚙️</span>
+          <span>Chỉnh Sửa Nông Sản Kho</span>
+        </div>
+        <button type="button" onclick="closeWarehouseAdjustModal()" style="border:none;background:none;font-size:18px;color:#64748B;cursor:pointer;padding:4px">✕</button>
+      </div>
+
+      <input type="hidden" id="whAdjustProductId">
+
+      <div class="fsc-field" style="margin-bottom:10px">
+        <label class="fsc-label"><span>Tên nông sản</span></label>
+        <input type="text" id="whAdjustName" class="fsc-input" readonly style="background:#F1F5F9;font-weight:700">
+      </div>
+
+      <div class="fsc-grid-2col" style="margin-bottom:10px">
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Tồn kho hiện có</span></label>
+          <input type="number" id="whAdjustStock" class="fsc-input" min="0">
+        </div>
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Giá bán lẻ (đ)</span></label>
+          <input type="number" id="whAdjustPrice" class="fsc-input" min="1000" step="1000">
+        </div>
+      </div>
+
+      <div class="fsc-grid-2col" style="margin-bottom:10px">
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Ngưỡng báo sắp hết</span></label>
+          <input type="number" id="whAdjustThreshold" class="fsc-input" min="1">
+        </div>
+        <div class="fsc-field" style="margin-bottom:0">
+          <label class="fsc-label"><span>Vị trí lưu kho</span></label>
+          <input type="text" id="whAdjustLocation" class="fsc-input">
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <button type="button" class="shopee-secondary-btn" style="flex:1;height:42px;font-size:12.5px;border-radius:8px" onclick="closeWarehouseAdjustModal()">
+          Đóng lại
+        </button>
+        <button type="button" class="shopee-primary-btn" style="flex:1.4;height:42px;font-size:12.5px;font-weight:700;border-radius:8px;background:#15803D" onclick="submitWarehouseAdjust()">
+          ✓ Lưu Thay Đổi
+        </button>
+      </div>
     </div>
   </div>
 

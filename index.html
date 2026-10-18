@@ -7773,15 +7773,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
     }
     .wh-ledger-date {
       font-size: 11.5px;
       color: #64748B;
       font-weight: 600;
+      white-space: nowrap !important;
+      flex-shrink: 0;
     }
     .wh-ledger-change {
       font-weight: 800;
       font-size: 13.5px;
+      white-space: nowrap !important;
+      flex-shrink: 0;
     }
     .wh-ledger-change.in { color: #166534; }
     .wh-ledger-change.out { color: #1E40AF; }
@@ -7790,6 +7795,8 @@
     .wh-ledger-sub {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      gap: 8px;
       font-size: 12px;
       color: #334155;
     }
@@ -11357,11 +11364,11 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         </div>
 
         <!-- 2 Nút Thao Tác Kho Nhanh Của Riêng Nông Sản Này -->
-        <div class="shopee-btn-row" style="margin-bottom:14px">
-          <button type="button" class="shopee-secondary-btn" id="btnAdjustInboundShortcut" style="flex:1;height:44px !important;min-height:44px !important;background:#F0FDF4;color:#15803D;border:1.5px solid #86EFAC;font-weight:700">
+        <div class="shopee-btn-row" style="margin-bottom:14px;gap:8px">
+          <button type="button" class="shopee-secondary-btn" id="btnAdjustInboundShortcut" style="flex:1;min-width:0;height:44px !important;min-height:44px !important;background:#F0FDF4;color:#15803D;border:1.5px solid #86EFAC;font-weight:700;font-size:13px;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;padding:0 8px">
             📥 Nhập nương lô này
           </button>
-          <button type="button" class="shopee-primary-btn" id="btnAdjustOutboundShortcut" style="flex:1;height:44px !important;min-height:44px !important;background:#15803D;color:#FFF;font-weight:700">
+          <button type="button" class="shopee-primary-btn" id="btnAdjustOutboundShortcut" style="flex:1;min-width:0;height:44px !important;min-height:44px !important;background:#15803D;color:#FFF;font-weight:700;font-size:13px;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;padding:0 8px">
             📤 Xuất kho xe HTX
           </button>
         </div>
@@ -11410,12 +11417,12 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
         <!-- Khối Lịch Sử Xuất Nhập Gần Nhất (Sổ Thẻ Kho Tóm Tắt) -->
         <div style="background:#FFFFFF;border:1.5px solid #E2E8F0;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 1px 4px rgba(15,23,42,0.04)">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-            <div style="font-size:13.5px;font-weight:800;color:#0F172A;display:flex;align-items:center;gap:6px">
-              <span>📋</span>
-              <span>Lịch sử xuất nhập gần nhất</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px">
+            <div style="font-size:13.5px;font-weight:800;color:#0F172A;display:flex;align-items:center;gap:6px;min-width:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+              <span style="flex-shrink:0">📋</span>
+              <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Lịch sử xuất nhập gần nhất</span>
             </div>
-            <button type="button" id="btnAdjustViewFullLedger" style="background:none;border:none;color:#2563EB;font-size:12px;font-weight:700;cursor:pointer;padding:0">
+            <button type="button" id="btnAdjustViewFullLedger" style="background:none;border:none;color:#2563EB;font-size:12px;font-weight:700;cursor:pointer;padding:0;flex-shrink:0;white-space:nowrap !important">
               Xem toàn bộ sổ ➔
             </button>
           </div>
@@ -11425,7 +11432,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         </div>
 
         <!-- Nút Lưu Thay Đổi Đáy Màn Hình -->
-        <button type="button" class="shopee-primary-btn" style="width:100%;height:48px !important;min-height:48px !important;font-size:15px;font-weight:800;border-radius:8px !important;background:#15803D" onclick="submitWarehouseAdjustScreen()">
+        <button type="button" class="shopee-primary-btn" style="width:100%;height:48px !important;min-height:48px !important;font-size:15px;font-weight:800;border-radius:8px !important;background:#15803D;white-space:nowrap !important" onclick="submitWarehouseAdjustScreen()">
           <span>✓ Lưu Thay Đổi Vào Kho</span>
         </button>
       </section>
@@ -16423,10 +16430,25 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           goToOnboarding(1);
         } else {
           const ob = document.getElementById('panel-onboarding');
-          if (ob) ob.classList.remove('active');
-          switchNavTab('home');
+          if (!urlParams.get('open_wh_adjust') && !urlParams.get('open_wh_stockcard')) {
+            switchNavTab('home');
+          }
           if (urlParams.get('open_job') === '1') {
             setTimeout(openAnCuJobModal, 300);
+          }
+          if (urlParams.get('open_wh_adjust')) {
+            switchNavTab('orders');
+            switchOrderSubTab('warehouse');
+            openWarehouseAdjustScreen(urlParams.get('open_wh_adjust'));
+            if (urlParams.get('scroll_history')) {
+              const sc = document.querySelector('.screen-container');
+              if (sc) sc.scrollTop = 450;
+            }
+          }
+          if (urlParams.get('open_wh_stockcard')) {
+            switchNavTab('orders');
+            switchOrderSubTab('warehouse');
+            openWarehouseStockCardScreen(urlParams.get('open_wh_stockcard'));
           }
         }
       } catch (e) {
@@ -17405,17 +17427,17 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         }
 
         return `
-          <div class="wh-ledger-item" style="background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,0.03)">
-            <div class="wh-ledger-head">
-              <span style="font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;background:#F8FAFC;border:1px solid #E2E8F0">${typeBadge}</span>
-              <span class="wh-ledger-date">${h.date}</span>
+          <div class="wh-ledger-item" style="background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,0.03);border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px">
+            <div class="wh-ledger-head" style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+              <span style="font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;background:#F8FAFC;border:1px solid #E2E8F0;white-space:nowrap !important;flex-shrink:0">${typeBadge}</span>
+              <span class="wh-ledger-date" style="font-size:11.5px;color:#64748B;font-weight:600;white-space:nowrap !important;flex-shrink:0">${h.date}</span>
             </div>
-            <div class="wh-ledger-sub" style="margin-top:4px">
-              <span style="font-weight:600;flex:1;min-width:0;padding-right:8px;font-size:13px">${h.note}</span>
-              <span class="wh-ledger-change ${changeClass}" style="font-size:14px">${changeSign}${h.change} ${p.unit}</span>
+            <div class="wh-ledger-sub" style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px">
+              <span style="font-weight:600;flex:1;min-width:0;font-size:13px;color:#334155;word-break:break-word">${h.note}</span>
+              <span class="wh-ledger-change ${changeClass}" style="font-size:14px;font-weight:800;white-space:nowrap !important;flex-shrink:0">${changeSign}${h.change} ${p.unit}</span>
             </div>
-            <div style="text-align:right;font-size:11.5px;color:#64748B;margin-top:4px;border-top:1px dashed #F1F5F9;padding-top:4px">
-              Tồn sau giao dịch: <strong style="color:#0F172A">${h.balance} ${p.unit}</strong>
+            <div style="text-align:right;font-size:11.5px;color:#64748B;margin-top:6px;border-top:1px dashed #F1F5F9;padding-top:6px;white-space:nowrap !important">
+              Tồn sau giao dịch: <strong style="color:#0F172A;font-weight:800">${h.balance} ${p.unit}</strong>
             </div>
           </div>
         `;
@@ -17635,22 +17657,22 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           : `<img src="${p.image}" alt="${p.name}" style="width:64px;height:64px;border-radius:12px;object-fit:cover;flex-shrink:0;border:1px solid #E2E8F0">`;
 
         let statusBadge = p.status === 'low'
-          ? `<span style="background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700">⚠️ Sắp hết</span>`
-          : `<span style="background:#DCFCE7;color:#15803D;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700">🟢 Đang bán</span>`;
+          ? `<span style="background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap !important;flex-shrink:0">⚠️ Sắp hết</span>`
+          : `<span style="background:#DCFCE7;color:#15803D;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap !important;flex-shrink:0">🟢 Đang bán</span>`;
 
         heroContainer.innerHTML = `
           <div style="display:flex;gap:12px;align-items:center">
             ${thumbHtml}
             <div style="flex:1;min-width:0">
               <div style="display:flex;justify-content:space-between;align-items:center;gap:6px">
-                <h2 style="font-size:15px;font-weight:800;color:#0F172A;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</h2>
+                <h2 style="font-size:15px;font-weight:800;color:#0F172A;margin:0;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</h2>
                 ${statusBadge}
               </div>
-              <div style="font-size:12px;color:#64748B;margin-top:2px">${p.packaging} · <b style="color:#059669">${p.cert}</b></div>
-              <div style="font-size:12px;color:#475569;margin-top:4px">
+              <div style="font-size:12px;color:#64748B;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.packaging} · <b style="color:#059669">${p.cert}</b></div>
+              <div style="font-size:12px;color:#475569;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                 Mã lô: <b>${p.batchCode || 'N/A'}</b> · Vị trí: <b>${p.location || 'Chưa gán'}</b>
               </div>
-              <div style="font-size:13.5px;font-weight:800;color:#15803D;margin-top:4px">
+              <div style="font-size:13.5px;font-weight:800;color:#15803D;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                 Tồn: ${p.stock} ${p.unit} · Giá: ${Number(p.price).toLocaleString('vi-VN')} đ/${p.unit}
               </div>
             </div>
@@ -17678,14 +17700,14 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
             const color = isPlus ? '#059669' : '#DC2626';
             const sign = isPlus ? `+${h.change}` : `${h.change}`;
             histHtml += `
-              <div style="display:flex;justify-content:space-between;align-items:center;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:8px 10px;font-size:12px">
-                <div>
-                  <div style="font-weight:700;color:#0F172A">${h.typeLabel}</div>
-                  <div style="font-size:11px;color:#64748B">${h.date} · ${h.note || ''}</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:9px 12px;box-sizing:border-box">
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:13px;font-weight:700;color:#0F172A;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${h.typeLabel}</div>
+                  <div style="font-size:11px;color:#64748B;line-height:1.3;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${h.date} · ${h.note || ''}">${h.date} · ${h.note || ''}</div>
                 </div>
-                <div style="text-align:right">
-                  <div style="font-weight:800;color:${color}">${sign} ${p.unit}</div>
-                  <div style="font-size:10.5px;color:#64748B">Còn: ${h.balance}</div>
+                <div style="text-align:right;flex-shrink:0;white-space:nowrap">
+                  <div style="font-size:13.5px;font-weight:800;color:${color};white-space:nowrap !important;line-height:1.2">${sign} ${p.unit}</div>
+                  <div style="font-size:11px;font-weight:600;color:#64748B;white-space:nowrap !important;margin-top:3px;line-height:1.2">Còn: <strong style="color:#0F172A;font-weight:700">${h.balance}</strong></div>
                 </div>
               </div>
             `;

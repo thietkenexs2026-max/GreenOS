@@ -581,6 +581,26 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
 
 ---
 
+### Giai đoạn 10: Tinh Chỉnh Typography — Chuyển Sang Nét Mảnh (Font Inter & Giảm Toàn Bộ Font-Weight Trên Tất Cả Các Màn)
+- **Yêu cầu của người dùng**: "giảm style font chữ nhé đang đậm quá, để nét mảnh thôi, tất cả các màn".
+- **Giải pháp thiết kế & triển khai chi tiết**:
+  1. **Chuyển đổi Font chữ chủ đạo sang Inter**:
+     - Thay thế font Lexend (vốn có nét chữ hình học dày bản, to tròn) sang **Inter** (`https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap`).
+     - Font Inter mang nét chữ thanh mảnh, thanh lịch, tinh tế và cực kỳ sắc nét trên màn hình thiết bị di động cũng như desktop.
+     - Kích hoạt tối ưu render: `-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;`.
+  2. **Hạ cấp độ Font-Weight toàn diện trên tất cả các màn hình (1.470+ vị trí)**:
+     - **Tiêu đề lớn / Headings**: Giảm từ `font-weight: 800, 850, 900` xuống chuẩn `font-weight: 600` (semi-bold) thanh mảnh, không còn bị đậm đen cồng kềnh.
+     - **Thẻ Card / Buttons / CTA / Tabs**: Giảm từ `font-weight: 700, 800` xuống chuẩn `font-weight: 500` (medium) nhẹ nhàng, hiện đại.
+     - **Phụ đề / Mô tả / Nhãn phụ**: Giảm từ `font-weight: 600` xuống chuẩn `font-weight: 450 / 400` (regular) thoáng đãng, dễ thở.
+     - **Thẻ <b> và <strong>**: Đưa về `font-weight: 550` tránh hiện tượng nét chữ dày cộm mặc định của trình duyệt.
+  3. **Áp dụng đồng bộ cho cả 2 nền tảng**:
+     - Cập nhật 864 vị trí font-weight trong Mobile App (`index.html`).
+     - Cập nhật 606 vị trí font-weight trong Web PC SaaS (`htx-dashboard.html`).
+  4. **Kiểm thử hình ảnh thực tế**:
+     - Đã chụp và đối chiếu screenshot trên các màn hình: Trang chủ Bác Ba, Đơn hàng, Kho hàng, Gian hàng TMĐT và Thống kê nông hộ. Giao diện trở nên tinh gọn, hiện đại và sang trọng vượt bậc.
+
+---
+
 ## 💡 Đúc Kết Thiết Kế Cho Nông Dân & Quản Trị Hợp Tác Xã
 
 1. **Persona 1 — Nông Dân & Người Lớn Tuổi (Mobile App - `index.html`)**:

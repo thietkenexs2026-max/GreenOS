@@ -7299,7 +7299,77 @@
       flex-shrink: 0;
     }
 
-    /* QUẢN LÝ KHO HÀNG SUB-VIEW */
+    /* QUẢN LÝ KHO HÀNG SUB-VIEW (CHUẨN SHOPEE VIP LAYOUT) */
+    /* 1. Hero Overview 2 Thẻ Ngang Song Song (Shopee VIP Hero Banner) */
+    .wh-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .wh-hero-card {
+      border-radius: 14px;
+      padding: 10px 12px;
+      box-sizing: border-box;
+      min-width: 0;
+      cursor: pointer;
+      transition: all 0.16s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+    .wh-hero-card:active {
+      transform: scale(0.98);
+    }
+    .wh-hero-card.green {
+      background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+      border: 1.5px solid #86EFAC;
+    }
+    .wh-hero-card.amber {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 1.5px solid #FDE68A;
+    }
+    .wh-hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .wh-hero-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #15803D;
+      white-space: nowrap;
+    }
+    .wh-hero-badge.warning {
+      color: #B45309;
+    }
+    .wh-hero-arrow {
+      font-size: 12px;
+      color: #64748B;
+      font-weight: 700;
+    }
+    .wh-hero-val {
+      font-size: 16.5px;
+      font-weight: 900;
+      color: #0F172A;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .wh-hero-desc {
+      font-size: 11px;
+      color: #475569;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 600;
+    }
+
+    /* 4 Thẻ KPI Cũ (Tương thích ngược) */
     .warehouse-kpi-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -7329,30 +7399,62 @@
       font-weight: 600;
       line-height: 1.25;
     }
-    /* Nút Thêm Nông Sản Tách Riêng Khỏi Thanh Menu Chip */
-    .wh-add-row {
-      margin-bottom: 12px;
-    }
-    .btn-wh-add-standalone {
-      width: 100%;
-      height: 44px;
+
+    /* Thanh Đáy Cố Định Shopee Cho Kho Hàng */
+    .wh-sticky-bottom-bar {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 7px;
-      background: linear-gradient(135deg, #15803D 0%, #166534 100%);
-      color: #FFFFFF;
-      border: none;
-      border-radius: 12px;
-      font-size: 14.5px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(21, 128, 61, 0.22);
-      transition: all 150ms ease;
+      justify-content: space-between;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-top: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      box-sizing: border-box;
+      min-width: 0;
     }
-    .btn-wh-add-standalone:active {
-      transform: scale(0.98);
-      filter: brightness(0.95);
+    .wh-sbb-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .wh-sbb-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F172A;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .wh-sbb-sub {
+      font-size: 11.5px;
+      color: #64748B;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+    .wh-sbb-btn {
+      height: 42px !important;
+      padding: 0 14px !important;
+      border-radius: 8px !important;
+      background: #059669 !important;
+      color: #FFFFFF !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      border: none !important;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+    }
+    .wh-sbb-btn:active {
+      transform: scale(0.975);
     }
 
     /* Thanh Menu Chip Kho Hàng Swipeable */
@@ -10668,49 +10770,78 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
         </div>
 
-        <!-- SUB-VIEW 2: QUẢN LÝ KHO HÀNG -->
+        <!-- SUB-VIEW 2: QUẢN LÝ KHO HÀNG (CHUẨN SHOPEE VIP LAYOUT) -->
         <div id="ordersSubView_warehouse" class="orders-sub-view" style="display:none">
-          <!-- 4 Thẻ Chỉ Số Nhanh Kho Hàng Chuẩn WMS Nông Nghiệp -->
-          <div class="warehouse-kpi-grid">
-            <div class="wh-kpi-card" onclick="filterWarehouseCategory('all', document.getElementById('whChip_all'))" style="cursor:pointer" title="Xem tất cả">
-              <div class="wh-kpi-value" id="whKpiTotalItems" style="color:#059669">7</div>
-              <div class="wh-kpi-label">Tổng mặt hàng</div>
+          <!-- 1. Hero Overview (2 Thẻ Ngang Song Song Chuẩn Shopee VIP Header) -->
+          <div class="wh-hero-grid">
+            <!-- Thẻ 1: Tổng tồn kho -->
+            <div class="wh-hero-card green" onclick="openWarehouseStockCardScreen('wh_banana')" title="Mở Sổ thẻ kho điện tử">
+              <div class="wh-hero-top">
+                <span class="wh-hero-badge">📦 Kho Bác Ba</span>
+                <span class="wh-hero-arrow">➔</span>
+              </div>
+              <div class="wh-hero-val"><span id="whHeroTotalQty">679</span> <small style="font-size:12px;font-weight:700">kg/gói</small></div>
+              <div class="wh-hero-desc"><span id="whHeroItemCount">7</span> loại · Giá trị <b id="whHeroTotalVal">52.9 tr</b></div>
             </div>
-            <div class="wh-kpi-card" onclick="openWarehouseAuditScreen()" style="cursor:pointer" title="Kiểm kê kho thực tế">
-              <div class="wh-kpi-value" id="whKpiTotalQty" style="color:#1D4ED8">679</div>
-              <div class="wh-kpi-label">Tồn kg/gói ➔</div>
-            </div>
-            <div class="wh-kpi-card" onclick="filterWarehouseCategory('low', document.getElementById('whChip_low'))" style="cursor:pointer" title="Lọc hàng sắp hết">
-              <div class="wh-kpi-value" id="whKpiLowCount" style="color:#DC2626">2</div>
-              <div class="wh-kpi-label">Sắp hết hàng</div>
-            </div>
-            <div class="wh-kpi-card" onclick="openWarehouseStockCardScreen('wh_banana')" style="cursor:pointer" title="Mở Sổ thẻ kho">
-              <div class="wh-kpi-value" id="whKpiTotalValue" style="color:#B45309">52.9 tr</div>
-              <div class="wh-kpi-label">Giá trị tồn ➔</div>
+
+            <!-- Thẻ 2: Cảnh báo FEFO hạn dùng -->
+            <div class="wh-hero-card amber" onclick="filterWarehouseCategory('low', document.getElementById('whChip_low'))" title="Xem 2 lô cần ưu tiên xuất sớm">
+              <div class="wh-hero-top">
+                <span class="wh-hero-badge warning">⏳ HSD (FEFO)</span>
+                <span class="wh-hero-arrow">➔</span>
+              </div>
+              <div class="wh-hero-val" style="color:#D97706"><span id="whHeroLowCount">2</span> <small style="font-size:12px;font-weight:700">lô cần xuất</small></div>
+              <div class="wh-hero-desc">Chuối & Mận ưu tiên xuất trước</div>
             </div>
           </div>
 
-          <!-- Thanh Công Cụ Thao Tác Nhanh WMS (Chuyển Màn Hình Riêng Biệt - Zero Popup) -->
-          <div class="wh-quick-actions-bar">
-            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseInboundScreen()" title="Màn hình Nhập kho nông sản thu hoạch">
-              <span class="wh-qa-icon">📥</span>
-              <span class="wh-qa-text">Nhập nương</span>
-            </button>
-            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseAuditScreen()" title="Màn hình Kiểm kê kho toàn diện">
-              <span class="wh-qa-icon">⚖️</span>
-              <span class="wh-qa-text">Kiểm kê kho</span>
-            </button>
-            <button type="button" class="wh-quick-action-btn" onclick="openWarehouseScannerScreen()" title="Màn hình Quét mã QR / Barcode nông sản">
-              <span class="wh-qa-icon">📷</span>
-              <span class="wh-qa-text">Quét mã QR</span>
-            </button>
+          <!-- 2. Section: Thao Tác Kho Nhanh (Lưới 3 Card Ngang Chuẩn Shopee VIP) -->
+          <div style="font-size:13px;font-weight:800;color:#1E293B;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+            <span>Nghiệp vụ kho 1 chạm</span>
+            <span style="font-size:11.5px;color:#059669;font-weight:700">WMS Chuẩn HTX</span>
+          </div>
+          <div class="shopee-3col-grid">
+            <!-- Card 1: Nhập nương -->
+            <div class="shopee-plan-card" onclick="openWarehouseInboundScreen()" title="Nhập nông sản mới thu hoạch">
+              <span class="top-badge green">Hôm nay</span>
+              <div class="icon-circle" style="background:#DCFCE7;color:#15803D;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </div>
+              <div class="card-title">Nhập Nương</div>
+              <div class="card-sub">Cân thu hoạch</div>
+              <button type="button" class="action-pill" onclick="event.stopPropagation(); openWarehouseInboundScreen()" style="background:#059669;color:#FFFFFF;white-space:nowrap !important;min-width:0 !important;">Vào nhập ›</button>
+            </div>
+
+            <!-- Card 2: Xuất kho -->
+            <div class="shopee-plan-card" onclick="openWarehouseOutboundScreen()" title="Xuất giao xe HTX hoặc khách sỉ">
+              <span class="top-badge blue">Xe HTX</span>
+              <div class="icon-circle" style="background:#DBEAFE;color:#1D4ED8;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="13" x="1" y="6" rx="2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M17 6h4l2 4v6h-6"/></svg>
+              </div>
+              <div class="card-title">Xuất Kho</div>
+              <div class="card-sub">Giao đơn sỉ</div>
+              <button type="button" class="action-pill" onclick="event.stopPropagation(); openWarehouseOutboundScreen()" style="background:#2563EB;color:#FFFFFF;white-space:nowrap !important;min-width:0 !important;">Vào xuất ›</button>
+            </div>
+
+            <!-- Card 3: Kiểm kê -->
+            <div class="shopee-plan-card" onclick="openWarehouseAuditScreen()" title="Kiểm kê kho thực tế và cân chỉnh">
+              <span class="top-badge amber">Khớp 100%</span>
+              <div class="icon-circle" style="background:#FEF3C7;color:#D97706;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+              </div>
+              <div class="card-title">Kiểm Kê</div>
+              <div class="card-sub">So khớp sổ</div>
+              <button type="button" class="action-pill" onclick="event.stopPropagation(); openWarehouseAuditScreen()" style="background:#D97706;color:#FFFFFF;white-space:nowrap !important;min-width:0 !important;">Kiểm tra ›</button>
+            </div>
           </div>
 
-          <!-- Nút Thêm Nông Sản Tách Riêng Khỏi Thanh Menu Chip -->
-          <div class="wh-add-row">
-            <button type="button" class="btn-wh-add-standalone" onclick="startWizardFlow()">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-              <span>+ Khai báo thêm nông sản mới</span>
+          <!-- 3. Section: Danh Mục Nông Sản Trong Kho (Shopee Benefits List Style) -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;margin-bottom:8px">
+            <div style="font-size:13.5px;font-weight:800;color:#0F172A">
+              Nông sản trong kho (<span id="whListTotalCount">7</span>)
+            </div>
+            <button type="button" class="shopee-pill-btn" onclick="goToWizardStep(1)" style="background:#15803D;color:#FFF;height:28px;padding:0 10px;font-size:11.5px;white-space:nowrap !important;">
+              + Thêm nông sản
             </button>
           </div>
 
@@ -10725,8 +10856,19 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
           </div>
 
           <!-- Danh sách Sản Phẩm Kho Hàng -->
-          <div id="warehouseProductsListContainer">
+          <div id="warehouseProductsListContainer" style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
             <!-- Populated by JavaScript renderWarehouseList() -->
+          </div>
+
+          <!-- 4. Sticky Bottom Action Bar Chuẩn Shopee (Quét mã QR / Barcode nhanh) -->
+          <div class="wh-sticky-bottom-bar">
+            <div class="wh-sbb-info">
+              <div class="wh-sbb-title">Tổng tồn: <b id="whBarQty">679 kg/gói</b></div>
+              <div class="wh-sbb-sub">Giá trị ước tính: <span id="whBarVal">52.9 tr</span></div>
+            </div>
+            <button type="button" class="wh-sbb-btn" onclick="openWarehouseScannerScreen()">
+              📷 Quét mã QR / Barcode
+            </button>
           </div>
         </div>
       </section>
@@ -16650,13 +16792,29 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       const elLow = document.getElementById('whKpiLowCount');
       const elVal = document.getElementById('whKpiTotalValue');
 
+      const valInMillions = (totalValue / 1000000).toFixed(1);
+
       if (elItems) elItems.textContent = totalItems;
       if (elQty) elQty.textContent = totalQty.toLocaleString('vi-VN');
       if (elLow) elLow.textContent = lowCount;
-      if (elVal) {
-        const valInMillions = (totalValue / 1000000).toFixed(1);
-        elVal.textContent = `${valInMillions} tr`;
-      }
+      if (elVal) elVal.textContent = `${valInMillions} tr`;
+
+      // Cập nhật Shopee VIP Hero Cards & Sticky Bar
+      const heroQty = document.getElementById('whHeroTotalQty');
+      const heroItems = document.getElementById('whHeroItemCount');
+      const heroVal = document.getElementById('whHeroTotalVal');
+      const heroLow = document.getElementById('whHeroLowCount');
+      const listCount = document.getElementById('whListTotalCount');
+      const barQty = document.getElementById('whBarQty');
+      const barVal = document.getElementById('whBarVal');
+
+      if (heroQty) heroQty.textContent = totalQty.toLocaleString('vi-VN');
+      if (heroItems) heroItems.textContent = totalItems;
+      if (heroVal) heroVal.textContent = `${valInMillions} tr`;
+      if (heroLow) heroLow.textContent = lowCount;
+      if (listCount) listCount.textContent = totalItems;
+      if (barQty) barQty.textContent = `${totalQty.toLocaleString('vi-VN')} kg/gói`;
+      if (barVal) barVal.textContent = `${valInMillions} tr`;
 
       // Cập nhật số đếm trên thanh chip
       const chipAll = document.getElementById('whChip_all');
@@ -16839,35 +16997,45 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
         }
 
         const thumbHtml = p.isEmoji
-          ? `<div class="wh-card-thumb">${p.image}</div>`
-          : `<img src="${p.image}" alt="${p.name}" class="wh-card-thumb">`;
+          ? `<div class="wh-card-thumb" style="border-radius:12px;width:52px;height:52px;font-size:26px;flex-shrink:0">${p.image}</div>`
+          : `<img src="${p.image}" alt="${p.name}" class="wh-card-thumb" style="border-radius:12px;width:52px;height:52px;object-fit:cover;flex-shrink:0">`;
 
         const batchBadge = p.batchCode ? `<span class="wh-badge-batch">${p.batchCode}</span>` : '';
         const locBadge = p.location ? `<span class="wh-badge-loc">📍 ${p.location}</span>` : '';
         const fefoBadge = p.expiryDate ? `<span class="wh-badge-fefo">⏳ HSD: ${p.expiryDate}</span>` : '';
 
         html += `
-          <div class="wh-product-card" id="whCard_${p.id}">
-            <div class="wh-card-top">
+          <div class="wh-product-card" id="whCard_${p.id}" style="background:#FFFFFF;border:1.5px solid #E2E8F0;border-radius:14px;padding:12px;box-shadow:0 2px 6px rgba(15,23,42,0.03);box-sizing:border-box;min-width:0;position:relative">
+            <div style="display:flex;gap:10px;align-items:flex-start">
               ${thumbHtml}
-              <div class="wh-card-info">
-                <div class="wh-card-title">${p.name}</div>
-                <div class="wh-card-meta">${p.packaging} · <span style="color:#059669;font-weight:700">${p.cert}</span></div>
-                <div class="wh-badge-row">
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px">
+                  <div style="font-size:14.5px;font-weight:800;color:#0F172A;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                    ${p.name}
+                  </div>
+                  <button type="button" onclick="openWarehouseAdjustScreen('${p.id}')" style="background:none;border:none;font-size:15px;cursor:pointer;padding:0 2px;color:#64748B;line-height:1;flex-shrink:0" title="Chỉnh sửa nông sản">⚙️</button>
+                </div>
+                <div style="font-size:11.5px;color:#64748B;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                  ${p.packaging} · <span style="color:#059669;font-weight:700">${p.cert}</span>
+                </div>
+                <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">
                   ${batchBadge}
                   ${locBadge}
                   ${fefoBadge}
                 </div>
-                <div class="wh-card-price">${Number(p.price).toLocaleString('vi-VN')} đ / ${p.unit}</div>
+                <div style="font-size:14px;font-weight:800;color:#059669;margin-top:4px">
+                  ${Number(p.price).toLocaleString('vi-VN')} đ <span style="font-size:11.5px;color:#64748B;font-weight:600">/ ${p.unit}</span>
+                </div>
               </div>
             </div>
-            <div class="wh-card-bottom">
-              <span class="wh-stock-pill ${pillClass}">${pillText}</span>
-              <div class="wh-card-actions">
-                <button type="button" class="btn-wh-action btn-wh-in" onclick="openWarehouseInboundScreen('${p.id}')">📥 Nhập</button>
-                <button type="button" class="btn-wh-action btn-wh-out" onclick="openWarehouseOutboundScreen('${p.id}')">📤 Xuất</button>
-                <button type="button" class="btn-wh-action btn-wh-card" onclick="openWarehouseStockCardScreen('${p.id}')">📋 Thẻ kho</button>
-                <button type="button" class="btn-wh-action btn-wh-more" onclick="openWarehouseAdjustScreen('${p.id}')" title="Chỉnh sửa nông sản">⚙️</button>
+
+            <!-- Dòng trạng thái & Các nút thao tác chuẩn Shopee (Đồng bộ 32px pill, không vỡ layout) -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px dashed #E2E8F0;gap:8px">
+              <span class="wh-stock-pill ${pillClass}" style="flex-shrink:0">${pillText}</span>
+              <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
+                <button type="button" class="btn-wh-action btn-wh-in" onclick="openWarehouseInboundScreen('${p.id}')" style="height:32px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:700">📥 Nhập</button>
+                <button type="button" class="btn-wh-action btn-wh-out" onclick="openWarehouseOutboundScreen('${p.id}')" style="height:32px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:700">📤 Xuất</button>
+                <button type="button" class="btn-wh-action btn-wh-card" onclick="openWarehouseStockCardScreen('${p.id}')" style="height:32px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:700">📋 Thẻ kho</button>
               </div>
             </div>
           </div>

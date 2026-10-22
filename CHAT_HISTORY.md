@@ -636,4 +636,7 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
      - Thêm đệm đáy padding-bottom: 70px cho Right Rail chống xung đột với nút Trợ lý AI HTX.
   5. **Xác minh hình ảnh thực tế (Puppeteer Automated Audit)**:
      - Kiểm thử và chụp ảnh màn hình 10 view: Overview, Overview Stats, Cards View, Member Admin, B2B Orders, Members Directory, AI Studio, Settlement, Logistics, Supplies, Market Radar.
-     - Kết quả: 0 lỗi JavaScript, 0 tràn ngang viewport (scrollWidth == innerWidth = 1440px), bố cục cân đối, hài hòa và thẩm mỹ cao.
+     - Kết quả: 0 lỗi JavaScript, 0 tràn ngang viewport (scrollWidth == innerWidth = 1440px), bố cục cân đối, hài hòa và thẩm mỹ cao.  6. **Hiệu chỉnh theo chỉ đạo người dùng (Loại bỏ icon và menu phát sinh)**:
+     - Xóa bỏ các nút bấm và icon mới phát sinh ở Sidebar (AI Studio, Điều phối đội xe, Kho vật tư, Radar giá). Giữ nguyên vẹn cấu trúc menu ban đầu của HTX.
+     - Khôi phục thông báo Toast về định dạng thuần túy <span>✦</span> <span></span>, không thêm icon SVG.
+     - Toàn bộ thay đổi tập trung 100% vào việc căn chỉnh chữ, độ mảnh font, padding các ô bảng và tỷ lệ hiển thị cân đối giữa các cột.

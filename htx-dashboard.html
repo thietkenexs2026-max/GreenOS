@@ -538,12 +538,12 @@
       transform: translateX(3px);
     }
 
-    /* Grid 2 Cột Chuẩn GVOS (Tỷ Lệ Cân Bằng Thoáng Rộng 1fr : 1.15fr) */
+    /* Grid 2 Cột Chuẩn GVOS (Tỷ Lệ Cân Bằng Thoáng Rộng 1fr : 1.15fr - Đồng Đều Chiều Cao 100%) */
     .g2-gvos {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
       gap: 16px;
-      align-items: start;
+      align-items: stretch;
       margin-bottom: 22px;
       min-width: 0 !important;
       width: 100%;
@@ -562,6 +562,7 @@
       gap: 10px;
       min-width: 0 !important;
       width: 100%;
+      height: 100%;
       box-sizing: border-box;
     }
 
@@ -572,6 +573,7 @@
       gap: 8px;
       margin-bottom: 4px;
       min-width: 0 !important;
+      height: 32px;
     }
 
     .sec-h-gvos h2 {
@@ -610,6 +612,10 @@
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
       min-width: 0 !important;
       box-sizing: border-box;
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .todo-row-gvos {
@@ -617,10 +623,12 @@
       grid-template-columns: 1fr auto auto;
       align-items: center;
       gap: 14px;
-      padding: 14px 18px;
+      padding: 13px 18px;
       border-top: 1px solid var(--slate-100);
-      min-height: 68px;
+      flex: 1;
+      min-height: 64px;
       transition: background 0.15s;
+      box-sizing: border-box;
     }
 
     .todo-row-gvos > div:first-child {
@@ -697,18 +705,23 @@
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
       min-width: 0 !important;
       width: 100%;
+      height: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       box-sizing: border-box;
     }
 
     .table-gvos {
       width: 100%;
+      height: 100%;
       border-collapse: collapse;
       font-size: 12.5px;
     }
 
     .table-gvos th {
       background: #F8FAFC;
-      padding: 9px 8px;
+      padding: 10px 10px;
       font-weight: 600;
       color: var(--slate-500);
       text-align: left;
@@ -720,7 +733,7 @@
     }
 
     .table-gvos td {
-      padding: 9px 8px;
+      padding: 12px 10px;
       border-bottom: 1px solid var(--slate-100);
       vertical-align: middle;
       color: var(--slate-800);
@@ -10231,23 +10244,27 @@
       if (!tbody) return;
 
       tbody.innerHTML = '';
-      // Render 6 thẻ gần nhất cho widget Overview
-      resourceCardsData.slice(0, 6).forEach(rc => {
+      // Ưu tiên hiển thị 4 thẻ chờ duyệt / mới nhất để cân bằng chiều cao 1:1 hoàn hảo với bảng 4 việc cần làm bên trái
+      const pendingCards = resourceCardsData.filter(rc => rc.status === 'pending');
+      const otherCards = resourceCardsData.filter(rc => rc.status !== 'pending');
+      const displayCards = [...pendingCards, ...otherCards].slice(0, 4);
+
+      displayCards.forEach(rc => {
         const tr = document.createElement('tr');
         const badgeClass = rc.kind === 'co' ? 'badge-card-kind co' : 'badge-card-kind can';
         const actionBtn = rc.status === 'pending'
-          ? `<button class="btn-gvos-sm" style="height: 28px; padding: 0 10px; font-size: 11.5px; background: #059669; color: #fff; border-color: #059669;" onclick="approveResourceCard('${rc.id}')">Duyệt ngay</button>`
-          : `<span class="status-badge-clean approved" style="font-size: 11px; padding: 4px 8px;">Đã duyệt</span>`;
+          ? `<button class="btn-gvos-sm" style="height: 28px; padding: 0 10px; font-size: 11.5px; background: #059669; color: #fff; border-color: #059669; white-space: nowrap !important;" onclick="approveResourceCard('${rc.id}')">Duyệt ngay</button>`
+          : `<span class="status-badge-clean approved" style="font-size: 11px; padding: 4px 8px; white-space: nowrap !important;">Đã duyệt</span>`;
 
         tr.innerHTML = `
-          <td><strong style="color: var(--slate-900);">${rc.title}</strong></td>
+          <td><strong style="color: var(--slate-900); font-size: 13px;">${rc.title}</strong></td>
           <td><span class="${badgeClass}">${rc.kindLabel}</span></td>
           <td>${rc.owner} <small style="color: var(--slate-400);">${rc.household}</small></td>
-          <td style="color: var(--slate-500); font-size: 12px;">${rc.date}</td>
-          <td style="text-align: right;">
+          <td style="color: var(--slate-500); font-size: 12px; white-space: nowrap;">${rc.date}</td>
+          <td style="text-align: right; white-space: nowrap;">
             <div style="display: flex; justify-content: flex-end; gap: 6px; align-items: center;">
               ${actionBtn}
-              <button class="btn-gvos-sm" style="height: 28px; padding: 0 8px; font-size: 11.5px; color: #DC2626; border-color: #FECACA;" onclick="deleteResourceCard('${rc.id}')" title="Xóa thẻ">Xóa</button>
+              <button class="btn-gvos-sm" style="height: 28px; padding: 0 8px; font-size: 11.5px; color: #DC2626; border-color: #FECACA; white-space: nowrap !important;" onclick="deleteResourceCard('${rc.id}')" title="Xóa thẻ">Xóa</button>
             </div>
           </td>
         `;

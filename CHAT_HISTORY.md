@@ -725,3 +725,15 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
      - **Biểu đồ Đường trục kép (Dual-axis)**: Giám sát tỷ lệ ghi nhật ký VietGAP (% trục trái) và Số vụ cảnh báo sâu bệnh (vụ trục phải) với lưới chấm thanh lịch.
   4. **Kiểm thử tự động bằng Puppeteer**:
      - Kịch bản `scratch/verify_charts.js` đã xác minh cả 3 biểu đồ khởi tạo thành công 100%, canvas nhận diện đúng kích thước (808x280 và 374x185), bộ lọc thôn xóm và checkbox ẩn hiện đường hoạt động trơn tru, không có bất kỳ lỗi JavaScript nào.
+
+
+---
+
+### Giai đoạn 15: Cố Định 4 Việc Ưu Tiên Trong Khối "Việc Nên Làm Hôm Nay"
+- **Yêu cầu của người dùng**: "luôn để 4 việc nhé" (kèm ảnh chụp khối ⚡ Việc nên làm hôm nay).
+- **Phân tích bố cục & ý nghĩa nghiệp vụ HTX**:
+  - Khối trước đây có 3 việc ưu tiên và badge "3 việc ưu tiên", tạo một khoảng hở nhỏ ở đáy so với bảng 5 hàng "Thẻ chờ duyệt mới nhất" bên cạnh.
+  - Bổ sung việc thứ 4: **"Đơn sỉ B2B chờ gom xuất kho"** (2 hợp đồng siêu thị WinMart cần giao trước 16h30) kèm badge đỏ `2` và nút bấm `Gom ›` điều hướng trực tiếp sang phân hệ Order Hub B2B (`showB2BOrdersView()`).
+  - Chiều cao của khối Todo Box đạt **345px**, cân xứng hoàn hảo với bảng 5 hàng bên cạnh (385px).
+  - Cập nhật nhãn đếm trên Header thành **"4 việc ưu tiên"**.
+  - Kiểm thử trực quan qua `scratch/g2_with_4_todos.png`: 4 hàng việc hiển thị sắc nét, tiêu đề nằm trên 1 dòng đơn, nút bấm và badge màu sắc phân cấp rõ ràng (xanh lá, vàng hổ phách, xanh dương, đỏ).

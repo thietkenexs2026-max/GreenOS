@@ -120,25 +120,40 @@
       border-radius: var(--radius-shell);
       box-shadow: var(--shadow-window);
       display: grid;
-      grid-template-columns: 220px minmax(0, 1fr) 380px;
-      gap: 20px;
+      grid-template-columns: 220px minmax(0, 1fr) 290px;
+      gap: 18px;
       padding: 18px 20px;
       overflow: hidden;
       position: relative;
       box-sizing: border-box;
+      transition: grid-template-columns 0.2s ease;
+    }
+
+    .app-dashboard-window.fullwidth-mode {
+      grid-template-columns: 220px minmax(0, 1fr) !important;
+    }
+
+    .app-dashboard-window.fullwidth-mode .app-right-rail {
+      display: none !important;
     }
 
     @media (max-width: 1400px) {
       .app-dashboard-window {
-        grid-template-columns: 200px minmax(0, 1fr) 340px;
+        grid-template-columns: 200px minmax(0, 1fr) 280px;
         gap: 14px;
         padding: 14px 16px;
+      }
+      .app-dashboard-window.fullwidth-mode {
+        grid-template-columns: 200px minmax(0, 1fr) !important;
       }
     }
 
     @media (max-width: 1100px) {
       .app-dashboard-window {
         grid-template-columns: 180px minmax(0, 1fr);
+      }
+      .app-dashboard-window.fullwidth-mode {
+        grid-template-columns: 180px minmax(0, 1fr) !important;
       }
       .app-right-rail {
         display: none !important;
@@ -323,8 +338,8 @@
     }
 
     .kpi-quad-main-num {
-      font-size: 24px;
-      font-weight: 800;
+      font-size: 23px;
+      font-weight: 700;
       color: var(--slate-900);
       font-variant-numeric: tabular-nums;
       line-height: 1.15;
@@ -334,7 +349,7 @@
     }
     .kpi-quad-main-num small {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--slate-500);
     }
 
@@ -345,9 +360,9 @@
       margin-top: 8px;
       padding-top: 8px;
       border-top: 1px solid rgba(0, 0, 0, 0.05);
-      font-size: 11px;
-      flex-wrap: nowrap;
-      overflow: hidden;
+      font-size: 11.5px;
+      flex-wrap: wrap;
+      line-height: 1.35;
     }
 
     .kpi-sub-pill {
@@ -523,10 +538,10 @@
       transform: translateX(3px);
     }
 
-    /* Grid 2 Cột Chuẩn GVOS (Tỷ Lệ 5 : 7 - GreenOS Spacing) */
+    /* Grid 2 Cột Chuẩn GVOS (Tỷ Lệ Cột Việc Nên Làm 310px : Bảng Thao Tác 1fr) */
     .g2-gvos {
       display: grid;
-      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-columns: minmax(0, 310px) minmax(0, 1fr);
       gap: 16px;
       align-items: start;
       margin-bottom: 22px;
@@ -683,7 +698,7 @@
 
     .table-gvos th {
       background: #F8FAFC;
-      padding: 11px 14px;
+      padding: 10px 10px;
       font-weight: 600;
       color: var(--slate-500);
       text-align: left;
@@ -695,7 +710,7 @@
     }
 
     .table-gvos td {
-      padding: 11px 14px;
+      padding: 10px 10px;
       border-bottom: 1px solid var(--slate-100);
       vertical-align: middle;
       color: var(--slate-800);
@@ -747,7 +762,7 @@
 
     .rev-big-num {
       font-size: 24px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--brand-700);
       font-variant-numeric: tabular-nums;
       display: flex;
@@ -851,6 +866,10 @@
       width: 100%;
       text-align: left;
       transition: all 0.15s ease;
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      min-width: 0 !important;
     }
 
     .sidebar-menu-btn svg {
@@ -1178,10 +1197,16 @@
        ------------------------------------------------------------------------- */
     .mini-stat-trio {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
       margin-bottom: 24px;
       flex-shrink: 0;
+    }
+
+    @media (max-width: 1200px) {
+      .mini-stat-trio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .mini-stat-card {
@@ -2108,6 +2133,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       padding-right: 4px;
+      padding-bottom: 70px;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -4126,9 +4152,31 @@
               Gian hàng xã viên
             </button>
 
+            <button class="sidebar-menu-btn" id="nav-btn-ai" onclick="showAIContentView()">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              AI Studio & Kịch bản
+            </button>
+
             <button class="sidebar-menu-btn" id="nav-btn-settlement" onclick="showSettlementView()">
               <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
               Đối soát sản lượng
+            </button>
+          </div>
+
+          <!-- Section VẬN HÀNH & KHO -->
+          <div class="sidebar-section-title" style="font-size: 11px; font-weight: 700; color: var(--b-muted); padding: 6px 12px 6px;">VẬN HÀNH & KHO</div>
+          <div class="sidebar-menu-list" style="margin-bottom: 20px;">
+            <button class="sidebar-menu-btn" id="nav-btn-logistics" onclick="showLogisticsView()">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4zM3 9h10l3 5h3a1 1 0 011 1v4h-2a2 2 0 01-4 0H9a2 2 0 01-4 0H3V9z"/></svg>
+              Điều phối đội xe
+            </button>
+            <button class="sidebar-menu-btn" id="nav-btn-supplies" onclick="showSuppliesView()">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+              Kho bao bì & Vật tư
+            </button>
+            <button class="sidebar-menu-btn" id="nav-btn-radar" onclick="showRadarView()">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/><path d="M12 3v9l6 3"/></svg>
+              Radar giá thị trường
             </button>
           </div>
 
@@ -4178,7 +4226,7 @@
       <main class="app-center-content">
         <!-- Top Search Bar & Header Controls -->
         <div class="center-top-bar">
-          <div class="search-capsule-input" style="position: relative; flex: 1; max-width: 580px;">
+          <div class="search-capsule-input" style="position: relative; flex: 1; min-width: 260px; max-width: 640px;">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" style="color: var(--slate-400); flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             <input type="text" id="top-global-search" placeholder="Tìm kiếm nông sản, xã viên, đơn hàng WinMart, chuyến xe..." oninput="handleGlobalSearch(this.value)" onfocus="handleGlobalSearch(this.value)" autocomplete="off">
             <button id="btn-clear-global-search" onclick="clearGlobalSearch()" style="display: none; background: none; border: none; cursor: pointer; color: var(--slate-400); padding: 4px;" title="Xóa tìm kiếm">
@@ -5231,7 +5279,7 @@
           </div>
 
           <!-- 4 Thẻ Mini Stat Toàn Xã Viên -->
-          <section class="mini-stat-trio" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <section class="mini-stat-trio" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px;">
             <div class="mini-stat-card">
               <div class="mini-left-content">
                 <div class="mini-pastel-icon mint">
@@ -5418,7 +5466,7 @@
           </div>
 
           <!-- 4 Thẻ Mini Stat Của Riêng Xã Viên (Doanh thu, Đơn hàng, Số lượng sản phẩm, Sản lượng) -->
-          <section class="mini-stat-trio" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <section class="mini-stat-trio" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px;">
             <div class="mini-stat-card">
               <div class="mini-left-content">
                 <div class="mini-pastel-icon mint">💰</div>
@@ -6160,6 +6208,7 @@
               </table>
             </div>
           </div>
+        </div>
 
         <!-- -------------------------------------------------------------------
              VIEW 6: ĐIỀU PHỐI THU GOM & ĐỘI XE TUYẾN THÔN
@@ -7206,6 +7255,7 @@
 
     // HIỂN THỊ MÀN HÌNH DANH SÁCH 50 XÃ VIÊN
     function showMembersDirectoryView() {
+      setDashboardLayoutMode(true);
       hideAllMainViews();
       document.getElementById('view-members-directory').style.display = 'block';
       setActiveNav('nav-btn-members');
@@ -7502,6 +7552,7 @@
 
     // CHUYỂN NỘI DUNG SANG QUẢN TRỊ XÃ VIÊN TRỰC TIẾP TRÊN DASHBOARD
     function switchToMemberAdmin(farmerKey) {
+      setDashboardLayoutMode(true);
       currentFarmerKey = farmerKey;
       currentStatusFilter = 'all';
       currentPage = 1;
@@ -7541,10 +7592,14 @@
       document.getElementById('set-user-address').value = data.address;
 
       // Cập nhật Cột Right Statistic & Biểu đồ doanh thu 6 tháng của xã viên
-      document.getElementById('right-ring-avatar').src = data.avatar;
-      document.getElementById('right-ring-badge').innerText = data.progress;
-      document.getElementById('right-stat-greeting').innerText = 'Xin chào, ' + data.name.split(' (')[0] + ' 🔥';
-      document.getElementById('right-stat-subtext').innerText = data.subtext;
+      const ringAvatar = document.getElementById('right-ring-avatar');
+      if (ringAvatar) ringAvatar.src = data.avatar;
+      const ringBadge = document.getElementById('right-ring-badge');
+      if (ringBadge) ringBadge.innerText = data.progress;
+      const statGreeting = document.getElementById('right-stat-greeting');
+      if (statGreeting) statGreeting.innerText = 'Xin chào, ' + data.name.split(' (')[0] + ' 🔥';
+      const statSubtext = document.getElementById('right-stat-subtext');
+      if (statSubtext) statSubtext.innerText = data.subtext;
 
       if (document.getElementById('chart-user-peak-val')) {
         document.getElementById('chart-user-peak-val').innerText = data.revenue;
@@ -7834,6 +7889,16 @@
     // =========================================================================
     // ĐIỀU HƯỚNG CÁC MÀN HÌNH (DASHBOARD, THÀNH VIÊN, ORDER HUB B2B, AI STUDIO & CÁC PHÂN HỆ MỚI)
     // =========================================================================
+    function setDashboardLayoutMode(isFullWidth) {
+      const windowEl = document.querySelector('.app-dashboard-window');
+      if (!windowEl) return;
+      if (isFullWidth) {
+        windowEl.classList.add('fullwidth-mode');
+      } else {
+        windowEl.classList.remove('fullwidth-mode');
+      }
+    }
+
     function hideAllMainViews() {
       if (document.getElementById('view-members-directory')) document.getElementById('view-members-directory').style.display = 'none';
       document.getElementById('view-overview').style.display = 'none';
@@ -7853,6 +7918,7 @@
     }
 
     function showOverviewView() {
+      setDashboardLayoutMode(false);
       hideAllMainViews();
       document.getElementById('view-overview').style.display = 'block';
       setActiveNav('nav-btn-dashboard');
@@ -8002,7 +8068,10 @@
     }
 
     function showCardsView() {
-      showToast('📋 Phân hệ Duyệt Thẻ Có / Cần: 4 thẻ tài nguyên đang chờ Ban Chủ Nhiệm HTX thẩm định');
+      setDashboardLayoutMode(false);
+      showOverviewView();
+      switchOverviewTab('today');
+      showToast('📋 Duyệt Thẻ Có / Cần: 4 thẻ tài nguyên đang chờ Ban Chủ Nhiệm HTX thẩm định');
       setActiveNav('nav-btn-the');
     }
 
@@ -8011,6 +8080,7 @@
     }
 
     function showB2BOrdersView() {
+      setDashboardLayoutMode(true);
       hideAllMainViews();
       document.getElementById('view-b2b-orders').style.display = 'block';
       setActiveNav('nav-btn-b2b');
@@ -8018,6 +8088,7 @@
     }
 
     function showAIContentView() {
+      setDashboardLayoutMode(true);
       hideAllMainViews();
       document.getElementById('view-ai-content').style.display = 'block';
       setActiveNav('nav-btn-ai');
@@ -8025,6 +8096,7 @@
     }
 
     function showSettlementView() {
+      setDashboardLayoutMode(true);
       hideAllMainViews();
       document.getElementById('view-settlement').style.display = 'block';
       setActiveNav('nav-btn-settlement');
@@ -8032,6 +8104,7 @@
     }
 
     function showLogisticsView() {
+      setDashboardLayoutMode(true);
       hideAllMainViews();
       document.getElementById('view-logistics').style.display = 'block';
       setActiveNav('nav-btn-logistics');
@@ -8039,6 +8112,7 @@
     }
 
     function showSuppliesView() {
+      setDashboardLayoutMode(true);
       hideAllMainViews();
       document.getElementById('view-supplies').style.display = 'block';
       setActiveNav('nav-btn-supplies');
@@ -8046,6 +8120,7 @@
     }
 
     function showRadarView() {
+      setDashboardLayoutMode(true);
       hideAllMainViews();
       document.getElementById('view-radar').style.display = 'block';
       setActiveNav('nav-btn-radar');
@@ -8319,16 +8394,18 @@
     // Toast Utility
     function showToast(msg) {
       const tray = document.getElementById('toast-tray');
+      if (!tray) return;
+      tray.innerHTML = '';
       const toast = document.createElement('div');
       toast.className = 'toast-pill';
-      toast.innerHTML = `<span>✦</span> <span>${msg}</span>`;
+      toast.innerHTML = `<svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color: #34D399; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> <span style="font-weight: 500;">${msg}</span>`;
       tray.appendChild(toast);
       setTimeout(() => {
         toast.style.opacity = '0';
         toast.style.transform = 'translateY(10px)';
         toast.style.transition = 'all 0.2s ease';
         setTimeout(() => toast.remove(), 250);
-      }, 3000);
+      }, 2200);
     }
 
     // =========================================================================

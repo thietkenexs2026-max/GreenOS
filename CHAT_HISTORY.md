@@ -614,3 +614,26 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
    - **Vector SVG chuẩn hóa**: Loại bỏ 100% emoji trong các nút chức năng để đạt đẳng cấp giao diện chuyên nghiệp.
    - **Trợ lý AI Copilot đàm thoại**: Giúp ban quản trị tra cứu nhanh tồn kho, lập kịch bản bán hàng và kiểm tra chính sách OCOP mọi lúc.
    - **Vận hành thực tế khép kín**: Tích hợp thanh toán QR VietQR, quản lý đội xe gom hàng liên thôn, mua chung vật tư và radar giá nông sản 3 miền.
+
+---
+
+### Giai đoạn 11: Rà Soát & Căn Chỉnh Cân Bằng Toàn Bộ Layout Dashboard HTX (9 Phân Hệ)
+- **Yêu cầu của người dùng**: "rà soát lại tất cả các màn dashboard rồi căn chỉnh lại layout sao cho cân bằng".
+- **Giải pháp thiết kế & triển khai chi tiết**:
+  1. **Khắc phục lỗi DOM & Script nền tảng**:
+     - Bổ sung thẻ đóng </div> bị thiếu tại dòng 6163 đóng phân hệ #view-settlement, phục hồi trọn vẹn 3 phân hệ #view-logistics, #view-supplies, #view-radar từ offsetHeight: 0 sang hiển thị chuẩn mực 100%.
+     - Thêm null checks an toàn cho ight-ring-avatar, ight-ring-badge, ight-stat-greeting, ight-stat-subtext trong hàm switchToMemberAdmin().
+  2. **Cân chỉnh tỷ lệ các cột Grid trên Desktop**:
+     - Thu gọn Cột phải (Right Rail) từ 380px xuống **290px**, giải phóng thêm 90px chiều ngang cho vùng làm việc chính ở màn Tổng quan.
+     - Thiết lập cơ chế .fullwidth-mode (grid-template-columns: 220px minmax(0, 1fr)), tự động ẩn Right Rail khi điều hướng sang các phân hệ bảng biểu dữ liệu lớn: Gian hàng 50 xã viên, Quản trị chi tiết hộ, Đơn hàng B2B, Sổ đối soát, Đội xe thu gom, Kho vật tư và Radar giá thị trường. Vùng trung tâm mở rộng từ 760px lên **1.128px** (+368px).
+     - Điều chỉnh tỷ lệ 2 cột Tổng quan .g2-gvos từ 5fr : 7fr sang minmax(0, 310px) minmax(0, 1fr). Cột "Việc nên làm" gọn gàng ở 310px, bảng "Thẻ chờ duyệt mới nhất" chiếm trọn không gian còn lại mà không làm co cụm các nút thao tác.
+  3. **Cân bằng lưới 4 thẻ chỉ số (Mini Stat Trio -> Quad)**:
+     - Chuẩn hóa CSS .mini-stat-trio và inline style ở màn Quản trị 50 xã viên & Chi tiết xã viên thành grid-template-columns: repeat(4, minmax(0, 1fr)), giúp toàn bộ 4 thẻ chỉ số (Doanh thu, Đơn hàng, Sản phẩm, Sản lượng) dàn đều trên 1 hàng ngang cân đối hoàn hảo.
+  4. **Tối ưu thanh tìm kiếm, thông báo Toast & Nút bấm**:
+     - Mở rộng thanh tìm kiếm Header lên min-width: 260px; max-width: 640px; giúp placeholder hiển thị trọn vẹn.
+     - Khắc phục lỗi chồng lớp thông báo Toast: showToast() dọn sạch toast cũ trước khi thêm toast mới, rút ngắn thời lượng hiển thị còn 2.2 giây.
+     - Bổ sung đầy đủ các phân hệ chức năng trên Sidebar Menu Trái: AI Studio & Kịch bản, Điều phối đội xe, Kho bao bì & Vật tư, Radar giá thị trường.
+     - Thêm đệm đáy padding-bottom: 70px cho Right Rail chống xung đột với nút Trợ lý AI HTX.
+  5. **Xác minh hình ảnh thực tế (Puppeteer Automated Audit)**:
+     - Kiểm thử và chụp ảnh màn hình 10 view: Overview, Overview Stats, Cards View, Member Admin, B2B Orders, Members Directory, AI Studio, Settlement, Logistics, Supplies, Market Radar.
+     - Kết quả: 0 lỗi JavaScript, 0 tràn ngang viewport (scrollWidth == innerWidth = 1440px), bố cục cân đối, hài hòa và thẩm mỹ cao.

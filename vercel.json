@@ -33,7 +33,7 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "DENY"
+          "value": "SAMEORIGIN"
         },
         {
           "key": "X-XSS-Protection",
@@ -43,6 +43,34 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/htx-dashboard",
+      "destination": "/htx-dashboard.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/htx-dashboard.html"
+    },
+    {
+      "source": "/htx",
+      "destination": "/htx-dashboard.html"
+    },
+    {
+      "source": "/portal",
+      "destination": "/PORTAL.html"
+    },
+    {
+      "source": "/PORTAL",
+      "destination": "/PORTAL.html"
+    },
+    {
+      "source": "/mobile",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/bac-ba",
+      "destination": "/index.html"
+    },
     {
       "source": "/gfkey",
       "destination": "/index.html"

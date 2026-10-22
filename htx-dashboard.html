@@ -4392,7 +4392,10 @@
             <div class="sec-gvos">
               <div class="sec-h-gvos">
                 <h2>📦 Thẻ chờ duyệt mới nhất</h2>
-                <a onclick="showCardsView()">Xem tất cả 6 thẻ ➔</a>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                  <button class="hero-pill-btn-green" style="height: 28px; padding: 0 12px; font-size: 12px;" onclick="openCreateResourceCardModal()">+ Đăng Thẻ Mới</button>
+                  <a onclick="showCardsView()">Xem tất cả <span id="overview-resource-cards-count">5</span> thẻ ➔</a>
+                </div>
               </div>
 
               <div class="table-gvos-box">
@@ -4406,42 +4409,7 @@
                       <th style="text-align: right;">THAO TÁC</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong style="color: var(--slate-900);">Máy sấy nông sản mini</strong></td>
-                      <td><span class="badge-card-kind can">🔍 Cần</span></td>
-                      <td>Nguyễn Thị Hoa <small style="color: var(--slate-400);">(Hộ 02)</small></td>
-                      <td style="color: var(--slate-500); font-size: 12px;">04/10/2026</td>
-                      <td style="text-align: right;"><button class="btn-gvos-sm" style="height: 28px; padding: 0 10px; font-size: 11.5px;" onclick="showToast('📑 Mở thẩm định thẻ: Máy sấy nông sản mini')">Thẩm định ›</button></td>
-                    </tr>
-                    <tr>
-                      <td><strong style="color: var(--slate-900);">Chuối sấy giòn OCOP</strong></td>
-                      <td><span class="badge-card-kind co">📦 Có</span></td>
-                      <td>Bác Ba <small style="color: var(--slate-400);">(Hộ 04)</small></td>
-                      <td style="color: var(--slate-500); font-size: 12px;">04/10/2026</td>
-                      <td style="text-align: right;"><button class="btn-gvos-sm" style="height: 28px; padding: 0 10px; font-size: 11.5px; background: #059669; color: #fff; border-color: #059669;" onclick="showToast('📑 Mở thẩm định thẻ: Chuối sấy giòn OCOP Bác Ba')">Duyệt ngay ›</button></td>
-                    </tr>
-                    <tr>
-                      <td><strong style="color: var(--slate-900);">Chè Bát Tiên sao lửa</strong></td>
-                      <td><span class="badge-card-kind co">📦 Có</span></td>
-                      <td>Cô Lan <small style="color: var(--slate-400);">(Hộ 09)</small></td>
-                      <td style="color: var(--slate-500); font-size: 12px;">03/10/2026</td>
-                      <td style="text-align: right;"><button class="btn-gvos-sm" style="height: 28px; padding: 0 10px; font-size: 11.5px;" onclick="showToast('📑 Mở thẩm định thẻ: Chè Bát Tiên Cô Lan')">Thẩm định ›</button></td>
-                    </tr>
-                    <tr>
-                      <td><strong style="color: var(--slate-900);">Thùng carton đóng gói</strong></td>
-                      <td><span class="badge-card-kind can">🔍 Cần</span></td>
-                      <td>Lò Văn Sáng <small style="color: var(--slate-400);">(Hộ 07)</small></td>
-                      <td style="color: var(--slate-500); font-size: 12px;">03/10/2026</td>
-                      <td style="text-align: right;"><button class="btn-gvos-sm" style="height: 28px; padding: 0 10px; font-size: 11.5px;" onclick="showToast('📑 Mở thẩm định thẻ: Thùng carton đóng gói')">Thẩm định ›</button></td>
-                    </tr>
-                    <tr>
-                      <td><strong style="color: var(--slate-900);">Lao động thu hái, 3 người</strong></td>
-                      <td><span class="badge-card-kind can">🔍 Cần</span></td>
-                      <td>HTX Yên Bình <small style="color: var(--slate-400);">(HTX)</small></td>
-                      <td style="color: var(--slate-500); font-size: 12px;">02/10/2026</td>
-                      <td style="text-align: right;"><button class="btn-gvos-sm" style="height: 28px; padding: 0 10px; font-size: 11.5px;" onclick="showToast('📑 Mở thẩm định thẻ: Lao động thu hái')">Thẩm định ›</button></td>
-                    </tr>
+                  <tbody id="overview-resource-cards-body">
                   </tbody>
                 </table>
               </div>
@@ -5559,9 +5527,10 @@
           <div class="member-card-container">
             <!-- THANH TOOLBAR FILTER ĐẶT NGAY TRÊN CÙNG BẢNG (BỎ HOÀN TOÀN ICON) -->
             <div class="table-top-toolbar-header">
-              <div class="table-title-side">
+              <div class="table-title-side" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                 <h3>Bảng Danh Sách Nông Sản Của Hộ Dân</h3>
                 <span class="pill-category-badge mint" id="admin-user-total-badge">50 Sản Phẩm</span>
+                <button class="hero-pill-btn-green" style="height: 32px; padding: 0 14px; font-size: 13px;" onclick="openAddProductModal()">+ Thêm Sản Phẩm</button>
               </div>
 
               <!-- THANH MENU FILTER (KHÔNG CÓ ICON) -->
@@ -5905,81 +5874,6 @@
                   </tr>
                 </thead>
                 <tbody id="b2b-orders-table-body">
-                  <tr class="clickable-row" onclick="openDispatchSlipModal('WM-8821')">
-                    <td style="text-align: left;"><strong>#B2B-9821</strong><br><span style="font-size: 11.5px; color: var(--slate-500);">Ký: 04/10/2026</span></td>
-                    <td style="text-align: left;">
-                      <div style="font-weight: 450; color: var(--slate-900);">WinMart Miền Bắc</div>
-                      <div style="font-size: 12px; color: var(--slate-500);">Kho Trung Tâm Mê Linh, Hà Nội</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Chuối Sấy Giòn Yên Bình</span></td>
-                    <td style="text-align: center; font-weight: 500;">1.200 túi (250g)</td>
-                    <td style="text-align: right; font-weight: 500; color: var(--slate-700); font-variant-numeric: tabular-nums;">14.500 đ/túi</td>
-                    <td style="text-align: right; font-variant-numeric: tabular-nums;"><strong style="color: var(--brand-700); font-size: 15.5px;">17.400.000 đ</strong></td>
-                    <td style="text-align: center;"><span class="status-badge-clean approved">Đang đóng gói</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="event.stopPropagation(); openDispatchSlipModal('WM-8821')">
-                        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                        In Phiếu Kho
-                      </button>
-                    </td>
-                  </tr>
-
-                  <tr class="clickable-row" onclick="openDispatchSlipModal('MM-9822')">
-                    <td style="text-align: left;"><strong>#B2B-9822</strong><br><span style="font-size: 11.5px; color: var(--slate-500);">Ký: 05/10/2026</span></td>
-                    <td style="text-align: left;">
-                      <div style="font-weight: 450; color: var(--slate-900);">MM Mega Market Thăng Long</div>
-                      <div style="font-size: 12px; color: var(--slate-500);">Phạm Văn Đồng, Cầu Giấy, Hà Nội</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Trà Bát Tiên Sao Lửa OCOP</span></td>
-                    <td style="text-align: center; font-weight: 500;">300 hộp (200g)</td>
-                    <td style="text-align: right; font-weight: 500; color: var(--slate-700); font-variant-numeric: tabular-nums;">162.000 đ/hộp</td>
-                    <td style="text-align: right; font-variant-numeric: tabular-nums;"><strong style="color: var(--brand-700); font-size: 15.5px;">48.600.000 đ</strong></td>
-                    <td style="text-align: center;"><span class="status-badge-clean pending">Đang chờ gom</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="event.stopPropagation(); showLogisticsView()">
-                        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
-                        Lịch Tuyến Xe
-                      </button>
-                    </td>
-                  </tr>
-
-                  <tr class="clickable-row" onclick="openDispatchSlipModal('GC-9823')">
-                    <td style="text-align: left;"><strong>#B2B-9823</strong><br><span style="font-size: 11.5px; color: var(--slate-500);">Ký: 06/10/2026</span></td>
-                    <td style="text-align: left;">
-                      <div style="font-weight: 450; color: var(--slate-900);">GO! / Big C Long Biên</div>
-                      <div style="font-size: 12px; color: var(--slate-500);">TTTM Savico Megamall Hà Nội</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Mật Ong Hoa Rừng Tự Nhiên OCOP</span></td>
-                    <td style="text-align: center; font-weight: 500;">150 chai (500ml)</td>
-                    <td style="text-align: right; font-weight: 500; color: var(--slate-700); font-variant-numeric: tabular-nums;">200.000 đ/chai</td>
-                    <td style="text-align: right; font-variant-numeric: tabular-nums;"><strong style="color: var(--brand-700); font-size: 15.5px;">30.000.000 đ</strong></td>
-                    <td style="text-align: center;"><span class="status-badge-clean paused">Tạm dừng chờ hũ</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="event.stopPropagation(); showSuppliesView()">
-                        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                        Kiểm Kho Hũ
-                      </button>
-                    </td>
-                  </tr>
-
-                  <tr class="clickable-row" onclick="openDispatchSlipModal('BHX-9824')">
-                    <td style="text-align: left;"><strong>#B2B-9824</strong><br><span style="font-size: 11.5px; color: var(--slate-500);">Ký: 07/10/2026</span></td>
-                    <td style="text-align: left;">
-                      <div style="font-weight: 450; color: var(--slate-900);">Bách Hóa Xanh (Hub Hà Nội)</div>
-                      <div style="font-size: 12px; color: var(--slate-500);">KCN Quang Minh, Hà Nội</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Bưởi Da Xanh Yên Bình Loại 1</span></td>
-                    <td style="text-align: center; font-weight: 500;">1.500 trái (2.2 Tấn)</td>
-                    <td style="text-align: right; font-weight: 500; color: var(--slate-700); font-variant-numeric: tabular-nums;">35.000 đ/trái</td>
-                    <td style="text-align: right; font-variant-numeric: tabular-nums;"><strong style="color: var(--brand-700); font-size: 15.5px;">52.500.000 đ</strong></td>
-                    <td style="text-align: center;"><span class="status-badge-clean approved">Đang vận chuyển</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="event.stopPropagation(); openGPSFleetModal('Tuyến 3 - Xe Giao Bách Hóa Xanh')">
-                        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        Định Vị GPS
-                      </button>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -6075,7 +5969,8 @@
                 <h3>Bảng Kê Nghiệm Thu Khối Lượng Nông Sản Đợt 1 Tháng 10</h3>
                 <span class="pill-category-badge mint">HTX đã chốt số lượng cân đo · Chờ Admin Sàn thanh toán</span>
               </div>
-              <div style="display: flex; gap: 8px;">
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hero-pill-btn-green" onclick="openAddSettlementModal()">+ Thêm Hộ Nghiệm Thu</button>
                 <button class="hero-pill-btn-white" onclick="exportSettlementExcel()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Xuất File Bảng Kê</button>
                 <button class="hero-pill-btn-green" onclick="sendReconBatchToAdmin()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 5px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Gửi Đối Soát Cho Super Admin Duyệt Chi</button>
               </div>
@@ -6094,94 +5989,10 @@
                     <th style="text-align: right;">SÀN CHI TRẢ CHO HỘ</th>
                     <th style="text-align: left;">TÀI KHOẢN NHẬN TIỀN</th>
                     <th style="text-align: center;">TRẠNG THÁI THANH TOÁN</th>
-                    <th style="text-align: right;">BIÊN BẢN CÂN</th>
+                    <th style="text-align: right;">BIÊN BẢN & THAO TÁC</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td style="text-align: left;">
-                      <div class="table-prod-name-title">Bác Ba (Nguyễn Văn Ba)</div>
-                      <div class="table-prod-subline">Hộ 04 · Thôn Đồng Cát</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Chuối Sấy Giòn OCOP</span></td>
-                    <td style="text-align: center; font-weight: 500;">120 kg</td>
-                    <td style="text-align: right; font-weight: 500; font-variant-numeric: tabular-nums;">6.600.000 đ</td>
-                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-660.000 đ</td>
-                    <td style="text-align: right; font-weight: 700; color: var(--brand-700); font-variant-numeric: tabular-nums;">5.940.000 đ</td>
-                    <td style="text-align: left;"><span style="font-size: 12px; color: var(--slate-600);">Agribank ····8899</span></td>
-                    <td style="text-align: center;"><span class="status-badge-clean approved">Admin Sàn Đã Chi Trả</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="showToast('📄 Biên bản cân nghiệm thu Hộ Bác Ba: 120kg đạt chuẩn OCOP A+')">Xem Biên Bản</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td style="text-align: left;">
-                      <div class="table-prod-name-title">Cô Sáu (Trần Thị Sáu)</div>
-                      <div class="table-prod-subline">Hộ 18 · Thôn Suối Hai</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Mật Ong Hoa Rừng</span></td>
-                    <td style="text-align: center; font-weight: 500;">45 Lít</td>
-                    <td style="text-align: right; font-weight: 500; font-variant-numeric: tabular-nums;">9.000.000 đ</td>
-                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-900.000 đ</td>
-                    <td style="text-align: right; font-weight: 700; color: #D97706; font-variant-numeric: tabular-nums;">8.100.000 đ</td>
-                    <td style="text-align: left;"><span style="font-size: 12px; color: var(--slate-600);">Vietcombank ····1034</span></td>
-                    <td style="text-align: center;"><span class="status-badge-clean pending">Chờ Super Admin Duyệt Chi</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="showToast('📄 Biên bản nghiệm thu Hộ Cô Sáu: 45 Lít mật ong hoa rừng chuẩn')">Xem Biên Bản</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td style="text-align: left;">
-                      <div class="table-prod-name-title">Chú Tư (Hoàng Văn Tư)</div>
-                      <div class="table-prod-subline">Hộ 31 · Thôn Đồi Mơ</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Trà Bát Tiên OCOP 4★</span></td>
-                    <td style="text-align: center; font-weight: 500;">80 kg</td>
-                    <td style="text-align: right; font-weight: 500; font-variant-numeric: tabular-nums;">17.600.000 đ</td>
-                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-1.760.000 đ</td>
-                    <td style="text-align: right; font-weight: 700; color: #D97706; font-variant-numeric: tabular-nums;">15.840.000 đ</td>
-                    <td style="text-align: left;"><span style="font-size: 12px; color: var(--slate-600);">Ví ZaloPay 0912****55</span></td>
-                    <td style="text-align: center;"><span class="status-badge-clean pending">Chờ Super Admin Duyệt Chi</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="showToast('📄 Biên bản nghiệm thu Hộ Chú Tư: 80kg chè búp sao lửa đạt OCOP')">Xem Biên Bản</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td style="text-align: left;">
-                      <div class="table-prod-name-title">Anh Thắng (Nguyễn Văn Thắng)</div>
-                      <div class="table-prod-subline">Hộ 52 · Thôn Bãi Giữa</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Bưởi Da Xanh Loại 1</span></td>
-                    <td style="text-align: center; font-weight: 500;">350 kg</td>
-                    <td style="text-align: right; font-weight: 500; font-variant-numeric: tabular-nums;">8.750.000 đ</td>
-                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-875.000 đ</td>
-                    <td style="text-align: right; font-weight: 700; color: #D97706; font-variant-numeric: tabular-nums;">7.875.000 đ</td>
-                    <td style="text-align: left;"><span style="font-size: 12px; color: var(--slate-600);">Tiền mặt (Trạm cân đối soát)</span></td>
-                    <td style="text-align: center;"><span class="status-badge-clean pending">Chờ Super Admin Đối Soát</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="showToast('📄 Phiếu cân trạm thu mua: 350kg Bưởi Da Xanh Loại 1')">Xem Phiếu Cân</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td style="text-align: left;">
-                      <div class="table-prod-name-title">Chị Lan (Vũ Thị Lan)</div>
-                      <div class="table-prod-subline">Hộ 09 · Thôn Đồng Cát</div>
-                    </td>
-                    <td style="text-align: left;"><span class="table-tag-dept">Gạo Hữu Cơ ST25</span></td>
-                    <td style="text-align: center; font-weight: 500;">500 kg</td>
-                    <td style="text-align: right; font-weight: 500; font-variant-numeric: tabular-nums;">15.000.000 đ</td>
-                    <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">-1.500.000 đ</td>
-                    <td style="text-align: right; font-weight: 700; color: var(--brand-700); font-variant-numeric: tabular-nums;">13.500.000 đ</td>
-                    <td style="text-align: left;"><span style="font-size: 12px; color: var(--slate-600);">Agribank ····8811</span></td>
-                    <td style="text-align: center;"><span class="status-badge-clean approved">Admin Sàn Đã Chi Trả</span></td>
-                    <td style="text-align: right;">
-                      <button class="btn-table-action-view" onclick="showToast('📄 Biên bản nghiệm thu Hộ Chị Lan: 500kg Gạo ST25 chuẩn')">Xem Biên Bản</button>
-                    </td>
-                  </tr>
+                <tbody id="settlement-table-body">
                 </tbody>
               </table>
             </div>
@@ -6976,6 +6787,9 @@
 
         <!-- CÁC NÚT THAO TÁC DUYỆT / TẠM DỪNG / TỪ CHỐI / XÓA -->
         <div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+          <button class="btn-coursue-back" style="color: #DC2626; border-color: #FECACA;" onclick="deleteProductPermanently()" title="Xóa vĩnh viễn khỏi danh mục">
+            Xóa Vĩnh Viễn
+          </button>
           <button class="btn-coursue-back" style="color: #64748B;" onclick="setModalProductStatus('deleted')">
             Xóa Vào Lưu Trữ
           </button>
@@ -7367,13 +7181,15 @@
               <span class="status-badge-clean ${m.statusClass}" style="padding: 6px 14px; font-size: 13px; font-weight: 450;">${m.statusLabel}</span>
             </td>
             <td style="text-align: right;">
-              <div style="display: flex; justify-content: flex-end; gap: 8px;" onclick="event.stopPropagation();">
+              <div style="display: flex; justify-content: flex-end; gap: 6px;" onclick="event.stopPropagation();">
                 <button class="btn-table-action-view" onclick="switchToMemberAdmin('${m.key}')" title="Xem hồ sơ cá nhân & nông sản">
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                   Xem Hồ Sơ
                 </button>
-                <button class="hero-pill-btn-white" style="padding: 8px 12px;" onclick="openZaloCallModal('${m.name} - ${m.phone}')" title="Gọi Zalo trao đổi nông vụ">
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <button class="btn-table-action-view" style="color: #0284C7; border-color: #BAE6FD;" onclick="openEditMemberModal('${m.key}')" title="Chỉnh sửa thông tin xã viên">
+                  Sửa
+                </button>
+                <button class="btn-table-action-view" style="color: #DC2626; border-color: #FECACA;" onclick="deleteMember('${m.key}')" title="Xóa xã viên khỏi HTX">
+                  Xóa
                 </button>
               </div>
             </td>
@@ -7498,6 +7314,76 @@
       currentDirPage = 1;
       renderDirectoryTable();
       showToast(`✓ Đã thêm thành công xã viên mới: ${name} (${newCode})`);
+    }
+
+    // CHỈNH SỬA VÀ XÓA XÃ VIÊN (FULL CRUD)
+    function openEditMemberModal(farmerKey) {
+      const member = farmersDirectory50Data.find(m => m.key === farmerKey || m.code === farmerKey);
+      if (!member) {
+        showToast('⚠️ Không tìm thấy thông tin xã viên!');
+        return;
+      }
+      document.getElementById('edit-farmer-key').value = member.key;
+      document.getElementById('edit-farmer-name').value = member.name;
+      document.getElementById('edit-farmer-age').value = member.age;
+      document.getElementById('edit-farmer-phone').value = member.phone;
+      document.getElementById('edit-farmer-village').value = member.village;
+      document.getElementById('edit-farmer-crop').value = member.crop;
+      document.getElementById('edit-farmer-area').value = member.area;
+      document.getElementById('edit-farmer-standard').value = member.standard;
+      document.getElementById('edit-farmer-yield').value = member.yield;
+
+      openGenericModal('modal-edit-farmer-member');
+    }
+
+    function saveEditMember() {
+      const key = document.getElementById('edit-farmer-key').value;
+      const member = farmersDirectory50Data.find(m => m.key === key);
+      if (!member) return;
+
+      const name = document.getElementById('edit-farmer-name').value.trim() || member.name;
+      const age = parseInt(document.getElementById('edit-farmer-age').value) || member.age;
+      const phone = document.getElementById('edit-farmer-phone').value.trim() || member.phone;
+      const village = document.getElementById('edit-farmer-village').value;
+      const crop = document.getElementById('edit-farmer-crop').value.trim() || member.crop;
+      const area = document.getElementById('edit-farmer-area').value.trim() || member.area;
+      const standard = document.getElementById('edit-farmer-standard').value;
+      const yld = document.getElementById('edit-farmer-yield').value.trim() || member.yield;
+
+      member.name = name;
+      member.age = age;
+      member.phone = phone;
+      member.village = village;
+      member.crop = crop;
+      member.area = area;
+      member.standard = standard;
+      member.yield = yld;
+      member.badge = standard.toUpperCase();
+
+      if (farmersDatabase[key]) {
+        farmersDatabase[key].name = name;
+        farmersDatabase[key].phone = phone;
+        farmersDatabase[key].yield = yld;
+        farmersDatabase[key].badge = standard.toUpperCase();
+        farmersDatabase[key].meta = `Mã: ${member.code} · ${age} tuổi · ${village}, Xã Yên Bình`;
+        farmersDatabase[key].address = `${village}, Xã Yên Bình`;
+      }
+
+      closeGenericModal('modal-edit-farmer-member');
+      renderDirectoryTable();
+      showToast(`✓ Đã cập nhật thành công hồ sơ xã viên: ${name}!`);
+    }
+
+    function deleteMember(farmerKey) {
+      const idx = farmersDirectory50Data.findIndex(m => m.key === farmerKey || m.code === farmerKey);
+      if (idx === -1) return;
+      const member = farmersDirectory50Data[idx];
+      if (!confirm(`Bạn có chắc chắn muốn xóa xã viên "${member.name}" khỏi danh mục HTX không?`)) return;
+
+      farmersDirectory50Data.splice(idx, 1);
+      delete farmersDatabase[farmerKey];
+      renderDirectoryTable();
+      showToast(`✓ Đã xóa xã viên ${member.name} khỏi danh sách HTX!`);
     }
 
     // XUẤT FILE EXCEL DANH SÁCH 50 XÃ VIÊN
@@ -7864,6 +7750,81 @@
       }
     }
 
+    // THÊM SẢN PHẨM MỚI & XÓA VĨNH VIỄN CHO HỘ DÂN (FULL CRUD SẢN PHẨM)
+    function openAddProductModal() {
+      const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
+      const subtitle = document.getElementById('modal-add-product-subtitle');
+      if (subtitle) {
+        subtitle.innerText = `Thêm nông sản cho hộ: ${farmer.name}`;
+      }
+      document.getElementById('add-prod-name').value = '';
+      document.getElementById('add-prod-price').value = '55.000';
+      document.getElementById('add-prod-stock').value = '200 túi';
+      document.getElementById('add-prod-notes').value = '';
+      openGenericModal('modal-add-product');
+    }
+
+    function saveNewProduct() {
+      const name = document.getElementById('add-prod-name').value.trim();
+      if (!name) {
+        showToast('⚠️ Vui lòng nhập tên nông sản!');
+        return;
+      }
+      const standard = document.getElementById('add-prod-standard').value;
+      const price = document.getElementById('add-prod-price').value.trim() || '50.000';
+      const stock = document.getElementById('add-prod-stock').value.trim() || '100 đơn vị';
+      const img = document.getElementById('add-prod-img').value;
+      const notes = document.getElementById('add-prod-notes').value.trim() || 'Nông sản mới thêm vào danh mục.';
+
+      const farmer = farmersDatabase[currentFarmerKey] || farmersDatabase['bacba'];
+      if (!farmer.products) farmer.products = [];
+
+      const newId = 'sp_' + Date.now().toString().slice(-4);
+      const newSku = 'SP-' + (farmer.products.length + 1).toString().padStart(2, '0');
+      let stdClass = 'mint';
+      if (standard.includes('OCOP')) stdClass = 'amber';
+      else if (standard.includes('TRUYỀN THỐNG')) stdClass = 'gray';
+
+      const newProd = {
+        id: newId,
+        name: name,
+        sku: newSku,
+        standard: standard,
+        stdClass: stdClass,
+        price: price,
+        stock: stock,
+        status: 'approved',
+        img: img,
+        notes: notes,
+        voiceQuote: `${name} giá ${price} nghìn...`,
+        voicePrice: price
+      };
+
+      farmer.products.unshift(newProd);
+      closeGenericModal('modal-add-product');
+      renderMemberProductsTable();
+      showToast(`✓ Đã thêm thành công sản phẩm: ${name}!`);
+    }
+
+    function deleteProductPermanently() {
+      if (!activeInspectingProductId) return;
+      if (!confirm('Bạn có chắc chắn muốn xóa vĩnh viễn sản phẩm này khỏi hệ thống không?')) return;
+
+      for (const [key, f] of Object.entries(farmersDatabase)) {
+        if (f.products) {
+          const idx = f.products.findIndex(x => x.id === activeInspectingProductId);
+          if (idx !== -1) {
+            f.products.splice(idx, 1);
+            break;
+          }
+        }
+      }
+
+      closeProductModal();
+      renderMemberProductsTable();
+      showToast('✓ Đã xóa vĩnh viễn sản phẩm khỏi hệ thống!');
+    }
+
     // =========================================================================
     // ĐIỀU HƯỚNG CÁC MÀN HÌNH (DASHBOARD, THÀNH VIÊN, ORDER HUB B2B, AI STUDIO & CÁC PHÂN HỆ MỚI)
     // =========================================================================
@@ -7900,6 +7861,7 @@
       hideAllMainViews();
       document.getElementById('view-overview').style.display = 'block';
       setActiveNav('nav-btn-dashboard');
+      if (typeof renderResourceCardsTable === 'function') renderResourceCardsTable();
 
       // Reset right column theo phong cách sức khỏe HTX
       const ringBadge = document.getElementById('right-ring-badge');
@@ -8049,7 +8011,8 @@
       setDashboardLayoutMode(false);
       showOverviewView();
       switchOverviewTab('today');
-      showToast('📋 Duyệt Thẻ Có / Cần: 4 thẻ tài nguyên đang chờ Ban Chủ Nhiệm HTX thẩm định');
+      if (typeof renderResourceCardsTable === 'function') renderResourceCardsTable();
+      showToast('📋 Duyệt Thẻ Có / Cần: ' + resourceCardsData.length + ' thẻ tài nguyên trong hệ thống HTX');
       setActiveNav('nav-btn-the');
     }
 
@@ -8062,6 +8025,7 @@
       hideAllMainViews();
       document.getElementById('view-b2b-orders').style.display = 'block';
       setActiveNav('nav-btn-b2b');
+      if (typeof renderB2BOrdersTable === 'function') renderB2BOrdersTable();
       showToast('📦 Đang xem Phân hệ Order Hub B2B (Đơn hàng siêu thị & đại lý)');
     }
 
@@ -8078,6 +8042,7 @@
       hideAllMainViews();
       document.getElementById('view-settlement').style.display = 'block';
       setActiveNav('nav-btn-settlement');
+      if (typeof renderSettlementTable === 'function') renderSettlementTable();
       showToast('📋 Bảng Đối Soát Nghiệm Thu: 138/142 hộ đã được Admin Sàn giải ngân');
     }
 
@@ -8720,49 +8685,441 @@
       }, 1500);
     }
 
-    // Add B2B Contract
+    // =========================================================================
+    // QUẢN TRỊ ĐƠN BUÔN B2B (FULL CRUD)
+    // =========================================================================
+    let b2bOrdersData = [
+      {
+        id: 'B2B-9821',
+        slipId: 'WM-8821',
+        date: '04/10/2026',
+        partner: 'WinMart Miền Bắc',
+        address: 'Kho Trung Tâm Mê Linh, Hà Nội',
+        prod: 'Chuối Sấy Giòn Yên Bình',
+        qty: '1.200 túi (250g)',
+        unitPrice: '14.500 đ/túi',
+        totalVal: '17.400.000 đ',
+        status: 'Đang đóng gói',
+        statusClass: 'approved'
+      },
+      {
+        id: 'B2B-9822',
+        slipId: 'MM-9822',
+        date: '05/10/2026',
+        partner: 'MM Mega Market Thăng Long',
+        address: 'Phạm Văn Đồng, Cầu Giấy, Hà Nội',
+        prod: 'Trà Bát Tiên Sao Lửa OCOP',
+        qty: '300 hộp (200g)',
+        unitPrice: '162.000 đ/hộp',
+        totalVal: '48.600.000 đ',
+        status: 'Đang chờ gom',
+        statusClass: 'pending'
+      },
+      {
+        id: 'B2B-9823',
+        slipId: 'GC-9823',
+        date: '06/10/2026',
+        partner: 'GO! / Big C Long Biên',
+        address: 'TTTM Savico Megamall Hà Nội',
+        prod: 'Mật Ong Hoa Rừng Tự Nhiên OCOP',
+        qty: '150 chai (500ml)',
+        unitPrice: '200.000 đ/chai',
+        totalVal: '30.000.000 đ',
+        status: 'Tạm dừng chờ hũ',
+        statusClass: 'paused'
+      },
+      {
+        id: 'B2B-9824',
+        slipId: 'BHX-9824',
+        date: '07/10/2026',
+        partner: 'Bách Hóa Xanh (Hub Hà Nội)',
+        address: 'KCN Quang Minh, Hà Nội',
+        prod: 'Bưởi Da Xanh Yên Bình Loại 1',
+        qty: '1.500 trái (2.2 Tấn)',
+        unitPrice: '35.000 đ/trái',
+        totalVal: '52.500.000 đ',
+        status: 'Đang vận chuyển',
+        statusClass: 'approved'
+      }
+    ];
+
+    function renderB2BOrdersTable() {
+      const tbody = document.getElementById('b2b-orders-table-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+      b2bOrdersData.forEach(order => {
+        const tr = document.createElement('tr');
+        tr.className = 'clickable-row';
+        tr.onclick = () => openDispatchSlipModal(order.slipId || order.id);
+        tr.innerHTML = `
+          <td style="text-align: left;"><strong>#${order.id}</strong><br><span style="font-size: 11.5px; color: var(--slate-500);">Ký: ${order.date}</span></td>
+          <td style="text-align: left;">
+            <div style="font-weight: 450; color: var(--slate-900);">${order.partner}</div>
+            <div style="font-size: 12px; color: var(--slate-500);">${order.address}</div>
+          </td>
+          <td style="text-align: left;"><span class="table-tag-dept">${order.prod}</span></td>
+          <td style="text-align: center; font-weight: 500;">${order.qty}</td>
+          <td style="text-align: right; font-weight: 500; color: var(--slate-700); font-variant-numeric: tabular-nums;">${order.unitPrice}</td>
+          <td style="text-align: right; font-variant-numeric: tabular-nums;"><strong style="color: var(--brand-700); font-size: 15.5px;">${order.totalVal}</strong></td>
+          <td style="text-align: center;">
+            <span class="status-badge-clean ${order.statusClass}" style="cursor: pointer;" onclick="event.stopPropagation(); cycleB2BOrderStatus('${order.id}')" title="Bấm để chuyển trạng thái">${order.status}</span>
+          </td>
+          <td style="text-align: right;">
+            <div style="display: flex; justify-content: flex-end; gap: 6px;" onclick="event.stopPropagation();">
+              <button class="btn-table-action-view" onclick="openDispatchSlipModal('${order.slipId || order.id}')">
+                In Phiếu Kho
+              </button>
+              <button class="btn-table-action-view" style="color: #DC2626; border-color: #FECACA;" onclick="deleteB2BOrder('${order.id}')" title="Xóa hợp đồng sỉ">
+                Xóa
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const badge = document.getElementById('b2b-contracts-badge');
+      if (badge) badge.innerText = `${b2bOrdersData.length} Hợp Đồng Đang Gom`;
+    }
+
     function openAddB2BContractModal() {
       openGenericModal('modal-add-b2b-contract');
     }
 
     function submitAddB2BContract() {
-      const partner = document.getElementById('b2b-partner-input').value;
+      const partner = document.getElementById('b2b-partner-input').value.trim() || 'Chuỗi Siêu Thị Mới';
       const prod = document.getElementById('b2b-prod-select').value;
-      const qty = document.getElementById('b2b-qty-input').value;
-      const price = document.getElementById('b2b-price-input').value;
+      const qty = document.getElementById('b2b-qty-input').value.trim() || '1.000 túi';
+      const price = document.getElementById('b2b-price-input').value.trim() || '25.000.000 đ';
 
-      const tbody = document.getElementById('b2b-orders-table-body');
-      if (tbody) {
-        const orderId = 'B2B-98' + (25 + Math.floor(Math.random() * 50));
-        const newRow = document.createElement('tr');
-        newRow.className = 'clickable-row';
-        newRow.onclick = () => openDispatchSlipModal(orderId);
-        newRow.innerHTML = `
-          <td><strong>#${orderId}</strong><br><span style="font-size: 11.5px; color: var(--slate-500);">Ký: Hôm nay</span></td>
-          <td>
-            <div style="font-weight: 450; color: var(--slate-900);">${partner}</div>
-            <div style="font-size: 12px; color: var(--slate-500);">Hợp đồng mới duyệt trực tuyến</div>
-          </td>
-          <td><span class="table-tag-dept">${prod}</span></td>
-          <td style="font-weight: 500;">${qty}</td>
-          <td style="font-weight: 500; color: var(--slate-700);">Theo hợp đồng</td>
-          <td><strong style="color: var(--brand-700); font-size: 15px;">${price}</strong></td>
-          <td><span class="status-badge-clean approved">Đã ký kết</span></td>
+      const orderId = 'B2B-98' + (25 + Math.floor(Math.random() * 50));
+      const todayStr = new Date().toLocaleDateString('vi-VN');
+
+      const newOrder = {
+        id: orderId,
+        slipId: 'SLIP-' + orderId,
+        date: todayStr,
+        partner: partner,
+        address: 'Điểm giao nhận kho đối tác theo hợp đồng',
+        prod: prod,
+        qty: qty,
+        unitPrice: 'Theo hợp đồng',
+        totalVal: price,
+        status: 'Đang chờ gom',
+        statusClass: 'pending'
+      };
+
+      b2bOrdersData.unshift(newOrder);
+      renderB2BOrdersTable();
+      closeGenericModal('modal-add-b2b-contract');
+      showToast(`✓ Đã tạo và kích hoạt hợp đồng sỉ ${partner} (#${orderId})!`);
+    }
+
+    function cycleB2BOrderStatus(orderId) {
+      const order = b2bOrdersData.find(o => o.id === orderId);
+      if (!order) return;
+
+      const flow = [
+        { label: 'Đang chờ gom', class: 'pending' },
+        { label: 'Đang đóng gói', class: 'approved' },
+        { label: 'Đang vận chuyển', class: 'approved' },
+        { label: 'Đã hoàn tất', class: 'approved' }
+      ];
+
+      const currentIdx = flow.findIndex(f => f.label === order.status);
+      const nextIdx = (currentIdx + 1) % flow.length;
+      order.status = flow[nextIdx].label;
+      order.statusClass = flow[nextIdx].class;
+
+      renderB2BOrdersTable();
+      showToast(`✓ Đã cập nhật trạng thái đơn #${order.id}: ${order.status}`);
+    }
+
+    function deleteB2BOrder(orderId) {
+      const idx = b2bOrdersData.findIndex(o => o.id === orderId);
+      if (idx === -1) return;
+      if (!confirm(`Bạn có chắc chắn muốn hủy và xóa hợp đồng #${orderId} không?`)) return;
+
+      b2bOrdersData.splice(idx, 1);
+      renderB2BOrdersTable();
+      showToast(`✓ Đã xóa hợp đồng #${orderId}!`);
+    }
+
+    // =========================================================================
+    // QUẢN TRỊ THẺ TÀI NGUYÊN (THẺ CÓ / THẺ CẦN - FULL CRUD)
+    // =========================================================================
+    let resourceCardsData = [
+      { id: 'rc_01', title: 'Máy sấy nông sản mini', kind: 'can', kindLabel: '🔍 Cần', owner: 'Nguyễn Thị Hoa', household: '(Hộ 02)', date: '04/10/2026', status: 'pending' },
+      { id: 'rc_02', title: 'Chuối sấy giòn OCOP', kind: 'co', kindLabel: '📦 Có', owner: 'Bác Ba', household: '(Hộ 04)', date: '04/10/2026', status: 'approved' },
+      { id: 'rc_03', title: 'Chè Bát Tiên sao lửa', kind: 'co', kindLabel: '📦 Có', owner: 'Cô Lan', household: '(Hộ 09)', date: '03/10/2026', status: 'pending' },
+      { id: 'rc_04', title: 'Thùng carton đóng gói', kind: 'can', kindLabel: '🔍 Cần', owner: 'Lò Văn Sáng', household: '(Hộ 07)', date: '03/10/2026', status: 'pending' },
+      { id: 'rc_05', title: 'Lao động thu hái, 3 người', kind: 'can', kindLabel: '🔍 Cần', owner: 'HTX Yên Bình', household: '(HTX)', date: '02/10/2026', status: 'pending' }
+    ];
+
+    function renderResourceCardsTable() {
+      const tbody = document.getElementById('overview-resource-cards-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+      resourceCardsData.forEach(rc => {
+        const tr = document.createElement('tr');
+        const badgeClass = rc.kind === 'co' ? 'badge-card-kind co' : 'badge-card-kind can';
+        const actionBtn = rc.status === 'pending'
+          ? `<button class="btn-gvos-sm" style="height: 28px; padding: 0 10px; font-size: 11.5px; background: #059669; color: #fff; border-color: #059669;" onclick="approveResourceCard('${rc.id}')">Duyệt ngay</button>`
+          : `<span class="status-badge-clean approved" style="font-size: 11px; padding: 4px 8px;">Đã duyệt</span>`;
+
+        tr.innerHTML = `
+          <td><strong style="color: var(--slate-900);">${rc.title}</strong></td>
+          <td><span class="${badgeClass}">${rc.kindLabel}</span></td>
+          <td>${rc.owner} <small style="color: var(--slate-400);">${rc.household}</small></td>
+          <td style="color: var(--slate-500); font-size: 12px;">${rc.date}</td>
           <td style="text-align: right;">
-            <button class="btn-table-action-view" onclick="event.stopPropagation(); openDispatchSlipModal('${orderId}')">
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-              In Phiếu Kho
-            </button>
+            <div style="display: flex; justify-content: flex-end; gap: 6px; align-items: center;">
+              ${actionBtn}
+              <button class="btn-gvos-sm" style="height: 28px; padding: 0 8px; font-size: 11.5px; color: #DC2626; border-color: #FECACA;" onclick="deleteResourceCard('${rc.id}')" title="Xóa thẻ">Xóa</button>
+            </div>
           </td>
         `;
-        tbody.prepend(newRow);
+        tbody.appendChild(tr);
+      });
 
-        const badge = document.getElementById('b2b-contracts-badge');
-        if (badge) badge.innerText = `${tbody.querySelectorAll('tr').length} Hợp Đồng Đang Gom`;
+      const countEl = document.getElementById('overview-resource-cards-count');
+      if (countEl) countEl.innerText = resourceCardsData.length;
+    }
+
+    function openCreateResourceCardModal() {
+      document.getElementById('card-add-title').value = '';
+      document.getElementById('card-add-owner').value = 'Bác Ba (Hộ 04)';
+      document.getElementById('card-add-desc').value = '';
+      openGenericModal('modal-add-resource-card');
+    }
+
+    function saveNewResourceCard() {
+      const title = document.getElementById('card-add-title').value.trim();
+      if (!title) {
+        showToast('⚠️ Vui lòng nhập tiêu đề thẻ tài nguyên!');
+        return;
       }
+      const kind = document.getElementById('card-add-kind').value;
+      const owner = document.getElementById('card-add-owner').value.trim() || 'Hộ Xã Viên';
+      const todayStr = new Date().toLocaleDateString('vi-VN');
 
-      closeGenericModal('modal-add-b2b-contract');
-      showToast(`Đã lưu và kích hoạt hợp đồng ${partner}!`);
+      const newCard = {
+        id: 'rc_' + Date.now().toString().slice(-4),
+        title: title,
+        kind: kind,
+        kindLabel: kind === 'co' ? '📦 Có' : '🔍 Cần',
+        owner: owner.split(' (')[0],
+        household: owner.includes('(') ? '(' + owner.split('(')[1] : '(HTX)',
+        date: todayStr,
+        status: 'pending'
+      };
+
+      resourceCardsData.unshift(newCard);
+      renderResourceCardsTable();
+      closeGenericModal('modal-add-resource-card');
+      showToast(`✓ Đã đăng thẻ tài nguyên: ${title}!`);
+    }
+
+    function approveResourceCard(cardId) {
+      const card = resourceCardsData.find(c => c.id === cardId);
+      if (!card) return;
+      card.status = 'approved';
+      renderResourceCardsTable();
+      showToast(`✓ Đã phê duyệt thẻ tài nguyên: ${card.title}!`);
+    }
+
+    function deleteResourceCard(cardId) {
+      const idx = resourceCardsData.findIndex(c => c.id === cardId);
+      if (idx === -1) return;
+      const card = resourceCardsData[idx];
+      if (!confirm(`Bạn có chắc chắn muốn xóa thẻ "${card.title}" không?`)) return;
+
+      resourceCardsData.splice(idx, 1);
+      renderResourceCardsTable();
+      showToast(`✓ Đã xóa thẻ tài nguyên: ${card.title}!`);
+    }
+
+    // =========================================================================
+    // QUẢN TRỊ BẢNG ĐỐI SOÁT & NGHIỆM THU SẢN LƯỢNG (FULL CRUD)
+    // =========================================================================
+    let settlementData = [
+      {
+        id: 'st_01',
+        name: 'Bác Ba (Nguyễn Văn Ba)',
+        subline: 'Hộ 04 · Thôn Đồng Cát',
+        crop: 'Chuối Sấy Giòn OCOP',
+        weight: '120 kg',
+        revenue: '6.600.000 đ',
+        fee: '-660.000 đ',
+        net: '5.940.000 đ',
+        bank: 'Agribank ····8899',
+        status: 'Admin Sàn Đã Chi Trả',
+        statusClass: 'approved',
+        receipt: 'Biên bản cân nghiệm thu Hộ Bác Ba: 120kg đạt chuẩn OCOP A+'
+      },
+      {
+        id: 'st_02',
+        name: 'Cô Sáu (Trần Thị Sáu)',
+        subline: 'Hộ 18 · Thôn Suối Hai',
+        crop: 'Mật Ong Hoa Rừng',
+        weight: '45 Lít',
+        revenue: '9.000.000 đ',
+        fee: '-900.000 đ',
+        net: '8.100.000 đ',
+        bank: 'Vietcombank ····1034',
+        status: 'Chờ Super Admin Duyệt Chi',
+        statusClass: 'pending',
+        receipt: 'Biên bản nghiệm thu Hộ Cô Sáu: 45 Lít mật ong hoa rừng chuẩn'
+      },
+      {
+        id: 'st_03',
+        name: 'Chú Tư (Hoàng Văn Tư)',
+        subline: 'Hộ 31 · Thôn Đồi Mơ',
+        crop: 'Trà Bát Tiên OCOP 4★',
+        weight: '80 kg',
+        revenue: '17.600.000 đ',
+        fee: '-1.760.000 đ',
+        net: '15.840.000 đ',
+        bank: 'Ví ZaloPay 0912****55',
+        status: 'Chờ Super Admin Duyệt Chi',
+        statusClass: 'pending',
+        receipt: 'Biên bản nghiệm thu Hộ Chú Tư: 80kg chè búp sao lửa đạt OCOP'
+      },
+      {
+        id: 'st_04',
+        name: 'Anh Thắng (Nguyễn Văn Thắng)',
+        subline: 'Hộ 52 · Thôn Bãi Giữa',
+        crop: 'Bưởi Da Xanh Loại 1',
+        weight: '350 kg',
+        revenue: '8.750.000 đ',
+        fee: '-875.000 đ',
+        net: '7.875.000 đ',
+        bank: 'Tiền mặt (Trạm cân đối soát)',
+        status: 'Chờ Super Admin Đối Soát',
+        statusClass: 'pending',
+        receipt: 'Phiếu cân trạm thu mua: 350kg Bưởi Da Xanh Loại 1'
+      },
+      {
+        id: 'st_05',
+        name: 'Chị Lan (Vũ Thị Lan)',
+        subline: 'Hộ 09 · Thôn Đồng Cát',
+        crop: 'Gạo Hữu Cơ ST25',
+        weight: '500 kg',
+        revenue: '15.000.000 đ',
+        fee: '-1.500.000 đ',
+        net: '13.500.000 đ',
+        bank: 'Agribank ····8811',
+        status: 'Admin Sàn Đã Chi Trả',
+        statusClass: 'approved',
+        receipt: 'Biên bản nghiệm thu Hộ Chị Lan: 500kg Gạo ST25 chuẩn'
+      }
+    ];
+
+    function renderSettlementTable() {
+      const tbody = document.getElementById('settlement-table-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+      settlementData.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="text-align: left;">
+            <div class="table-prod-name-title">${item.name}</div>
+            <div class="table-prod-subline">${item.subline}</div>
+          </td>
+          <td style="text-align: left;"><span class="table-tag-dept">${item.crop}</span></td>
+          <td style="text-align: center; font-weight: 500;">${item.weight}</td>
+          <td style="text-align: right; font-weight: 500; font-variant-numeric: tabular-nums;">${item.revenue}</td>
+          <td style="text-align: right; color: var(--slate-500); font-variant-numeric: tabular-nums;">${item.fee}</td>
+          <td style="text-align: right; font-weight: 700; color: var(--brand-700); font-variant-numeric: tabular-nums;">${item.net}</td>
+          <td style="text-align: left;"><span style="font-size: 12px; color: var(--slate-600);">${item.bank}</span></td>
+          <td style="text-align: center;">
+            <span class="status-badge-clean ${item.statusClass}" style="cursor: pointer;" onclick="toggleSettlementStatus('${item.id}')" title="Bấm để đổi trạng thái chi trả">${item.status}</span>
+          </td>
+          <td style="text-align: right;">
+            <div style="display: flex; justify-content: flex-end; gap: 6px;">
+              <button class="btn-table-action-view" onclick="showToast('${item.receipt}')">Xem Biên Bản</button>
+              <button class="btn-table-action-view" style="color: #DC2626; border-color: #FECACA;" onclick="deleteSettlementItem('${item.id}')">Xóa</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function openAddSettlementModal() {
+      document.getElementById('settle-add-name').value = '';
+      document.getElementById('settle-add-village').value = 'Hộ 07 · Thôn Đồng Cát';
+      document.getElementById('settle-add-crop').value = '';
+      document.getElementById('settle-add-weight').value = '200 kg';
+      document.getElementById('settle-add-revenue').value = '10.000.000 đ';
+      document.getElementById('settle-add-bank').value = 'Agribank Yên Bình';
+      openGenericModal('modal-add-settlement-item');
+    }
+
+    function saveNewSettlementItem() {
+      const name = document.getElementById('settle-add-name').value.trim();
+      if (!name) {
+        showToast('⚠️ Vui lòng nhập tên hộ xã viên!');
+        return;
+      }
+      const village = document.getElementById('settle-add-village').value.trim() || 'Thôn Đồng Cát';
+      const crop = document.getElementById('settle-add-crop').value.trim() || 'Nông sản OCOP';
+      const weight = document.getElementById('settle-add-weight').value.trim() || '100 kg';
+      const revStr = document.getElementById('settle-add-revenue').value.trim() || '5.000.000 đ';
+      const bank = document.getElementById('settle-add-bank').value.trim() || 'Tài khoản cá nhân';
+
+      const revNum = parseInt(revStr.replace(/\D/g, '')) || 5000000;
+      const feeNum = Math.round(revNum * 0.1);
+      const netNum = revNum - feeNum;
+
+      const newItem = {
+        id: 'st_' + Date.now().toString().slice(-4),
+        name: name,
+        subline: village,
+        crop: crop,
+        weight: weight,
+        revenue: revNum.toLocaleString('vi-VN') + ' đ',
+        fee: '-' + feeNum.toLocaleString('vi-VN') + ' đ',
+        net: netNum.toLocaleString('vi-VN') + ' đ',
+        bank: bank,
+        status: 'Chờ Super Admin Duyệt Chi',
+        statusClass: 'pending',
+        receipt: `Biên bản nghiệm thu Hộ ${name}: ${weight} ${crop} chuẩn OCOP`
+      };
+
+      settlementData.unshift(newItem);
+      renderSettlementTable();
+      closeGenericModal('modal-add-settlement-item');
+      showToast(`✓ Đã thêm hộ ${name} vào bảng nghiệm thu!`);
+    }
+
+    function toggleSettlementStatus(id) {
+      const item = settlementData.find(s => s.id === id);
+      if (!item) return;
+
+      if (item.status === 'Admin Sàn Đã Chi Trả') {
+        item.status = 'Chờ Super Admin Duyệt Chi';
+        item.statusClass = 'pending';
+      } else {
+        item.status = 'Admin Sàn Đã Chi Trả';
+        item.statusClass = 'approved';
+      }
+      renderSettlementTable();
+      showToast(`✓ Đã cập nhật trạng thái chi trả: ${item.status}`);
+    }
+
+    function deleteSettlementItem(id) {
+      const idx = settlementData.findIndex(s => s.id === id);
+      if (idx === -1) return;
+      const item = settlementData[idx];
+      if (!confirm(`Bạn có chắc muốn xóa hộ "${item.name}" khỏi bảng đối soát không?`)) return;
+
+      settlementData.splice(idx, 1);
+      renderSettlementTable();
+      showToast(`✓ Đã xóa hộ ${item.name} khỏi bảng đối soát!`);
     }
 
     // Dispatch Slip
@@ -9476,10 +9833,13 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
     }
 
   
-    // Khởi tạo bảng tuyến xe và thẻ lộ trình khi tải trang
+    // Khởi tạo bảng tuyến xe, thẻ lộ trình, thẻ tài nguyên, đơn buôn B2B và đối soát khi tải trang
     setTimeout(() => {
       if (typeof renderFleetCards === 'function') renderFleetCards();
       if (typeof renderFleetTripsTable === 'function') renderFleetTripsTable();
+      if (typeof renderResourceCardsTable === 'function') renderResourceCardsTable();
+      if (typeof renderB2BOrdersTable === 'function') renderB2BOrdersTable();
+      if (typeof renderSettlementTable === 'function') renderSettlementTable();
 
       // Kiểm tra tham số URL hoặc Hash để mở đúng Tab (vd: #stats hoặc ?tab=stats)
       const urlParams = new URLSearchParams(window.location.search);
@@ -10684,6 +11044,227 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             Xác Nhận Gửi Tin Zalo Ngay
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       CÁC MODAL CRUD MỚI BỔ SUNG ĐẦY ĐỦ CHO TẤT CẢ PHÂN HỆ
+       ========================================================================= -->
+
+  <!-- Modal: Thêm Nông Sản Mới Cho Hộ Dân -->
+  <div id="modal-add-product" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-add-product')">
+    <div class="modal-content-container" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>Thêm Nông Sản Mới Cho Xã Viên</h3>
+          <p id="modal-add-product-subtitle">Nhập thông tin nông sản mới vào danh mục sản phẩm của hộ</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-product')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+        <div style="grid-column: span 2;">
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tên Nông Sản / Quy Cách Đóng Gói:</label>
+          <input type="text" id="add-prod-name" class="form-input-stylish" placeholder="Ví dụ: Chuối sấy dẻo mật ong túi zip 250g">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tiêu Chuẩn Chất Lượng:</label>
+          <select id="add-prod-standard" class="form-input-stylish">
+            <option value="OCOP 4★">OCOP 4★ Tỉnh</option>
+            <option value="OCOP 3★">OCOP 3★</option>
+            <option value="VIETGAP">VIETGAP Chuẩn Tỉnh</option>
+            <option value="GLOBALGAP">GLOBALGAP</option>
+            <option value="HỮU CƠ">HỮU CƠ PGS</option>
+            <option value="TRUYỀN THỐNG">LÀNG NGHỀ TRUYỀN THỐNG</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Giá Bán Niêm Yết (đ):</label>
+          <input type="text" id="add-prod-price" class="form-input-stylish" placeholder="Ví dụ: 65.000">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tồn Kho Sẵn Sàng:</label>
+          <input type="text" id="add-prod-stock" class="form-input-stylish" placeholder="Ví dụ: 500 túi">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Hình Ảnh Đại Diện:</label>
+          <select id="add-prod-img" class="form-input-stylish">
+            <option value="banana_front.jpg">Chuối sấy OCOP</option>
+            <option value="banana_plate.jpg">Đĩa chuối mẫu kiểm định</option>
+            <option value="tea_front.jpg">Trà Bát Tiên</option>
+            <option value="honey_front.jpg">Mật ong hoa rừng</option>
+            <option value="banana_back.jpg">Bao bì tem truy xuất QR</option>
+          </select>
+        </div>
+        <div style="grid-column: span 2;">
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Ghi Chú Thẩm Định / Hồ Sơ OCOP:</label>
+          <textarea id="add-prod-notes" class="form-input-stylish" rows="3" placeholder="Nhập tóm tắt hồ sơ kiểm định chất lượng, mã lô thu hoạch..."></textarea>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-add-product')">Hủy Bỏ</button>
+        <button class="hero-pill-btn-green" onclick="saveNewProduct()">+ Lưu & Thêm Vào Bảng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Chỉnh Sửa Thông Tin Xã Viên -->
+  <div id="modal-edit-farmer-member" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-edit-farmer-member')">
+    <div class="modal-content-container" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>Chỉnh Sửa Hồ Sơ Xã Viên HTX</h3>
+          <p>Cập nhật diện tích canh tác, số điện thoại, tiêu chuẩn và sản lượng</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-edit-farmer-member')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <input type="hidden" id="edit-farmer-key">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Họ Tên Xã Viên:</label>
+          <input type="text" id="edit-farmer-name" class="form-input-stylish">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tuổi:</label>
+          <input type="number" id="edit-farmer-age" class="form-input-stylish">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Số Điện Thoại:</label>
+          <input type="text" id="edit-farmer-phone" class="form-input-stylish">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Thôn / Xóm:</label>
+          <select id="edit-farmer-village" class="form-input-stylish">
+            <option value="Thôn Đồng Cát">Thôn Đồng Cát</option>
+            <option value="Thôn Đồi Mơ">Thôn Đồi Mơ</option>
+            <option value="Thôn Suối Hai">Thôn Suối Hai</option>
+            <option value="Thôn Bãi Giữa">Thôn Bãi Giữa</option>
+            <option value="Thôn Đầm Sen">Thôn Đầm Sen</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Cây Trồng / Nông Sản Chủ Lực:</label>
+          <input type="text" id="edit-farmer-crop" class="form-input-stylish">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Quy Mô / Diện Tích:</label>
+          <input type="text" id="edit-farmer-area" class="form-input-stylish">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tiêu Chuẩn Áp Dụng:</label>
+          <select id="edit-farmer-standard" class="form-input-stylish">
+            <option value="OCOP 4★ Tỉnh">OCOP 4★ Tỉnh</option>
+            <option value="OCOP 3★">OCOP 3★</option>
+            <option value="VIETGAP">VIETGAP</option>
+            <option value="GLOBALGAP">GLOBALGAP</option>
+            <option value="HỮU CƠ">HỮU CƠ PGS</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Sản Lượng Thu Hoạch:</label>
+          <input type="text" id="edit-farmer-yield" class="form-input-stylish">
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-edit-farmer-member')">Hủy Bỏ</button>
+        <button class="hero-pill-btn-green" onclick="saveEditMember()">Lưu Thay Đổi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Đăng Thẻ Tài Nguyên Mới (Có / Cần) -->
+  <div id="modal-add-resource-card" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-add-resource-card')">
+    <div class="modal-content-container" style="max-width: 600px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>Đăng Thẻ Tài Nguyên Nông Nghiệp Mới</h3>
+          <p>Chia sẻ vật tư, máy móc hoặc đăng nhu cầu hỗ trợ giữa các hộ xã viên</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-resource-card')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+        <div style="grid-column: span 2;">
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tiêu Đề Thẻ Tài Nguyên:</label>
+          <input type="text" id="card-add-title" class="form-input-stylish" placeholder="Ví dụ: Máy bay phun thuốc không người lái DJI">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Phân Loại Thẻ:</label>
+          <select id="card-add-kind" class="form-input-stylish">
+            <option value="can">🔍 Thẻ CẦN (Cần thuê / tìm thợ / tìm vật tư)</option>
+            <option value="co">📦 Thẻ CÓ (Có máy móc / nông sản / kho bãi)</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Chủ Thẻ / Hộ Đại Diện:</label>
+          <input type="text" id="card-add-owner" class="form-input-stylish" placeholder="Ví dụ: Bác Ba (Hộ 04)">
+        </div>
+        <div style="grid-column: span 2;">
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Mô Tả Nhu Cầu & Thời Gian Cần:</label>
+          <textarea id="card-add-desc" class="form-input-stylish" rows="3" placeholder="Nhập chi tiết yêu cầu, địa điểm thôn xóm, thời gian cần điều phối..."></textarea>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-add-resource-card')">Hủy Bỏ</button>
+        <button class="hero-pill-btn-green" onclick="saveNewResourceCard()">Đăng Thẻ Lên Sàn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Thêm Hộ Nghiệm Thu Sản Lượng Mới -->
+  <div id="modal-add-settlement-item" class="modal-backdrop-overlay" onclick="closeGenericModalOnBackdrop(event, 'modal-add-settlement-item')">
+    <div class="modal-content-container" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="modal-header-toolbar">
+        <div>
+          <h3>Thêm Hộ Vào Bảng Kê Nghiệm Thu</h3>
+          <p>Ghi nhận khối lượng cân đo thực tế để gửi Super Admin Sàn giải ngân</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeGenericModal('modal-add-settlement-item')" aria-label="Đóng cửa sổ" title="Đóng cửa sổ">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tên Hộ Xã Viên:</label>
+          <input type="text" id="settle-add-name" class="form-input-stylish" placeholder="Ví dụ: Bác Tám (Đỗ Văn Tám)">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Mã Hộ & Thôn Xóm:</label>
+          <input type="text" id="settle-add-village" class="form-input-stylish" placeholder="Ví dụ: Hộ 07 · Thôn Đồng Cát">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Nông Sản Nghiệm Thu:</label>
+          <input type="text" id="settle-add-crop" class="form-input-stylish" placeholder="Ví dụ: Chuối Tiêu Hồng Cấy Mô">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Khối Lượng Nghiệm Thu:</label>
+          <input type="text" id="settle-add-weight" class="form-input-stylish" placeholder="Ví dụ: 250 kg">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tổng Doanh Thu Cân Đo (đ):</label>
+          <input type="text" id="settle-add-revenue" class="form-input-stylish" placeholder="Ví dụ: 12.500.000 đ">
+        </div>
+        <div>
+          <label style="font-size: 12.5px; font-weight: 500; color: var(--slate-700); display: block; margin-bottom: 5px;">Tài Khoản / Ví Nhận Tiền:</label>
+          <input type="text" id="settle-add-bank" class="form-input-stylish" placeholder="Ví dụ: Agribank ····9922">
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="hero-pill-btn-white" onclick="closeGenericModal('modal-add-settlement-item')">Hủy Bỏ</button>
+        <button class="hero-pill-btn-green" onclick="saveNewSettlementItem()">Lưu Vào Bảng Kê</button>
       </div>
     </div>
   </div>

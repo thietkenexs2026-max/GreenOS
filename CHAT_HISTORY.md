@@ -640,3 +640,42 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
      - Xóa bỏ các nút bấm và icon mới phát sinh ở Sidebar (AI Studio, Điều phối đội xe, Kho vật tư, Radar giá). Giữ nguyên vẹn cấu trúc menu ban đầu của HTX.
      - Khôi phục thông báo Toast về định dạng thuần túy <span>✦</span> <span></span>, không thêm icon SVG.
      - Toàn bộ thay đổi tập trung 100% vào việc căn chỉnh chữ, độ mảnh font, padding các ô bảng và tỷ lệ hiển thị cân đối giữa các cột.
+
+---
+
+### Giai đoạn 12: Rà Soát Toàn Bộ Màn Hình & Nút Bấm, Bổ Sung Đầy Đủ Hoạt Động CRUD (HTX Dashboard)
+- **Yêu cầu của người dùng**: "rà soát hết tất cả các màn, các nút xem chố nào đang thiếu cRud bổ sung".
+- **Giải pháp & Triển khai thực tế**:
+  1. **Khảo sát & Rà soát toàn bộ 251 nút bấm trong 9 phân hệ**:
+     - Phát hiện các khu vực dữ liệu tĩnh thiếu chức năng Create, Update hoặc Delete: Thẻ tài nguyên Có/Cần (Tổng quan), Đơn buôn B2B (Order Hub), Bảng kê đối soát nghiệm thu sản lượng (Settlement), Danh sách xã viên (Members Directory) và Danh mục nông sản hộ dân (Member Admin).
+  2. **Hoàn thiện CRUD Sản Phẩm Hộ Dân (`view-member-admin`)**:
+     - **Create**: Nút `+ Thêm Sản Phẩm` trên toolbar mở `modal-add-product`, cho phép chọn tên, tiêu chuẩn OCOP/VietGAP, giá niêm yết, tồn kho, ảnh và ghi chú thẩm định (`saveNewProduct()`).
+     - **Read**: Render động danh mục sản phẩm kèm phân trang 10 sản phẩm/trang và menu lọc trạng thái.
+     - **Update**: Modal thẩm định chi tiết cho phép cập nhật tên, giá bán, ghi chú và chuyển trạng thái (Duyệt / Tạm dừng / Từ chối).
+     - **Delete**: Thêm nút `Xóa Vĩnh Viễn` (Hard Delete qua `deleteProductPermanently()`) bên cạnh nút `Xóa Vào Lưu Trữ` (Soft Delete).
+  3. **Hoàn thiện CRUD Hồ Sơ Xã Viên (`view-members-directory`)**:
+     - **Create**: Modal `modal-add-farmer-member` thêm xã viên mới (`saveNewMember()`).
+     - **Read**: Render bảng 50 xã viên với phân trang và bộ lọc theo thôn xóm, tiêu chuẩn.
+     - **Update**: Nút `Sửa` trên từng hàng mở `modal-edit-farmer-member`, cập nhật họ tên, tuổi, số điện thoại, thôn xóm, cây trồng, diện tích, tiêu chuẩn và sản lượng (`saveEditMember()`).
+     - **Delete**: Nút `Xóa` màu đỏ có hộp thoại xác nhận an toàn (`deleteMember()`).
+  4. **Hoàn thiện CRUD Đơn Buôn B2B (`view-b2b-orders`)**:
+     - **State động**: Chuyển bảng tĩnh sang mảng dữ liệu phản ứng `b2bOrdersData` và hàm `renderB2BOrdersTable()`.
+     - **Create**: Modal `modal-add-b2b-contract` kết nối tạo hợp đồng sỉ mới với siêu thị / đại lý (`submitAddB2BContract()`).
+     - **Read**: Bảng hợp đồng B2B đồng bộ chỉ số KPI và badge số lượng hợp đồng.
+     - **Update**: Bấm trực tiếp vào badge trạng thái để chuyển vòng đời đơn: `Đang chờ gom` ➔ `Đang đóng gói` ➔ `Đang vận chuyển` ➔ `Đã hoàn tất` (`cycleB2BOrderStatus()`).
+     - **Delete**: Nút `Xóa` hợp đồng có xác nhận, dọn dẹp khỏi bảng (`deleteB2BOrder()`).
+  5. **Hoàn thiện CRUD Thẻ Tài Nguyên Có / Cần (`view-overview` & Thẻ)**:
+     - **State động**: Mảng `resourceCardsData` và hàm `renderResourceCardsTable()`.
+     - **Create**: Nút `+ Đăng Thẻ Mới` trên header mở `modal-add-resource-card`, đăng nhu cầu thuê máy, tìm thợ hoặc chia sẻ vật tư (`saveNewResourceCard()`).
+     - **Read**: Danh sách thẻ hiển thị rõ loại (🔍 Cần / 📦 Có), chủ thẻ và ngày gửi.
+     - **Update**: Nút `Duyệt ngay` phê duyệt thẻ tài nguyên (`approveResourceCard()`).
+     - **Delete**: Nút `Xóa` thẻ tài nguyên (`deleteResourceCard()`).
+  6. **Hoàn thiện CRUD Bảng Kê Đối Soát Nghiệm Thu (`view-settlement`)**:
+     - **State động**: Mảng `settlementData` và hàm `renderSettlementTable()`.
+     - **Create**: Nút `+ Thêm Hộ Nghiệm Thu` mở `modal-add-settlement-item`, nhập khối lượng cân đo, tự động tính phí dịch vụ HTX (10%) và tiền thực nhận (`saveNewSettlementItem()`).
+     - **Read**: Bảng đối soát sản lượng rõ ràng, minh bạch thông tin tài khoản nhận tiền.
+     - **Update**: Bấm badge trạng thái để đảo chiều: `Chờ Super Admin Duyệt Chi` ⇄ `Admin Sàn Đã Chi Trả` (`toggleSettlementStatus()`).
+     - **Delete**: Nút `Xóa` hộ khỏi kỳ đối soát có xác nhận (`deleteSettlementItem()`).
+  7. **Kiểm thử tự động (Puppeteer Automated Test)**:
+     - Kiểm thử 5 phân hệ CRUD qua kịch bản `scratch/verify_crud.js`: Cả 5 bộ hoạt động C-R-U-D đều đạt **100% Success**, 0 lỗi JavaScript runtime.
+     - Tuân thủ nghiêm ngặt quy tắc người dùng: Không thêm icon trang trí tùy tiện, giữ sidebar thanh lịch, text tiếng Việt chuẩn mực, nút bấm chống tràn chữ.

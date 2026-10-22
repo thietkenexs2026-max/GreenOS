@@ -609,7 +609,8 @@
   </div>
 
   <!-- Raw Embedded Sources -->
-<template id="rawMobileCode"><!DOCTYPE html>
+<template id="rawMobileCode">
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -9868,43 +9869,575 @@
       -webkit-overflow-scrolling: touch !important;
       scrollbar-width: none !important;
     }
-    /* =========================================================================
-       GIAO DIỆN TỐI (DARK MODE) - CHUẨN ĐỒNG BỘ MÀU SẮC, GIỮ ẢNH THẬT 100%
+                /* =========================================================================
+       GIAO DIỆN TỐI (DARK MODE) - CHUẨN NATIVE DARK THEME, KHÔNG DÙNG INVERT
+       BẢO TOÀN 100% MÀU ẢNH THẬT, BACKGROUND TỐI SÂU (#0B1320), CHỮ RÕ NÉT
        ========================================================================= */
     .phone-device.dark-theme {
-      filter: invert(0.92) hue-rotate(180deg);
-      background: #0B1320;
+      --bg-page: #0B1320;
+      --bg-card: #141E33;
+      --bg-subtle: #1E2D4A;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-subtle: #64748B;
+      --border-line: #1E2D4A;
+      --border-subtle: #18243C;
+      --agri-green-soft: #064E3B;
+      --agri-green-border: #047857;
+      background-color: #0B1320 !important;
+      color: #F8FAFC !important;
+      border-color: #27272A !important;
+      filter: none !important;
     }
-    /* Đảo ngược lại 100% đối với ảnh, video, avatar, banner để bảo toàn màu ảnh tự nhiên, không bị âm bản */
+
+    /* Notch & Status Bar chuẩn Apple iPhone Dark Mode */
+    .phone-device.dark-theme .device-notch {
+      background: #000000 !important;
+    }
+    .phone-device.dark-theme .status-bar-header {
+      color: #F8FAFC !important;
+    }
+
+    /* Header Bác Ba: Chữ sáng rõ nét trên nền tối */
+    .phone-device.dark-theme .home-user-header {
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .user-name-text {
+      color: #FFFFFF !important;
+      font-weight: 600 !important;
+    }
+    .phone-device.dark-theme .user-address-sub {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .user-avatar-img {
+      border-color: #1E2D4A !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+    }
+    .phone-device.dark-theme .btn-guide-onboard {
+      background: #141E33 !important;
+      border-color: #047857 !important;
+      color: #34D399 !important;
+    }
+
+    /* BẢO VỆ 100% ẢNH, VIDEO, BANNER, AVATAR KHÔNG BỊ BIẾN ĐỔI MÀU */
     .phone-device.dark-theme img,
     .phone-device.dark-theme video,
     .phone-device.dark-theme iframe,
-    .phone-device.dark-theme [style*="background-image"],
+    .phone-device.dark-theme svg,
+    .phone-device.dark-theme canvas,
     .phone-device.dark-theme .user-avatar-img,
-    .phone-device.dark-theme .user-avatar-verified,
     .phone-device.dark-theme .phiphi-avatar-img,
     .phone-device.dark-theme .banner-slider img,
-    .phone-device.dark-theme .promo-slide-img,
+    .phone-device.dark-theme .promo-slide-card img,
     .phone-device.dark-theme .promo-carousel-container,
-    .phone-device.dark-theme .pmg-thumb,
     .phone-device.dark-theme .ecom-img,
-    .phone-device.dark-theme .ecom-img-wrap,
     .phone-device.dark-theme .ai-product-img,
     .phone-device.dark-theme .product-img,
-    .phone-device.dark-theme .ob-slide-bg,
-    .phone-device.dark-theme .det-item-thumb,
+    .phone-device.dark-theme .product-card-img,
+    .phone-device.dark-theme .pmg-thumb,
     .phone-device.dark-theme .wh-item-thumb,
     .phone-device.dark-theme .wh-img-preview,
     .phone-device.dark-theme .fs-cover-img,
     .phone-device.dark-theme .fs-avatar-img,
-    .phone-device.dark-theme .fs-prod-img,
-    .phone-device.dark-theme .product-card-img {
-      filter: invert(1.08) hue-rotate(180deg) !important;
-      backface-visibility: hidden;
-      transform: translateZ(0);
+    .phone-device.dark-theme .fs-prod-img {
+      filter: none !important;
     }
 
-    /* =========================================================================
+    /* Trợ lý Phi Phi Hero Card */
+    .phone-device.dark-theme .phiphi-home-card {
+      background: linear-gradient(135deg, #064E3B 0%, #06372B 100%) !important;
+      border-color: #047857 !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3) !important;
+    }
+    .phone-device.dark-theme .phiphi-name-title span {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .phiphi-name-sub {
+      color: #A7F3D0 !important;
+    }
+    .phone-device.dark-theme .phiphi-chip-btn {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: #D1FAE5 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* Banners & Promo Carousel */
+    .phone-device.dark-theme .promo-banner-section,
+    .phone-device.dark-theme .promo-carousel-container {
+      background: transparent !important;
+    }
+    .phone-device.dark-theme .promo-slide-card img {
+      border: 1px solid #1E2D4A !important;
+    }
+    .phone-device.dark-theme .promo-dot {
+      background: #334155 !important;
+    }
+    .phone-device.dark-theme .promo-dot.active {
+      background: #10B981 !important;
+    }
+
+    /* Metric Duo Cards (Đơn đã bán & Doanh thu) */
+    .phone-device.dark-theme .metric-card-interactive {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+    }
+    .phone-device.dark-theme .metric-card-label {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .metric-card-value {
+      color: #FFFFFF !important;
+    }
+
+    /* Việc Cần Làm (To-Do Section) */
+    .phone-device.dark-theme .vcl-card {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+    }
+    .phone-device.dark-theme .vcl-title,
+    .phone-device.dark-theme .vcl-item-title {
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .vcl-item-hint {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .vcl-item {
+      border-bottom-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .vcl-item:active {
+      background: #1A2640 !important;
+    }
+    .phone-device.dark-theme .vcl-badge-count {
+      background: #1E2D4A !important;
+      color: #38BDF8 !important;
+    }
+
+    /* Chợ Xanh & Đăng Bán Section */
+    .phone-device.dark-theme .home-unified-market-publish-section {
+      background: #141E33 !important;
+      border-color: #047857 !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+    }
+    .phone-device.dark-theme .hump-header {
+      border-bottom-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .hump-main-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .hump-sub-title {
+      color: #A7F3D0 !important;
+    }
+    .phone-device.dark-theme .hump-leaf-badge {
+      background: #064E3B !important;
+      border-color: #047857 !important;
+    }
+    .phone-device.dark-theme .shopee-plan-card {
+      background: #1A2640 !important;
+      border-color: #243557 !important;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25) !important;
+    }
+    .phone-device.dark-theme .shopee-plan-card .card-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .shopee-plan-card .card-sub {
+      color: #94A3B8 !important;
+    }
+
+    /* Toàn bộ Cards, Container, Input, Sheet trong Dark Mode */
+    .phone-device.dark-theme .screen-container,
+    .phone-device.dark-theme .view-panel {
+      background-color: #0B1320 !important;
+      color: #F8FAFC !important;
+    }
+
+    /* Màn Đơn Hàng (Orders Tab) */
+    .phone-device.dark-theme .agri-order-header {
+      background: #0B1320 !important;
+      border-bottom-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .aoh-title-text {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .aoh-back-btn,
+    .phone-device.dark-theme .aoh-action-btn,
+    .phone-device.dark-theme .det-back-icon-btn,
+    .phone-device.dark-theme .det-bell-icon-btn {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .orders-top-segment-tabs {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .ot-segment-btn {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .ot-segment-btn.active {
+      background: #1E2D4A !important;
+      color: #34D399 !important;
+      box-shadow: none !important;
+    }
+    .phone-device.dark-theme .ot-segment-btn.active span {
+      color: #34D399 !important;
+    }
+    .phone-device.dark-theme .orders-search-wrapper,
+    .phone-device.dark-theme .orders-search-bar {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .osb-input {
+      background: transparent !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .osb-tag {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      color: #CBD5E1 !important;
+    }
+    .phone-device.dark-theme .agri-status-tabs-container {
+      background: transparent !important;
+    }
+    .phone-device.dark-theme .agri-tab-item {
+      background: #141E33 !important;
+      border: 1px solid #1E2D4A !important;
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .agri-tab-item.active {
+      background: #047857 !important;
+      border-color: #10B981 !important;
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .agri-picklist-shortcut-card {
+      background: #141E33 !important;
+      border: 1px solid #047857 !important;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25) !important;
+    }
+    .phone-device.dark-theme .apsc-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .apsc-desc {
+      color: #A7F3D0 !important;
+    }
+    .phone-device.dark-theme .agri-filter-toolbar {
+      background: transparent !important;
+    }
+    .phone-device.dark-theme .agri-date-btn,
+    .phone-device.dark-theme .agri-channel-btn {
+      background: #141E33 !important;
+      border: 1px solid #1E2D4A !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .agri-filter-chip {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .agri-filter-chip.active {
+      background: #047857 !important;
+      border-color: #10B981 !important;
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .agri-select-box {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .agri-order-card,
+    .phone-device.dark-theme .order-card,
+    .phone-device.dark-theme .order-item-card {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      color: #F8FAFC !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+    }
+    .phone-device.dark-theme .agri-order-card .aoc-buyer-name,
+    .phone-device.dark-theme .order-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .agri-order-card .aoc-order-time {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .aoc-produce-box,
+    .phone-device.dark-theme .aoc-items-preview,
+    .phone-device.dark-theme .order-details-box {
+      background: #1A2640 !important;
+      border-color: #243557 !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .aoc-produce-text {
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .aoc-payout-label {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .aoc-payout-val {
+      color: #34D399 !important;
+    }
+    .phone-device.dark-theme .aoc-payment-badge {
+      background: #1E2D4A !important;
+      color: #CBD5E1 !important;
+      border: 1px solid #2D3E63 !important;
+    }
+
+    /* Màn Tài Khoản (Account Tab) */
+    .phone-device.dark-theme .ams-container {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    }
+    .phone-device.dark-theme .ams-sheet-handle {
+      background: #334155 !important;
+    }
+    .phone-device.dark-theme .ams-header {
+      border-bottom-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .ams-title,
+    .phone-device.dark-theme .ams-user-name {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .ams-user-role {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .ams-close-btn {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .ams-close-btn:hover {
+      background: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .ams-group-card {
+      background: #1A2640 !important;
+      border-color: #243557 !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+    }
+    .phone-device.dark-theme .ams-item-row {
+      border-bottom-color: #243557 !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .ams-item-title {
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .ams-item-sub {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .ams-icon-box {
+      background: #1E2D4A !important;
+      color: #38BDF8 !important;
+    }
+    .phone-device.dark-theme .ams-chevron {
+      stroke: #64748B !important;
+    }
+
+    /* Màn Báo Cáo / Thống Kê (Dashboard Tab) */
+    .phone-device.dark-theme .dash-top-bar {
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .btn-dock-back {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .dash-farmer-badge-card {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .dfb-name {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .dfb-role {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .gvos-rev-card,
+    .phone-device.dark-theme .dash-card-section {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .gvos-rev-select-wrap {
+      background: #1E2D4A !important;
+      border-color: #2D3E63 !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .gvos-rev-select {
+      background: transparent !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .gvos-rev-section-title,
+    .phone-device.dark-theme .dcs-title,
+    .phone-device.dark-theme .section-title-line span {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .btn-dash-action {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .bda-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .bda-sub {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .orchard-item {
+      background: #1A2640 !important;
+      border-color: #243557 !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .gvos-7d-row {
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .gvos-rev-kpi-pill {
+      background: #141E33 !important;
+      border: 1px solid #1E2D4A !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    }
+    .phone-device.dark-theme .gvos-rev-kpi-lbl {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .gvos-rev-channel-card {
+      background: #1A2640 !important;
+      border-color: #243557 !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .gvos-rev-ch-name {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .gvos-rev-ch-val {
+      color: #34D399 !important;
+    }
+    .phone-device.dark-theme .gvos-rev-ch-sub {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .gvos-rev-progress-bg {
+      background: #141E33 !important;
+    }
+
+    /* Màn Đăng Bán Nông Sản (Wizard Steps 1, 2, 3) */
+    .phone-device.dark-theme .wizard-stepper-wrap {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .step-main-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .step-sub-desc,
+    .phone-device.dark-theme .wsw-sub {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .btn-wizard-close {
+      background: #1E2D4A !important;
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .photo-slot-card-large {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .photo-title-text {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .photo-sub-hint {
+      color: #94A3B8 !important;
+    }
+    .phone-device.dark-theme .wizard-card,
+    .phone-device.dark-theme .wizard-step-box {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .wizard-dock,
+    .phone-device.dark-theme .dock-cta-bar {
+      background: rgba(11, 19, 32, 0.96) !important;
+      border-top-color: #1E2D4A !important;
+    }
+
+    /* Inputs, Textareas, Selects chung */
+    .phone-device.dark-theme input,
+    .phone-device.dark-theme textarea,
+    .phone-device.dark-theme select {
+      background-color: #1E2D4A !important;
+      border-color: #2D3E63 !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme input::placeholder,
+    .phone-device.dark-theme textarea::placeholder {
+      color: #64748B !important;
+    }
+
+    /* Thanh Điều Hướng Đáy (Bottom Navigation Bar) */
+    .phone-device.dark-theme .app-bottom-nav {
+      background: rgba(11, 19, 32, 0.96) !important;
+      border-top-color: #1E2D4A !important;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+    .phone-device.dark-theme .nav-tab-item {
+      color: #64748B !important;
+    }
+    .phone-device.dark-theme .nav-tab-item.active {
+      color: #10B981 !important;
+    }
+
+    /* Gian hàng nông sản & Chợ sỉ */
+    .phone-device.dark-theme #panel-farmer-store,
+    .phone-device.dark-theme #panel-market {
+      background: #0B1320 !important;
+    }
+    .phone-device.dark-theme .fs-header-bar,
+    .phone-device.dark-theme .market-header-bar,
+    .phone-device.dark-theme .det-top-bar {
+      background: #0B1320 !important;
+      border-bottom-color: #1E2D4A !important;
+      color: #F8FAFC !important;
+    }
+    .phone-device.dark-theme .fs-header-title,
+    .phone-device.dark-theme .market-header-title,
+    .phone-device.dark-theme .det-top-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .fs-section-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .fs-tab-btn {
+      color: #94A3B8 !important;
+      border-bottom-color: transparent !important;
+    }
+    .phone-device.dark-theme .fs-tab-btn.active {
+      color: #34D399 !important;
+      border-bottom-color: #10B981 !important;
+    }
+    .phone-device.dark-theme .fs-prod-card,
+    .phone-device.dark-theme .ecom-product-card {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+    }
+    .phone-device.dark-theme .fs-prod-title,
+    .phone-device.dark-theme .ecom-title {
+      color: #FFFFFF !important;
+    }
+    .phone-device.dark-theme .fs-prod-spec,
+    .phone-device.dark-theme .ecom-shop-line,
+    .phone-device.dark-theme .fs-prod-sold,
+    .phone-device.dark-theme .ecom-meta-line {
+      color: #94A3B8 !important;
+    }
+
+    /* Phao trợ lý Phi Phi nổi */
+    .phone-device.dark-theme .phiphi-float-dock,
+    .phone-device.dark-theme .phiphi-float-pill {
+      background: #064E3B !important;
+      border-color: #047857 !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Đổi màu trang nền ngoài khi bật dark mode */
+    body.dark-mode-active {
+      background-color: #080D1A !important;
+    }
+    body.dark-mode-active .device-caption-bar {
+      background: #141E33 !important;
+      border-color: #1E2D4A !important;
+      color: #F8FAFC !important;
+    }
+
+/* =========================================================================
        PANEL GIAN HÀNG THƯƠNG MẠI ĐIỆN TỬ XÃ VIÊN (BÁC BA · HTX ĐỒNG CÁT)
        ========================================================================= */
     #panel-farmer-store {
@@ -35273,7 +35806,6 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
 </body>
 </html>
-
 </template>
 
 

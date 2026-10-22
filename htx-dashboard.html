@@ -201,7 +201,236 @@
       background: #EFF6FF;
     }
 
-    /* 5 Tiles Hàng Ngang (CX-08 Tiles5 - GreenOS Style) */
+    /* =========================================================================
+       EXECUTIVE KPI QUAD (4 CARD TRỌNG TÂM TINH GỌN - GREENOS CHUẨN)
+       ========================================================================= */
+    .kpi-quad-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+      min-width: 0 !important;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 1300px) {
+      .kpi-quad-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .kpi-quad-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .kpi-quad-card {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-card);
+      padding: 14px 14px 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 128px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+      box-sizing: border-box;
+      min-width: 0 !important;
+    }
+
+    .kpi-quad-card:hover {
+      border-color: var(--brand-500);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -4px rgba(5, 150, 105, 0.12);
+    }
+
+    .kpi-quad-card.alert {
+      background: #FFFBEB;
+      border-color: #FCD34D;
+    }
+    .kpi-quad-card.alert:hover {
+      border-color: #F59E0B;
+      box-shadow: 0 8px 24px -4px rgba(245, 158, 11, 0.16);
+    }
+
+    .kpi-quad-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .kpi-quad-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .kpi-quad-icon-box.emerald   { background: #ECFDF5; color: #059669; }
+    .kpi-quad-icon-box.amber     { background: #FEF3C7; color: #D97706; }
+    .kpi-quad-icon-box.blue      { background: #EFF6FF; color: #2563EB; }
+    .kpi-quad-icon-box.darkgreen { background: #E6F4EA; color: #065F46; }
+
+    .kpi-quad-arrow-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      color: var(--slate-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .kpi-quad-card:hover .kpi-quad-arrow-btn {
+      background: var(--brand-600);
+      color: white;
+      border-color: var(--brand-600);
+      transform: translateX(2px);
+    }
+    .kpi-quad-arrow-btn.alert {
+      background: #FEF3C7;
+      border-color: #FDE68A;
+      color: #B45309;
+    }
+    .kpi-quad-card.alert:hover .kpi-quad-arrow-btn.alert {
+      background: #D97706;
+      color: white;
+      border-color: #D97706;
+    }
+
+    .kpi-quad-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-500);
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .kpi-quad-main-num {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--slate-900);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.15;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .kpi-quad-main-num small {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-500);
+    }
+
+    .kpi-quad-footer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      font-size: 11px;
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+
+    .kpi-sub-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .kpi-sub-pill.green { background: #ECFDF5; color: #059669; }
+    .kpi-sub-pill.blue  { background: #EFF6FF; color: #1D4ED8; }
+    .kpi-sub-pill.amber { background: #FEF3C7; color: #B45309; }
+    .kpi-sub-pill.red   { background: #FEE2E2; color: #DC2626; }
+    .kpi-sub-pill.mint  { background: #D1FAE5; color: #065F46; }
+
+    .kpi-sub-text {
+      color: var(--slate-500);
+      font-size: 11.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* =========================================================================
+       CENTER TABS (ĐIỀU PHỐI HÔM NAY vs THỐNG KÊ MÙA VỤ)
+       ========================================================================= */
+    .htx-view-tabs-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #F1F5F9;
+      padding: 4px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      width: fit-content;
+      border: 1px solid var(--slate-200);
+    }
+
+    .htx-view-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--slate-600);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap !important;
+    }
+
+    .htx-view-tab-btn:hover {
+      color: var(--slate-900);
+    }
+
+    .htx-view-tab-btn.active {
+      background: #FFFFFF;
+      color: var(--brand-700);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      font-weight: 700;
+    }
+
+    .tab-count-badge {
+      background: #EF4444;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 999px;
+      line-height: 1.2;
+    }
+
+    .tab-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+
+    /* 5 Tiles Hàng Ngang & 4 Tiles Đơn Hàng (Legacy support nếu cần) */
     .tiles5 {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -212,7 +441,6 @@
       box-sizing: border-box;
     }
 
-    /* 4 Tiles Đơn Hàng (CX-08 Tiles4 - GreenOS Style) */
     .tiles4 {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -518,26 +746,24 @@
     }
 
     .rev-big-num {
-      font-size: 28px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 800;
       color: var(--brand-700);
       font-variant-numeric: tabular-nums;
       display: flex;
-      align-items: baseline;
-      gap: 8px;
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1.2;
     }
-      font-weight: 700;
-      color: var(--b-fg);
-      font-variant-numeric: tabular-nums;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
+
+    .rev-big-num span.num-val {
+      white-space: nowrap;
     }
 
     .rev-big-num small {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--b-muted);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--slate-500);
     }
 
     /* =========================================================================
@@ -4015,96 +4241,89 @@
             </div>
           </div>
 
-          <!-- 5 Ô SỐ LIỆU CHÍNH CÙNG KHUNG (CX-08 TILES5 - GREENOS THEMED) -->
-          <section class="tiles5" aria-label="Số liệu chính Chợ Xanh">
-            <!-- Ô 1: Thẻ có -->
-            <a class="tile-gvos" href="#cards" onclick="showCardsView()">
-              <div class="tile-label">
-                <span style="display: flex; align-items: center; gap: 6px; font-weight: 600; color: #059669;">
-                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
-                  Thẻ Có (Cung)
-                </span>
-                <span class="tile-go-arrow">➔</span>
+          <!-- EXECUTIVE KPI QUAD (4 CARD TRỌNG TÂM TINH GỌN - GREENOS CHUẨN) -->
+          <div class="kpi-quad-grid" aria-label="Executive KPI Quad">
+            <!-- Card 1: Sàn Nguồn Lực -->
+            <div class="kpi-quad-card" onclick="showCardsView()">
+              <div class="kpi-quad-top-row">
+                <div class="kpi-quad-icon-box emerald">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                </div>
+                <div class="kpi-quad-arrow-btn">➔</div>
               </div>
-              <div class="tile-num" style="color: #059669;">14</div>
-              <div class="tile-desc">Bà con đang có để xuất bán & chia sẻ</div>
-            </a>
-
-            <!-- Ô 2: Thẻ cần -->
-            <a class="tile-gvos" href="#cards" onclick="showCardsView()">
-              <div class="tile-label">
-                <span style="display: flex; align-items: center; gap: 6px; font-weight: 600; color: #2563EB;">
-                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #3B82F6;"></span>
-                  Thẻ Cần (Cầu)
-                </span>
-                <span class="tile-go-arrow">➔</span>
+              <span class="kpi-quad-label">Sàn Nguồn Lực</span>
+              <div class="kpi-quad-main-num" style="color: #059669;">23 <small>thẻ</small></div>
+              <div class="kpi-quad-footer">
+                <span class="kpi-sub-pill mint">14 Có · 9 Cần</span>
+                <span class="kpi-sub-text">5 ghép nối</span>
               </div>
-              <div class="tile-num" style="color: #1D4ED8;">9</div>
-              <div class="tile-desc">Nhu cầu xe tải, lò sấy, vật tư, nhân công</div>
-            </a>
+            </div>
 
-            <!-- Ô 3: Chờ duyệt -->
-            <a class="tile-gvos" href="#cards" onclick="showCardsView()" style="border-color: #FCD34D; background: #FFFBEB;">
-              <div class="tile-label">
-                <span style="display: flex; align-items: center; gap: 6px; font-weight: 700; color: #B45309;">
-                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #F59E0B;"></span>
-                  Chờ Duyệt Gấp
-                </span>
-                <span class="tile-go-arrow" style="color: #B45309;">➔</span>
+            <!-- Card 2: Cần Xử Lý Gấp -->
+            <div class="kpi-quad-card alert" onclick="showCardsView()">
+              <div class="kpi-quad-top-row">
+                <div class="kpi-quad-icon-box amber">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                </div>
+                <div class="kpi-quad-arrow-btn alert">➔</div>
               </div>
-              <div class="tile-num" style="color: #B45309;">6</div>
-              <div class="tile-desc" style="color: #92400E;">Thẻ đang chờ chủ nhiệm HTX thẩm định</div>
-            </a>
-
-            <!-- Ô 4: Đã liên hệ -->
-            <div class="tile-gvos">
-              <div class="tile-label">
-                <span style="display: flex; align-items: center; gap: 6px; font-weight: 600; color: #4F46E5;">
-                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6366F1;"></span>
-                  Đã Ghép Nối
-                </span>
+              <span class="kpi-quad-label" style="color: #B45309;">Cần Xử Lý Gấp</span>
+              <div class="kpi-quad-main-num" style="color: #B45309;">6 <small>thẻ chờ</small></div>
+              <div class="kpi-quad-footer">
+                <span class="kpi-sub-pill amber">3 hộ khẩn</span>
+                <span class="kpi-sub-text" style="color: #92400E;">2 đơn sỉ</span>
               </div>
-              <div class="tile-num" style="color: #4338CA;">5</div>
-              <div class="tile-desc">Ghép nối tài nguyên đã bấm liên hệ</div>
             </div>
 
-            <!-- Ô 5: Hộ đã số hoá -->
-            <div class="tile-gvos">
-              <div class="tile-label">
-                <span style="display: flex; align-items: center; gap: 6px; font-weight: 600; color: #0F172A;">
-                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
-                  Hộ Số Hoá App
-                </span>
+            <!-- Card 3: Vận Đơn & Xuất Bán -->
+            <div class="kpi-quad-card" onclick="showB2BOrdersView()">
+              <div class="kpi-quad-top-row">
+                <div class="kpi-quad-icon-box blue">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                </div>
+                <div class="kpi-quad-arrow-btn">➔</div>
               </div>
-              <div class="tile-num">64<small style="color: #059669; font-weight: 700;">%</small></div>
-              <div class="tile-desc">7/11 hộ hạt nhân · 23/31 SP đạt chuẩn</div>
+              <span class="kpi-quad-label">Vận Đơn & Xuất Bán</span>
+              <div class="kpi-quad-main-num" style="color: #1D4ED8;">8 <small>đang giao</small></div>
+              <div class="kpi-quad-footer">
+                <span class="kpi-sub-pill blue">3 chờ TT</span>
+                <span class="kpi-sub-text">0 khiếu nại</span>
+              </div>
             </div>
-          </section>
 
-          <!-- 4 Ô VIỆC ĐANG CHỜ ĐƠN HÀNG (CX-08 TILES4 TỪ A10 ORDER BOOK) -->
-          <section class="tiles4" aria-label="Đơn hàng đang chờ">
-            <div class="tile-gvos">
-              <div class="tile-label"><span style="color: #2563EB; font-weight: 600;">💳 Chờ thanh toán</span></div>
-              <div class="tile-num" style="color: #1D4ED8;">3</div>
-              <div class="tile-desc">Đơn Chợ Xanh chờ Sàn khớp tiền</div>
+            <!-- Card 4: Doanh Thu 30 Ngày -->
+            <div class="kpi-quad-card" onclick="switchOverviewTab('stats')">
+              <div class="kpi-quad-top-row">
+                <div class="kpi-quad-icon-box darkgreen">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="kpi-quad-arrow-btn">➔</div>
+              </div>
+              <span class="kpi-quad-label">Doanh Thu 30 Ngày</span>
+              <div class="kpi-quad-main-num" style="color: #064E3B;">18.64 <small>Tr đ</small></div>
+              <div class="kpi-quad-footer">
+                <span class="kpi-sub-pill mint">42 đơn hàng</span>
+                <span class="kpi-sub-text">88.5% bao tiêu</span>
+              </div>
             </div>
-            <div class="tile-gvos">
-              <div class="tile-label"><span style="color: #D97706; font-weight: 600;">⏳ Chờ xác nhận</span></div>
-              <div class="tile-num" style="color: #B45309;">2</div>
-              <div class="tile-desc">Đơn sỉ người bán chưa xác nhận</div>
-            </div>
-            <div class="tile-gvos">
-              <div class="tile-label"><span style="color: #059669; font-weight: 600;">🚚 Chờ lấy, đang giao</span></div>
-              <div class="tile-num" style="color: #059669;">8</div>
-              <div class="tile-desc">Đơn chờ xe lấy & đang trên đường giao</div>
-            </div>
-            <div class="tile-gvos">
-              <div class="tile-label"><span style="color: #64748B; font-weight: 600;">🛡️ Khiếu nại mở</span></div>
-              <div class="tile-num" style="color: #10B981;">0</div>
-              <div class="tile-desc">An toàn 100% · Không có đơn khiếu nại</div>
-            </div>
-          </section>
+          </div>
 
+          <!-- THANH CHUYỂN TAB TRUNG TÂM (ĐIỀU PHỐI HÔM NAY vs THỐNG KÊ MÙA VỤ) -->
+          <div class="htx-view-tabs-bar" role="tablist">
+            <button class="htx-view-tab-btn active" id="tab-btn-today" onclick="switchOverviewTab('today')">
+              <span class="tab-status-dot"></span>
+              <span>⚡ Điều Phối Hôm Nay</span>
+              <span class="tab-count-badge">6</span>
+            </button>
+            <button class="htx-view-tab-btn" id="tab-btn-stats" onclick="switchOverviewTab('stats')">
+              <span>📊 Thống Kê Mùa Vụ & Xã Viên</span>
+            </button>
+          </div>
+
+          <!-- ===================================================================
+               TAB 1: ĐIỀU PHỐI HÔM NAY (MẶC ĐỊNH HIỂN THỊ)
+               =================================================================== -->
+          <div id="overview-tab-today">
           <!-- HÀNG 1: VIỆC NÊN LÀM (5fr) & THẺ CHỜ DUYỆT MỚI NHẤT (7fr) - GREENOS STYLE -->
           <div class="g2-gvos">
             <!-- Cột 5fr: Việc Nên Làm -->
@@ -4203,6 +4422,139 @@
             </div>
           </div>
 
+          <!-- Continue Watching: Lưới 3 Card Nông Sản Xã Viên Gửi Duyệt -->
+          <section style="margin-bottom: 24px;">
+            <div class="section-headline-bar">
+              <h3>Nông Sản Xã Viên Gửi Duyệt Lên Sàn</h3>
+              <div class="nav-arrow-circles">
+                <button class="nav-arrow-btn" onclick="scrollCoursueGrid(-1)" title="Trước"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+                <button class="nav-arrow-btn active-primary" onclick="scrollCoursueGrid(1)" title="Sau"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+              </div>
+            </div>
+
+            <div class="cards-coursue-grid">
+              <!-- Card 1: Bác Ba -->
+              <div class="coursue-item-card" onclick="openProductModal('sp_01')">
+                <div class="coursue-img-wrapper">
+                  <img src="banana_front.jpg" alt="Chuối sấy Bác Ba">
+                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
+                </div>
+                <div class="coursue-card-body">
+                  <span class="pill-category-badge amber">OCOP 4 SAO</span>
+                  <h4 class="coursue-card-title">Chuối Sấy Giòn Yên Bình — Túi 250g Khóa Zip</h4>
+                  <div class="coursue-author-row">
+                    <div class="author-info-left">
+                      <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="author-thumb-sm">
+                      <div>
+                        <div class="author-name-text">Bác Ba (Hộ 04)</div>
+                        <div class="author-sub-text">Xã viên 62 tuổi</div>
+                      </div>
+                    </div>
+                    <div class="coursue-price-tag">55.000 đ</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Cô Lan -->
+              <div class="coursue-item-card" onclick="openProductModal('cl_01')">
+                <div class="coursue-img-wrapper">
+                  <img src="tea_front.jpg" alt="Trà Bát Tiên">
+                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
+                </div>
+                <div class="coursue-card-body">
+                  <span class="pill-category-badge mint">VIETGAP TỈNH</span>
+                  <h4 class="coursue-card-title">Trà Bát Tiên Sao Lửa — Hộp Thiếc Cao Cấp 200g</h4>
+                  <div class="coursue-author-row">
+                    <div class="author-info-left">
+                      <div class="author-thumb-sm" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight: 450; font-size:12px;">CL</div>
+                      <div>
+                        <div class="author-name-text">Cô Lan (Hộ 09)</div>
+                        <div class="author-sub-text">Thôn Đồi Chè</div>
+                      </div>
+                    </div>
+                    <div class="coursue-price-tag">180.000 đ</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Anh Tuấn -->
+              <div class="coursue-item-card" onclick="openProductModal('at_01')">
+                <div class="coursue-img-wrapper">
+                  <img src="honey_front.jpg" alt="Mật ong hoa rừng">
+                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
+                </div>
+                <div class="coursue-card-body">
+                  <span class="pill-category-badge cyan">MẬT ONG RỪNG</span>
+                  <h4 class="coursue-card-title">Mật Ong Hoa Rừng Tự Nhiên — Chai 500ml</h4>
+                  <div class="coursue-author-row">
+                    <div class="author-info-left">
+                      <div class="author-thumb-sm" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight: 450; font-size:12px;">AT</div>
+                      <div>
+                        <div class="author-name-text">Anh Tuấn (Hộ 12)</div>
+                        <div class="author-sub-text">Thôn Suối Rừng</div>
+                      </div>
+                    </div>
+                    <div class="coursue-price-tag">220.000 đ</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Your Lesson: Bảng Đơn Hàng Gần Đây Cần Xử Lý -->
+          <section class="coursue-table-card">
+            <div class="coursue-table-head-row">
+              <h4>Đơn Hàng Gần Đây Cần Xử Lý</h4>
+              <span class="see-all-link" onclick="showB2BOrdersView()">Xem toàn bộ đơn buôn B2B ➔</span>
+            </div>
+
+            <div class="table-responsive-box">
+              <table class="coursue-clean-table" style="min-width: 950px;">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">ĐỐI TÁC / KHÁCH MUA</th>
+                  <th style="text-align: center;">KÊNH BÁN</th>
+                  <th style="text-align: left;">SẢN PHẨM & SỐ LƯỢNG</th>
+                  <th style="text-align: right;">TỔNG TIỀN</th>
+                  <th style="text-align: center;">THAO TÁC</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: left;">
+                    <div style="font-weight: 450; color: var(--slate-900);">WinMart Miền Bắc</div>
+                    <div style="font-size: 12.5px; color: var(--slate-500);">Hợp đồng sỉ #B2B-9821</div>
+                  </td>
+                  <td style="text-align: center;"><span class="pill-category-badge mint">B2B Siêu Thị</span></td>
+                  <td style="text-align: left; font-weight: 450;">1.200 túi Chuối Sấy Giòn Yên Bình</td>
+                  <td style="text-align: right;"><strong style="color: var(--brand-700); font-size: 16px; font-variant-numeric: tabular-nums;">54.000.000 đ</strong></td>
+                  <td style="text-align: center;">
+                    <button class="circle-arrow-action" style="margin: 0 auto;" title="In phiếu đóng gói" onclick="openDispatchSlipModal('WM-8821')"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="text-align: left;">
+                    <div style="font-weight: 450; color: var(--slate-900);">Trần Mai Phương</div>
+                    <div style="font-size: 12.5px; color: var(--slate-500);">Hà Nội · #SHP-8821</div>
+                  </td>
+                  <td style="text-align: center;"><span class="pill-category-badge amber">Shopee Mall</span></td>
+                  <td style="text-align: left; font-weight: 450;">3 túi Chuối Sấy + 1 hộp Trà Bát Tiên</td>
+                  <td style="text-align: right;"><strong style="color: var(--slate-900); font-size: 16px; font-variant-numeric: tabular-nums;">345.000 đ</strong></td>
+                  <td style="text-align: center;">
+                    <button class="circle-arrow-action" style="margin: 0 auto;" title="Xem vận đơn" onclick="openDispatchSlipModal('SHP-8821')"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </section>
+          </div> <!-- /#overview-tab-today -->
+
+          <!-- ===================================================================
+               TAB 2: THỐNG KÊ MÙA VỤ & XÃ VIÊN (ẨN MẶC ĐỊNH, CHUYỂN QUA TAB NÀY KHI CẦN)
+               =================================================================== -->
+          <div id="overview-tab-stats" style="display: none;">
           <!-- HÀNG 2: DOANH THU MINH HOẠ 30 NGÀY (5fr) & THÀNH VIÊN BÁN TỐT (7fr) - GREENOS STYLE -->
           <div class="g2-gvos">
             <!-- Cột 5fr: Doanh Thu Minh Họa 30 Ngày -->
@@ -4212,8 +4564,8 @@
               </div>
               <div class="rev-box-gvos">
                 <div class="rev-big-num">
-                  18.640.000 đ
-                  <small>từ 42 đơn hàng</small>
+                  <span class="num-val">18.640.000 đ</span>
+                  <small>từ 42 đơn hàng đã đối soát</small>
                 </div>
                 <div style="display: flex; gap: 6px; margin: 2px 0;">
                   <span class="tag2" style="background: #ECFDF5; border-color: #A7F3D0; color: #059669;">✓ Đã trừ đơn huỷ & hoàn</span>
@@ -4832,135 +5184,8 @@
               </div>
             </div>
           </section>
-
-          <!-- Continue Watching: Lưới 3 Card Nông Sản Xã Viên Gửi Duyệt -->
-          <section style="margin-bottom: 24px;">
-            <div class="section-headline-bar">
-              <h3>Nông Sản Xã Viên Gửi Duyệt Lên Sàn</h3>
-              <div class="nav-arrow-circles">
-                <button class="nav-arrow-btn" onclick="scrollCoursueGrid(-1)" title="Trước"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
-                <button class="nav-arrow-btn active-primary" onclick="scrollCoursueGrid(1)" title="Sau"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
-              </div>
-            </div>
-
-            <div class="cards-coursue-grid">
-              <!-- Card 1: Bác Ba -->
-              <div class="coursue-item-card" onclick="openProductModal('sp_01')">
-                <div class="coursue-img-wrapper">
-                  <img src="banana_front.jpg" alt="Chuối sấy Bác Ba">
-                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
-                </div>
-                <div class="coursue-card-body">
-                  <span class="pill-category-badge amber">OCOP 4 SAO</span>
-                  <h4 class="coursue-card-title">Chuối Sấy Giòn Yên Bình — Túi 250g Khóa Zip</h4>
-                  <div class="coursue-author-row">
-                    <div class="author-info-left">
-                      <img src="bac_ba_avatar.jpg" alt="Bác Ba" class="author-thumb-sm">
-                      <div>
-                        <div class="author-name-text">Bác Ba (Hộ 04)</div>
-                        <div class="author-sub-text">Xã viên 62 tuổi</div>
-                      </div>
-                    </div>
-                    <div class="coursue-price-tag">55.000 đ</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Card 2: Cô Lan -->
-              <div class="coursue-item-card" onclick="openProductModal('cl_01')">
-                <div class="coursue-img-wrapper">
-                  <img src="tea_front.jpg" alt="Trà Bát Tiên">
-                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
-                </div>
-                <div class="coursue-card-body">
-                  <span class="pill-category-badge mint">VIETGAP TỈNH</span>
-                  <h4 class="coursue-card-title">Trà Bát Tiên Sao Lửa — Hộp Thiếc Cao Cấp 200g</h4>
-                  <div class="coursue-author-row">
-                    <div class="author-info-left">
-                      <div class="author-thumb-sm" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight: 450; font-size:12px;">CL</div>
-                      <div>
-                        <div class="author-name-text">Cô Lan (Hộ 09)</div>
-                        <div class="author-sub-text">Thôn Đồi Chè</div>
-                      </div>
-                    </div>
-                    <div class="coursue-price-tag">180.000 đ</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Card 3: Anh Tuấn -->
-              <div class="coursue-item-card" onclick="openProductModal('at_01')">
-                <div class="coursue-img-wrapper">
-                  <img src="honey_front.jpg" alt="Mật ong hoa rừng">
-                  <button class="floating-heart-btn" title="Lưu trữ" onclick="toggleFavorite(this, event)"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
-                </div>
-                <div class="coursue-card-body">
-                  <span class="pill-category-badge cyan">MẬT ONG RỪNG</span>
-                  <h4 class="coursue-card-title">Mật Ong Hoa Rừng Tự Nhiên — Chai 500ml</h4>
-                  <div class="coursue-author-row">
-                    <div class="author-info-left">
-                      <div class="author-thumb-sm" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-weight: 450; font-size:12px;">AT</div>
-                      <div>
-                        <div class="author-name-text">Anh Tuấn (Hộ 12)</div>
-                        <div class="author-sub-text">Thôn Suối Rừng</div>
-                      </div>
-                    </div>
-                    <div class="coursue-price-tag">220.000 đ</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Your Lesson: Bảng Đơn Hàng Gần Đây Cần Xử Lý -->
-          <section class="coursue-table-card">
-            <div class="coursue-table-head-row">
-              <h4>Đơn Hàng Gần Đây Cần Xử Lý</h4>
-              <span class="see-all-link" onclick="showB2BOrdersView()">Xem toàn bộ đơn buôn B2B ➔</span>
-            </div>
-
-            <div class="table-responsive-box">
-              <table class="coursue-clean-table" style="min-width: 950px;">
-              <thead>
-                <tr>
-                  <th style="text-align: left;">ĐỐI TÁC / KHÁCH MUA</th>
-                  <th style="text-align: center;">KÊNH BÁN</th>
-                  <th style="text-align: left;">SẢN PHẨM & SỐ LƯỢNG</th>
-                  <th style="text-align: right;">TỔNG TIỀN</th>
-                  <th style="text-align: center;">THAO TÁC</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align: left;">
-                    <div style="font-weight: 450; color: var(--slate-900);">WinMart Miền Bắc</div>
-                    <div style="font-size: 12.5px; color: var(--slate-500);">Hợp đồng sỉ #B2B-9821</div>
-                  </td>
-                  <td style="text-align: center;"><span class="pill-category-badge mint">B2B Siêu Thị</span></td>
-                  <td style="text-align: left; font-weight: 450;">1.200 túi Chuối Sấy Giòn Yên Bình</td>
-                  <td style="text-align: right;"><strong style="color: var(--brand-700); font-size: 16px; font-variant-numeric: tabular-nums;">54.000.000 đ</strong></td>
-                  <td style="text-align: center;">
-                    <button class="circle-arrow-action" style="margin: 0 auto;" title="In phiếu đóng gói" onclick="openDispatchSlipModal('WM-8821')"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style="text-align: left;">
-                    <div style="font-weight: 450; color: var(--slate-900);">Trần Mai Phương</div>
-                    <div style="font-size: 12.5px; color: var(--slate-500);">Hà Nội · #SHP-8821</div>
-                  </td>
-                  <td style="text-align: center;"><span class="pill-category-badge amber">Shopee Mall</span></td>
-                  <td style="text-align: left; font-weight: 450;">3 túi Chuối Sấy + 1 hộp Trà Bát Tiên</td>
-                  <td style="text-align: right;"><strong style="color: var(--slate-900); font-size: 16px; font-variant-numeric: tabular-nums;">345.000 đ</strong></td>
-                  <td style="text-align: center;">
-                    <button class="circle-arrow-action" style="margin: 0 auto;" title="Xem vận đơn" onclick="openDispatchSlipModal('SHP-8821')"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            </div>
-          </section>
-        </div>
+          </div> <!-- /#overview-tab-stats -->
+        </div> <!-- /#view-overview -->
 
         <!-- -------------------------------------------------------------------
              VIEW 1.5: TRANG QUẢN TRỊ DANH SÁCH 50 XÃ VIÊN HTX YÊN BÌNH
@@ -6623,58 +6848,6 @@
           </div>
         </div>
 
-        <!-- Widget 6 (MỚI): Việc Nên Làm Hôm Nay Của Ban Chủ Nhiệm (CxTodoList Chuẩn GVOS) -->
-        <div class="rail-widget-card">
-          <div class="rail-widget-head">
-            <h4 style="font-size: 15px; font-weight: 700; color: var(--slate-900); display: flex; align-items: center; gap: 6px;">
-              <span>✅</span> Việc Nên Làm Hôm Nay
-            </h4>
-            <span style="font-size: 11.5px; font-weight: 700; color: #DC2626;">4 VIỆC</span>
-          </div>
-
-          <div style="display: flex; flex-direction: column;">
-            <!-- Việc 1 -->
-            <div class="cx-todo-item">
-              <span class="cx-todo-badge-num">4</span>
-              <div class="cx-todo-body">
-                <div class="cx-todo-title">Duyệt Thẻ Nông Sản Mới</div>
-                <div class="cx-todo-reason">Quá 24 giờ chưa duyệt thẻ thì xã viên bị lỡ phiên chợ.</div>
-              </div>
-              <button class="btn-table-action-view" style="font-size: 11px; padding: 3px 8px;" onclick="showToast('📑 Mở danh sách 4 thẻ đang chờ HTX phê duyệt')">Mở</button>
-            </div>
-
-            <!-- Việc 2 -->
-            <div class="cx-todo-item">
-              <span class="cx-todo-badge-num">6</span>
-              <div class="cx-todo-body">
-                <div class="cx-todo-title">Xác Nhận Đơn Hàng Sỉ</div>
-                <div class="cx-todo-reason">WinMart và đại lý Hà Nội vừa đặt thêm hợp đồng mới.</div>
-              </div>
-              <button class="btn-table-action-view" style="font-size: 11px; padding: 3px 8px;" onclick="showB2BOrdersView()">Mở</button>
-            </div>
-
-            <!-- Việc 3 -->
-            <div class="cx-todo-item">
-              <span class="cx-todo-badge-num info">12</span>
-              <div class="cx-todo-body">
-                <div class="cx-todo-title">Đóng Gói & Bàn Giao</div>
-                <div class="cx-todo-reason">Đơn Shopee & TikTok cần bàn giao bưu tá trước 16:00.</div>
-              </div>
-              <button class="btn-table-action-view" style="font-size: 11px; padding: 3px 8px;" onclick="showToast('📦 Đang xem 12 đơn chờ in mã vận đơn bưu cục')">Mở</button>
-            </div>
-
-            <!-- Việc 4 -->
-            <div class="cx-todo-item">
-              <span class="cx-todo-badge-num">1</span>
-              <div class="cx-todo-body">
-                <div class="cx-todo-title">Hỗ Trợ Dập Dịch Rầy Nâu</div>
-                <div class="cx-todo-reason">Hộ Chú Bảy (Hộ 15) cần kỹ sư khuyến nông cấp thuốc SH.</div>
-              </div>
-              <button class="btn-table-action-view" style="font-size: 11px; padding: 3px 8px;" onclick="triggerHTXSupport('khuyen_nong', 'Chú Bảy (Hộ 15)')">Cử Đi</button>
-            </div>
-          </div>
-        </div>
-
       </aside>
 
     </div>
@@ -7694,14 +7867,47 @@
     }
 
     // =========================================================================
+    // OVERVIEW TABS SWITCHER (ĐIỀU PHỐI HÔM NAY vs THỐNG KÊ MÙA VỤ)
+    // =========================================================================
+    function switchOverviewTab(tabKey) {
+      const tabToday = document.getElementById('overview-tab-today');
+      const tabStats = document.getElementById('overview-tab-stats');
+      const btnToday = document.getElementById('tab-btn-today');
+      const btnStats = document.getElementById('tab-btn-stats');
+
+      if (tabKey === 'stats') {
+        if (tabToday) tabToday.style.display = 'none';
+        if (tabStats) tabStats.style.display = 'block';
+        if (btnToday) btnToday.classList.remove('active');
+        if (btnStats) btnStats.classList.add('active');
+      } else {
+        if (tabToday) tabToday.style.display = 'block';
+        if (tabStats) tabStats.style.display = 'none';
+        if (btnToday) btnToday.classList.add('active');
+        if (btnStats) btnStats.classList.remove('active');
+      }
+    }
+
+    // Tự động kiểm tra URL parameter & hash ngay khi script tải
+    try {
+      const _p = new URLSearchParams(window.location.search);
+      if (_p.get('tab') === 'stats' || window.location.hash === '#stats') {
+        switchOverviewTab('stats');
+      }
+    } catch(e) {}
+
+    // =========================================================================
     // HTX STATISTICAL LINE CHART & HOUSEHOLD MONITORING LOGIC
     // =========================================================================
     function scrollToSupportRadar() {
       showOverviewView();
-      const el = document.getElementById('htx-support-radar');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      switchOverviewTab('stats');
+      setTimeout(() => {
+        const el = document.getElementById('htx-support-radar');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
     }
 
     function showChartTooltip(event, month, harvest, absorbed, gap, income) {
@@ -9219,6 +9425,12 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
     setTimeout(() => {
       if (typeof renderFleetCards === 'function') renderFleetCards();
       if (typeof renderFleetTripsTable === 'function') renderFleetTripsTable();
+
+      // Kiểm tra tham số URL hoặc Hash để mở đúng Tab (vd: #stats hoặc ?tab=stats)
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('tab') === 'stats' || window.location.hash === '#stats') {
+        switchOverviewTab('stats');
+      }
     }, 150);
 
   

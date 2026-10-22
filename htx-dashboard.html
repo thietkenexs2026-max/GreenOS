@@ -120,9 +120,9 @@
       border-radius: var(--radius-shell);
       box-shadow: var(--shadow-window);
       display: grid;
-      grid-template-columns: 220px minmax(0, 1fr) 290px;
-      gap: 18px;
-      padding: 18px 20px;
+      grid-template-columns: 210px minmax(0, 1fr) 270px;
+      gap: 16px;
+      padding: 16px 18px;
       overflow: hidden;
       position: relative;
       box-sizing: border-box;
@@ -130,7 +130,7 @@
     }
 
     .app-dashboard-window.fullwidth-mode {
-      grid-template-columns: 220px minmax(0, 1fr) !important;
+      grid-template-columns: 210px minmax(0, 1fr) !important;
     }
 
     .app-dashboard-window.fullwidth-mode .app-right-rail {
@@ -139,12 +139,12 @@
 
     @media (max-width: 1400px) {
       .app-dashboard-window {
-        grid-template-columns: 200px minmax(0, 1fr) 280px;
+        grid-template-columns: 195px minmax(0, 1fr) 260px;
         gap: 14px;
         padding: 14px 16px;
       }
       .app-dashboard-window.fullwidth-mode {
-        grid-template-columns: 200px minmax(0, 1fr) !important;
+        grid-template-columns: 195px minmax(0, 1fr) !important;
       }
     }
 
@@ -538,10 +538,10 @@
       transform: translateX(3px);
     }
 
-    /* Grid 2 Cột Chuẩn GVOS (Tỷ Lệ Cột Việc Nên Làm 310px : Bảng Thao Tác 1fr) */
+    /* Grid 2 Cột Chuẩn GVOS (Tỷ Lệ Cân Bằng Thoáng Rộng 1fr : 1.15fr) */
     .g2-gvos {
       display: grid;
-      grid-template-columns: minmax(0, 310px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
       gap: 16px;
       align-items: start;
       margin-bottom: 22px;
@@ -550,7 +550,7 @@
       box-sizing: border-box;
     }
 
-    @media (max-width: 1300px) {
+    @media (max-width: 1200px) {
       .tiles5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .tiles4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .g2-gvos { grid-template-columns: minmax(0, 1fr); }
@@ -569,19 +569,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
       margin-bottom: 4px;
+      min-width: 0 !important;
     }
 
     .sec-h-gvos h2 {
-      font-size: 16.5px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--slate-900);
       margin: 0;
       letter-spacing: -0.2px;
+      white-space: nowrap;
     }
 
     .sec-h-gvos a {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--brand-600);
       text-decoration: none;
@@ -590,6 +593,8 @@
       align-items: center;
       gap: 4px;
       transition: color 0.15s;
+      white-space: nowrap !important;
+      flex-shrink: 0;
     }
     .sec-h-gvos a:hover {
       color: var(--brand-700);
@@ -611,11 +616,15 @@
       display: grid;
       grid-template-columns: 1fr auto auto;
       align-items: center;
-      gap: 12px;
-      padding: 13px 16px;
+      gap: 14px;
+      padding: 14px 18px;
       border-top: 1px solid var(--slate-100);
-      min-height: 64px;
+      min-height: 68px;
       transition: background 0.15s;
+    }
+
+    .todo-row-gvos > div:first-child {
+      min-width: 0 !important;
     }
 
     .todo-row-gvos:first-child {
@@ -627,18 +636,19 @@
     }
 
     .todo-row-gvos b {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--slate-900);
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
+      line-height: 1.35;
     }
 
     .todo-row-gvos small {
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--slate-500);
       display: block;
-      line-height: 1.35;
+      line-height: 1.4;
     }
 
     .todo-count-badge {
@@ -693,24 +703,24 @@
     .table-gvos {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13px;
+      font-size: 12.5px;
     }
 
     .table-gvos th {
       background: #F8FAFC;
-      padding: 10px 10px;
+      padding: 9px 8px;
       font-weight: 600;
       color: var(--slate-500);
       text-align: left;
       border-bottom: 1px solid var(--slate-200);
-      font-size: 11.5px;
+      font-size: 11px;
       letter-spacing: 0.3px;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .table-gvos td {
-      padding: 10px 10px;
+      padding: 9px 8px;
       border-bottom: 1px solid var(--slate-100);
       vertical-align: middle;
       color: var(--slate-800);
@@ -4392,9 +4402,9 @@
             <div class="sec-gvos">
               <div class="sec-h-gvos">
                 <h2>📦 Thẻ chờ duyệt mới nhất</h2>
-                <div style="display: flex; gap: 8px; align-items: center;">
-                  <button class="hero-pill-btn-green" style="height: 28px; padding: 0 12px; font-size: 12px;" onclick="openCreateResourceCardModal()">+ Đăng Thẻ Mới</button>
-                  <a onclick="showCardsView()">Xem tất cả <span id="overview-resource-cards-count">5</span> thẻ ➔</a>
+                <div style="display: flex; gap: 8px; align-items: center; flex-shrink: 0;">
+                  <button class="hero-pill-btn-green" style="height: 28px; padding: 0 10px; font-size: 11.5px; white-space: nowrap !important;" onclick="openCreateResourceCardModal()">+ Đăng Thẻ Mới</button>
+                  <a onclick="showCardsView()" style="white-space: nowrap !important; font-size: 12px;">Tất cả <span id="overview-resource-cards-count">5</span> thẻ ➔</a>
                 </div>
               </div>
 

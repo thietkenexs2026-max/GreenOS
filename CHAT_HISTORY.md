@@ -679,3 +679,26 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
   7. **Kiểm thử tự động (Puppeteer Automated Test)**:
      - Kiểm thử 5 phân hệ CRUD qua kịch bản `scratch/verify_crud.js`: Cả 5 bộ hoạt động C-R-U-D đều đạt **100% Success**, 0 lỗi JavaScript runtime.
      - Tuân thủ nghiêm ngặt quy tắc người dùng: Không thêm icon trang trí tùy tiện, giữ sidebar thanh lịch, text tiếng Việt chuẩn mực, nút bấm chống tràn chữ.
+
+
+---
+
+### Giai đoạn 13: Nới Rộng Khối "Việc Nên Làm Hôm Nay" & Cân Bằng Bố Cục Tổng Quan
+- **Yêu cầu của người dùng**: "phần này cho rộng ra hơn đi đang bé quá" (kèm ảnh chụp khối ⚡ Việc nên làm hôm nay).
+- **Phân tích vấn đề**:
+  - Khối Todo Box ("Việc nên làm hôm nay") bị giới hạn ở 310px, khiến các tiêu đề hành động như *"Thẻ Cần chưa có ghép nối"* và *"Sản phẩm đã chốt chưa mở thẻ Có"* bị rớt chữ xuống dòng 2 chật chội.
+- **Giải pháp & Triển khai thực tế**:
+  1. **Tối ưu lưới khung ngoài (.app-dashboard-window)**:
+     - Tinh chỉnh Sidebar 210px và Right Rail 270px (giải phóng +38px bề ngang cho vùng làm việc trung tâm).
+  2. **Tái cân bằng tỷ lệ Lưới 2 Cột (.g2-gvos)**:
+     - Chuyển từ cố định 310px sang tỷ lệ co giãn linh hoạt `minmax(0, 1fr) minmax(0, 1.15fr)` với `gap: 16px`.
+     - Chiều rộng khối "Việc nên làm hôm nay" mở rộng từ 310px lên **388px - 401px** (+78px đến +91px, tăng ~30%).
+     - Tiêu đề các mục việc quan trọng dàn đều trên 1 dòng đơn sang trọng, thoáng đãng, không còn bị rớt dòng.
+  3. **Hoàn thiện khoảng cách dòng, đệm và font chữ (.todo-row-gvos)**:
+     - Tăng đệm dòng lên `padding: 14px 18px`, `min-height: 68px`, tiêu đề `14px` (`line-height: 1.35`), dòng mô tả `12.5px`.
+     - Thêm `min-width: 0 !important;` cho thẻ con chứa nội dung chữ chống co ép.
+  4. **Cân đối bảng "Thẻ chờ duyệt mới nhất"**:
+     - Nút `+ Đăng Thẻ Mới` và link `Tất cả 5 thẻ ➔` trên Header được căn chỉnh `white-space: nowrap !important; flex-shrink: 0;`, tiêu đề `15px` đảm bảo nằm gọn 100% trong khung header 446px không bị tràn mép hay che khuất.
+     - Ô bảng rút padding về `9px 8px`, `font-size: 12.5px`, hiển thị đầy đủ 5 cột và các nút hành động (Duyệt ngay, Đã duyệt, Xóa) sắc nét.
+  5. **Xác minh hình ảnh thực tế (Puppeteer Visual Testing)**:
+     - Đã đo đạc và chụp ảnh màn hình xác nhận: Viewport 1440x900 hiển thị rộng rãi, bố cục hài hòa, chữ không gãy, các nút bấm thao tác chuẩn xác.

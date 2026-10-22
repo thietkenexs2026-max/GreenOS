@@ -4698,93 +4698,9 @@
               <span style="margin-left: auto; font-size: 12px; color: var(--slate-400);">* Rê chuột vào các điểm mốc để xem chi tiết hỗ trợ</span>
             </div>
 
-            <!-- SVG Multi-series Line Chart Container -->
-            <div class="htx-svg-chart-wrapper" id="htx-svg-wrapper">
-              <!-- Hover Popover Tooltip -->
-              <div class="htx-chart-hover-tooltip" id="htx-chart-tooltip">
-                <div id="tooltip-month-label" style="font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 4px; margin-bottom: 6px;">Tháng 9/2026</div>
-                <div>🌾 Sản lượng thu hoạch: <strong id="tooltip-harvest-val">24.2 Tấn</strong></div>
-                <div>🚚 HTX đã bao tiêu: <strong id="tooltip-absorbed-val" style="color: #38BDF8;">21.5 Tấn</strong></div>
-                <div>⚠️ Tồn đọng cần giải cứu: <strong id="tooltip-gap-val" style="color: #F87171;">2.7 Tấn</strong></div>
-                <div>💵 Thu nhập bình quân: <strong id="tooltip-income-val" style="color: #FBBF24;">15.6 Tr/Hộ</strong></div>
-              </div>
-
-              <svg viewBox="0 0 760 250" preserveAspectRatio="none" id="htx-trend-svg">
-                <defs>
-                  <!-- Gradient Xanh Ngọc (Harvest) -->
-                  <linearGradient id="grad-harvest" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#059669" stop-opacity="0.25"/>
-                    <stop offset="100%" stop-color="#059669" stop-opacity="0.0"/>
-                  </linearGradient>
-                  <!-- Gradient Xanh Dương (Absorbed) -->
-                  <linearGradient id="grad-absorbed" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#0284C7" stop-opacity="0.2"/>
-                    <stop offset="100%" stop-color="#0284C7" stop-opacity="0.0"/>
-                  </linearGradient>
-                </defs>
-
-                <!-- Gridlines ngang nhẹ -->
-                <line x1="40" y1="30" x2="740" y2="30" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="40" y1="80" x2="740" y2="80" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="40" y1="130" x2="740" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="40" y1="180" x2="740" y2="180" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="40" y1="220" x2="740" y2="220" stroke="#E2E8F0" stroke-width="1.5"/>
-
-                <!-- Trục Y Labels -->
-                <text x="32" y="34" fill="#94A3B8" font-size="11" text-anchor="end">25 Tấn</text>
-                <text x="32" y="84" fill="#94A3B8" font-size="11" text-anchor="end">20 Tấn</text>
-                <text x="32" y="134" fill="#94A3B8" font-size="11" text-anchor="end">15 Tấn</text>
-                <text x="32" y="184" fill="#94A3B8" font-size="11" text-anchor="end">10 Tấn</text>
-                <text x="32" y="224" fill="#94A3B8" font-size="11" text-anchor="end">0</text>
-
-                <!-- Trục X Labels -->
-                <text x="80" y="242" fill="#64748B" font-size="12" font-weight="500" text-anchor="middle">Tháng 5</text>
-                <text x="200" y="242" fill="#64748B" font-size="12" font-weight="500" text-anchor="middle">Tháng 6</text>
-                <text x="320" y="242" fill="#64748B" font-size="12" font-weight="500" text-anchor="middle">Tháng 7</text>
-                <text x="440" y="242" fill="#64748B" font-size="12" font-weight="500" text-anchor="middle">Tháng 8 (Cao điểm)</text>
-                <text x="560" y="242" fill="#047857" font-size="12" font-weight="700" text-anchor="middle">Tháng 9 (Đỉnh vụ)</text>
-                <text x="680" y="242" fill="#64748B" font-size="12" font-weight="500" text-anchor="middle">Tháng 10 (Hiện tại)</text>
-
-                <!-- AREA & LINE 1: SẢN LƯỢNG THU HOẠCH (XANH NGỌC) -->
-                <!-- Dữ liệu: T5: 8.5T (y=190), T6: 12.0T (y=160), T7: 10.2T (y=175), T8: 18.5T (y=95), T9: 24.2T (y=40), T10: 19.8T (y=82) -->
-                <polygon id="area-harvest" points="80,190 200,160 320,175 440,95 560,40 680,82 680,220 80,220" fill="url(#grad-harvest)"/>
-                <path id="path-harvest" d="M 80,190 Q 140,175 200,160 T 320,175 T 440,95 T 560,40 T 680,82" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
-
-                <!-- AREA & LINE 2: SẢN LƯỢNG HTX BAO TIÊU (XANH DƯƠNG) -->
-                <!-- Dữ liệu: T5: 8.0T (y=194), T6: 11.2T (y=166), T7: 9.8T (y=178), T8: 14.0T (y=140), T9: 21.5T (y=65), T10: 18.2T (y=98) -->
-                <polygon id="area-absorbed" points="80,194 200,166 320,178 440,140 560,65 680,98 680,220 80,220" fill="url(#grad-absorbed)"/>
-                <path id="path-absorbed" d="M 80,194 Q 140,180 200,166 T 320,178 T 440,140 T 560,65 T 680,98" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round"/>
-
-                <!-- LINE 3: THU NHẬP BÌNH QUÂN (CAM - NÉT ĐỨT) -->
-                <!-- Dữ liệu: T5: 9.2Tr (y=182), T6: 10.5Tr (y=172), T7: 10.0Tr (y=176), T8: 12.8Tr (y=150), T9: 15.6Tr (y=125), T10: 14.2Tr (y=138) -->
-                <path id="path-income" d="M 80,182 Q 140,177 200,172 T 320,176 T 440,150 T 560,125 T 680,138" fill="none" stroke="#D97706" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
-
-                <!-- Data Dots (Tương tác hover) -->
-                <!-- Tháng 5 -->
-                <circle cx="80" cy="190" r="4.5" fill="#FFFFFF" stroke="#059669" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 5/2026', '8.5 Tấn', '8.0 Tấn', '0.5 Tấn', '9.2 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-                <circle cx="80" cy="194" r="4" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 5/2026', '8.5 Tấn', '8.0 Tấn', '0.5 Tấn', '9.2 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-
-                <!-- Tháng 6 -->
-                <circle cx="200" cy="160" r="4.5" fill="#FFFFFF" stroke="#059669" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 6/2026', '12.0 Tấn', '11.2 Tấn', '0.8 Tấn', '10.5 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-                <circle cx="200" cy="166" r="4" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 6/2026', '12.0 Tấn', '11.2 Tấn', '0.8 Tấn', '10.5 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-
-                <!-- Tháng 7 -->
-                <circle cx="320" cy="175" r="4.5" fill="#FFFFFF" stroke="#059669" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 7/2026', '10.2 Tấn', '9.8 Tấn', '0.4 Tấn', '10.0 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-                <circle cx="320" cy="178" r="4" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 7/2026', '10.2 Tấn', '9.8 Tấn', '0.4 Tấn', '10.0 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-
-                <!-- Tháng 8 (Điểm chênh lệch lớn) -->
-                <circle cx="440" cy="95" r="5" fill="#FFFFFF" stroke="#059669" stroke-width="2.5" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 8/2026 (Chênh 4.5T)', '18.5 Tấn', '14.0 Tấn', '4.5 Tấn (Ứ đọng)', '12.8 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-                <circle cx="440" cy="140" r="4.5" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 8/2026 (Chênh 4.5T)', '18.5 Tấn', '14.0 Tấn', '4.5 Tấn (Ứ đọng)', '12.8 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-
-                <!-- Tháng 9 (Đỉnh vụ) -->
-                <circle cx="560" cy="40" r="6" fill="#10B981" stroke="#FFFFFF" stroke-width="2.5" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 9/2026 (Đỉnh Vụ OCOP)', '24.2 Tấn', '21.5 Tấn', '2.7 Tấn', '15.6 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-                <circle cx="560" cy="65" r="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 9/2026 (Đỉnh Vụ OCOP)', '24.2 Tấn', '21.5 Tấn', '2.7 Tấn', '15.6 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-
-                <!-- Tháng 10 (Hiện tại) -->
-                <circle cx="680" cy="82" r="5" fill="#FFFFFF" stroke="#059669" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 10/2026 (Hiện tại)', '19.8 Tấn', '18.2 Tấn', '1.6 Tấn', '14.2 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-                <circle cx="680" cy="98" r="4.5" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 10/2026 (Hiện tại)', '19.8 Tấn', '18.2 Tấn', '1.6 Tấn', '14.2 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-                <circle cx="680" cy="138" r="4" fill="#FFFFFF" stroke="#D97706" stroke-width="2" class="chart-data-dot" onmouseenter="showChartTooltip(event, 'Tháng 10/2026 (Hiện tại)', '19.8 Tấn', '18.2 Tấn', '1.6 Tấn', '14.2 Tr/Hộ')" onmouseleave="hideChartTooltip()"/>
-              </svg>
+            <!-- Canvas Code-based Line Chart Container (Chart.js Engine) -->
+            <div class="htx-svg-chart-wrapper" id="htx-svg-wrapper" style="position: relative; width: 100%; height: 280px;">
+              <canvas id="htx-trend-chart-canvas"></canvas>
             </div>
 
             <!-- Box Phân Tích & Khuyến Nghị Của HTX -->
@@ -4824,64 +4740,9 @@
                   <span><span class="crop-legend-dot" style="background: #0284C7;"></span> Gạo ST25</span>
                 </div>
 
-                <!-- SVG Grouped Bar Chart -->
-                <div style="width: 100%; height: 180px; position: relative;">
-                  <svg viewBox="0 0 500 180" preserveAspectRatio="none" style="width: 100%; height: 100%;">
-                    <!-- Horizontal Grid lines -->
-                    <line x1="30" y1="20" x2="480" y2="20" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3"/>
-                    <line x1="30" y1="60" x2="480" y2="60" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3"/>
-                    <line x1="30" y1="100" x2="480" y2="100" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3"/>
-                    <line x1="30" y1="140" x2="480" y2="140" stroke="#E2E8F0" stroke-width="1.2"/>
-
-                    <!-- Y Labels -->
-                    <text x="24" y="24" fill="#94A3B8" font-size="10" text-anchor="end">12T</text>
-                    <text x="24" y="64" fill="#94A3B8" font-size="10" text-anchor="end">8T</text>
-                    <text x="24" y="104" fill="#94A3B8" font-size="10" text-anchor="end">4T</text>
-                    <text x="24" y="144" fill="#94A3B8" font-size="10" text-anchor="end">0</text>
-
-                    <!-- Tháng 5 (x=50) -->
-                    <rect x="45" y="105" width="8" height="35" rx="2" fill="#F59E0B"><title>Chuối T5: 3.5T</title></rect>
-                    <rect x="55" y="115" width="8" height="25" rx="2" fill="#059669"><title>Trà T5: 2.5T</title></rect>
-                    <rect x="65" y="125" width="8" height="15" rx="2" fill="#D97706"><title>Mật ong T5: 1.5T</title></rect>
-                    <rect x="75" y="130" width="8" height="10" rx="2" fill="#10B981"><title>Bưởi T5: 1.0T</title></rect>
-                    <text x="65" y="156" fill="#64748B" font-size="10.5" font-weight="500" text-anchor="middle">T.5</text>
-
-                    <!-- Tháng 6 (x=125) -->
-                    <rect x="115" y="95" width="8" height="45" rx="2" fill="#F59E0B"><title>Chuối T6: 4.5T</title></rect>
-                    <rect x="125" y="105" width="8" height="35" rx="2" fill="#059669"><title>Trà T6: 3.5T</title></rect>
-                    <rect x="135" y="120" width="8" height="20" rx="2" fill="#D97706"><title>Mật ong T6: 2.0T</title></rect>
-                    <rect x="145" y="120" width="8" height="20" rx="2" fill="#10B981"><title>Bưởi T6: 2.0T</title></rect>
-                    <text x="135" y="156" fill="#64748B" font-size="10.5" font-weight="500" text-anchor="middle">T.6</text>
-
-                    <!-- Tháng 7 (x=200) -->
-                    <rect x="185" y="100" width="8" height="40" rx="2" fill="#F59E0B"><title>Chuối T7: 4.0T</title></rect>
-                    <rect x="195" y="110" width="8" height="30" rx="2" fill="#059669"><title>Trà T7: 3.0T</title></rect>
-                    <rect x="205" y="122" width="8" height="18" rx="2" fill="#D97706"><title>Mật ong T7: 1.8T</title></rect>
-                    <rect x="215" y="125" width="8" height="15" rx="2" fill="#10B981"><title>Bưởi T7: 1.4T</title></rect>
-                    <text x="205" y="156" fill="#64748B" font-size="10.5" font-weight="500" text-anchor="middle">T.7</text>
-
-                    <!-- Tháng 8 (Cao điểm chuối) (x=275) -->
-                    <rect x="255" y="55" width="8" height="85" rx="2" fill="#F59E0B"><title>Chuối T8: 8.5T (Đỉnh điểm)</title></rect>
-                    <rect x="265" y="95" width="8" height="45" rx="2" fill="#059669"><title>Trà T8: 4.5T</title></rect>
-                    <rect x="275" y="115" width="8" height="25" rx="2" fill="#D97706"><title>Mật ong T8: 2.5T</title></rect>
-                    <rect x="285" y="110" width="8" height="30" rx="2" fill="#10B981"><title>Bưởi T8: 3.0T</title></rect>
-                    <text x="275" y="156" fill="#64748B" font-size="10.5" font-weight="500" text-anchor="middle">T.8</text>
-
-                    <!-- Tháng 9 (Đỉnh vụ chuối + chè) (x=350) -->
-                    <rect x="325" y="40" width="8" height="100" rx="2" fill="#F59E0B"><title>Chuối T9: 10.0T (Kỷ lục)</title></rect>
-                    <rect x="335" y="75" width="8" height="65" rx="2" fill="#059669"><title>Trà T9: 6.5T</title></rect>
-                    <rect x="345" y="110" width="8" height="30" rx="2" fill="#D97706"><title>Mật ong T9: 3.0T</title></rect>
-                    <rect x="355" y="95" width="8" height="45" rx="2" fill="#10B981"><title>Bưởi T9: 4.7T</title></rect>
-                    <text x="345" y="156" fill="#047857" font-size="10.5" font-weight="700" text-anchor="middle">T.9 ★</text>
-
-                    <!-- Tháng 10 (Hiện tại - Thu hoạch bưởi & lúa ST25) (x=425) -->
-                    <rect x="395" y="65" width="8" height="75" rx="2" fill="#F59E0B"><title>Chuối T10: 7.5T</title></rect>
-                    <rect x="405" y="85" width="8" height="55" rx="2" fill="#059669"><title>Trà T10: 5.5T</title></rect>
-                    <rect x="415" y="120" width="8" height="20" rx="2" fill="#D97706"><title>Mật ong T10: 2.0T</title></rect>
-                    <rect x="425" y="80" width="8" height="60" rx="2" fill="#10B981"><title>Bưởi T10: 6.0T</title></rect>
-                    <rect x="435" y="90" width="8" height="50" rx="2" fill="#0284C7"><title>Lúa ST25 T10: 5.0T</title></rect>
-                    <text x="415" y="156" fill="#64748B" font-size="10.5" font-weight="500" text-anchor="middle">T.10</text>
-                  </svg>
+                <!-- Grouped Bar Chart (Code-Based Chart.js) -->
+                <div style="width: 100%; height: 185px; position: relative;">
+                  <canvas id="htx-crops-chart-canvas"></canvas>
                 </div>
               </div>
 
@@ -4916,55 +4777,9 @@
                   </span>
                 </div>
 
-                <!-- SVG Line Chart Nhật Ký -->
-                <div style="width: 100%; height: 180px; position: relative;">
-                  <svg viewBox="0 0 500 180" preserveAspectRatio="none" style="width: 100%; height: 100%;">
-                    <!-- Horizontal Grid lines -->
-                    <line x1="30" y1="20" x2="480" y2="20" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3"/>
-                    <line x1="30" y1="60" x2="480" y2="60" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3"/>
-                    <line x1="30" y1="100" x2="480" y2="100" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3"/>
-                    <line x1="30" y1="140" x2="480" y2="140" stroke="#E2E8F0" stroke-width="1.2"/>
-
-                    <!-- Y Labels Left: % Nhật ký -->
-                    <text x="24" y="24" fill="#059669" font-size="10" font-weight="600" text-anchor="end">100%</text>
-                    <text x="24" y="64" fill="#059669" font-size="10" text-anchor="end">80%</text>
-                    <text x="24" y="104" fill="#059669" font-size="10" text-anchor="end">60%</text>
-                    <text x="24" y="144" fill="#94A3B8" font-size="10" text-anchor="end">0</text>
-
-                    <!-- X Labels (Tuần 1 -> Tuần 8) -->
-                    <text x="50" y="156" fill="#64748B" font-size="10" text-anchor="middle">T.1</text>
-                    <text x="110" y="156" fill="#64748B" font-size="10" text-anchor="middle">T.2</text>
-                    <text x="170" y="156" fill="#64748B" font-size="10" text-anchor="middle">T.3</text>
-                    <text x="230" y="156" fill="#64748B" font-size="10" text-anchor="middle">T.4</text>
-                    <text x="290" y="156" fill="#64748B" font-size="10" text-anchor="middle">T.5</text>
-                    <text x="350" y="156" fill="#64748B" font-size="10" text-anchor="middle">T.6</text>
-                    <text x="410" y="156" fill="#64748B" font-size="10" text-anchor="middle">T.7</text>
-                    <text x="470" y="156" fill="#059669" font-size="10.5" font-weight="700" text-anchor="middle">T.8</text>
-
-                    <!-- ĐƯỜNG 1: TỶ LỆ GHI NHẬT KÝ (62% -> 94%) -->
-                    <!-- T1:62%(y=96), T2:68%(y=88), T3:72%(y=82), T4:78%(y=74), T5:82%(y=68), T6:88%(y=56), T7:91%(y=48), T8:94%(y=32) -->
-                    <path d="M 50,96 L 110,88 L 170,82 L 230,74 L 290,68 L 350,56 L 410,48 L 470,32" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
-                    <circle cx="50" cy="96" r="3.5" fill="#FFFFFF" stroke="#059669" stroke-width="2"><title>Tuần 1: 62% ghi nhật ký</title></circle>
-                    <circle cx="110" cy="88" r="3.5" fill="#FFFFFF" stroke="#059669" stroke-width="2"><title>Tuần 2: 68%</title></circle>
-                    <circle cx="170" cy="82" r="3.5" fill="#FFFFFF" stroke="#059669" stroke-width="2"><title>Tuần 3: 72%</title></circle>
-                    <circle cx="230" cy="74" r="3.5" fill="#FFFFFF" stroke="#059669" stroke-width="2"><title>Tuần 4: 78%</title></circle>
-                    <circle cx="290" cy="68" r="3.5" fill="#FFFFFF" stroke="#059669" stroke-width="2"><title>Tuần 5: 82%</title></circle>
-                    <circle cx="350" cy="56" r="3.5" fill="#FFFFFF" stroke="#059669" stroke-width="2"><title>Tuần 6: 88%</title></circle>
-                    <circle cx="410" cy="48" r="3.5" fill="#FFFFFF" stroke="#059669" stroke-width="2"><title>Tuần 7: 91%</title></circle>
-                    <circle cx="470" cy="32" r="5" fill="#10B981" stroke="#FFFFFF" stroke-width="2"><title>Tuần 8: 94% (Đạt chuẩn OCOP)</title></circle>
-
-                    <!-- ĐƯỜNG 2: SỐ VỤ SÂU BỆNH (14 vụ -> 2 vụ) -->
-                    <!-- T1:14vụ(y=45), T2:11vụ(y=65), T3:9vụ(y=80), T4:6vụ(y=100), T5:4vụ(y=115), T6:3vụ(y=122), T7:2vụ(y=128), T8:2vụ(y=128) -->
-                    <path d="M 50,45 L 110,65 L 170,80 L 230,100 L 290,115 L 350,122 L 410,128 L 470,128" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
-                    <circle cx="50" cy="45" r="3.5" fill="#FFFFFF" stroke="#EF4444" stroke-width="2"><title>Tuần 1: 14 vụ sâu bệnh</title></circle>
-                    <circle cx="110" cy="65" r="3" fill="#FFFFFF" stroke="#EF4444" stroke-width="2"><title>Tuần 2: 11 vụ</title></circle>
-                    <circle cx="170" cy="80" r="3" fill="#FFFFFF" stroke="#EF4444" stroke-width="2"><title>Tuần 3: 9 vụ</title></circle>
-                    <circle cx="230" cy="100" r="3" fill="#FFFFFF" stroke="#EF4444" stroke-width="2"><title>Tuần 4: 6 vụ</title></circle>
-                    <circle cx="290" cy="115" r="3" fill="#FFFFFF" stroke="#EF4444" stroke-width="2"><title>Tuần 5: 4 vụ</title></circle>
-                    <circle cx="350" cy="122" r="3" fill="#FFFFFF" stroke="#EF4444" stroke-width="2"><title>Tuần 6: 3 vụ</title></circle>
-                    <circle cx="410" cy="128" r="3" fill="#FFFFFF" stroke="#EF4444" stroke-width="2"><title>Tuần 7: 2 vụ</title></circle>
-                    <circle cx="470" cy="128" r="4" fill="#EF4444" stroke="#FFFFFF" stroke-width="1.5"><title>Tuần 8: 2 vụ (Đã khống chế)</title></circle>
-                  </svg>
+                <!-- Dual-axis Line Chart (Code-Based Chart.js) -->
+                <div style="width: 100%; height: 185px; position: relative;">
+                  <canvas id="htx-compliance-chart-canvas"></canvas>
                 </div>
               </div>
 
@@ -6823,6 +6638,14 @@
   <!-- TOAST TRAY -->
   <div id="toast-tray" class="toast-tray"></div>
 
+  <!-- CHART.JS CODE-BASED CHARTING ENGINE (OFFLINE LOCAL + CDN FALLBACK) -->
+  <script src="libs/chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>');
+    }
+  </script>
+
   <!-- JAVASCRIPT LOGIC QUẢN TRỊ & POPUP -->
   <script>
     let currentFarmerKey = 'bacba';
@@ -7896,6 +7719,18 @@
         if (tabStats) tabStats.style.display = 'block';
         if (btnToday) btnToday.classList.remove('active');
         if (btnStats) btnStats.classList.add('active');
+        if (!htxMainChart) {
+          initHTXCharts();
+        } else {
+          htxMainChart.resize();
+          if (htxCropsChart) htxCropsChart.resize();
+          if (htxComplianceChart) htxComplianceChart.resize();
+        }
+        setTimeout(() => {
+          if (htxMainChart) htxMainChart.resize();
+          if (htxCropsChart) htxCropsChart.resize();
+          if (htxComplianceChart) htxComplianceChart.resize();
+        }, 100);
       } else {
         if (tabToday) tabToday.style.display = 'block';
         if (tabStats) tabStats.style.display = 'none';
@@ -7913,8 +7748,366 @@
     } catch(e) {}
 
     // =========================================================================
-    // HTX STATISTICAL LINE CHART & HOUSEHOLD MONITORING LOGIC
+    // HTX STATISTICAL CODE-BASED CHARTS (CHART.JS ENGINE)
     // =========================================================================
+    let htxMainChart = null;
+    let htxCropsChart = null;
+    let htxComplianceChart = null;
+
+    const HTX_CHART_VILLAGE_DATA = {
+      all: {
+        name: 'Toàn HTX (50 Hộ Dân)',
+        harvest: [8.5, 12.0, 10.2, 18.5, 24.2, 19.8],
+        absorbed: [8.0, 11.2, 9.8, 14.0, 21.5, 18.2],
+        income: [9.2, 10.5, 10.0, 12.8, 15.6, 14.2],
+        insight: '<strong>Phân Tích Cảnh Báo Nông Vụ HTX:</strong> Vào tháng 8 & 9 khi sản lượng thu hoạch tăng vọt lên 24.2 tấn, chênh lệch tồn đọng từng chạm mức 4.5 tấn (chủ yếu là chuối chín cây tại Thôn Đồi Chuối). HTX đã kích hoạt lò sấy nhiệt điện và kết nối hợp đồng sỉ WinMart 1.200 túi, giải phóng 91% tồn ứ. Hiện tại Tháng 10 còn tồn 1.6 tấn nông sản rải rác ở 3 hộ dân cần tiếp tục hỗ trợ.'
+      },
+      doi_chuoi: {
+        name: 'Thôn Đồi Chuối (18 Hộ)',
+        harvest: [4.2, 6.5, 5.8, 11.2, 14.5, 10.8],
+        absorbed: [3.9, 5.8, 5.4, 7.5, 12.5, 9.8],
+        income: [8.5, 9.8, 9.2, 13.5, 16.2, 14.0],
+        insight: '<strong>Phân Tích Thôn Đồi Chuối:</strong> Bước vào cao điểm chuối tiêu hồng & chuối tiến vua trong T.8-T.9 (đạt 14.5 tấn). Nhờ lò sấy nhiệt điện HTX hấp thụ 12.5 tấn làm chuối sấy dẻo và chuối giòn, giảm thiểu tỷ lệ dập hỏng xuống dưới 4%.'
+      },
+      doi_che: {
+        name: 'Thôn Đồi Chè (20 Hộ)',
+        harvest: [3.1, 4.2, 3.2, 5.8, 7.5, 6.2],
+        absorbed: [3.0, 4.0, 3.2, 5.0, 6.8, 5.9],
+        income: [10.2, 11.5, 11.0, 12.5, 15.0, 14.8],
+        insight: '<strong>Phân Tích Thôn Đồi Chè:</strong> Trà Bát Tiên và Trà Shan Tuyết Đồi Chè giữ vững chất lượng OCOP 4 sao, mức độ bao tiêu đạt 92% qua kênh Shopee Mall và hợp đồng quà tặng doanh nghiệp cuối năm.'
+      },
+      suoi_rung: {
+        name: 'Thôn Suối Rừng (12 Hộ)',
+        harvest: [1.2, 1.3, 1.2, 1.5, 2.2, 2.8],
+        absorbed: [1.1, 1.4, 1.2, 1.5, 2.2, 2.5],
+        income: [8.8, 9.5, 9.2, 11.0, 14.5, 13.5],
+        insight: '<strong>Phân Tích Thôn Suối Rừng:</strong> Tập trung khai thác Mật ong rừng hoa thảo mộc và Tinh bột nghệ đỏ. Mùa thu hoạch mật rộ vào tháng 9-10, toàn bộ sản lượng đóng chai thuỷ tinh đạt chứng nhận tem truy xuất QR.'
+      }
+    };
+
+    const HTX_CHART_TIMEFRAMES = {
+      '6m': ['Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8 (Cao điểm)', 'Tháng 9 (Đỉnh vụ)', 'Tháng 10 (Hiện tại)'],
+      'vudong': ['Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11 (Dự báo)', 'Tháng 12 (Tết)', 'Tháng 1/2027'],
+      'vuxuan': ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6']
+    };
+
+    function initHTXCharts() {
+      if (typeof Chart === 'undefined') return;
+
+      // 1. Biểu đồ đường chính: Sản Lượng Thu Hoạch & Mức Độ Bao Tiêu
+      const trendCanvas = document.getElementById('htx-trend-chart-canvas');
+      if (trendCanvas && !htxMainChart) {
+        const ctx = trendCanvas.getContext('2d');
+        const villageKey = document.getElementById('htx-chart-village-filter')?.value || 'all';
+        const timeKey = document.getElementById('htx-chart-time-range')?.value || '6m';
+        const vData = HTX_CHART_VILLAGE_DATA[villageKey] || HTX_CHART_VILLAGE_DATA.all;
+        const labels = HTX_CHART_TIMEFRAMES[timeKey] || HTX_CHART_TIMEFRAMES['6m'];
+
+        const gradHarvest = ctx.createLinearGradient(0, 0, 0, 260);
+        gradHarvest.addColorStop(0, 'rgba(5, 150, 105, 0.28)');
+        gradHarvest.addColorStop(1, 'rgba(5, 150, 105, 0.01)');
+
+        const gradAbsorbed = ctx.createLinearGradient(0, 0, 0, 260);
+        gradAbsorbed.addColorStop(0, 'rgba(2, 132, 199, 0.22)');
+        gradAbsorbed.addColorStop(1, 'rgba(2, 132, 199, 0.01)');
+
+        htxMainChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Sản Lượng Thu Hoạch (Tấn)',
+                data: [...vData.harvest],
+                borderColor: '#059669',
+                backgroundColor: gradHarvest,
+                borderWidth: 2.8,
+                fill: true,
+                tension: 0.38,
+                pointBackgroundColor: '#FFFFFF',
+                pointBorderColor: '#059669',
+                pointBorderWidth: 2.2,
+                pointRadius: 4.5,
+                pointHoverRadius: 7,
+                pointHoverBackgroundColor: '#059669',
+                pointHoverBorderColor: '#FFFFFF',
+                pointHoverBorderWidth: 2.5
+              },
+              {
+                label: 'HTX Đã Bao Tiêu (Tấn)',
+                data: [...vData.absorbed],
+                borderColor: '#0284C7',
+                backgroundColor: gradAbsorbed,
+                borderWidth: 2.4,
+                fill: true,
+                tension: 0.38,
+                pointBackgroundColor: '#FFFFFF',
+                pointBorderColor: '#0284C7',
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6.5,
+                pointHoverBackgroundColor: '#0284C7',
+                pointHoverBorderColor: '#FFFFFF',
+                pointHoverBorderWidth: 2.5
+              },
+              {
+                label: 'Thu Nhập Bình Quân (Tr.đ)',
+                data: [...vData.income],
+                borderColor: '#D97706',
+                borderDash: [5, 4],
+                borderWidth: 2,
+                fill: false,
+                tension: 0.35,
+                pointBackgroundColor: '#FFFFFF',
+                pointBorderColor: '#D97706',
+                pointBorderWidth: 2,
+                pointRadius: 3.8,
+                pointHoverRadius: 6,
+                pointHoverBackgroundColor: '#D97706',
+                pointHoverBorderColor: '#FFFFFF',
+                pointHoverBorderWidth: 2.5
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              mode: 'index',
+              intersect: false
+            },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: 'rgba(15, 23, 42, 0.94)',
+                titleFont: { family: 'Inter', size: 12.5, weight: '700' },
+                bodyFont: { family: 'Inter', size: 12 },
+                padding: 12,
+                cornerRadius: 8,
+                boxPadding: 4,
+                callbacks: {
+                  label: function(context) {
+                    const label = context.dataset.label || '';
+                    const val = context.parsed.y;
+                    if (context.datasetIndex === 2) {
+                      return `💵 ${label}: ${val} Tr.đ/Hộ`;
+                    } else if (context.datasetIndex === 0) {
+                      return `🌾 ${label}: ${val} Tấn`;
+                    } else {
+                      return `🚚 ${label}: ${val} Tấn`;
+                    }
+                  },
+                  afterBody: function(tooltipItems) {
+                    if (tooltipItems.length >= 2) {
+                      const harvest = tooltipItems[0].parsed.y;
+                      const absorbed = tooltipItems[1].parsed.y;
+                      const gap = (harvest - absorbed).toFixed(1);
+                      if (gap > 0) {
+                        return [`⚠️ Chênh lệch tồn đọng: ${gap} Tấn`];
+                      } else {
+                        return [`✓ Đã bao tiêu hết 100%`];
+                      }
+                    }
+                    return [];
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: {
+                  font: { family: 'Inter', size: 11.5, weight: '500' },
+                  color: '#64748B'
+                }
+              },
+              y: {
+                beginAtZero: true,
+                max: 30,
+                grid: {
+                  color: '#F1F5F9',
+                  borderDash: [4, 4]
+                },
+                ticks: {
+                  font: { family: 'Inter', size: 11 },
+                  color: '#94A3B8',
+                  callback: function(v) { return v + ' T'; }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // 2. Biểu đồ cột: Cơ Cấu 5 Cây Trồng
+      const cropsCanvas = document.getElementById('htx-crops-chart-canvas');
+      if (cropsCanvas && !htxCropsChart) {
+        const ctx2 = cropsCanvas.getContext('2d');
+        htxCropsChart = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+            labels: ['T.5', 'T.6', 'T.7', 'T.8', 'T.9 ★', 'T.10'],
+            datasets: [
+              { label: 'Chuối sấy OCOP', data: [3.5, 4.5, 4.0, 8.5, 10.0, 7.5], backgroundColor: '#F59E0B', borderRadius: 3, maxBarThickness: 12 },
+              { label: 'Trà Bát Tiên', data: [2.5, 3.5, 3.0, 4.5, 6.5, 5.5], backgroundColor: '#059669', borderRadius: 3, maxBarThickness: 12 },
+              { label: 'Mật ong rừng', data: [1.5, 2.0, 1.8, 2.5, 3.0, 2.0], backgroundColor: '#D97706', borderRadius: 3, maxBarThickness: 12 },
+              { label: 'Bưởi da xanh', data: [1.0, 2.0, 1.4, 3.0, 4.7, 6.0], backgroundColor: '#10B981', borderRadius: 3, maxBarThickness: 12 },
+              { label: 'Gạo ST25', data: [0.0, 0.0, 0.0, 0.0, 0.0, 5.0], backgroundColor: '#0284C7', borderRadius: 3, maxBarThickness: 12 }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                padding: 10,
+                cornerRadius: 8,
+                callbacks: {
+                  label: function(ctx) { return `${ctx.dataset.label}: ${ctx.parsed.y} Tấn`; }
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { font: { family: 'Inter', size: 10.5 }, color: '#64748B' }
+              },
+              y: {
+                beginAtZero: true,
+                max: 12,
+                grid: { color: '#F1F5F9', borderDash: [3, 3] },
+                ticks: {
+                  font: { family: 'Inter', size: 10 },
+                  color: '#94A3B8',
+                  callback: function(v) { return v + 'T'; }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // 3. Biểu đồ đường kép: Nhật Ký VietGAP & Sâu Bệnh
+      const compCanvas = document.getElementById('htx-compliance-chart-canvas');
+      if (compCanvas && !htxComplianceChart) {
+        const ctx3 = compCanvas.getContext('2d');
+        htxComplianceChart = new Chart(ctx3, {
+          type: 'line',
+          data: {
+            labels: ['T.1', 'T.2', 'T.3', 'T.4', 'T.5', 'T.6', 'T.7', 'T.8'],
+            datasets: [
+              {
+                label: 'Tỷ lệ ghi nhật ký số (%)',
+                data: [62, 68, 72, 78, 82, 88, 91, 94],
+                borderColor: '#059669',
+                backgroundColor: 'rgba(5, 150, 105, 0.1)',
+                borderWidth: 2.2,
+                tension: 0.3,
+                yAxisID: 'yPercent',
+                pointRadius: 3.5,
+                pointBackgroundColor: '#FFFFFF',
+                pointBorderColor: '#059669'
+              },
+              {
+                label: 'Số vụ sâu bệnh (Vụ)',
+                data: [14, 11, 9, 6, 4, 3, 2, 2],
+                borderColor: '#EF4444',
+                borderDash: [4, 3],
+                borderWidth: 1.8,
+                tension: 0.3,
+                yAxisID: 'yCount',
+                pointRadius: 3.5,
+                pointBackgroundColor: '#FFFFFF',
+                pointBorderColor: '#EF4444'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                padding: 10,
+                cornerRadius: 8,
+                callbacks: {
+                  label: function(ctx) {
+                    return ctx.datasetIndex === 0 ? `✓ ${ctx.dataset.label}: ${ctx.parsed.y}%` : `⚠️ ${ctx.dataset.label}: ${ctx.parsed.y} vụ`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { font: { family: 'Inter', size: 10 }, color: '#64748B' }
+              },
+              yPercent: {
+                type: 'linear',
+                position: 'left',
+                beginAtZero: true,
+                max: 100,
+                grid: { color: '#F1F5F9', borderDash: [3, 3] },
+                ticks: {
+                  font: { family: 'Inter', size: 10 },
+                  color: '#059669',
+                  callback: function(v) { return v + '%'; }
+                }
+              },
+              yCount: {
+                type: 'linear',
+                position: 'right',
+                beginAtZero: true,
+                max: 16,
+                grid: { display: false },
+                ticks: {
+                  font: { family: 'Inter', size: 10 },
+                  color: '#EF4444',
+                  callback: function(v) { return v + ' vụ'; }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      window.htxMainChart = htxMainChart;
+      window.htxCropsChart = htxCropsChart;
+      window.htxComplianceChart = htxComplianceChart;
+    }
+
+    function toggleChartSeries(seriesKey) {
+      if (!htxMainChart) return;
+      const idx = seriesKey === 'harvest' ? 0 : seriesKey === 'absorbed' ? 1 : 2;
+      const meta = htxMainChart.getDatasetMeta(idx);
+      meta.hidden = !meta.hidden;
+      htxMainChart.update();
+    }
+
+    function updateHTXChartData() {
+      const villageKey = document.getElementById('htx-chart-village-filter')?.value || 'all';
+      const timeKey = document.getElementById('htx-chart-time-range')?.value || '6m';
+      const vData = HTX_CHART_VILLAGE_DATA[villageKey] || HTX_CHART_VILLAGE_DATA.all;
+      const labels = HTX_CHART_TIMEFRAMES[timeKey] || HTX_CHART_TIMEFRAMES['6m'];
+
+      if (htxMainChart) {
+        htxMainChart.data.labels = labels;
+        htxMainChart.data.datasets[0].data = [...vData.harvest];
+        htxMainChart.data.datasets[1].data = [...vData.absorbed];
+        htxMainChart.data.datasets[2].data = [...vData.income];
+        htxMainChart.update();
+      }
+
+      // Cập nhật nội dung Box Phân Tích Khuyến Nghị
+      const insightEl = document.querySelector('.htx-chart-ai-insight-box .insight-text');
+      if (insightEl) {
+        insightEl.innerHTML = vData.insight;
+      }
+
+      showToast(`📊 Đã cập nhật số liệu biểu đồ: ${vData.name}`);
+    }
+
     function scrollToSupportRadar() {
       showOverviewView();
       switchOverviewTab('stats');
@@ -7924,60 +8117,6 @@
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 50);
-    }
-
-    function showChartTooltip(event, month, harvest, absorbed, gap, income) {
-      const tooltip = document.getElementById('htx-chart-tooltip');
-      const wrapper = document.getElementById('htx-svg-wrapper');
-      if (!tooltip || !wrapper) return;
-
-      document.getElementById('tooltip-month-label').innerText = month;
-      document.getElementById('tooltip-harvest-val').innerText = harvest;
-      document.getElementById('tooltip-absorbed-val').innerText = absorbed;
-      document.getElementById('tooltip-gap-val').innerText = gap;
-      document.getElementById('tooltip-income-val').innerText = income;
-
-      const rect = wrapper.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-
-      tooltip.style.left = Math.min(Math.max(x, 120), rect.width - 120) + 'px';
-      tooltip.style.top = Math.max(10, y - 110) + 'px';
-      tooltip.style.display = 'block';
-    }
-
-    function hideChartTooltip() {
-      const tooltip = document.getElementById('htx-chart-tooltip');
-      if (tooltip) tooltip.style.display = 'none';
-    }
-
-    function toggleChartSeries(seriesKey) {
-      if (seriesKey === 'harvest') {
-        const area = document.getElementById('area-harvest');
-        const path = document.getElementById('path-harvest');
-        const chk = document.getElementById('chk-series-harvest');
-        const display = chk.checked ? 'block' : 'none';
-        if (area) area.style.display = display;
-        if (path) path.style.display = display;
-      } else if (seriesKey === 'absorbed') {
-        const area = document.getElementById('area-absorbed');
-        const path = document.getElementById('path-absorbed');
-        const chk = document.getElementById('chk-series-absorbed');
-        const display = chk.checked ? 'block' : 'none';
-        if (area) area.style.display = display;
-        if (path) path.style.display = display;
-      } else if (seriesKey === 'income') {
-        const path = document.getElementById('path-income');
-        const chk = document.getElementById('chk-series-income');
-        const display = chk.checked ? 'block' : 'none';
-        if (path) path.style.display = display;
-      }
-    }
-
-    function updateHTXChartData() {
-      const village = document.getElementById('htx-chart-village-filter').value;
-      const timeRange = document.getElementById('htx-chart-time-range').value;
-      showToast('🔄 Đã cập nhật số liệu biểu đồ đường cho: ' + (village === 'all' ? 'Toàn HTX 50 hộ' : village) + ' (' + timeRange + ')');
     }
 
     function filterRadarTab(category) {

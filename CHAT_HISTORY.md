@@ -702,3 +702,26 @@ Tài liệu này lưu trữ toàn bộ các yêu cầu, phản hồi và quyết
      - Ô bảng rút padding về `9px 8px`, `font-size: 12.5px`, hiển thị đầy đủ 5 cột và các nút hành động (Duyệt ngay, Đã duyệt, Xóa) sắc nét.
   5. **Xác minh hình ảnh thực tế (Puppeteer Visual Testing)**:
      - Đã đo đạc và chụp ảnh màn hình xác nhận: Viewport 1440x900 hiển thị rộng rãi, bố cục hài hòa, chữ không gãy, các nút bấm thao tác chuẩn xác.
+
+
+---
+
+### Giai đoạn 14: Chuyển Đổi Toàn Bộ Biểu Đồ Tĩnh SVG Sang Biểu Đồ Code Vẽ Động Bằng HTML5 Canvas & Chart.js Engine
+- **Yêu cầu của người dùng**: "ảnh để biếu đồ code chứ sao lại để ảnh" (kèm ảnh chụp khu vực biểu đồ đường sản lượng thu hoạch & bao tiêu).
+- **Phân tích nguyên nhân gốc**:
+  - Trước đây khu vực biểu đồ được tạo bằng các thẻ SVG tĩnh với tọa độ cố định và thuộc tính `preserveAspectRatio="none"`.
+  - Khi khung chứa thay đổi kích thước, toàn bộ chữ và đường biểu đồ SVG bị co kéo/bóp méo tỷ lệ (chữ "Tháng 5", "Tháng 6", "25 Tấn" bị dẹt theo chiều dọc), khiến người dùng nhìn thấy như một bức ảnh bị resize chất lượng thấp.
+  - Ngoài ra các bộ lọc chọn thôn xóm, khung thời gian và checkbox ẩn hiện đường chưa thực sự vẽ lại dữ liệu động.
+- **Giải pháp & Triển khai thực tế**:
+  1. **Tích hợp Chart.js chuẩn Offline & CDN Fallback**:
+     - Tải và đóng gói bundle `libs/chart.umd.min.js` (205 KB) vào mã nguồn dự án, kèm cơ chế fallback tự động nạp từ jsDelivr nếu cần.
+  2. **Thay thế Biểu đồ Đường chính (#htx-trend-chart-canvas)**:
+     - Chuyển toàn bộ khung vẽ sang thẻ `<canvas>` với độ phân giải siêu nét (HiDPI Vector Canvas).
+     - 3 đường spline mượt mà (`tension: 0.38`): Sản lượng thu hoạch (xanh ngọc gradient), Sản lượng bao tiêu (xanh dương gradient), và Thu nhập bình quân hộ (nét đứt màu hổ phách).
+     - Bộ lọc tương tác thật 100%: Chọn thôn xóm (Toàn HTX, Thôn Đồi Chuối, Thôn Đồi Chè, Thôn Suối Rừng) sẽ lập tức kích hoạt animation vẽ lại số liệu thực tế tương ứng và cập nhật hộp phân tích khuyến nghị bên dưới.
+     - Checkbox toggle đường dữ liệu: Bật/tắt checkbox sẽ ẩn/hiện đường tức thì trên canvas.
+  3. **Thay thế 2 Biểu đồ Thống kê Chuyên sâu (#htx-crops-chart-canvas & #htx-compliance-chart-canvas)**:
+     - **Biểu đồ Cột nhóm**: Cơ cấu sản lượng 5 cây trồng chủ lực (Chuối sấy, Trà Bát Tiên, Mật ong, Bưởi, Lúa ST25) vẽ bằng Canvas Bar Chart với bo góc cột thẩm mỹ.
+     - **Biểu đồ Đường trục kép (Dual-axis)**: Giám sát tỷ lệ ghi nhật ký VietGAP (% trục trái) và Số vụ cảnh báo sâu bệnh (vụ trục phải) với lưới chấm thanh lịch.
+  4. **Kiểm thử tự động bằng Puppeteer**:
+     - Kịch bản `scratch/verify_charts.js` đã xác minh cả 3 biểu đồ khởi tạo thành công 100%, canvas nhận diện đúng kích thước (808x280 và 374x185), bộ lọc thôn xóm và checkbox ẩn hiện đường hoạt động trơn tru, không có bất kỳ lỗi JavaScript nào.

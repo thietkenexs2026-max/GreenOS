@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>So Sánh 2 Thiết Kế: GreenOS vs. Green Village OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lexend:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --card-bg: #1E293B;
+      --border: #334155;
+      --text: #F8FAFC;
+      --muted: #94A3B8;
+      --greenos-accent: #10B981;
+      --gvos-accent: #365F19;
+      --gvos-indigo: #1C3DA6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Control Header */
+    .top-header {
+      background: #0B1120;
+      border-bottom: 1.5px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-title h1 {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+    .brand-title .badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-toggle-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: #1E293B;
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+    .btn-toggle-view.active {
+      background: #10B981;
+      color: #042F2E;
+      border-color: #10B981;
+      font-weight: 800;
+    }
+
+    .direct-links {
+      display: flex;
+      gap: 8px;
+    }
+    .link-pill {
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .link-pill.greenos {
+      background: rgba(16, 185, 129, 0.15);
+      color: #6EE7B7;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+    .link-pill.greenos:hover {
+      background: #10B981;
+      color: #064E3B;
+    }
+    .link-pill.gvos {
+      background: rgba(54, 95, 25, 0.25);
+      color: #A7F3D0;
+      border: 1px solid #365F19;
+    }
+    .link-pill.gvos:hover {
+      background: #FFE066;
+      color: #0D1838;
+      border-color: #0D1838;
+    }
+
+    /* Comparison Area */
+    .compare-container {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 16px;
+      height: calc(100vh - 72px);
+    }
+    .compare-container.view-matrix {
+      display: none;
+    }
+
+    .side-column {
+      background: #131D31;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .side-column.greenos-col {
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .side-column.gvos-col {
+      border-color: rgba(255, 224, 102, 0.4);
+    }
+
+    .col-header {
+      padding: 12px 16px;
+      background: #0B1120;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .col-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .col-title h2 {
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .tag-greenos {
+      background: #064E3B;
+      color: #6EE7B7;
+    }
+    .tag-gvos {
+      background: #365F19;
+      color: #FFE066;
+    }
+
+    .col-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .col-btn {
+      background: #1E293B;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .col-btn:hover {
+      background: #334155;
+    }
+
+    .iframe-wrapper {
+      flex: 1;
+      background: #000;
+      position: relative;
+    }
+    .iframe-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Comparison Matrix View */
+    .matrix-section {
+      padding: 28px;
+      max-width: 1300px;
+      margin: 0 auto;
+      display: none;
+    }
+    .matrix-section.active {
+      display: block;
+    }
+
+    .matrix-card {
+      background: #1E293B;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+    .matrix-table th {
+      background: #0B1120;
+      padding: 16px;
+      font-weight: 800;
+      border-bottom: 2px solid var(--border);
+    }
+    .matrix-table td {
+      padding: 16px;
+      border-bottom: 1px solid #334155;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .matrix-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+    .col-criteria { width: 22%; font-weight: 700; color: #E2E8F0; }
+    .col-greenos { width: 39%; background: rgba(16, 185, 129, 0.03); }
+    .col-gvos { width: 39%; background: rgba(255, 224, 102, 0.03); }
+
+    .badge-diff {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .badge-diff.green { background: #064E3B; color: #6EE7B7; }
+    .badge-diff.yellow { background: #5A4300; color: #FFE066; }
+
+    @media (max-width: 900px) {
+      .compare-container {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .side-column {
+        height: 650px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Control Header -->
+  <header class="top-header">
+    <div class="brand-title">
+      <span style="font-size:24px;">⚖️</span>
+      <div>
+        <h1>SO SÁNH 2 BẢN THIẾT KẾ</h1>
+        <div style="font-size:12px;color:var(--muted);">Tách riêng độc lập 100% để bạn kiểm tra chi tiết từng màn hình</div>
+      </div>
+      <span class="badge">Local Port: 8090</span>
+    </div>
+
+    <!-- Toggle View Mode Buttons -->
+    <div class="nav-actions">
+      <button type="button" class="btn-toggle-view active" id="btnModeMobile" onclick="switchCompareMode('mobile')">
+        📱 So sánh Mobile App
+      </button>
+      <button type="button" class="btn-toggle-view" id="btnModeDesktop" onclick="switchCompareMode('desktop')">
+        🖥️ So sánh Web Quản Trị
+      </button>
+      <button type="button" class="btn-toggle-view" id="btnModeMatrix" onclick="switchCompareMode('matrix')">
+        📊 Bảng Đối Chiếu 10 Điểm Khác Biệt
+      </button>
+    </div>
+
+    <!-- Direct Links to Open Individually -->
+    <div class="direct-links">
+      <a href="/studio.html" class="link-pill" style="background:#047857; color:#FFFFFF; border:1px solid #10B981; font-weight:800;" title="Mở không gian làm việc Dual Studio Workbench tương tác">
+        🚀 Mở Dual Studio Workbench ↗
+      </a>
+      <a href="/greenos/index.html" target="_blank" class="link-pill greenos" title="Mở bản GreenOS nguyên bản trong tab mới">
+        🌿 Mở GreenOS Tab Riêng ↗
+      </a>
+      <a href="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html" target="_blank" class="link-pill gvos" title="Mở bản Green Village OS nguyên bản git gốc trong tab mới">
+        🌾 Mở Green Village OS Git Gốc ↗
+      </a>
+    </div>
+  </header>
+
+  <!-- Side-by-Side Comparison Container -->
+  <main class="compare-container" id="compareContainer">
+    
+    <!-- LEFT: GREENOS (Nguyên bản) -->
+    <section class="side-column greenos-col">
+      <div class="col-header">
+        <div class="col-title">
+          <span style="font-size:18px;">🌿</span>
+          <div>
+            <h2 id="leftColTitle">GreenOS (Nguyên Bản Bác Ba)</h2>
+            <div style="font-size:11.5px;color:#A7F3D0;">Font Inter · Bo tròn 22–36px · HTX Đồng Cát / Yên Bình</div>
+          </div>
+          <span class="tag tag-greenos">Bản Gốc</span>
+        </div>
+        <div class="col-actions">
+          <button class="col-btn" onclick="reloadFrame('frameGreenos')">🔄 Tải lại</button>
+          <a class="col-btn" id="leftOpenLink" href="/greenos/index.html" target="_blank">↗ Phóng to</a>
+        </div>
+      </div>
+      <div class="iframe-wrapper">
+        <iframe id="frameGreenos" src="/greenos/index.html" title="GreenOS Nguyên Bản"></iframe>
+      </div>
+    </section>
+
+    <!-- RIGHT: GREEN VILLAGE OS (BẢN GỐC GIT REPO KHÔNG CHỈNH SỬA) -->
+    <section class="side-column gvos-col">
+      <div class="col-header">
+        <div class="col-title">
+          <span style="font-size:18px;">🌾</span>
+          <div>
+            <h2 id="rightColTitle">Green Village OS (Nguyên Bản Git Gốc)</h2>
+            <div style="font-size:11.5px;color:#FFE066;">Link gốc từ git repo `green-village-os` (không chỉnh sửa bất kỳ file nào)</div>
+          </div>
+          <span class="tag tag-gvos">Git Gốc 100%</span>
+        </div>
+        <div class="col-actions">
+          <select id="gvosGitScreenSelect" onchange="onSelectGvosGitScreen(this.value)" style="background:#0F172A;color:#FFE066;border:1px solid #FFE066;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:700;cursor:pointer;">
+            <option value="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s7">📱 Dashboard Hộ (Nguyễn Thị Hoa)</option>
+            <option value="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html">📱 Toàn bộ 8 màn App (Splash, Onboard, Chat)</option>
+            <option value="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s8">💬 Trợ lý AI Phi Phi (Chat nổi)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-01.html">🔄 Chợ Xanh Mock (CX-01)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-04.html">🤝 Ghép Nối AI (CX-04)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/ancujob/references/mock/ACJ-01.html">💼 Việc Làm AnCuJob (ACJ-01)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/APP-05.html">📸 Đăng SP 3 ô ảnh AI (APP-05)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/XA-01.html">🏛️ Kinh Tế Xã M1–M4 (XA-01)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/BO-01.html">🛡️ BO Vận Hành (BO-01)</option>
+          </select>
+          <button class="col-btn" onclick="reloadFrame('frameGvos')">🔄 Tải lại</button>
+          <a class="col-btn" id="rightOpenLink" href="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s7" target="_blank">↗ Phóng to</a>
+        </div>
+      </div>
+      <div class="iframe-wrapper">
+        <iframe id="frameGvos" src="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s7" title="Green Village OS Nguyên Bản Git"></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MATRIX SECTION (Đối chiếu 10 tiêu chí) -->
+  <section class="matrix-section" id="matrixSection">
+    <div style="margin-bottom:20px; text-align:center;">
+      <h2 style="font-size:24px;font-weight:900;margin-bottom:6px;">Bảng Đối Chiếu 10 Điểm Khác Biệt Cốt Lõi</h2>
+      <p style="color:var(--muted);font-size:14px;">So sánh kiến trúc, ngôn ngữ thiết kế, bối cảnh dữ liệu mẫu và tính năng giữa 2 phiên bản</p>
+    </div>
+
+    <div class="matrix-card">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th class="col-criteria">Tiêu chí đối chiếu</th>
+            <th class="col-greenos" style="color:#6EE7B7;">🌿 1. GreenOS (Bản Nguyên Bản)</th>
+            <th class="col-gvos" style="color:#FFE066;">🌾 2. Green Village OS (Bản Direction A)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-criteria">1. Triết lý thiết kế (Design System & Vibe)</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Coursue Modern UI</span><br>
+              • Phong cách SaaS hiện đại, tối giản theo cảm hứng Dribbble/Coursue.<br>
+              • Bo góc cực lớn mềm mại: <strong>Card radius 22px – 36px</strong>.<br>
+              • Bóng đổ nhẹ (soft shadows), đường phân cách thanh mảnh (#E2E8F0).
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">Direction A + MD3 (An Cư Xanh)</span><br>
+              • Phong cách "An Cư Xanh & Đồng ruộng bậc thang" gần gũi với nông thôn.<br>
+              • Bo góc vuông vức, đầm chắc: <strong>Card radius 6px</strong>.<br>
+              • Viền đen đậm tương phản cao <strong>2px solid #0D1838</strong>, tuyệt đối không dùng box-shadow đổ màu.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">2. Phông chữ (Typography)</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Font Inter</span><br>
+              • 100% sử dụng font <code>Inter</code> xuyên suốt tất cả các tiêu đề, nút bấm, bảng biểu và thông báo.<br>
+              • Nét chữ thanh thoát, trung tính quốc tế.
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">Font Lexend</span><br>
+              • 100% sử dụng font <code>Lexend</code> được thiết kế chuyên biệt để nâng cao tốc độ đọc hiểu và thân thiện với mắt người cao tuổi nông thôn.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">3. Bảng màu chủ đạo (Color Palette)</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Xanh ngọc & Xanh lá tươi</span><br>
+              • Xanh lá tươi: <code>#10B981</code>, <code>#059669</code>, <code>#15803D</code>.<br>
+              • Nền xám dịu: <code>#F8F9FA</code> / <code>#EBF0F5</code>.<br>
+              • Điểm nhấn xanh Zalo: <code>#0068FF</code>.
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">Xanh đồng ruộng & Chàm BO</span><br>
+              • Xanh đồng ruộng: <code>#365F19</code> (chắc / thành công).<br>
+              • Vàng hổ phách: <code>#FFE066</code> (ô vàng cảnh báo).<br>
+              • Đỏ cảnh báo: <code>#C01242</code> (chặn từ y tế).<br>
+              • Chàm quản trị: <code>#1C3DA6</code> (dành riêng khu BO).
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">4. Bối cảnh & Dữ liệu mẫu (Seed Data)</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Hộ Bác Ba — Xã Yên Bình</span><br>
+              • Nông hộ trung tâm: <strong>Bác Ba (Nguyễn Văn Ba)</strong>.<br>
+              • Địa bàn: Thôn Đồng Cát, Xã Yên Bình.<br>
+              • 1 HTX nông sản, SP mẫu: Chuối sấy dẻo, Bưởi Diễn, Cam sành.
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">Xã Đồng Lam — Tỉnh Sơn Nguyên</span><br>
+              • <strong>25 hộ mẫu</strong> phân bổ trên 6 thôn (Bãi Sen, Đồng Chè, Khe Trúc, Suối Mây, Nà Liêu, Bản Cỏi).<br>
+              • <strong>3 HTX</strong>, 80 sản phẩm OCOP, 14 kịch bản AI, 49 thẻ Chợ Xanh, 17 tin việc làm AnCuJob.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">5. Hệ thống Vai trò & Phân quyền</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">2 Vai trò chính</span><br>
+              1. Nông hộ sản xuất (App Mobile).<br>
+              2. Cán bộ quản lý HTX (Dashboard Web PC).
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">6 Vai trò đầy đủ (16 Tài khoản mẫu)</span><br>
+              1. Hộ sản xuất (<code>ho</code> · 10 TK).<br>
+              2. Điểm hỗ trợ Hub xã làm hộ (<code>hub</code> · 2 TK).<br>
+              3. Người tuyển dụng AnCuJob (<code>nguoi_tuyen</code> · 3 TK).<br>
+              4. BO Vận hành (<code>bo_van_hanh</code> · Phạm Minh Châu).<br>
+              5. BO Chính sách (<code>bo_chinh_sach</code> · Hoàng Thị Vân).<br>
+              6. Cán bộ kinh tế xã (<code>can_bo_xa</code> · Trần Văn Hùng).
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">6. Kiểm toán Trường AI (AI Field Audit)</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Đơn giản, trực tiếp</span><br>
+              • Chụp ảnh / đọc giọng nói ➔ AI điền thẳng vào form.<br>
+              • Bác nông dân xem lại form và bấm lưu hoặc chia sẻ nhanh.
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">5 Thành phần Kiểm toán chặt chẽ</span><br>
+              • <code>✓ Chắc</code>: Vạch trái 6px #365F19 + gạch chân câu trích xuất.<br>
+              • <code>⚠ Ô vàng</code>: Nền vàng #FFE066 + 2 nút [Đúng rồi]/[Sửa].<br>
+              • <code>? Ô thiếu</code>: Nét đứt xanh + ô nhập và nút Nói tại chỗ.<br>
+              • <code>⊘ Câu bị chặn</code>: Nền đỏ #FFE1DF + gợi ý câu trung tính, cấm nút bỏ qua.<br>
+              • <code>ConfirmBox</code>: Khóa chia sẻ Zalo/Shopee tới khi duyệt hết.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">7. Chợ Xanh & Ghép Nối AI</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Gian hàng & Sàn B2B</span><br>
+              • Gian hàng nông sản theo hộ, giỏ hàng gộp, thanh toán VietQR và sàn gom đơn buôn B2B cấp HTX.
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">Resource Box & AI Matching</span><br>
+              • Hộp tài nguyên 49 thẻ (Thẻ CÓ, Thẻ CẦN, Ý TƯỞNG).<br>
+              • Ghép nối Cung–Cầu AI 5 tiêu chí tính điểm theo bán kính 10/25/50km.<br>
+              • Bản đồ SVG trực quan phát hiện cơ hội & nút thắt nguồn lực.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">8. Thị Trường Việc Làm AnCuJob</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Tích hợp cơ bản</span><br>
+              • Kết nối việc làm mùa vụ và lịch xe gom nông sản tận vườn.
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">Thị trường 2 chiều hoàn chỉnh</span><br>
+              • Người lao động: Bật/tắt "Tôi đang rảnh", khai hồ sơ giọng nói, bảo vệ SĐT 2 chiều, chấm sao người tuyển.<br>
+              • Người tuyển: Đọc yêu cầu giọng nói, nhận người hàng loạt, chiến dịch KCN 3 tuyến xe đưa đón.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">9. Bảng Điều Hành Cấp Xã (/xa)</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Quản trị HTX</span><br>
+              • Theo dõi 50 xã viên, sản lượng thu hoạch, kho hàng và doanh số bán sỉ.
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">Kinh tế số cấp Xã (/xa)</span><br>
+              • Chỉ số hành chính M1–M4 tách rõ <strong>Tự làm</strong> vs <strong>Hub làm hộ</strong>.<br>
+              • Quy tắc bảo mật: Tự động gộp thôn &lt; 5 hộ (Bản Cỏi) vào <code>"Nhóm nhỏ (&lt; 5 hộ)"</code>.<br>
+              • Chế độ máy chiếu <code>?trinh-chieu=1</code> phóng số KPI lên 64px phục vụ họp UBND xã.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-criteria">10. Cổng Cổ Phần (cp.langxanh.vn)</td>
+            <td class="col-greenos">
+              <span class="badge-diff green">Liên kết quỹ HTX</span><br>
+              • Đóng góp vốn xã viên và liên kết tài chính nội bộ HTX.
+            </td>
+            <td class="col-gvos">
+              <span class="badge-diff yellow">Cổng thông tin & Sổ cổ đông số (28 màn)</span><br>
+              • CTCP Làng Nông Thôn Xanh (LNTX): 3 đợt phát hành (DOT-1, DOT-2, DOT-3) & 40 nhà đầu tư mẫu.<br>
+              • Ký Hợp đồng điện tử bằng OTP 6 số.<br>
+              • Sổ cái biến động cổ phần Append-only Ledger.<br>
+              • Nghiêm cấm từ "ROI" và "cam kết lợi nhuận".
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Quick Navigation Footnotes -->
+    <div style="display:flex; justify-content:center; gap:16px; margin-top:20px;">
+      <a href="/greenos/PORTAL.html" target="_blank" style="color:#6EE7B7; text-decoration:underline; font-size:13px; font-weight:700;">📂 Xem Portal GreenOS Gốc (PORTAL.html)</a>
+      <span style="color:#475569;">•</span>
+      <a href="/gvos/PORTAL.html" target="_blank" style="color:#FFE066; text-decoration:underline; font-size:13px; font-weight:700;">📂 Xem Portal Green Village OS (gvos/PORTAL.html)</a>
+    </div>
+  </section>
+
+  <script>
+    let currentMode = 'mobile';
+
+    function switchCompareMode(mode) {
+      currentMode = mode;
+      
+      // Update buttons
+      document.getElementById('btnModeMobile').classList.toggle('active', mode === 'mobile');
+      document.getElementById('btnModeDesktop').classList.toggle('active', mode === 'desktop');
+      document.getElementById('btnModeMatrix').classList.toggle('active', mode === 'matrix');
+
+      const compareContainer = document.getElementById('compareContainer');
+      const matrixSection = document.getElementById('matrixSection');
+
+      if (mode === 'matrix') {
+        compareContainer.style.display = 'none';
+        matrixSection.classList.add('active');
+        return;
+      }
+
+      compareContainer.style.display = 'grid';
+      matrixSection.classList.remove('active');
+
+      const frameGreenos = document.getElementById('frameGreenos');
+      const frameGvos = document.getElementById('frameGvos');
+      const leftTitle = document.getElementById('leftColTitle');
+      const rightTitle = document.getElementById('rightColTitle');
+      const leftOpenLink = document.getElementById('leftOpenLink');
+      const rightOpenLink = document.getElementById('rightOpenLink');
+
+      if (mode === 'mobile') {
+        frameGreenos.src = '/greenos/index.html';
+        const gitSel = document.getElementById('gvosGitScreenSelect');
+        const selVal = gitSel ? gitSel.value : '/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s7';
+        frameGvos.src = selVal;
+        leftTitle.innerText = 'GreenOS Mobile (Bác Ba · Yên Bình)';
+        rightTitle.innerText = 'Green Village OS (Nguyên Bản Git Gốc)';
+        leftOpenLink.href = '/greenos/index.html';
+        rightOpenLink.href = selVal;
+      } else if (mode === 'desktop') {
+        frameGreenos.src = '/greenos/htx-dashboard.html';
+        const boUrl = '/green-village-os/gvos-web/docs/ui-upgrade/references/mock/BO-01.html';
+        frameGvos.src = boUrl;
+        leftTitle.innerText = 'GreenOS Dashboard HTX (Yên Bình)';
+        rightTitle.innerText = 'Green Village OS BO Gốc (BO-01 Git Mock)';
+        leftOpenLink.href = '/greenos/htx-dashboard.html';
+        rightOpenLink.href = boUrl;
+      }
+    }
+
+    function onSelectGvosGitScreen(url) {
+      const frame = document.getElementById('frameGvos');
+      const openLink = document.getElementById('rightOpenLink');
+      if (frame) frame.src = url;
+      if (openLink) openLink.href = url;
+    }
+
+    function reloadFrame(frameId) {
+      const el = document.getElementById(frameId);
+      if (el) el.src = el.src;
+    }
+  </script>
+
+</body>
+</html>

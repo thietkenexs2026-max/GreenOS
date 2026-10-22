@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dual Studio Workbench — GreenOS vs. Green Village OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lexend:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090D16;
+      --panel-bg: #111827;
+      --border: #1F2937;
+      --border-focus: #374151;
+      --text: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --greenos-primary: #059669;
+      --greenos-accent: #10B981;
+      --greenos-glow: rgba(16, 185, 129, 0.25);
+      --gvos-primary: #365F19;
+      --gvos-accent: #F59E0B;
+      --gvos-glow: rgba(245, 158, 11, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =========================================================================
+       1. TOP COMMAND BAR (STUDIO MASTER CONTROLLER)
+       ========================================================================= */
+    .studio-top-bar {
+      height: 60px;
+      background: #0B0F19;
+      border-bottom: 1.5px solid var(--border);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-shrink: 0;
+      z-index: 50;
+    }
+
+    .studio-brand-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .studio-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .studio-title-text h1 {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .studio-title-text p {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .studio-badge-port {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    /* Layout Mode Buttons */
+    .studio-layout-controls {
+      display: flex;
+      align-items: center;
+      background: #111827;
+      border: 1px solid var(--border);
+      padding: 3px;
+      border-radius: 10px;
+      gap: 4px;
+    }
+
+    .layout-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .layout-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .layout-btn.active {
+      background: #1F2937;
+      color: #34D399;
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* Studio Global Actions */
+    .studio-global-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-studio-action {
+      background: #1E293B;
+      color: #E2E8F0;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-studio-action:hover {
+      background: #334155;
+      color: #FFFFFF;
+      border-color: #475569;
+    }
+
+    .btn-studio-action.highlight {
+      background: #065F46;
+      border-color: #10B981;
+      color: #6EE7B7;
+    }
+    .btn-studio-action.highlight:hover {
+      background: #047857;
+      color: #FFFFFF;
+    }
+
+    /* =========================================================================
+       2. WORKBENCH CONTAINER (SIDE BY SIDE 2 STUDIOS)
+       ========================================================================= */
+    .studio-workbench {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      background: #060911;
+      overflow: hidden;
+      position: relative;
+      transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Bố Cục Presets */
+    .studio-workbench.layout-split {
+      grid-template-columns: 1fr 1fr;
+    }
+    .studio-workbench.layout-greenos-focus {
+      grid-template-columns: 1.8fr 1fr;
+    }
+    .studio-workbench.layout-gvos-focus {
+      grid-template-columns: 1fr 1.8fr;
+    }
+    .studio-workbench.layout-mobile-duo {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* =========================================================================
+       3. INDIVIDUAL STUDIO PANE (LEFT & RIGHT)
+       ========================================================================= */
+    .studio-pane {
+      background: var(--panel-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .studio-pane.greenos-side {
+      border-color: rgba(16, 185, 129, 0.4);
+      box-shadow: 0 0 30px -10px rgba(16, 185, 129, 0.15);
+    }
+
+    .studio-pane.gvos-side {
+      border-color: rgba(245, 158, 11, 0.4);
+      box-shadow: 0 0 30px -10px rgba(245, 158, 11, 0.15);
+    }
+
+    /* Pane Header Toolbar */
+    .pane-header {
+      height: 48px;
+      background: #0D131F;
+      border-bottom: 1px solid var(--border);
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .pane-title-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .pill-tag {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pill-tag.greenos {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .pill-tag.gvos {
+      background: rgba(245, 158, 11, 0.2);
+      color: #FBBF24;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    /* Sub Toolbar: Screen Selector & Device Toggle */
+    .pane-sub-toolbar {
+      height: 42px;
+      background: #090D16;
+      border-bottom: 1px solid var(--border);
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .screen-select-stylish {
+      flex: 1;
+      max-width: 320px;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      color: #F3F4F6;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 10px;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .screen-select-stylish:hover, .screen-select-stylish:focus {
+      border-color: #10B981;
+      background: #1F2937;
+    }
+
+    .device-switcher {
+      display: flex;
+      align-items: center;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 7px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .device-btn {
+      background: transparent;
+      border: none;
+      color: #9CA3AF;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .device-btn.active {
+      background: #374151;
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    /* Pane Viewport Wrapper */
+    .pane-viewport-canvas {
+      flex: 1;
+      background: #05080E;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      padding: 10px;
+    }
+
+    /* Phone Device Simulator (Khi xem Mobile) */
+    .phone-simulator-frame {
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-simulator-frame.device-mobile {
+      width: 412px;
+      height: 870px;
+      max-height: 98%;
+      border-radius: 44px;
+      background: #000000;
+      border: 11px solid #1E293B;
+      box-shadow: 0 25px 60px -15px rgba(0,0,0,0.8), 0 0 0 1px #334155;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-simulator-frame.device-mobile::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 20px;
+      background: #000000;
+      border-radius: 20px;
+      z-index: 10;
+    }
+
+    .phone-simulator-frame.device-tablet {
+      width: 768px;
+      height: 95%;
+      border-radius: 24px;
+      border: 10px solid #1E293B;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      overflow: hidden;
+    }
+
+    .phone-simulator-frame.device-desktop {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .pane-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #FFFFFF;
+      display: block;
+    }
+
+    /* Design Specs Inspector Drawer (Chân trang Studio) */
+    .studio-specs-drawer {
+      height: 38px;
+      background: #0A0E17;
+      border-top: 1px solid var(--border);
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .specs-token-list {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .specs-token-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .specs-color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .studio-workbench {
+        grid-template-columns: 1fr !important;
+        overflow-y: auto;
+      }
+      .studio-pane {
+        height: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. TOP COMMAND BAR (STUDIO MASTER CONTROLLER)
+       ========================================================================= -->
+  <header class="studio-top-bar">
+    <div class="studio-brand-box">
+      <div class="studio-logo-icon">⚖️</div>
+      <div class="studio-title-text">
+        <h1>DUAL STUDIO WORKBENCH <span class="studio-badge-port">HTTP : 8090</span></h1>
+        <p>So sánh tương tác song song 2 hệ thống: GreenOS vs. Green Village OS (Git Repo Gốc)</p>
+      </div>
+    </div>
+
+    <!-- Layout Presets Switcher -->
+    <div class="studio-layout-controls">
+      <button class="layout-btn active" id="layoutBtnSplit" onclick="setStudioLayout('split')">
+        <span>⚖️ 50 : 50 Song Song</span>
+      </button>
+      <button class="layout-btn" id="layoutBtnGreenos" onclick="setStudioLayout('greenos-focus')">
+        <span>🌿 Ưu Tiên GreenOS</span>
+      </button>
+      <button class="layout-btn" id="layoutBtnGvos" onclick="setStudioLayout('gvos-focus')">
+        <span>🌾 Ưu Tiên GVOS</span>
+      </button>
+      <button class="layout-btn" id="layoutBtnMobile" onclick="setStudioLayout('mobile-duo')">
+        <span>📱 Đôi iPhone</span>
+      </button>
+    </div>
+
+    <!-- Global Utility Actions -->
+    <div class="studio-global-actions">
+      <button class="btn-studio-action" onclick="reloadBothFrames()" title="Tải lại cả 2 màn hình">
+        🔄 Tải Lại Cả 2
+      </button>
+      <a href="/compare.html" class="btn-studio-action highlight" title="Xem bảng so sánh 10 điểm khác biệt cốt lõi">
+        📊 Bảng 10 Điểm Khác Biệt
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. MAIN WORKBENCH: 2 STUDIO PANES SIDE-BY-SIDE
+       ========================================================================= -->
+  <main class="studio-workbench layout-split" id="studioWorkbench">
+
+    <!-- -----------------------------------------------------------------------
+         STUDIO TRÁI: GREENOS STUDIO (EMERALD SAAS THEME)
+         ----------------------------------------------------------------------- -->
+    <section class="studio-pane greenos-side">
+      <!-- Header -->
+      <div class="pane-header">
+        <div class="pane-title-badge">
+          <span style="font-size: 16px;">🌿</span>
+          <span style="color: #6EE7B7;">GreenOS Studio</span>
+          <span class="pill-tag greenos">Vibe Builder</span>
+        </div>
+
+        <div style="display: flex; gap: 6px;">
+          <a class="btn-studio-action" id="leftExternalLink" href="/htx-dashboard.html" target="_blank" style="padding: 3px 8px; font-size: 11px;">
+            ↗ Mở Tab Mới
+          </a>
+          <button class="btn-studio-action" onclick="reloadSingleFrame('leftFrame')" style="padding: 3px 8px; font-size: 11px;">
+            🔄
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub Toolbar: Quick Screen Selector & Device Mode -->
+      <div class="pane-sub-toolbar">
+        <select class="screen-select-stylish" id="leftScreenSelect" onchange="switchLeftScreen(this.value)">
+          <optgroup label="🖥️ Web Quản Trị HTX (Chủ Nhiệm Hùng)">
+            <option value="/htx-dashboard.html" selected>📈 Dashboard HTX (Toàn Cảnh & Biểu Đồ Đường)</option>
+            <option value="/htx-dashboard.html#radar">🚨 Radar Giám Sát & Hỗ Trợ 50 Hộ Dân</option>
+            <option value="/htx-dashboard.html#b2b">📦 Order Hub Đơn Buôn B2B (WinMart)</option>
+            <option value="/htx-dashboard.html#settlement">📋 Sổ Đối Soát Sản Lượng Xã Viên</option>
+            <option value="/htx-dashboard.html#ai">✨ AI Studio (Kịch Bản Livestream)</option>
+          </optgroup>
+          <optgroup label="📱 Mobile App Nông Dân (Bác Ba - Hộ 04)">
+            <option value="/index.html">🍌 Mobile: Trang Chủ Gom Chuối OCOP</option>
+            <option value="/index.html#diary">📑 Mobile: Nhật Ký Canh Tác VietGAP</option>
+            <option value="/index.html#scan">📸 Mobile: Quét Mã QR & AI Nhận Diện</option>
+            <option value="/index.html#orders">📦 Mobile: Đơn Hàng & Doanh Thu Bác Ba</option>
+          </optgroup>
+          <optgroup label="🏛️ Cổng Thông Tin & Cổ Đông">
+            <option value="/PORTAL.html">🏛️ Cổng Sổ Cổ Đông & Đại Hội Xã Viên</option>
+          </optgroup>
+        </select>
+
+        <div class="device-switcher" id="leftDeviceSwitcher">
+          <button class="device-btn" onclick="setLeftDevice('mobile')">📱 390px</button>
+          <button class="device-btn" onclick="setLeftDevice('tablet')">💻 768px</button>
+          <button class="device-btn active" onclick="setLeftDevice('desktop')">🖥️ 100%</button>
+        </div>
+      </div>
+
+      <!-- Viewport Canvas -->
+      <div class="pane-viewport-canvas">
+        <div class="phone-simulator-frame device-desktop" id="leftFrameWrapper">
+          <iframe id="leftFrame" class="pane-iframe" src="/htx-dashboard.html" title="GreenOS Studio"></iframe>
+        </div>
+      </div>
+
+      <!-- Specs Footer -->
+      <div class="studio-specs-drawer">
+        <div class="specs-token-list">
+          <span class="specs-token-pill"><span class="specs-color-dot" style="background:#059669;"></span> Primary: #059669</span>
+          <span class="specs-token-pill"><span class="specs-color-dot" style="background:#10B981;"></span> Mint: #10B981</span>
+          <span class="specs-token-pill">Font: Lexend / Inter</span>
+          <span class="specs-token-pill">Radius: 16–22px</span>
+        </div>
+        <div>Actor: <strong>Chủ nhiệm HTX & Bác Ba</strong></div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         STUDIO PHẢI: GREEN VILLAGE OS STUDIO (GIT GỐC SPEC THEME)
+         ----------------------------------------------------------------------- -->
+    <section class="studio-pane gvos-side">
+      <!-- Header -->
+      <div class="pane-header">
+        <div class="pane-title-badge">
+          <span style="font-size: 16px;">🌾</span>
+          <span style="color: #FCD34D;">Green Village OS (GVOS)</span>
+          <span class="pill-tag gvos">Git Repo Gốc</span>
+        </div>
+
+        <div style="display: flex; gap: 6px;">
+          <a class="btn-studio-action" id="rightExternalLink" href="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-08.html" target="_blank" style="padding: 3px 8px; font-size: 11px;">
+            ↗ Mở Tab Mới
+          </a>
+          <button class="btn-studio-action" onclick="reloadSingleFrame('rightFrame')" style="padding: 3px 8px; font-size: 11px;">
+            🔄
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub Toolbar: Quick Screen Selector & Device Mode -->
+      <div class="pane-sub-toolbar">
+        <select class="screen-select-stylish" id="rightScreenSelect" onchange="switchRightScreen(this.value)">
+          <optgroup label="🔄 Chợ Xanh Nghiệp Vụ (CX Mocks Chuẩn)">
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-08.html" selected>📈 CX-08: Toàn Cảnh Chợ Xanh HTX (GVOS Spec)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-01.html">🔄 CX-01: Quản Lý Thẻ Có / Thẻ Cần</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-04.html">🤝 CX-04: Ghép Nối Nhu Cầu Nông Dân</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-13.html">🚨 CX-13: Nút Thắt Địa Bàn (Bottlenecks)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-14.html">🗺️ CX-14: Bản Đồ Nguồn Lực Thôn Xóm</option>
+          </optgroup>
+          <optgroup label="🛡️ Backoffice Quản Trị (BO Mocks)">
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/BO-01.html">🛡️ BO-01: Toàn Cảnh Vận Hành Hệ Thống</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/BO-05.html">🌾 BO-05: Sản Phẩm HTX (Chủ Nhiệm Vân)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/BO-07.html">💰 BO-07: Khớp Tiền VietQR (Đối Tác Sàn)</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/BO-08.html">⚖️ BO-08: Đối Soát Chi Trả Kỳ Tháng</option>
+          </optgroup>
+          <optgroup label="📱 Mobile App Chị Hoa (Interactive Design Shots)">
+            <option value="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s7">📱 Dashboard Hộ Xã Viên (Chị Hoa)</option>
+            <option value="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html">📱 Toàn Bộ 8 Màn Mobile App GVOS</option>
+            <option value="/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s8">💬 Trợ Lý AI Phi Phi Trò Chuyện</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/APP-05.html">📸 APP-05: Đăng SP 3 Ô Ảnh AI</option>
+          </optgroup>
+          <optgroup label="🏛️ Kinh Tế Xã & Việc Làm">
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/references/mock/XA-01.html">🏛️ XA-01: Thống Kê Kinh Tế Xã M1–M4</option>
+            <option value="/green-village-os/gvos-web/docs/ui-upgrade/ancujob/references/mock/ACJ-01.html">💼 ACJ-01: Việc Làm Nông Thôn AnCuJob</option>
+          </optgroup>
+        </select>
+
+        <div class="device-switcher" id="rightDeviceSwitcher">
+          <button class="device-btn" onclick="setRightDevice('mobile')">📱 390px</button>
+          <button class="device-btn" onclick="setRightDevice('tablet')">💻 768px</button>
+          <button class="device-btn active" onclick="setRightDevice('desktop')">🖥️ 100%</button>
+        </div>
+      </div>
+
+      <!-- Viewport Canvas -->
+      <div class="pane-viewport-canvas">
+        <div class="phone-simulator-frame device-desktop" id="rightFrameWrapper">
+          <iframe id="rightFrame" class="pane-iframe" src="/green-village-os/gvos-web/docs/ui-upgrade/cho-xanh/references/mock/CX-08.html" title="Green Village OS Studio"></iframe>
+        </div>
+      </div>
+
+      <!-- Specs Footer -->
+      <div class="studio-specs-drawer">
+        <div class="specs-token-list">
+          <span class="specs-token-pill"><span class="specs-color-dot" style="background:#365F19;"></span> Accent: #365F19</span>
+          <span class="specs-token-pill"><span class="specs-color-dot" style="background:#F59E0B;"></span> Amber: #F59E0B</span>
+          <span class="specs-token-pill">Font: Roboto / Inter</span>
+          <span class="specs-token-pill">Radius: 8–12px</span>
+        </div>
+        <div>Actor: <strong>Chủ nhiệm Vân & Chị Hoa</strong></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       4. INTERACTIVE STUDIO CONTROLLER LOGIC
+       ========================================================================= -->
+  <script>
+    // 1. Layout Mode Switcher
+    function setStudioLayout(mode) {
+      document.querySelectorAll('.layout-btn').forEach(btn => btn.classList.remove('active'));
+      const workbench = document.getElementById('studioWorkbench');
+      workbench.className = 'studio-workbench layout-' + mode;
+
+      if (mode === 'split') {
+        document.getElementById('layoutBtnSplit').classList.add('active');
+      } else if (mode === 'greenos-focus') {
+        document.getElementById('layoutBtnGreenos').classList.add('active');
+      } else if (mode === 'gvos-focus') {
+        document.getElementById('layoutBtnGvos').classList.add('active');
+      } else if (mode === 'mobile-duo') {
+        document.getElementById('layoutBtnMobile').classList.add('active');
+        // Tự động chuyển cả 2 sang chế độ mobile frame
+        setLeftDevice('mobile');
+        setRightDevice('mobile');
+        // Chọn màn hình mobile tương ứng
+        document.getElementById('leftScreenSelect').value = '/index.html';
+        switchLeftScreen('/index.html');
+        document.getElementById('rightScreenSelect').value = '/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s7';
+        switchRightScreen('/green-village-os/gvos-web/docs/design-shots/2026-10-09-gioi-thieu-dashboard/mock/index.html?s=s7');
+      }
+    }
+
+    // 2. Screen Switchers
+    function switchLeftScreen(url) {
+      const frame = document.getElementById('leftFrame');
+      const extLink = document.getElementById('leftExternalLink');
+      if (frame) frame.src = url;
+      if (extLink) extLink.href = url;
+
+      // Tự động gợi ý device phù hợp
+      if (url.includes('index.html') && !url.includes('gvos')) {
+        setLeftDevice('mobile');
+      } else {
+        setLeftDevice('desktop');
+      }
+    }
+
+    function switchRightScreen(url) {
+      const frame = document.getElementById('rightFrame');
+      const extLink = document.getElementById('rightExternalLink');
+      if (frame) frame.src = url;
+      if (extLink) extLink.href = url;
+
+      // Tự động gợi ý device phù hợp
+      if (url.includes('design-shots') || url.includes('APP-')) {
+        setRightDevice('mobile');
+      } else {
+        setRightDevice('desktop');
+      }
+    }
+
+    // 3. Device Mode Switchers (Mobile, Tablet, Desktop)
+    function setLeftDevice(device) {
+      const wrapper = document.getElementById('leftFrameWrapper');
+      const buttons = document.querySelectorAll('#leftDeviceSwitcher .device-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      wrapper.className = 'phone-simulator-frame device-' + device;
+      if (device === 'mobile') buttons[0].classList.add('active');
+      if (device === 'tablet') buttons[1].classList.add('active');
+      if (device === 'desktop') buttons[2].classList.add('active');
+    }
+
+    function setRightDevice(device) {
+      const wrapper = document.getElementById('rightFrameWrapper');
+      const buttons = document.querySelectorAll('#rightDeviceSwitcher .device-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      wrapper.className = 'phone-simulator-frame device-' + device;
+      if (device === 'mobile') buttons[0].classList.add('active');
+      if (device === 'tablet') buttons[1].classList.add('active');
+      if (device === 'desktop') buttons[2].classList.add('active');
+    }
+
+    // 4. Reload Functions
+    function reloadSingleFrame(frameId) {
+      const el = document.getElementById(frameId);
+      if (el) el.src = el.src;
+    }
+
+    function reloadBothFrames() {
+      reloadSingleFrame('leftFrame');
+      reloadSingleFrame('rightFrame');
+    }
+  </script>
+
+</body>
+</html>

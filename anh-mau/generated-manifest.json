@@ -1,0 +1,309 @@
+{
+ "cho/sp-nha": [
+  {
+   "file": "/anh-mau/cho/sp-nha/buoi-da-xanh-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/buoi-da-xanh-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/cam-sanh-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/cam-sanh-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/che-bup-kho-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/che-bup-kho-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/chieu-coi-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/chieu-coi-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/choi-dot-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/choi-dot-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/chuoi-say-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/chuoi-say-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/chuoi-tieu-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/chuoi-tieu-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/gao-nep-nuong-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/gao-nep-nuong-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/gio-may-dan-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/gio-may-dan-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/khan-tho-cam-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/khan-tho-cam-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/khoai-lang-mat-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/khoai-lang-mat-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/mang-kho-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/mang-kho-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/mang-tuoi-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/mang-tuoi-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/mat-ong-hoa-nhan-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/mat-ong-hoa-nhan-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/moc-nhi-kho-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/moc-nhi-kho-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/muoi-go-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/muoi-go-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/mut-gung-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/mut-gung-nha-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/tuong-ot-nha.webp",
+   "w": 1200,
+   "h": 896
+  },
+  {
+   "file": "/anh-mau/cho/sp-nha/tuong-ot-nha-480.webp",
+   "w": 480,
+   "h": 358
+  }
+ ],
+ "cho/thon": [
+  {
+   "file": "/anh-mau/cho/thon/bai-sen-1-640.webp",
+   "w": 640,
+   "h": 357
+  },
+  {
+   "file": "/anh-mau/cho/thon/go-mit-1-640.webp",
+   "w": 640,
+   "h": 357
+  },
+  {
+   "file": "/anh-mau/cho/thon/khe-truc-1-640.webp",
+   "w": 640,
+   "h": 357
+  }
+ ],
+ "cho/hanh-trinh": [
+  {
+   "file": "/anh-mau/cho/hanh-trinh/chuyen-khoan-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/hanh-trinh/den-noi-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/hanh-trinh/doi-soat-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/hanh-trinh/don-moi-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/hanh-trinh/duong-giao-1-480.webp",
+   "w": 480,
+   "h": 268
+  },
+  {
+   "file": "/anh-mau/cho/hanh-trinh/giao-hub-480.webp",
+   "w": 480,
+   "h": 358
+  },
+  {
+   "file": "/anh-mau/cho/hanh-trinh/goi-bao-hang-480.webp",
+   "w": 480,
+   "h": 358
+  }
+ ],
+ "cho/nen": [
+  {
+   "file": "/anh-mau/cho/nen/nen-ruong-bac-thang.webp",
+   "w": 603,
+   "h": 1080
+  }
+ ],
+ "ui": [
+  {
+   "file": "/anh-mau/ui/muc-ban.webp",
+   "w": 384,
+   "h": 384
+  },
+  {
+   "file": "/anh-mau/ui/muc-ghep-noi.webp",
+   "w": 384,
+   "h": 384
+  },
+  {
+   "file": "/anh-mau/ui/muc-mua.webp",
+   "w": 384,
+   "h": 384
+  },
+  {
+   "file": "/anh-mau/ui/trong-don-hang.webp",
+   "w": 384,
+   "h": 384
+  },
+  {
+   "file": "/anh-mau/ui/trong-don-mua.webp",
+   "w": 384,
+   "h": 384
+  },
+  {
+   "file": "/anh-mau/ui/trong-gian-hang.webp",
+   "w": 384,
+   "h": 384
+  },
+  {
+   "file": "/anh-mau/ui/trong-gio-hang.webp",
+   "w": 384,
+   "h": 384
+  }
+ ],
+ "cho/banner": [
+  {
+   "file": "/anh-mau/cho/banner/banner-mang-rung-800.webp",
+   "w": 800,
+   "h": 267
+  },
+  {
+   "file": "/anh-mau/cho/banner/banner-mat-ong-vu-xuan-800.webp",
+   "w": 800,
+   "h": 267
+  },
+  {
+   "file": "/anh-mau/cho/banner/banner-mua-che-moi-800.webp",
+   "w": 800,
+   "h": 267
+  },
+  {
+   "file": "/anh-mau/cho/banner/banner-phien-cho-800.webp",
+   "w": 800,
+   "h": 267
+  },
+  {
+   "file": "/anh-mau/cho/banner/banner-tho-cam-800.webp",
+   "w": 800,
+   "h": 267
+  }
+ ]
+}

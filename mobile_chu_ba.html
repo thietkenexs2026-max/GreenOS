@@ -8600,7 +8600,7 @@
                 <div class="vcl-item-title">5 đơn quá hạn</div>
                 <div class="vcl-item-hint">Xử lý trước để không mất đơn</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Xem 5 đơn quá hạn">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openOrdersFiltered('qua_han')" aria-label="Xem 5 đơn quá hạn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -8614,7 +8614,7 @@
                 <div class="vcl-item-title">44 đơn chờ xác nhận</div>
                 <div class="vcl-item-hint">Xác nhận để bắt đầu đóng gói</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Xem 44 đơn chờ xác nhận">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openOrdersFiltered('cho_xac_nhan')" aria-label="Xem 44 đơn chờ xác nhận">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -8628,7 +8628,7 @@
                 <div class="vcl-item-title">9 đơn chờ đóng gói</div>
                 <div class="vcl-item-hint">Soạn hàng rồi đóng gói</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Soạn 9 đơn chờ đóng gói">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openPickListView()" aria-label="Soạn 9 đơn chờ đóng gói">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -8642,7 +8642,7 @@
                 <div class="vcl-item-title">2 đơn có khiếu nại</div>
                 <div class="vcl-item-hint">Mở đơn để xem khiếu nại</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Xem 2 đơn có khiếu nại">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openOrdersFiltered('khieu_nai')" aria-label="Xem 2 đơn có khiếu nại">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -8656,7 +8656,7 @@
                 <div class="vcl-item-title">2 sản phẩm đang là Nháp</div>
                 <div class="vcl-item-hint">Xem hồ sơ rồi lấy bộ đăng bán</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Sửa 2 sản phẩm nháp">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); goToWizardStep(2)" aria-label="Sửa 2 sản phẩm nháp">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -8670,7 +8670,7 @@
                 <div class="vcl-item-title">GFKey chưa liên kết</div>
                 <div class="vcl-item-hint">Không bắt buộc</div>
               </div>
-              <button type="button" class="vcl-circle-btn" aria-label="Xem liên kết GFKey">
+              <button type="button" class="vcl-circle-btn" onclick="event.stopPropagation(); openFarmerQRModal()" aria-label="Xem liên kết GFKey">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -8704,7 +8704,7 @@
                 <div class="hump-card-title">Đăng Bán Nhanh</div>
                 <div class="hump-card-desc">3 ảnh thật + AI làm giá OCOP</div>
               </div>
-              <button type="button" class="btn-hump-go primary">
+              <button type="button" class="btn-hump-go primary" onclick="event.stopPropagation(); startWizardFlow()">
                 <span>Bắt đầu</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
@@ -8719,7 +8719,7 @@
                 <div class="hump-card-title">Chợ Xanh Xã</div>
                 <div class="hump-card-desc">18 thẻ Bán · 7 thẻ Mua sỉ</div>
               </div>
-              <button type="button" class="btn-hump-go secondary">
+              <button type="button" class="btn-hump-go secondary" onclick="event.stopPropagation(); switchNavTab('market')">
                 <span>Vào Chợ</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
@@ -8735,7 +8735,7 @@
               <div class="hsm-buyer-line">Xưởng mứt Hải Hà (cách 3.2km)</div>
               <div class="hsm-need-line">Cần mua gấp: <strong>1,2 tấn chuối sấy dẻo</strong></div>
             </div>
-            <button type="button" class="hsm-link-badge">
+            <button type="button" class="hsm-link-badge" onclick="event.stopPropagation(); switchNavTab('market')">
               <span>Khớp đơn</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
@@ -9982,7 +9982,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
                 <div class="apsc-desc">537 kg chuối & 35 thùng OCOP · Xe gom 08:30</div>
               </div>
             </div>
-            <button type="button" class="btn-apsc-view">Xem phiếu ➔</button>
+            <button type="button" class="btn-apsc-view" onclick="event.stopPropagation(); openPickListView()">Xem phiếu ➔</button>
           </div>
 
           <!-- Sub-filter Toolbar (Date Dropdown + Agricultural Channel Dropdown) -->

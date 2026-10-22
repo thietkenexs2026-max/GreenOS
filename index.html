@@ -13255,8 +13255,8 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               Tồn kho: 85 gói · Chỗ để: Kho mát KM-02 · HSD: 14/04/2027
             </div>
             <div style="display:flex;gap:8px">
-              <button type="button" class="btn-wh-action btn-wh-in" style="flex:1;height:40px;justify-content:center;font-size:12.5px" id="btnWhQRInScreen">📥 Nhập thêm hàng</button>
-              <button type="button" class="btn-wh-action btn-wh-out" style="flex:1;height:40px;justify-content:center;font-size:12.5px" id="btnWhQROutScreen">📤 Xuất bớt hàng</button>
+              <button type="button" class="btn-wh-action btn-wh-in" style="flex:1;height:40px;justify-content:center;font-size:12.5px" id="btnWhQRInScreen" onclick="openWarehouseInboundScreen(window.currentWhQRProduct?.id || 1)">📥 Nhập thêm hàng</button>
+              <button type="button" class="btn-wh-action btn-wh-out" style="flex:1;height:40px;justify-content:center;font-size:12.5px" id="btnWhQROutScreen" onclick="openWarehouseOutboundScreen(window.currentWhQRProduct?.id || 1)">📤 Xuất bớt hàng</button>
             </div>
           </div>
         </div>
@@ -13320,10 +13320,10 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
 
         <!-- 2 Nút Thao Tác Kho Nhanh Của Riêng Nông Sản Này -->
         <div class="shopee-btn-row" style="margin-bottom:14px;gap:8px">
-          <button type="button" class="shopee-secondary-btn" id="btnAdjustInboundShortcut" style="flex:1;min-width:0;height:44px !important;min-height:44px !important;background:#F0FDF4;color:#15803D;border:1.5px solid #86EFAC;font-weight: 500;font-size:13px;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;padding:0 8px">
+          <button type="button" class="shopee-secondary-btn" id="btnAdjustInboundShortcut" onclick="openWarehouseInboundScreen(document.getElementById('whAdjustProductIdScreen')?.value || 1)" style="flex:1;min-width:0;height:44px !important;min-height:44px !important;background:#F0FDF4;color:#15803D;border:1.5px solid #86EFAC;font-weight: 500;font-size:13px;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;padding:0 8px">
             📥 Nhập thêm hàng
           </button>
-          <button type="button" class="shopee-primary-btn" id="btnAdjustOutboundShortcut" style="flex:1;min-width:0;height:44px !important;min-height:44px !important;background:#15803D;color:#FFF;font-weight: 500;font-size:13px;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;padding:0 8px">
+          <button type="button" class="shopee-primary-btn" id="btnAdjustOutboundShortcut" onclick="openWarehouseOutboundScreen(document.getElementById('whAdjustProductIdScreen')?.value || 1)" style="flex:1;min-width:0;height:44px !important;min-height:44px !important;background:#15803D;color:#FFF;font-weight: 500;font-size:13px;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;padding:0 8px">
             📤 Xuất bán hàng
           </button>
         </div>
@@ -13377,7 +13377,7 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
               <span style="flex-shrink:0">📋</span>
               <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Lịch sử xuất nhập</span>
             </div>
-            <button type="button" id="btnAdjustViewFullLedger" style="background:none;border:none;color:#2563EB;font-size:12px;font-weight: 500;cursor:pointer;padding:0;flex-shrink:0;white-space:nowrap !important">
+            <button type="button" id="btnAdjustViewFullLedger" onclick="openWarehouseStockCardScreen(document.getElementById('whAdjustProductIdScreen')?.value || 1)" style="background:none;border:none;color:#2563EB;font-size:12px;font-weight: 500;cursor:pointer;padding:0;flex-shrink:0;white-space:nowrap !important">
               Xem cả sổ ➔
             </button>
           </div>
@@ -20461,7 +20461,8 @@ Chào các bác, mẻ chuối tiêu hồng sấy giòn thơm lắm ạ! 55k/gói
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
 
-      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === productId);
+      const targetId = productId || (BAC_BA_WAREHOUSE_PRODUCTS[0] && BAC_BA_WAREHOUSE_PRODUCTS[0].id) || 'wh_banana';
+      const p = BAC_BA_WAREHOUSE_PRODUCTS.find(item => item.id === targetId) || BAC_BA_WAREHOUSE_PRODUCTS[0];
       if (!p) return;
 
       const idInput = document.getElementById('whAdjustProductIdScreen');

@@ -1,0 +1,2850 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenOS — Bảng Điều Khiển Kinh Tế & Lao Động Cấp Xã (UBND Xã Đồng Lam)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lexend:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --emerald-950: #022C22;
+      --emerald-900: #064E3B;
+      --emerald-800: #065F46;
+      --emerald-700: #047857;
+      --emerald-600: #059669;
+      --emerald-500: #10B981;
+      --emerald-400: #34D399;
+      --emerald-100: #D1FAE5;
+      --emerald-50: #ECFDF5;
+
+      --amber-700: #B45309;
+      --amber-600: #D97706;
+      --amber-500: #F59E0B;
+      --amber-100: #FEF3C7;
+      --amber-50: #FFFBEB;
+
+      --red-700: #B91C1C;
+      --red-600: #DC2626;
+      --red-100: #FEE2E2;
+      --red-50: #FEF2F2;
+
+      --blue-700: #1D4ED8;
+      --blue-600: #2563EB;
+      --blue-100: #DBEAFE;
+      --blue-50: #EFF6FF;
+
+      --slate-900: #0F172A;
+      --slate-800: #1E293B;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748B;
+      --slate-400: #94A3B8;
+      --slate-300: #CBD5E1;
+      --slate-200: #E2E8F0;
+      --slate-100: #F1F5F9;
+      --slate-50: #F8FAFC;
+
+      --bg-page: #F1F5F9;
+      --card-bg: #FFFFFF;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 8px 24px -4px rgba(15, 23, 42, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-page);
+      color: var(--slate-900);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Chống vỡ nút & tràn thẻ theo chuẩn GEMINI.md */
+    button, .btn {
+      font-family: inherit;
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .card, .stat-tile, .grid-item {
+      min-width: 0 !important;
+      box-sizing: border-box;
+    }
+
+    /* =========================================================================
+       1. TOP HEADER BAR (XA-X1 SHELL)
+       ========================================================================= */
+    .xa-top-header {
+      background: linear-gradient(135deg, #022C22 0%, #064E3B 55%, #047857 100%);
+      color: #FFFFFF;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(2, 44, 34, 0.2);
+    }
+
+    .xa-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .xa-logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      flex-shrink: 0;
+    }
+
+    .xa-brand-text h1 {
+      font-family: 'Lexend', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .xa-role-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.25);
+      border: 1px solid #34D399;
+      color: #A7F3D0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .xa-brand-text p {
+      font-size: 12.5px;
+      color: #A7F3D0;
+      margin-top: 2px;
+    }
+
+    .xa-header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .month-picker-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 6px 12px;
+      border-radius: 10px;
+    }
+
+    .month-picker-group label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #D1FAE5;
+    }
+
+    .month-select {
+      background: transparent;
+      color: #FFFFFF;
+      border: none;
+      font-size: 13.5px;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+      padding-right: 4px;
+    }
+
+    .month-select option {
+      background: var(--slate-900);
+      color: #FFFFFF;
+    }
+
+    .running-month-badge {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #F59E0B;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .running-month-badge.hidden {
+      display: none;
+    }
+
+    .btn-header-action {
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+    }
+
+    .btn-header-action:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+
+    .btn-header-action.projector-btn {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      border-color: #6EE7B7;
+      box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-exit-projector {
+      display: none;
+      height: 52px;
+      padding: 0 22px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      background: #EF4444;
+      color: #FFFFFF;
+      border: 2px solid #FCA5A5;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.45);
+    }
+
+    .btn-exit-projector:hover {
+      background: #DC2626;
+    }
+
+    /* =========================================================================
+       2. PRIMARY NAVIGATION BAR (5 TABS XA-NAV)
+       ========================================================================= */
+    .xa-nav-bar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--slate-200);
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .xa-nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .xa-nav-tab {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 13px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--slate-600);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+    }
+
+    .xa-nav-tab:hover {
+      color: var(--emerald-700);
+      background: var(--emerald-50);
+    }
+
+    .xa-nav-tab.active {
+      color: var(--emerald-700);
+      border-bottom-color: var(--emerald-600);
+      font-weight: 800;
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    .xa-nav-code {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: var(--slate-100);
+      color: var(--slate-600);
+    }
+
+    .xa-nav-tab.active .xa-nav-code {
+      background: var(--emerald-100);
+      color: var(--emerald-800);
+    }
+
+    .xa-privacy-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--emerald-800);
+      background: var(--emerald-50);
+      border: 1px solid var(--emerald-100);
+      padding: 6px 12px;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+
+    /* =========================================================================
+       3. MAIN CONTAINER & PAGE HEADER
+       ========================================================================= */
+    .xa-main-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 24px 28px 56px;
+    }
+
+    .xa-screen {
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .xa-screen.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .page-title-left h2 {
+      font-family: 'Lexend', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .page-title-left .sub-location {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--slate-500);
+    }
+
+    .freshness-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--slate-600);
+      flex-wrap: wrap;
+    }
+
+    .chip-demo {
+      background: var(--slate-200);
+      color: var(--slate-700);
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 999px;
+    }
+
+    /* =========================================================================
+       4. M1-M4 STAT TILES (XA-01)
+       ========================================================================= */
+    .m-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .stat-tile {
+      background: var(--card-bg);
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .stat-tile.clickable {
+      cursor: pointer;
+    }
+
+    .stat-tile.clickable:hover {
+      border-color: var(--emerald-500);
+      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .tile-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .tile-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate-600);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tile-code-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: var(--emerald-50);
+      color: var(--emerald-700);
+      border: 1px solid var(--emerald-100);
+    }
+
+    /* HintTip (?) button & popover */
+    .hint-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--slate-300);
+      background: var(--slate-50);
+      color: var(--slate-600);
+      font-size: 12px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hint-btn:hover {
+      background: var(--emerald-600);
+      color: #FFFFFF;
+      border-color: var(--emerald-600);
+    }
+
+    .tile-number-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 6px 0 12px;
+    }
+
+    .tile-big-num {
+      font-family: 'Lexend', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .tile-unit {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate-500);
+    }
+
+    .tile-delta {
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    .tile-delta.up {
+      background: var(--emerald-50);
+      color: var(--emerald-800);
+      border: 1px solid var(--emerald-100);
+    }
+
+    .tile-delta.neutral {
+      background: var(--slate-100);
+      color: var(--slate-600);
+    }
+
+    .tile-delta.guard {
+      background: var(--amber-50);
+      color: var(--amber-700);
+      border: 1px solid #FDE68A;
+    }
+
+    /* =========================================================================
+       5. SHARE BAR (HỘ TỰ LÀM VS HUB LÀM) & TREND CHARTS (XA-01)
+       ========================================================================= */
+    .section-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+    }
+
+    .share-bar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .share-bar-title {
+      font-family: 'Lexend', sans-serif;
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+
+    .share-progress-track {
+      height: 16px;
+      width: 100%;
+      background: var(--amber-100);
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .share-progress-self {
+      background: linear-gradient(90deg, #059669 0%, #10B981 100%);
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+
+    .share-progress-hub {
+      background: #F59E0B;
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+
+    .share-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--slate-600);
+      flex-wrap: wrap;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    .btn-pill-toggle {
+      height: 30px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--slate-100);
+      color: var(--slate-700);
+      border: 1px solid var(--slate-300);
+      flex-shrink: 0;
+    }
+
+    .btn-pill-toggle:hover {
+      background: var(--emerald-50);
+      color: var(--emerald-700);
+      border-color: var(--emerald-400);
+    }
+
+    .trend-charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .chart-box-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .chart-conclusion-title {
+      font-family: 'Lexend', sans-serif;
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.35;
+    }
+
+    .chart-unit-sub {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-500);
+      margin-top: 2px;
+    }
+
+    .svg-chart-wrap {
+      width: 100%;
+      height: 220px;
+      position: relative;
+    }
+
+    .inline-data-table-wrap {
+      display: none;
+      margin-top: 14px;
+      border-top: 1px solid var(--slate-200);
+      padding-top: 12px;
+    }
+
+    .inline-data-table-wrap.open {
+      display: block;
+    }
+
+    /* =========================================================================
+       6. BREAKDOWN PANEL (XA-02: PHÂN TÍCH THEO NHÓM)
+       ========================================================================= */
+    .sub-tabs-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .sub-tab-btn {
+      height: 38px;
+      padding: 0 18px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      background: #FFFFFF;
+      color: var(--slate-600);
+      border: 1.5px solid var(--slate-200);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .sub-tab-btn:hover {
+      border-color: var(--emerald-500);
+      color: var(--emerald-700);
+    }
+
+    .sub-tab-btn.active {
+      background: var(--emerald-600);
+      color: #FFFFFF;
+      border-color: var(--emerald-600);
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+    }
+
+    .breakdown-unified-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .hbar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .hbar-row {
+      display: grid;
+      grid-template-columns: 220px 1fr 68px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hbar-label {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--slate-800);
+      line-height: 1.3;
+    }
+
+    .hbar-label .small-group-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-700);
+      background: var(--amber-50);
+      border: 1px solid #FDE68A;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-top: 2px;
+    }
+
+    .hbar-track {
+      height: 24px;
+      background: var(--slate-100);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hbar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #059669 0%, #10B981 100%);
+      border-radius: 6px;
+      transition: width 0.35s ease;
+    }
+
+    .hbar-fill.low {
+      background: linear-gradient(90deg, #D97706 0%, #F59E0B 100%);
+    }
+
+    .hbar-fill.muted {
+      background: var(--slate-300);
+    }
+
+    .hbar-val {
+      font-family: 'Lexend', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--slate-900);
+      text-align: right;
+    }
+
+    /* Tables */
+    .xa-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    .xa-table th {
+      background: var(--slate-50);
+      color: var(--slate-600);
+      font-weight: 800;
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1.5px solid var(--slate-200);
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .xa-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--slate-200);
+      color: var(--slate-800);
+      font-weight: 600;
+    }
+
+    .xa-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .xa-table tr:hover td {
+      background: var(--slate-50);
+    }
+
+    .xa-table .num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+    }
+
+    .privacy-footnote {
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--slate-600);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px dashed var(--slate-300);
+      padding: 10px 16px;
+      border-radius: 10px;
+    }
+
+    /* =========================================================================
+       7. MONTHLY REPORT (XA-03: BÁO CÁO THÁNG & A4 PRINT)
+       ========================================================================= */
+    .report-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-emerald {
+      height: 42px;
+      padding: 0 18px;
+      border-radius: 10px;
+      background: var(--emerald-600);
+      color: #FFFFFF;
+      border: 1.5px solid var(--emerald-500);
+      font-size: 13.5px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+    }
+
+    .btn-primary-emerald:hover {
+      background: var(--emerald-700);
+    }
+
+    .btn-outline-slate {
+      height: 42px;
+      padding: 0 16px;
+      border-radius: 10px;
+      background: #FFFFFF;
+      color: var(--slate-800);
+      border: 1.5px solid var(--slate-300);
+      font-size: 13.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline-slate:hover {
+      border-color: var(--emerald-600);
+      color: var(--emerald-700);
+      background: var(--emerald-50);
+    }
+
+    .report-2x2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .report-print-footer {
+      margin-top: 24px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================================================
+       8. CHỢ XANH CẤP XÃ (CX-13 NÚT THẮT & CX-14 BẢN ĐỒ NGUỒN LỰC)
+       ========================================================================= */
+    .bottleneck-hero-bar {
+      background: linear-gradient(135deg, #064E3B 0%, #047857 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .bottleneck-hero-bar h3 {
+      font-family: 'Lexend', sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .bottleneck-hero-bar p {
+      font-size: 13.5px;
+      color: #D1FAE5;
+      margin-top: 4px;
+    }
+
+    .hero-digitization-box {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-align: right;
+    }
+
+    .hero-digitization-box .big {
+      font-family: 'Lexend', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #6EE7B7;
+    }
+
+    .bottleneck-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .bottleneck-item {
+      background: #FFFFFF;
+      border: 1.5px solid var(--slate-200);
+      border-left: 6px solid var(--amber-500);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--shadow-sm);
+      flex-wrap: wrap;
+    }
+
+    .bottleneck-item.rank-1 {
+      border-left-color: var(--red-600);
+    }
+
+    .bn-rank-badge {
+      font-family: 'Lexend', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: var(--red-50);
+      color: var(--red-700);
+      border: 1px solid var(--red-100);
+    }
+
+    .bn-suggestion {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--emerald-800);
+      background: var(--emerald-50);
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin: 8px 0;
+      display: inline-block;
+    }
+
+    .bn-score-formula {
+      font-size: 12.5px;
+      color: var(--slate-500);
+      font-weight: 600;
+    }
+
+    .bn-right-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .card-pill-need {
+      background: var(--red-50);
+      color: var(--red-700);
+      border: 1px solid var(--red-100);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .card-pill-have {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      border: 1px solid var(--slate-300);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .session-opened-tag {
+      background: var(--emerald-50);
+      color: var(--emerald-800);
+      border: 1.5px solid var(--emerald-400);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* CX-14 Map Layout */
+    .cx14-map-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .svg-commune-map {
+      width: 100%;
+      height: 400px;
+      background: #F8FAFC;
+      border: 1.5px solid var(--slate-200);
+      border-radius: 14px;
+      display: block;
+    }
+
+    /* =========================================================================
+       9. LAO ĐỘNG CỦA XÃ (ACJ-21)
+       ========================================================================= */
+    .acj-hero-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .acj-hero-card {
+      background: linear-gradient(135deg, #064E3B 0%, #059669 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-md);
+    }
+
+    .acj-bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    /* =========================================================================
+       10. MODALS & ACCOUNT SHEET (XA-X1)
+       ========================================================================= */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: #FFFFFF;
+      border-radius: 18px;
+      max-width: 520px;
+      width: 100%;
+      padding: 24px 26px;
+      box-shadow: 0 24px 48px rgba(15, 23, 42, 0.25);
+      border: 1px solid var(--slate-200);
+    }
+
+    .account-sheet {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 380px;
+      max-width: 92vw;
+      height: 100vh;
+      background: #FFFFFF;
+      box-shadow: -12px 0 36px rgba(15, 23, 42, 0.18);
+      z-index: 2100;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: right 0.25s ease;
+    }
+
+    .account-sheet.open {
+      right: 0;
+    }
+
+    /* =========================================================================
+       11. PROJECTOR MODE (?trinh-chieu=1 / .projector-mode)
+       Chuẩn XA-X1: Ẩn thanh tab & nút phụ, phóng đại số KPI 64-88px, lưới 2x2 vừa 1280x800
+       ========================================================================= */
+    body.projector-mode {
+      background: #022C22;
+      color: #FFFFFF;
+    }
+
+    body.projector-mode .xa-nav-bar,
+    body.projector-mode .projector-btn,
+    body.projector-mode .account-btn,
+    body.projector-mode .projector-hide {
+      display: none !important;
+    }
+
+    body.projector-mode .btn-exit-projector {
+      display: inline-flex !important;
+    }
+
+    body.projector-mode .xa-main-container {
+      max-width: 1400px;
+      padding: 20px 32px;
+    }
+
+    body.projector-mode .page-title-left h2 {
+      color: #FFFFFF;
+      font-size: 30px;
+    }
+
+    body.projector-mode .page-title-left .sub-location,
+    body.projector-mode .freshness-bar {
+      color: #A7F3D0;
+      font-size: 18px;
+    }
+
+    body.projector-mode .m-stat-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    body.projector-mode .stat-tile {
+      background: #064E3B;
+      border: 2px solid #10B981;
+      padding: 28px 32px;
+    }
+
+    body.projector-mode .tile-label {
+      color: #D1FAE5;
+      font-size: 22px;
+    }
+
+    body.projector-mode .tile-big-num {
+      color: #FFFFFF;
+      font-size: 76px;
+    }
+
+    body.projector-mode .tile-unit {
+      color: #6EE7B7;
+      font-size: 24px;
+    }
+
+    body.projector-mode .tile-delta {
+      font-size: 18px;
+      padding: 8px 14px;
+    }
+
+    body.projector-mode .section-card,
+    body.projector-mode .breakdown-unified-card,
+    body.projector-mode .bottleneck-item {
+      background: #064E3B;
+      border-color: #059669;
+      color: #FFFFFF;
+    }
+
+    body.projector-mode .share-bar-title,
+    body.projector-mode .chart-conclusion-title,
+    body.projector-mode .hbar-label,
+    body.projector-mode .hbar-val,
+    body.projector-mode .xa-table td {
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+
+    body.projector-mode .xa-table th {
+      background: #022C22;
+      color: #6EE7B7;
+      font-size: 16px;
+    }
+
+    /* =========================================================================
+       12. PRINT STYLES (A4 1 TRANG CHUẨN XA-03)
+       ========================================================================= */
+    @media print {
+      .xa-top-header,
+      .xa-nav-bar,
+      .report-actions-group,
+      .hint-btn {
+        display: none !important;
+      }
+      body {
+        background: #FFFFFF;
+        font-size: 11pt;
+      }
+      .xa-main-container {
+        max-width: 100%;
+        padding: 0;
+      }
+      .section-card, .report-print-footer {
+        box-shadow: none;
+        border: 1px solid #CBD5E1;
+        break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .m-stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .trend-charts-grid,
+      .breakdown-unified-card,
+      .report-2x2-grid,
+      .cx14-map-grid,
+      .acj-hero-grid,
+      .acj-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. TOP HEADER BAR (XA-X1: KHUNG SỐ LIỆU XÃ)
+       ========================================================================= -->
+  <header class="xa-top-header">
+    <div class="xa-brand">
+      <div class="xa-logo-badge">🏛️</div>
+      <div class="xa-brand-text">
+        <h1>
+          <span>GreenOS — Kinh Tế & Lao Động Cấp Xã</span>
+          <span class="xa-role-pill">Actor 3 · Cán Bộ Xã</span>
+        </h1>
+        <p>UBND Xã Đồng Lam · Huyện Sơn Hà · Tỉnh Sơn Nguyên (3 HTX · 6 Thôn)</p>
+      </div>
+    </div>
+
+    <div class="xa-header-controls">
+      <!-- Bộ chọn kỳ tháng (XA-X1) -->
+      <div class="month-picker-group">
+        <label for="xaMonthSelect">📅 Tháng:</label>
+        <select id="xaMonthSelect" class="month-select" onchange="onChangeXaMonth(this.value)">
+          <option value="2026-10">Tháng 10/2026 (đến hôm nay)</option>
+          <option value="2026-09" selected>Tháng 09/2026 (Đã chốt sổ)</option>
+          <option value="2026-08">Tháng 08/2026 (Đã chốt sổ)</option>
+          <option value="2026-07">Tháng 07/2026 (Đã chốt sổ)</option>
+        </select>
+      </div>
+
+      <!-- Nhãn cảnh báo khi chọn tháng đang chạy (Luật XA-X1 & XA-01) -->
+      <span id="runningMonthBadge" class="running-month-badge hidden">
+        ⏳ Chưa đủ tháng (Đang chạy đến 05/10)
+      </span>
+
+      <!-- Nút bật chế độ Trình chiếu (?trinh-chieu=1) -->
+      <button type="button" class="btn-header-action projector-btn" onclick="toggleProjectorMode(true)" title="Chế độ trình chiếu cuộc họp UBND xã (Phóng to số liệu, ẩn thanh điều hướng)">
+        <span>📽️ Trình chiếu</span>
+      </button>
+
+      <!-- Nút thoát Trình chiếu (Cao 52px theo chuẩn XA-X1) -->
+      <button type="button" class="btn-exit-projector" onclick="toggleProjectorMode(false)" title="Nhấn Esc để thoát trình chiếu">
+        <span>✕ Thoát trình chiếu (Esc)</span>
+      </button>
+
+      <!-- Nút Tài khoản Cán bộ xã (Mở AccountSheet) -->
+      <button type="button" class="btn-header-action account-btn" onclick="toggleAccountSheet(true)">
+        <span>👤 Trần Văn Hùng · Cán bộ xã</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. 5-TAB NAVIGATION BAR (XA-NAV)
+       ========================================================================= -->
+  <nav class="xa-nav-bar" aria-label="Điều hướng Khu Xã">
+    <div class="xa-nav-tabs">
+      <button type="button" class="xa-nav-tab active" id="navTab-xa01" onclick="switchXaTab('xa01')">
+        <span>📊 Tổng quan</span>
+        <span class="xa-nav-code">XA-01</span>
+      </button>
+      <button type="button" class="xa-nav-tab" id="navTab-xa02" onclick="switchXaTab('xa02')">
+        <span>📈 Phân tích theo nhóm</span>
+        <span class="xa-nav-code">XA-02</span>
+      </button>
+      <button type="button" class="xa-nav-tab" id="navTab-xa03" onclick="switchXaTab('xa03')">
+        <span>📄 Báo cáo tháng</span>
+        <span class="xa-nav-code">XA-03</span>
+      </button>
+      <button type="button" class="xa-nav-tab" id="navTab-cx13" onclick="switchXaTab('cx13')">
+        <span>🌾 Chợ Xanh</span>
+        <span class="xa-nav-code">CX-13 · 14</span>
+      </button>
+      <button type="button" class="xa-nav-tab" id="navTab-acj21" onclick="switchXaTab('acj21')">
+        <span>👷 Lao động</span>
+        <span class="xa-nav-code">ACJ-21</span>
+      </button>
+    </div>
+
+    <div class="xa-privacy-strip" title="Luật số 6 GVOS: Không bao giờ hiển thị tên hộ hoặc số điện thoại ở cấp xã">
+      <span>🔒 Ẩn danh cấp xã: Không hiện tên hộ · Gộp &lt; 5 hộ thành «Nhóm nhỏ»</span>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       3. MAIN WORKSPACE CONTAINER
+       ========================================================================= -->
+  <main class="xa-main-container">
+
+    <!-- =======================================================================
+         MÀN 1: TỔNG QUAN KINH TẾ XÃ (XA-01)
+         ======================================================================= -->
+    <section id="screen-xa01" class="xa-screen active">
+      <div class="page-title-row">
+        <div class="page-title-left">
+          <h2>
+            <span>Số liệu kinh tế xã</span>
+            <span class="sub-location">· Xã Đồng Lam, Tỉnh Sơn Nguyên</span>
+          </h2>
+          <div class="freshness-bar">
+            <span id="xa01FreshnessText">Số liệu chốt kỳ Tháng 09/2026 (01/09 – 30/09/2026). Cập nhật lúc 09:00, 05/10/2026.</span>
+            <span class="chip-demo">Số liệu minh họa</span>
+          </div>
+        </div>
+
+        <div class="projector-hide" style="display: flex; gap: 8px;">
+          <button type="button" class="btn-outline-slate" onclick="switchXaTab('xa02')">
+            <span>📈 Xem phân tích thôn & HTX →</span>
+          </button>
+          <button type="button" class="btn-primary-emerald" onclick="switchXaTab('xa03')">
+            <span>📄 Xuất báo cáo tháng</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 Ô CHỈ SỐ CỐT LÕI M1 - M4 (StatTiles) -->
+      <div class="m-stat-grid">
+        <!-- M1: Số hộ đồng ý -->
+        <div class="stat-tile clickable" onclick="switchXaTab('xa02')" title="Nhấn để xem phân tích chi tiết theo Thôn và HTX">
+          <div class="tile-top-row">
+            <span class="tile-label"><span class="tile-code-tag">M1</span> Số hộ đồng ý</span>
+            <button type="button" class="hint-btn" onclick="event.stopPropagation(); showHintModal('M1 — Số hộ đồng ý chia sẻ dữ liệu', 'Tổng số hộ sản xuất nông nghiệp & tiểu thủ công nghiệp trong xã đã bật đồng ý chia sẻ số liệu lên hệ thống xã tính đến cuối kỳ. Các nhóm dưới 5 hộ được gộp thành «Nhóm nhỏ» để bảo vệ danh tính.')">?</button>
+          </div>
+          <div class="tile-number-row">
+            <span class="tile-big-num" id="m1Val">21</span>
+            <span class="tile-unit">hộ</span>
+          </div>
+          <div class="tile-delta up" id="m1Delta">↑ Tăng 1 hộ so với tháng 8 (20 hộ)</div>
+        </div>
+
+        <!-- M2: Số sản phẩm -->
+        <div class="stat-tile clickable" onclick="switchXaTab('xa02'); switchXa02Dimension('nhom-hang');">
+          <div class="tile-top-row">
+            <span class="tile-label"><span class="tile-code-tag">M2</span> Số sản phẩm</span>
+            <button type="button" class="hint-btn" onclick="event.stopPropagation(); showHintModal('M2 — Số sản phẩm đã chốt', 'Tổng số sản phẩm nông sản, sơ chế, thủ công của các hộ đồng ý đã được duyệt và chốt thông tin chuẩn trên Chợ Xanh tính đến cuối kỳ.')">?</button>
+          </div>
+          <div class="tile-number-row">
+            <span class="tile-big-num" id="m2Val">61</span>
+            <span class="tile-unit">sản phẩm</span>
+          </div>
+          <div class="tile-delta up" id="m2Delta">↑ Tăng 21 SP so với tháng 8 (40 SP)</div>
+        </div>
+
+        <!-- M3: Lượt chia sẻ (Áp dụng quy tắc chống so sánh khập khiễng khi tháng chưa đủ!) -->
+        <div class="stat-tile clickable" onclick="switchXaTab('xa02'); switchXa02Dimension('kenh');">
+          <div class="tile-top-row">
+            <span class="tile-label"><span class="tile-code-tag">M3</span> Lượt chia sẻ</span>
+            <button type="button" class="hint-btn" onclick="event.stopPropagation(); showHintModal('M3 — Lượt chia sẻ bài bán hàng', 'Tổng số lượt hộ tự chia sẻ hoặc HTX/Hub chia sẻ bài giới thiệu sản phẩm qua Zalo, Facebook, Shopee trong kỳ. Lưu ý: Khi chọn tháng đang chạy chưa kết thúc, hệ thống KHÔNG so sánh phần trăm với tháng trước để tránh báo giảm giả.')">?</button>
+          </div>
+          <div class="tile-number-row">
+            <span class="tile-big-num" id="m3Val">145</span>
+            <span class="tile-unit">lượt</span>
+          </div>
+          <div class="tile-delta up" id="m3Delta">↑ Tăng 92 lượt so với tháng 8 (53 lượt)</div>
+        </div>
+
+        <!-- M4: Mức số hoá -->
+        <div class="stat-tile clickable" onclick="switchXaTab('xa02')">
+          <div class="tile-top-row">
+            <span class="tile-label"><span class="tile-code-tag">M4</span> Mức số hoá</span>
+            <button type="button" class="hint-btn" onclick="event.stopPropagation(); showHintModal('M4 — Công thức tính Mức số hoá', 'Công thức: Số hộ đồng ý có ít nhất 1 sản phẩm Đã chốt ÷ Tổng số hộ đồng ý × 100.\n\nTại Xã Đồng Lam: 17 hộ đã có sản phẩm chốt ÷ 21 hộ đồng ý = 81%.')">?</button>
+          </div>
+          <div class="tile-number-row">
+            <span class="tile-big-num" id="m4Val">81 %</span>
+            <span class="tile-unit" id="m4SubUnit">(17/21 hộ)</span>
+          </div>
+          <div class="tile-delta up" id="m4Delta">↑ Tăng 1 điểm % so với tháng 8 (80 %)</div>
+        </div>
+      </div>
+
+      <!-- THANH TỶ TRỌNG: HỘ TỰ LÀM VS HUB LÀM (ShareBar) -->
+      <div class="section-card projector-hide">
+        <div class="share-bar-header">
+          <div class="share-bar-title" id="shareBarHeadline">
+            Hộ tự làm chiếm 92 % số sản phẩm (56/61 sản phẩm)
+          </div>
+          <button type="button" class="btn-pill-toggle" onclick="toggleInlineTable('shareBarTable')">
+            📋 Xem bảng chi tiết
+          </button>
+        </div>
+
+        <div class="share-progress-track">
+          <div class="share-progress-self" id="shareBarSelfFill" style="width: 92%;"></div>
+          <div class="share-progress-hub" id="shareBarHubFill" style="width: 8%;"></div>
+        </div>
+
+        <div class="share-meta-row">
+          <div>
+            <span><span class="legend-dot" style="background: #059669;"></span><strong>Hộ tự làm:</strong> <span id="shareSelfText">56 sản phẩm · 134 lượt chia sẻ</span></span>
+            <span style="margin-left: 18px;"><span class="legend-dot" style="background: #F59E0B;"></span><strong>Hub / HTX làm giúp:</strong> <span id="shareHubText">5 sản phẩm · 11 lượt chia sẻ</span></span>
+          </div>
+          <span style="font-size: 12px; color: var(--slate-500);">Mục tiêu xã: &ge; 85% hộ tự thao tác trên điện thoại</span>
+        </div>
+
+        <div id="shareBarTable" class="inline-data-table-wrap">
+          <table class="xa-table">
+            <thead>
+              <tr>
+                <th>Nguồn thực hiện</th>
+                <th class="num">Số sản phẩm</th>
+                <th class="num">Tỷ trọng SP</th>
+                <th class="num">Lượt chia sẻ</th>
+                <th class="num">Tỷ trọng chia sẻ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>👩‍🌾 Hộ xã viên tự làm trên Mobile App</td>
+                <td class="num">56</td>
+                <td class="num">91,8 %</td>
+                <td class="num" id="tblSelfShares">134</td>
+                <td class="num" id="tblSelfSharePct">92,4 %</td>
+              </tr>
+              <tr>
+                <td>🏢 Hub / Cán bộ HTX hỗ trợ đăng</td>
+                <td class="num">5</td>
+                <td class="num">8,2 %</td>
+                <td class="num" id="tblHubShares">11</td>
+                <td class="num" id="tblHubSharePct">7,6 %</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2 BIỂU ĐỒ XU HƯỚNG 10 TUẦN ĐẶT CẠNH NHAU (TrendCharts) -->
+      <div class="trend-charts-grid projector-hide">
+        <!-- Biểu đồ trái: Mức số hoá theo tuần -->
+        <div class="section-card" style="margin-bottom: 0;">
+          <div class="chart-box-header">
+            <div>
+              <div class="chart-conclusion-title">Mức số hoá tuần cuối là 81 %, cả kỳ từ 59 % đến 100 %</div>
+              <div class="chart-unit-sub">Đơn vị: % số hộ đồng ý có sản phẩm đã chốt · Kỳ 10 tuần (01/08* – 05/10*)</div>
+            </div>
+            <button type="button" class="btn-pill-toggle" onclick="toggleInlineTable('trendTableDigitization')">Xem bảng</button>
+          </div>
+
+          <div class="svg-chart-wrap">
+            <svg viewBox="0 0 560 200" width="100%" height="100%">
+              <defs>
+                <linearGradient id="gradEmerald" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#10B981" stop-opacity="0.28"/>
+                  <stop offset="100%" stop-color="#10B981" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+              <!-- Grid lines -->
+              <line x1="40" y1="25" x2="535" y2="25" stroke="#E2E8F0" stroke-dasharray="4 4"/>
+              <line x1="40" y1="75" x2="535" y2="75" stroke="#E2E8F0" stroke-dasharray="4 4"/>
+              <line x1="40" y1="125" x2="535" y2="125" stroke="#E2E8F0" stroke-dasharray="4 4"/>
+              <line x1="40" y1="165" x2="535" y2="165" stroke="#CBD5E1"/>
+
+              <text x="8" y="29" font-size="11" fill="#64748B" font-weight="600">100%</text>
+              <text x="14" y="79" font-size="11" fill="#64748B" font-weight="600">75%</text>
+              <text x="14" y="129" font-size="11" fill="#64748B" font-weight="600">50%</text>
+              <text x="20" y="169" font-size="11" fill="#64748B" font-weight="600">0%</text>
+
+              <!-- Area & Line: 100%, 75%, 59%, 71%, 80%, 78%, 81%, 81%, 81%, 81% -->
+              <path d="M50,25 L102,75 L154,104 L206,82 L258,65 L310,69 L362,63 L414,63 L466,63 L518,63 L518,165 L50,165 Z" fill="url(#gradEmerald)"/>
+              <polyline fill="none" stroke="#059669" stroke-width="3" points="50,25 102,75 154,104 206,82 258,65 310,69 362,63 414,63 466,63 518,63"/>
+
+              <!-- Key Callout Dots -->
+              <circle cx="50" cy="25" r="5" fill="#059669"/>
+              <text x="42" y="16" font-size="11" font-weight="800" fill="#065F46">100%</text>
+
+              <circle cx="154" cy="104" r="5" fill="#D97706"/>
+              <text x="140" y="122" font-size="11" font-weight="800" fill="#B45309">59% (Thấp nhất)</text>
+
+              <circle cx="518" cy="63" r="6" fill="#059669" stroke="#FFFFFF" stroke-width="2"/>
+              <text x="495" y="50" font-size="12" font-weight="800" fill="#065F46">81%</text>
+
+              <!-- X labels -->
+              <text x="35" y="185" font-size="10.5" fill="#64748B">01/08*</text>
+              <text x="140" y="185" font-size="10.5" fill="#64748B">16/08</text>
+              <text x="245" y="185" font-size="10.5" fill="#64748B">30/08</text>
+              <text x="348" y="185" font-size="10.5" fill="#64748B">14/09</text>
+              <text x="452" y="185" font-size="10.5" fill="#64748B">28/09</text>
+              <text x="502" y="185" font-size="10.5" fill="#059669" font-weight="700">05/10*</text>
+            </svg>
+          </div>
+
+          <div id="trendTableDigitization" class="inline-data-table-wrap">
+            <table class="xa-table">
+              <thead>
+                <tr><th>Tuần</th><th class="num">Hộ đã số hoá</th><th class="num">Hộ đồng ý</th><th class="num">Mức số hoá</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>01/08* (Tuần lẻ đầu kỳ)</td><td class="num">12</td><td class="num">12</td><td class="num">100 %</td></tr>
+                <tr><td>16/08 (Đợt thêm hộ mới)</td><td class="num">10</td><td class="num">17</td><td class="num">59 %</td></tr>
+                <tr><td>30/08 (Cuối tháng 8)</td><td class="num">16</td><td class="num">20</td><td class="num">80 %</td></tr>
+                <tr><td>14/09 (Giữa tháng 9)</td><td class="num">17</td><td class="num">21</td><td class="num">81 %</td></tr>
+                <tr><td>05/10* (Tuần hiện tại)</td><td class="num">17</td><td class="num">21</td><td class="num">81 %</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Biểu đồ phải: Lượt chia sẻ theo tuần -->
+        <div class="section-card" style="margin-bottom: 0;">
+          <div class="chart-box-header">
+            <div>
+              <div class="chart-conclusion-title">Lượt chia sẻ cao nhất ở tuần 14/09 (44 lượt)</div>
+              <div class="chart-unit-sub">Đơn vị: lượt chia sẻ/tuần · Dấu (*) là tuần đầu/cuối kỳ chưa đủ 7 ngày</div>
+            </div>
+            <button type="button" class="btn-pill-toggle" onclick="toggleInlineTable('trendTableShares')">Xem bảng</button>
+          </div>
+
+          <div class="svg-chart-wrap">
+            <svg viewBox="0 0 560 200" width="100%" height="100%">
+              <defs>
+                <linearGradient id="gradBlue" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2563EB" stop-opacity="0.22"/>
+                  <stop offset="100%" stop-color="#2563EB" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+              <line x1="40" y1="30" x2="535" y2="30" stroke="#E2E8F0" stroke-dasharray="4 4"/>
+              <line x1="40" y1="95" x2="535" y2="95" stroke="#E2E8F0" stroke-dasharray="4 4"/>
+              <line x1="40" y1="165" x2="535" y2="165" stroke="#CBD5E1"/>
+
+              <text x="12" y="34" font-size="11" fill="#64748B" font-weight="600">45</text>
+              <text x="12" y="99" font-size="11" fill="#64748B" font-weight="600">25</text>
+              <text x="18" y="169" font-size="11" fill="#64748B" font-weight="600">0</text>
+
+              <!-- Points: 6, 11, 14, 10, 12, 31, 44 (peak), 38, 32, 0 (running week) -->
+              <path d="M50,147 L102,132 L154,123 L206,135 L258,129 L310,72 L362,33 L414,51 L466,69 L518,165 L518,165 L50,165 Z" fill="url(#gradBlue)"/>
+              <polyline fill="none" stroke="#2563EB" stroke-width="3" points="50,147 102,132 154,123 206,135 258,129 310,72 362,33 414,51 466,69 518,165"/>
+
+              <circle cx="362" cy="33" r="6" fill="#2563EB" stroke="#FFFFFF" stroke-width="2"/>
+              <text x="325" y="21" font-size="12" font-weight="800" fill="#1D4ED8">Đỉnh: 44 lượt</text>
+
+              <circle cx="466" cy="69" r="4.5" fill="#2563EB"/>
+              <text x="454" y="58" font-size="11" font-weight="700" fill="#1E293B">32</text>
+
+              <text x="35" y="185" font-size="10.5" fill="#64748B">01/08*</text>
+              <text x="140" y="185" font-size="10.5" fill="#64748B">16/08</text>
+              <text x="245" y="185" font-size="10.5" fill="#64748B">30/08</text>
+              <text x="348" y="185" font-size="10.5" fill="#1D4ED8" font-weight="700">14/09</text>
+              <text x="452" y="185" font-size="10.5" fill="#64748B">28/09</text>
+              <text x="502" y="185" font-size="10.5" fill="#64748B">05/10*</text>
+            </svg>
+          </div>
+
+          <div id="trendTableShares" class="inline-data-table-wrap">
+            <table class="xa-table">
+              <thead>
+                <tr><th>Tuần</th><th class="num">Lượt chia sẻ</th><th class="num">Hộ tự làm</th><th class="num">Hub làm</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Tuần 30/08</td><td class="num">12 lượt</td><td class="num">11</td><td class="num">1</td></tr>
+                <tr><td>Tuần 07/09</td><td class="num">31 lượt</td><td class="num">28</td><td class="num">3</td></tr>
+                <tr><td>Tuần 14/09 (Cao điểm thu hoạch)</td><td class="num">44 lượt</td><td class="num">41</td><td class="num">3</td></tr>
+                <tr><td>Tuần 21/09</td><td class="num">38 lượt</td><td class="num">35</td><td class="num">3</td></tr>
+                <tr><td>Tuần 28/09</td><td class="num">32 lượt</td><td class="num">30</td><td class="num">2</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         MÀN 2: PHÂN TÍCH THEO NHÓM (XA-02: THÔN · HTX · NHÓM HÀNG · KÊNH)
+         ======================================================================= -->
+    <section id="screen-xa02" class="xa-screen">
+      <div class="page-title-row">
+        <div class="page-title-left">
+          <h2>
+            <span>Phân tích theo nhóm</span>
+            <span class="sub-location">· Thôn nào tụt, nhóm hàng nào lên</span>
+          </h2>
+          <div class="freshness-bar">
+            <span>So sánh trực tiếp giữa các địa bàn và tổ chức trong Xã Đồng Lam để ưu tiên hỗ trợ.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Sub-tabs chiều phân tích (?chieu=thon|htx|nhom-hang|kenh) -->
+      <div class="sub-tabs-bar">
+        <button type="button" class="sub-tab-btn active" id="dimBtn-thon" onclick="switchXa02Dimension('thon')">
+          🏘️ Theo Thôn (4 nhóm)
+        </button>
+        <button type="button" class="sub-tab-btn" id="dimBtn-htx" onclick="switchXa02Dimension('htx')">
+          🌾 Theo HTX (3 HTX)
+        </button>
+        <button type="button" class="sub-tab-btn" id="dimBtn-nhom-hang" onclick="switchXa02Dimension('nhom-hang')">
+          📦 Theo Nhóm hàng (6 nhóm)
+        </button>
+        <button type="button" class="sub-tab-btn" id="dimBtn-kenh" onclick="switchXa02Dimension('kenh')">
+          📲 Theo Kênh chia sẻ (3 kênh)
+        </button>
+      </div>
+
+      <!-- Khung 2 cột hợp nhất: Cột trái Biểu đồ thanh ngang (55%) + Cột phải Bảng số liệu (45%) -->
+      <div class="breakdown-unified-card" id="xa02BreakdownContent">
+        <!-- Được render động bởi renderXa02Dimension() -->
+      </div>
+
+      <!-- Bảng phụ theo tuần khi chọn tab Kênh -->
+      <div id="xa02ChannelWeeklyCard" class="section-card" style="display: none; margin-top: 20px;">
+        <div class="share-bar-header">
+          <div class="share-bar-title">Diễn biến lượt chia sẻ theo kênh qua các tuần trong kỳ</div>
+          <span class="chip-demo">Tổng cộng: 145 lượt (Tháng 09/2026)</span>
+        </div>
+        <table class="xa-table">
+          <thead>
+            <tr>
+              <th>Tuần lễ</th>
+              <th class="num">💬 Zalo</th>
+              <th class="num">📘 Facebook</th>
+              <th class="num">🛍️ Shopee</th>
+              <th class="num">Tổng tuần</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Tuần 07/09</td><td class="num">13</td><td class="num">11</td><td class="num">7</td><td class="num">31 lượt</td></tr>
+            <tr><td>Tuần 14/09 (Đỉnh)</td><td class="num">18</td><td class="num">15</td><td class="num">11</td><td class="num">44 lượt</td></tr>
+            <tr><td>Tuần 21/09</td><td class="num">16</td><td class="num">13</td><td class="num">9</td><td class="num">38 lượt</td></tr>
+            <tr><td>Tuần 28/09</td><td class="num">13</td><td class="num">12</td><td class="num">7</td><td class="num">32 lượt</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="privacy-footnote">
+        <span>🛡️</span>
+        <span><strong>Quy tắc bảo mật cấp xã (Luật số 6):</strong> Nhóm dưới 5 hộ đồng ý (các thôn Đồng Chè, Suối Mây, Nà Liêu) được gộp tự động thành <strong>«Nhóm nhỏ»</strong> để không lộ thông tin từng hộ cá nhân.</span>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         MÀN 3: BÁO CÁO THÁNG & BẢN IN A4 (XA-03)
+         ======================================================================= -->
+    <section id="screen-xa03" class="xa-screen">
+      <div class="page-title-row">
+        <div class="page-title-left">
+          <h2>
+            <span>Báo cáo tháng</span>
+            <span class="sub-location" id="xa03PeriodLabel">· Tháng 09/2026 · Xã Đồng Lam, Tỉnh Sơn Nguyên</span>
+          </h2>
+          <div class="freshness-bar">
+            <span>Mẫu biểu tổng hợp kinh tế số nông thôn chuẩn 1 trang A4 phục vụ họp giao ban UBND xã.</span>
+          </div>
+        </div>
+
+        <div class="report-actions-group">
+          <button type="button" class="btn-primary-emerald" onclick="window.print()">
+            <span>🖨️ Xuất PDF / In Bản A4</span>
+          </button>
+          <button type="button" class="btn-outline-slate" onclick="exportXa03Csv()">
+            <span>📥 Xuất CSV (UTF-8)</span>
+          </button>
+          <button type="button" class="btn-outline-slate" onclick="switchXaTab('xa01')">
+            <span>← Tổng quan</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bảng 1: Bốn chỉ số cốt lõi -->
+      <div class="section-card">
+        <div class="share-bar-header">
+          <div class="share-bar-title">I. Bốn chỉ số cốt lõi toàn xã (M1 – M4)</div>
+          <span class="chip-demo">Đơn vị hành chính: UBND Xã Đồng Lam</span>
+        </div>
+        <table class="xa-table">
+          <thead>
+            <tr>
+              <th>Chỉ số (Đơn vị)</th>
+              <th class="num">Tháng 09/2026</th>
+              <th class="num">Tháng 08/2026</th>
+              <th class="num">So sánh</th>
+              <th class="num">Hộ tự làm</th>
+              <th class="num">Hub làm</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>M1. Số hộ đồng ý</strong> (hộ)</td>
+              <td class="num">21</td>
+              <td class="num">20</td>
+              <td class="num" style="color: var(--emerald-700);">+1 hộ</td>
+              <td class="num" style="color: var(--slate-400);">Không tách</td>
+              <td class="num" style="color: var(--slate-400);">Không tách</td>
+            </tr>
+            <tr>
+              <td><strong>M2. Số sản phẩm đã chốt</strong> (sản phẩm)</td>
+              <td class="num">61</td>
+              <td class="num">40</td>
+              <td class="num" style="color: var(--emerald-700);">+21 SP</td>
+              <td class="num">56</td>
+              <td class="num">5</td>
+            </tr>
+            <tr>
+              <td><strong>M3. Lượt chia sẻ bài bán</strong> (lượt)</td>
+              <td class="num">145</td>
+              <td class="num">53</td>
+              <td class="num" style="color: var(--emerald-700);">+92 lượt</td>
+              <td class="num">134</td>
+              <td class="num">11</td>
+            </tr>
+            <tr>
+              <td><strong>M4. Mức số hoá</strong> (%)</td>
+              <td class="num">81 %</td>
+              <td class="num">80 %</td>
+              <td class="num" style="color: var(--emerald-700);">+1 điểm %</td>
+              <td class="num" style="color: var(--slate-400);">Không tách</td>
+              <td class="num" style="color: var(--slate-400);">Không tách</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Lưới 2x2: 4 Bảng phân tổ (Theo thôn, Theo HTX, Theo nhóm hàng, Theo kênh) -->
+      <div class="report-2x2-grid">
+        <!-- Bảng 2.1: Theo thôn -->
+        <div class="section-card" style="margin-bottom: 0;">
+          <div class="share-bar-title" style="margin-bottom: 10px;">II. Phân tích theo Thôn</div>
+          <table class="xa-table">
+            <thead>
+              <tr><th>Thôn</th><th class="num">Hộ</th><th class="num">Sản phẩm</th><th class="num">Số hoá</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Thôn Bãi Sen</td><td class="num">6</td><td class="num">22</td><td class="num">83 %</td></tr>
+              <tr><td>Thôn Khe Trúc</td><td class="num">5</td><td class="num">14</td><td class="num">80 %</td></tr>
+              <tr><td>Thôn Gò Mít</td><td class="num">5</td><td class="num">10</td><td class="num">60 %</td></tr>
+              <tr><td>Nhóm nhỏ (&lt; 5 hộ/thôn)</td><td class="num">5</td><td class="num">15</td><td class="num">100 %</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bảng 2.2: Theo HTX -->
+        <div class="section-card" style="margin-bottom: 0;">
+          <div class="share-bar-title" style="margin-bottom: 10px;">III. Phân tích theo HTX</div>
+          <table class="xa-table">
+            <thead>
+              <tr><th>Hợp tác xã</th><th class="num">Hộ</th><th class="num">Sản phẩm</th><th class="num">Số hoá</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>HTX Mật Ong Khe Trúc</td><td class="num">7</td><td class="num">26</td><td class="num">100 %</td></tr>
+              <tr><td>HTX Nông Sản Suối Mây</td><td class="num">6</td><td class="num">14</td><td class="num">83 %</td></tr>
+              <tr><td>HTX Chè Đồng Lam</td><td class="num">8</td><td class="num">21</td><td class="num">63 %</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bảng 2.3: Theo nhóm hàng -->
+        <div class="section-card" style="margin-bottom: 0;">
+          <div class="share-bar-title" style="margin-bottom: 10px;">IV. Phân tích theo Nhóm hàng</div>
+          <table class="xa-table">
+            <thead>
+              <tr><th>Nhóm hàng</th><th class="num">Hộ</th><th class="num">Sản phẩm</th><th class="num">Tỷ lệ hộ</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Thủ công</td><td class="num">12</td><td class="num">16</td><td class="num">57 %</td></tr>
+              <tr><td>Sơ chế</td><td class="num">10</td><td class="num">12</td><td class="num">48 %</td></tr>
+              <tr><td>Thực phẩm đóng gói</td><td class="num">8</td><td class="num">12</td><td class="num">38 %</td></tr>
+              <tr><td>Đồ dùng nhà làm</td><td class="num">7</td><td class="num">9</td><td class="num">33 %</td></tr>
+              <tr><td>Nông sản tươi</td><td class="num">7</td><td class="num">8</td><td class="num">33 %</td></tr>
+              <tr><td>Nhóm nhỏ (&lt; 5 hộ)</td><td class="num">Dưới 5 hộ</td><td class="num">4</td><td class="num">Dưới 5 hộ</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bảng 2.4: Theo kênh -->
+        <div class="section-card" style="margin-bottom: 0;">
+          <div class="share-bar-title" style="margin-bottom: 10px;">V. Phân tích theo Kênh chia sẻ</div>
+          <table class="xa-table">
+            <thead>
+              <tr><th>Kênh</th><th class="num">Lượt chia sẻ</th><th class="num">Hộ tự làm</th><th class="num">Hub làm</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Zalo (OA & Nhóm)</td><td class="num">60</td><td class="num">55</td><td class="num">5</td></tr>
+              <tr><td>Facebook</td><td class="num">51</td><td class="num">48</td><td class="num">3</td></tr>
+              <tr><td>Shopee</td><td class="num">34</td><td class="num">31</td><td class="num">3</td></tr>
+              <tr><td><strong>Tổng cộng</strong></td><td class="num"><strong>145</strong></td><td class="num"><strong>134</strong></td><td class="num"><strong>11</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Chân trang A4: Công thức & Chữ ký -->
+      <div class="report-print-footer">
+        <div style="font-size: 12.5px; color: var(--slate-600); max-width: 680px;">
+          <div><strong>Ghi chú công thức:</strong> Mức số hoá (%) = Số hộ đồng ý có ít nhất 1 sản phẩm Đã chốt ÷ Số hộ đồng ý × 100.</div>
+          <div style="margin-top: 4px;">Dữ liệu trích xuất tự động từ Hệ thống Kinh tế Xã GreenOS · Bảo mật ẩn danh cấp hộ · <strong>Trang 1/1</strong></div>
+        </div>
+        <div style="text-align: center; min-width: 220px;">
+          <div style="font-size: 12.5px; color: var(--slate-500);">Đồng Lam, ngày 05 tháng 10 năm 2026</div>
+          <div style="font-size: 13.5px; font-weight: 800; color: var(--slate-900); margin-top: 4px;">CÁN BỘ KINH TẾ XÃ</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--emerald-700); margin-top: 28px;">Trần Văn Hùng</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         MÀN 4: CHỢ XANH CẤP XÃ — NÚT THẮT ĐỊA BÀN (CX-13) & BẢN ĐỒ NGUỒN LỰC (CX-14)
+         ======================================================================= -->
+    <section id="screen-cx13" class="xa-screen">
+      <!-- Thanh chuyển đổi nhanh giữa CX-13 (Nút thắt) và CX-14 (Bản đồ nguồn lực) -->
+      <div class="page-title-row">
+        <div class="sub-tabs-bar" style="margin-bottom: 0;">
+          <button type="button" class="sub-tab-btn active" id="cxSubBtn-cx13" onclick="switchCxSubView('cx13')">
+            🚨 CX-13: Nút thắt địa bàn (3 điểm nghẽn)
+          </button>
+          <button type="button" class="sub-tab-btn" id="cxSubBtn-cx14" onclick="switchCxSubView('cx14')">
+            🗺️ CX-14: Bản đồ nguồn lực xã →
+          </button>
+        </div>
+
+        <span class="chip-demo">Ghép nối Thẻ Có & Thẻ Cần trong bán kính 25 km</span>
+      </div>
+
+      <!-- SUB-VIEW 4A: CX-13 NÚT THẮT ĐỊA BÀN -->
+      <div id="cxSubView-cx13">
+        <div class="bottleneck-hero-bar">
+          <div>
+            <h3>3 nút thắt: máy sấy, lao động thời vụ, kho mát</h3>
+            <p>Xếp hạng tự động theo độ lệch giữa Thẻ Cần và Thẻ Có của các hộ xã viên trong phạm vi 25 km.</p>
+          </div>
+          <div class="hero-digitization-box">
+            <div style="font-size: 12px; color: #D1FAE5; font-weight: 700;">MỨC SỐ HOÁ ĐỊA BÀN</div>
+            <div class="big">81 % <span style="font-size: 14px; font-weight: 600; color: #FFFFFF;">(17/21 hộ đã số hoá)</span></div>
+          </div>
+        </div>
+
+        <!-- Danh sách 3 Nút thắt xếp hạng theo điểm -->
+        <div class="bottleneck-list">
+          <!-- #1 Máy sấy nông sản -->
+          <div class="bottleneck-item rank-1">
+            <div style="flex: 1; min-width: 280px;">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span class="bn-rank-badge">#1 · Điểm 85</span>
+                <span style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900);">Máy sấy nông sản</span>
+                <span style="font-size: 13px; font-weight: 700; color: var(--slate-500);">· Thôn Bãi Sen, Thôn Gò Mít</span>
+              </div>
+              <div class="bn-suggestion">
+                💡 Gợi ý họp xã: Họp bàn một điểm sấy chung cho Bãi Sen và Gò Mít.
+              </div>
+              <div class="bn-score-formula">
+                Cách tính điểm: 8 thẻ cần × 5 = 40 điểm, không có thẻ có trong 25 km = +45 điểm (Tổng: 85 điểm)
+              </div>
+            </div>
+
+            <div class="bn-right-controls">
+              <span class="card-pill-need">Cần 8</span>
+              <span class="card-pill-have">Có 0 trong 25 km</span>
+              <div id="bnActionWrap-1">
+                <button type="button" class="btn-primary-emerald" onclick="openMatchSessionDialog(1, 'Máy sấy nông sản (Thôn Bãi Sen, Thôn Gò Mít)')">
+                  🤝 Mở phiên ghép nối
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #2 Lao động thời vụ (Mặc định đã mở phiên lúc 09:12 theo chuẩn GVOS) -->
+          <div class="bottleneck-item">
+            <div style="flex: 1; min-width: 280px;">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span class="bn-rank-badge" style="background: var(--amber-50); color: var(--amber-700); border-color: #FDE68A;">#2 · Điểm 61</span>
+                <span style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900);">Lao động thời vụ</span>
+                <span style="font-size: 13px; font-weight: 700; color: var(--slate-500);">· Thôn Gò Mít, Nhóm nhỏ</span>
+              </div>
+              <div class="bn-suggestion">
+                💡 Gợi ý họp xã: Ghép lịch thu hoạch giữa Gò Mít và Nhóm nhỏ, nhờ HTX báo số người nhận việc.
+              </div>
+              <div class="bn-score-formula">
+                Cách tính điểm: 5 thẻ cần × 5 = 25 điểm, thiếu 4 trên 5 thẻ cần = +36 điểm (Tổng: 61 điểm)
+              </div>
+            </div>
+
+            <div class="bn-right-controls">
+              <span class="card-pill-need">Cần 5</span>
+              <span class="card-pill-have">Có 1 trong 25 km</span>
+              <div id="bnActionWrap-2">
+                <span class="session-opened-tag">✓ Đã mở phiên lúc 09:12</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- #3 Kho mát -->
+          <div class="bottleneck-item">
+            <div style="flex: 1; min-width: 280px;">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span class="bn-rank-badge" style="background: var(--amber-50); color: var(--amber-700); border-color: #FDE68A;">#3 · Điểm 54</span>
+                <span style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900);">Kho mát bảo quản</span>
+                <span style="font-size: 13px; font-weight: 700; color: var(--slate-500);">· Thôn Bãi Sen, Thôn Khe Trúc</span>
+              </div>
+              <div class="bn-suggestion">
+                💡 Gợi ý họp xã: Hỏi chủ thẻ kho mát duy nhất trong 25 km còn chỗ trống không.
+              </div>
+              <div class="bn-score-formula">
+                Cách tính điểm: 4 thẻ cần × 5 = 20 điểm, thiếu 3 trên 4 thẻ cần = +34 điểm (Tổng: 54 điểm)
+              </div>
+            </div>
+
+            <div class="bn-right-controls">
+              <span class="card-pill-need">Cần 4</span>
+              <span class="card-pill-have">Có 1 trong 25 km</span>
+              <div id="bnActionWrap-3">
+                <button type="button" class="btn-primary-emerald" onclick="openMatchSessionDialog(3, 'Kho mát bảo quản (Thôn Bãi Sen, Thôn Khe Trúc)')">
+                  🤝 Mở phiên ghép nối
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bảng Chỉ số HTX trên địa bàn -->
+        <div class="section-card">
+          <div class="share-bar-header">
+            <div class="share-bar-title">Chỉ số điều phối nguồn lực của 3 Hợp tác xã trên địa bàn</div>
+            <button type="button" class="btn-outline-slate" style="height: 34px; font-size: 12.5px;" onclick="switchCxSubView('cx14')">
+              🗺️ Xem Bản đồ nguồn lực xã →
+            </button>
+          </div>
+          <table class="xa-table">
+            <thead>
+              <tr>
+                <th>Tên Hợp tác xã</th>
+                <th class="num">Hộ đã số hoá</th>
+                <th class="num">Thẻ Có (Nguồn lực dư)</th>
+                <th class="num">Thẻ Cần (Đang thiếu)</th>
+                <th class="num">Đã liên hệ ghép nối</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>HTX Chè Đồng Lam</strong></td>
+                <td class="num">5/8 hộ (63 %)</td>
+                <td class="num" style="color: var(--emerald-700);">12</td>
+                <td class="num" style="color: var(--red-600);">9</td>
+                <td class="num">3 cặp</td>
+              </tr>
+              <tr>
+                <td><strong>HTX Mật Ong Khe Trúc</strong></td>
+                <td class="num">7/7 hộ (100 %)</td>
+                <td class="num" style="color: var(--emerald-700);">9</td>
+                <td class="num" style="color: var(--red-600);">5</td>
+                <td class="num">2 cặp</td>
+              </tr>
+              <tr>
+                <td><strong>HTX Nông Sản Suối Mây</strong></td>
+                <td class="num">5/6 hộ (83 %)</td>
+                <td class="num" style="color: var(--emerald-700);">7</td>
+                <td class="num" style="color: var(--red-600);">4</td>
+                <td class="num">0 cặp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SUB-VIEW 4B: CX-14 BẢN ĐỒ NGUỒN LỰC XÃ -->
+      <div id="cxSubView-cx14" style="display: none;">
+        <div class="page-title-row" style="margin-bottom: 16px;">
+          <div class="page-title-left">
+            <h2>Gò Mít và Bãi Sen có nhiều thẻ cần nhất</h2>
+            <div class="freshness-bar">
+              <span>Bản đồ phân bổ Thẻ Có và Thẻ Cần theo thôn (Vòng tròn tỷ lệ với tổng số thẻ Có + Cần).</span>
+            </div>
+          </div>
+          <button type="button" class="btn-outline-slate" onclick="switchCxSubView('cx13')">
+            ← Quay lại Nút thắt địa bàn
+          </button>
+        </div>
+
+        <div class="cx14-map-grid">
+          <!-- Cột trái: Bản đồ SVG tự chứa của Xã Đồng Lam -->
+          <div class="section-card" style="margin-bottom: 0;">
+            <svg class="svg-commune-map" viewBox="0 0 640 390" aria-label="Bản đồ nguồn lực Xã Đồng Lam">
+              <!-- Ranh giới xã Đồng Lam -->
+              <polygon points="45,65 210,25 465,38 595,120 570,315 390,365 130,345 35,220" fill="#ECFDF5" stroke="#059669" stroke-width="2.5" stroke-dasharray="6 4"/>
+              <!-- Sông Suối Mây -->
+              <path d="M 40,185 Q 190,155 320,210 T 585,245" fill="none" stroke="#93C5FD" stroke-width="8" stroke-linecap="round"/>
+              <text x="465" y="232" font-size="11" fill="#2563EB" font-weight="700">Suối Mây</text>
+              <!-- Trục đường liên thôn -->
+              <path d="M 95,105 L 310,165 L 470,275" fill="none" stroke="#CBD5E1" stroke-width="5" stroke-dasharray="8 4"/>
+
+              <!-- Node 1: Thôn Gò Mít (Có 3, Cần 7 -> Thiếu nặng nhất, viền dày nổi bật) -->
+              <g style="cursor: pointer;" onclick="highlightVillageRow('go-mit')">
+                <circle cx="155" cy="115" r="46" fill="#FEF2F2" stroke="#DC2626" stroke-width="4"/>
+                <text x="155" y="106" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0F172A">Thôn Gò Mít</text>
+                <text x="155" y="125" text-anchor="middle" font-size="12" font-weight="800" fill="#DC2626">Có 3 · Cần 7</text>
+                <text x="155" y="141" text-anchor="middle" font-size="10.5" font-weight="700" fill="#B91C1C">(Thiếu 4 thẻ)</text>
+              </g>
+
+              <!-- Node 2: Thôn Bãi Sen (Có 12, Cần 6 -> Quy mô lớn nhất, viền dày nổi bật) -->
+              <g style="cursor: pointer;" onclick="highlightVillageRow('bai-sen')">
+                <circle cx="330" cy="170" r="58" fill="#FFFBEB" stroke="#D97706" stroke-width="4"/>
+                <text x="330" y="158" text-anchor="middle" font-size="14" font-weight="800" fill="#0F172A">Thôn Bãi Sen</text>
+                <text x="330" y="178" text-anchor="middle" font-size="12.5" font-weight="800" fill="#B45309">Có 12 · Cần 6</text>
+                <text x="330" y="195" text-anchor="middle" font-size="11" font-weight="700" fill="#047857">(6 hộ · Trung tâm)</text>
+              </g>
+
+              <!-- Node 3: Thôn Khe Trúc (Có 9, Cần 2 -> Dư nguồn lực) -->
+              <g style="cursor: pointer;" onclick="highlightVillageRow('khe-truc')">
+                <circle cx="465" cy="275" r="44" fill="#FFFFFF" stroke="#059669" stroke-width="2.5"/>
+                <text x="465" y="268" text-anchor="middle" font-size="13" font-weight="800" fill="#0F172A">Thôn Khe Trúc</text>
+                <text x="465" y="286" text-anchor="middle" font-size="12" font-weight="800" fill="#059669">Có 9 · Cần 2</text>
+              </g>
+
+              <!-- Chú giải trên bản đồ -->
+              <rect x="48" y="302" width="255" height="52" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+              <circle cx="66" cy="319" r="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="2.5"/>
+              <text x="78" y="323" font-size="11" font-weight="700" fill="#334155">Viền dày: 2 thôn có Thẻ Cần cao nhất</text>
+              <circle cx="66" cy="339" r="6" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+              <text x="78" y="343" font-size="11" font-weight="600" fill="#64748B">Kích thước vòng = Tổng (Thẻ Có + Cần)</text>
+            </svg>
+
+            <div class="privacy-footnote" style="margin-top: 12px;">
+              <span>🔒</span>
+              <span><strong>Nhóm nhỏ (Đồng Chè, Suối Mây, Nà Liêu):</strong> Có 4 · Cần 3 (Tổng 5 hộ). Không hiển thị vị trí riêng trên bản đồ để bảo mật hộ lẻ.</span>
+            </div>
+          </div>
+
+          <!-- Cột phải: Bảng Số thẻ theo thôn + Hộp gợi ý -->
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="section-card" style="margin-bottom: 0;">
+              <div class="share-bar-title" style="margin-bottom: 12px;">Số thẻ nguồn lực theo thôn</div>
+              <table class="xa-table">
+                <thead>
+                  <tr>
+                    <th>Thôn</th>
+                    <th class="num">Hộ</th>
+                    <th class="num">Thẻ có</th>
+                    <th class="num">Thẻ cần</th>
+                    <th class="num">Chênh lệch</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="vRow-go-mit">
+                    <td><strong>Thôn Gò Mít</strong></td>
+                    <td class="num">5</td>
+                    <td class="num">3</td>
+                    <td class="num" style="color: var(--red-600); font-weight: 800;">7</td>
+                    <td class="num" style="color: var(--red-600); font-weight: 800;">−4</td>
+                  </tr>
+                  <tr id="vRow-bai-sen">
+                    <td><strong>Thôn Bãi Sen</strong></td>
+                    <td class="num">6</td>
+                    <td class="num">12</td>
+                    <td class="num" style="color: var(--amber-700); font-weight: 800;">6</td>
+                    <td class="num" style="color: var(--emerald-700);">+6</td>
+                  </tr>
+                  <tr id="vRow-khe-truc">
+                    <td><strong>Thôn Khe Trúc</strong></td>
+                    <td class="num">5</td>
+                    <td class="num">9</td>
+                    <td class="num">2</td>
+                    <td class="num" style="color: var(--emerald-700);">+7</td>
+                  </tr>
+                  <tr>
+                    <td>Nhóm nhỏ (3 thôn)</td>
+                    <td class="num">5</td>
+                    <td class="num">4</td>
+                    <td class="num">3</td>
+                    <td class="num">+1</td>
+                  </tr>
+                  <tr style="background: var(--emerald-50);">
+                    <td><strong>Cả xã Đồng Lam</strong></td>
+                    <td class="num"><strong>21</strong></td>
+                    <td class="num"><strong>28</strong></td>
+                    <td class="num"><strong>18</strong></td>
+                    <td class="num" style="color: var(--emerald-800);"><strong>+10</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Hộp gợi ý hành động chuẩn CX-14 -->
+            <div class="section-card" style="margin-bottom: 0; background: var(--amber-50); border-color: #FDE68A;">
+              <div style="font-size: 12px; font-weight: 800; color: var(--amber-700); text-transform: uppercase; letter-spacing: 0.04em;">
+                💡 Gợi ý điều phối tại cuộc họp UBND xã
+              </div>
+              <div style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-900); margin: 6px 0;">
+                Bàn một điểm sấy chung ở Gò Mít, thôn thiếu nhiều nhất: cần 7, có 3.
+              </div>
+              <div style="font-size: 12.5px; color: var(--slate-600);">
+                Dựa trên: thẻ có và thẻ cần của 4 địa bàn, tháng 10/2026 đến hôm nay.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         MÀN 5: LAO ĐỘNG CỦA XÃ (ACJ-21 — VIỆC LÀM NÔNG THÔN ANCUJOB)
+         ======================================================================= -->
+    <section id="screen-acj21" class="xa-screen">
+      <div class="page-title-row">
+        <div class="page-title-left">
+          <h2>
+            <span>Lao động của xã</span>
+            <span class="sub-location">· Xã Đồng Lam, Tỉnh Sơn Nguyên</span>
+          </h2>
+          <div class="freshness-bar">
+            <span>Tổng hợp cung – cầu lao động thời vụ, cơ cấu nghề và dự báo người rảnh 4 tuần tới.</span>
+            <span class="chip-demo">Nguồn: AnCuJob Cấp Xã</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hàng 1: Hero KPI (400px) + Biểu đồ tăng trưởng 2 tháng (1fr) -->
+      <div class="acj-hero-grid">
+        <div class="acj-hero-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 14px; font-weight: 700; color: #A7F3D0;">ĐÃ ĐI LÀM TRONG THÁNG</span>
+            <button type="button" class="hint-btn" style="background: rgba(255,255,255,0.15); color: #FFF; border-color: rgba(255,255,255,0.3);" onclick="showHintModal('Đã đi làm trong tháng (ACJ-21)', 'Tổng số lượt người lao động trong xã đã được chốt nhận việc và đi làm thực tế qua nền tảng việc làm xã trong kỳ.')">?</button>
+          </div>
+          <div style="margin: 14px 0;">
+            <span style="font-family: 'Lexend', sans-serif; font-size: 56px; font-weight: 800; line-height: 1;" id="acjHeroVal">65</span>
+            <span style="font-size: 18px; font-weight: 700; color: #A7F3D0; margin-left: 6px;">lượt</span>
+          </div>
+          <div id="acjHeroDelta" style="background: rgba(255,255,255,0.16); padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; width: fit-content;">
+            ↑ Tăng 13 lượt so với tháng 8 (52 lượt)
+          </div>
+        </div>
+
+        <div class="section-card" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="share-bar-title">Số lượt đã đi làm tăng từ 52 lên 65 trong hai tháng</div>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin: 14px 0;">
+            <div class="hbar-row" style="grid-template-columns: 140px 1fr 80px;">
+              <div class="hbar-label">Tháng 08/2026</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width: 80%; background: #94A3B8;"></div></div>
+              <div class="hbar-val">52 lượt</div>
+            </div>
+            <div class="hbar-row" style="grid-template-columns: 140px 1fr 80px;">
+              <div class="hbar-label"><strong>Tháng 09/2026</strong></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width: 100%;"></div></div>
+              <div class="hbar-val" style="color: var(--emerald-700);">65 lượt</div>
+            </div>
+          </div>
+          <div style="font-size: 12.5px; color: var(--slate-500);">
+            Đóng góp chính từ vụ thu hoạch chè thu đông và xưởng may gia công mở rộng.
+          </div>
+        </div>
+      </div>
+
+      <!-- Hàng 2: 4 Ô Chỉ Số Cung · Cầu · Kết Nối · Thu Nhập -->
+      <div class="m-stat-grid">
+        <div class="stat-tile">
+          <div class="tile-top-row">
+            <span class="tile-label"><span class="tile-code-tag">Cung</span> Người đang rảnh</span>
+          </div>
+          <div class="tile-number-row">
+            <span class="tile-big-num">120</span>
+            <span class="tile-unit">người</span>
+          </div>
+          <div class="tile-delta neutral">Trên tổng 220 lao động trong xã</div>
+        </div>
+
+        <div class="stat-tile">
+          <div class="tile-top-row">
+            <span class="tile-label"><span class="tile-code-tag">Cầu</span> Người cần tuyển</span>
+          </div>
+          <div class="tile-number-row">
+            <span class="tile-big-num">96</span>
+            <span class="tile-unit">người</span>
+          </div>
+          <div class="tile-delta guard">18 tin đang tuyển · 50 người tuyển sỉ</div>
+        </div>
+
+        <div class="stat-tile">
+          <div class="tile-top-row">
+            <span class="tile-label"><span class="tile-code-tag">Kết nối</span> Tin được lấp đủ</span>
+          </div>
+          <div class="tile-number-row">
+            <span class="tile-big-num">88 %</span>
+          </div>
+          <div class="tile-delta up">Chọn người sau 1,4 ngày · 78 lượt kết nối</div>
+        </div>
+
+        <div class="stat-tile">
+          <div class="tile-top-row">
+            <span class="tile-label"><span class="tile-code-tag">Thu nhập</span> Thu nhập tạo thêm</span>
+            <span class="chip-demo" style="background: var(--amber-100); color: var(--amber-700);">Ước tính</span>
+          </div>
+          <div class="tile-number-row">
+            <span class="tile-big-num" style="font-size: 32px;">71,8 triệu đ</span>
+          </div>
+          <div class="tile-delta neutral">Từ tiền công ghi trên tin (trả ngoài HT)</div>
+        </div>
+      </div>
+
+      <!-- Hàng 3: Dự báo 4 tuần tới (1fr) + Nghề đang thiếu người (1fr) -->
+      <div class="trend-charts-grid">
+        <div class="section-card" style="margin-bottom: 0;">
+          <div class="share-bar-title" style="margin-bottom: 14px;">
+            Số người rảnh giảm từ 98 xuống 45 trong 4 tuần tới
+          </div>
+          <div class="hbar-list">
+            <div class="hbar-row" style="grid-template-columns: 130px 1fr 80px;">
+              <div class="hbar-label">Tuần 12/10</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width: 98%;"></div></div>
+              <div class="hbar-val">98 người</div>
+            </div>
+            <div class="hbar-row" style="grid-template-columns: 130px 1fr 80px;">
+              <div class="hbar-label">Tuần 19/10</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width: 74%;"></div></div>
+              <div class="hbar-val">74 người</div>
+            </div>
+            <div class="hbar-row" style="grid-template-columns: 130px 1fr 80px;">
+              <div class="hbar-label">Tuần 26/10</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width: 61%;"></div></div>
+              <div class="hbar-val">61 người</div>
+            </div>
+            <div class="hbar-row" style="grid-template-columns: 130px 1fr 80px;">
+              <div class="hbar-label">Tuần 02/11</div>
+              <div class="hbar-track"><div class="hbar-fill low" style="width: 45%;"></div></div>
+              <div class="hbar-val">45 người</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="share-bar-title" style="margin-bottom: 12px;">
+              Thợ may và thợ điện nước đang thiếu người
+            </div>
+            <table class="xa-table">
+              <thead>
+                <tr><th>Kỹ năng thiếu hụt</th><th class="num">Người cần</th><th class="num">Đang rảnh</th><th class="num">Tình trạng</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>🧵 Thợ may gia công</strong></td>
+                  <td class="num" style="color: var(--red-600);">50</td>
+                  <td class="num">21</td>
+                  <td class="num"><span class="card-pill-need" style="padding: 3px 8px; font-size: 12px;">Thiếu 29 người</span></td>
+                </tr>
+                <tr>
+                  <td><strong>🔧 Thợ điện nước</strong></td>
+                  <td class="num" style="color: var(--red-600);">8</td>
+                  <td class="num" style="color: var(--amber-700);">Dưới 5 người</td>
+                  <td class="num"><span class="card-pill-need" style="padding: 3px 8px; font-size: 12px;">Cần đào tạo ngắn</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top: 14px; background: var(--amber-50); border: 1px solid #FDE68A; padding: 10px 14px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; font-weight: 700; color: var(--amber-700);">⚠️ Rảnh lâu chưa có việc (&gt; 30 ngày):</span>
+            <span style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--red-700);">14 người</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hàng 4: Cơ cấu kỹ năng của 220 lao động (1fr) + Toàn mạng lưới (330px) -->
+      <div class="acj-bottom-grid">
+        <div class="section-card" style="margin-bottom: 0;">
+          <div class="share-bar-title" style="margin-bottom: 12px;">
+            Cơ cấu kỹ năng của 220 lao động trong xã
+          </div>
+          <table class="xa-table">
+            <thead>
+              <tr>
+                <th>Nhóm kỹ năng / Nghề</th>
+                <th style="width: 180px;">Tỷ trọng</th>
+                <th class="num">Tổng số</th>
+                <th class="num">Đang rảnh</th>
+                <th class="num">Người cần</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>🍃 Hái chè & thu hoạch</strong></td>
+                <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 100%;"></div></div></td>
+                <td class="num">46</td>
+                <td class="num">30</td>
+                <td class="num">12</td>
+              </tr>
+              <tr>
+                <td><strong>🧵 Thợ may gia công</strong></td>
+                <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill low" style="width: 82%;"></div></div></td>
+                <td class="num">38</td>
+                <td class="num">21</td>
+                <td class="num" style="color: var(--red-600); font-weight: 800;">50</td>
+              </tr>
+              <tr>
+                <td><strong>🧱 Thợ xây</strong></td>
+                <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 67%;"></div></div></td>
+                <td class="num">31</td>
+                <td class="num">16</td>
+                <td class="num">14</td>
+              </tr>
+              <tr>
+                <td><strong>📦 Lao động phổ thông</strong></td>
+                <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 65%;"></div></div></td>
+                <td class="num">30</td>
+                <td class="num">18</td>
+                <td class="num">4</td>
+              </tr>
+              <tr>
+                <td><strong>🪣 Phụ hồ</strong></td>
+                <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 58%;"></div></div></td>
+                <td class="num">27</td>
+                <td class="num">15</td>
+                <td class="num">10</td>
+              </tr>
+              <tr>
+                <td><strong>🌱 Làm vườn & tỉa cành</strong></td>
+                <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 39%;"></div></div></td>
+                <td class="num">18</td>
+                <td class="num">9</td>
+                <td class="num">3</td>
+              </tr>
+              <tr>
+                <td><strong>🔒 Nhóm nhỏ</strong> (Các nghề &lt; 5 người)</td>
+                <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill muted" style="width: 39%;"></div></div></td>
+                <td class="num">18</td>
+                <td class="num">9</td>
+                <td class="num">3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Ô Định hướng: Toàn mạng lưới -->
+        <div class="section-card" style="margin-bottom: 0; background: var(--slate-50); border-style: dashed; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <span style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-800);">🌐 Toàn mạng lưới</span>
+              <span class="chip-demo" style="background: var(--blue-100); color: var(--blue-700);">Định hướng</span>
+            </div>
+            <p style="font-size: 13.5px; color: var(--slate-600); line-height: 1.6;">
+              Số liệu điều phối lao động liên xã (Xã Đồng Lam ↔ Xã Tân Sơn ↔ Xã Minh Phú) sẽ hiển thị khi cấp tổng Huyện/Tỉnh được bật.
+            </p>
+          </div>
+          <div style="margin-top: 20px; padding: 14px; background: #FFFFFF; border: 1px solid var(--slate-200); border-radius: 12px; text-align: center; font-size: 13px; font-weight: 700; color: var(--slate-400);">
+            Chưa có số liệu liên xã
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       MODAL 1: XÁC NHẬN MỞ PHIÊN GHÉP NỐI (CX-13 CONFIRM DIALOG)
+       ========================================================================= -->
+  <div id="matchSessionModal" class="modal-backdrop" onclick="closeMatchSessionDialog()">
+    <div class="modal-dialog" onclick="event.stopPropagation()">
+      <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900); margin-bottom: 10px;">
+        🤝 Mở phiên ghép nối nguồn lực cấp xã
+      </h3>
+      <p id="matchSessionPromptText" style="font-size: 14px; color: var(--slate-600); line-height: 1.55; margin-bottom: 20px;">
+        Mở phiên ghép nối cho «Máy sấy nông sản»? Chỉ ghi nhận để bàn trong cuộc họp giao ban xã, chưa tự động gửi tin nhắn cho hộ dân.
+      </p>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="button" class="btn-outline-slate" onclick="closeMatchSessionDialog()">Huỷ</button>
+        <button type="button" class="btn-primary-emerald" onclick="confirmMatchSession()">✓ Mở phiên ngay</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: GIẢI THÍCH CÔNG THỨC & ĐỊNH NGHĨA (HINTTIP MODAL)
+       ========================================================================= -->
+  <div id="hintTipModal" class="modal-backdrop" onclick="closeHintModal()">
+    <div class="modal-dialog" onclick="event.stopPropagation()">
+      <h3 id="hintModalTitle" style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--emerald-800); margin-bottom: 10px;">
+        Định nghĩa chỉ số
+      </h3>
+      <p id="hintModalBody" style="font-size: 14px; color: var(--slate-700); line-height: 1.6; white-space: pre-line; margin-bottom: 20px;"></p>
+      <div style="display: flex; justify-content: flex-end;">
+        <button type="button" class="btn-primary-emerald" onclick="closeHintModal()">Đã hiểu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SLIDE-OVER: TÀI KHOẢN CÁN BỘ XÃ & ĐẶT LẠI DỮ LIỆU MẪU (XA-X1 ACCOUNT SHEET)
+       ========================================================================= -->
+  <div id="accountSheetBackdrop" class="modal-backdrop" onclick="toggleAccountSheet(false)"></div>
+  <aside id="accountSheet" class="account-sheet" aria-label="Tài khoản Cán bộ xã">
+    <div>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--slate-200);">
+        <div>
+          <div style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800;">Trần Văn Hùng</div>
+          <div style="font-size: 12.5px; color: var(--emerald-700); font-weight: 700;">Cán bộ Kinh tế – UBND Xã Đồng Lam</div>
+        </div>
+        <button type="button" class="btn-pill-toggle" onclick="toggleAccountSheet(false)">✕ Đóng</button>
+      </div>
+
+      <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="background: var(--emerald-50); border: 1px solid var(--emerald-100); padding: 12px 14px; border-radius: 12px; font-size: 12.5px; color: var(--emerald-900);">
+          <strong>🔒 Quyền truy cập Read-Only Cấp Xã:</strong><br/>
+          Chỉ xem số liệu tổng hợp theo Thôn, HTX, Nhóm hàng, Kênh. Không truy cập danh tính hay số điện thoại từng hộ.
+        </div>
+
+        <div style="font-size: 12px; font-weight: 800; color: var(--slate-500); text-transform: uppercase; margin-top: 8px;">
+          Chuyển nhanh sang phân hệ khác
+        </div>
+        <a href="/index.html" style="text-decoration: none; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); color: var(--slate-800); font-size: 13.5px; font-weight: 700; display: block;">
+          📱 1. Mobile App Nông Hộ (Bác Ba)
+        </a>
+        <a href="/htx-dashboard.html" style="text-decoration: none; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); color: var(--slate-800); font-size: 13.5px; font-weight: 700; display: block;">
+          👨‍💼 2. Dashboard Quản Lý HTX
+        </a>
+        <a href="/PORTAL.html" style="text-decoration: none; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); color: var(--slate-800); font-size: 13.5px; font-weight: 700; display: block;">
+          🏛️ 3. Cổng Trình Diễn Tích Hợp (PORTAL)
+        </a>
+        <a href="/studio.html" style="text-decoration: none; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); color: var(--slate-800); font-size: 13.5px; font-weight: 700; display: block;">
+          ⚖️ 4. Dual Studio (GreenOS vs GVOS)
+        </a>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid var(--slate-200); padding-top: 16px;">
+      <button type="button" class="btn-outline-slate" style="width: 100%; justify-content: center;" onclick="resetDemoState()">
+        🔄 Đặt lại dữ liệu mẫu ban đầu
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       JAVASCRIPT CONTROLLER: DỮ LIỆU ĐỘNG THEO THÁNG, PHÂN TỔ, TRÌNH CHIẾU & CSV
+       ========================================================================= -->
+  <script>
+    // 1. Dữ liệu theo kỳ tháng chuẩn GVOS (mocks/handlers/xa.ts)
+    const XA_MONTHLY_DATA = {
+      '2026-10': {
+        isRunning: true,
+        label: 'Tháng 10/2026 (đến hôm nay)',
+        freshness: 'Số liệu đến hết ngày 05/10/2026. Cập nhật lúc 09:00, 05/10/2026.',
+        m1: '21', m1Delta: 'Không đổi so với tháng 9', m1Class: 'neutral',
+        m2: '61', m2Delta: 'Không đổi so với tháng 9', m2Class: 'neutral',
+        m3: '0',  m3Delta: '⏳ Chưa so được, tháng chưa đủ', m3Class: 'guard',
+        m4: '81 %', m4Delta: 'Không đổi so với tháng 9', m4Class: 'neutral',
+        shareSelfText: '56 sản phẩm · Lượt chia sẻ: chưa có trong tháng này',
+        shareHubText: '5 sản phẩm · 0 lượt chia sẻ',
+        acjVal: '14', acjDelta: '⏳ Chưa so được, tháng chưa đủ (Mới qua 5 ngày)'
+      },
+      '2026-09': {
+        isRunning: false,
+        label: 'Tháng 09/2026',
+        freshness: 'Số liệu chốt kỳ Tháng 09/2026 (01/09 – 30/09/2026). Cập nhật lúc 09:00, 05/10/2026.',
+        m1: '21', m1Delta: '↑ Tăng 1 hộ so với tháng 8 (20 hộ)', m1Class: 'up',
+        m2: '61', m2Delta: '↑ Tăng 21 SP so với tháng 8 (40 SP)', m2Class: 'up',
+        m3: '145', m3Delta: '↑ Tăng 92 lượt so với tháng 8 (53 lượt)', m3Class: 'up',
+        m4: '81 %', m4Delta: '↑ Tăng 1 điểm % so với tháng 8 (80 %)', m4Class: 'up',
+        shareSelfText: '56 sản phẩm · 134 lượt chia sẻ',
+        shareHubText: '5 sản phẩm · 11 lượt chia sẻ',
+        acjVal: '65', acjDelta: '↑ Tăng 13 lượt so với tháng 8 (52 lượt)'
+      },
+      '2026-08': {
+        isRunning: false,
+        label: 'Tháng 08/2026',
+        freshness: 'Số liệu chốt kỳ Tháng 08/2026 (01/08 – 31/08/2026).',
+        m1: '20', m1Delta: '↑ Tăng 3 hộ so với tháng 7 (17 hộ)', m1Class: 'up',
+        m2: '40', m2Delta: '↑ Tăng 12 SP so với tháng 7 (28 SP)', m2Class: 'up',
+        m3: '53', m3Delta: '↑ Tăng 18 lượt so với tháng 7 (35 lượt)', m3Class: 'up',
+        m4: '80 %', m4Delta: '↑ Tăng 4 điểm % so với tháng 7 (76 %)', m4Class: 'up',
+        shareSelfText: '36 sản phẩm · 48 lượt chia sẻ',
+        shareHubText: '4 sản phẩm · 5 lượt chia sẻ',
+        acjVal: '52', acjDelta: '↑ Tăng 8 lượt so với tháng 7 (44 lượt)'
+      },
+      '2026-07': {
+        isRunning: false,
+        label: 'Tháng 07/2026',
+        freshness: 'Số liệu chốt kỳ Tháng 07/2026 (01/07 – 31/07/2026).',
+        m1: '17', m1Delta: 'Kỳ cơ sở đầu tiên triển khai', m1Class: 'neutral',
+        m2: '28', m2Delta: 'Kỳ cơ sở đầu tiên triển khai', m2Class: 'neutral',
+        m3: '35', m3Delta: 'Kỳ cơ sở đầu tiên triển khai', m3Class: 'neutral',
+        m4: '76 %', m4Delta: '13/17 hộ có sản phẩm đã chốt', m4Class: 'neutral',
+        shareSelfText: '24 sản phẩm · 30 lượt chia sẻ',
+        shareHubText: '4 sản phẩm · 5 lượt chia sẻ',
+        acjVal: '44', acjDelta: 'Kỳ cơ sở đầu tiên triển khai'
+      }
+    };
+
+    // 2. Dữ liệu 4 chiều phân tích (XA-02)
+    const XA02_DIMENSIONS = {
+      'thon': {
+        title: 'Thôn Bãi Sen cao nhất (83 %), Thôn Gò Mít thấp nhất (60 %)',
+        unit: 'Đơn vị thanh ngang: Mức số hoá (%) · Gộp 3 thôn dưới 5 hộ thành «Nhóm nhỏ»',
+        col1: 'Địa bàn thôn',
+        col2: 'Số hộ đồng ý',
+        col3: 'Số sản phẩm',
+        col4: 'Mức số hoá',
+        rows: [
+          { name: 'Thôn Bãi Sen', sub: '', c2: '6 hộ', c3: '22 SP', c4: '83 %', pct: 83, tone: 'normal' },
+          { name: 'Thôn Khe Trúc', sub: '', c2: '5 hộ', c3: '14 SP', c4: '80 %', pct: 80, tone: 'normal' },
+          { name: 'Thôn Gò Mít', sub: 'Cần hỗ trợ điểm sấy', c2: '5 hộ', c3: '10 SP', c4: '60 %', pct: 60, tone: 'low' },
+          { name: 'Nhóm nhỏ', sub: 'Gộp Đồng Chè, Suối Mây, Nà Liêu (< 5 hộ/thôn)', c2: '5 hộ', c3: '15 SP', c4: '100 %', pct: 100, tone: 'muted' }
+        ]
+      },
+      'htx': {
+        title: 'HTX Mật Ong Khe Trúc cao nhất (100 %), HTX Chè Đồng Lam thấp nhất (63 %)',
+        unit: 'Đơn vị thanh ngang: Mức số hoá (%) theo từng Hợp tác xã',
+        col1: 'Hợp tác xã',
+        col2: 'Số hộ đồng ý',
+        col3: 'Số sản phẩm',
+        col4: 'Mức số hoá',
+        rows: [
+          { name: 'HTX Mật Ong Khe Trúc', sub: '', c2: '7 hộ', c3: '26 SP', c4: '100 %', pct: 100, tone: 'normal' },
+          { name: 'HTX Nông Sản Suối Mây', sub: '', c2: '6 hộ', c3: '14 SP', c4: '83 %', pct: 83, tone: 'normal' },
+          { name: 'HTX Chè Đồng Lam', sub: 'Đang bổ sung ảnh sản phẩm', c2: '8 hộ', c3: '21 SP', c4: '63 %', pct: 63, tone: 'low' }
+        ]
+      },
+      'nhom-hang': {
+        title: 'Thủ công nhiều sản phẩm nhất (16 SP, 57 % hộ tham gia)',
+        unit: 'Đơn vị thanh ngang: Tỷ lệ hộ có sản phẩm thuộc nhóm hàng (%)',
+        col1: 'Nhóm hàng',
+        col2: 'Số hộ có SP',
+        col3: 'Số sản phẩm',
+        col4: 'Tỷ lệ hộ',
+        rows: [
+          { name: 'Thủ công (Mây tre, dệt)', sub: '', c2: '12 hộ', c3: '16 SP', c4: '57 %', pct: 57, tone: 'normal' },
+          { name: 'Sơ chế (Chuối sấy, măng khô)', sub: '', c2: '10 hộ', c3: '12 SP', c4: '48 %', pct: 48, tone: 'normal' },
+          { name: 'Thực phẩm đóng gói (Trà, mật ong)', sub: '', c2: '8 hộ', c3: '12 SP', c4: '38 %', pct: 38, tone: 'normal' },
+          { name: 'Đồ dùng nhà làm', sub: '', c2: '7 hộ', c3: '9 SP', c4: '33 %', pct: 33, tone: 'normal' },
+          { name: 'Nông sản tươi', sub: '', c2: '7 hộ', c3: '8 SP', c4: '33 %', pct: 33, tone: 'normal' },
+          { name: 'Nhóm nhỏ', sub: 'Gộp các nhóm < 5 hộ', c2: 'Dưới 5 hộ', c3: '4 SP', c4: 'Dưới 5 hộ', pct: 18, tone: 'muted' }
+        ]
+      },
+      'kenh': {
+        title: 'Zalo chiếm nhiều lượt chia sẻ nhất (60 lượt, 41 %)',
+        unit: 'Đơn vị thanh ngang: Số lượt chia sẻ bài bán hàng trong kỳ',
+        col1: 'Kênh chia sẻ',
+        col2: 'Lượt chia sẻ',
+        col3: 'Hộ tự làm',
+        col4: 'Hub làm',
+        rows: [
+          { name: '💬 Zalo (Nhóm & OA)', sub: '', c2: '60 lượt', c3: '55 lượt', c4: '5 lượt', pct: 100, tone: 'normal' },
+          { name: '📘 Facebook', sub: '', c2: '51 lượt', c3: '48 lượt', c4: '3 lượt', pct: 85, tone: 'normal' },
+          { name: '🛍️ Shopee', sub: '', c2: '34 lượt', c3: '31 lượt', c4: '3 lượt', pct: 57, tone: 'low' }
+        ]
+      }
+    };
+
+    // 3. Chuyển Tab chính (XA-01 .. ACJ-21)
+    function switchXaTab(tabId) {
+      document.querySelectorAll('.xa-nav-tab').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.xa-screen').forEach(sec => sec.classList.remove('active'));
+
+      const targetBtn = document.getElementById('navTab-' + tabId);
+      const targetSec = document.getElementById('screen-' + tabId);
+      if (targetBtn) targetBtn.classList.add('active');
+      if (targetSec) targetSec.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 4. Thay đổi kỳ tháng (XA-X1)
+    function onChangeXaMonth(monthKey) {
+      const d = XA_MONTHLY_DATA[monthKey] || XA_MONTHLY_DATA['2026-09'];
+      const badge = document.getElementById('runningMonthBadge');
+      if (d.isRunning) {
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+
+      document.getElementById('xa01FreshnessText').innerText = d.freshness;
+      document.getElementById('xa03PeriodLabel').innerText = '· ' + d.label + ' · Xã Đồng Lam, Tỉnh Sơn Nguyên';
+
+      document.getElementById('m1Val').innerText = d.m1;
+      const m1D = document.getElementById('m1Delta');
+      m1D.innerText = d.m1Delta;
+      m1D.className = 'tile-delta ' + d.m1Class;
+
+      document.getElementById('m2Val').innerText = d.m2;
+      const m2D = document.getElementById('m2Delta');
+      m2D.innerText = d.m2Delta;
+      m2D.className = 'tile-delta ' + d.m2Class;
+
+      document.getElementById('m3Val').innerText = d.m3;
+      const m3D = document.getElementById('m3Delta');
+      m3D.innerText = d.m3Delta;
+      m3D.className = 'tile-delta ' + d.m3Class;
+
+      document.getElementById('m4Val').innerText = d.m4;
+      const m4D = document.getElementById('m4Delta');
+      m4D.innerText = d.m4Delta;
+      m4D.className = 'tile-delta ' + d.m4Class;
+
+      document.getElementById('shareSelfText').innerText = d.shareSelfText;
+      document.getElementById('shareHubText').innerText = d.shareHubText;
+
+      document.getElementById('acjHeroVal').innerText = d.acjVal;
+      document.getElementById('acjHeroDelta').innerText = d.acjDelta;
+    }
+
+    // 5. Render chiều phân tích XA-02
+    function switchXa02Dimension(dimKey) {
+      document.querySelectorAll('#screen-xa02 .sub-tab-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('dimBtn-' + dimKey);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const cfg = XA02_DIMENSIONS[dimKey] || XA02_DIMENSIONS['thon'];
+      const container = document.getElementById('xa02BreakdownContent');
+
+      const barsHtml = cfg.rows.map(r => `
+        <div class="hbar-row">
+          <div class="hbar-label">
+            <div>${r.name}</div>
+            ${r.sub ? `<span class="small-group-tag">${r.sub}</span>` : ''}
+          </div>
+          <div class="hbar-track">
+            <div class="hbar-fill ${r.tone === 'low' ? 'low' : (r.tone === 'muted' ? 'muted' : '')}" style="width: ${r.pct}%;"></div>
+          </div>
+          <div class="hbar-val">${dimKey === 'kenh' ? r.c2 : r.c4}</div>
+        </div>
+      `).join('');
+
+      const tableRowsHtml = cfg.rows.map(r => `
+        <tr>
+          <td>
+            <strong>${r.name}</strong>
+            ${r.sub ? `<div style="font-size: 11.5px; color: var(--slate-500); font-weight: 500;">${r.sub}</div>` : ''}
+          </td>
+          <td class="num">${r.c2}</td>
+          <td class="num">${r.c3}</td>
+          <td class="num" style="color: ${r.tone === 'low' ? 'var(--amber-700)' : 'var(--emerald-700)'};">${r.c4}</td>
+        </tr>
+      `).join('');
+
+      container.innerHTML = `
+        <div>
+          <div class="chart-conclusion-title">${cfg.title}</div>
+          <div class="chart-unit-sub">${cfg.unit}</div>
+          <div class="hbar-list">${barsHtml}</div>
+        </div>
+        <div>
+          <table class="xa-table">
+            <thead>
+              <tr>
+                <th>${cfg.col1}</th>
+                <th class="num">${cfg.col2}</th>
+                <th class="num">${cfg.col3}</th>
+                <th class="num">${cfg.col4}</th>
+              </tr>
+            </thead>
+            <tbody>${tableRowsHtml}</tbody>
+          </table>
+        </div>
+      `;
+
+      const weeklyCard = document.getElementById('xa02ChannelWeeklyCard');
+      if (weeklyCard) {
+        weeklyCard.style.display = (dimKey === 'kenh') ? 'block' : 'none';
+      }
+    }
+
+    // 6. Chuyển đổi giữa CX-13 (Nút thắt) và CX-14 (Bản đồ nguồn lực)
+    function switchCxSubView(viewKey) {
+      document.getElementById('cxSubBtn-cx13').classList.toggle('active', viewKey === 'cx13');
+      document.getElementById('cxSubBtn-cx14').classList.toggle('active', viewKey === 'cx14');
+      document.getElementById('cxSubView-cx13').style.display = (viewKey === 'cx13') ? 'block' : 'none';
+      document.getElementById('cxSubView-cx14').style.display = (viewKey === 'cx14') ? 'block' : 'none';
+    }
+
+    function highlightVillageRow(vId) {
+      ['go-mit', 'bai-sen', 'khe-truc'].forEach(id => {
+        const row = document.getElementById('vRow-' + id);
+        if (row) row.style.background = (id === vId) ? '#FEF3C7' : '';
+      });
+    }
+
+    // 7. Mở phiên ghép nối (CX-13 ConfirmDialog)
+    let pendingMatchRank = null;
+    function openMatchSessionDialog(rank, title) {
+      pendingMatchRank = rank;
+      document.getElementById('matchSessionPromptText').innerText =
+        `Mở phiên ghép nối cho «${title}»? Chỉ ghi nhận để bàn trong cuộc họp giao ban xã, chưa tự động gửi tin nhắn cho ai.`;
+      document.getElementById('matchSessionModal').classList.add('open');
+    }
+
+    function closeMatchSessionDialog() {
+      document.getElementById('matchSessionModal').classList.remove('open');
+      pendingMatchRank = null;
+    }
+
+    function confirmMatchSession() {
+      if (pendingMatchRank) {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const wrap = document.getElementById('bnActionWrap-' + pendingMatchRank);
+        if (wrap) {
+          wrap.innerHTML = `<span class="session-opened-tag">✓ Đã mở phiên lúc ${hh}:${mm}</span>`;
+        }
+      }
+      closeMatchSessionDialog();
+    }
+
+    // 8. HintTip Modal (?)
+    function showHintModal(title, body) {
+      document.getElementById('hintModalTitle').innerText = title;
+      document.getElementById('hintModalBody').innerText = body;
+      document.getElementById('hintTipModal').classList.add('open');
+    }
+
+    function closeHintModal() {
+      document.getElementById('hintTipModal').classList.remove('open');
+    }
+
+    // 9. Toggle bảng chi tiết inline (Xem bảng)
+    function toggleInlineTable(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('open');
+    }
+
+    // 10. Chế độ Trình chiếu (?trinh-chieu=1 & phím Esc)
+    function toggleProjectorMode(enable) {
+      if (enable) {
+        document.body.classList.add('projector-mode');
+      } else {
+        document.body.classList.remove('projector-mode');
+      }
+    }
+
+    // 11. AccountSheet & Đặt lại dữ liệu mẫu
+    function toggleAccountSheet(open) {
+      document.getElementById('accountSheet').classList.toggle('open', open);
+      document.getElementById('accountSheetBackdrop').classList.toggle('open', open);
+    }
+
+    function resetDemoState() {
+      document.getElementById('xaMonthSelect').value = '2026-09';
+      onChangeXaMonth('2026-09');
+      document.getElementById('bnActionWrap-1').innerHTML = `
+        <button type="button" class="btn-primary-emerald" onclick="openMatchSessionDialog(1, 'Máy sấy nông sản (Thôn Bãi Sen, Thôn Gò Mít)')">
+          🤝 Mở phiên ghép nối
+        </button>`;
+      document.getElementById('bnActionWrap-2').innerHTML = `<span class="session-opened-tag">✓ Đã mở phiên lúc 09:12</span>`;
+      document.getElementById('bnActionWrap-3').innerHTML = `
+        <button type="button" class="btn-primary-emerald" onclick="openMatchSessionDialog(3, 'Kho mát bảo quản (Thôn Bãi Sen, Thôn Khe Trúc)')">
+          🤝 Mở phiên ghép nối
+        </button>`;
+      toggleAccountSheet(false);
+    }
+
+    // 12. Xuất CSV Báo cáo tháng (UTF-8 BOM chuẩn XA-03)
+    function exportXa03Csv() {
+      const csvLines = [
+        'Chi so,Don vi,Thang 09/2026,Thang 08/2026,Ho tu lam,Hub lam',
+        'So ho dong y,ho,21,20,Khong tach,Khong tach',
+        'So san pham,san pham,61,40,56,5',
+        'Luot chia se,luot,145,53,134,11',
+        'Muc so hoa,%,81%,80%,Khong tach,Khong tach',
+        '',
+        'Phan to theo Thon,So ho,San pham,Muc so hoa',
+        'Thon Bai Sen,6,22,83%',
+        'Thon Khe Truc,5,14,80%',
+        'Thon Go Mit,5,10,60%',
+        'Nhom nho (<5 ho),5,15,100%'
+      ];
+      const blob = new Blob(['\uFEFF' + csvLines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'bao-cao-thang-2026-09-xa-dong-lam.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Phím Esc thoát trình chiếu hoặc đóng modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (document.body.classList.contains('projector-mode')) {
+          toggleProjectorMode(false);
+        }
+        closeMatchSessionDialog();
+        closeHintModal();
+        toggleAccountSheet(false);
+      }
+    });
+
+    // Khởi tạo mặc định
+    window.addEventListener('DOMContentLoaded', () => {
+      switchXa02Dimension('thon');
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('trinh-chieu') === '1') {
+        toggleProjectorMode(true);
+      }
+      if (window.location.hash === '#xa02') switchXaTab('xa02');
+      if (window.location.hash === '#xa03') switchXaTab('xa03');
+      if (window.location.hash === '#cx13') switchXaTab('cx13');
+      if (window.location.hash === '#cx14') { switchXaTab('cx13'); switchCxSubView('cx14'); }
+      if (window.location.hash === '#acj21') switchXaTab('acj21');
+    });
+  </script>
+</body>
+</html>

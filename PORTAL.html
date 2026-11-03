@@ -35844,6 +35844,13 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lexend:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Chart.js Engine (Đồng bộ Actor 2) -->
+  <script src="libs/chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\\/script>');
+    }
+  </script>
   <style>
     :root {
       --emerald-950: #022C22;
@@ -37087,6 +37094,255 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       }
     }
 
+    /* =========================================================================
+       13. PHÂN HỆ MỚI: SCOPE PICKER, XẾP HẠNG HTX, OCOP & KÝ SỐ MỘC ĐỎ
+       ========================================================================= */
+    .scope-picker-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--slate-100);
+      padding: 0 10px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--slate-300);
+    }
+    .scope-picker-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate-600);
+      white-space: nowrap !important;
+    }
+    .scope-select {
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate-900);
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* HTX Ranking Badges */
+    .htx-rank-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+      white-space: nowrap !important;
+    }
+    .rank-tier-a { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+    .rank-tier-b { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+    .rank-tier-c { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+
+    .score-badge-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-family: 'Lexend', sans-serif;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .score-gold { background: #FEF3C7; color: #92400E; border: 2px solid #F59E0B; }
+    .score-silver { background: #F1F5F9; color: #334155; border: 2px solid #94A3B8; }
+    .score-bronze { background: #FEF2F2; color: #991B1B; border: 2px solid #F87171; }
+
+    /* OCOP Step Tracker & Badges */
+    .ocop-star-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      background: #FFFBEB;
+      color: #B45309;
+      border: 1px solid #FCD34D;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .ocop-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .status-certified { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+    .status-evaluating { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .status-preparing { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+
+    .ocop-grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .ocop-card-box {
+      background: #FFFFFF;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      min-width: 0 !important;
+    }
+    .ocop-card-box:hover {
+      border-color: var(--emerald-500);
+      box-shadow: var(--shadow-md);
+    }
+    .ocop-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .ocop-product-title {
+      font-family: 'Lexend', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+    .ocop-htx-name {
+      font-size: 12.5px;
+      color: var(--slate-500);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* 5-step Pipeline */
+    .pipeline-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      margin: 8px 0;
+      position: relative;
+    }
+    .pipeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .pipeline-step-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #F1F5F9;
+      border: 2px solid var(--slate-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--slate-600);
+      margin-bottom: 4px;
+      z-index: 1;
+    }
+    .pipeline-step.done .pipeline-step-dot {
+      background: var(--emerald-600);
+      border-color: var(--emerald-600);
+      color: #FFFFFF;
+    }
+    .pipeline-step.active .pipeline-step-dot {
+      background: var(--amber-500);
+      border-color: var(--amber-500);
+      color: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+    }
+    .pipeline-step-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--slate-600);
+      line-height: 1.2;
+    }
+
+    /* Red Seal Dấu Mộc Đỏ UBND Xã */
+    .red-seal-stamp {
+      width: 135px;
+      height: 135px;
+      border: 3.5px double #DC2626;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #DC2626;
+      transform: rotate(-10deg);
+      user-select: none;
+      padding: 6px;
+      box-sizing: border-box;
+      background: rgba(254, 242, 242, 0.4);
+      margin: 10px auto 0;
+    }
+    .red-seal-text-top {
+      font-size: 8px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .red-seal-star-icon {
+      font-size: 15px;
+      line-height: 1;
+      margin: 2px 0;
+    }
+    .red-seal-text-sign {
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+    }
+    .red-seal-text-bot {
+      font-size: 7.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    /* Chart Canvas Wrap */
+    .chart-canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 230px;
+      margin-top: 10px;
+    }
+
+    /* Alert cards in Alert Center */
+    .alert-card-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      margin-bottom: 10px;
+      min-width: 0 !important;
+    }
+    .alert-card-item.danger {
+      background: #FEF2F2;
+      border: 1.5px solid #FECACA;
+    }
+    .alert-card-item.warning {
+      background: #FFFBEB;
+      border: 1.5px solid #FDE68A;
+    }
+    .alert-card-item.info {
+      background: #EFF6FF;
+      border: 1.5px solid #BFDBFE;
+    }
+
     @media (max-width: 1100px) {
       .m-stat-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -37120,6 +37376,16 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
     </div>
 
     <div class="xa-header-controls">
+      <!-- Bộ chuyển đổi phạm vi quản trị: Xã / Huyện / Tỉnh (Plan 5.1) -->
+      <div class="scope-picker-group">
+        <label for="xaScopeSelect">🏛️ Cấp:</label>
+        <select id="xaScopeSelect" class="scope-select" onchange="onChangeXaScope(this.value)">
+          <option value="commune" selected>Xã Đồng Lam (3 HTX · 6 Thôn)</option>
+          <option value="district">Huyện Sơn Hà (3 Xã · 9 HTX)</option>
+          <option value="province">Tỉnh Sơn Nguyên (12 Xã · 34 HTX)</option>
+        </select>
+      </div>
+
       <!-- Bộ chọn kỳ tháng (XA-X1) -->
       <div class="month-picker-group">
         <label for="xaMonthSelect">📅 Tháng:</label>
@@ -37173,6 +37439,10 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       <button type="button" class="xa-nav-tab" id="navTab-cx13" onclick="switchXaTab('cx13')">
         <span>🌾 Chợ Xanh</span>
         <span class="xa-nav-code">CX-13 · 14</span>
+      </button>
+      <button type="button" class="xa-nav-tab" id="navTab-ocop" onclick="switchXaTab('ocop')">
+        <span>🏆 Xếp hạng &amp; OCOP</span>
+        <span class="xa-nav-code">HTX · OCOP</span>
       </button>
       <button type="button" class="xa-nav-tab" id="navTab-acj21" onclick="switchXaTab('acj21')">
         <span>👷 Lao động</span>
@@ -37326,7 +37596,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         </div>
       </div>
 
-      <!-- 2 BIỂU ĐỒ XU HƯỚNG 10 TUẦN ĐẶT CẠNH NHAU (TrendCharts) -->
+      <!-- 2 BIỂU ĐỒ XU HƯỚNG 10 TUẦN ĐẶT CẠNH NHAU (TrendCharts - HTML5 Canvas & Chart.js) -->
       <div class="trend-charts-grid projector-hide">
         <!-- Biểu đồ trái: Mức số hoá theo tuần -->
         <div class="section-card" style="margin-bottom: 0;">
@@ -37338,47 +37608,8 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <button type="button" class="btn-pill-toggle" onclick="toggleInlineTable('trendTableDigitization')">Xem bảng</button>
           </div>
 
-          <div class="svg-chart-wrap">
-            <svg viewBox="0 0 560 200" width="100%" height="100%">
-              <defs>
-                <linearGradient id="gradEmerald" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#10B981" stop-opacity="0.28"/>
-                  <stop offset="100%" stop-color="#10B981" stop-opacity="0.0"/>
-                </linearGradient>
-              </defs>
-              <!-- Grid lines -->
-              <line x1="40" y1="25" x2="535" y2="25" stroke="#E2E8F0" stroke-dasharray="4 4"/>
-              <line x1="40" y1="75" x2="535" y2="75" stroke="#E2E8F0" stroke-dasharray="4 4"/>
-              <line x1="40" y1="125" x2="535" y2="125" stroke="#E2E8F0" stroke-dasharray="4 4"/>
-              <line x1="40" y1="165" x2="535" y2="165" stroke="#CBD5E1"/>
-
-              <text x="8" y="29" font-size="11" fill="#64748B" font-weight="600">100%</text>
-              <text x="14" y="79" font-size="11" fill="#64748B" font-weight="600">75%</text>
-              <text x="14" y="129" font-size="11" fill="#64748B" font-weight="600">50%</text>
-              <text x="20" y="169" font-size="11" fill="#64748B" font-weight="600">0%</text>
-
-              <!-- Area & Line: 100%, 75%, 59%, 71%, 80%, 78%, 81%, 81%, 81%, 81% -->
-              <path d="M50,25 L102,75 L154,104 L206,82 L258,65 L310,69 L362,63 L414,63 L466,63 L518,63 L518,165 L50,165 Z" fill="url(#gradEmerald)"/>
-              <polyline fill="none" stroke="#059669" stroke-width="3" points="50,25 102,75 154,104 206,82 258,65 310,69 362,63 414,63 466,63 518,63"/>
-
-              <!-- Key Callout Dots -->
-              <circle cx="50" cy="25" r="5" fill="#059669"/>
-              <text x="42" y="16" font-size="11" font-weight="800" fill="#065F46">100%</text>
-
-              <circle cx="154" cy="104" r="5" fill="#D97706"/>
-              <text x="140" y="122" font-size="11" font-weight="800" fill="#B45309">59% (Thấp nhất)</text>
-
-              <circle cx="518" cy="63" r="6" fill="#059669" stroke="#FFFFFF" stroke-width="2"/>
-              <text x="495" y="50" font-size="12" font-weight="800" fill="#065F46">81%</text>
-
-              <!-- X labels -->
-              <text x="35" y="185" font-size="10.5" fill="#64748B">01/08*</text>
-              <text x="140" y="185" font-size="10.5" fill="#64748B">16/08</text>
-              <text x="245" y="185" font-size="10.5" fill="#64748B">30/08</text>
-              <text x="348" y="185" font-size="10.5" fill="#64748B">14/09</text>
-              <text x="452" y="185" font-size="10.5" fill="#64748B">28/09</text>
-              <text x="502" y="185" font-size="10.5" fill="#059669" font-weight="700">05/10*</text>
-            </svg>
+          <div class="chart-canvas-wrap">
+            <canvas id="xa01DigitizationCanvas"></canvas>
           </div>
 
           <div id="trendTableDigitization" class="inline-data-table-wrap">
@@ -37407,39 +37638,8 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <button type="button" class="btn-pill-toggle" onclick="toggleInlineTable('trendTableShares')">Xem bảng</button>
           </div>
 
-          <div class="svg-chart-wrap">
-            <svg viewBox="0 0 560 200" width="100%" height="100%">
-              <defs>
-                <linearGradient id="gradBlue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#2563EB" stop-opacity="0.22"/>
-                  <stop offset="100%" stop-color="#2563EB" stop-opacity="0.0"/>
-                </linearGradient>
-              </defs>
-              <line x1="40" y1="30" x2="535" y2="30" stroke="#E2E8F0" stroke-dasharray="4 4"/>
-              <line x1="40" y1="95" x2="535" y2="95" stroke="#E2E8F0" stroke-dasharray="4 4"/>
-              <line x1="40" y1="165" x2="535" y2="165" stroke="#CBD5E1"/>
-
-              <text x="12" y="34" font-size="11" fill="#64748B" font-weight="600">45</text>
-              <text x="12" y="99" font-size="11" fill="#64748B" font-weight="600">25</text>
-              <text x="18" y="169" font-size="11" fill="#64748B" font-weight="600">0</text>
-
-              <!-- Points: 6, 11, 14, 10, 12, 31, 44 (peak), 38, 32, 0 (running week) -->
-              <path d="M50,147 L102,132 L154,123 L206,135 L258,129 L310,72 L362,33 L414,51 L466,69 L518,165 L518,165 L50,165 Z" fill="url(#gradBlue)"/>
-              <polyline fill="none" stroke="#2563EB" stroke-width="3" points="50,147 102,132 154,123 206,135 258,129 310,72 362,33 414,51 466,69 518,165"/>
-
-              <circle cx="362" cy="33" r="6" fill="#2563EB" stroke="#FFFFFF" stroke-width="2"/>
-              <text x="325" y="21" font-size="12" font-weight="800" fill="#1D4ED8">Đỉnh: 44 lượt</text>
-
-              <circle cx="466" cy="69" r="4.5" fill="#2563EB"/>
-              <text x="454" y="58" font-size="11" font-weight="700" fill="#1E293B">32</text>
-
-              <text x="35" y="185" font-size="10.5" fill="#64748B">01/08*</text>
-              <text x="140" y="185" font-size="10.5" fill="#64748B">16/08</text>
-              <text x="245" y="185" font-size="10.5" fill="#64748B">30/08</text>
-              <text x="348" y="185" font-size="10.5" fill="#1D4ED8" font-weight="700">14/09</text>
-              <text x="452" y="185" font-size="10.5" fill="#64748B">28/09</text>
-              <text x="502" y="185" font-size="10.5" fill="#64748B">05/10*</text>
-            </svg>
+          <div class="chart-canvas-wrap">
+            <canvas id="xa01SharesCanvas"></canvas>
           </div>
 
           <div id="trendTableShares" class="inline-data-table-wrap">
@@ -37456,6 +37656,20 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
               </tbody>
             </table>
           </div>
+        </div>
+      </div>
+
+      <!-- BIỂU ĐỒ 3: SẢN LƯỢNG MÙA VỤ 4 NÔNG SẢN CHỦ LỰC (Plan 5.2) -->
+      <div class="section-card projector-hide" style="margin-top: 14px;">
+        <div class="chart-box-header">
+          <div>
+            <div class="chart-conclusion-title">Sản lượng mùa vụ 4 nông sản chủ lực toàn xã qua các tháng (Tấn)</div>
+            <div class="chart-unit-sub">Đơn vị: Tấn sản phẩm · Nguồn: Số liệu khai báo từ 3 HTX trên GreenOS</div>
+          </div>
+          <span class="chip-demo">Tháng 9 là đỉnh vụ Chuối sấy OCOP &amp; Chè Bát Tiên</span>
+        </div>
+        <div class="chart-canvas-wrap" style="height: 240px;">
+          <canvas id="xa01CropsCanvas"></canvas>
         </div>
       </div>
     </section>
@@ -37544,7 +37758,14 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         </div>
 
         <div class="report-actions-group">
-          <button type="button" class="btn-primary-emerald" onclick="window.print()">
+          <!-- Phê duyệt & Ký số mộc đỏ (Plan 5.3 & Flow 4) -->
+          <button type="button" class="btn-primary-emerald" id="btnSignReport" onclick="openApproveStampModal()">
+            <span>🔏 Phê duyệt &amp; Đóng mộc số</span>
+          </button>
+          <button type="button" class="btn-outline-slate" id="btnForwardDistrict" onclick="forwardReportToDistrict()">
+            <span>📤 Gửi Liên minh HTX Huyện</span>
+          </button>
+          <button type="button" class="btn-outline-slate" onclick="window.print()">
             <span>🖨️ Xuất PDF / In Bản A4</span>
           </button>
           <button type="button" class="btn-outline-slate" onclick="exportXa03Csv()">
@@ -37554,6 +37775,20 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <span>← Tổng quan</span>
           </button>
         </div>
+      </div>
+
+      <!-- Trạng thái công văn & Lưu vết (Audit Trail) -->
+      <div id="reportAuditBanner" class="alert-card-item info projector-hide" style="margin-bottom: 14px;">
+        <span style="font-size: 20px;">📋</span>
+        <div style="flex: 1;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--blue-700);" id="reportAuditTitle">
+            Tình trạng văn bản: Dự thảo báo cáo tháng 09/2026
+          </div>
+          <div style="font-size: 12px; color: var(--slate-600); margin-top: 2px;" id="reportAuditSub">
+            Được lập bởi Cán bộ kinh tế xã lúc 08:30, 05/10/2026. Chưa đóng dấu phê duyệt. Sẵn sàng trình Lãnh đạo UBND xã ký số.
+          </div>
+        </div>
+        <span class="chip-demo" id="reportAuditBadge">Chưa ký số</span>
       </div>
 
       <!-- Bảng 1: Bốn chỉ số cốt lõi -->
@@ -37678,16 +37913,29 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         </div>
       </div>
 
-      <!-- Chân trang A4: Công thức & Chữ ký -->
+      <!-- Chân trang A4: Công thức, Chữ ký & Dấu mộc điện tử UBND Xã -->
       <div class="report-print-footer">
-        <div style="font-size: 12.5px; color: var(--slate-600); max-width: 680px;">
+        <div style="font-size: 12.5px; color: var(--slate-600); max-width: 580px;">
           <div><strong>Ghi chú công thức:</strong> Mức số hoá (%) = Số hộ đồng ý có ít nhất 1 sản phẩm Đã chốt ÷ Số hộ đồng ý × 100.</div>
           <div style="margin-top: 4px;">Dữ liệu trích xuất tự động từ Hệ thống Kinh tế Xã GreenOS · Bảo mật ẩn danh cấp hộ · <strong>Trang 1/1</strong></div>
+          <div id="forwardAuditNote" style="margin-top: 6px; font-size: 11.5px; color: var(--emerald-800); display: none;">
+            ✓ Đã chuyển tiếp đến: Phòng Nông nghiệp &amp; PTNT Huyện Sơn Hà (Mã tiếp nhận: <strong>SH-BC-2026-09-082</strong> lúc 09:15, 05/10/2026).
+          </div>
         </div>
-        <div style="text-align: center; min-width: 220px;">
-          <div style="font-size: 12.5px; color: var(--slate-500);">Đồng Lam, ngày 05 tháng 10 năm 2026</div>
-          <div style="font-size: 13.5px; font-weight: 800; color: var(--slate-900); margin-top: 4px;">CÁN BỘ KINH TẾ XÃ</div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--emerald-700); margin-top: 28px;">Trần Văn Hùng</div>
+        <div style="text-align: center; min-width: 240px; position: relative;">
+          <div style="font-size: 12px; color: var(--slate-500);">Đồng Lam, ngày 05 tháng 10 năm 2026</div>
+          <div style="font-size: 13px; font-weight: 800; color: var(--slate-900); margin-top: 4px;">TM. ỦY BAN NHÂN DÂN XÃ</div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--slate-600);">PHÓ CHỦ TỊCH</div>
+          
+          <!-- Dấu mộc đỏ điện tử (hiện khi đã ký số) -->
+          <div id="redSealStampBox" class="red-seal-stamp" style="display: none;">
+            <div class="red-seal-text-top">UBND XÃ ĐỒNG LAM</div>
+            <div class="red-seal-star-icon">★</div>
+            <div class="red-seal-text-sign">ĐÃ KÝ SỐ ĐIỆN TỬ</div>
+            <div class="red-seal-text-bot">NGUYỄN VĂN AN</div>
+          </div>
+
+          <div style="font-size: 13px; font-weight: 700; color: var(--emerald-700); margin-top: 10px;">Nguyễn Văn An</div>
         </div>
       </div>
     </section>
@@ -38234,22 +38482,530 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       </div>
     </section>
 
+    <!-- =======================================================================
+         MÀN 6 MỚI: XẾP HẠNG HTX & TIẾN ĐỘ OCOP (PLAN 5.2 & 5.4)
+         ======================================================================= -->
+    <section id="screen-ocop" class="xa-screen">
+      <div class="page-title-row">
+        <div class="page-title-left">
+          <h2>
+            <span>Xếp hạng HTX &amp; Tiến độ OCOP</span>
+            <span class="sub-location">· Xã Đồng Lam, Huyện Sơn Hà</span>
+          </h2>
+          <div class="freshness-bar">
+            <span>Theo dõi chỉ số năng lực Hợp tác xã, tiến độ thẩm định OCOP 3★/4★ và cảnh báo hạn kiểm định chất lượng (QĐ 919/QĐ-TTg).</span>
+            <span class="chip-demo">Kỳ đánh giá Q3/2026</span>
+          </div>
+        </div>
+
+        <div class="sub-tabs-bar" style="margin-bottom: 0;">
+          <button type="button" class="sub-tab-btn active" id="ocopSubBtn-all" onclick="filterOcopSection('all')">
+            Tất cả
+          </button>
+          <button type="button" class="sub-tab-btn" id="ocopSubBtn-ranking" onclick="filterOcopSection('ranking')">
+            🏆 Xếp hạng HTX
+          </button>
+          <button type="button" class="sub-tab-btn" id="ocopSubBtn-pipeline" onclick="filterOcopSection('pipeline')">
+            📋 Hồ sơ OCOP
+          </button>
+          <button type="button" class="sub-tab-btn" id="ocopSubBtn-alerts" onclick="filterOcopSection('alerts')">
+            🚨 Cảnh báo (3)
+          </button>
+        </div>
+      </div>
+
+      <!-- PHẦN 1: BẢNG XẾP HẠNG 3 HTX ĐỊA BÀN (HTX Ranking Matrix) -->
+      <div id="ocopSec-ranking" class="ocop-section-block">
+        <div class="share-bar-header" style="margin-bottom: 12px;">
+          <div>
+            <h3 style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-900);">
+              🏆 Bảng xếp hạng năng lực chuyển đổi số &amp; vận hành của 3 HTX trên địa bàn
+            </h3>
+            <div style="font-size: 12.5px; color: var(--slate-500); margin-top: 2px;">
+              Điểm số tổng hợp trên thang 100 dựa trên: Mức số hoá xã viên (30đ), Tỷ lệ dán tem QR truy xuất (25đ), Doanh thu kỳ (25đ), Chấp hành quy chuẩn VietGAP (20đ).
+            </div>
+          </div>
+          <span class="chip-demo">Xếp hạng bởi UBND Xã &amp; Phòng NN Huyện</span>
+        </div>
+
+        <!-- 3 Thẻ Top HTX -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; margin-bottom: 16px;">
+          <!-- HTX 1: Đồng Lam (Hạng 1) -->
+          <div class="section-card" style="margin-bottom: 0; border: 2px solid var(--emerald-500); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; right: 0; background: var(--emerald-600); color: #FFF; font-size: 11px; font-weight: 800; padding: 4px 12px; border-bottom-left-radius: 8px;">
+              🥇 QUÁN QUÂN ĐỊA BÀN
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="score-badge-circle score-gold">
+                <span style="font-size: 18px; line-height: 1;">92</span>
+                <span style="font-size: 8.5px; text-transform: uppercase;">Điểm</span>
+              </div>
+              <div>
+                <h4 style="font-family: 'Lexend', sans-serif; font-size: 15px; font-weight: 800; color: var(--slate-900);">
+                  HTX Nông Nghiệp Số Đồng Lam
+                </h4>
+                <div style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
+                  <span class="htx-rank-pill rank-tier-a">Hạng A · Xuất sắc</span>
+                  <span class="ocop-star-badge">★★★★ OCOP 4 Sao</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; background: var(--slate-50); padding: 10px; border-radius: 8px;">
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); font-weight: 600;">Số hoá</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--emerald-700);">100% (8/8 hộ)</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); font-weight: 600;">Doanh thu T.9</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--slate-900);">580M</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); font-weight: 600;">Đơn trễ</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--emerald-700);">0 đơn</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HTX 2: Khe Trúc (Hạng 2) -->
+          <div class="section-card" style="margin-bottom: 0; border: 1.5px solid var(--slate-300);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="score-badge-circle score-silver">
+                <span style="font-size: 18px; line-height: 1;">81</span>
+                <span style="font-size: 8.5px; text-transform: uppercase;">Điểm</span>
+              </div>
+              <div>
+                <h4 style="font-family: 'Lexend', sans-serif; font-size: 15px; font-weight: 800; color: var(--slate-900);">
+                  HTX Mật Ong &amp; Chè Khe Trúc
+                </h4>
+                <div style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
+                  <span class="htx-rank-pill rank-tier-b">Hạng B+ · Khá</span>
+                  <span class="ocop-star-badge">★★★ OCOP 3 Sao</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; background: var(--slate-50); padding: 10px; border-radius: 8px;">
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); font-weight: 600;">Số hoá</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--emerald-700);">83% (6/7 hộ)</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); font-weight: 600;">Doanh thu T.9</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--slate-900);">360M</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); font-weight: 600;">Đơn trễ</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--amber-700);">2 đơn</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HTX 3: Suối Mây (Hạng 3) -->
+          <div class="section-card" style="margin-bottom: 0; border: 1.5px solid #FCD34D; background: #FFFDF5;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="score-badge-circle score-bronze">
+                <span style="font-size: 18px; line-height: 1;">64</span>
+                <span style="font-size: 8.5px; text-transform: uppercase;">Điểm</span>
+              </div>
+              <div>
+                <h4 style="font-family: 'Lexend', sans-serif; font-size: 15px; font-weight: 800; color: var(--slate-900);">
+                  HTX Nông Sản Suối Mây
+                </h4>
+                <div style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
+                  <span class="htx-rank-pill rank-tier-c">Hạng C · Cần đôn đốc</span>
+                  <span class="cert-expiring-tag">⚠️ VietGAP còn 24 ngày</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; background: #FEF3C7; padding: 10px; border-radius: 8px;">
+              <div>
+                <div style="font-size: 11px; color: var(--slate-600); font-weight: 600;">Số hoá</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--amber-800);">63% (5/8 hộ)</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--slate-600); font-weight: 600;">Doanh thu T.9</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--slate-900);">142M</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--slate-600); font-weight: 600;">Đơn trễ</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--red-700);">5 đơn</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bảng đối chiếu chi tiết 3 HTX -->
+        <div class="section-card" style="margin-bottom: 20px;">
+          <div class="share-bar-header">
+            <div class="share-bar-title">Ma trận đối chiếu tiêu chí năng lực giữa 3 HTX</div>
+            <span class="chip-demo">Dữ liệu kiểm toán thực tế</span>
+          </div>
+          <table class="xa-table">
+            <thead>
+              <tr>
+                <th>Hợp tác xã</th>
+                <th class="num">Xã viên số hoá</th>
+                <th class="num">Sản phẩm đăng</th>
+                <th class="num">Doanh số T.9</th>
+                <th class="num">Tỷ lệ dán tem QR</th>
+                <th>Sản phẩm OCOP / Chứng nhận</th>
+                <th>Đánh giá của UBND Xã</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>🥇 HTX Nông Nghiệp Số Đồng Lam</strong>
+                  <div style="font-size: 11px; color: var(--slate-500);">Thôn Bãi Sen · Chủ nhiệm: Lê Văn Thành</div>
+                </td>
+                <td class="num" style="color: var(--emerald-700); font-weight: 800;">100 % (8/8)</td>
+                <td class="num">26 SP</td>
+                <td class="num"><strong>580.000.000 đ</strong></td>
+                <td class="num" style="color: var(--emerald-700); font-weight: 700;">100 %</td>
+                <td><span class="ocop-star-badge">★★★★ OCOP 4★</span> <span class="cert-valid-tag">VietGAP</span></td>
+                <td><span class="htx-rank-pill rank-tier-a">Mô hình điểm cấp tỉnh</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>🥈 HTX Mật Ong &amp; Chè Khe Trúc</strong>
+                  <div style="font-size: 11px; color: var(--slate-500);">Thôn Khe Trúc · Chủ nhiệm: Hoàng Thị Nga</div>
+                </td>
+                <td class="num" style="color: var(--emerald-700); font-weight: 800;">83 % (5/6)</td>
+                <td class="num">14 SP</td>
+                <td class="num"><strong>360.000.000 đ</strong></td>
+                <td class="num" style="color: var(--emerald-700); font-weight: 700;">94 %</td>
+                <td><span class="ocop-star-badge">★★★ OCOP 3★ (Đang nâng 4★)</span></td>
+                <td><span class="htx-rank-pill rank-tier-b">Vận hành tốt, cần kho lạnh</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>🥉 HTX Nông Sản Suối Mây</strong>
+                  <div style="font-size: 11px; color: var(--slate-500);">Thôn Gò Mít · Chủ nhiệm: Phạm Đình Dũng</div>
+                </td>
+                <td class="num" style="color: var(--amber-700); font-weight: 800;">63 % (5/8)</td>
+                <td class="num">21 SP</td>
+                <td class="num"><strong>142.000.000 đ</strong></td>
+                <td class="num" style="color: var(--amber-700); font-weight: 700;">72 %</td>
+                <td><span class="cert-expiring-tag">⚠️ VietGAP sắp hết hạn</span></td>
+                <td><span class="htx-rank-pill rank-tier-c">Cần hỗ trợ máy sấy &amp; tái cấp VietGAP</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PHẦN 2: TIẾN ĐỘ THẨM ĐỊNH OCOP (OCOP Pipeline) -->
+      <div id="ocopSec-pipeline" class="ocop-section-block">
+        <div class="share-bar-header" style="margin-bottom: 8px;">
+          <div>
+            <h3 style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-900);">
+              📋 Theo dõi tiến độ hồ sơ OCOP &amp; Lộ trình nâng hạng sao (Năm 2026)
+            </h3>
+            <div style="font-size: 12.5px; color: var(--slate-500); margin-top: 2px;">
+              Giám sát quy trình thẩm định 5 bước: Nộp hồ sơ → Hội đồng Huyện thẩm định → Kiểm nghiệm mẫu → Phân hạng sao → Quyết định UBND Tỉnh.
+            </div>
+          </div>
+          <button type="button" class="btn-primary-emerald" style="height: 36px; font-size: 12.5px;" onclick="showHintModal('Đăng ký sản phẩm OCOP mới', 'Để nộp hồ sơ sản phẩm mới tham gia phân hạng OCOP cấp Huyện đợt 2/2026, HTX cần hoàn thiện: Bản mô tả sản phẩm, phiếu kết quả kiểm nghiệm ATTP và liên kết chuỗi giá trị trên GreenOS.')">
+            ➕ Hướng dẫn nộp hồ sơ OCOP
+          </button>
+        </div>
+
+        <div class="ocop-grid-layout">
+          <!-- Card 1: Chuối sấy dẻo Đồng Lam (4 sao) -->
+          <div class="ocop-card-box">
+            <div class="ocop-card-top">
+              <div>
+                <span class="ocop-star-badge">★★★★ OCOP 4 SAO</span>
+                <div class="ocop-product-title" style="margin-top: 6px;">Chuối sấy dẻo Đồng Lam</div>
+                <div class="ocop-htx-name">Chủ thể: HTX Nông Nghiệp Số Đồng Lam</div>
+              </div>
+              <span class="ocop-status-pill status-certified">✓ Đang có hiệu lực</span>
+            </div>
+
+            <!-- Pipeline 5 bước -->
+            <div class="pipeline-bar">
+              <div class="pipeline-step done">
+                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-name">1. Hồ sơ</div>
+              </div>
+              <div class="pipeline-step done">
+                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-name">2. HĐ Huyện</div>
+              </div>
+              <div class="pipeline-step done">
+                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-name">3. Kiểm nghiệm</div>
+              </div>
+              <div class="pipeline-step done">
+                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-name">4. Phân hạng</div>
+              </div>
+              <div class="pipeline-step done">
+                <div class="pipeline-step-dot">★</div>
+                <div class="pipeline-step-name">5. Cấp bằng</div>
+              </div>
+            </div>
+
+            <div style="font-size: 12px; color: var(--slate-600); background: var(--slate-50); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between;">
+              <span>Mã OCOP: <strong>OCOP-2024-089</strong></span>
+              <span>Thời hạn: <strong>15/12/2026</strong></span>
+            </div>
+          </div>
+
+          <!-- Card 2: Trà Thảo Mộc Bát Tiên (Đang nâng hạng 4 sao) -->
+          <div class="ocop-card-box">
+            <div class="ocop-card-top">
+              <div>
+                <span class="ocop-star-badge" style="background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE;">★★★ ➔ ★★★★ Nâng hạng 4 Sao</span>
+                <div class="ocop-product-title" style="margin-top: 6px;">Trà Thảo Mộc Bát Tiên Khe Trúc</div>
+                <div class="ocop-htx-name">Chủ thể: HTX Mật Ong &amp; Chè Khe Trúc</div>
+              </div>
+              <span class="ocop-status-pill status-evaluating">Đang thẩm định</span>
+            </div>
+
+            <!-- Pipeline 5 bước -->
+            <div class="pipeline-bar">
+              <div class="pipeline-step done">
+                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-name">1. Hồ sơ</div>
+              </div>
+              <div class="pipeline-step done">
+                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-name">2. HĐ Huyện</div>
+              </div>
+              <div class="pipeline-step active">
+                <div class="pipeline-step-dot">3</div>
+                <div class="pipeline-step-name">3. Kiểm nghiệm</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">4</div>
+                <div class="pipeline-step-name">4. Phân hạng</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">5</div>
+                <div class="pipeline-step-name">5. Cấp bằng</div>
+              </div>
+            </div>
+
+            <div style="font-size: 12px; color: var(--slate-600); background: #EFF6FF; padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between;">
+              <span>Điểm sơ loại: <strong>78/100 điểm</strong></span>
+              <span style="color: #1D4ED8; font-weight: 700;">Hội đồng họp: 25/10/2026</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Bưởi Da Xanh Sơn Hà (Xét duyệt mới 3 sao) -->
+          <div class="ocop-card-box">
+            <div class="ocop-card-top">
+              <div>
+                <span class="ocop-star-badge" style="background: #F8FAFC; color: var(--slate-700); border-color: var(--slate-300);">★★★ Đăng ký mới 3 Sao</span>
+                <div class="ocop-product-title" style="margin-top: 6px;">Bưởi Da Xanh Suối Mây</div>
+                <div class="ocop-htx-name">Chủ thể: Tổ Hợp Tác Thôn Khe Trúc</div>
+              </div>
+              <span class="ocop-status-pill status-evaluating">Đang bổ sung</span>
+            </div>
+
+            <!-- Pipeline 5 bước -->
+            <div class="pipeline-bar">
+              <div class="pipeline-step done">
+                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-name">1. Hồ sơ</div>
+              </div>
+              <div class="pipeline-step active">
+                <div class="pipeline-step-dot">2</div>
+                <div class="pipeline-step-name">2. HĐ Huyện</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">3</div>
+                <div class="pipeline-step-name">3. Kiểm nghiệm</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">4</div>
+                <div class="pipeline-step-name">4. Phân hạng</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">5</div>
+                <div class="pipeline-step-name">5. Cấp bằng</div>
+              </div>
+            </div>
+
+            <div style="font-size: 12px; color: var(--slate-600); background: #FFFBEB; padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between;">
+              <span>Đạt: <strong>68/100 điểm</strong></span>
+              <span style="color: var(--amber-700); font-weight: 700;">Cần bổ sung nhật ký điện tử</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Tinh dầu Sả Chanh (Chuẩn bị hồ sơ 2027) -->
+          <div class="ocop-card-box">
+            <div class="ocop-card-top">
+              <div>
+                <span class="ocop-star-badge" style="background: #F8FAFC; color: var(--slate-700); border-color: var(--slate-300);">Dự kiến 3 Sao (2027)</span>
+                <div class="ocop-product-title" style="margin-top: 6px;">Tinh Dầu Sả Chanh Nguyên Chất</div>
+                <div class="ocop-htx-name">Chủ thể: HTX Nông Sản Suối Mây</div>
+              </div>
+              <span class="ocop-status-pill status-preparing">Chuẩn bị hồ sơ</span>
+            </div>
+
+            <!-- Pipeline 5 bước -->
+            <div class="pipeline-bar">
+              <div class="pipeline-step active">
+                <div class="pipeline-step-dot">1</div>
+                <div class="pipeline-step-name">1. Hồ sơ</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">2</div>
+                <div class="pipeline-step-name">2. HĐ Huyện</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">3</div>
+                <div class="pipeline-step-name">3. Kiểm nghiệm</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">4</div>
+                <div class="pipeline-step-name">4. Phân hạng</div>
+              </div>
+              <div class="pipeline-step">
+                <div class="pipeline-step-dot">5</div>
+                <div class="pipeline-step-name">5. Cấp bằng</div>
+              </div>
+            </div>
+
+            <div style="font-size: 12px; color: var(--slate-600); background: var(--slate-50); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between;">
+              <span>Vùng trồng: <strong>4.2 ha</strong></span>
+              <span>Đạt chuẩn VietGAP sơ cấp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 3: TRUNG TÂM CẢNH BÁO BẤT THƯỜNG & HẠN KIỂM ĐỊNH (Alert Center) -->
+      <div id="ocopSec-alerts" class="ocop-section-block" style="margin-top: 20px;">
+        <div class="share-bar-header" style="margin-bottom: 12px;">
+          <div>
+            <h3 style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-900);">
+              🚨 Trung tâm cảnh báo bất thường &amp; Đôn đốc kiểm tra chất lượng địa bàn
+            </h3>
+            <div style="font-size: 12.5px; color: var(--slate-500); margin-top: 2px;">
+              Phát hiện sớm các rủi ro hết hạn chứng chỉ, tồn đọng hàng hoá và vi phạm quy chế chuỗi giá trị.
+            </div>
+          </div>
+          <span class="chip-demo" style="background: #FEE2E2; color: #B91C1C;">3 cảnh báo cần xử lý</span>
+        </div>
+
+        <!-- Cảnh báo 1: Hết hạn VietGAP -->
+        <div class="alert-card-item danger">
+          <span style="font-size: 26px;">🔴</span>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 13.5px; font-weight: 800; color: var(--red-700);">CẢNH BÁO ĐỎ: Giấy chứng nhận VietGAP số VG-2023-882 sắp hết hiệu lực sau 24 ngày</span>
+              <span class="cert-expiring-tag">Hạn: 28/10/2026</span>
+            </div>
+            <div style="font-size: 12.5px; color: var(--slate-700); margin-top: 4px; line-height: 1.5;">
+              HTX Nông Sản Suối Mây (vùng trồng rau củ &amp; sả chanh tại Thôn Gò Mít) chưa nộp hồ sơ phân tích mẫu đất và nguồn nước phục vụ tái chứng nhận định kỳ. Cán bộ xã cần ban hành công văn đôn đốc để không bị đình chỉ tem QR.
+            </div>
+          </div>
+          <button type="button" class="btn-outline-slate" style="height: 36px; font-size: 12px; white-space: nowrap !important;" onclick="alert('Đã tạo văn bản đôn đốc gửi HTX Nông Sản Suối Mây và Trạm Khuyến Nông.')">
+            📩 Ban hành phiếu đôn đốc
+          </button>
+        </div>
+
+        <!-- Cảnh báo 2: Quá tải kho mát -->
+        <div class="alert-card-item warning">
+          <span style="font-size: 26px;">🟡</span>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 13.5px; font-weight: 800; color: var(--amber-700);">CẢNH BÁO VÀNG: Dung lượng kho mát Thôn Bãi Sen đạt 85% sức chứa</span>
+              <span class="chip-demo" style="background: #FEF3C7; color: #B45309;">Sức chứa còn trống 1.2 tấn</span>
+            </div>
+            <div style="font-size: 12.5px; color: var(--slate-700); margin-top: 4px; line-height: 1.5;">
+              Vụ thu hoạch chuối tiêu hồng vào rộ trong tuần 14/10. Nếu không giải phóng hàng hoặc kết nối sấy dẻo, nguy cơ ùn ứ 4.5 tấn chuối chín.
+            </div>
+          </div>
+          <button type="button" class="btn-outline-slate" style="height: 36px; font-size: 12px; white-space: nowrap !important;" onclick="switchXaTab('cx13')">
+            🤝 Điều phối tại CX-13 →
+          </button>
+        </div>
+
+        <!-- Cảnh báo 3: Lịch họp Hội đồng OCOP -->
+        <div class="alert-card-item info">
+          <span style="font-size: 26px;">📅</span>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 13.5px; font-weight: 800; color: var(--blue-700);">LỊCH CÔNG TÁC: Phiên đánh giá phân hạng OCOP cấp Huyện đợt 2/2026</span>
+              <span class="chip-demo" style="background: #DBEAFE; color: #1D4ED8;">Ngày 25/10/2026</span>
+            </div>
+            <div style="font-size: 12.5px; color: var(--slate-700); margin-top: 4px; line-height: 1.5;">
+              Hội đồng OCOP Huyện Sơn Hà họp đánh giá tại Hội trường UBND Huyện. Đề nghị Cán bộ xã Đồng Lam hoàn tất báo cáo thực địa và chốt danh mục 2 sản phẩm tham gia trước ngày 18/10/2026.
+            </div>
+          </div>
+          <button type="button" class="btn-outline-slate" style="height: 36px; font-size: 12px; white-space: nowrap !important;" onclick="alert('Đã đồng bộ lịch họp vào ứng dụng Lịch công tác UBND Xã.')">
+            📌 Thêm vào lịch công tác
+          </button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- =========================================================================
-       MODAL 1: XÁC NHẬN MỞ PHIÊN GHÉP NỐI (CX-13 CONFIRM DIALOG)
+       MODAL 1: BIÊN BẢN CHỈ ĐẠO ĐIỀU PHỐI NGUỒN LỰC XÃ (CX-13 ACTION LOOP)
        ========================================================================= -->
   <div id="matchSessionModal" class="modal-backdrop" onclick="closeMatchSessionDialog()">
-    <div class="modal-dialog" onclick="event.stopPropagation()">
-      <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900); margin-bottom: 10px;">
-        🤝 Mở phiên ghép nối nguồn lực cấp xã
-      </h3>
-      <p id="matchSessionPromptText" style="font-size: 14px; color: var(--slate-600); line-height: 1.55; margin-bottom: 20px;">
-        Mở phiên ghép nối cho «Máy sấy nông sản»? Chỉ ghi nhận để bàn trong cuộc họp giao ban xã, chưa tự động gửi tin nhắn cho hộ dân.
+    <div class="modal-dialog" style="max-width: 540px;" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <div>
+          <span class="chip-demo" style="background: var(--emerald-100); color: var(--emerald-800);">Nghị định 98/2018/NĐ-CP</span>
+          <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900); margin-top: 4px;">
+            📝 Biên bản điều phối chỉ đạo cuộc họp UBND Xã
+          </h3>
+        </div>
+        <button type="button" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--slate-400);" onclick="closeMatchSessionDialog()">✕</button>
+      </div>
+      
+      <p id="matchSessionPromptText" style="font-size: 13.5px; color: var(--slate-600); line-height: 1.55; margin-bottom: 14px;">
+        Mở phiên ghép nối và ban hành kết luận chỉ đạo điều phối nguồn lực cấp cơ sở.
       </p>
+
+      <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+        <div style="font-size: 12px; font-weight: 700; color: var(--slate-500); margin-bottom: 6px;">PHÂN CÔNG NHIỆM VỤ THỰC THI:</div>
+        <div style="font-size: 13px; color: var(--slate-800); line-height: 1.6;">
+          • <strong>Chủ trì chỉ đạo:</strong> Trần Văn Hùng · Cán bộ Kinh tế Xã<br>
+          • <strong>Đơn vị phối hợp:</strong> Hội Nông dân Xã &amp; Trạm Khuyến Nông<br>
+          • <strong>HTX tiếp nhận:</strong> HTX Nông nghiệp Số Đồng Lam &amp; HTX Suối Mây<br>
+          • <strong>Nội dung:</strong> Huy động máy sấy dự phòng và chia sẻ ca vận hành để xử lý dứt điểm điểm nghẽn trước ngày 15/10.
+        </div>
+      </div>
+
       <div style="display: flex; justify-content: flex-end; gap: 10px;">
-        <button type="button" class="btn-outline-slate" onclick="closeMatchSessionDialog()">Huỷ</button>
-        <button type="button" class="btn-primary-emerald" onclick="confirmMatchSession()">✓ Mở phiên ngay</button>
+        <button type="button" class="btn-outline-slate" onclick="closeMatchSessionDialog()">Huỷ bỏ</button>
+        <button type="button" class="btn-primary-emerald" onclick="confirmMatchSession()">✓ Ban hành chỉ đạo &amp; Mở phiên</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: PHÊ DUYỆT & ĐÓNG DẤU SỐ MỘC ĐỎ UBND XÃ (XA-03)
+       ========================================================================= -->
+  <div id="approveStampModal" class="modal-backdrop" onclick="closeApproveStampModal()">
+    <div class="modal-dialog" style="max-width: 500px;" onclick="event.stopPropagation()">
+      <div style="text-align: center; margin-bottom: 14px;">
+        <div style="font-size: 38px; margin-bottom: 6px;">🔏</div>
+        <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900);">
+          Phê duyệt &amp; Ký số điện tử báo cáo tháng
+        </h3>
+        <p style="font-size: 13px; color: var(--slate-500); margin-top: 4px;">
+          Theo Nghị định 30/2020/NĐ-CP về công tác văn thư và chứng thực chữ ký số Ban Cơ yếu Chính phủ.
+        </p>
+      </div>
+
+      <div style="background: var(--emerald-50); border: 1.5px solid var(--emerald-200); border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 13px; color: var(--emerald-900); line-height: 1.6;">
+        <div><strong>Người ký duyệt:</strong> Nguyễn Văn An · Phó Chủ tịch UBND Xã</div>
+        <div><strong>Cơ quan:</strong> Ủy ban Nhân dân Xã Đồng Lam, Huyện Sơn Hà</div>
+        <div><strong>Nội dung:</strong> Báo cáo số liệu kinh tế nông nghiệp &amp; lao động Tháng 09/2026.</div>
+        <div style="margin-top: 4px; font-size: 11.5px; color: var(--emerald-700);">Chứng thư số còn hiệu lực đến ngày 18/08/2028.</div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="button" class="btn-outline-slate" onclick="closeApproveStampModal()">Huỷ</button>
+        <button type="button" class="btn-primary-emerald" onclick="confirmApproveStamp()">✓ Ký số &amp; Đóng mộc đỏ ngay</button>
       </div>
     </div>
   </div>
@@ -38430,7 +39186,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       }
     };
 
-    // 3. Chuyển Tab chính (XA-01 .. ACJ-21)
+    // 3. Chuyển Tab chính (XA-01 .. OCOP .. ACJ-21)
     function switchXaTab(tabId) {
       document.querySelectorAll('.xa-nav-tab').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.xa-screen').forEach(sec => sec.classList.remove('active'));
@@ -38440,6 +39196,125 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       if (targetBtn) targetBtn.classList.add('active');
       if (targetSec) targetSec.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (tabId === 'xa01') {
+        setTimeout(initXa01Charts, 80);
+      }
+    }
+
+    // 3B. Chuyển đổi Scope quản lý (Cấp Xã / Cấp Huyện / Cấp Tỉnh - Plan 5.1)
+    const SCOPE_DATA = {
+      'commune': {
+        title: 'GreenOS — Kinh Tế & Lao Động Cấp Xã',
+        badge: 'Actor 3 · Cán Bộ Xã',
+        sub: 'UBND Xã Đồng Lam · Huyện Sơn Hà · Tỉnh Sơn Nguyên (3 HTX · 6 Thôn)',
+        multiplier: 1
+      },
+      'district': {
+        title: 'GreenOS — Tổng Hợp Liên Xã Huyện Sơn Hà',
+        badge: 'Actor 3 · Cán Bộ Huyện / LM HTX',
+        sub: 'Liên Minh HTX Huyện Sơn Hà · 3 Xã (Đồng Lam, Sơn Phú, Bình Hòa) · 9 HTX',
+        multiplier: 3.2
+      },
+      'province': {
+        title: 'GreenOS — Bản Đồ Nông Nghiệp Tỉnh Sơn Nguyên',
+        badge: 'Chi Cục Phát Triển Nông Thôn',
+        sub: 'Sở NN&PTNT Tỉnh Sơn Nguyên · 12 Xã · 34 HTX Nông Nghiệp',
+        multiplier: 14.5
+      }
+    };
+
+    function onChangeXaScope(scopeKey) {
+      const s = SCOPE_DATA[scopeKey] || SCOPE_DATA['commune'];
+      document.querySelector('.xa-brand-text h1 span:first-child').innerText = s.title;
+      document.querySelector('.xa-role-pill').innerText = s.badge;
+      document.querySelector('.xa-brand-text p').innerText = s.sub;
+      
+      const currMonth = document.getElementById('xaMonthSelect').value || '2026-09';
+      const m1Base = parseInt(XA_MONTHLY_DATA[currMonth].m1);
+      const m2Base = parseInt(XA_MONTHLY_DATA[currMonth].m2);
+      const m3Base = parseInt(XA_MONTHLY_DATA[currMonth].m3);
+      
+      document.getElementById('m1Val').innerText = Math.round(m1Base * s.multiplier);
+      document.getElementById('m2Val').innerText = Math.round(m2Base * s.multiplier);
+      if (m3Base > 0) document.getElementById('m3Val').innerText = Math.round(m3Base * s.multiplier);
+    }
+
+    // 3C. Lọc phân hệ OCOP & Xếp hạng
+    function filterOcopSection(subKey) {
+      document.querySelectorAll('#screen-ocop .sub-tab-btn').forEach(b => b.classList.remove('active'));
+      const btn = document.getElementById('ocopSubBtn-' + subKey);
+      if (btn) btn.classList.add('active');
+
+      const ranking = document.getElementById('ocopSec-ranking');
+      const pipeline = document.getElementById('ocopSec-pipeline');
+      const alerts = document.getElementById('ocopSec-alerts');
+
+      if (subKey === 'all') {
+        ranking.style.display = 'block';
+        pipeline.style.display = 'block';
+        alerts.style.display = 'block';
+      } else if (subKey === 'ranking') {
+        ranking.style.display = 'block';
+        pipeline.style.display = 'none';
+        alerts.style.display = 'none';
+      } else if (subKey === 'pipeline') {
+        ranking.style.display = 'none';
+        pipeline.style.display = 'block';
+        alerts.style.display = 'none';
+      } else if (subKey === 'alerts') {
+        ranking.style.display = 'none';
+        pipeline.style.display = 'none';
+        alerts.style.display = 'block';
+      }
+    }
+
+    // 3D. Phê duyệt & Đóng dấu mộc đỏ điện tử (XA-03)
+    function openApproveStampModal() {
+      document.getElementById('approveStampModal').classList.add('open');
+    }
+
+    function closeApproveStampModal() {
+      document.getElementById('approveStampModal').classList.remove('open');
+    }
+
+    function confirmApproveStamp() {
+      const seal = document.getElementById('redSealStampBox');
+      if (seal) seal.style.display = 'flex';
+
+      const btn = document.getElementById('btnSignReport');
+      if (btn) {
+        btn.innerHTML = '<span>✓ Đã ký số mộc đỏ</span>';
+        btn.style.background = '#065F46';
+        btn.style.borderColor = '#059669';
+      }
+      const banner = document.getElementById('reportAuditBanner');
+      if (banner) {
+        banner.className = 'alert-card-item';
+        banner.style.background = '#ECFDF5';
+        banner.style.borderColor = '#A7F3D0';
+        document.getElementById('reportAuditTitle').innerText = 'Tình trạng: Báo cáo đã được phê duyệt & Ký số Ban Cơ Yếu';
+        document.getElementById('reportAuditTitle').style.color = '#065F46';
+        document.getElementById('reportAuditSub').innerText = 'Đã ký số bởi Phó Chủ tịch UBND Xã Nguyễn Văn An lúc ' + new Date().toLocaleTimeString('vi-VN') + ', ' + new Date().toLocaleDateString('vi-VN') + '. Có giá trị pháp lý chính thức.';
+        document.getElementById('reportAuditBadge').innerText = 'Đã ký số ✓';
+        document.getElementById('reportAuditBadge').style.background = '#A7F3D0';
+        document.getElementById('reportAuditBadge').style.color = '#064E3B';
+      }
+      closeApproveStampModal();
+    }
+
+    function forwardReportToDistrict() {
+      const auditNote = document.getElementById('forwardAuditNote');
+      if (auditNote) {
+        auditNote.style.display = 'block';
+      }
+      const btn = document.getElementById('btnForwardDistrict');
+      if (btn) {
+        btn.innerHTML = '<span>✓ Đã gửi Cấp Huyện</span>';
+        btn.style.color = '#065F46';
+        btn.style.borderColor = '#059669';
+      }
+      alert('Đã chuyển tiếp báo cáo thành công lên Hệ thống Quản lý Liên Minh HTX & Phòng NN&PTNT Huyện Sơn Hà!\n\nMã số tiếp nhận văn bản: SH-BC-2026-09-082\nThời gian tiếp nhận: ' + new Date().toLocaleTimeString('vi-VN') + ', ' + new Date().toLocaleDateString('vi-VN'));
     }
 
     // 4. Thay đổi kỳ tháng (XA-X1)
@@ -38579,7 +39454,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         const mm = String(now.getMinutes()).padStart(2, '0');
         const wrap = document.getElementById('bnActionWrap-' + pendingMatchRank);
         if (wrap) {
-          wrap.innerHTML = `<span class="session-opened-tag">✓ Đã mở phiên lúc ${hh}:${mm}</span>`;
+          wrap.innerHTML = `<span class="session-opened-tag" style="background: #ECFDF5; color: #065F46; border: 1.5px solid #A7F3D0; font-weight: 800;">✓ Đã ban hành chỉ đạo (KL-08/TB) lúc ${hh}:${mm}</span>`;
         }
       }
       closeMatchSessionDialog();
@@ -38645,7 +39520,12 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         'Thon Bai Sen,6,22,83%',
         'Thon Khe Truc,5,14,80%',
         'Thon Go Mit,5,10,60%',
-        'Nhom nho (<5 ho),5,15,100%'
+        'Nhom nho (<5 ho),5,15,100%',
+        '',
+        'Xep hang HTX,Xap hang,Diem,Doanh thu T.9,OCOP',
+        'HTX Nong Nghiep So Dong Lam,Hang 1,92/100,580.000.000,4 sao',
+        'HTX Mat Ong Khe Truc,Hang 2,81/100,360.000.000,3 sao',
+        'HTX Nong San Suoi May,Hang 3,64/100,142.000.000,Chuan bi 3 sao'
       ];
       const blob = new Blob(['\uFEFF' + csvLines.join('\n')], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
@@ -38657,6 +39537,163 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       document.body.removeChild(a);
     }
 
+    // 13. Khởi tạo các biểu đồ Chart.js (XA-01 & Sản lượng mùa vụ)
+    let xaDigitizationChartInstance = null;
+    let xaSharesChartInstance = null;
+    let xaCropsChartInstance = null;
+
+    function initXa01Charts() {
+      if (typeof Chart === 'undefined') return;
+
+      // Chart 1: Mức số hoá 10 tuần
+      const canvas1 = document.getElementById('xa01DigitizationCanvas');
+      if (canvas1 && !xaDigitizationChartInstance) {
+        const ctx1 = canvas1.getContext('2d');
+        const gradEmerald = ctx1.createLinearGradient(0, 0, 0, 200);
+        gradEmerald.addColorStop(0, 'rgba(16, 185, 129, 0.35)');
+        gradEmerald.addColorStop(1, 'rgba(16, 185, 129, 0.01)');
+
+        xaDigitizationChartInstance = new Chart(ctx1, {
+          type: 'line',
+          data: {
+            labels: ['01/08*', '08/08', '16/08', '23/08', '30/08', '07/09', '14/09', '21/09', '28/09', '05/10*'],
+            datasets: [{
+              label: 'Mức số hoá (%)',
+              data: [100, 75, 59, 71, 80, 78, 81, 81, 81, 81],
+              borderColor: '#059669',
+              backgroundColor: gradEmerald,
+              borderWidth: 3,
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: '#059669',
+              pointRadius: 4,
+              pointHoverRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(c) { return ' Mức số hoá: ' + c.parsed.y + ' %'; }
+                }
+              }
+            },
+            scales: {
+              y: {
+                min: 0,
+                max: 100,
+                ticks: { callback: v => v + '%' }
+              }
+            }
+          }
+        });
+      }
+
+      // Chart 2: Lượt chia sẻ theo tuần
+      const canvas2 = document.getElementById('xa01SharesCanvas');
+      if (canvas2 && !xaSharesChartInstance) {
+        const ctx2 = canvas2.getContext('2d');
+        const gradBlue = ctx2.createLinearGradient(0, 0, 0, 200);
+        gradBlue.addColorStop(0, 'rgba(37, 99, 235, 0.32)');
+        gradBlue.addColorStop(1, 'rgba(37, 99, 235, 0.01)');
+
+        xaSharesChartInstance = new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: ['01/08*', '08/08', '16/08', '23/08', '30/08', '07/09', '14/09 ★', '21/09', '28/09', '05/10*'],
+            datasets: [{
+              label: 'Lượt chia sẻ',
+              data: [6, 11, 14, 10, 12, 31, 44, 38, 32, 0],
+              borderColor: '#2563EB',
+              backgroundColor: gradBlue,
+              borderWidth: 3,
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: ['#2563EB', '#2563EB', '#2563EB', '#2563EB', '#2563EB', '#2563EB', '#DC2626', '#2563EB', '#2563EB', '#94A3B8'],
+              pointRadius: [4, 4, 4, 4, 4, 4, 7, 5, 4, 3],
+              pointHoverRadius: 8
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(c) { return ' Lượt chia sẻ: ' + c.parsed.y + ' lượt'; }
+                }
+              }
+            },
+            scales: {
+              y: {
+                min: 0,
+                max: 50,
+                ticks: { stepSize: 10 }
+              }
+            }
+          }
+        });
+      }
+
+      // Chart 3: Sản lượng mùa vụ 4 nhóm nông sản
+      const canvas3 = document.getElementById('xa01CropsCanvas');
+      if (canvas3 && !xaCropsChartInstance) {
+        const ctx3 = canvas3.getContext('2d');
+        xaCropsChartInstance = new Chart(ctx3, {
+          type: 'bar',
+          data: {
+            labels: ['Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9 ★', 'Tháng 10 (Dự kiến)'],
+            datasets: [
+              {
+                label: 'Chuối sấy OCOP 4★ (Tấn)',
+                data: [3.8, 4.2, 5.0, 8.2, 11.5, 9.0],
+                backgroundColor: '#059669',
+                borderRadius: 4
+              },
+              {
+                label: 'Trà Bát Tiên OCOP 3★ (Tấn)',
+                data: [2.1, 2.8, 3.2, 4.5, 6.2, 5.1],
+                backgroundColor: '#10B981',
+                borderRadius: 4
+              },
+              {
+                label: 'Bưởi Da Xanh (Tấn)',
+                data: [1.2, 1.5, 2.0, 3.8, 7.4, 8.8],
+                backgroundColor: '#F59E0B',
+                borderRadius: 4
+              },
+              {
+                label: 'Dược liệu & Măng khô (Tấn)',
+                data: [0.8, 1.1, 1.4, 2.2, 3.5, 3.0],
+                backgroundColor: '#6366F1',
+                borderRadius: 4
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'top',
+                labels: { font: { family: 'Inter', size: 12, weight: 600 } }
+              }
+            },
+            scales: {
+              y: {
+                title: { display: true, text: 'Sản lượng (Tấn)' },
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      }
+    }
+
     // Phím Esc thoát trình chiếu hoặc đóng modal
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -38664,6 +39701,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           toggleProjectorMode(false);
         }
         closeMatchSessionDialog();
+        closeApproveStampModal();
         closeHintModal();
         toggleAccountSheet(false);
       }
@@ -38680,7 +39718,10 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       if (window.location.hash === '#xa03') switchXaTab('xa03');
       if (window.location.hash === '#cx13') switchXaTab('cx13');
       if (window.location.hash === '#cx14') { switchXaTab('cx13'); switchCxSubView('cx14'); }
+      if (window.location.hash === '#ocop') switchXaTab('ocop');
       if (window.location.hash === '#acj21') switchXaTab('acj21');
+
+      setTimeout(initXa01Charts, 120);
     });
   </script>
 </body>

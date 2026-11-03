@@ -1,4 +1,4 @@
-﻿# IMPLEMENTATION PLAN - Chợ Xanh AI Sale OS
+# IMPLEMENTATION PLAN - Chợ Xanh AI Sale OS
 **Version:** 1.1 — Cập nhật theo 4 actor: Thành viên HTX / Quản lý HTX / Cán bộ xã / Người mua & Đối tác
 
 ---
@@ -111,25 +111,26 @@
 ## Phase 5: 🏛️ Cán bộ xã — Commune Dashboard
 
 ### 5.1 Commune Overview
-- [ ] Scope filter: xã / huyện / tỉnh (theo role + org hierarchy)
-- [ ] Stats: tổng số HTX, doanh thu tổng, đơn hàng, sản phẩm OCOP
-- [ ] Map view: bản đồ HTX theo địa lý (leaflet.js)
+- [x] Scope filter: xã / huyện / tỉnh (theo role + org hierarchy)
+- [x] Stats: tổng số HTX, doanh thu tổng, đơn hàng, sản phẩm OCOP
+- [x] Map view: bản đồ HTX theo địa lý (leaflet.js & SVG tương tác CX-14)
 
 ### 5.2 HTX Ranking & Analytics
-- [ ] Bảng xếp hạng HTX (doanh thu, đơn hàng, sản phẩm mới)
-- [ ] Biểu đồ doanh thu toàn xã theo thời gian (Recharts)
-- [ ] Biểu đồ sản lượng theo mùa vụ
-- [ ] Cảnh báo: HTX không có hoạt động > 30 ngày
+- [x] Bảng xếp hạng HTX (doanh thu, đơn hàng, sản phẩm mới, điểm năng lực)
+- [x] Biểu đồ doanh thu toàn xã theo thời gian (HTML5 Canvas & Chart.js)
+- [x] Biểu đồ sản lượng theo mùa vụ (Chuối OCOP, Trà Bát Tiên, Bưởi, Dược liệu)
+- [x] Cảnh báo: HTX không có hoạt động > 30 ngày / Hạn VietGAP còn 24 ngày
 
 ### 5.3 Aggregate Reports
-- [ ] Báo cáo tổng hợp nhiều HTX trong phạm vi quản lý
-- [ ] Xuất PDF báo cáo (định dạng hành chính)
-- [ ] Xuất Excel tổng hợp số liệu
+- [x] Báo cáo tổng hợp nhiều HTX trong phạm vi quản lý (Chuẩn QĐ 42)
+- [x] Xuất PDF báo cáo (định dạng hành chính + Ký số mộc đỏ UBND Xã)
+- [x] Xuất Excel/CSV tổng hợp số liệu
+- [x] 1-Click chuyển tiếp báo cáo lên Phòng NN&PTNT Huyện / Liên minh HTX
 
 ### 5.4 OCOP Tracking
-- [ ] Danh sách sản phẩm OCOP đã xét duyệt
-- [ ] Trạng thái chứng nhận theo HTX
-- [ ] Timeline gia hạn chứng nhận
+- [x] Danh sách sản phẩm OCOP đã xét duyệt (Chuối sấy 4★, Trà Bát Tiên 3★, Bưởi Ruby)
+- [x] Trạng thái chứng nhận theo HTX (Pipeline 5 bước thẩm định)
+- [x] Timeline gia hạn chứng nhận & Cảnh báo hạn kiểm định trước 60 ngày
 
 ## Phase 6: 🛒 Người mua & Đối tác
 

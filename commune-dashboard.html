@@ -2060,6 +2060,17 @@
       </div>
 
       <!-- 2 BIỂU ĐỒ XU HƯỚNG 10 TUẦN ĐẶT CẠNH NHAU (TrendCharts - HTML5 Canvas & Chart.js) -->
+      <div class="projector-hide" style="display: flex; justify-content: space-between; align-items: center; margin-top: 18px; margin-bottom: 12px; background: #F8FAFC; border: 1px solid var(--slate-200); padding: 10px 16px; border-radius: 12px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--slate-800); display: flex; align-items: center; gap: 8px;">
+          <svg class="svg-icon" style="color: var(--emerald-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+          Hệ thống Biểu đồ Động thái Kinh tế Xã (Dữ liệu biến thiên theo Thời gian, Phạm vi &amp; Nhập số liệu)
+        </div>
+        <button type="button" class="btn-pill-toggle" onclick="openChartDataModal()" style="display: inline-flex; align-items: center; gap: 6px; background: var(--emerald-50); color: var(--emerald-800); border: 1.5px solid var(--emerald-300); font-weight: 700; padding: 6px 14px; cursor: pointer; border-radius: 8px;">
+          <svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Nhập / Điều chỉnh số liệu biến thiên
+        </button>
+      </div>
+
       <div class="trend-charts-grid projector-hide">
         <!-- Biểu đồ trái: Mức số hoá theo tuần -->
         <div class="section-card" style="margin-bottom: 0;">
@@ -3548,11 +3559,19 @@
         freshness: 'Số liệu đến hết ngày 05/10/2026. Cập nhật lúc 09:00, 05/10/2026.',
         m1: '21', m1Delta: 'Không đổi so với tháng 9', m1Class: 'neutral',
         m2: '61', m2Delta: 'Không đổi so với tháng 9', m2Class: 'neutral',
-        m3: '0',  m3Delta: '⏳ Chưa so được, tháng chưa đủ', m3Class: 'guard',
+        m3: '0',  m3Delta: 'Chưa so được, tháng chưa đủ', m3Class: 'guard',
         m4: '81 %', m4Delta: 'Không đổi so với tháng 9', m4Class: 'neutral',
         shareSelfText: '56 sản phẩm · Lượt chia sẻ: chưa có trong tháng này',
         shareHubText: '5 sản phẩm · 0 lượt chia sẻ',
-        acjVal: '14', acjDelta: '⏳ Chưa so được, tháng chưa đủ (Mới qua 5 ngày)'
+        acjVal: '14', acjDelta: 'Chưa so được, tháng chưa đủ (Mới qua 5 ngày)',
+        digiTrend: [100, 75, 59, 71, 80, 78, 81, 81, 81, 81],
+        sharesTrend: [6, 11, 14, 10, 12, 31, 44, 38, 32, 0],
+        cropsData: [
+          [3.8, 4.2, 5.0, 8.2, 11.5, 9.0],
+          [2.1, 2.8, 3.2, 4.5, 6.2, 5.1],
+          [1.2, 1.5, 2.0, 3.8, 7.4, 8.8],
+          [0.8, 1.1, 1.4, 2.2, 3.5, 3.0]
+        ]
       },
       '2026-09': {
         isRunning: false,
@@ -3564,7 +3583,15 @@
         m4: '81 %', m4Delta: '↑ Tăng 1 điểm % so với tháng 8 (80 %)', m4Class: 'up',
         shareSelfText: '56 sản phẩm · 134 lượt chia sẻ',
         shareHubText: '5 sản phẩm · 11 lượt chia sẻ',
-        acjVal: '65', acjDelta: '↑ Tăng 13 lượt so với tháng 8 (52 lượt)'
+        acjVal: '65', acjDelta: '↑ Tăng 13 lượt so với tháng 8 (52 lượt)',
+        digiTrend: [95, 72, 58, 70, 78, 80, 81, 81, 81, 81],
+        sharesTrend: [5, 10, 12, 14, 20, 31, 44, 38, 32, 28],
+        cropsData: [
+          [3.5, 4.0, 4.8, 8.0, 11.5, 8.5],
+          [2.0, 2.6, 3.0, 4.2, 6.2, 4.8],
+          [1.1, 1.4, 1.8, 3.5, 7.4, 8.0],
+          [0.7, 1.0, 1.3, 2.0, 3.5, 2.8]
+        ]
       },
       '2026-08': {
         isRunning: false,
@@ -3576,7 +3603,15 @@
         m4: '80 %', m4Delta: '↑ Tăng 4 điểm % so với tháng 7 (76 %)', m4Class: 'up',
         shareSelfText: '36 sản phẩm · 48 lượt chia sẻ',
         shareHubText: '4 sản phẩm · 5 lượt chia sẻ',
-        acjVal: '52', acjDelta: '↑ Tăng 8 lượt so với tháng 7 (44 lượt)'
+        acjVal: '52', acjDelta: '↑ Tăng 8 lượt so với tháng 7 (44 lượt)',
+        digiTrend: [85, 65, 55, 62, 70, 74, 76, 78, 80, 80],
+        sharesTrend: [2, 5, 8, 9, 12, 18, 22, 24, 26, 25],
+        cropsData: [
+          [3.0, 3.6, 4.2, 7.5, 9.8, 7.2],
+          [1.8, 2.2, 2.7, 3.8, 5.0, 4.0],
+          [0.9, 1.2, 1.5, 3.0, 6.0, 6.8],
+          [0.6, 0.8, 1.0, 1.8, 2.8, 2.2]
+        ]
       },
       '2026-07': {
         isRunning: false,
@@ -3588,7 +3623,15 @@
         m4: '76 %', m4Delta: '13/17 hộ có sản phẩm đã chốt', m4Class: 'neutral',
         shareSelfText: '24 sản phẩm · 30 lượt chia sẻ',
         shareHubText: '4 sản phẩm · 5 lượt chia sẻ',
-        acjVal: '44', acjDelta: 'Kỳ cơ sở đầu tiên triển khai'
+        acjVal: '44', acjDelta: 'Kỳ cơ sở đầu tiên triển khai',
+        digiTrend: [70, 50, 48, 55, 60, 65, 70, 72, 75, 76],
+        sharesTrend: [1, 3, 5, 7, 8, 10, 12, 14, 16, 18],
+        cropsData: [
+          [2.5, 3.0, 3.8, 6.0, 7.5, 5.5],
+          [1.5, 1.8, 2.2, 3.0, 4.0, 3.2],
+          [0.8, 1.0, 1.2, 2.2, 4.5, 5.0],
+          [0.5, 0.6, 0.8, 1.2, 2.0, 1.6]
+        ]
       }
     };
 
@@ -3709,6 +3752,7 @@
       document.getElementById('m1Val').innerText = Math.round(m1Base * s.multiplier);
       document.getElementById('m2Val').innerText = Math.round(m2Base * s.multiplier);
       if (m3Base > 0) document.getElementById('m3Val').innerText = Math.round(m3Base * s.multiplier);
+      updateCommuneCharts();
     }
 
     // 3C. Lọc phân hệ OCOP & Xếp hạng
@@ -3826,6 +3870,7 @@
 
       document.getElementById('acjHeroVal').innerText = d.acjVal;
       document.getElementById('acjHeroDelta').innerText = d.acjDelta;
+      updateCommuneCharts();
     }
 
     // 5. Render chiều phân tích XA-02
@@ -4165,6 +4210,137 @@
       }
     }
 
+    // 14. HÀM CẬP NHẬT BIẾN THIÊN BIỂU ĐỒ (REACTIVE CHART UPDATER)
+    function updateCommuneCharts() {
+      if (!xaDigitizationChartInstance || !xaSharesChartInstance || !xaCropsChartInstance) return;
+      
+      const currMonth = document.getElementById('xaMonthSelect')?.value || '2026-09';
+      const currScope = document.getElementById('xaScopeSelect')?.value || 'commune';
+      const s = SCOPE_DATA[currScope] || SCOPE_DATA['commune'];
+      const m = XA_MONTHLY_DATA[currMonth] || XA_MONTHLY_DATA['2026-09'];
+      const mult = s.multiplier || 1;
+
+      // 1. Biểu đồ mức số hoá
+      const baseDigi = m.digiTrend || [100, 75, 59, 71, 80, 78, 81, 81, 81, 81];
+      const scaleDigiFactor = currScope === 'commune' ? 1 : (currScope === 'district' ? 0.96 : 0.93);
+      xaDigitizationChartInstance.data.datasets[0].data = baseDigi.map(v => Math.min(100, Math.round(v * scaleDigiFactor)));
+      xaDigitizationChartInstance.update();
+
+      // 2. Biểu đồ lượt chia sẻ
+      const baseShares = m.sharesTrend || [6, 11, 14, 10, 12, 31, 44, 38, 32, 0];
+      const scaledShares = baseShares.map(v => Math.round(v * mult));
+      xaSharesChartInstance.data.datasets[0].data = scaledShares;
+      const maxShare = Math.max(...scaledShares, 50);
+      xaSharesChartInstance.options.scales.y.max = Math.ceil(maxShare * 1.25);
+      xaSharesChartInstance.update();
+
+      // 3. Biểu đồ sản lượng mùa vụ 4 nhóm nông sản
+      const baseCrops = m.cropsData || [
+        [3.8, 4.2, 5.0, 8.2, 11.5, 9.0],
+        [2.1, 2.8, 3.2, 4.5, 6.2, 5.1],
+        [1.2, 1.5, 2.0, 3.8, 7.4, 8.8],
+        [0.8, 1.1, 1.4, 2.2, 3.5, 3.0]
+      ];
+      xaCropsChartInstance.data.datasets.forEach((ds, idx) => {
+        if (baseCrops[idx]) {
+          ds.data = baseCrops[idx].map(v => +(v * mult).toFixed(1));
+        }
+      });
+      xaCropsChartInstance.update();
+    }
+
+    // 15. LIVE DATA INPUT MODAL CONTROLS
+    function openChartDataModal() {
+      const modal = document.getElementById('chartDataModal');
+      if (modal) {
+        modal.classList.add('open');
+        const currMonth = document.getElementById('xaMonthSelect')?.value || '2026-09';
+        const m = XA_MONTHLY_DATA[currMonth] || XA_MONTHLY_DATA['2026-09'];
+        const digiInput = document.getElementById('inputDigitizationRate');
+        const shareInput = document.getElementById('inputSharesCount');
+        const bananaInput = document.getElementById('inputCropBanana');
+        const teaInput = document.getElementById('inputCropTea');
+        const pomeloInput = document.getElementById('inputCropPomelo');
+        const herbInput = document.getElementById('inputCropHerb');
+
+        if (digiInput) digiInput.value = parseInt(m.m4) || 81;
+        if (shareInput) shareInput.value = parseInt(m.m3) || 38;
+        if (m.cropsData) {
+          if (bananaInput) bananaInput.value = m.cropsData[0][4];
+          if (teaInput) teaInput.value = m.cropsData[1][4];
+          if (pomeloInput) pomeloInput.value = m.cropsData[2][4];
+          if (herbInput) herbInput.value = m.cropsData[3][4];
+        }
+      }
+    }
+
+    function closeChartDataModal() {
+      const modal = document.getElementById('chartDataModal');
+      if (modal) modal.classList.remove('open');
+    }
+
+    function applyCustomChartData() {
+      const currMonth = document.getElementById('xaMonthSelect')?.value || '2026-09';
+      const m = XA_MONTHLY_DATA[currMonth];
+      if (!m) return;
+
+      const digiVal = Math.min(100, Math.max(0, parseInt(document.getElementById('inputDigitizationRate')?.value || 81)));
+      const shareVal = Math.max(0, parseInt(document.getElementById('inputSharesCount')?.value || 38));
+      const bVal = parseFloat(document.getElementById('inputCropBanana')?.value || 11.5);
+      const tVal = parseFloat(document.getElementById('inputCropTea')?.value || 6.2);
+      const pVal = parseFloat(document.getElementById('inputCropPomelo')?.value || 7.4);
+      const hVal = parseFloat(document.getElementById('inputCropHerb')?.value || 3.5);
+
+      // Cập nhật thẻ KPI
+      m.m4 = digiVal + ' %';
+      const m4El = document.getElementById('m4Val');
+      if (m4El) m4El.innerText = m.m4;
+
+      m.m3 = shareVal.toString();
+      const m3El = document.getElementById('m3Val');
+      if (m3El) m3El.innerText = m.m3;
+
+      // Cập nhật trends
+      if (m.digiTrend) {
+        m.digiTrend[m.digiTrend.length - 1] = digiVal;
+        m.digiTrend[m.digiTrend.length - 2] = digiVal;
+      }
+      if (m.sharesTrend) {
+        m.sharesTrend[m.sharesTrend.length - 1] = shareVal;
+      }
+      if (m.cropsData) {
+        m.cropsData[0][4] = bVal;
+        m.cropsData[1][4] = tVal;
+        m.cropsData[2][4] = pVal;
+        m.cropsData[3][4] = hVal;
+      }
+
+      // Kích hoạt biến thiên biểu đồ
+      updateCommuneCharts();
+      closeChartDataModal();
+
+      showToast('Đã lưu số liệu mới! Biểu đồ và thẻ chỉ số KPI đã tự động biến thiên.');
+    }
+
+    // Toast notification
+    function showToast(msg) {
+      let toast = document.getElementById('communeToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'communeToast';
+        toast.style.cssText = 'position:fixed; bottom:24px; right:24px; background:#064E3B; color:#FFFFFF; padding:12px 20px; border-radius:10px; font-size:13.5px; font-weight:600; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:99999; display:flex; align-items:center; gap:8px; transform:translateY(100px); opacity:0; transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1); pointer-events:none;';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = '<svg class="svg-inline" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ' + msg;
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => {
+        toast.style.transform = 'translateY(100px)';
+        toast.style.opacity = '0';
+      }, 3500);
+    }
+
     // Phím Esc thoát trình chiếu hoặc đóng modal
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -4195,5 +4371,71 @@
       setTimeout(initXa01Charts, 120);
     });
   </script>
+  <!-- =========================================================================
+       MODAL: NHẬP & ĐIỀU CHỈNH SỐ LIỆU BIẾN THIÊN BIỂU ĐỒ (LIVE DATA INPUT)
+       ========================================================================= -->
+  <div id="chartDataModal" class="modal-backdrop" onclick="closeChartDataModal()">
+    <div class="modal-dialog" style="max-width: 560px;" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px;">
+        <div>
+          <span class="chip-demo" style="background: var(--emerald-100); color: var(--emerald-800);">Dữ liệu thời gian thực</span>
+          <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900); margin-top: 4px; display: flex; align-items: center; gap: 6px;">
+            <svg class="svg-inline" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--emerald-700);"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Nhập &amp; Điều chỉnh số liệu biến thiên biểu đồ
+          </h3>
+        </div>
+        <button type="button" onclick="closeChartDataModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--slate-400); display:inline-flex; align-items:center; justify-content:center;">
+          <svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 16px; line-height: 1.5;">
+        Nhập số liệu mới bên dưới. Khi lưu, toàn bộ các biểu đồ Chart.js (Mức số hoá, Lượt chia sẻ, Sản lượng 4 nông sản) và các thẻ KPI sẽ <strong>lập tức biến thiên và vẽ lại hoạt ảnh mượt mà</strong>.
+      </p>
+
+      <form id="chartDataForm" onsubmit="event.preventDefault(); applyCustomChartData();">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: var(--slate-700); margin-bottom: 4px;">Mức số hoá (%)</label>
+            <input type="number" id="inputDigitizationRate" min="0" max="100" class="form-input-stylish" style="width: 100%;" value="81">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: var(--slate-700); margin-bottom: 4px;">Lượt chia sẻ (lượt)</label>
+            <input type="number" id="inputSharesCount" min="0" max="1000" class="form-input-stylish" style="width: 100%;" value="38">
+          </div>
+        </div>
+
+        <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 10px; padding: 14px; margin-bottom: 16px;">
+          <div style="font-size: 12.5px; font-weight: 700; color: var(--emerald-800); margin-bottom: 8px;">SẢN LƯỢNG MÙA VỤ 4 NÔNG SẢN CHỦ LỰC (TẤN):</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div>
+              <label style="display: block; font-size: 12px; font-weight: 600; color: var(--slate-600); margin-bottom: 2px;">Chuối sấy OCOP 4 Sao</label>
+              <input type="number" step="0.1" id="inputCropBanana" class="form-input-stylish" style="width: 100%;" value="11.5">
+            </div>
+            <div>
+              <label style="display: block; font-size: 12px; font-weight: 600; color: var(--slate-600); margin-bottom: 2px;">Trà Bát Tiên OCOP 3 Sao</label>
+              <input type="number" step="0.1" id="inputCropTea" class="form-input-stylish" style="width: 100%;" value="6.2">
+            </div>
+            <div>
+              <label style="display: block; font-size: 12px; font-weight: 600; color: var(--slate-600); margin-bottom: 2px;">Bưởi Da Xanh (Tấn)</label>
+              <input type="number" step="0.1" id="inputCropPomelo" class="form-input-stylish" style="width: 100%;" value="7.4">
+            </div>
+            <div>
+              <label style="display: block; font-size: 12px; font-weight: 600; color: var(--slate-600); margin-bottom: 2px;">Dược liệu &amp; Măng khô</label>
+              <input type="number" step="0.1" id="inputCropHerb" class="form-input-stylish" style="width: 100%;" value="3.5">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-outline-slate" onclick="closeChartDataModal()">Huỷ</button>
+          <button type="submit" class="btn-primary-emerald" style="display: inline-flex; align-items: center; gap: 6px;">
+            <svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Cập nhật &amp; Biến thiên biểu đồ ngay
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

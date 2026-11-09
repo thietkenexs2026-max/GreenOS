@@ -393,10 +393,10 @@
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
-     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Ngồi test lại toàn bộ luồng Mobile Bác Ba cùng anh Vinh</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Ngồi test lại toàn bộ luồng Mobile Bác Ba cùng Vinh</Data></Cell>
      <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
      <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Chạy thử trên mấy con máy Android cấu hình yếu, test thử giọng nói ở ngoài vườn xem AI bắt chữ chuẩn không, fix hết mấy chỗ bị lag.</Data></Cell>
-     <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Đạt 100% yêu cầu nghiệm thu gói Mobile Bác Ba của anh Vinh | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile</Data></Cell>
+     <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Đạt 100% yêu cầu nghiệm thu gói Mobile Bác Ba của Vinh | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile</Data></Cell>
     </Row>
     <Row ss:Height="45">
      <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">21</Data></Cell>
@@ -575,7 +575,7 @@
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
-     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Họp demo trực tiếp luồng Dashboard HTX cho anh Vinh và Ban Lãnh Đạo</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Họp demo trực tiếp luồng Dashboard HTX cho Vinh và Ban Lãnh Đạo</Data></Cell>
      <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
      <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Trình chiếu luồng nghe audio Bác Ba duyệt chuối sấy OCOP và sổ cấn trừ phân bón, các sếp ưng ý và chốt chuyển sang làm Thẻ Tài Nguyên.</Data></Cell>
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Nghiệm thu đạt yêu cầu toàn bộ phân hệ Dashboard HTX Yên Bình</Data></Cell>
@@ -771,7 +771,7 @@
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
-     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Báo cáo tuần với anh Vinh và sếp Hậu về tiến độ Sàn Nguồn Lực</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Báo cáo tuần với Vinh và sếp Hậu về tiến độ Sàn Nguồn Lực</Data></Cell>
      <Cell ss:StyleID="PriorityTB"><Data ss:Type="String">Trong tuần</Data></Cell>
      <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Mở demo trực tiếp các cặp ghép nối máy cày, xe tải và đơn sỉ WinMart, được các sếp duyệt thông qua chuyển sang tối ưu giao diện.</Data></Cell>
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Ban Lãnh Đạo duyệt thông qua toàn bộ tính năng Sàn Nguồn Lực</Data></Cell>
@@ -983,7 +983,7 @@
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
      <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Kích hoạt phát hành phiên bản Production lên máy chủ Vercel và báo cáo hoàn thành</Data></Cell>
      <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
-     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Bật Vercel Deploy thành công, kiểm tra link live chạy ổn định, gửi link báo cáo tổng kết tháng 10 cho anh Vinh và các sếp.</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Bật Vercel Deploy thành công, kiểm tra link live chạy ổn định, gửi link báo cáo tổng kết tháng 10 cho Vinh và các sếp.</Data></Cell>
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Hệ thống đã chạy chính thức trên Vercel: https://cho-xanh.vercel.app</Data></Cell>
     </Row>
    </Table>

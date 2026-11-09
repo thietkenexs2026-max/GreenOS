@@ -14,7 +14,7 @@ UPDATES = {
     '11': 'Ô nhập giá tiền và số lượng to rõ, tự tính thành tiền | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
     '18': 'Màn hình quản lý đơn hàng phân màu rõ ràng | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/09_mobile_tab_don_hang.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
     '19': 'Popup đơn hàng có nút bấm gọi điện thoại trực tiếp cho người mua | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/09_mobile_tab_don_hang.webp',
-    '20': 'Đạt 100% yêu cầu nghiệm thu gói Mobile Bác Ba của anh Vinh | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
+    '20': 'Đạt 100% yêu cầu nghiệm thu gói Mobile Bác Ba của Vinh | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
     '31': 'Cột Việc Nên Làm Hôm Nay với các nút Mở, Ghép, Nhắc, Gom | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
     '32': 'Bảng thẻ chờ duyệt mới nhất kèm nút xanh Duyệt Ngay | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
     '45': 'Trang quét mã QR tem truy xuất nguồn gốc nông sản | 🔗 Link web: https://cho-xanh.vercel.app/portal',
@@ -32,6 +32,9 @@ with open(CSV_PATH, 'r', encoding='utf-8') as f:
         stt = r[0].strip()
         if stt in UPDATES:
             r[11] = UPDATES[stt]
+        # Clean any occurrence of 'anh vinh', 'Anh Vinh', 'A.Vinh', 'A Vinh' -> 'Vinh'
+        for i in range(len(r)):
+            r[i] = re.sub(r'(?i)\b(anh\s+vinh|a\.?\s*vinh)\b', 'Vinh', r[i])
         rows.append(r)
 
 with open(CSV_PATH, 'w', encoding='utf-8', newline='') as f:
@@ -117,6 +120,15 @@ tbody_new = '<tbody>\n' + '\n'.join(tbody_rows) + '\n      </tbody>'
 # Replace <tbody>...</tbody> in HTML
 html_content = re.sub(r'<tbody>[\s\S]*?</tbody>', tbody_new, html_content)
 
+# Replace <textarea id="rawTsvData">... in HTML
+raw_tsv_text = '\n'.join(['\t'.join(r) for r in rows[1:]])
+html_content = re.sub(r'<textarea id="rawTsvData" style="display:none;">[\s\S]*?</textarea>',
+                      f'<textarea id="rawTsvData" style="display:none;">{raw_tsv_text}</textarea>',
+                      html_content)
+
+# Clean any remaining 'anh vinh' or 'a vinh' in HTML
+html_content = re.sub(r'(?i)\b(anh\s+vinh|a\.?\s*vinh)\b', 'Vinh', html_content)
+
 with open(HTML_PATH, 'w', encoding='utf-8') as f:
     f.write(html_content)
 
@@ -166,6 +178,7 @@ if m:
     header_part = m.group(1)
     new_table_body = header_part + '\n' + '\n'.join(xls_rows) + '\n   '
     xls_content = xls_content[:m.start()] + new_table_body + m.group(3) + xls_content[m.end():]
+    xls_content = re.sub(r'(?i)\b(anh\s+vinh|a\.?\s*vinh)\b', 'Vinh', xls_content)
     with open(XLS_PATH, 'w', encoding='utf-8') as f:
         f.write(xls_content)
     print(f"Updated XLS {XLS_PATH} successfully.")

@@ -235,7 +235,7 @@
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/06</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">06/10/2026</Data></Cell>
-     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">3</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
@@ -249,7 +249,7 @@
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/06</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">06/10/2026</Data></Cell>
-     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">3</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
@@ -274,6 +274,20 @@
     </Row>
     <Row ss:Height="45">
      <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">12</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/06</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">06/10/2026</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Greenfi</Data></Cell>
+     <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Thiết kế bộ Slide kinh doanh GreenFi theo yêu cầu cô Thủy</Data></Cell>
+     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Tổng hợp sơ đồ giải pháp, mô hình liên kết HTX nông nghiệp và hoàn thiện bản thảo slide gửi cô Thủy review đợt 1.</Data></Cell>
+     <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Slide kinh doanh GreenFi hoàn thiện bản thảo đợt 1 | 📄 Xem slide: https://drive.google.com/file/d/1KIf-iXYA0-v1tVC-k3oXiUigOutQKAW3/view?usp=sharing</Data></Cell>
+    </Row>
+    <Row ss:Height="45">
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">13</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/07</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">07/10/2026</Data></Cell>
@@ -287,7 +301,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Hộp Trợ lý AI Phi Phi màu xanh có nút Nói ngay | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">13</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">14</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/07</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">07/10/2026</Data></Cell>
@@ -301,7 +315,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">AI bóc tách giọng Bác Ba ra giá 55.000đ chuẩn xác | 📸 Xem ảnh minh chứng: https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">14</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">15</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/07</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">07/10/2026</Data></Cell>
@@ -315,7 +329,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">3 mẫu bài viết bán hàng có sẵn nút 1-chạm sao chép kèm hashtag #ChoXanh</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">15</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">16</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/08</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">08/10/2026</Data></Cell>
@@ -329,7 +343,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Bảng theo dõi mùa vụ từng thửa đất của Bác Ba | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">16</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">17</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/08</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">08/10/2026</Data></Cell>
@@ -343,7 +357,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Nhật ký bón phân và chăm sóc cây theo thời gian thực | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">17</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">18</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/08</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">08/10/2026</Data></Cell>
@@ -357,7 +371,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Thông báo dự kiến thu hoạch 2.8 tấn chuối ngày 15/10 | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">18</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">19</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/09</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">09/10/2026</Data></Cell>
@@ -371,7 +385,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Màn hình quản lý đơn hàng phân màu rõ ràng | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/09_mobile_tab_don_hang.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">19</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">20</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/09</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">09/10/2026</Data></Cell>
@@ -385,7 +399,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Popup đơn hàng có nút bấm gọi điện thoại trực tiếp cho người mua | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/09_mobile_tab_don_hang.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">20</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">21</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/09</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">09/10/2026</Data></Cell>
@@ -399,7 +413,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Đạt 100% yêu cầu nghiệm thu gói Mobile Bác Ba của Vinh | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">21</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">22</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/12</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">12/10/2026</Data></Cell>
@@ -413,7 +427,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Giao diện Dashboard HTX Yên Bình hoàn chỉnh | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp | 🔗 Web: https://cho-xanh.vercel.app/htx-dashboard</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">22</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">23</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/12</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">12/10/2026</Data></Cell>
@@ -427,11 +441,11 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">4 thẻ KPI số liệu thực tế của HTX Yên Bình | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">23</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">24</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/13</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">13/10/2026</Data></Cell>
-     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">3</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
@@ -441,11 +455,11 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Bảng quản lý sản phẩm toàn HTX có bộ lọc OCOP và VietGAP | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/02_htx_duyet_san_pham.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">24</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">25</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/13</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">13/10/2026</Data></Cell>
-     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">3</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
@@ -455,7 +469,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Modal duyệt sản phẩm có nút phát âm thanh sóng âm xanh lá | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">25</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">26</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/13</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">13/10/2026</Data></Cell>
@@ -469,11 +483,25 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Nút Phê duyệt lên sàn màu xanh lá và tem OCOP 4 sao tỉnh | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">26</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">27</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/13</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">15/10/2026</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Greenfi</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Đang làm</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Tiếp nhận phản hồi và chỉnh sửa slide kinh doanh cô Thủy</Data></Cell>
+     <Cell ss:StyleID="PriorityCao"><Data ss:Type="String">Cao</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Cập nhật lại bố cục trang bìa, tinh chỉnh các mốc tiến độ triển khai và bổ sung phần thuyết minh mô hình sàn nông sản.</Data></Cell>
+     <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Bản sửa đổi slide kinh doanh theo góp ý của cô Thủy</Data></Cell>
+    </Row>
+    <Row ss:Height="45">
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">28</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/14</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">14/10/2026</Data></Cell>
-     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">4</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">3</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
@@ -483,11 +511,11 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Sổ theo dõi tín dụng cấn trừ vật tư khi giao nông sản | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">27</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">29</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/14</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">14/10/2026</Data></Cell>
-     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">4</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">3</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
@@ -497,11 +525,25 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Bảng chi tiết từng khoản vật tư cấp cho hộ Bác Ba | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">28</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">30</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/14</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">15/10/2026</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Greenfi</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Đang làm</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Hoàn thiện đồ họa và bảng biểu phân tích cho slide kinh doanh cô Thủy</Data></Cell>
+     <Cell ss:StyleID="PriorityCao"><Data ss:Type="String">Cao</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Thiết kế đồ họa các slide quy trình bao tiêu HTX, chuẩn hóa font chữ thương hiệu và đưa hình ảnh thực tế trang trại vào bài.</Data></Cell>
+     <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Bộ slide hoàn thiện 90% các trang đồ họa và sơ đồ luồng HTX</Data></Cell>
+    </Row>
+    <Row ss:Height="45">
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">31</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/15</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">15/10/2026</Data></Cell>
-     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">3</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
@@ -511,11 +553,11 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Khối Cần Can Thiệp Khẩn Cấp 3 hộ xã viên | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">29</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">32</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/15</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">15/10/2026</Data></Cell>
-     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">3</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Green Village</Data></Cell>
      <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
@@ -525,7 +567,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Biểu đồ tiến độ gom hàng và thước đo bao tiêu 88.5% | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">30</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">33</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/15</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">15/10/2026</Data></Cell>
@@ -539,7 +581,21 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">2 nút In Sổ và Ứng Thêm Vật Tư góc trên bên trái | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">31</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">34</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/15</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">15/10/2026</Data></Cell>
+     <Cell ss:StyleID="HourCell"><Data ss:Type="Number">2</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Greenfi</Data></Cell>
+     <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Final hoàn tất đóng gói Slide kinh doanh GreenFi gửi cô Thủy duyệt</Data></Cell>
+     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
+     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Rà soát trang cuối, xuất file trình chiếu hoàn chỉnh chuẩn bị cho buổi báo cáo chiến lược GreenFi.</Data></Cell>
+     <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Bộ Slide kinh doanh GreenFi hoàn chỉnh bản Final | 📄 Xem slide: https://drive.google.com/file/d/12eBOBRx8cq5E1h-ushxr9CmOMqW7ywfl/view?usp=sharing</Data></Cell>
+    </Row>
+    <Row ss:Height="45">
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">35</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/16</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">16/10/2026</Data></Cell>
@@ -553,7 +609,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Cột Việc Nên Làm Hôm Nay với các nút Mở, Ghép, Nhắc, Gom | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">32</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">36</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/16</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">16/10/2026</Data></Cell>
@@ -567,7 +623,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Bảng thẻ chờ duyệt mới nhất kèm nút xanh Duyệt Ngay | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">33</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">37</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/16</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">16/10/2026</Data></Cell>
@@ -581,7 +637,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Nghiệm thu đạt yêu cầu toàn bộ phân hệ Dashboard HTX Yên Bình</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">34</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">38</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/19</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">19/10/2026</Data></Cell>
@@ -595,7 +651,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Giao diện Sàn Nguồn Lực Nông Thôn Số | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">35</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">39</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/19</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">19/10/2026</Data></Cell>
@@ -609,7 +665,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">4 thẻ trạng thái Sẵn Sàng (CÓ) và Chờ Đối Tác (CẦN) | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">36</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">40</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/19</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">19/10/2026</Data></Cell>
@@ -623,7 +679,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Thẻ máy cày Kubota của Bác Ba có nhãn Máy Nông Nghiệp | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">37</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">41</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/20</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">20/10/2026</Data></Cell>
@@ -637,7 +693,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Thẻ Xe tải 1.5T đã ghép nối chở chuối cho Bác Ba | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">38</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">42</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/20</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">20/10/2026</Data></Cell>
@@ -651,7 +707,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Thẻ Lò sấy lạnh 300kg/mẻ ghép nối sấy măng le | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">39</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">43</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/20</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">20/10/2026</Data></Cell>
@@ -665,7 +721,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Thẻ Drone phun thuốc sinh học ghép với vườn cam Anh Long | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">40</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">44</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/21</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">21/10/2026</Data></Cell>
@@ -679,7 +735,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Modal Trung Tâm Phê Duyệt Xử Lý Gấp HTX | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/05_cong_b2b_dat_don_si.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">41</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">45</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/21</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">21/10/2026</Data></Cell>
@@ -693,7 +749,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Đơn sỉ WinMart 27.5 triệu kèm nút Duyệt &amp; Điều Xe | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/05_cong_b2b_dat_don_si.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">42</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">46</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/21</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">21/10/2026</Data></Cell>
@@ -707,7 +763,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Đơn sỉ Co.op Food 18 triệu kèm nút Ký Duyệt Đơn | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/05_cong_b2b_dat_don_si.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">43</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">47</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/22</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">22/10/2026</Data></Cell>
@@ -721,7 +777,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Dữ liệu liên thông trơn tru từ vườn Bác Ba đến đơn sỉ WinMart</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">44</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">48</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/22</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">22/10/2026</Data></Cell>
@@ -735,7 +791,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Lệnh điều xe tải tự động gửi về điện thoại Anh Tuấn</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">45</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">49</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/23</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">23/10/2026</Data></Cell>
@@ -749,7 +805,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Trang quét mã QR tem truy xuất nguồn gốc nông sản | 🔗 Link web: https://cho-xanh.vercel.app/portal</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">46</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">50</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/23</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">23/10/2026</Data></Cell>
@@ -763,7 +819,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Trang QR tải nhanh trong 1 giây ngay cả khi mạng 3G yếu</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">47</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">51</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/23</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">23/10/2026</Data></Cell>
@@ -777,7 +833,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Ban Lãnh Đạo duyệt thông qua toàn bộ tính năng Sàn Nguồn Lực</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">48</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">52</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/26</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">26/10/2026</Data></Cell>
@@ -791,7 +847,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Toàn bộ nút bấm đã chống vỡ chữ 100% theo chuẩn Shopee UI</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">49</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">53</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/26</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">26/10/2026</Data></Cell>
@@ -805,7 +861,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Kích thước nút bấm đồng đều chuẩn từng pixel toàn bộ hệ thống</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">50</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">54</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/26</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">26/10/2026</Data></Cell>
@@ -819,7 +875,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Hiển thị chuẩn đét trên cả màn hình nhỏ 375px, không lệch pixel nào</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">51</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">55</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/27</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">27/10/2026</Data></Cell>
@@ -833,7 +889,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Các thẻ sản phẩm vuông vức, không bị xô lệch khi tên nông sản dài</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">52</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">56</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/27</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">27/10/2026</Data></Cell>
@@ -847,7 +903,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Thẻ sản phẩm đều hàng thẳng lối, chữ dài tự động hiện dấu ba chấm</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">53</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">57</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/27</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">27/10/2026</Data></Cell>
@@ -861,7 +917,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Thanh tab cuộn mượt mà không hiện vệt cuộn xấu trên điện thoại</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">54</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">58</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/28</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">28/10/2026</Data></Cell>
@@ -875,7 +931,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Cổng trình diễn Dark Mode độc lập có mockup iPhone 16 Pro | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp | 🔗 Link web: https://cho-xanh.vercel.app/portal</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">55</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">59</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/28</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">28/10/2026</Data></Cell>
@@ -889,7 +945,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Độ tương phản ban đêm đạt chuẩn WCAG, ảnh nông sản rực rỡ sắc nét | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">56</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">60</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/28</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">28/10/2026</Data></Cell>
@@ -903,7 +959,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Ghi nhớ chế độ Dark Mode tự động theo thói quen người dùng</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">57</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">61</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/29</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">29/10/2026</Data></Cell>
@@ -917,7 +973,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Toàn bộ ảnh chụp sản phẩm đã nén WebP siêu nhẹ, mở tức thì trên máy bay/xe khách</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">58</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">62</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/29</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">29/10/2026</Data></Cell>
@@ -931,7 +987,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mã nguồn sạch sẽ, tốc độ mở app nhanh gấp đôi phiên bản cũ</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">59</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">63</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/29</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">29/10/2026</Data></Cell>
@@ -945,7 +1001,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Chạy ngon lành 100% trong trình duyệt Zalo, không bị lỗi hiển thị</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">60</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">64</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/30</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">30/10/2026</Data></Cell>
@@ -959,7 +1015,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Bảng thống kê và sổ kho hiển thị chuẩn từng cột trên máy tính bảng | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp | 🔗 Link web: https://cho-xanh.vercel.app/htx-dashboard</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">61</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">65</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/30</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">30/10/2026</Data></Cell>
@@ -973,7 +1029,7 @@
      <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mã nguồn đã đồng bộ sạch sẽ lên Git repository chính thức</Data></Cell>
     </Row>
     <Row ss:Height="45">
-     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">62</Data></Cell>
+     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">66</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/30</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">30/10/2026</Data></Cell>

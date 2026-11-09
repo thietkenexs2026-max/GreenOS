@@ -3,47 +3,111 @@ import csv
 import re
 import html
 import os
+from collections import defaultdict
 
 CSV_PATH = 'Bao_Cao_Cong_Viec_Thang_10_Hoang_GreenOS.csv'
 XLS_PATH = 'Bao_Cao_Cong_Viec_Thang_10_Hoang_GreenOS.xls'
 HTML_PATH = 'SHEET_HOANG_THANG_10.html'
 
-UPDATES = {
-    '1': 'Khung sườn Mobile App Bác Ba chạy mượt, không vỡ layout | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
-    '3': 'Bộ màu chuẩn GreenFi và font chữ to rõ toàn app | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
-    '11': 'Ô nhập giá tiền và số lượng to rõ, tự tính thành tiền | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
-    '18': 'Màn hình quản lý đơn hàng phân màu rõ ràng | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/09_mobile_tab_don_hang.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
-    '19': 'Popup đơn hàng có nút bấm gọi điện thoại trực tiếp cho người mua | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/09_mobile_tab_don_hang.webp',
-    '20': 'Đạt 100% yêu cầu nghiệm thu gói Mobile Bác Ba của Vinh | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
-    '31': 'Cột Việc Nên Làm Hôm Nay với các nút Mở, Ghép, Nhắc, Gom | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
-    '32': 'Bảng thẻ chờ duyệt mới nhất kèm nút xanh Duyệt Ngay | 📸 Xem ảnh: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp | 🔗 Link web: https://cho-xanh.vercel.app/mobile',
-    '45': 'Trang quét mã QR tem truy xuất nguồn gốc nông sản | 🔗 Link web: https://cho-xanh.vercel.app/portal',
-    '54': 'Cổng trình diễn Dark Mode độc lập có mockup iPhone 16 Pro | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp | 🔗 Link web: https://cho-xanh.vercel.app/portal',
-    '60': 'Bảng thống kê và sổ kho hiển thị chuẩn từng cột trên máy tính bảng | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp | 🔗 Link web: https://cho-xanh.vercel.app/htx-dashboard'
-}
-
-# 1. Read & Update CSV
-rows = []
+# 1. Read existing CSV
 with open(CSV_PATH, 'r', encoding='utf-8') as f:
-    reader = csv.reader(f)
-    header = next(reader)
-    rows.append(header)
-    for r in reader:
-        stt = r[0].strip()
-        if stt in UPDATES:
-            r[11] = UPDATES[stt]
-        # Clean any occurrence of 'anh vinh', 'Anh Vinh', 'A.Vinh', 'A Vinh' -> 'Vinh'
-        for i in range(len(r)):
-            r[i] = re.sub(r'(?i)\b(anh\s+vinh|a\.?\s*vinh)\b', 'Vinh', r[i])
-        rows.append(r)
+    reader = list(csv.reader(f))
+    header = reader[0]
+    old_rows = reader[1:]
 
+# New slide tasks to insert
+# Note: insertion based on task content matching so it's idempotent
+slide_tasks = [
+    {
+        'date': '2026/10/06',
+        'insert_after_task_kw': 'bàn phím số to', # STT 11
+        'row': ['', '2026/10/06', 'Hoàng', '06/10/2026', '2', 'Greenfi', 'Done', 'Vinh và BLĐ',
+                'Thiết kế bộ Slide kinh doanh GreenFi theo yêu cầu cô Thủy', 'Gấp',
+                'Tổng hợp sơ đồ giải pháp, mô hình liên kết HTX nông nghiệp và hoàn thiện bản thảo slide gửi cô Thủy review đợt 1.',
+                'Slide kinh doanh GreenFi hoàn thiện bản thảo đợt 1 | 📄 Xem slide: https://drive.google.com/file/d/1KIf-iXYA0-v1tVC-k3oXiUigOutQKAW3/view?usp=sharing']
+    },
+    {
+        'date': '2026/10/13',
+        'insert_after_task_kw': 'gắn nhãn sao OCOP', # STT 25
+        'row': ['', '2026/10/13', 'Hoàng', '15/10/2026', '2', 'Greenfi', 'Đang làm', 'Vinh và BLĐ',
+                'Tiếp nhận phản hồi và chỉnh sửa slide kinh doanh cô Thủy', 'Cao',
+                'Cập nhật lại bố cục trang bìa, tinh chỉnh các mốc tiến độ triển khai và bổ sung phần thuyết minh mô hình sàn nông sản.',
+                'Bản sửa đổi slide kinh doanh theo góp ý của cô Thủy']
+    },
+    {
+        'date': '2026/10/14',
+        'insert_after_task_kw': 'cây giống cấy mô', # STT 27
+        'row': ['', '2026/10/14', 'Hoàng', '15/10/2026', '2', 'Greenfi', 'Đang làm', 'Vinh và BLĐ',
+                'Hoàn thiện đồ họa và bảng biểu phân tích cho slide kinh doanh cô Thủy', 'Cao',
+                'Thiết kế đồ họa các slide quy trình bao tiêu HTX, chuẩn hóa font chữ thương hiệu và đưa hình ảnh thực tế trang trại vào bài.',
+                'Bộ slide hoàn thiện 90% các trang đồ họa và sơ đồ luồng HTX']
+    },
+    {
+        'date': '2026/10/15',
+        'insert_after_task_kw': 'ứng thêm vật tư nông nghiệp', # STT 30
+        'row': ['', '2026/10/15', 'Hoàng', '15/10/2026', '2', 'Greenfi', 'Done', 'Vinh và BLĐ',
+                'Final hoàn tất đóng gói Slide kinh doanh GreenFi gửi cô Thủy duyệt', 'Gấp',
+                'Rà soát trang cuối, xuất file trình chiếu hoàn chỉnh chuẩn bị cho buổi báo cáo chiến lược GreenFi.',
+                'Bộ Slide kinh doanh GreenFi hoàn chỉnh bản Final | 📄 Xem slide: https://drive.google.com/file/d/12eBOBRx8cq5E1h-ushxr9CmOMqW7ywfl/view?usp=sharing']
+    }
+]
+
+# Filter out old slide tasks if already present to ensure idempotency
+filtered_rows = [r for r in old_rows if 'cô thủy' not in r[8].lower() and 'cô thủy' not in r[10].lower()]
+
+# Adjust hours on those specific days to make room for 2h slide tasks
+for r in filtered_rows:
+    task = r[8].lower()
+    # 2026/10/06
+    if 'bấm máy ảnh chụp nông sản' in task or 'cắt ảnh vuông và xóa phông' in task or 'bàn phím số to' in task:
+        r[4] = '2'
+    # 2026/10/13
+    elif 'danh mục 388 sản phẩm' in task or 'thanh nghe ghi âm giọng nói' in task or 'gắn nhãn sao ocop' in task:
+        r[4] = '2'
+    # 2026/10/14
+    elif 'sổ theo dõi tín dụng' in task or 'cây giống cấy mô' in task:
+        r[4] = '3'
+    # 2026/10/15
+    elif 'can thiệp khẩn cấp' in task or 'biểu đồ tiến độ bao tiêu' in task or 'ứng thêm vật tư nông nghiệp' in task:
+        r[4] = '2'
+
+# Reconstruct combined list
+combined_rows = []
+for r in filtered_rows:
+    combined_rows.append(r)
+    task_desc = r[8].lower()
+    for st in slide_tasks:
+        if st['insert_after_task_kw'].lower() in task_desc:
+            combined_rows.append(st['row'])
+
+# Renumber STT from 1 to N and clean references of anh vinh -> Vinh
+for idx, r in enumerate(combined_rows, 1):
+    r[0] = str(idx)
+    for col_i in range(len(r)):
+        r[col_i] = re.sub(r'(?i)\b(anh\s+vinh|a\.?\s*vinh)\b', 'Vinh', r[col_i])
+
+# Check daily hours
+daily = defaultdict(float)
+total_done = 0
+total_doing = 0
+for r in combined_rows:
+    daily[r[1]] += float(r[4])
+    if r[6].strip() == 'Done':
+        total_done += 1
+    else:
+        total_doing += 1
+
+print(f"Total rows: {len(combined_rows)} | Total hours: {sum(daily.values())}h | Done: {total_done} | In progress: {total_doing}")
+
+# Save CSV
 with open(CSV_PATH, 'w', encoding='utf-8', newline='') as f:
     writer = csv.writer(f)
-    writer.writerows(rows)
+    writer.writerow(header)
+    writer.writerows(combined_rows)
 
-print(f"Updated CSV {CSV_PATH} with {len(rows)-1} tasks.")
+print(f"Updated CSV {CSV_PATH} successfully.")
 
-# 2. Update SHEET_HOANG_THANG_10.html
+# 2. Update HTML
 def format_output_html(val):
     parts = val.split(' | ')
     title = parts[0].strip()
@@ -56,9 +120,17 @@ def format_output_html(val):
             label = p.replace(url, '').strip()
             if not label:
                 label = '🔗 Xem chi tiết'
+            is_slide = ('slide' in label.lower() or 'drive' in url.lower())
             is_web = ('web' in label.lower() or 'portal' in label.lower())
-            bg = '#E0F2FE' if is_web else '#E2E8F0'
-            color = '#0369A1' if is_web else '#1E293B'
+            if is_slide:
+                bg = '#FEF3C7'
+                color = '#92400E'
+            elif is_web:
+                bg = '#E0F2FE'
+                color = '#0369A1'
+            else:
+                bg = '#E2E8F0'
+                color = '#1E293B'
             links_html.append(f'<a class="output-img-link" href="{html.escape(url)}" target="_blank" style="background:{bg}; color:{color};">{html.escape(label)}</a>')
         else:
             links_html.append(f'<span>{html.escape(p)}</span>')
@@ -69,23 +141,17 @@ def format_output_html(val):
     res += '</div>'
     return res
 
-# Read existing HTML template or parts
 with open(HTML_PATH, 'r', encoding='utf-8') as f:
     html_content = f.read()
 
 # Build table rows HTML
 tbody_rows = []
-total_hours = 0
-for r in rows[1:]:
+for r in combined_rows:
     stt = r[0].strip()
     date_val = r[1].strip()
     user_val = r[2].strip()
     due_val = r[3].strip()
     hrs_val = r[4].strip()
-    try:
-        total_hours += float(hrs_val)
-    except:
-        pass
     proj_val = r[5].strip()
     status_val = r[6].strip()
     src_val = r[7].strip()
@@ -116,17 +182,22 @@ for r in rows[1:]:
     tbody_rows.append(row_html)
 
 tbody_new = '<tbody>\n' + '\n'.join(tbody_rows) + '\n      </tbody>'
-
-# Replace <tbody>...</tbody> in HTML
 html_content = re.sub(r'<tbody>[\s\S]*?</tbody>', tbody_new, html_content)
 
-# Replace <textarea id="rawTsvData">... in HTML
-raw_tsv_text = '\n'.join(['\t'.join(r) for r in rows[1:]])
+# Update metric pill for task count
+html_content = re.sub(r'<div class="metric-pill">✅ <strong>[\s\S]*?</strong></div>',
+                      f'<div class="metric-pill">📋 <strong>{len(combined_rows)} Đầu việc</strong> ({total_done} Done · {total_doing} Đang làm)</div>',
+                      html_content)
+
+# Update toast
+html_content = re.sub(r'Đã sao chép \d+ dòng', f'Đã sao chép {len(combined_rows)} dòng', html_content)
+
+# Replace <textarea id="rawTsvData">
+raw_tsv_text = '\n'.join(['\t'.join(r) for r in combined_rows])
 html_content = re.sub(r'<textarea id="rawTsvData" style="display:none;">[\s\S]*?</textarea>',
                       f'<textarea id="rawTsvData" style="display:none;">{raw_tsv_text}</textarea>',
                       html_content)
 
-# Clean any remaining 'anh vinh' or 'a vinh' in HTML
 html_content = re.sub(r'(?i)\b(anh\s+vinh|a\.?\s*vinh)\b', 'Vinh', html_content)
 
 with open(HTML_PATH, 'w', encoding='utf-8') as f:
@@ -134,9 +205,9 @@ with open(HTML_PATH, 'w', encoding='utf-8') as f:
 
 print(f"Updated HTML {HTML_PATH} successfully.")
 
-# 3. Update XLS (XML Spreadsheet format)
+# 3. Update XLS
 xls_rows = []
-for r in rows[1:]:
+for r in combined_rows:
     stt = r[0].strip()
     date_val = r[1].strip()
     user_val = r[2].strip()
@@ -150,6 +221,7 @@ for r in rows[1:]:
     note_val = r[10].strip()
     output_val = r[11].strip()
 
+    status_style = "DoneStyle" if status_val == "Done" else "CellStyle"
     prio_style = "PriorityGap" if prio_val == "Gấp" else ("PriorityCao" if prio_val == "Cao" else "PriorityTB")
 
     row_xml = f'''    <Row ss:Height="45">
@@ -159,7 +231,7 @@ for r in rows[1:]:
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">{html.escape(due_val)}</Data></Cell>
      <Cell ss:StyleID="HourCell"><Data ss:Type="Number">{hrs_val}</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">{html.escape(proj_val)}</Data></Cell>
-     <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">{html.escape(status_val)}</Data></Cell>
+     <Cell ss:StyleID="{status_style}"><Data ss:Type="String">{html.escape(status_val)}</Data></Cell>
      <Cell ss:StyleID="CenterCell"><Data ss:Type="String">{html.escape(src_val)}</Data></Cell>
      <Cell ss:StyleID="CellStyle"><Data ss:Type="String">{html.escape(task_val)}</Data></Cell>
      <Cell ss:StyleID="{prio_style}"><Data ss:Type="String">{html.escape(prio_val)}</Data></Cell>
@@ -171,7 +243,6 @@ for r in rows[1:]:
 with open(XLS_PATH, 'r', encoding='utf-8') as f:
     xls_content = f.read()
 
-# Replace rows in Table
 table_pattern = r'(<Row ss:Height="32">[\s\S]*?</Row>)([\s\S]*?)(</Table>)'
 m = re.search(table_pattern, xls_content)
 if m:
@@ -182,5 +253,3 @@ if m:
     with open(XLS_PATH, 'w', encoding='utf-8') as f:
         f.write(xls_content)
     print(f"Updated XLS {XLS_PATH} successfully.")
-else:
-    print("Could not match XLS table pattern.")

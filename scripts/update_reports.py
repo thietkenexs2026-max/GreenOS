@@ -15,78 +15,138 @@ with open(CSV_PATH, 'r', encoding='utf-8') as f:
     header = reader[0]
     old_rows = reader[1:]
 
-# New slide tasks to insert
-# Note: insertion based on task content matching so it's idempotent
-slide_tasks = [
+# Base GreenOS rows (filter out slide and mealy tasks if re-running)
+filtered_rows = [
+    r for r in old_rows 
+    if 'cô thủy' not in r[8].lower() and 'cô thủy' not in r[10].lower()
+    and 'mealy' not in r[8].lower() and 'mealy' not in r[10].lower()
+]
+
+# Set balanced hours for GreenOS tasks on the modified dates
+for r in filtered_rows:
+    task = r[8].lower()
+    d = r[1]
+    
+    # 2026/10/02 (Tổng 6h GreenOS + 2h Mealy = 8h)
+    if d == '2026/10/02':
+        r[4] = '2'
+        
+    # 2026/10/05 (Tổng 6h GreenOS + 2h Mealy = 8h)
+    elif d == '2026/10/05':
+        r[4] = '3'
+        
+    # 2026/10/06 (Tổng 6h GreenOS + 2h Slide = 8h)
+    elif d == '2026/10/06':
+        r[4] = '2'
+        
+    # 2026/10/13 (Tổng 4.5h GreenOS + 1.5h Slide + 2h Mealy = 8h)
+    elif d == '2026/10/13':
+        r[4] = '1.5'
+        
+    # 2026/10/14 (Tổng 6h GreenOS + 2h Slide = 8h)
+    elif d == '2026/10/14':
+        r[4] = '3'
+        
+    # 2026/10/15 (Tổng 6h GreenOS + 2h Slide = 8h)
+    elif d == '2026/10/15':
+        r[4] = '2'
+        
+    # 2026/10/22 (Tổng 6h GreenOS + 2h Mealy = 8h)
+    elif d == '2026/10/22':
+        r[4] = '3'
+
+# Additional tasks list
+additional_tasks = [
+    # 02/10: Mealy Home UI/UX Support
+    {
+        'date': '2026/10/02',
+        'insert_after_kw': 'lưu trạng thái đã xem onboarding',
+        'row': ['', '2026/10/02', 'Hoàng', '02/10/2026', '2', 'WiseMeal', 'Done', 'Vinh và BLĐ',
+                'Hỗ trợ Bảo tinh chỉnh và tối ưu luồng UI/UX Trang chủ ứng dụng Mealy', 'Trong tuần',
+                'Rà soát bố cục các khối món ngon gia đình, căn chỉnh khoảng cách các nút gạt chế độ nấu ăn và trải nghiệm lướt mâm cơm 3 món.',
+                'Giao diện Trang chủ Mealy mượt mà, đồng bộ luồng công thức nấu ăn cùng Bảo']
+    },
+    # 05/10: Review Ver 1 Mealy
+    {
+        'date': '2026/10/05',
+        'insert_after_kw': 'cuộn ngang (carousel)',
+        'row': ['', '2026/10/05', 'Hoàng', '05/10/2026', '2', 'WiseMeal', 'Done', 'Vinh và BLĐ',
+                'Họp review đánh giá phiên bản Ver 1 ứng dụng Mealy cùng Bảo và team', 'Trong tuần',
+                'Kiểm tra toàn bộ luồng tạo hộp thoại In-App, từ điển ẩm thực vùng miền và trải nghiệm lọc mâm cơm theo khẩu vị.',
+                'Biên bản nghiệm thu Ver 1 Mealy đạt chuẩn trải nghiệm, chốt danh sách tối ưu đợt tiếp theo']
+    },
+    # 06/10: Slide cô Thủy đợt 1
     {
         'date': '2026/10/06',
-        'insert_after_task_kw': 'bàn phím số to', # STT 11
+        'insert_after_kw': 'bàn phím số to',
         'row': ['', '2026/10/06', 'Hoàng', '06/10/2026', '2', 'Greenfi', 'Done', 'Vinh và BLĐ',
                 'Thiết kế bộ Slide kinh doanh GreenFi theo yêu cầu cô Thủy', 'Gấp',
                 'Tổng hợp sơ đồ giải pháp, mô hình liên kết HTX nông nghiệp và hoàn thiện bản thảo slide gửi cô Thủy review đợt 1.',
                 'Slide kinh doanh GreenFi hoàn thiện bản thảo đợt 1 | 📄 Xem slide: https://drive.google.com/file/d/1KIf-iXYA0-v1tVC-k3oXiUigOutQKAW3/view?usp=sharing']
     },
+    # 13/10: Slide cô Thủy sửa đợt 1
     {
         'date': '2026/10/13',
-        'insert_after_task_kw': 'gắn nhãn sao OCOP', # STT 25
-        'row': ['', '2026/10/13', 'Hoàng', '15/10/2026', '2', 'Greenfi', 'Đang làm', 'Vinh và BLĐ',
+        'insert_after_kw': 'gắn nhãn sao ocop',
+        'row': ['', '2026/10/13', 'Hoàng', '15/10/2026', '1.5', 'Greenfi', 'Đang làm', 'Vinh và BLĐ',
                 'Tiếp nhận phản hồi và chỉnh sửa slide kinh doanh cô Thủy', 'Cao',
                 'Cập nhật lại bố cục trang bìa, tinh chỉnh các mốc tiến độ triển khai và bổ sung phần thuyết minh mô hình sàn nông sản.',
                 'Bản sửa đổi slide kinh doanh theo góp ý của cô Thủy']
     },
+    # 13/10: Mealy Đi chợ & Phân quyền
+    {
+        'date': '2026/10/13',
+        'insert_after_kw': 'phê duyệt nông sản lên sàn',
+        'row': ['', '2026/10/13', 'Hoàng', '13/10/2026', '2', 'WiseMeal', 'Done', 'Vinh và BLĐ',
+                'Tối ưu luồng Đi Chợ và phân chia phiên người dùng cho ứng dụng Mealy', 'Gấp',
+                'Tách bạch danh sách nguyên liệu cần mua, lược bỏ gia vị nước nêm để user tự thêm khi hết; chia phiên khách vãng lai và tài khoản, khóa tính năng làm tiệc & chia sẻ danh sách đi chợ đối với khách chưa đăng nhập.',
+                'Luồng Đi Chợ Mealy thông minh, danh sách nguyên liệu tinh gọn và kiểm soát phân quyền khách chuẩn xác']
+    },
+    # 14/10: Slide cô Thủy sửa đợt 2
     {
         'date': '2026/10/14',
-        'insert_after_task_kw': 'cây giống cấy mô', # STT 27
+        'insert_after_kw': 'cây giống cấy mô',
         'row': ['', '2026/10/14', 'Hoàng', '15/10/2026', '2', 'Greenfi', 'Đang làm', 'Vinh và BLĐ',
                 'Hoàn thiện đồ họa và bảng biểu phân tích cho slide kinh doanh cô Thủy', 'Cao',
                 'Thiết kế đồ họa các slide quy trình bao tiêu HTX, chuẩn hóa font chữ thương hiệu và đưa hình ảnh thực tế trang trại vào bài.',
                 'Bộ slide hoàn thiện 90% các trang đồ họa và sơ đồ luồng HTX']
     },
+    # 15/10: Final Slide cô Thủy
     {
         'date': '2026/10/15',
-        'insert_after_task_kw': 'ứng thêm vật tư nông nghiệp', # STT 30
+        'insert_after_kw': 'ứng thêm vật tư nông nghiệp',
         'row': ['', '2026/10/15', 'Hoàng', '15/10/2026', '2', 'Greenfi', 'Done', 'Vinh và BLĐ',
                 'Final hoàn tất đóng gói Slide kinh doanh GreenFi gửi cô Thủy duyệt', 'Gấp',
                 'Rà soát trang cuối, xuất file trình chiếu hoàn chỉnh chuẩn bị cho buổi báo cáo chiến lược GreenFi.',
                 'Bộ Slide kinh doanh GreenFi hoàn chỉnh bản Final | 📄 Xem slide: https://drive.google.com/file/d/12eBOBRx8cq5E1h-ushxr9CmOMqW7ywfl/view?usp=sharing']
+    },
+    # 22/10: Review Ver 2 Mealy
+    {
+        'date': '2026/10/22',
+        'insert_after_kw': 'tự động gán xe tải',
+        'row': ['', '2026/10/22', 'Hoàng', '22/10/2026', '2', 'WiseMeal', 'Done', 'Vinh và BLĐ',
+                'Họp review đánh giá toàn diện phiên bản Ver 2 ứng dụng Mealy', 'Gấp',
+                'Đánh giá toàn bộ UI/UX, kho công thức nấu ăn, luồng xây dựng menu bữa cơm, trải nghiệm đi chợ và tính năng checking đồ ăn lưu trữ trong tủ lạnh trước khi đẩy store.',
+                'Nghiệm thu toàn bộ tính năng Ver 2 Mealy cùng Bảo và team, đạt chuẩn phát hành TestFlight/CH Play']
     }
 ]
 
-# Filter out old slide tasks if already present to ensure idempotency
-filtered_rows = [r for r in old_rows if 'cô thủy' not in r[8].lower() and 'cô thủy' not in r[10].lower()]
-
-# Adjust hours on those specific days to make room for 2h slide tasks
-for r in filtered_rows:
-    task = r[8].lower()
-    # 2026/10/06
-    if 'bấm máy ảnh chụp nông sản' in task or 'cắt ảnh vuông và xóa phông' in task or 'bàn phím số to' in task:
-        r[4] = '2'
-    # 2026/10/13
-    elif 'danh mục 388 sản phẩm' in task or 'thanh nghe ghi âm giọng nói' in task or 'gắn nhãn sao ocop' in task:
-        r[4] = '2'
-    # 2026/10/14
-    elif 'sổ theo dõi tín dụng' in task or 'cây giống cấy mô' in task:
-        r[4] = '3'
-    # 2026/10/15
-    elif 'can thiệp khẩn cấp' in task or 'biểu đồ tiến độ bao tiêu' in task or 'ứng thêm vật tư nông nghiệp' in task:
-        r[4] = '2'
-
-# Reconstruct combined list
+# Combine rows sequentially
 combined_rows = []
 for r in filtered_rows:
     combined_rows.append(r)
     task_desc = r[8].lower()
-    for st in slide_tasks:
-        if st['insert_after_task_kw'].lower() in task_desc:
-            combined_rows.append(st['row'])
+    for at in additional_tasks:
+        if at['insert_after_kw'].lower() in task_desc:
+            combined_rows.append(at['row'])
 
-# Renumber STT from 1 to N and clean references of anh vinh -> Vinh
+# Renumber STT & Clean names
 for idx, r in enumerate(combined_rows, 1):
     r[0] = str(idx)
     for col_i in range(len(r)):
         r[col_i] = re.sub(r'(?i)\b(anh\s+vinh|a\.?\s*vinh)\b', 'Vinh', r[col_i])
 
-# Check daily hours
+# Validate daily hours
 daily = defaultdict(float)
 total_done = 0
 total_doing = 0
@@ -97,9 +157,12 @@ for r in combined_rows:
     else:
         total_doing += 1
 
-print(f"Total rows: {len(combined_rows)} | Total hours: {sum(daily.values())}h | Done: {total_done} | In progress: {total_doing}")
+print(f"Total tasks: {len(combined_rows)} | Total hours: {sum(daily.values())}h | Done: {total_done} | In progress: {total_doing}")
+for d in sorted(daily.keys()):
+    if daily[d] != 8.0:
+        print(f"WARNING: {d} total hours is {daily[d]}h (expected 8.0h)")
 
-# Save CSV
+# 2. Write CSV
 with open(CSV_PATH, 'w', encoding='utf-8', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(header)
@@ -107,7 +170,7 @@ with open(CSV_PATH, 'w', encoding='utf-8', newline='') as f:
 
 print(f"Updated CSV {CSV_PATH} successfully.")
 
-# 2. Update HTML
+# 3. Update HTML
 def format_output_html(val):
     parts = val.split(' | ')
     title = parts[0].strip()
@@ -144,7 +207,6 @@ def format_output_html(val):
 with open(HTML_PATH, 'r', encoding='utf-8') as f:
     html_content = f.read()
 
-# Build table rows HTML
 tbody_rows = []
 for r in combined_rows:
     stt = r[0].strip()
@@ -184,15 +246,12 @@ for r in combined_rows:
 tbody_new = '<tbody>\n' + '\n'.join(tbody_rows) + '\n      </tbody>'
 html_content = re.sub(r'<tbody>[\s\S]*?</tbody>', tbody_new, html_content)
 
-# Update metric pill for task count
-html_content = re.sub(r'<div class="metric-pill">✅ <strong>[\s\S]*?</strong></div>',
+html_content = re.sub(r'<div class="metric-pill">📋 <strong>[\s\S]*?</strong></div>',
                       f'<div class="metric-pill">📋 <strong>{len(combined_rows)} Đầu việc</strong> ({total_done} Done · {total_doing} Đang làm)</div>',
                       html_content)
 
-# Update toast
 html_content = re.sub(r'Đã sao chép \d+ dòng', f'Đã sao chép {len(combined_rows)} dòng', html_content)
 
-# Replace <textarea id="rawTsvData">
 raw_tsv_text = '\n'.join(['\t'.join(r) for r in combined_rows])
 html_content = re.sub(r'<textarea id="rawTsvData" style="display:none;">[\s\S]*?</textarea>',
                       f'<textarea id="rawTsvData" style="display:none;">{raw_tsv_text}</textarea>',
@@ -205,7 +264,7 @@ with open(HTML_PATH, 'w', encoding='utf-8') as f:
 
 print(f"Updated HTML {HTML_PATH} successfully.")
 
-# 3. Update XLS
+# 4. Update XLS
 xls_rows = []
 for r in combined_rows:
     stt = r[0].strip()

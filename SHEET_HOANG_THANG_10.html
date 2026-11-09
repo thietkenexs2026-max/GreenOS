@@ -138,103 +138,7 @@
       <div class="metric-pill">🎯 Dự án: <strong>Green Village (HTX Yên Bình)</strong></div>
       <div class="metric-pill">📅 Lịch: <strong>22 Buổi (Thứ 2 - Thứ 6)</strong></div>
       <div class="metric-pill">⏱️ Thời lượng: <strong>8h/buổi = 176 Giờ</strong></div>
-      <div class="metric-pill">📋 <strong>66 Đầu việc</strong> (64 Done · 2 Đang làm)</div>
-      <div class="metric-pill">📌 Nguồn: <strong>Vinh và BLĐ</strong></div>
-    </div>
-    <div class="search-box">
-      <span style="color:#5F6368; margin-right: 6px;">🔍</span>
-      <input type="text" id="searchInput" placeholder="Tìm kiếm nhanh đầu việc, ngày, sản phẩm..." onkeyup="filterTable()">
-    </div>
-  </div>
-
-  <div class="grid-container">
-    <table id="taskTable">
-      <thead>
-        <tr>
-          <th class="col-stt">STT</th>
-          <th class="col-date">Ngày<br>(yyyy/mm/dd)</th>
-          <th class="col-user">Người làm</th>
-          <th class="col-due">Dự kiến hoàn thành</th>
-          <th class="col-hours">Thời lượng</th>
-          <th class="col-proj">Nexs/ Greenfi</th>
-          <th class="col-status">Tiến độ</th>
-          <th class="col-src">Nguồn</th>
-          <th class="col-task">Đầu việc</th>
-          <th class="col-prio">Ưu tiên</th>
-          <th class="col-note">Ghi chú</th>
-          <th class="col-output">Output / Mô tả thực tế & Link ảnh</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="col-stt">1</td>
-          <td class="col-date">2026/10/01</td>
-          <td class="col-user">Hoàng</td>
-          <td class="col-due">01/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">3h</span></td>
-          <td class="col-proj">Green Village</td>
-          <td class="col-status"><span class="badge badge-done">Done</span></td>
-          <td class="col-src">Vinh và BLĐ</td>
-          <td class="col-task">Dựng khung sườn Mobile App Bác Ba chuẩn màn hình điện thoại (390px)</td>
-          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
-          <td class="col-note">Chốt kích thước khung 390x844px theo mockup iPhone/Android, khóa tràn ngang (overflow-x: hidden) để bà con vuốt không bị xô lệch layout.</td>
-          <td class="col-output"><div class="output-box"><strong>Khung sườn Mobile App Bác Ba chạy mượt, không vỡ layout</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
-        </tr>
-        <tr>
-          <td class="col-stt">2</td>
-          <td class="col-date">2026/10/01</td>
-          <td class="col-user">Hoàng</td>
-          <td class="col-due">01/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">3h</span></td>
-          <td class="col-proj">Green Village</td>
-          <td class="col-status"><span class="badge badge-done">Done</span></td>
-          <td class="col-src">Vinh và BLĐ</td>
-          <td class="col-task">Làm thanh điều hướng đáy (Bottom Bar) 5 tab cho bà con dễ bấm</td>
-          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
-          <td class="col-note">Làm 5 tab: Trang chủ, Đăng bán, Nhật ký, Đơn hàng, Tài khoản. Chỉnh icon to, chữ tiếng Việt rõ ràng, bấm tab nào sáng đèn tab đó.</td>
-          <td class="col-output"><div class="output-box"><strong>Thanh Bottom Bar 5 tab bo góc dưới đáy màn hình</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
-        </tr>
-        <tr>
-          <td class="col-stt">3</td>
-          <td class="col-date">2026/10/01</td>
-          <td class="col-user">Hoàng</td>
-          <td class="col-due">01/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">2h</span></td>
-          <td class="col-proj">Green Village</td>
-          <td class="col-status"><span class="badge badge-done">Done</span></td>
-          <td class="col-src">Vinh và BLĐ</td>
-          <td class="col-task">Cài đặt bộ màu thương hiệu GreenFi và chọn cỡ chữ to cho người lớn tuổi</td>
-          <td class="col-prio"><span class="badge badge-tb">Trong tuần</span></td>
-          <td class="col-note">Lấy màu xanh lá làm chủ đạo (#1B7A43), chữ dùng font Inter tăng lên 15-16px để các cô chú 50-60 tuổi nhìn rõ không bị mỏi mắt.</td>
-          <td class="col-output"><div class="output-box"><strong>Bộ màu chuẩn GreenFi và font chữ to rõ toàn app</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
-        </tr>
-        <tr>
-          <td class="col-stt">4</td>
-          <td class="col-date">2026/10/02</td>
-          <td class="col-user">Hoàng</td>
-          <td class="col-due">02/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">3h</span></td>
-          <td class="col-proj">Green Village</td>
-          <td class="col-status"><span class="badge badge-done">Done</span></td>
-          <td class="col-src">Vinh và BLĐ</td>
-          <td class="col-task">Dựng 4 slide màn hình Chào mừng (Onboarding) giới thiệu cách dùng app</td>
-          <td class="col-prio"><span class="badge badge-tb">Trong tuần</span></td>
-          <td class="col-note">Thay toàn bộ ảnh thanh niên cũ bằng bộ ảnh chú nông dân thật 45-50 tuổi đứng trong vườn, phủ lớp nền tối ở chân ảnh để chữ nổi bật.</td>
-          <td class="col-output"><div class="output-box"><strong>4 slide Onboarding chụp nông dân thật đứng vườn bưởi, chuối</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem demo:</a></div></td>
-        </tr>
-        <tr>
-          <td class="col-stt">5</td>
-          <td class="col-date">2026/10/02</td>
-          <td class="col-user">Hoàng</td>
-          <td class="col-due">02/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">3h</span></td>
-          <td class="col-proj">Green Village</td>
-          <td class="col-status"><span class="badge badge-done">Done</span></td>
-          <td class="col-src">Vinh và BLĐ</td>
-          <td class="col-task">Làm hiệu ứng vuốt chạm chuyển slide Onboarding mượt mà</td>
-          <td class="col-prio"><span class="badge badge-tb">Trong tuần</span></td>
-          <td class="col-note">Cho vuốt tay qua lại mượt, thêm mấy chấm tròn báo vị trí trang, dưới đáy có nút &quot;Bỏ qua&quot; và nút &quot;Bắt đầu ngay&quot; màu xanh.</td>
-          <td class="col-output"><div class="output-box"><strong>Vuốt chạm chuyển slide trơn tru, bấm nút là vào thẳng trang chủ</strong></div></td>
+      <div class="metric-pill">📋 <strong>70 Đầu việc</strong> (68 Done · 2 Đang làm)</div></td>
         </tr>
         <tr>
           <td class="col-stt">6</td>
@@ -252,10 +156,24 @@
         </tr>
         <tr>
           <td class="col-stt">7</td>
+          <td class="col-date">2026/10/02</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">02/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">WiseMeal</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Hỗ trợ Bảo tinh chỉnh và tối ưu luồng UI/UX Trang chủ ứng dụng Mealy</td>
+          <td class="col-prio"><span class="badge badge-tb">Trong tuần</span></td>
+          <td class="col-note">Rà soát bố cục các khối món ngon gia đình, căn chỉnh khoảng cách các nút gạt chế độ nấu ăn và trải nghiệm lướt mâm cơm 3 món.</td>
+          <td class="col-output"><div class="output-box"><strong>Giao diện Trang chủ Mealy mượt mà, đồng bộ luồng công thức nấu ăn cùng Bảo</strong></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">8</td>
           <td class="col-date">2026/10/05</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">05/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
           <td class="col-proj">Green Village</td>
           <td class="col-status"><span class="badge badge-done">Done</span></td>
           <td class="col-src">Vinh và BLĐ</td>
@@ -265,11 +183,11 @@
           <td class="col-output"><div class="output-box"><strong>Trang chủ Bác Ba có lời chào và widget việc cần làm</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">8</td>
+          <td class="col-stt">9</td>
           <td class="col-date">2026/10/05</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">05/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
           <td class="col-proj">Green Village</td>
           <td class="col-status"><span class="badge badge-done">Done</span></td>
           <td class="col-src">Vinh và BLĐ</td>
@@ -279,7 +197,21 @@
           <td class="col-output"><div class="output-box"><strong>Hàng nông sản cuộn ngang: Chuối sấy OCOP 4 sao, Trà Bát Tiên, Mật ong rừng</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">9</td>
+          <td class="col-stt">10</td>
+          <td class="col-date">2026/10/05</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">05/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">WiseMeal</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Họp review đánh giá phiên bản Ver 1 ứng dụng Mealy cùng Bảo và team</td>
+          <td class="col-prio"><span class="badge badge-tb">Trong tuần</span></td>
+          <td class="col-note">Kiểm tra toàn bộ luồng tạo hộp thoại In-App, từ điển ẩm thực vùng miền và trải nghiệm lọc mâm cơm theo khẩu vị.</td>
+          <td class="col-output"><div class="output-box"><strong>Biên bản nghiệm thu Ver 1 Mealy đạt chuẩn trải nghiệm, chốt danh sách tối ưu đợt tiếp theo</strong></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">11</td>
           <td class="col-date">2026/10/06</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">06/10/2026</td>
@@ -293,7 +225,7 @@
           <td class="col-output"><div class="output-box"><strong>Khung chụp ảnh nông sản 1:1 xem trước sắc nét</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Ảnh mẫu chuối sấy:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">10</td>
+          <td class="col-stt">12</td>
           <td class="col-date">2026/10/06</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">06/10/2026</td>
@@ -307,7 +239,7 @@
           <td class="col-output"><div class="output-box"><strong>Ảnh chuối sấy và trà sau khi AI tách nền trắng sạch tinh</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh tách nền:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">11</td>
+          <td class="col-stt">13</td>
           <td class="col-date">2026/10/06</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">06/10/2026</td>
@@ -321,7 +253,7 @@
           <td class="col-output"><div class="output-box"><strong>Ô nhập giá tiền và số lượng to rõ, tự tính thành tiền</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">12</td>
+          <td class="col-stt">14</td>
           <td class="col-date">2026/10/06</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">06/10/2026</td>
@@ -335,7 +267,7 @@
           <td class="col-output"><div class="output-box"><strong>Slide kinh doanh GreenFi hoàn thiện bản thảo đợt 1</strong><br><a class="output-img-link" href="https://drive.google.com/file/d/1KIf-iXYA0-v1tVC-k3oXiUigOutQKAW3/view?usp=sharing" target="_blank" style="background:#FEF3C7; color:#92400E;">📄 Xem slide:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">13</td>
+          <td class="col-stt">15</td>
           <td class="col-date">2026/10/07</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">07/10/2026</td>
@@ -349,7 +281,7 @@
           <td class="col-output"><div class="output-box"><strong>Hộp Trợ lý AI Phi Phi màu xanh có nút Nói ngay</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">14</td>
+          <td class="col-stt">16</td>
           <td class="col-date">2026/10/07</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">07/10/2026</td>
@@ -363,7 +295,7 @@
           <td class="col-output"><div class="output-box"><strong>AI bóc tách giọng Bác Ba ra giá 55.000đ chuẩn xác</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh minh chứng:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">15</td>
+          <td class="col-stt">17</td>
           <td class="col-date">2026/10/07</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">07/10/2026</td>
@@ -377,7 +309,7 @@
           <td class="col-output"><div class="output-box"><strong>3 mẫu bài viết bán hàng có sẵn nút 1-chạm sao chép kèm hashtag #ChoXanh</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">16</td>
+          <td class="col-stt">18</td>
           <td class="col-date">2026/10/08</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">08/10/2026</td>
@@ -391,7 +323,7 @@
           <td class="col-output"><div class="output-box"><strong>Bảng theo dõi mùa vụ từng thửa đất của Bác Ba</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">17</td>
+          <td class="col-stt">19</td>
           <td class="col-date">2026/10/08</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">08/10/2026</td>
@@ -405,7 +337,7 @@
           <td class="col-output"><div class="output-box"><strong>Nhật ký bón phân và chăm sóc cây theo thời gian thực</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">18</td>
+          <td class="col-stt">20</td>
           <td class="col-date">2026/10/08</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">08/10/2026</td>
@@ -419,7 +351,7 @@
           <td class="col-output"><div class="output-box"><strong>Thông báo dự kiến thu hoạch 2.8 tấn chuối ngày 15/10</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">19</td>
+          <td class="col-stt">21</td>
           <td class="col-date">2026/10/09</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">09/10/2026</td>
@@ -433,7 +365,7 @@
           <td class="col-output"><div class="output-box"><strong>Màn hình quản lý đơn hàng phân màu rõ ràng</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/09_mobile_tab_don_hang.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">20</td>
+          <td class="col-stt">22</td>
           <td class="col-date">2026/10/09</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">09/10/2026</td>
@@ -447,7 +379,7 @@
           <td class="col-output"><div class="output-box"><strong>Popup đơn hàng có nút bấm gọi điện thoại trực tiếp cho người mua</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/09_mobile_tab_don_hang.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">21</td>
+          <td class="col-stt">23</td>
           <td class="col-date">2026/10/09</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">09/10/2026</td>
@@ -461,7 +393,7 @@
           <td class="col-output"><div class="output-box"><strong>Đạt 100% yêu cầu nghiệm thu gói Mobile Bác Ba của Vinh</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">22</td>
+          <td class="col-stt">24</td>
           <td class="col-date">2026/10/12</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">12/10/2026</td>
@@ -475,7 +407,7 @@
           <td class="col-output"><div class="output-box"><strong>Giao diện Dashboard HTX Yên Bình hoàn chỉnh</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/htx-dashboard" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">23</td>
+          <td class="col-stt">25</td>
           <td class="col-date">2026/10/12</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">12/10/2026</td>
@@ -489,11 +421,11 @@
           <td class="col-output"><div class="output-box"><strong>4 thẻ KPI số liệu thực tế của HTX Yên Bình</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">24</td>
+          <td class="col-stt">26</td>
           <td class="col-date">2026/10/13</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">13/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-hours"><span class="badge-hour">1.5h</span></td>
           <td class="col-proj">Green Village</td>
           <td class="col-status"><span class="badge badge-done">Done</span></td>
           <td class="col-src">Vinh và BLĐ</td>
@@ -503,11 +435,11 @@
           <td class="col-output"><div class="output-box"><strong>Bảng quản lý sản phẩm toàn HTX có bộ lọc OCOP và VietGAP</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/02_htx_duyet_san_pham.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">25</td>
+          <td class="col-stt">27</td>
           <td class="col-date">2026/10/13</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">13/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-hours"><span class="badge-hour">1.5h</span></td>
           <td class="col-proj">Green Village</td>
           <td class="col-status"><span class="badge badge-done">Done</span></td>
           <td class="col-src">Vinh và BLĐ</td>
@@ -517,11 +449,11 @@
           <td class="col-output"><div class="output-box"><strong>Modal duyệt sản phẩm có nút phát âm thanh sóng âm xanh lá</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">26</td>
+          <td class="col-stt">28</td>
           <td class="col-date">2026/10/13</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">13/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-hours"><span class="badge-hour">1.5h</span></td>
           <td class="col-proj">Green Village</td>
           <td class="col-status"><span class="badge badge-done">Done</span></td>
           <td class="col-src">Vinh và BLĐ</td>
@@ -531,11 +463,11 @@
           <td class="col-output"><div class="output-box"><strong>Nút Phê duyệt lên sàn màu xanh lá và tem OCOP 4 sao tỉnh</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/03_modal_nghe_audio_nong_dan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">27</td>
+          <td class="col-stt">29</td>
           <td class="col-date">2026/10/13</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">15/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-hours"><span class="badge-hour">1.5h</span></td>
           <td class="col-proj">Greenfi</td>
           <td class="col-status"><span class="badge badge-inprogress">Đang làm</span></td>
           <td class="col-src">Vinh và BLĐ</td>
@@ -545,7 +477,21 @@
           <td class="col-output"><div class="output-box"><strong>Bản sửa đổi slide kinh doanh theo góp ý của cô Thủy</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">28</td>
+          <td class="col-stt">30</td>
+          <td class="col-date">2026/10/13</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">13/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">WiseMeal</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tối ưu luồng Đi Chợ và phân chia phiên người dùng cho ứng dụng Mealy</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">Tách bạch danh sách nguyên liệu cần mua, lược bỏ gia vị nước nêm để user tự thêm khi hết; chia phiên khách vãng lai và tài khoản, khóa tính năng làm tiệc &amp; chia sẻ danh sách đi chợ đối với khách chưa đăng nhập.</td>
+          <td class="col-output"><div class="output-box"><strong>Luồng Đi Chợ Mealy thông minh, danh sách nguyên liệu tinh gọn và kiểm soát phân quyền khách chuẩn xác</strong></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">31</td>
           <td class="col-date">2026/10/14</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">14/10/2026</td>
@@ -559,7 +505,7 @@
           <td class="col-output"><div class="output-box"><strong>Sổ theo dõi tín dụng cấn trừ vật tư khi giao nông sản</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">29</td>
+          <td class="col-stt">32</td>
           <td class="col-date">2026/10/14</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">14/10/2026</td>
@@ -573,7 +519,7 @@
           <td class="col-output"><div class="output-box"><strong>Bảng chi tiết từng khoản vật tư cấp cho hộ Bác Ba</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">30</td>
+          <td class="col-stt">33</td>
           <td class="col-date">2026/10/14</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">15/10/2026</td>
@@ -587,7 +533,7 @@
           <td class="col-output"><div class="output-box"><strong>Bộ slide hoàn thiện 90% các trang đồ họa và sơ đồ luồng HTX</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">31</td>
+          <td class="col-stt">34</td>
           <td class="col-date">2026/10/15</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">15/10/2026</td>
@@ -601,7 +547,7 @@
           <td class="col-output"><div class="output-box"><strong>Khối Cần Can Thiệp Khẩn Cấp 3 hộ xã viên</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">32</td>
+          <td class="col-stt">35</td>
           <td class="col-date">2026/10/15</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">15/10/2026</td>
@@ -615,7 +561,7 @@
           <td class="col-output"><div class="output-box"><strong>Biểu đồ tiến độ gom hàng và thước đo bao tiêu 88.5%</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">33</td>
+          <td class="col-stt">36</td>
           <td class="col-date">2026/10/15</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">15/10/2026</td>
@@ -629,7 +575,7 @@
           <td class="col-output"><div class="output-box"><strong>2 nút In Sổ và Ứng Thêm Vật Tư góc trên bên trái</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/08_bang_doi_soat_kho.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">34</td>
+          <td class="col-stt">37</td>
           <td class="col-date">2026/10/15</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">15/10/2026</td>
@@ -643,7 +589,7 @@
           <td class="col-output"><div class="output-box"><strong>Bộ Slide kinh doanh GreenFi hoàn chỉnh bản Final</strong><br><a class="output-img-link" href="https://drive.google.com/file/d/12eBOBRx8cq5E1h-ushxr9CmOMqW7ywfl/view?usp=sharing" target="_blank" style="background:#FEF3C7; color:#92400E;">📄 Xem slide:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">35</td>
+          <td class="col-stt">38</td>
           <td class="col-date">2026/10/16</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">16/10/2026</td>
@@ -657,7 +603,7 @@
           <td class="col-output"><div class="output-box"><strong>Cột Việc Nên Làm Hôm Nay với các nút Mở, Ghép, Nhắc, Gom</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">36</td>
+          <td class="col-stt">39</td>
           <td class="col-date">2026/10/16</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">16/10/2026</td>
@@ -671,7 +617,7 @@
           <td class="col-output"><div class="output-box"><strong>Bảng thẻ chờ duyệt mới nhất kèm nút xanh Duyệt Ngay</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">37</td>
+          <td class="col-stt">40</td>
           <td class="col-date">2026/10/16</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">16/10/2026</td>
@@ -685,7 +631,7 @@
           <td class="col-output"><div class="output-box"><strong>Nghiệm thu đạt yêu cầu toàn bộ phân hệ Dashboard HTX Yên Bình</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">38</td>
+          <td class="col-stt">41</td>
           <td class="col-date">2026/10/19</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">19/10/2026</td>
@@ -699,7 +645,7 @@
           <td class="col-output"><div class="output-box"><strong>Giao diện Sàn Nguồn Lực Nông Thôn Số</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">39</td>
+          <td class="col-stt">42</td>
           <td class="col-date">2026/10/19</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">19/10/2026</td>
@@ -713,7 +659,7 @@
           <td class="col-output"><div class="output-box"><strong>4 thẻ trạng thái Sẵn Sàng (CÓ) và Chờ Đối Tác (CẦN)</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">40</td>
+          <td class="col-stt">43</td>
           <td class="col-date">2026/10/19</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">19/10/2026</td>
@@ -727,7 +673,7 @@
           <td class="col-output"><div class="output-box"><strong>Thẻ máy cày Kubota của Bác Ba có nhãn Máy Nông Nghiệp</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">41</td>
+          <td class="col-stt">44</td>
           <td class="col-date">2026/10/20</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">20/10/2026</td>
@@ -741,7 +687,7 @@
           <td class="col-output"><div class="output-box"><strong>Thẻ Xe tải 1.5T đã ghép nối chở chuối cho Bác Ba</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">42</td>
+          <td class="col-stt">45</td>
           <td class="col-date">2026/10/20</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">20/10/2026</td>
@@ -755,7 +701,7 @@
           <td class="col-output"><div class="output-box"><strong>Thẻ Lò sấy lạnh 300kg/mẻ ghép nối sấy măng le</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">43</td>
+          <td class="col-stt">46</td>
           <td class="col-date">2026/10/20</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">20/10/2026</td>
@@ -769,7 +715,7 @@
           <td class="col-output"><div class="output-box"><strong>Thẻ Drone phun thuốc sinh học ghép với vườn cam Anh Long</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/04_danh_muc_the_tai_nguyen.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">44</td>
+          <td class="col-stt">47</td>
           <td class="col-date">2026/10/21</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">21/10/2026</td>
@@ -783,7 +729,7 @@
           <td class="col-output"><div class="output-box"><strong>Modal Trung Tâm Phê Duyệt Xử Lý Gấp HTX</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/05_cong_b2b_dat_don_si.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">45</td>
+          <td class="col-stt">48</td>
           <td class="col-date">2026/10/21</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">21/10/2026</td>
@@ -797,7 +743,7 @@
           <td class="col-output"><div class="output-box"><strong>Đơn sỉ WinMart 27.5 triệu kèm nút Duyệt &amp; Điều Xe</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/05_cong_b2b_dat_don_si.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">46</td>
+          <td class="col-stt">49</td>
           <td class="col-date">2026/10/21</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">21/10/2026</td>
@@ -811,11 +757,11 @@
           <td class="col-output"><div class="output-box"><strong>Đơn sỉ Co.op Food 18 triệu kèm nút Ký Duyệt Đơn</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/05_cong_b2b_dat_don_si.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">47</td>
+          <td class="col-stt">50</td>
           <td class="col-date">2026/10/22</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">22/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
           <td class="col-proj">Green Village</td>
           <td class="col-status"><span class="badge badge-done">Done</span></td>
           <td class="col-src">Vinh và BLĐ</td>
@@ -825,11 +771,11 @@
           <td class="col-output"><div class="output-box"><strong>Dữ liệu liên thông trơn tru từ vườn Bác Ba đến đơn sỉ WinMart</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">48</td>
+          <td class="col-stt">51</td>
           <td class="col-date">2026/10/22</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">22/10/2026</td>
-          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
           <td class="col-proj">Green Village</td>
           <td class="col-status"><span class="badge badge-done">Done</span></td>
           <td class="col-src">Vinh và BLĐ</td>
@@ -839,7 +785,21 @@
           <td class="col-output"><div class="output-box"><strong>Lệnh điều xe tải tự động gửi về điện thoại Anh Tuấn</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">49</td>
+          <td class="col-stt">52</td>
+          <td class="col-date">2026/10/22</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">22/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">WiseMeal</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Họp review đánh giá toàn diện phiên bản Ver 2 ứng dụng Mealy</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">Đánh giá toàn bộ UI/UX, kho công thức nấu ăn, luồng xây dựng menu bữa cơm, trải nghiệm đi chợ và tính năng checking đồ ăn lưu trữ trong tủ lạnh trước khi đẩy store.</td>
+          <td class="col-output"><div class="output-box"><strong>Nghiệm thu toàn bộ tính năng Ver 2 Mealy cùng Bảo và team, đạt chuẩn phát hành TestFlight/CH Play</strong></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">53</td>
           <td class="col-date">2026/10/23</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">23/10/2026</td>
@@ -853,7 +813,7 @@
           <td class="col-output"><div class="output-box"><strong>Trang quét mã QR tem truy xuất nguồn gốc nông sản</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/portal" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">50</td>
+          <td class="col-stt">54</td>
           <td class="col-date">2026/10/23</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">23/10/2026</td>
@@ -867,7 +827,7 @@
           <td class="col-output"><div class="output-box"><strong>Trang QR tải nhanh trong 1 giây ngay cả khi mạng 3G yếu</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">51</td>
+          <td class="col-stt">55</td>
           <td class="col-date">2026/10/23</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">23/10/2026</td>
@@ -881,7 +841,7 @@
           <td class="col-output"><div class="output-box"><strong>Ban Lãnh Đạo duyệt thông qua toàn bộ tính năng Sàn Nguồn Lực</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">52</td>
+          <td class="col-stt">56</td>
           <td class="col-date">2026/10/26</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">26/10/2026</td>
@@ -895,7 +855,7 @@
           <td class="col-output"><div class="output-box"><strong>Toàn bộ nút bấm đã chống vỡ chữ 100% theo chuẩn Shopee UI</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">53</td>
+          <td class="col-stt">57</td>
           <td class="col-date">2026/10/26</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">26/10/2026</td>
@@ -909,7 +869,7 @@
           <td class="col-output"><div class="output-box"><strong>Kích thước nút bấm đồng đều chuẩn từng pixel toàn bộ hệ thống</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">54</td>
+          <td class="col-stt">58</td>
           <td class="col-date">2026/10/26</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">26/10/2026</td>
@@ -923,7 +883,7 @@
           <td class="col-output"><div class="output-box"><strong>Hiển thị chuẩn đét trên cả màn hình nhỏ 375px, không lệch pixel nào</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">55</td>
+          <td class="col-stt">59</td>
           <td class="col-date">2026/10/27</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">27/10/2026</td>
@@ -937,7 +897,7 @@
           <td class="col-output"><div class="output-box"><strong>Các thẻ sản phẩm vuông vức, không bị xô lệch khi tên nông sản dài</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">56</td>
+          <td class="col-stt">60</td>
           <td class="col-date">2026/10/27</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">27/10/2026</td>
@@ -951,7 +911,7 @@
           <td class="col-output"><div class="output-box"><strong>Thẻ sản phẩm đều hàng thẳng lối, chữ dài tự động hiện dấu ba chấm</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">57</td>
+          <td class="col-stt">61</td>
           <td class="col-date">2026/10/27</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">27/10/2026</td>
@@ -965,7 +925,7 @@
           <td class="col-output"><div class="output-box"><strong>Thanh tab cuộn mượt mà không hiện vệt cuộn xấu trên điện thoại</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">58</td>
+          <td class="col-stt">62</td>
           <td class="col-date">2026/10/28</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">28/10/2026</td>
@@ -979,7 +939,7 @@
           <td class="col-output"><div class="output-box"><strong>Cổng trình diễn Dark Mode độc lập có mockup iPhone 16 Pro</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/portal" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">59</td>
+          <td class="col-stt">63</td>
           <td class="col-date">2026/10/28</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">28/10/2026</td>
@@ -993,7 +953,7 @@
           <td class="col-output"><div class="output-box"><strong>Độ tương phản ban đêm đạt chuẩn WCAG, ảnh nông sản rực rỡ sắc nét</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">60</td>
+          <td class="col-stt">64</td>
           <td class="col-date">2026/10/28</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">28/10/2026</td>
@@ -1007,7 +967,7 @@
           <td class="col-output"><div class="output-box"><strong>Ghi nhớ chế độ Dark Mode tự động theo thói quen người dùng</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">61</td>
+          <td class="col-stt">65</td>
           <td class="col-date">2026/10/29</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">29/10/2026</td>
@@ -1021,7 +981,7 @@
           <td class="col-output"><div class="output-box"><strong>Toàn bộ ảnh chụp sản phẩm đã nén WebP siêu nhẹ, mở tức thì trên máy bay/xe khách</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">62</td>
+          <td class="col-stt">66</td>
           <td class="col-date">2026/10/29</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">29/10/2026</td>
@@ -1035,7 +995,7 @@
           <td class="col-output"><div class="output-box"><strong>Mã nguồn sạch sẽ, tốc độ mở app nhanh gấp đôi phiên bản cũ</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">63</td>
+          <td class="col-stt">67</td>
           <td class="col-date">2026/10/29</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">29/10/2026</td>
@@ -1049,7 +1009,7 @@
           <td class="col-output"><div class="output-box"><strong>Chạy ngon lành 100% trong trình duyệt Zalo, không bị lỗi hiển thị</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">64</td>
+          <td class="col-stt">68</td>
           <td class="col-date">2026/10/30</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">30/10/2026</td>
@@ -1063,7 +1023,7 @@
           <td class="col-output"><div class="output-box"><strong>Bảng thống kê và sổ kho hiển thị chuẩn từng cột trên máy tính bảng</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/10_mobile_thong_ke_doanh_thu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/htx-dashboard" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
         </tr>
         <tr>
-          <td class="col-stt">65</td>
+          <td class="col-stt">69</td>
           <td class="col-date">2026/10/30</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">30/10/2026</td>
@@ -1077,7 +1037,7 @@
           <td class="col-output"><div class="output-box"><strong>Mã nguồn đã đồng bộ sạch sẽ lên Git repository chính thức</strong></div></td>
         </tr>
         <tr>
-          <td class="col-stt">66</td>
+          <td class="col-stt">70</td>
           <td class="col-date">2026/10/30</td>
           <td class="col-user">Hoàng</td>
           <td class="col-due">30/10/2026</td>
@@ -1164,7 +1124,7 @@
 62	2026/10/30	Hoàng	30/10/2026	2	Green Village	Done	Vinh và BLĐ	Kích hoạt phát hành phiên bản Production lên máy chủ Vercel và báo cáo hoàn thành	Gấp	Bật Vercel Deploy thành công, kiểm tra link live chạy ổn định, gửi link báo cáo tổng kết tháng 10 cho Vinh và các sếp.	Hệ thống đã chạy chính thức trên Vercel: https://cho-xanh.vercel.app</textarea>
 
   <div id="toast" class="toast">
-    <span>✅ Đã sao chép 66 dòng vào bộ nhớ tạm! Bạn chỉ cần dán (Ctrl + V) vào Google Sheets.</span>
+    <span>✅ Đã sao chép 70 dòng vào bộ nhớ tạm! Bạn chỉ cần dán (Ctrl + V) vào Google Sheets.</span>
   </div>
 
   <script>

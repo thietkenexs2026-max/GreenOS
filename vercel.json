@@ -57,23 +57,23 @@
     },
     {
       "source": "/portal",
-      "destination": "/PORTAL.html"
+      "destination": "/portal.html"
     },
     {
       "source": "/PORTAL",
-      "destination": "/PORTAL.html"
+      "destination": "/portal.html"
     },
     {
       "source": "/mobile",
-      "destination": "/index.html"
+      "destination": "/mobile.html"
     },
     {
       "source": "/bac-ba",
-      "destination": "/index.html"
+      "destination": "/mobile.html"
     },
     {
       "source": "/gfkey",
-      "destination": "/index.html"
+      "destination": "/mobile.html"
     }
   ]
 }

@@ -61,17 +61,17 @@ additional_tasks = [
     {
         'date': '2026/10/02',
         'insert_after_kw': 'lưu trạng thái đã xem onboarding',
-        'row': ['', '2026/10/02', 'Hoàng', '02/10/2026', '2', 'WiseMeal', 'Done', 'Vinh và BLĐ',
-                'Hỗ trợ Bảo tinh chỉnh và tối ưu luồng UI/UX Trang chủ ứng dụng Mealy', 'Trong tuần',
+        'row': ['', '2026/10/02', 'Bảo', '02/10/2026', '2', 'WiseMeal', 'Done', 'Bảo',
+                'Tinh chỉnh và tối ưu luồng UI/UX Trang chủ ứng dụng Mealy', 'Trong tuần',
                 'Rà soát bố cục các khối món ngon gia đình, căn chỉnh khoảng cách các nút gạt chế độ nấu ăn và trải nghiệm lướt mâm cơm 3 món.',
-                'Giao diện Trang chủ Mealy mượt mà, đồng bộ luồng công thức nấu ăn cùng Bảo']
+                'Giao diện Trang chủ Mealy mượt mà, đồng bộ luồng công thức nấu ăn']
     },
     # 05/10: Review Ver 1 Mealy
     {
         'date': '2026/10/05',
         'insert_after_kw': 'cuộn ngang (carousel)',
-        'row': ['', '2026/10/05', 'Hoàng', '05/10/2026', '2', 'WiseMeal', 'Done', 'Vinh và BLĐ',
-                'Họp review đánh giá phiên bản Ver 1 ứng dụng Mealy cùng Bảo và team', 'Trong tuần',
+        'row': ['', '2026/10/05', 'Bảo', '05/10/2026', '2', 'WiseMeal', 'Done', 'Bảo',
+                'Họp review đánh giá phiên bản Ver 1 ứng dụng Mealy cùng team', 'Trong tuần',
                 'Kiểm tra toàn bộ luồng tạo hộp thoại In-App, từ điển ẩm thực vùng miền và trải nghiệm lọc mâm cơm theo khẩu vị.',
                 'Biên bản nghiệm thu Ver 1 Mealy đạt chuẩn trải nghiệm, chốt danh sách tối ưu đợt tiếp theo']
     },
@@ -97,7 +97,7 @@ additional_tasks = [
     {
         'date': '2026/10/13',
         'insert_after_kw': 'phê duyệt nông sản lên sàn',
-        'row': ['', '2026/10/13', 'Hoàng', '13/10/2026', '2', 'WiseMeal', 'Done', 'Vinh và BLĐ',
+        'row': ['', '2026/10/13', 'Bảo', '13/10/2026', '2', 'WiseMeal', 'Done', 'Bảo',
                 'Tối ưu luồng Đi Chợ và phân chia phiên người dùng cho ứng dụng Mealy', 'Gấp',
                 'Tách bạch danh sách nguyên liệu cần mua, lược bỏ gia vị nước nêm để user tự thêm khi hết; chia phiên khách vãng lai và tài khoản, khóa tính năng làm tiệc & chia sẻ danh sách đi chợ đối với khách chưa đăng nhập.',
                 'Luồng Đi Chợ Mealy thông minh, danh sách nguyên liệu tinh gọn và kiểm soát phân quyền khách chuẩn xác']
@@ -124,10 +124,10 @@ additional_tasks = [
     {
         'date': '2026/10/22',
         'insert_after_kw': 'tự động gán xe tải',
-        'row': ['', '2026/10/22', 'Hoàng', '22/10/2026', '2', 'WiseMeal', 'Done', 'Vinh và BLĐ',
+        'row': ['', '2026/10/22', 'Bảo', '22/10/2026', '2', 'WiseMeal', 'Done', 'Bảo',
                 'Họp review đánh giá toàn diện phiên bản Ver 2 ứng dụng Mealy', 'Gấp',
                 'Đánh giá toàn bộ UI/UX, kho công thức nấu ăn, luồng xây dựng menu bữa cơm, trải nghiệm đi chợ và tính năng checking đồ ăn lưu trữ trong tủ lạnh trước khi đẩy store.',
-                'Nghiệm thu toàn bộ tính năng Ver 2 Mealy cùng Bảo và team, đạt chuẩn phát hành TestFlight/CH Play']
+                'Nghiệm thu toàn bộ tính năng Ver 2 Mealy cùng team, đạt chuẩn phát hành TestFlight/CH Play']
     }
 ]
 

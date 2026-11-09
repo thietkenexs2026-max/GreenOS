@@ -208,15 +208,15 @@
    <Row ss:Height="40">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">7</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/02</Data></Cell>
-    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
+    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Bảo</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">02/10/2026</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">WiseMeal</Data></Cell>
     <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
-    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
-    <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Hỗ trợ Bảo tinh chỉnh và tối ưu luồng UI/UX Trang chủ ứng dụng Mealy</Data></Cell>
+    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Bảo</Data></Cell>
+    <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Tinh chỉnh và tối ưu luồng UI/UX Trang chủ ứng dụng Mealy</Data></Cell>
     <Cell ss:StyleID="PriorityTB"><Data ss:Type="String">Trong tuần</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Rà soát bố cục các khối món ngon gia đình, căn chỉnh khoảng cách các nút gạt chế độ nấu ăn và trải nghiệm lướt mâm cơm 3 món.</Data></Cell>
-    <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Giao diện Trang chủ Mealy mượt mà, đồng bộ luồng công thức nấu ăn cùng Bảo</Data></Cell>
+    <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Giao diện Trang chủ Mealy mượt mà, đồng bộ luồng công thức nấu ăn</Data></Cell>
    </Row>
    <Row ss:Height="40">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">8</Data></Cell>
@@ -247,12 +247,12 @@
    <Row ss:Height="40">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/05</Data></Cell>
-    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
+    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Bảo</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">05/10/2026</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">WiseMeal</Data></Cell>
     <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
-    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
-    <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Họp review đánh giá phiên bản Ver 1 ứng dụng Mealy cùng Bảo và team</Data></Cell>
+    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Bảo</Data></Cell>
+    <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Họp review đánh giá phiên bản Ver 1 ứng dụng Mealy cùng team</Data></Cell>
     <Cell ss:StyleID="PriorityTB"><Data ss:Type="String">Trong tuần</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Kiểm tra toàn bộ luồng tạo hộp thoại In-App, từ điển ẩm thực vùng miền và trải nghiệm lọc mâm cơm theo khẩu vị.</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Biên bản nghiệm thu Ver 1 Mealy đạt chuẩn trải nghiệm, chốt danh sách tối ưu đợt tiếp theo</Data></Cell>
@@ -507,11 +507,11 @@
    <Row ss:Height="40">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/13</Data></Cell>
-    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
+    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Bảo</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">13/10/2026</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">WiseMeal</Data></Cell>
     <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
-    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
+    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Bảo</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Tối ưu luồng Đi Chợ và phân chia phiên người dùng cho ứng dụng Mealy</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Tách bạch danh sách nguyên liệu cần mua, lược bỏ gia vị nước nêm để user tự thêm khi hết; chia phiên khách vãng lai và tài khoản, khóa tính năng làm tiệc &amp; chia sẻ danh sách đi chợ đối với khách chưa đăng nhập.</Data></Cell>
@@ -793,15 +793,15 @@
    <Row ss:Height="40">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">52</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">2026/10/22</Data></Cell>
-    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Hoàng</Data></Cell>
+    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Bảo</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">22/10/2026</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">WiseMeal</Data></Cell>
     <Cell ss:StyleID="DoneStyle"><Data ss:Type="String">Done</Data></Cell>
-    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Vinh và BLĐ</Data></Cell>
+    <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Bảo</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Họp review đánh giá toàn diện phiên bản Ver 2 ứng dụng Mealy</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Đánh giá toàn bộ UI/UX, kho công thức nấu ăn, luồng xây dựng menu bữa cơm, trải nghiệm đi chợ và tính năng checking đồ ăn lưu trữ trong tủ lạnh trước khi đẩy store.</Data></Cell>
-    <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Nghiệm thu toàn bộ tính năng Ver 2 Mealy cùng Bảo và team, đạt chuẩn phát hành TestFlight/CH Play</Data></Cell>
+    <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Nghiệm thu toàn bộ tính năng Ver 2 Mealy cùng team, đạt chuẩn phát hành TestFlight/CH Play</Data></Cell>
    </Row>
    <Row ss:Height="40">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">53</Data></Cell>

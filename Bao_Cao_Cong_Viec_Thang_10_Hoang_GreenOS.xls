@@ -130,7 +130,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Thiết lập cấu trúc khung giao diện Mobile App Green OS (chuẩn viewport 375px - 430px, CSS reset chống vỡ layout)</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Khởi tạo layout viewport di động, chống tràn ngang màn hình, thiết lập cấu trúc container thích ứng mọi dòng smartphone</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Khung mobile chuẩn 390x844px, overflow-x: hidden, không vỡ layout khi xoay ngang | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.png | Link: https://cho-xanh.vercel.app/mobile</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Khung mobile chuẩn 390x844px, overflow-x: hidden, không vỡ layout khi xoay ngang | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.webp | Link: https://cho-xanh.vercel.app/mobile</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">2</Data></Cell>
@@ -144,7 +144,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Xây dựng thanh điều hướng đáy (Bottom Navigation Bar) 5 tab chính</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Triển khai 5 tab: Trang chủ, Đăng bán, Nhật ký, Đơn hàng, Tài khoản; hiệu ứng active mượt mà và chống giật khi chuyển tab</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Bottom bar cố định đáy cao 64px, đổ bóng mờ, icon Lucide SVG sắc nét kèm nhãn tiếng Việt | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Bottom bar cố định đáy cao 64px, đổ bóng mờ, icon Lucide SVG sắc nét kèm nhãn tiếng Việt | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">3</Data></Cell>
@@ -214,7 +214,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Xây dựng màn hình Trang chủ Bác Ba: Widget lời chào cá nhân hóa &amp; Thẻ tóm tắt doanh thu</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[4h] Hiển thị lời chào thân thiện theo buổi (Sáng/Chiều), thống kê doanh thu ngày, số đơn cần giao, lối tắt chụp ảnh đăng bán 1-chạm</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Card lời chào Bác Ba, thẻ doanh thu 4.850.000đ, 3 đơn chờ giao, nút camera to 56px nổi bật | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Card lời chào Bác Ba, thẻ doanh thu 4.850.000đ, 3 đơn chờ giao, nút camera to 56px nổi bật | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">8</Data></Cell>
@@ -410,7 +410,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Dựng khung layout Dashboard Quản trị HTX (HTX Dashboard) trên giao diện Desktop &amp; Tablet</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[4h] Sidebar điều hướng thông minh (Tổng quan, Duyệt sản phẩm, Sổ kho, Thẻ tài nguyên, Đơn hàng), Topbar thông báo</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Layout 2 cột: Sidebar trái 250px bo góc, Header tìm kiếm &amp; hồ sơ HTX, vùng làm việc 1200px | Ảnh: scratch/output_images/01_dashboard_htx_tong_quan.png | Link: https://cho-xanh.vercel.app/htx-dashboard</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Layout 2 cột: Sidebar trái 250px bo góc, Header tìm kiếm &amp; hồ sơ HTX, vùng làm việc 1200px | Ảnh: scratch/output_images/01_dashboard_htx_tong_quan.webp | Link: https://cho-xanh.vercel.app/htx-dashboard</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">22</Data></Cell>
@@ -424,7 +424,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Xây dựng khối KPI Cards thống kê tổng quan toàn Hợp tác xã</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[4h] Hiển thị 4 chỉ số cốt lõi: Sản lượng tháng (tấn), Tổng doanh số (triệu VNĐ), Số xã viên tích cực (142 hộ), Đơn chờ xử lý</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: 4 Card số liệu: Sản lượng 38.5 Tấn (+12%), Doanh thu 920 Triệu, 142 Xã viên hoạt động, 9 Đơn chờ duyệt | Ảnh: scratch/output_images/01_dashboard_htx_tong_quan.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: 4 Card số liệu: Sản lượng 38.5 Tấn (+12%), Doanh thu 920 Triệu, 142 Xã viên hoạt động, 9 Đơn chờ duyệt | Ảnh: scratch/output_images/01_dashboard_htx_tong_quan.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">23</Data></Cell>
@@ -438,7 +438,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Phát triển phân hệ Kiểm duyệt sản phẩm của xã viên gửi lên HTX</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Bảng danh sách nông sản các hộ gửi lên theo thời gian thực, có bộ lọc theo tổ đội (Rau, Trái cây, Lúa gạo, Dược liệu)</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Bảng quản lý 12 sản phẩm chờ duyệt, hiển thị tên hộ, chủng loại, số lượng, ngày gửi, nhãn OCOP dự kiến | Ảnh: scratch/output_images/02_htx_duyet_san_pham.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Bảng quản lý 12 sản phẩm chờ duyệt, hiển thị tên hộ, chủng loại, số lượng, ngày gửi, nhãn OCOP dự kiến | Ảnh: scratch/output_images/02_htx_duyet_san_pham.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">24</Data></Cell>
@@ -452,7 +452,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Thiết kế Modal xem xét toàn diện sản phẩm: Ảnh thật, bài đăng AI, nghe audio giọng nói bà con</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Tích hợp trình phát âm thanh (audio wave player) để cán bộ HTX nghe trực tiếp ghi chú lời dặn của nông dân</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Modal duyệt đa phương tiện: Trình phát audio sóng âm xanh lá, xem ảnh gốc vs ảnh tách nền | Ảnh: scratch/output_images/03_modal_nghe_audio_nong_dan.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Modal duyệt đa phương tiện: Trình phát audio sóng âm xanh lá, xem ảnh gốc vs ảnh tách nền | Ảnh: scratch/output_images/03_modal_nghe_audio_nong_dan.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">25</Data></Cell>
@@ -480,7 +480,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Xây dựng Module Sổ Xuất Nhập Kho nông sản tập trung toàn HTX</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Trong tuần</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[4h] Quản trị danh mục kho: Kho bảo quản lạnh, Kho sơ chế đóng gói, Kho trung chuyển; theo dõi khối lượng nhập/xuất theo ngày</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Bảng sổ kho điện tử: Mã phiếu XK/NK, tên nông sản, vị trí ô kệ kho lạnh, người giao/nhận, số lượng tồn thực tế | Ảnh: scratch/output_images/08_bang_doi_soat_kho.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Bảng sổ kho điện tử: Mã phiếu XK/NK, tên nông sản, vị trí ô kệ kho lạnh, người giao/nhận, số lượng tồn thực tế | Ảnh: scratch/output_images/08_bang_doi_soat_kho.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">27</Data></Cell>
@@ -508,7 +508,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Phát triển phân hệ Bảng Kiểm đếm &amp; Đối soát sản lượng nông sản</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Trong tuần</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Thiết lập bảng theo dõi 142 hộ xã viên: Sản lượng đăng ký đầu vụ, Sản lượng thực tế đã thu hoạch cân tại trạm</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Bảng đối soát chi tiết: Cột đăng ký cam kết vs Cột thực thu tại trạm cân, tự tính chênh lệch thừa/thiếu | Ảnh: scratch/output_images/08_bang_doi_soat_kho.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Bảng đối soát chi tiết: Cột đăng ký cam kết vs Cột thực thu tại trạm cân, tự tính chênh lệch thừa/thiếu | Ảnh: scratch/output_images/08_bang_doi_soat_kho.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">29</Data></Cell>
@@ -592,7 +592,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Lên ý tưởng, cấu trúc dữ liệu và khung thiết kế danh mục &quot;Thẻ Tài Nguyên&quot; (Resource Card)</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Định nghĩa thẻ điều phối điện tử dùng chung nguồn lực nhàn rỗi giữa 142 hộ: Máy móc, Xe tải, Kho bãi, Lao động</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Khung layout Thẻ Tài Nguyên: 4 tab lọc, thẻ hiển thị chủ sở hữu, thông số kỹ thuật, giá thuê, nút pill đăng ký | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Khung layout Thẻ Tài Nguyên: 4 tab lọc, thẻ hiển thị chủ sở hữu, thông số kỹ thuật, giá thuê, nút pill đăng ký | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">35</Data></Cell>
@@ -606,7 +606,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Xây dựng Nhóm 1: Thẻ Tài nguyên Máy móc Nông nghiệp dùng chung</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Thẻ Máy cày đất đa năng, Máy gặt đập liên hợp, Hệ thống tưới phun sương; thông tin chủ máy, công suất và giá thuê</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: 12 thẻ máy móc: Máy cày Kubota 50HP (350k/sào), Máy gặt đập liên hợp Yanmar, Máy bay phun thuốc trừ sâu vi sinh | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: 12 thẻ máy móc: Máy cày Kubota 50HP (350k/sào), Máy gặt đập liên hợp Yanmar, Máy bay phun thuốc trừ sâu vi sinh | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">36</Data></Cell>
@@ -634,7 +634,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Xây dựng Nhóm 2: Thẻ Tài nguyên Vận chuyển &amp; Xe tải HTX</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Thẻ Xe tải lạnh 2.5 tấn, Xe tải thùng bạt liên xã, Xe ba gác thu gom ngõ xóm; thông số tải trọng và biểu cước vận chuyển</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: 8 thẻ xe vận tải: 2 Xe tải lạnh 2.5 tấn, 3 Xe tải thùng mui bạt 1.5 tấn, 3 Xe ba gác điện trung chuyển thôn | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: 8 thẻ xe vận tải: 2 Xe tải lạnh 2.5 tấn, 3 Xe tải thùng mui bạt 1.5 tấn, 3 Xe ba gác điện trung chuyển thôn | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">38</Data></Cell>
@@ -718,7 +718,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Phát triển Cổng B2B Wholesale Portal dành cho Doanh nghiệp &amp; Thương lái mua sỉ</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[4h] Hiển thị năng lực cung ứng theo mùa vụ của HTX, các dòng sản phẩm đạt chuẩn OCOP, bảng giá sỉ theo số lượng tạ/tấn</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Giao diện B2B Portal: Báo giá sỉ theo bậc (1-3 tấn: 28k/kg; &gt; 5 tấn: 25k/kg), hợp đồng điện tử nguyên tắc | Ảnh: scratch/output_images/05_cong_b2b_dat_don_si.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Giao diện B2B Portal: Báo giá sỉ theo bậc (1-3 tấn: 28k/kg; &gt; 5 tấn: 25k/kg), hợp đồng điện tử nguyên tắc | Ảnh: scratch/output_images/05_cong_b2b_dat_don_si.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">44</Data></Cell>
@@ -732,7 +732,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Thiết kế biểu mẫu Gửi yêu cầu báo giá và Đặt cọc thu mua trực tiếp từ HTX</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Trong tuần</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[4h] Cho phép doanh nghiệp chọn lịch giao hàng định kỳ hàng tuần, số lượng cam kết, kết nối thẳng về Ban Quản trị HTX</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Modal đặt đơn sỉ khẩn cấp: Chọn lịch xe tải giao, số lượng tạ/tấn, tính toán tiền cọc 30% minh bạch | Ảnh: scratch/output_images/05_cong_b2b_dat_don_si.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Modal đặt đơn sỉ khẩn cấp: Chọn lịch xe tải giao, số lượng tạ/tấn, tính toán tiền cọc 30% minh bạch | Ảnh: scratch/output_images/05_cong_b2b_dat_don_si.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">45</Data></Cell>
@@ -872,7 +872,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Thiết kế và triển khai Chế độ Giao diện Tối (Dark Mode) cho Mobile App Portal Bác Ba</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Trong tuần</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Khắc phục lỗi chìm nền và mất chữ khi chuyển sang Dark Mode, điều chỉnh màu nền Slate Dark dịu mắt khi bà con dùng buổi tối</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Giao diện nền Slate 900 (#0F172A), chữ trắng ngà (#F8FAFC) bảo vệ mắt bà con buổi tối | Ảnh: scratch/output_images/07_mobile_bac_ba_dark_mode.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Giao diện nền Slate 900 (#0F172A), chữ trắng ngà (#F8FAFC) bảo vệ mắt bà con buổi tối | Ảnh: scratch/output_images/07_mobile_bac_ba_dark_mode.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">55</Data></Cell>
@@ -886,7 +886,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Tối ưu độ tương phản văn bản, icon và hình ảnh nông sản trong môi trường nền tối</Data></Cell>
     <Cell ss:StyleID="CenterCell"><Data ss:Type="String">Trong tuần</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Tăng cường độ rực rỡ và sắc nét của ảnh trái cây trên nền tối, bảo toàn độ dễ đọc của các thông số giá và số lượng</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Tương phản đạt chuẩn WCAG AA (&gt; 4.5:1), ảnh trái cây nổi bật rực rỡ trên nền tối | Ảnh: scratch/output_images/07_mobile_bac_ba_dark_mode.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Tương phản đạt chuẩn WCAG AA (&gt; 4.5:1), ảnh trái cây nổi bật rực rỡ trên nền tối | Ảnh: scratch/output_images/07_mobile_bac_ba_dark_mode.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">56</Data></Cell>
@@ -956,7 +956,7 @@
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">Fix dứt điểm các lỗi giao diện cuối cùng: Căn chỉnh lại độ rộng cột bảng dữ liệu và modal audio</Data></Cell>
     <Cell ss:StyleID="PriorityGap"><Data ss:Type="String">Gấp</Data></Cell>
     <Cell ss:StyleID="CellStyle"><Data ss:Type="String">[3h] Sửa lỗi lệch bảng thống kê trên màn hình tablet, hoàn thiện modal xem và nghe ghi âm của thành viên</Data></Cell>
-    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Khắc phục triệt để lỗi lệch bảng thống kê 1200px, modal phát audio hiển thị chuẩn xác | Ảnh: scratch/output_images/03_modal_nghe_audio_nong_dan.png</Data></Cell>
+    <Cell ss:StyleID="OutputStyle"><Data ss:Type="String">Mô tả: Khắc phục triệt để lỗi lệch bảng thống kê 1200px, modal phát audio hiển thị chuẩn xác | Ảnh: scratch/output_images/03_modal_nghe_audio_nong_dan.webp</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="CenterCell"><Data ss:Type="Number">61</Data></Cell>

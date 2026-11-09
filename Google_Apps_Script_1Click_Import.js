@@ -1,24 +1,33 @@
 /**
  * ==============================================================================
- * GOOGLE APPS SCRIPT: 1-CLICK ĐỒNG BỘ BÁO CÁO THÁNG 10 (HOÀNG - GREENOS)
- * CHUẨN 11 CỘT KHỚP 100% GOOGLE SHEET MẪU (NEXS - GREENFI)
+ * GOOGLE APPS SCRIPT: ĐỒNG BỘ BÁO CÁO THÁNG 10 (HOÀNG - GREENOS)
+ * CHUẨN 11 CỘT - GIÃN DÒNG THOÁNG ĐÃNG - DROPDOWN CHIPS CHUẨN MẪU GỐC
  * ==============================================================================
  * 
- * HƯỚNG DẪN SỬ DỤNG:
- * 1. Mở file Google Sheet của bạn.
- * 2. Trên thanh menu, chọn: Tiện ích mở rộng (Extensions) -> Apps Script.
- * 3. Dán toàn bộ nội dung file này vào và bấm biểu tượng "Lưu" (Ctrl + S).
- * 4. Tải lại trang Google Sheet (F5).
- * 5. Trên menu xuất hiện tab: "🌾 Đồng Bộ GreenOS" -> Click "⚡ 1-Click Nạp 70 Đầu Việc & Tạo Dropdown".
+ * TÍNH NĂNG ĐƯỢC NÂNG CẤP:
+ * 1. KHẮC PHỤC CHỮ BỊ SÁT: Căn giữa theo chiều dọc (Vertical Middle), đặt chiều cao
+ *    dòng tối thiểu 48px, mở rộng độ rộng cột (Đầu việc 400px, Ghi chú 420px, Output 520px)
+ *    và bổ sung viền mềm mại (#E5E7EB) giúp bảng cực kỳ thoáng đãng, dễ đọc.
+ * 2. DROPDOWN LỰA CHỌN ĐẦY ĐỦ:
+ *    - Tiến độ: Done, Đang làm, Chưa làm, Pending, Chờ duyệt, checking, Check pháp lý, Hủy.
+ *    - Thứ tự ưu tiên: Gấp, Cao, Trong ngày, Trong tuần, Trong tháng, Thấp, Trong tuần này phải xong.
+ *    - Nexs/ Greenfi (Dự án): Green Village, Greenfi, WiseMeal, GFKey, G - NEXS, Nexs, OPS, ALL Companys.
+ *    - Người làm: Hoàng, A VINH, ĐỨC, A BẢO, MAI PHƯƠNG, NGỌC, CƯỜNG.
+ * 3. TỰ ĐỘNG ĐỔ MÀU SẮC (Conditional Formatting) đẹp mắt chuẩn thương hiệu.
+ * 4. TẤT CẢ LINK ẢNH & TÀI LIỆU đều click mở trực tiếp được trong Google Sheet.
  */
 
 function onOpen() {
   const ui = SpreadsheetApp.getUi();
   ui.createMenu('🌾 Đồng Bộ GreenOS')
-    .addItem('⚡ 1-Click Nạp 70 Đầu Việc & Tạo Dropdown + Link Click', 'capNhatBaoCaoThang10')
+    .addItem('⚡ 1-Click Nạp 70 Đầu Việc & Giãn Bảng Thoáng Đẹp', 'capNhatBaoCaoThang10')
+    .addItem('🎨 Chỉ Cập Nhật Dropdown & Giãn Cột (Không Xóa Dữ Liệu)', 'caiDatDropdownVaDinhDang')
     .addToUi();
 }
 
+/**
+ * 1. Hàm nạp đầy đủ dữ liệu từ hệ thống và tự động làm đẹp toàn diện
+ */
 function capNhatBaoCaoThang10() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   
@@ -41,23 +50,59 @@ function capNhatBaoCaoThang10() {
   const totalRows = csvData.length;
   const totalCols = csvData[0].length; // Chuẩn 11 cột
 
-  // 1. Xóa nội dung và định dạng cũ
+  // Xóa nội dung và định dạng cũ
   sheet.clear();
   sheet.clearConditionalFormatRules();
 
-  // 2. Ghi toàn bộ dữ liệu 70 dòng vào trang tính (1 hàng tiêu đề + 70 dòng dữ liệu)
+  // Ghi toàn bộ dữ liệu 70 dòng vào trang tính
   sheet.getRange(1, 1, totalRows, totalCols).setValues(csvData);
 
-  // 3. Định dạng hàng tiêu đề chuẩn GreenFi (Màu xanh lá đậm đặc trưng)
+  // Áp dụng định dạng, dropdown và giãn khoảng cách
+  apDungDinhDangVaDropdown(sheet, totalRows, totalCols, csvData);
+
+  SpreadsheetApp.getUi().alert("🎉 Hoàn tất! Đã đồng bộ 70 đầu việc cả tháng 10 chuẩn 11 cột, giãn dòng thoáng đẹp và tạo Dropdown đầy đủ!");
+}
+
+/**
+ * 2. Hàm chỉ cập nhật Dropdown và giãn khoảng cách (Dành cho trường hợp đã có sẵn dữ liệu trên Sheet)
+ */
+function caiDatDropdownVaDinhDang() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const totalRows = Math.max(sheet.getLastRow(), 71);
+  const totalCols = 11;
+
+  apDungDinhDangVaDropdown(sheet, totalRows, totalCols, null);
+  SpreadsheetApp.getUi().alert("🎉 Đã cập nhật xong Dropdown lựa chọn và giãn dòng thoáng đẹp cho bảng của bạn!");
+}
+
+/**
+ * Hàm chung: Định dạng bảng, giãn dòng thoáng, tạo Dropdown và đổi màu
+ */
+function apDungDinhDangVaDropdown(sheet, totalRows, totalCols, csvData) {
+  const maxRows = Math.max(sheet.getMaxRows(), totalRows + 20);
+
+  // 1. ĐỊNH DẠNG HÀNG TIÊU ĐỀ CHUẨN GREENFI (Màu xanh lá đậm, chữ trắng, cao 42px)
   const headerRange = sheet.getRange(1, 1, 1, totalCols);
   headerRange.setBackground("#1B7A43");
   headerRange.setFontColor("#FFFFFF");
   headerRange.setFontWeight("bold");
+  headerRange.setFontSize(10.5);
   headerRange.setHorizontalAlignment("center");
   headerRange.setVerticalAlignment("middle");
-  sheet.setRowHeight(1, 38);
+  sheet.setRowHeight(1, 42);
 
-  // 4. Căn chỉnh lề các cột
+  // 2. CHỮ KHÔNG BỊ SÁT: Căn giữa theo chiều dọc (Vertical Middle) + Giãn chiều cao hàng (46px - 50px)
+  const dataRange = sheet.getRange(2, 1, totalRows - 1, totalCols);
+  dataRange.setVerticalAlignment("middle");
+  dataRange.setFontSize(10);
+  dataRange.setWrap(true);
+
+  // Đặt chiều cao từng hàng rộng rãi (tối thiểu 46px cho dễ đọc)
+  for (let r = 2; r <= totalRows; r++) {
+    sheet.setRowHeight(r, 48);
+  }
+
+  // Căn lề ngang cho từng loại dữ liệu
   sheet.getRange(2, 1, totalRows - 1, 1).setHorizontalAlignment("center"); // Cột 1: STT
   sheet.getRange(2, 2, totalRows - 1, 1).setHorizontalAlignment("center"); // Cột 2: Ngày (yyyy/mm/dd)
   sheet.getRange(2, 3, totalRows - 1, 1).setHorizontalAlignment("center"); // Cột 3: Người làm
@@ -70,45 +115,74 @@ function capNhatBaoCaoThang10() {
   sheet.getRange(2, 10, totalRows - 1, 1).setHorizontalAlignment("left");  // Cột 10: Ghi chú
   sheet.getRange(2, 11, totalRows - 1, 1).setHorizontalAlignment("left");  // Cột 11: Output/Tài liệu
 
-  // 5. THIẾT LẬP CÁC DROPDOWN CHIPS KHỚP 100% GOOGLE SHEET MẪU CỦA CÔNG TY
-  // Dropdown Cột 3: Người làm
-  const assigneeRule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(['Hoàng', 'A VINH', 'ĐỨC', 'A BẢO', 'MAI PHƯƠNG', 'NGỌC', 'CƯỜNG'], true)
-    .setAllowInvalid(true)
-    .build();
-  sheet.getRange(2, 3, totalRows - 1, 1).setDataValidation(assigneeRule);
+  // Viền ô màu xám nhạt thanh lịch (#E5E7EB)
+  sheet.getRange(1, 1, totalRows, totalCols).setBorder(
+    true, true, true, true, true, true,
+    "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID
+  );
 
-  // Dropdown Cột 5: Nexs/ Greenfi
-  const projectRule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(['Green Village', 'Greenfi', 'WiseMeal', 'GFKey', 'G - NEXS', 'Nexs', 'OPS', 'ALL Companys'], true)
-    .setAllowInvalid(true)
-    .build();
-  sheet.getRange(2, 5, totalRows - 1, 1).setDataValidation(projectRule);
+  // 3. ĐỘ RỘNG CỘT RỘNG RÃI, THOÁNG ĐÃNG (KHÔNG BỊ SÁT CHỮ)
+  sheet.setColumnWidth(1, 55);   // STT
+  sheet.setColumnWidth(2, 115);  // Ngày (yyyy/mm/dd)
+  sheet.setColumnWidth(3, 105);  // Người làm
+  sheet.setColumnWidth(4, 130);  // Dự kiến hoàn thành
+  sheet.setColumnWidth(5, 140);  // Nexs/ Greenfi (Dự án)
+  sheet.setColumnWidth(6, 125);  // Tiến độ
+  sheet.setColumnWidth(7, 135);  // Nguồn
+  sheet.setColumnWidth(8, 380);  // Đầu việc (Mở rộng thoải mái)
+  sheet.setColumnWidth(9, 130);  // Thứ tự ưu tiên
+  sheet.setColumnWidth(10, 420); // Ghi chú (Rộng rãi, đọc thoáng)
+  sheet.setColumnWidth(11, 500); // Output/Tài liệu (Rộng rãi, link rõ ràng)
 
-  // Dropdown Cột 6: Tiến độ (Status chuẩn công ty)
+  // 4. TẠO CÁC DROPDOWN CHIPS LỰA CHỌN KHỚP 100% LINK MẪU GỐC CỦA CÔNG TY
+  // (Áp dụng cho từ dòng 2 đến hết bảng, để khi thêm dòng mới vẫn có Dropdown chọn sẵn)
+  const applyRowCount = Math.min(maxRows - 1, 300);
+
+  // A. Dropdown Cột 6: Tiến độ (Trạng thái)
+  const statusList = ['Done', 'Đang làm', 'Chưa làm', 'Pending', 'Chờ duyệt', 'checking', 'Check pháp lý', 'Hủy'];
   const statusRule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(['Done', 'Đang làm', 'Chưa làm', 'Pending', 'Chờ duyệt', 'Hủy', 'checking', 'Check pháp lý'], true)
+    .requireValueInList(statusList, true)
     .setAllowInvalid(true)
     .build();
-  const statusRange = sheet.getRange(2, 6, totalRows - 1, 1);
-  statusRange.setDataValidation(statusRule);
+  sheet.getRange(2, 6, applyRowCount, 1).setDataValidation(statusRule);
 
-  // Dropdown Cột 9: Thứ tự ưu tiên
+  // B. Dropdown Cột 9: Thứ tự ưu tiên
+  const priorityList = ['Gấp', 'Cao', 'Trong ngày', 'Trong tuần', 'Trong tháng', 'Thấp', 'Trong tuần này phải xong'];
   const priorityRule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(['Gấp', 'Cao', 'Trong ngày', 'Trong tuần', 'Trong tháng', 'Thấp'], true)
+    .requireValueInList(priorityList, true)
     .setAllowInvalid(true)
     .build();
-  const priorityRange = sheet.getRange(2, 9, totalRows - 1, 1);
-  priorityRange.setDataValidation(priorityRule);
+  sheet.getRange(2, 9, applyRowCount, 1).setDataValidation(priorityRule);
 
-  // 6. CONDITIONAL FORMATTING - ĐỔ MÀU CHIPS TRẠNG THÁI & ƯU TIÊN
+  // C. Dropdown Cột 5: Nexs/ Greenfi (Dự án)
+  const projectList = ['Green Village', 'Greenfi', 'WiseMeal', 'GFKey', 'G - NEXS', 'Nexs', 'OPS', 'ALL Companys'];
+  const projectRule = SpreadsheetApp.newDataValidation()
+    .requireValueInList(projectList, true)
+    .setAllowInvalid(true)
+    .build();
+  sheet.getRange(2, 5, applyRowCount, 1).setDataValidation(projectRule);
+
+  // D. Dropdown Cột 3: Người làm
+  const assigneeList = ['Hoàng', 'A VINH', 'ĐỨC', 'A BẢO', 'MAI PHƯƠNG', 'NGỌC', 'CƯỜNG'];
+  const assigneeRule = SpreadsheetApp.newDataValidation()
+    .requireValueInList(assigneeList, true)
+    .setAllowInvalid(true)
+    .build();
+  sheet.getRange(2, 3, applyRowCount, 1).setDataValidation(assigneeRule);
+
+  // 5. TỰ ĐỘNG ĐỔ MÀU SẮC CHO DROPDOWN (CONDITIONAL FORMATTING)
+  const statusRange = sheet.getRange(2, 6, applyRowCount, 1);
+  const priorityRange = sheet.getRange(2, 9, applyRowCount, 1);
+  const projectRange = sheet.getRange(2, 5, applyRowCount, 1);
+
   const rules = [];
-  // Màu Tiến độ
+
+  // Màu sắc Tiến độ (Status)
   rules.push(SpreadsheetApp.newConditionalFormatRule()
     .whenTextEqualTo("Done").setBackground("#DEF7EC").setFontColor("#03543F").setBold(true)
     .setRanges([statusRange]).build());
   rules.push(SpreadsheetApp.newConditionalFormatRule()
-    .whenTextEqualTo("Đang làm").setBackground("#FEF3C7").setFontColor("#92400E").setBold(true)
+    .whenTextEqualTo("Đang làm").setBackground("#FEF3CD").setFontColor("#664D03").setBold(true)
     .setRanges([statusRange]).build());
   rules.push(SpreadsheetApp.newConditionalFormatRule()
     .whenTextEqualTo("Chưa làm").setBackground("#F3F4F6").setFontColor("#4B5563")
@@ -123,10 +197,13 @@ function capNhatBaoCaoThang10() {
     .whenTextEqualTo("checking").setBackground("#F3E8FF").setFontColor("#6B21A8").setBold(true)
     .setRanges([statusRange]).build());
   rules.push(SpreadsheetApp.newConditionalFormatRule()
+    .whenTextEqualTo("Check pháp lý").setBackground("#FCE7F3").setFontColor("#9D174D").setBold(true)
+    .setRanges([statusRange]).build());
+  rules.push(SpreadsheetApp.newConditionalFormatRule()
     .whenTextEqualTo("Hủy").setBackground("#FDE8E8").setFontColor("#9B1C1C").setBold(true)
     .setRanges([statusRange]).build());
 
-  // Màu Thứ tự ưu tiên
+  // Màu sắc Thứ tự ưu tiên
   rules.push(SpreadsheetApp.newConditionalFormatRule()
     .whenTextEqualTo("Gấp").setBackground("#FDE8E8").setFontColor("#9B1C1C").setBold(true)
     .setRanges([priorityRange]).build());
@@ -142,43 +219,45 @@ function capNhatBaoCaoThang10() {
   rules.push(SpreadsheetApp.newConditionalFormatRule()
     .whenTextEqualTo("Trong tháng").setBackground("#F1F5F9").setFontColor("#475569")
     .setRanges([priorityRange]).build());
+  rules.push(SpreadsheetApp.newConditionalFormatRule()
+    .whenTextEqualTo("Thấp").setBackground("#ECFDF5").setFontColor("#065F46")
+    .setRanges([priorityRange]).build());
+
+  // Màu sắc Dự án
+  rules.push(SpreadsheetApp.newConditionalFormatRule()
+    .whenTextEqualTo("Green Village").setBackground("#E8F5E9").setFontColor("#1B5E20").setBold(true)
+    .setRanges([projectRange]).build());
+  rules.push(SpreadsheetApp.newConditionalFormatRule()
+    .whenTextEqualTo("Greenfi").setBackground("#F0FDF4").setFontColor("#15803D").setBold(true)
+    .setRanges([projectRange]).build());
+  rules.push(SpreadsheetApp.newConditionalFormatRule()
+    .whenTextEqualTo("WiseMeal").setBackground("#FFFBEB").setFontColor("#B45309").setBold(true)
+    .setRanges([projectRange]).build());
+  rules.push(SpreadsheetApp.newConditionalFormatRule()
+    .whenTextEqualTo("GFKey").setBackground("#EFF6FF").setFontColor("#1D4ED8").setBold(true)
+    .setRanges([projectRange]).build());
 
   sheet.setConditionalFormatRules(rules);
 
-  // 7. GẮN SIÊU LIÊN KẾT (CLICKABLE HYPERLINKS) VÀO CỘT OUTPUT/TÀI LIỆU (CỘT 11)
-  const outputRange = sheet.getRange(2, 11, totalRows - 1, 1);
-  const richTextValues = [];
-  for (let i = 1; i < totalRows; i++) {
-    const text = csvData[i][10] || "";
-    const builder = SpreadsheetApp.newRichTextValue().setText(text);
-    
-    // Tìm các link URL https://... để gắn link click trực tiếp
-    const urlRegex = /(https:\/\/[^\s|]+)/g;
-    let match;
-    while ((match = urlRegex.exec(text)) !== null) {
-      const foundUrl = match[1];
-      builder.setLinkUrl(match.index, match.index + foundUrl.length, foundUrl);
+  // 6. GẮN SIÊU LIÊN KẾT (CLICKABLE HYPERLINKS) VÀO CỘT OUTPUT/TÀI LIỆU (CỘT 11)
+  if (csvData && csvData.length > 1) {
+    const outputRange = sheet.getRange(2, 11, totalRows - 1, 1);
+    const richTextValues = [];
+    for (let i = 1; i < totalRows; i++) {
+      const text = csvData[i][10] || "";
+      const builder = SpreadsheetApp.newRichTextValue().setText(text);
+      
+      const urlRegex = /(https:\/\/[^\s|]+)/g;
+      let match;
+      while ((match = urlRegex.exec(text)) !== null) {
+        const foundUrl = match[1];
+        builder.setLinkUrl(match.index, match.index + foundUrl.length, foundUrl);
+      }
+      richTextValues.push([builder.build()]);
     }
-    richTextValues.push([builder.build()]);
+    outputRange.setRichTextValues(richTextValues);
   }
-  outputRange.setRichTextValues(richTextValues);
 
-  // 8. TỰ ĐỘNG XUỐNG DÒNG (WRAP TEXT) & CĂN CHỈNH ĐỘ RỘNG CỘT CHUẨN GOOGLE SHEET MẪU
-  sheet.getRange(1, 1, totalRows, totalCols).setWrap(true);
-  sheet.setColumnWidth(1, 50);   // STT
-  sheet.setColumnWidth(2, 105);  // Ngày (yyyy/mm/dd)
-  sheet.setColumnWidth(3, 90);   // Người làm
-  sheet.setColumnWidth(4, 110);  // Dự kiến hoàn thành
-  sheet.setColumnWidth(5, 120);  // Nexs/ Greenfi
-  sheet.setColumnWidth(6, 105);  // Tiến độ
-  sheet.setColumnWidth(7, 110);  // Nguồn
-  sheet.setColumnWidth(8, 300);  // Đầu việc
-  sheet.setColumnWidth(9, 110);  // Thứ tự ưu tiên
-  sheet.setColumnWidth(10, 340); // Ghi chú
-  sheet.setColumnWidth(11, 420); // Output/Tài liệu
-
-  // 9. Cố định hàng tiêu đề (Freeze Header)
+  // 7. Cố định hàng tiêu đề
   sheet.setFrozenRows(1);
-
-  SpreadsheetApp.getUi().alert("🎉 Hoàn tất! Đã đồng bộ đầy đủ " + (totalRows - 1) + " đầu việc cả tháng 10 chuẩn 11 cột, tạo Dropdown Chips và gắn Link click trực tiếp!");
 }

@@ -124,7 +124,7 @@
     </div>
     <div class="sheets-actions">
       <button class="btn-action btn-green" onclick="copyTSV()">
-        📋 Sao Chép 62 Dòng
+        📋 Sao Chép 70 Dòng
       </button>
       <a class="btn-action btn-blue" href="/Bao_Cao_Cong_Viec_Thang_10_Hoang_GreenOS.csv" download>
         📥 Tải File CSV
@@ -138,7 +138,103 @@
       <div class="metric-pill">🎯 Dự án: <strong>Green Village (HTX Yên Bình)</strong></div>
       <div class="metric-pill">📅 Lịch: <strong>22 Buổi (Thứ 2 - Thứ 6)</strong></div>
       <div class="metric-pill">⏱️ Thời lượng: <strong>8h/buổi = 176 Giờ</strong></div>
-      <div class="metric-pill">📋 <strong>70 Đầu việc</strong> (68 Done · 2 Đang làm)</div></td>
+      <div class="metric-pill">📋 <strong>70 Đầu việc</strong> (68 Done · 2 Đang làm)</div>
+      <div class="metric-pill">📌 Nguồn: <strong>Vinh và BLĐ</strong></div>
+    </div>
+    <div class="search-box">
+      <span style="color:#5F6368; margin-right: 6px;">🔍</span>
+      <input type="text" id="searchInput" placeholder="Tìm kiếm nhanh đầu việc, ngày, sản phẩm..." onkeyup="filterTable()">
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <table id="taskTable">
+      <thead>
+        <tr>
+          <th class="col-stt">STT</th>
+          <th class="col-date">Ngày<br>(yyyy/mm/dd)</th>
+          <th class="col-user">Người làm</th>
+          <th class="col-due">Dự kiến hoàn thành</th>
+          <th class="col-hours">Thời lượng</th>
+          <th class="col-proj">Nexs/ Greenfi</th>
+          <th class="col-status">Tiến độ</th>
+          <th class="col-src">Nguồn</th>
+          <th class="col-task">Đầu việc</th>
+          <th class="col-prio">Ưu tiên</th>
+          <th class="col-note">Ghi chú</th>
+          <th class="col-output">Output / Mô tả thực tế & Link ảnh</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-stt">1</td>
+          <td class="col-date">2026/10/01</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">01/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Dựng khung sườn Mobile App Bác Ba chuẩn màn hình điện thoại (390px)</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">Chốt kích thước khung 390x844px theo mockup iPhone/Android, khóa tràn ngang (overflow-x: hidden) để bà con vuốt không bị xô lệch layout.</td>
+          <td class="col-output"><div class="output-box"><strong>Khung sườn Mobile App Bác Ba chạy mượt, không vỡ layout</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">2</td>
+          <td class="col-date">2026/10/01</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">01/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Làm thanh điều hướng đáy (Bottom Bar) 5 tab cho bà con dễ bấm</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">Làm 5 tab: Trang chủ, Đăng bán, Nhật ký, Đơn hàng, Tài khoản. Chỉnh icon to, chữ tiếng Việt rõ ràng, bấm tab nào sáng đèn tab đó.</td>
+          <td class="col-output"><div class="output-box"><strong>Thanh Bottom Bar 5 tab bo góc dưới đáy màn hình</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh:</a></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">3</td>
+          <td class="col-date">2026/10/01</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">01/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Cài đặt bộ màu thương hiệu GreenFi và chọn cỡ chữ to cho người lớn tuổi</td>
+          <td class="col-prio"><span class="badge badge-tb">Trong tuần</span></td>
+          <td class="col-note">Lấy màu xanh lá làm chủ đạo (#1B7A43), chữ dùng font Inter tăng lên 15-16px để các cô chú 50-60 tuổi nhìn rõ không bị mỏi mắt.</td>
+          <td class="col-output"><div class="output-box"><strong>Bộ màu chuẩn GreenFi và font chữ to rõ toàn app</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem ảnh thực tế:</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Link web:</a></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">4</td>
+          <td class="col-date">2026/10/02</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">02/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Dựng 4 slide màn hình Chào mừng (Onboarding) giới thiệu cách dùng app</td>
+          <td class="col-prio"><span class="badge badge-tb">Trong tuần</span></td>
+          <td class="col-note">Thay toàn bộ ảnh thanh niên cũ bằng bộ ảnh chú nông dân thật 45-50 tuổi đứng trong vườn, phủ lớp nền tối ở chân ảnh để chữ nổi bật.</td>
+          <td class="col-output"><div class="output-box"><strong>4 slide Onboarding chụp nông dân thật đứng vườn bưởi, chuối</strong><br><a class="output-img-link" href="https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp" target="_blank" style="background:#E2E8F0; color:#1E293B;">📸 Xem demo:</a></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">5</td>
+          <td class="col-date">2026/10/02</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">02/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Làm hiệu ứng vuốt chạm chuyển slide Onboarding mượt mà</td>
+          <td class="col-prio"><span class="badge badge-tb">Trong tuần</span></td>
+          <td class="col-note">Cho vuốt tay qua lại mượt, thêm mấy chấm tròn báo vị trí trang, dưới đáy có nút &quot;Bỏ qua&quot; và nút &quot;Bắt đầu ngay&quot; màu xanh.</td>
+          <td class="col-output"><div class="output-box"><strong>Vuốt chạm chuyển slide trơn tru, bấm nút là vào thẳng trang chủ</strong></div></td>
         </tr>
         <tr>
           <td class="col-stt">6</td>

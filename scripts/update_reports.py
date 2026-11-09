@@ -244,18 +244,27 @@ for r in combined_rows:
     tbody_rows.append(row_html)
 
 tbody_new = '<tbody>\n' + '\n'.join(tbody_rows) + '\n      </tbody>'
-html_content = re.sub(r'<tbody>[\s\S]*?</tbody>', tbody_new, html_content)
 
-html_content = re.sub(r'<div class="metric-pill">📋 <strong>[\s\S]*?</strong></div>',
-                      f'<div class="metric-pill">📋 <strong>{len(combined_rows)} Đầu việc</strong> ({total_done} Done · {total_doing} Đang làm)</div>',
-                      html_content)
+# 1. Safe replacement of <tbody>
+idx_tb_start = html_content.find('<tbody>')
+idx_tb_end = html_content.find('</tbody>')
+if idx_tb_start != -1 and idx_tb_end != -1:
+    html_content = html_content[:idx_tb_start] + tbody_new + html_content[idx_tb_end + len('</tbody>'):]
 
-html_content = re.sub(r'Đã sao chép \d+ dòng', f'Đã sao chép {len(combined_rows)} dòng', html_content)
-
+# 2. Safe replacement of <textarea id="rawTsvData">
 raw_tsv_text = '\n'.join(['\t'.join(r) for r in combined_rows])
-html_content = re.sub(r'<textarea id="rawTsvData" style="display:none;">[\s\S]*?</textarea>',
-                      f'<textarea id="rawTsvData" style="display:none;">{raw_tsv_text}</textarea>',
-                      html_content)
+idx_ta_start = html_content.find('<textarea id="rawTsvData"')
+if idx_ta_start != -1:
+    idx_ta_end = html_content.find('</textarea>', idx_ta_start)
+    if idx_ta_end != -1:
+        html_content = html_content[:idx_ta_start] + f'<textarea id="rawTsvData" style="display:none;">{raw_tsv_text}</textarea>' + html_content[idx_ta_end + len('</textarea>'):]
+
+# 3. Safe update of metric pill, button, and toast
+html_content = re.sub(r'<div class="metric-pill">(?:✅|📋) <strong>.*?</strong></div>',
+                      f'<div class="metric-pill">📋 <strong>{len(combined_rows)} Đầu việc</strong> ({total_done} Done · {total_doing} Đang làm)</div>',
+                      html_content, count=1)
+html_content = re.sub(r'📋 Sao Chép \d+ Dòng', f'📋 Sao Chép {len(combined_rows)} Dòng', html_content)
+html_content = re.sub(r'Đã sao chép \d+ dòng', f'Đã sao chép {len(combined_rows)} dòng', html_content)
 
 html_content = re.sub(r'(?i)\b(anh\s+vinh|a\.?\s*vinh)\b', 'Vinh', html_content)
 

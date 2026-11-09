@@ -8,6 +8,7 @@ GreenOS_Mobile_Chu_Ba.zip
 node_modules/
 *.png
 !phiphi-chat.png
+!output_images/*.png
 *.bak
 *.zip
 *.txt

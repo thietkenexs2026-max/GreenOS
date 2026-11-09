@@ -36382,6 +36382,42 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       flex-shrink: 0;
     }
 
+    
+    .svg-icon {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.2;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+    .svg-icon-lg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2.2;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+    .svg-icon-xl {
+      width: 32px;
+      height: 32px;
+      stroke-width: 2;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+    .svg-inline-job {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.2;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+      flex-shrink: 0;
+      stroke: var(--slate-600);
+    }
+
     /* Màn hình con */
     .xa-screen {
       display: none;
@@ -37590,7 +37626,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         <div>
           <!-- Brand Logo -->
           <a href="PORTAL.html" class="sidebar-brand-box" title="GreenOS — Cán Bộ Xã">
-            <div class="brand-logo-circle">🏛️</div>
+            <div class="brand-logo-circle"><svg class="svg-icon-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
             <div class="brand-title-wrap">
               <h1>GreenOS</h1>
               <span>UBND Xã Đồng Lam · Actor 3</span>
@@ -37660,12 +37696,12 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
         <!-- Officer Profile Card in Sidebar -->
         <div class="sidebar-officer-card" onclick="toggleAccountSheet(true)" title="Xem thông tin tài khoản cán bộ xã">
-          <div class="officer-avatar-box">👤</div>
+          <div class="officer-avatar-box"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
           <div style="flex: 1; min-width: 0;">
             <div class="officer-name">Trần Văn Hùng</div>
             <div class="officer-role">Cán bộ Kinh tế Xã</div>
           </div>
-          <span style="font-size: 14px; color: var(--slate-400);">⚙️</span>
+          <svg class="svg-icon" style="width:16px;height:16px;color:var(--slate-400);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         </div>
       </aside>
 
@@ -37678,7 +37714,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
             <!-- Scope Picker -->
             <div class="scope-picker-group">
-              <label for="xaScopeSelect">🏛️ Cấp:</label>
+              <label for="xaScopeSelect"><svg class="svg-icon" style="width:14px;height:14px;margin-right:2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> Cấp:</label>
               <select id="xaScopeSelect" class="scope-select" onchange="onChangeXaScope(this.value)">
                 <option value="commune" selected>Xã Đồng Lam (3 HTX · 6 Thôn)</option>
                 <option value="district">Huyện Sơn Hà (3 Xã · 9 HTX)</option>
@@ -37688,7 +37724,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
             <!-- Month Picker -->
             <div class="month-picker-group">
-              <label for="xaMonthSelect">📅 Kỳ:</label>
+              <label for="xaMonthSelect"><svg class="svg-icon" style="width:14px;height:14px;margin-right:2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Kỳ:</label>
               <select id="xaMonthSelect" class="month-select" onchange="onChangeXaMonth(this.value)">
                 <option value="2026-10">Tháng 10/2026 (đến hôm nay)</option>
                 <option value="2026-09" selected>Tháng 09/2026 (Đã chốt sổ)</option>
@@ -37699,24 +37735,24 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
             <!-- Running Month Warning -->
             <span id="runningMonthBadge" class="running-month-badge hidden">
-              ⏳ Chưa đủ tháng (Đang chạy đến 05/10)
+              <svg class="svg-icon" style="width:14px;height:14px;margin-right:3px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Chưa đủ tháng (Đang chạy đến 05/10)
             </span>
           </div>
 
           <div style="display: flex; align-items: center; gap: 10px;">
             <!-- Privacy Rule 6 Strip -->
             <div class="xa-privacy-strip" title="Luật số 6 GVOS: Không bao giờ hiển thị tên hộ hoặc số điện thoại ở cấp xã">
-              <span>🔒 Ẩn danh cấp xã: Không hiện tên hộ · Gộp &lt; 5 hộ</span>
+              <span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-icon" style="width:13px;height:13px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> Ẩn danh cấp xã: Không hiện tên hộ · Gộp &lt; 5 hộ</span>
             </div>
 
             <!-- Nút bật Trình chiếu nhanh -->
             <button type="button" class="btn-outline-slate projector-hide" style="height: 38px; padding: 0 12px; font-size: 13px;" onclick="toggleProjectorMode(true)">
-              <span>📽️ Trình chiếu</span>
+              <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" style="width:16px;height:16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg> Trình chiếu</span>
             </button>
 
             <!-- Exit Projector Button (visible only in projector mode) -->
             <button type="button" class="btn-exit-projector" onclick="toggleProjectorMode(false)" title="Nhấn Esc để thoát trình chiếu">
-              <span>✕ Thoát trình chiếu (Esc)</span>
+              <svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Thoát trình chiếu (Esc)</span>
             </button>
           </div>
         </header>
@@ -37742,10 +37778,10 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
         <div class="projector-hide" style="display: flex; gap: 8px;">
           <button type="button" class="btn-outline-slate" onclick="switchXaTab('xa02')">
-            <span>📈 Xem phân tích thôn & HTX →</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg> Xem phân tích thôn &amp; HTX →</span>
           </button>
           <button type="button" class="btn-primary-emerald" onclick="switchXaTab('xa03')">
-            <span>📄 Xuất báo cáo tháng</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Xuất báo cáo tháng</span>
           </button>
         </div>
       </div>
@@ -37812,7 +37848,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             Hộ tự làm chiếm 92 % số sản phẩm (56/61 sản phẩm)
           </div>
           <button type="button" class="btn-pill-toggle" onclick="toggleInlineTable('shareBarTable')">
-            📋 Xem bảng chi tiết
+            <span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-icon" style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg> Xem bảng chi tiết</span>
           </button>
         </div>
 
@@ -37842,14 +37878,14 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             </thead>
             <tbody>
               <tr>
-                <td>👩‍🌾 Hộ xã viên tự làm trên Mobile App</td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" style="color:var(--emerald-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg> Hộ xã viên tự làm trên Mobile App</span></td>
                 <td class="num">56</td>
                 <td class="num">91,8 %</td>
                 <td class="num" id="tblSelfShares">134</td>
                 <td class="num" id="tblSelfSharePct">92,4 %</td>
               </tr>
               <tr>
-                <td>🏢 Hub / Cán bộ HTX hỗ trợ đăng</td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" style="color:var(--blue-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> Hub / Cán bộ HTX hỗ trợ đăng</span></td>
                 <td class="num">5</td>
                 <td class="num">8,2 %</td>
                 <td class="num" id="tblHubShares">11</td>
@@ -37957,16 +37993,16 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       <!-- 4 Sub-tabs chiều phân tích (?chieu=thon|htx|nhom-hang|kenh) -->
       <div class="sub-tabs-bar">
         <button type="button" class="sub-tab-btn active" id="dimBtn-thon" onclick="switchXa02Dimension('thon')">
-          🏘️ Theo Thôn (4 nhóm)
+          <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> Theo Thôn (4 nhóm)</span>
         </button>
         <button type="button" class="sub-tab-btn" id="dimBtn-htx" onclick="switchXa02Dimension('htx')">
-          🌾 Theo HTX (3 HTX)
+          <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg> Theo HTX (3 HTX)</span>
         </button>
         <button type="button" class="sub-tab-btn" id="dimBtn-nhom-hang" onclick="switchXa02Dimension('nhom-hang')">
-          📦 Theo Nhóm hàng (6 nhóm)
+          <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg> Theo Nhóm hàng (6 nhóm)</span>
         </button>
         <button type="button" class="sub-tab-btn" id="dimBtn-kenh" onclick="switchXa02Dimension('kenh')">
-          📲 Theo Kênh chia sẻ (3 kênh)
+          <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg> Theo Kênh chia sẻ (3 kênh)</span>
         </button>
       </div>
 
@@ -37985,9 +38021,9 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <thead>
             <tr>
               <th>Tuần lễ</th>
-              <th class="num">💬 Zalo</th>
-              <th class="num">📘 Facebook</th>
-              <th class="num">🛍️ Shopee</th>
+              <th class="num"><span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-icon" style="width:14px;height:14px;color:#059669;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> Zalo</span></th>
+              <th class="num"><span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-icon" style="width:14px;height:14px;color:#2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg> Facebook</span></th>
+              <th class="num"><span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-icon" style="width:14px;height:14px;color:#D97706;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shopee</span></th>
               <th class="num">Tổng tuần</th>
             </tr>
           </thead>
@@ -38001,7 +38037,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       </div>
 
       <div class="privacy-footnote">
-        <span>🛡️</span>
+        <span><svg class="svg-icon" style="color:var(--emerald-700);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></span>
         <span><strong>Quy tắc bảo mật cấp xã (Luật số 6):</strong> Nhóm dưới 5 hộ đồng ý (các thôn Đồng Chè, Suối Mây, Nà Liêu) được gộp tự động thành <strong>«Nhóm nhỏ»</strong> để không lộ thông tin từng hộ cá nhân.</span>
       </div>
     </section>
@@ -38024,16 +38060,16 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         <div class="report-actions-group">
           <!-- Phê duyệt & Ký số mộc đỏ (Plan 5.3 & Flow 4) -->
           <button type="button" class="btn-primary-emerald" id="btnSignReport" onclick="openApproveStampModal()">
-            <span>🔏 Phê duyệt &amp; Đóng mộc số</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg> Phê duyệt &amp; Đóng mộc số</span>
           </button>
           <button type="button" class="btn-outline-slate" id="btnForwardDistrict" onclick="forwardReportToDistrict()">
-            <span>📤 Gửi Liên minh HTX Huyện</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Gửi Liên minh HTX Huyện</span>
           </button>
           <button type="button" class="btn-outline-slate" onclick="window.print()">
-            <span>🖨️ Xuất PDF / In Bản A4</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg> Xuất PDF / In Bản A4</span>
           </button>
           <button type="button" class="btn-outline-slate" onclick="exportXa03Csv()">
-            <span>📥 Xuất CSV (UTF-8)</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Xuất CSV (UTF-8)</span>
           </button>
           <button type="button" class="btn-outline-slate" onclick="switchXaTab('xa01')">
             <span>← Tổng quan</span>
@@ -38043,7 +38079,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
       <!-- Trạng thái công văn & Lưu vết (Audit Trail) -->
       <div id="reportAuditBanner" class="alert-card-item info projector-hide" style="margin-bottom: 14px;">
-        <span style="font-size: 20px;">📋</span>
+        <svg class="svg-icon-lg" style="color:var(--blue-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
         <div style="flex: 1;">
           <div style="font-size: 13px; font-weight: 800; color: var(--blue-700);" id="reportAuditTitle">
             Tình trạng văn bản: Dự thảo báo cáo tháng 09/2026
@@ -38183,7 +38219,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <div><strong>Ghi chú công thức:</strong> Mức số hoá (%) = Số hộ đồng ý có ít nhất 1 sản phẩm Đã chốt ÷ Số hộ đồng ý × 100.</div>
           <div style="margin-top: 4px;">Dữ liệu trích xuất tự động từ Hệ thống Kinh tế Xã GreenOS · Bảo mật ẩn danh cấp hộ · <strong>Trang 1/1</strong></div>
           <div id="forwardAuditNote" style="margin-top: 6px; font-size: 11.5px; color: var(--emerald-800); display: none;">
-            ✓ Đã chuyển tiếp đến: Phòng Nông nghiệp &amp; PTNT Huyện Sơn Hà (Mã tiếp nhận: <strong>SH-BC-2026-09-082</strong> lúc 09:15, 05/10/2026).
+            <svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Đã chuyển tiếp đến: Phòng Nông nghiệp &amp; PTNT Huyện Sơn Hà (Mã tiếp nhận: <strong>SH-BC-2026-09-082</strong> lúc 09:15, 05/10/2026).
           </div>
         </div>
         <div style="text-align: center; min-width: 240px; position: relative;">
@@ -38194,7 +38230,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <!-- Dấu mộc đỏ điện tử (hiện khi đã ký số) -->
           <div id="redSealStampBox" class="red-seal-stamp" style="display: none;">
             <div class="red-seal-text-top">UBND XÃ ĐỒNG LAM</div>
-            <div class="red-seal-star-icon">★</div>
+            <div class="red-seal-star-icon" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="#DC2626" width="22" height="22"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <div class="red-seal-text-sign">ĐÃ KÝ SỐ ĐIỆN TỬ</div>
             <div class="red-seal-text-bot">NGUYỄN VĂN AN</div>
           </div>
@@ -38212,10 +38248,10 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       <div class="page-title-row">
         <div class="sub-tabs-bar" style="margin-bottom: 0;">
           <button type="button" class="sub-tab-btn active" id="cxSubBtn-cx13" onclick="switchCxSubView('cx13')">
-            🚨 CX-13: Nút thắt địa bàn (3 điểm nghẽn)
+            <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" style="color:var(--red-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> CX-13: Nút thắt địa bàn (3 điểm nghẽn)</span>
           </button>
           <button type="button" class="sub-tab-btn" id="cxSubBtn-cx14" onclick="switchCxSubView('cx14')">
-            🗺️ CX-14: Bản đồ nguồn lực xã →
+            <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg> CX-14: Bản đồ nguồn lực xã →</span>
           </button>
         </div>
 
@@ -38246,7 +38282,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
                 <span style="font-size: 13px; font-weight: 700; color: var(--slate-500);">· Thôn Bãi Sen, Thôn Gò Mít</span>
               </div>
               <div class="bn-suggestion">
-                💡 Gợi ý họp xã: Họp bàn một điểm sấy chung cho Bãi Sen và Gò Mít.
+                <span style="display:inline-flex;align-items:center;gap:4px;color:var(--amber-700);"><svg class="svg-icon" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> <strong>Gợi ý họp xã:</strong></span> Họp bàn một điểm sấy chung cho Bãi Sen và Gò Mít.
               </div>
               <div class="bn-score-formula">
                 Cách tính điểm: 8 thẻ cần × 5 = 40 điểm, không có thẻ có trong 25 km = +45 điểm (Tổng: 85 điểm)
@@ -38258,7 +38294,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
               <span class="card-pill-have">Có 0 trong 25 km</span>
               <div id="bnActionWrap-1">
                 <button type="button" class="btn-primary-emerald" onclick="openMatchSessionDialog(1, 'Máy sấy nông sản (Thôn Bãi Sen, Thôn Gò Mít)')">
-                  🤝 Mở phiên ghép nối
+                  <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Mở phiên ghép nối</span>
                 </button>
               </div>
             </div>
@@ -38273,7 +38309,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
                 <span style="font-size: 13px; font-weight: 700; color: var(--slate-500);">· Thôn Gò Mít, Nhóm nhỏ</span>
               </div>
               <div class="bn-suggestion">
-                💡 Gợi ý họp xã: Ghép lịch thu hoạch giữa Gò Mít và Nhóm nhỏ, nhờ HTX báo số người nhận việc.
+                <span style="display:inline-flex;align-items:center;gap:4px;color:var(--amber-700);"><svg class="svg-icon" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> <strong>Gợi ý họp xã:</strong></span> Ghép lịch thu hoạch giữa Gò Mít và Nhóm nhỏ, nhờ HTX báo số người nhận việc.
               </div>
               <div class="bn-score-formula">
                 Cách tính điểm: 5 thẻ cần × 5 = 25 điểm, thiếu 4 trên 5 thẻ cần = +36 điểm (Tổng: 61 điểm)
@@ -38284,7 +38320,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
               <span class="card-pill-need">Cần 5</span>
               <span class="card-pill-have">Có 1 trong 25 km</span>
               <div id="bnActionWrap-2">
-                <span class="session-opened-tag">✓ Đã mở phiên lúc 09:12</span>
+                <span class="session-opened-tag" style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Đã mở phiên lúc 09:12</span>
               </div>
             </div>
           </div>
@@ -38298,7 +38334,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
                 <span style="font-size: 13px; font-weight: 700; color: var(--slate-500);">· Thôn Bãi Sen, Thôn Khe Trúc</span>
               </div>
               <div class="bn-suggestion">
-                💡 Gợi ý họp xã: Hỏi chủ thẻ kho mát duy nhất trong 25 km còn chỗ trống không.
+                <span style="display:inline-flex;align-items:center;gap:4px;color:var(--amber-700);"><svg class="svg-icon" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> <strong>Gợi ý họp xã:</strong></span> Hỏi chủ thẻ kho mát duy nhất trong 25 km còn chỗ trống không.
               </div>
               <div class="bn-score-formula">
                 Cách tính điểm: 4 thẻ cần × 5 = 20 điểm, thiếu 3 trên 4 thẻ cần = +34 điểm (Tổng: 54 điểm)
@@ -38310,7 +38346,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
               <span class="card-pill-have">Có 1 trong 25 km</span>
               <div id="bnActionWrap-3">
                 <button type="button" class="btn-primary-emerald" onclick="openMatchSessionDialog(3, 'Kho mát bảo quản (Thôn Bãi Sen, Thôn Khe Trúc)')">
-                  🤝 Mở phiên ghép nối
+                  <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Mở phiên ghép nối</span>
                 </button>
               </div>
             </div>
@@ -38322,7 +38358,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <div class="share-bar-header">
             <div class="share-bar-title">Chỉ số điều phối nguồn lực của 3 Hợp tác xã trên địa bàn</div>
             <button type="button" class="btn-outline-slate" style="height: 34px; font-size: 12.5px;" onclick="switchCxSubView('cx14')">
-              🗺️ Xem Bản đồ nguồn lực xã →
+              <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg> Xem Bản đồ nguồn lực xã →</span>
             </button>
           </div>
           <table class="xa-table">
@@ -38420,7 +38456,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             </svg>
 
             <div class="privacy-footnote" style="margin-top: 12px;">
-              <span>🔒</span>
+              <svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               <span><strong>Nhóm nhỏ (Đồng Chè, Suối Mây, Nà Liêu):</strong> Có 4 · Cần 3 (Tổng 5 hộ). Không hiển thị vị trí riêng trên bản đồ để bảo mật hộ lẻ.</span>
             </div>
           </div>
@@ -38482,7 +38518,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <!-- Hộp gợi ý hành động chuẩn CX-14 -->
             <div class="section-card" style="margin-bottom: 0; background: var(--amber-50); border-color: #FDE68A;">
               <div style="font-size: 12px; font-weight: 800; color: var(--amber-700); text-transform: uppercase; letter-spacing: 0.04em;">
-                💡 Gợi ý điều phối tại cuộc họp UBND xã
+                <span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-icon" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Gợi ý điều phối tại cuộc họp UBND xã</span>
               </div>
               <div style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-900); margin: 6px 0;">
                 Bàn một điểm sấy chung ở Gò Mít, thôn thiếu nhiều nhất: cần 7, có 3.
@@ -38636,13 +38672,13 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>🧵 Thợ may gia công</strong></td>
+                  <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.757 8.5M7 17v.01"/></svg> <strong>Thợ may gia công</strong></span></td>
                   <td class="num" style="color: var(--red-600);">50</td>
                   <td class="num">21</td>
                   <td class="num"><span class="card-pill-need" style="padding: 3px 8px; font-size: 12px;">Thiếu 29 người</span></td>
                 </tr>
                 <tr>
-                  <td><strong>🔧 Thợ điện nước</strong></td>
+                  <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <strong>Thợ điện nước</strong></span></td>
                   <td class="num" style="color: var(--red-600);">8</td>
                   <td class="num" style="color: var(--amber-700);">Dưới 5 người</td>
                   <td class="num"><span class="card-pill-need" style="padding: 3px 8px; font-size: 12px;">Cần đào tạo ngắn</span></td>
@@ -38652,7 +38688,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           </div>
 
           <div style="margin-top: 14px; background: var(--amber-50); border: 1px solid #FDE68A; padding: 10px 14px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 13px; font-weight: 700; color: var(--amber-700);">⚠️ Rảnh lâu chưa có việc (&gt; 30 ngày):</span>
+            <span style="font-size: 13px; font-weight: 700; color: var(--amber-700); display: inline-flex; align-items: center; gap: 4px;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Rảnh lâu chưa có việc (&gt; 30 ngày):</span>
             <span style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--red-700);">14 người</span>
           </div>
         </div>
@@ -38676,49 +38712,49 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             </thead>
             <tbody>
               <tr>
-                <td><strong>🍃 Hái chè & thu hoạch</strong></td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg> <strong>Hái chè &amp; thu hoạch</strong></span></td>
                 <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 100%;"></div></div></td>
                 <td class="num">46</td>
                 <td class="num">30</td>
                 <td class="num">12</td>
               </tr>
               <tr>
-                <td><strong>🧵 Thợ may gia công</strong></td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.757 8.5M7 17v.01"/></svg> <strong>Thợ may gia công</strong></span></td>
                 <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill low" style="width: 82%;"></div></div></td>
                 <td class="num">38</td>
                 <td class="num">21</td>
                 <td class="num" style="color: var(--red-600); font-weight: 800;">50</td>
               </tr>
               <tr>
-                <td><strong>🧱 Thợ xây</strong></td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg> <strong>Thợ xây</strong></span></td>
                 <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 67%;"></div></div></td>
                 <td class="num">31</td>
                 <td class="num">16</td>
                 <td class="num">14</td>
               </tr>
               <tr>
-                <td><strong>📦 Lao động phổ thông</strong></td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg> <strong>Lao động phổ thông</strong></span></td>
                 <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 65%;"></div></div></td>
                 <td class="num">30</td>
                 <td class="num">18</td>
                 <td class="num">4</td>
               </tr>
               <tr>
-                <td><strong>🪣 Phụ hồ</strong></td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg> <strong>Phụ hồ</strong></span></td>
                 <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 58%;"></div></div></td>
                 <td class="num">27</td>
                 <td class="num">15</td>
                 <td class="num">10</td>
               </tr>
               <tr>
-                <td><strong>🌱 Làm vườn & tỉa cành</strong></td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> <strong>Làm vườn &amp; tỉa cành</strong></span></td>
                 <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill" style="width: 39%;"></div></div></td>
                 <td class="num">18</td>
                 <td class="num">9</td>
                 <td class="num">3</td>
               </tr>
               <tr>
-                <td><strong>🔒 Nhóm nhỏ</strong> (Các nghề &lt; 5 người)</td>
+                <td><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-inline-job" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> <strong>Nhóm nhỏ</strong> (Các nghề &lt; 5 người)</span></td>
                 <td><div class="hbar-track" style="height: 12px;"><div class="hbar-fill muted" style="width: 39%;"></div></div></td>
                 <td class="num">18</td>
                 <td class="num">9</td>
@@ -38732,7 +38768,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         <div class="section-card" style="margin-bottom: 0; background: var(--slate-50); border-style: dashed; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-              <span style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-800);">🌐 Toàn mạng lưới</span>
+              <span style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-800);"><span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg> Toàn mạng lưới</span></span>
               <span class="chip-demo" style="background: var(--blue-100); color: var(--blue-700);">Định hướng</span>
             </div>
             <p style="font-size: 13.5px; color: var(--slate-600); line-height: 1.6;">
@@ -38757,7 +38793,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <span class="sub-location">· Xã Đồng Lam, Huyện Sơn Hà</span>
           </h2>
           <div class="freshness-bar">
-            <span>Theo dõi chỉ số năng lực Hợp tác xã, tiến độ thẩm định OCOP 3★/4★ và cảnh báo hạn kiểm định chất lượng (QĐ 919/QĐ-TTg).</span>
+            <span>Theo dõi chỉ số năng lực Hợp tác xã, tiến độ thẩm định OCOP 3 Sao / 4 Sao và cảnh báo hạn kiểm định chất lượng (QĐ 919/QĐ-TTg).</span>
             <span class="chip-demo">Kỳ đánh giá Q3/2026</span>
           </div>
         </div>
@@ -38767,13 +38803,13 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             Tất cả
           </button>
           <button type="button" class="sub-tab-btn" id="ocopSubBtn-ranking" onclick="filterOcopSection('ranking')">
-            🏆 Xếp hạng HTX
+            <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg> Xếp hạng HTX</span>
           </button>
           <button type="button" class="sub-tab-btn" id="ocopSubBtn-pipeline" onclick="filterOcopSection('pipeline')">
-            📋 Hồ sơ OCOP
+            <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Hồ sơ OCOP</span>
           </button>
           <button type="button" class="sub-tab-btn" id="ocopSubBtn-alerts" onclick="filterOcopSection('alerts')">
-            🚨 Cảnh báo (3)
+            <span style="display:inline-flex;align-items:center;gap:5px;"><svg class="svg-icon" style="color:var(--red-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Cảnh báo (3)</span>
           </button>
         </div>
       </div>
@@ -38783,7 +38819,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         <div class="share-bar-header" style="margin-bottom: 12px;">
           <div>
             <h3 style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-900);">
-              🏆 Bảng xếp hạng năng lực chuyển đổi số &amp; vận hành của 3 HTX trên địa bàn
+              <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg> Bảng xếp hạng năng lực</span> chuyển đổi số &amp; vận hành của 3 HTX trên địa bàn
             </h3>
             <div style="font-size: 12.5px; color: var(--slate-500); margin-top: 2px;">
               Điểm số tổng hợp trên thang 100 dựa trên: Mức số hoá xã viên (30đ), Tỷ lệ dán tem QR truy xuất (25đ), Doanh thu kỳ (25đ), Chấp hành quy chuẩn VietGAP (20đ).
@@ -38797,7 +38833,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <!-- HTX 1: Đồng Lam (Hạng 1) -->
           <div class="section-card" style="margin-bottom: 0; border: 2px solid var(--emerald-500); position: relative; overflow: hidden;">
             <div style="position: absolute; top: 0; right: 0; background: var(--emerald-600); color: #FFF; font-size: 11px; font-weight: 800; padding: 4px 12px; border-bottom-left-radius: 8px;">
-              🥇 QUÁN QUÂN ĐỊA BÀN
+              <span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-icon" style="width:13px;height:13px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg> QUÁN QUÂN ĐỊA BÀN</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px;">
               <div class="score-badge-circle score-gold">
@@ -38810,7 +38846,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
                 </h4>
                 <div style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
                   <span class="htx-rank-pill rank-tier-a">Hạng A · Xuất sắc</span>
-                  <span class="ocop-star-badge">★★★★ OCOP 4 Sao</span>
+                  <span class="ocop-star-badge" style="display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span style="margin-left:4px;">OCOP 4 Sao</span></span>
                 </div>
               </div>
             </div>
@@ -38843,7 +38879,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
                 </h4>
                 <div style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
                   <span class="htx-rank-pill rank-tier-b">Hạng B+ · Khá</span>
-                  <span class="ocop-star-badge">★★★ OCOP 3 Sao</span>
+                  <span class="ocop-star-badge" style="display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span style="margin-left:4px;">OCOP 3 Sao</span></span>
                 </div>
               </div>
             </div>
@@ -38876,7 +38912,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
                 </h4>
                 <div style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
                   <span class="htx-rank-pill rank-tier-c">Hạng C · Cần đôn đốc</span>
-                  <span class="cert-expiring-tag">⚠️ VietGAP còn 24 ngày</span>
+                  <span class="cert-expiring-tag"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>VietGAP còn 24 ngày</span>
                 </div>
               </div>
             </div>
@@ -38918,38 +38954,38 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <tbody>
               <tr>
                 <td>
-                  <strong>🥇 HTX Nông Nghiệp Số Đồng Lam</strong>
+                  <span class="htx-rank-pill rank-tier-a" style="margin-right:6px;">TOP 1</span><strong>HTX Nông Nghiệp Số Đồng Lam</strong>
                   <div style="font-size: 11px; color: var(--slate-500);">Thôn Bãi Sen · Chủ nhiệm: Lê Văn Thành</div>
                 </td>
                 <td class="num" style="color: var(--emerald-700); font-weight: 800;">100 % (8/8)</td>
                 <td class="num">26 SP</td>
                 <td class="num"><strong>580.000.000 đ</strong></td>
                 <td class="num" style="color: var(--emerald-700); font-weight: 700;">100 %</td>
-                <td><span class="ocop-star-badge">★★★★ OCOP 4★</span> <span class="cert-valid-tag">VietGAP</span></td>
+                <td><span class="ocop-star-badge" style="display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span style="margin-left:4px;">OCOP 4 Sao</span></span> <span class="cert-valid-tag">VietGAP</span></td>
                 <td><span class="htx-rank-pill rank-tier-a">Mô hình điểm cấp tỉnh</span></td>
               </tr>
               <tr>
                 <td>
-                  <strong>🥈 HTX Mật Ong &amp; Chè Khe Trúc</strong>
+                  <span class="htx-rank-pill rank-tier-b" style="margin-right:6px;">TOP 2</span><strong>HTX Mật Ong &amp; Chè Khe Trúc</strong>
                   <div style="font-size: 11px; color: var(--slate-500);">Thôn Khe Trúc · Chủ nhiệm: Hoàng Thị Nga</div>
                 </td>
                 <td class="num" style="color: var(--emerald-700); font-weight: 800;">83 % (5/6)</td>
                 <td class="num">14 SP</td>
                 <td class="num"><strong>360.000.000 đ</strong></td>
                 <td class="num" style="color: var(--emerald-700); font-weight: 700;">94 %</td>
-                <td><span class="ocop-star-badge">★★★ OCOP 3★ (Đang nâng 4★)</span></td>
+                <td><span class="ocop-star-badge" style="display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span style="margin-left:4px;">OCOP 3 Sao (Đang nâng 4 Sao)</span></span></td>
                 <td><span class="htx-rank-pill rank-tier-b">Vận hành tốt, cần kho lạnh</span></td>
               </tr>
               <tr>
                 <td>
-                  <strong>🥉 HTX Nông Sản Suối Mây</strong>
+                  <span class="htx-rank-pill rank-tier-c" style="margin-right:6px;">TOP 3</span><strong>HTX Nông Sản Suối Mây</strong>
                   <div style="font-size: 11px; color: var(--slate-500);">Thôn Gò Mít · Chủ nhiệm: Phạm Đình Dũng</div>
                 </td>
                 <td class="num" style="color: var(--amber-700); font-weight: 800;">63 % (5/8)</td>
                 <td class="num">21 SP</td>
                 <td class="num"><strong>142.000.000 đ</strong></td>
                 <td class="num" style="color: var(--amber-700); font-weight: 700;">72 %</td>
-                <td><span class="cert-expiring-tag">⚠️ VietGAP sắp hết hạn</span></td>
+                <td><span class="cert-expiring-tag"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>VietGAP sắp hết hạn</span></td>
                 <td><span class="htx-rank-pill rank-tier-c">Cần hỗ trợ máy sấy &amp; tái cấp VietGAP</span></td>
               </tr>
             </tbody>
@@ -38962,14 +38998,14 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         <div class="share-bar-header" style="margin-bottom: 8px;">
           <div>
             <h3 style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-900);">
-              📋 Theo dõi tiến độ hồ sơ OCOP &amp; Lộ trình nâng hạng sao (Năm 2026)
+              <svg class="svg-inline" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -3px; margin-right: 6px;"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>Theo dõi tiến độ hồ sơ OCOP &amp; Lộ trình nâng hạng sao (Năm 2026)
             </h3>
             <div style="font-size: 12.5px; color: var(--slate-500); margin-top: 2px;">
               Giám sát quy trình thẩm định 5 bước: Nộp hồ sơ → Hội đồng Huyện thẩm định → Kiểm nghiệm mẫu → Phân hạng sao → Quyết định UBND Tỉnh.
             </div>
           </div>
           <button type="button" class="btn-primary-emerald" style="height: 36px; font-size: 12.5px;" onclick="showHintModal('Đăng ký sản phẩm OCOP mới', 'Để nộp hồ sơ sản phẩm mới tham gia phân hạng OCOP cấp Huyện đợt 2/2026, HTX cần hoàn thiện: Bản mô tả sản phẩm, phiếu kết quả kiểm nghiệm ATTP và liên kết chuỗi giá trị trên GreenOS.')">
-            ➕ Hướng dẫn nộp hồ sơ OCOP
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Hướng dẫn nộp hồ sơ OCOP</span>
           </button>
         </div>
 
@@ -38978,33 +39014,33 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <div class="ocop-card-box">
             <div class="ocop-card-top">
               <div>
-                <span class="ocop-star-badge">★★★★ OCOP 4 SAO</span>
+                <span class="ocop-star-badge" style="display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span style="margin-left:4px;">OCOP 4 SAO</span></span>
                 <div class="ocop-product-title" style="margin-top: 6px;">Chuối sấy dẻo Đồng Lam</div>
                 <div class="ocop-htx-name">Chủ thể: HTX Nông Nghiệp Số Đồng Lam</div>
               </div>
-              <span class="ocop-status-pill status-certified">✓ Đang có hiệu lực</span>
+              <span class="ocop-status-pill status-certified" style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Đang có hiệu lực</span>
             </div>
 
             <!-- Pipeline 5 bước -->
             <div class="pipeline-bar">
               <div class="pipeline-step done">
-                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-dot" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin:auto;"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="pipeline-step-name">1. Hồ sơ</div>
               </div>
               <div class="pipeline-step done">
-                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-dot" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin:auto;"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="pipeline-step-name">2. HĐ Huyện</div>
               </div>
               <div class="pipeline-step done">
-                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-dot" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin:auto;"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="pipeline-step-name">3. Kiểm nghiệm</div>
               </div>
               <div class="pipeline-step done">
-                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-dot" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin:auto;"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="pipeline-step-name">4. Phân hạng</div>
               </div>
               <div class="pipeline-step done">
-                <div class="pipeline-step-dot">★</div>
+                <div class="pipeline-step-dot" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="margin:auto;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                 <div class="pipeline-step-name">5. Cấp bằng</div>
               </div>
             </div>
@@ -39019,7 +39055,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <div class="ocop-card-box">
             <div class="ocop-card-top">
               <div>
-                <span class="ocop-star-badge" style="background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE;">★★★ ➔ ★★★★ Nâng hạng 4 Sao</span>
+                <span class="ocop-star-badge" style="background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> &rarr; <svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> <span style="margin-left:4px;">Nâng hạng 4 Sao</span></span>
                 <div class="ocop-product-title" style="margin-top: 6px;">Trà Thảo Mộc Bát Tiên Khe Trúc</div>
                 <div class="ocop-htx-name">Chủ thể: HTX Mật Ong &amp; Chè Khe Trúc</div>
               </div>
@@ -39029,11 +39065,11 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <!-- Pipeline 5 bước -->
             <div class="pipeline-bar">
               <div class="pipeline-step done">
-                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-dot" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin:auto;"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="pipeline-step-name">1. Hồ sơ</div>
               </div>
               <div class="pipeline-step done">
-                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-dot" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin:auto;"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="pipeline-step-name">2. HĐ Huyện</div>
               </div>
               <div class="pipeline-step active">
@@ -39060,7 +39096,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <div class="ocop-card-box">
             <div class="ocop-card-top">
               <div>
-                <span class="ocop-star-badge" style="background: #F8FAFC; color: var(--slate-700); border-color: var(--slate-300);">★★★ Đăng ký mới 3 Sao</span>
+                <span class="ocop-star-badge" style="background: #F8FAFC; color: var(--slate-700); border-color: var(--slate-300); display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.5" style="display:inline-block; vertical-align:-1px; margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span style="margin-left:4px;">Đăng ký mới 3 Sao</span></span>
                 <div class="ocop-product-title" style="margin-top: 6px;">Bưởi Da Xanh Suối Mây</div>
                 <div class="ocop-htx-name">Chủ thể: Tổ Hợp Tác Thôn Khe Trúc</div>
               </div>
@@ -39070,7 +39106,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             <!-- Pipeline 5 bước -->
             <div class="pipeline-bar">
               <div class="pipeline-step done">
-                <div class="pipeline-step-dot">✓</div>
+                <div class="pipeline-step-dot" style="display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin:auto;"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="pipeline-step-name">1. Hồ sơ</div>
               </div>
               <div class="pipeline-step active">
@@ -39145,7 +39181,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         <div class="share-bar-header" style="margin-bottom: 12px;">
           <div>
             <h3 style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800; color: var(--slate-900);">
-              🚨 Trung tâm cảnh báo bất thường &amp; Đôn đốc kiểm tra chất lượng địa bàn
+              <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" style="color:var(--red-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Trung tâm cảnh báo bất thường &amp; Đôn đốc kiểm tra chất lượng địa bàn</span>
             </h3>
             <div style="font-size: 12.5px; color: var(--slate-500); margin-top: 2px;">
               Phát hiện sớm các rủi ro hết hạn chứng chỉ, tồn đọng hàng hoá và vi phạm quy chế chuỗi giá trị.
@@ -39156,7 +39192,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
         <!-- Cảnh báo 1: Hết hạn VietGAP -->
         <div class="alert-card-item danger">
-          <span style="font-size: 26px;">🔴</span>
+          <svg class="svg-icon-xl" fill="none" viewBox="0 0 24 24" stroke="#DC2626"><circle cx="12" cy="12" r="9" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/></svg>
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="font-size: 13.5px; font-weight: 800; color: var(--red-700);">CẢNH BÁO ĐỎ: Giấy chứng nhận VietGAP số VG-2023-882 sắp hết hiệu lực sau 24 ngày</span>
@@ -39167,13 +39203,13 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             </div>
           </div>
           <button type="button" class="btn-outline-slate" style="height: 36px; font-size: 12px; white-space: nowrap !important;" onclick="alert('Đã tạo văn bản đôn đốc gửi HTX Nông Sản Suối Mây và Trạm Khuyến Nông.')">
-            📩 Ban hành phiếu đôn đốc
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> Ban hành phiếu đôn đốc</span>
           </button>
         </div>
 
         <!-- Cảnh báo 2: Quá tải kho mát -->
         <div class="alert-card-item warning">
-          <span style="font-size: 26px;">🟡</span>
+          <svg class="svg-icon-xl" fill="none" viewBox="0 0 24 24" stroke="#D97706"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="font-size: 13.5px; font-weight: 800; color: var(--amber-700);">CẢNH BÁO VÀNG: Dung lượng kho mát Thôn Bãi Sen đạt 85% sức chứa</span>
@@ -39184,13 +39220,13 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             </div>
           </div>
           <button type="button" class="btn-outline-slate" style="height: 36px; font-size: 12px; white-space: nowrap !important;" onclick="switchXaTab('cx13')">
-            🤝 Điều phối tại CX-13 →
+            <svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>Điều phối tại CX-13 &rarr;
           </button>
         </div>
 
         <!-- Cảnh báo 3: Lịch họp Hội đồng OCOP -->
         <div class="alert-card-item info">
-          <span style="font-size: 26px;">📅</span>
+          <svg class="svg-icon-xl" fill="none" viewBox="0 0 24 24" stroke="#2563EB"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="font-size: 13.5px; font-weight: 800; color: var(--blue-700);">LỊCH CÔNG TÁC: Phiên đánh giá phân hạng OCOP cấp Huyện đợt 2/2026</span>
@@ -39201,7 +39237,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
             </div>
           </div>
           <button type="button" class="btn-outline-slate" style="height: 36px; font-size: 12px; white-space: nowrap !important;" onclick="alert('Đã đồng bộ lịch họp vào ứng dụng Lịch công tác UBND Xã.')">
-            📌 Thêm vào lịch công tác
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Thêm vào lịch công tác</span>
           </button>
         </div>
       </div>
@@ -39221,10 +39257,10 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         <div>
           <span class="chip-demo" style="background: var(--emerald-100); color: var(--emerald-800);">Nghị định 98/2018/NĐ-CP</span>
           <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900); margin-top: 4px;">
-            📝 Biên bản điều phối chỉ đạo cuộc họp UBND Xã
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg> Biên bản điều phối chỉ đạo cuộc họp UBND Xã</span>
           </h3>
         </div>
-        <button type="button" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--slate-400);" onclick="closeMatchSessionDialog()">✕</button>
+        <button type="button" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--slate-400);" onclick="closeMatchSessionDialog()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--slate-400); display:inline-flex; align-items:center; justify-content:center;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       
       <p id="matchSessionPromptText" style="font-size: 13.5px; color: var(--slate-600); line-height: 1.55; margin-bottom: 14px;">
@@ -39243,7 +39279,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
       <div style="display: flex; justify-content: flex-end; gap: 10px;">
         <button type="button" class="btn-outline-slate" onclick="closeMatchSessionDialog()">Huỷ bỏ</button>
-        <button type="button" class="btn-primary-emerald" onclick="confirmMatchSession()">✓ Ban hành chỉ đạo &amp; Mở phiên</button>
+        <button type="button" class="btn-primary-emerald" onclick="confirmMatchSession()"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Ban hành chỉ đạo &amp; Mở phiên</button>
       </div>
     </div>
   </div>
@@ -39254,7 +39290,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
   <div id="approveStampModal" class="modal-backdrop" onclick="closeApproveStampModal()">
     <div class="modal-dialog" style="max-width: 500px;" onclick="event.stopPropagation()">
       <div style="text-align: center; margin-bottom: 14px;">
-        <div style="font-size: 38px; margin-bottom: 6px;">🔏</div>
+        <div style="margin-bottom: 6px;"><svg class="svg-icon-xl" style="width:44px;height:44px;color:var(--emerald-700);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
         <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900);">
           Phê duyệt &amp; Ký số điện tử báo cáo tháng
         </h3>
@@ -39272,7 +39308,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
       <div style="display: flex; justify-content: flex-end; gap: 10px;">
         <button type="button" class="btn-outline-slate" onclick="closeApproveStampModal()">Huỷ</button>
-        <button type="button" class="btn-primary-emerald" onclick="confirmApproveStamp()">✓ Ký số &amp; Đóng mộc đỏ ngay</button>
+        <button type="button" class="btn-primary-emerald" onclick="confirmApproveStamp()"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Ký số &amp; Đóng mộc đỏ ngay</button>
       </div>
     </div>
   </div>
@@ -39303,12 +39339,12 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           <div style="font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 800;">Trần Văn Hùng</div>
           <div style="font-size: 12.5px; color: var(--emerald-700); font-weight: 700;">Cán bộ Kinh tế – UBND Xã Đồng Lam</div>
         </div>
-        <button type="button" class="btn-pill-toggle" onclick="toggleAccountSheet(false)">✕ Đóng</button>
+        <button type="button" class="btn-pill-toggle" onclick="toggleAccountSheet(false)" style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Đóng</button>
       </div>
 
       <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 12px;">
         <div style="background: var(--emerald-50); border: 1px solid var(--emerald-100); padding: 12px 14px; border-radius: 12px; font-size: 12.5px; color: var(--emerald-900);">
-          <strong>🔒 Quyền truy cập Read-Only Cấp Xã:</strong><br/>
+          <strong><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Quyền truy cập Read-Only Cấp Xã:</strong><br/>
           Chỉ xem số liệu tổng hợp theo Thôn, HTX, Nhóm hàng, Kênh. Không truy cập danh tính hay số điện thoại từng hộ.
         </div>
 
@@ -39316,23 +39352,23 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
           Chuyển nhanh sang phân hệ khác
         </div>
         <a href="/index.html" style="text-decoration: none; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); color: var(--slate-800); font-size: 13.5px; font-weight: 700; display: block;">
-          📱 1. Mobile App Nông Hộ (Bác Ba)
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg> 1. Mobile App Nông Hộ (Bác Ba)</span>
         </a>
         <a href="/htx-dashboard.html" style="text-decoration: none; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); color: var(--slate-800); font-size: 13.5px; font-weight: 700; display: block;">
-          👨‍💼 2. Dashboard Quản Lý HTX
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> 2. Dashboard Quản Lý HTX</span>
         </a>
         <a href="/PORTAL.html" style="text-decoration: none; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); color: var(--slate-800); font-size: 13.5px; font-weight: 700; display: block;">
-          🏛️ 3. Cổng Trình Diễn Tích Hợp (PORTAL)
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> 3. Cổng Trình Diễn Tích Hợp (PORTAL)</span>
         </a>
         <a href="/studio.html" style="text-decoration: none; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); color: var(--slate-800); font-size: 13.5px; font-weight: 700; display: block;">
-          ⚖️ 4. Dual Studio (GreenOS vs GVOS)
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg> 4. Dual Studio (GreenOS vs GVOS)</span>
         </a>
       </div>
     </div>
 
     <div style="border-top: 1px solid var(--slate-200); padding-top: 16px;">
       <button type="button" class="btn-outline-slate" style="width: 100%; justify-content: center;" onclick="resetDemoState()">
-        🔄 Đặt lại dữ liệu mẫu ban đầu
+        <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> Đặt lại dữ liệu mẫu ban đầu</span>
       </button>
     </div>
   </aside>
@@ -39446,9 +39482,9 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         col3: 'Hộ tự làm',
         col4: 'Hub làm',
         rows: [
-          { name: '💬 Zalo (Nhóm & OA)', sub: '', c2: '60 lượt', c3: '55 lượt', c4: '5 lượt', pct: 100, tone: 'normal' },
-          { name: '📘 Facebook', sub: '', c2: '51 lượt', c3: '48 lượt', c4: '3 lượt', pct: 85, tone: 'normal' },
-          { name: '🛍️ Shopee', sub: '', c2: '34 lượt', c3: '31 lượt', c4: '3 lượt', pct: 57, tone: 'low' }
+          { name: 'Zalo (Nhóm & OA)', sub: '', c2: '60 lượt', c3: '55 lượt', c4: '5 lượt', pct: 100, tone: 'normal' },
+          { name: 'Facebook', sub: '', c2: '51 lượt', c3: '48 lượt', c4: '3 lượt', pct: 85, tone: 'normal' },
+          { name: 'Shopee', sub: '', c2: '34 lượt', c3: '31 lượt', c4: '3 lượt', pct: 57, tone: 'low' }
         ]
       }
     };
@@ -39556,7 +39592,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
 
       const btn = document.getElementById('btnSignReport');
       if (btn) {
-        btn.innerHTML = '<span>✓ Đã ký số mộc đỏ</span>';
+        btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Đã ký số mộc đỏ</span>';
         btn.style.background = '#065F46';
         btn.style.borderColor = '#059669';
       }
@@ -39568,7 +39604,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         document.getElementById('reportAuditTitle').innerText = 'Tình trạng: Báo cáo đã được phê duyệt & Ký số Ban Cơ Yếu';
         document.getElementById('reportAuditTitle').style.color = '#065F46';
         document.getElementById('reportAuditSub').innerText = 'Đã ký số bởi Phó Chủ tịch UBND Xã Nguyễn Văn An lúc ' + new Date().toLocaleTimeString('vi-VN') + ', ' + new Date().toLocaleDateString('vi-VN') + '. Có giá trị pháp lý chính thức.';
-        document.getElementById('reportAuditBadge').innerText = 'Đã ký số ✓';
+        document.getElementById('reportAuditBadge').innerText = 'Đã ký số';
         document.getElementById('reportAuditBadge').style.background = '#A7F3D0';
         document.getElementById('reportAuditBadge').style.color = '#064E3B';
       }
@@ -39582,7 +39618,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       }
       const btn = document.getElementById('btnForwardDistrict');
       if (btn) {
-        btn.innerHTML = '<span>✓ Đã gửi Cấp Huyện</span>';
+        btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Đã gửi Cấp Huyện</span>';
         btn.style.color = '#065F46';
         btn.style.borderColor = '#059669';
       }
@@ -39726,7 +39762,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         const mm = String(now.getMinutes()).padStart(2, '0');
         const wrap = document.getElementById('bnActionWrap-' + pendingMatchRank);
         if (wrap) {
-          wrap.innerHTML = `<span class="session-opened-tag" style="background: #ECFDF5; color: #065F46; border: 1.5px solid #A7F3D0; font-weight: 800;">✓ Đã ban hành chỉ đạo (KL-08/TB) lúc ${hh}:${mm}</span>`;
+          wrap.innerHTML = `<span class="session-opened-tag" style="background: #ECFDF5; color: #065F46; border: 1.5px solid #A7F3D0; font-weight: 800;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Đã ban hành chỉ đạo (KL-08/TB) lúc ${hh}:${mm}</span>`;
         }
       }
       closeMatchSessionDialog();
@@ -39769,12 +39805,12 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
       onChangeXaMonth('2026-09');
       document.getElementById('bnActionWrap-1').innerHTML = `
         <button type="button" class="btn-primary-emerald" onclick="openMatchSessionDialog(1, 'Máy sấy nông sản (Thôn Bãi Sen, Thôn Gò Mít)')">
-          🤝 Mở phiên ghép nối
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Mở phiên ghép nối</span>
         </button>`;
-      document.getElementById('bnActionWrap-2').innerHTML = `<span class="session-opened-tag">✓ Đã mở phiên lúc 09:12</span>`;
+      document.getElementById('bnActionWrap-2').innerHTML = `<span class="session-opened-tag" style="display:inline-flex;align-items:center;gap:4px;"><svg class="svg-inline" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>Đã mở phiên lúc 09:12</span>`;
       document.getElementById('bnActionWrap-3').innerHTML = `
         <button type="button" class="btn-primary-emerald" onclick="openMatchSessionDialog(3, 'Kho mát bảo quản (Thôn Bãi Sen, Thôn Khe Trúc)')">
-          🤝 Mở phiên ghép nối
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Mở phiên ghép nối</span>
         </button>`;
       toggleAccountSheet(false);
     }
@@ -39875,7 +39911,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         xaSharesChartInstance = new Chart(ctx2, {
           type: 'line',
           data: {
-            labels: ['01/08*', '08/08', '16/08', '23/08', '30/08', '07/09', '14/09 ★', '21/09', '28/09', '05/10*'],
+            labels: ['01/08*', '08/08', '16/08', '23/08', '30/08', '07/09', '14/09 (Đỉnh)', '21/09', '28/09', '05/10*'],
             datasets: [{
               label: 'Lượt chia sẻ',
               data: [6, 11, 14, 10, 12, 31, 44, 38, 32, 0],
@@ -39918,16 +39954,16 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
         xaCropsChartInstance = new Chart(ctx3, {
           type: 'bar',
           data: {
-            labels: ['Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9 ★', 'Tháng 10 (Dự kiến)'],
+            labels: ['Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9 (Đỉnh)', 'Tháng 10 (Dự kiến)'],
             datasets: [
               {
-                label: 'Chuối sấy OCOP 4★ (Tấn)',
+                label: 'Chuối sấy OCOP 4 Sao (Tấn)',
                 data: [3.8, 4.2, 5.0, 8.2, 11.5, 9.0],
                 backgroundColor: '#059669',
                 borderRadius: 4
               },
               {
-                label: 'Trà Bát Tiên OCOP 3★ (Tấn)',
+                label: 'Trà Bát Tiên OCOP 3 Sao (Tấn)',
                 data: [2.1, 2.8, 3.2, 4.5, 6.2, 5.1],
                 backgroundColor: '#10B981',
                 borderRadius: 4
@@ -39998,6 +40034,7 @@ HTX hỗ trợ bao bì màng nhôm và ứng trước 70% tiền hàng ngay khi 
   </script>
 </body>
 </html>
+
 </template>
 
 

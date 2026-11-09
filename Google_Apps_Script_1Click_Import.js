@@ -1,20 +1,18 @@
 /**
  * ==============================================================================
  * GOOGLE APPS SCRIPT: ĐỒNG BỘ BÁO CÁO THÁNG 10 (HOÀNG - GREENOS)
- * CHUẨN 11 CỘT - GIÃN DÒNG THOÁNG ĐÃNG - DROPDOWN CHIPS CHUẨN MẪU GỐC
+ * CHUẨN 11 CỘT - KHẮC PHỤC TRIỆT ĐỂ LỖI XÁC THỰC Ô F2 (DATA VALIDATION)
  * ==============================================================================
  * 
- * TÍNH NĂNG ĐƯỢC NÂNG CẤP:
- * 1. KHẮC PHỤC CHỮ BỊ SÁT: Căn giữa theo chiều dọc (Vertical Middle), đặt chiều cao
- *    dòng tối thiểu 48px, mở rộng độ rộng cột (Đầu việc 400px, Ghi chú 420px, Output 520px)
- *    và bổ sung viền mềm mại (#E5E7EB) giúp bảng cực kỳ thoáng đãng, dễ đọc.
- * 2. DROPDOWN LỰA CHỌN ĐẦY ĐỦ:
- *    - Tiến độ: Done, Đang làm, Chưa làm, Pending, Chờ duyệt, checking, Check pháp lý, Hủy.
- *    - Thứ tự ưu tiên: Gấp, Cao, Trong ngày, Trong tuần, Trong tháng, Thấp, Trong tuần này phải xong.
- *    - Nexs/ Greenfi (Dự án): Green Village, Greenfi, WiseMeal, GFKey, G - NEXS, Nexs, OPS, ALL Companys.
- *    - Người làm: Hoàng, A VINH, ĐỨC, A BẢO, MAI PHƯƠNG, NGỌC, CƯỜNG.
- * 3. TỰ ĐỘNG ĐỔ MÀU SẮC (Conditional Formatting) đẹp mắt chuẩn thương hiệu.
- * 4. TẤT CẢ LINK ẢNH & TÀI LIỆU đều click mở trực tiếp được trong Google Sheet.
+ * NGUYÊN NHÂN LỖI Ô F2:
+ * Ở bản cũ (12 cột), Cột F là cột Dự án (chỉ nhận Green Village, Greenfi...).
+ * Lệnh sheet.clear() của Google Sheet không tự xóa quy tắc xác thực (Data Validation) cũ.
+ * Do đó khi chuyển về chuẩn 11 cột, Cột F là cột Tiến độ (Done, Đang làm...), Google Sheet
+ * chặn lại vì vướng quy tắc cũ của cột F.
+ * 
+ * GIẢI PHÁP:
+ * Thêm lệnh: sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).clearDataValidations();
+ * để gỡ sạch toàn bộ quy tắc cũ TRƯỚC KHI nạp dữ liệu, sau đó thiết lập lại Dropdown mới chuẩn 100%.
  */
 
 function onOpen() {
@@ -50,26 +48,32 @@ function capNhatBaoCaoThang10() {
   const totalRows = csvData.length;
   const totalCols = csvData[0].length; // Chuẩn 11 cột
 
-  // Xóa nội dung và định dạng cũ
+  // 1. GỠ BỎ TOÀN BỘ QUY TẮC XÁC THỰC CŨ TRƯỚC TIÊN (Fix triệt để lỗi ô F2)
+  sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).clearDataValidations();
+  
+  // 2. Xóa nội dung và định dạng cũ
   sheet.clear();
   sheet.clearConditionalFormatRules();
 
-  // Ghi toàn bộ dữ liệu 70 dòng vào trang tính
+  // 3. Ghi toàn bộ dữ liệu 70 dòng vào trang tính an toàn 100%
   sheet.getRange(1, 1, totalRows, totalCols).setValues(csvData);
 
-  // Áp dụng định dạng, dropdown và giãn khoảng cách
+  // 4. Áp dụng định dạng, dropdown và giãn khoảng cách
   apDungDinhDangVaDropdown(sheet, totalRows, totalCols, csvData);
 
   SpreadsheetApp.getUi().alert("🎉 Hoàn tất! Đã đồng bộ 70 đầu việc cả tháng 10 chuẩn 11 cột, giãn dòng thoáng đẹp và tạo Dropdown đầy đủ!");
 }
 
 /**
- * 2. Hàm chỉ cập nhật Dropdown và giãn khoảng cách (Dành cho trường hợp đã có sẵn dữ liệu trên Sheet)
+ * 2. Hàm chỉ cập nhật Dropdown và giãn khoảng cách (Dành cho trường hợp bạn đã có dữ liệu sẵn trên Sheet)
  */
 function caiDatDropdownVaDinhDang() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const totalRows = Math.max(sheet.getLastRow(), 71);
   const totalCols = 11;
+
+  // Gỡ bỏ validation cũ tránh xung đột
+  sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).clearDataValidations();
 
   apDungDinhDangVaDropdown(sheet, totalRows, totalCols, null);
   SpreadsheetApp.getUi().alert("🎉 Đã cập nhật xong Dropdown lựa chọn và giãn dòng thoáng đẹp cho bảng của bạn!");
@@ -91,13 +95,13 @@ function apDungDinhDangVaDropdown(sheet, totalRows, totalCols, csvData) {
   headerRange.setVerticalAlignment("middle");
   sheet.setRowHeight(1, 42);
 
-  // 2. CHỮ KHÔNG BỊ SÁT: Căn giữa theo chiều dọc (Vertical Middle) + Giãn chiều cao hàng (46px - 50px)
+  // 2. CHỮ KHÔNG BỊ SÁT: Căn giữa theo chiều dọc (Vertical Middle) + Giãn chiều cao hàng (48px)
   const dataRange = sheet.getRange(2, 1, totalRows - 1, totalCols);
   dataRange.setVerticalAlignment("middle");
   dataRange.setFontSize(10);
   dataRange.setWrap(true);
 
-  // Đặt chiều cao từng hàng rộng rãi (tối thiểu 46px cho dễ đọc)
+  // Đặt chiều cao từng hàng rộng rãi (48px cho dễ đọc, chữ không chạm mép)
   for (let r = 2; r <= totalRows; r++) {
     sheet.setRowHeight(r, 48);
   }
@@ -135,10 +139,9 @@ function apDungDinhDangVaDropdown(sheet, totalRows, totalCols, csvData) {
   sheet.setColumnWidth(11, 500); // Output/Tài liệu (Rộng rãi, link rõ ràng)
 
   // 4. TẠO CÁC DROPDOWN CHIPS LỰA CHỌN KHỚP 100% LINK MẪU GỐC CỦA CÔNG TY
-  // (Áp dụng cho từ dòng 2 đến hết bảng, để khi thêm dòng mới vẫn có Dropdown chọn sẵn)
   const applyRowCount = Math.min(maxRows - 1, 300);
 
-  // A. Dropdown Cột 6: Tiến độ (Trạng thái)
+  // A. Dropdown Cột 6 (Cột F): Tiến độ (Trạng thái)
   const statusList = ['Done', 'Đang làm', 'Chưa làm', 'Pending', 'Chờ duyệt', 'checking', 'Check pháp lý', 'Hủy'];
   const statusRule = SpreadsheetApp.newDataValidation()
     .requireValueInList(statusList, true)
@@ -146,7 +149,7 @@ function apDungDinhDangVaDropdown(sheet, totalRows, totalCols, csvData) {
     .build();
   sheet.getRange(2, 6, applyRowCount, 1).setDataValidation(statusRule);
 
-  // B. Dropdown Cột 9: Thứ tự ưu tiên
+  // B. Dropdown Cột 9 (Cột I): Thứ tự ưu tiên
   const priorityList = ['Gấp', 'Cao', 'Trong ngày', 'Trong tuần', 'Trong tháng', 'Thấp', 'Trong tuần này phải xong'];
   const priorityRule = SpreadsheetApp.newDataValidation()
     .requireValueInList(priorityList, true)
@@ -154,7 +157,7 @@ function apDungDinhDangVaDropdown(sheet, totalRows, totalCols, csvData) {
     .build();
   sheet.getRange(2, 9, applyRowCount, 1).setDataValidation(priorityRule);
 
-  // C. Dropdown Cột 5: Nexs/ Greenfi (Dự án)
+  // C. Dropdown Cột 5 (Cột E): Nexs/ Greenfi (Dự án)
   const projectList = ['Green Village', 'Greenfi', 'WiseMeal', 'GFKey', 'G - NEXS', 'Nexs', 'OPS', 'ALL Companys'];
   const projectRule = SpreadsheetApp.newDataValidation()
     .requireValueInList(projectList, true)
@@ -162,7 +165,7 @@ function apDungDinhDangVaDropdown(sheet, totalRows, totalCols, csvData) {
     .build();
   sheet.getRange(2, 5, applyRowCount, 1).setDataValidation(projectRule);
 
-  // D. Dropdown Cột 3: Người làm
+  // D. Dropdown Cột 3 (Cột C): Người làm
   const assigneeList = ['Hoàng', 'A VINH', 'ĐỨC', 'A BẢO', 'MAI PHƯƠNG', 'NGỌC', 'CƯỜNG'];
   const assigneeRule = SpreadsheetApp.newDataValidation()
     .requireValueInList(assigneeList, true)

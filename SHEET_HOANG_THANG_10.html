@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[NEXS - GreenFi] Báo cáo Công việc Tháng 10 - Hoàng (Green OS)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background-color: #F8F9FA;
+      color: #202124;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Google Sheets Header */
+    .sheets-header {
+      background: #FFFFFF;
+      border-bottom: 1px solid #E0E0E0;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .sheets-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .sheets-icon {
+      width: 40px;
+      height: 40px;
+      background: #0F9D58;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 22px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+    .sheets-title-box h1 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 16.5px;
+      font-weight: 500;
+      color: #202124;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sheets-menu {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: #3C4043;
+      margin-top: 4px;
+    }
+    .sheets-menu span {
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+    .sheets-menu span:hover {
+      background: #F1F3F4;
+    }
+
+    .sheets-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn-green {
+      background: #0F9D58;
+      color: white;
+      box-shadow: 0 1px 3px rgba(15,157,88,0.3);
+    }
+    .btn-green:hover {
+      background: #0B8043;
+    }
+    .btn-blue {
+      background: #1A73E8;
+      color: white;
+    }
+    .btn-blue:hover {
+      background: #1557B0;
+    }
+    .btn-outline {
+      background: white;
+      border-color: #DADCE0;
+      color: #3C4043;
+    }
+    .btn-outline:hover {
+      background: #F1F3F4;
+    }
+
+    /* Sub Toolbar */
+    .sheets-toolbar {
+      background: #EDF2FA;
+      border-bottom: 1px solid #D3D3D3;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+    .toolbar-metrics {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .metric-pill {
+      background: white;
+      padding: 4px 10px;
+      border-radius: 16px;
+      border: 1px solid #DADCE0;
+      font-weight: 500;
+      color: #1E293B;
+    }
+    .metric-pill strong {
+      color: #0F9D58;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      border: 1px solid #DADCE0;
+      border-radius: 20px;
+      padding: 5px 14px;
+      width: 280px;
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 13px;
+      width: 100%;
+      background: transparent;
+    }
+
+    /* Table Grid Container */
+    .grid-container {
+      flex: 1;
+      overflow: auto;
+      background: #FFFFFF;
+      position: relative;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 12.5px;
+      background: white;
+      table-layout: fixed;
+    }
+    th, td {
+      border: 1px solid #E0E0E0;
+      padding: 8px 10px;
+      vertical-align: middle;
+      word-break: break-word;
+    }
+    thead th {
+      background: #F8F9FA;
+      color: #3C4043;
+      font-weight: 600;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 2px solid #107C41;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    tbody tr:hover {
+      background-color: #F0FDF4;
+    }
+    .col-stt { width: 50px; text-align: center; font-weight: 600; color: #5F6368; }
+    .col-date { width: 95px; text-align: center; }
+    .col-user { width: 90px; text-align: center; font-weight: 500; }
+    .col-due { width: 95px; text-align: center; color: #5F6368; }
+    .col-hours { width: 75px; text-align: center; }
+    .col-proj { width: 95px; text-align: center; color: #15803D; font-weight: 500; }
+    .col-status { width: 80px; text-align: center; }
+    .col-src { width: 105px; text-align: center; color: #4B5563; }
+    .col-task { width: 260px; font-weight: 500; color: #1E293B; line-height: 1.4; }
+    .col-prio { width: 90px; text-align: center; }
+    .col-note { width: 290px; color: #475569; line-height: 1.4; font-size: 12px; }
+    .col-output { width: 330px; line-height: 1.4; font-size: 12px; }
+
+    /* Badges */
+    .badge {
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      display: inline-block;
+      font-weight: 600;
+    }
+    .badge-done {
+      background: #D1E7DD;
+      color: #0F5132;
+    }
+    .badge-gap {
+      background: #F8D7DA;
+      color: #842029;
+    }
+    .badge-week {
+      background: #E0E7FF;
+      color: #3730A3;
+      font-weight: 500;
+    }
+    .badge-month {
+      background: #F1F5F9;
+      color: #475569;
+      font-weight: 500;
+    }
+    .badge-hour {
+      background: #E0F2FE;
+      color: #0369A1;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 11.5px;
+    }
+    .output-box {
+      background: #F0F9FF;
+      border-left: 3px solid #0284C7;
+      padding: 4px 8px;
+      border-radius: 0 4px 4px 0;
+      color: #0369A1;
+    }
+    .output-img-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #E2E8F0;
+      color: #1E293B;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 11px;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    .output-img-link:hover {
+      background: #CBD5E1;
+      color: #0F172A;
+    }
+
+    /* Modal Copy Box */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      width: 720px;
+      max-width: 90vw;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-header h3 {
+      font-size: 18px;
+      color: #1E293B;
+      font-family: 'Google Sans', sans-serif;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #64748B;
+    }
+    .copy-textarea {
+      width: 100%;
+      height: 220px;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 10px;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      background: #F8FAFC;
+      resize: none;
+      outline: none;
+      white-space: pre;
+    }
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0F5132;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      font-size: 14px;
+      font-weight: 500;
+      display: none;
+      z-index: 10000;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Bottom Sheet Tab Bar */
+    .sheet-tabs {
+      background: #F1F3F4;
+      border-top: 1px solid #DADCE0;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .tab-item {
+      background: white;
+      padding: 6px 16px;
+      border-radius: 4px 4px 0 0;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #0F9D58;
+      border-top: 2px solid #0F9D58;
+      box-shadow: 0 -1px 2px rgba(0,0,0,0.05);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <div class="sheets-header">
+    <div class="sheets-left">
+      <div class="sheets-icon">📊</div>
+      <div class="sheets-title-box">
+        <h1>[NEXS - GreenFi] Báo cáo Công việc Tháng 10 - Hoàng (Green OS)</h1>
+        <div class="sheets-menu">
+          <span onclick="openCopyModal()">📋 Hộp Copy Dữ Liệu</span>
+          <span onclick="window.location.href='/Bao_Cao_Cong_Viec_Thang_10_Hoang_GreenOS.xls'">Tải Excel (.xls)</span>
+          <span onclick="window.location.href='/Bao_Cao_Cong_Viec_Thang_10_Hoang_GreenOS.csv'">Tải CSV (.csv)</span>
+          <span onclick="window.open('https://sheets.new', '_blank')">Mở Google Sheets Mới</span>
+        </div>
+      </div>
+    </div>
+    <div class="sheets-actions">
+      <button class="btn-action btn-green" onclick="smartCopyAndOpen()">
+        📋 Sao Chép 62 Dòng & Mở Google Sheets
+      </button>
+      <button class="btn-action btn-blue" onclick="openCopyModal()">
+        📂 Hộp Văn Bản Copy (Ctrl+C)
+      </button>
+      <a class="btn-action btn-outline" href="/Bao_Cao_Cong_Viec_Thang_10_Hoang_GreenOS.xls" download>
+        📥 Tải File Excel
+      </a>
+    </div>
+  </div>
+
+  <!-- Sub Toolbar -->
+  <div class="sheets-toolbar">
+    <div class="toolbar-metrics">
+      <div class="metric-pill">👤 Nhân sự: <strong>Hoàng (Frontend Lead)</strong></div>
+      <div class="metric-pill">🎯 Dự án: <strong>Green Village (Green OS)</strong></div>
+      <div class="metric-pill">📅 Lịch: <strong>22 Buổi (Thứ 2 - Thứ 6)</strong></div>
+      <div class="metric-pill">⏱️ Thời lượng: <strong>8h/buổi = 176 Giờ</strong></div>
+      <div class="metric-pill">✅ <strong>62 / 62 Đầu việc Hoàn thành</strong></div>
+      <div class="metric-pill">📌 Nguồn: <strong>Vinh và BLĐ</strong></div>
+    </div>
+    <div class="search-box">
+      <span style="color:#5F6368; margin-right: 6px;">🔍</span>
+      <input type="text" id="searchInput" placeholder="Tìm kiếm đầu việc, ngày, tính năng..." onkeyup="filterTable()">
+    </div>
+  </div>
+
+  <!-- Grid Table -->
+  <div class="grid-container">
+    <table id="taskTable">
+      <thead>
+        <tr>
+          <th class="col-stt">STT</th>
+          <th class="col-date">Ngày<br>(yyyy/mm/dd)</th>
+          <th class="col-user">Người làm</th>
+          <th class="col-due">Dự kiến hoàn thành</th>
+          <th class="col-hours">Thời lượng</th>
+          <th class="col-proj">Nexs/ Greenfi</th>
+          <th class="col-status">Tiến độ</th>
+          <th class="col-src">Nguồn</th>
+          <th class="col-task">Đầu việc</th>
+          <th class="col-prio">Ưu tiên</th>
+          <th class="col-note">Ghi chú</th>
+          <th class="col-output">Output / Mô tả thực tế & Minh chứng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-stt">1</td>
+          <td class="col-date">2026/10/01</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">01/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết lập cấu trúc khung giao diện Mobile App Green OS (chuẩn viewport 375px - 430px, CSS reset chống vỡ layout)</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Khởi tạo layout viewport di động, chống tràn ngang màn hình, thiết lập cấu trúc container thích ứng mọi dòng smartphone</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Khung mobile chuẩn 390x844px, overflow-x: hidden, không vỡ layout khi xoay ngang</strong><br><a class="output-img-link" href="/scratch/output_images/06_mobile_bac_ba_trang_chu.png" target="_blank">📸 Xem ảnh: 06_mobile_bac_ba_trang_chu.png</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/mobile" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Mở Web Live</a></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">2</td>
+          <td class="col-date">2026/10/01</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">01/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng thanh điều hướng đáy (Bottom Navigation Bar) 5 tab chính</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Triển khai 5 tab: Trang chủ, Đăng bán, Nhật ký, Đơn hàng, Tài khoản; hiệu ứng active mượt mà và chống giật khi chuyển tab</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Bottom bar cố định đáy cao 64px, đổ bóng mờ, icon Lucide SVG sắc nét kèm nhãn tiếng Việt</strong><br><a class="output-img-link" href="/scratch/output_images/06_mobile_bac_ba_trang_chu.png" target="_blank">📸 Xem ảnh: 06_mobile_bac_ba_trang_chu.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">3</td>
+          <td class="col-date">2026/10/01</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">01/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết lập hệ thống màu sắc nhận diện GreenFi & font chữ chuẩn tiếng Việt</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Màu xanh lá chủ đạo (#1B7A43 / #22C55E), màu phụ cam vàng nông sản, cấu hình font chữ rõ ràng dễ đọc cho người lớn tuổi</td>
+          <td class="col-output"><div class="output-box">Mô tả: Bảng token màu: Primary Green (#1B7A43), Accent Amber (#F59E0B), Neutral Slate, font Inter 15px tương phản cao</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">4</td>
+          <td class="col-date">2026/10/02</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">02/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế màn hình Chào mừng (Welcome Splash Screen) & Slider Onboarding 4 bước</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Xây dựng hình ảnh chú nông dân thời đại số 45-50 tuổi, thông điệp số hóa kinh tế xã, đăng bán nhanh, chợ xanh, tìm xe HTX</td>
+          <td class="col-output"><div class="output-box">Mô tả: Bộ 4 ảnh dọc 9:16 chụp chú nông dân thật, gradient đen mờ 40% đáy, typography trắng nổi bật</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">5</td>
+          <td class="col-date">2026/10/02</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">02/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng hiệu ứng trượt mượt mà giữa các slide Onboarding và nút điều hướng</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Hỗ trợ vuốt chạm cảm ứng trên di động, hiển thị chấm tròn chỉ số trang (dots indicator), nút Bỏ qua và Bắt đầu ngay</td>
+          <td class="col-output"><div class="output-box">Mô tả: Carousel cảm ứng swipe touch, chấm chỉ trang active mở rộng 24px, nút CTA xanh lá bo góc 8px</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">6</td>
+          <td class="col-date">2026/10/02</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">02/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Lưu trạng thái đã xem Onboarding vào LocalStorage trình duyệt</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Tránh việc người dùng phải xem lại màn giới thiệu trong các phiên đăng nhập kế tiếp</td>
+          <td class="col-output"><div class="output-box">Mô tả: Khóa gv_onboarding_seen=true, chuyển hướng tức thì vào Trang chủ từ lần truy cập thứ hai</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">7</td>
+          <td class="col-date">2026/10/05</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">05/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng màn hình Trang chủ Bác Ba: Widget lời chào cá nhân hóa & Thẻ tóm tắt doanh thu</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[4h] Hiển thị lời chào thân thiện theo buổi (Sáng/Chiều), thống kê doanh thu ngày, số đơn cần giao, lối tắt chụp ảnh đăng bán 1-chạm</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Card lời chào Bác Ba, thẻ doanh thu 4.850.000đ, 3 đơn chờ giao, nút camera to 56px nổi bật</strong><br><a class="output-img-link" href="/scratch/output_images/06_mobile_bac_ba_trang_chu.png" target="_blank">📸 Xem ảnh: 06_mobile_bac_ba_trang_chu.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">8</td>
+          <td class="col-date">2026/10/05</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">05/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế lưới hiển thị danh mục nông sản đang vào mùa vụ kèm giá tham khảo</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[4h] Hiển thị các loại trái cây, rau màu đang chính vụ kèm giá sàn thị trường giúp bà con không bị thương lái ép giá</td>
+          <td class="col-output"><div class="output-box">Mô tả: Card cuộn ngang: Bưởi da xanh (45k/kg), Cam sành Hàm Yên (32k/kg), Gạo nếp Tú Lệ (38k/kg) kèm nhãn OCOP</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">9</td>
+          <td class="col-date">2026/10/06</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">06/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng luồng Đăng bán Bước 1: Chụp ảnh trực tiếp từ camera hoặc tải ảnh từ thư viện</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Tối ưu luồng truy cập camera mượt mà, hỗ trợ chụp nhiều góc của nông sản (toàn cảnh luống rau, cận cảnh quả)</td>
+          <td class="col-output"><div class="output-box">Mô tả: Khung chụp ảnh tỉ lệ 1:1, hỗ trợ preview 4 góc chụp: bao bì, mặt cắt quả, cận cảnh cuống lá</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">10</td>
+          <td class="col-date">2026/10/06</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">06/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tích hợp module AI Image Processing: Tự động crop vuông 1:1 và tách nền sạch</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] AI tự động loại bỏ hậu cảnh lộn xộn, chuyển nông sản về ảnh nền trắng sáng chuyên nghiệp chuẩn sàn thương mại điện tử</td>
+          <td class="col-output"><div class="output-box">Mô tả: Ảnh nông sản tách nền trắng studio, giữ nguyên độ bóng và cuống lá tươi, dung lượng tối ưu 85KB</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">11</td>
+          <td class="col-date">2026/10/06</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">06/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế form nhập nhanh số lượng thu hoạch và giá bán mong muốn</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Giao diện bàn phím số to rõ ràng, cho phép chọn nhanh đơn vị tính: kg, tạ, tấn, sọt, thùng</td>
+          <td class="col-output"><div class="output-box">Mô tả: Input số lớn font 24px, 4 nút pill chọn đơn vị (kg/tạ/tấn/thùng), tự động tính tổng tiền dự thu</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">12</td>
+          <td class="col-date">2026/10/07</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">07/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tích hợp Trợ lý AI Phi Phi: Tự động nhận diện chủng loại nông sản từ ảnh tải lên</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Nhận diện quả bưởi, cam, thanh long, gạo nếp, tự động điền tên giống cây và tiêu đề bài đăng hấp dẫn</td>
+          <td class="col-output"><div class="output-box">Mô tả: Badge AI tự động nhận diện "Bưởi da xanh Bến Tre OCOP 4 sao", độ chính xác 98%</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">13</td>
+          <td class="col-date">2026/10/07</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">07/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tính năng AI tự động sinh bài viết bán lẻ và bài viết bán sỉ theo ngữ cảnh</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Tạo sẵn 3 phong cách văn phong: Chân chất nhà vườn, Chuẩn an toàn VietGAP, Thuyết phục tiểu thương gom sỉ</td>
+          <td class="col-output"><div class="output-box">Mô tả: 3 thẻ bài viết mẫu kèm nút 1-chạm "Sao chép đăng Facebook/Zalo" có sẵn hashtag #ChoXanh #HTX</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">14</td>
+          <td class="col-date">2026/10/07</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">07/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tự động trích xuất bảng thông số dinh dưỡng cơ bản & Hướng dẫn bảo quản nông sản</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Cung cấp thông tin lượng calo, vitamin, cách bảo quản độ tươi ngon trong kho mát giúp gia tăng uy tín người bán</td>
+          <td class="col-output"><div class="output-box">Mô tả: Bảng dinh dưỡng: Năng lượng 42kcal, Vitamin C 61mg, Độ đường Brix 11.5, Bảo quản mát 7-10 ngày</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">15</td>
+          <td class="col-date">2026/10/08</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">08/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng phân hệ Nhật ký canh tác số (Farming Log) chuẩn VietGAP</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Giao diện dòng thời gian trực quan: Ghi lại từng đợt gieo hạt, bón phân hữu cơ, tưới tiêu, ngày dự kiến thu hoạch</td>
+          <td class="col-output"><div class="output-box">Mô tả: Timeline dọc hiển thị từng đợt bón phân trùn quế, tưới nhỏ giọt kèm ảnh chụp thực địa luống rau</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">16</td>
+          <td class="col-date">2026/10/08</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">08/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tích hợp tính năng ghi âm nhật ký bằng giọng nói (Voice-to-Text) cho bà con</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Bà con đang ở vườn chỉ cần bấm nút ghi âm nói vài câu, hệ thống tự chuyển đổi thành văn bản lưu vào sổ canh tác</td>
+          <td class="col-output"><div class="output-box">Mô tả: Nút ghi âm micro tròn 50px viền sóng động, chuyển đổi câu nói tiếng Việt sang text chuẩn xác</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">17</td>
+          <td class="col-date">2026/10/08</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">08/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng cơ chế liên kết dữ liệu nhật ký canh tác với lô hàng chuẩn bị thu hoạch</td>
+          <td class="col-prio"><span class="badge badge-month">Trong tháng</span></td>
+          <td class="col-note">[2h] Đồng bộ toàn bộ lịch sử chăm sóc để tự động kích hoạt cấp tem mã QR truy xuất khi nông sản xuất kho</td>
+          <td class="col-output"><div class="output-box">Mô tả: Mã định danh lô hàng #LOTE-2026-092 kèm đường link công khai tra cứu lịch sử chăm sóc</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">18</td>
+          <td class="col-date">2026/10/09</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">09/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng tab Quản lý đơn hàng của hộ nông dân (Đơn mới, Đang đóng gói, Đã giao xe HTX)</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Phân loại trạng thái rõ ràng bằng màu sắc, thông báo chuông khi có người mua hoặc thương lái đặt cọc</td>
+          <td class="col-output"><div class="output-box">Mô tả: Danh sách đơn hàng chia 3 tab màu: Cam (Đơn mới), Xanh dương (Đóng gói), Xanh lá (Đã giao xe HTX)</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">19</td>
+          <td class="col-date">2026/10/09</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">09/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế modal chi tiết đơn hàng: Xem địa chỉ, số lượng đặt, nút bấm gọi điện thoại nhanh</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Hiển thị nút "Gọi người mua" (tel:), địa chỉ giao hàng và thời gian tài xế HTX sẽ đến bốc hàng tại vườn</td>
+          <td class="col-output"><div class="output-box">Mô tả: Popup chi tiết đơn hàng: Tên khách, địa chỉ giao huyện, số lượng 50kg, nút xanh gọi điện trực tiếp</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">20</td>
+          <td class="col-date">2026/10/09</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">09/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Review nội bộ cùng A VINH & BLĐ gói tính năng Layer 1 (Mobile Bác Ba)</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[2h] Nghiệm thu toàn bộ luồng đăng bán, nhật ký canh tác trên thiết bị di động thật, fix các lỗi giật lag</td>
+          <td class="col-output"><div class="output-box">Mô tả: Biên bản nghiệm thu kiểm thử trên 3 dòng máy (Oppo, Samsung A-series, iPhone); cuộn đạt 60fps mượt mà</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">21</td>
+          <td class="col-date">2026/10/12</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">12/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Dựng khung layout Dashboard Quản trị HTX (HTX Dashboard) trên giao diện Desktop & Tablet</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[4h] Sidebar điều hướng thông minh (Tổng quan, Duyệt sản phẩm, Sổ kho, Thẻ tài nguyên, Đơn hàng), Topbar thông báo</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Layout 2 cột: Sidebar trái 250px bo góc, Header tìm kiếm & hồ sơ HTX, vùng làm việc 1200px</strong><br><a class="output-img-link" href="/scratch/output_images/01_dashboard_htx_tong_quan.png" target="_blank">📸 Xem ảnh: 01_dashboard_htx_tong_quan.png</a> <a class="output-img-link" href="https://cho-xanh.vercel.app/htx-dashboard" target="_blank" style="background:#E0F2FE; color:#0369A1;">🔗 Mở Web Live</a></div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">22</td>
+          <td class="col-date">2026/10/12</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">12/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng khối KPI Cards thống kê tổng quan toàn Hợp tác xã</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[4h] Hiển thị 4 chỉ số cốt lõi: Sản lượng tháng (tấn), Tổng doanh số (triệu VNĐ), Số xã viên tích cực (142 hộ), Đơn chờ xử lý</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: 4 Card số liệu: Sản lượng 38.5 Tấn (+12%), Doanh thu 920 Triệu, 142 Xã viên hoạt động, 9 Đơn chờ duyệt</strong><br><a class="output-img-link" href="/scratch/output_images/01_dashboard_htx_tong_quan.png" target="_blank">📸 Xem ảnh: 01_dashboard_htx_tong_quan.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">23</td>
+          <td class="col-date">2026/10/13</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">13/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Phát triển phân hệ Kiểm duyệt sản phẩm của xã viên gửi lên HTX</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Bảng danh sách nông sản các hộ gửi lên theo thời gian thực, có bộ lọc theo tổ đội (Rau, Trái cây, Lúa gạo, Dược liệu)</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Bảng quản lý 12 sản phẩm chờ duyệt, hiển thị tên hộ, chủng loại, số lượng, ngày gửi, nhãn OCOP dự kiến</strong><br><a class="output-img-link" href="/scratch/output_images/02_htx_duyet_san_pham.png" target="_blank">📸 Xem ảnh: 02_htx_duyet_san_pham.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">24</td>
+          <td class="col-date">2026/10/13</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">13/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế Modal xem xét toàn diện sản phẩm: Ảnh thật, bài đăng AI, nghe audio giọng nói bà con</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Tích hợp trình phát âm thanh (audio wave player) để cán bộ HTX nghe trực tiếp ghi chú lời dặn của nông dân</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Modal duyệt đa phương tiện: Trình phát audio sóng âm xanh lá, xem ảnh gốc vs ảnh tách nền</strong><br><a class="output-img-link" href="/scratch/output_images/03_modal_nghe_audio_nong_dan.png" target="_blank">📸 Xem ảnh: 03_modal_nghe_audio_nong_dan.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">25</td>
+          <td class="col-date">2026/10/13</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">13/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tính năng 1-chạm Duyệt phát hành, Gắn nhãn OCOP (3 sao, 4 sao) hoặc Yêu cầu sửa đổi</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Cán bộ HTX phê duyệt phát hành lên sàn Chợ Xanh công khai hoặc gửi phản hồi góp ý về điện thoại bà con</td>
+          <td class="col-output"><div class="output-box">Mô tả: Nút xanh lá "Duyệt & Đăng sàn", nút vàng "Yêu cầu chụp lại", badge OCOP 3 sao vàng đính góc thẻ</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">26</td>
+          <td class="col-date">2026/10/14</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">14/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng Module Sổ Xuất Nhập Kho nông sản tập trung toàn HTX</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[4h] Quản trị danh mục kho: Kho bảo quản lạnh, Kho sơ chế đóng gói, Kho trung chuyển; theo dõi khối lượng nhập/xuất theo ngày</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Bảng sổ kho điện tử: Mã phiếu XK/NK, tên nông sản, vị trí ô kệ kho lạnh, người giao/nhận, số lượng tồn thực tế</strong><br><a class="output-img-link" href="/scratch/output_images/08_bang_doi_soat_kho.png" target="_blank">📸 Xem ảnh: 08_bang_doi_soat_kho.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">27</td>
+          <td class="col-date">2026/10/14</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">14/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết lập hệ thống cảnh báo tự động tồn kho & Hạn sử dụng nông sản</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[4h] Cảnh báo màu đỏ đối với mặt hàng tồn kho quá thời gian bảo quản an toàn, gợi ý hạ giá hoặc phân bổ cho chế biến sâu</td>
+          <td class="col-output"><div class="output-box">Mô tả: Badge đỏ nhấp nháy "Sắp hết hạn bảo quản (< 48h)" cho 350kg rau ăn lá, gợi ý đẩy đơn sỉ thanh lý</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">28</td>
+          <td class="col-date">2026/10/15</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">15/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Phát triển phân hệ Bảng Kiểm đếm & Đối soát sản lượng nông sản</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Thiết lập bảng theo dõi 142 hộ xã viên: Sản lượng đăng ký đầu vụ, Sản lượng thực tế đã thu hoạch cân tại trạm</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Bảng đối soát chi tiết: Cột đăng ký cam kết vs Cột thực thu tại trạm cân, tự tính chênh lệch thừa/thiếu</strong><br><a class="output-img-link" href="/scratch/output_images/08_bang_doi_soat_kho.png" target="_blank">📸 Xem ảnh: 08_bang_doi_soat_kho.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">29</td>
+          <td class="col-date">2026/10/15</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">15/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng thuật toán tính toán tỷ lệ hao hụt & Đánh giá năng suất từng hộ dân</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Tự động tính độ chênh lệch giữa cam kết và thực tế, phân loại nhóm hộ sản xuất vượt chỉ tiêu để khen thưởng</td>
+          <td class="col-output"><div class="output-box">Mô tả: Tỷ lệ hao hụt trung bình toàn xã 3.2%, gắn sao uy tín (Tier A, Tier B) cho từng hộ nông dân</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">30</td>
+          <td class="col-date">2026/10/15</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">15/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tính năng xuất file bảng biểu đối soát phục vụ cuộc họp Ban Quản trị định kỳ</td>
+          <td class="col-prio"><span class="badge badge-month">Trong tháng</span></td>
+          <td class="col-note">[2h] Cho phép tải bảng số liệu minh bạch dạng báo cáo để in ấn hoặc gửi Zalo nhóm ban giám đốc HTX</td>
+          <td class="col-output"><div class="output-box">Mô tả: Nút 1-click "Tải file báo cáo đối soát", tự xuất bảng Excel định dạng chuẩn mẫu họp Hội đồng quản trị</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">31</td>
+          <td class="col-date">2026/10/16</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">16/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Phát triển Trung tâm Điều phối Đơn hàng (Order Hub) cho Ban Quản trị HTX</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Tổng hợp các đơn đặt hàng từ thương lái, tự động gom hàng từ các hộ trong cùng tổ sản xuất để đủ chuyến xe tải</td>
+          <td class="col-output"><div class="output-box">Mô tả: Màn hình Order Hub gom 18 đơn lẻ thành 2 chuyến xe tải lạnh 2.5T giao thẳng cho chuỗi siêu thị Hà Nội</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">32</td>
+          <td class="col-date">2026/10/16</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">16/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế bảng phân bổ khối lượng thu hoạch về từng vườn theo năng lực cung ứng</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Gửi thông báo phân bổ chỉ tiêu hái nông sản về app điện thoại của từng gia đình theo đúng lịch giao dịch</td>
+          <td class="col-output"><div class="output-box">Mô tả: Lệnh điều phối: Hộ Bác Ba cắt 500kg bưởi, Hộ Chú Tư hái 300kg bưởi trước 14h00 chiều thứ Bảy</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">33</td>
+          <td class="col-date">2026/10/16</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">16/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Review tiến độ phân hệ Dashboard HTX cùng A VINH & BLĐ</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[2h] Trình chiếu luồng duyệt sản phẩm, quản lý sổ kho và trung tâm điều phối đơn hàng, ghi nhận góp ý hoàn thiện</td>
+          <td class="col-output"><div class="output-box">Mô tả: Đạt 100% tiêu chí phê duyệt của BLĐ, hoàn thiện luồng duyệt audio giọng nói và sổ kho số hóa</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">34</td>
+          <td class="col-date">2026/10/19</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">19/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Lên ý tưởng, cấu trúc dữ liệu và khung thiết kế danh mục "Thẻ Tài Nguyên" (Resource Card)</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Định nghĩa thẻ điều phối điện tử dùng chung nguồn lực nhàn rỗi giữa 142 hộ: Máy móc, Xe tải, Kho bãi, Lao động</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Khung layout Thẻ Tài Nguyên: 4 tab lọc, thẻ hiển thị chủ sở hữu, thông số kỹ thuật, giá thuê, nút pill đăng ký</strong><br><a class="output-img-link" href="/scratch/output_images/04_danh_muc_the_tai_nguyen.png" target="_blank">📸 Xem ảnh: 04_danh_muc_the_tai_nguyen.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">35</td>
+          <td class="col-date">2026/10/19</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">19/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng Nhóm 1: Thẻ Tài nguyên Máy móc Nông nghiệp dùng chung</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Thẻ Máy cày đất đa năng, Máy gặt đập liên hợp, Hệ thống tưới phun sương; thông tin chủ máy, công suất và giá thuê</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: 12 thẻ máy móc: Máy cày Kubota 50HP (350k/sào), Máy gặt đập liên hợp Yanmar, Máy bay phun thuốc trừ sâu vi sinh</strong><br><a class="output-img-link" href="/scratch/output_images/04_danh_muc_the_tai_nguyen.png" target="_blank">📸 Xem ảnh: 04_danh_muc_the_tai_nguyen.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">36</td>
+          <td class="col-date">2026/10/19</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">19/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng cơ chế hiển thị trạng thái máy móc (Sẵn sàng / Đang phục vụ / Bảo trì)</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Giúp các hộ trong thôn nhìn thấy ngay máy nào đang rảnh để bấm đăng ký dùng chung</td>
+          <td class="col-output"><div class="output-box">Mô tả: Badge trạng thái xanh lá "Sẵn sàng phục vụ", badge cam "Đang làm tại Đội 2", badge xám "Đang bảo trì"</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">37</td>
+          <td class="col-date">2026/10/20</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">20/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng Nhóm 2: Thẻ Tài nguyên Vận chuyển & Xe tải HTX</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Thẻ Xe tải lạnh 2.5 tấn, Xe tải thùng bạt liên xã, Xe ba gác thu gom ngõ xóm; thông số tải trọng và biểu cước vận chuyển</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: 8 thẻ xe vận tải: 2 Xe tải lạnh 2.5 tấn, 3 Xe tải thùng mui bạt 1.5 tấn, 3 Xe ba gác điện trung chuyển thôn</strong><br><a class="output-img-link" href="/scratch/output_images/04_danh_muc_the_tai_nguyen.png" target="_blank">📸 Xem ảnh: 04_danh_muc_the_tai_nguyen.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">38</td>
+          <td class="col-date">2026/10/20</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">20/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng Nhóm 3: Thẻ Tài nguyên Kho lạnh & Nhà sơ chế đóng gói</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Thẻ Kho lạnh bảo quản rau quả nhiệt độ 2-5°C, Dây chuyền sấy dẻo hoa quả, Trạm rửa và khử khuẩn nông sản đạt chuẩn</td>
+          <td class="col-output"><div class="output-box">Mô tả: 3 thẻ kho bãi: Kho lạnh trung tâm 100 tấn, Trạm rửa & đóng khay màng co, Lò sấy lạnh dược liệu</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">39</td>
+          <td class="col-date">2026/10/20</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">20/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng Nhóm 4: Thẻ Tài nguyên Đội thợ thu hoạch mùa vụ</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Đội thợ hái cam, Đội cấy lúa thời vụ, Đội cắt tỉa cành tạo tán; kết nối lao động nông nhàn trong xã</td>
+          <td class="col-output"><div class="output-box">Mô tả: 5 thẻ tổ đội lao động: Đội hái bưởi chuyên nghiệp 8 người, Đội tỉa cành cam 6 người, biểu phí 300k/ngày công</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">40</td>
+          <td class="col-date">2026/10/21</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">21/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế luồng Đăng ký & Ghép cặp tài nguyên nhàn rỗi giữa các hộ nông dân</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Hộ thừa thiết bị đăng lịch rảnh, hộ có nhu cầu bấm mượn hoặc thuê chung, HTX đóng vai trò xác nhận uy tín</td>
+          <td class="col-output"><div class="output-box">Mô tả: Modal ghép cặp: Chọn ngày cần máy, diện tích vườn, hệ thống tự đề xuất máy cày gần nhất trong bán kính 2km</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">41</td>
+          <td class="col-date">2026/10/21</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">21/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng bảng điều phối lịch trình máy móc và xe tải tập trung trên Dashboard HTX</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Tránh tình trạng trùng lịch giữa các thôn, tối ưu cung đường vận chuyển nông sản không bị chạy xe rỗng</td>
+          <td class="col-output"><div class="output-box">Mô tả: Lịch biểu Gantt-chart trực quan điều phối xe tải gom hàng tuần tự từ Thôn 1 sang Thôn 3 tránh quay đầu rỗng</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">42</td>
+          <td class="col-date">2026/10/21</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">21/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết lập bảng phí khấu hao máy móc & Xăng xe quy ước nội bộ HTX</td>
+          <td class="col-prio"><span class="badge badge-month">Trong tháng</span></td>
+          <td class="col-note">[2h] Đảm bảo công bằng minh bạch giữa hộ sở hữu máy và hộ sử dụng, tạo quỹ bảo dưỡng máy móc định kỳ</td>
+          <td class="col-output"><div class="output-box">Mô tả: Biểu phí quy ước: Trích 10% phí thuê vào quỹ bảo dưỡng HTX, 90% trả trực tiếp cho chủ máy</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">43</td>
+          <td class="col-date">2026/10/22</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">22/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Phát triển Cổng B2B Wholesale Portal dành cho Doanh nghiệp & Thương lái mua sỉ</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[4h] Hiển thị năng lực cung ứng theo mùa vụ của HTX, các dòng sản phẩm đạt chuẩn OCOP, bảng giá sỉ theo số lượng tạ/tấn</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Giao diện B2B Portal: Báo giá sỉ theo bậc (1-3 tấn: 28k/kg; > 5 tấn: 25k/kg), hợp đồng điện tử nguyên tắc</strong><br><a class="output-img-link" href="/scratch/output_images/05_cong_b2b_dat_don_si.png" target="_blank">📸 Xem ảnh: 05_cong_b2b_dat_don_si.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">44</td>
+          <td class="col-date">2026/10/22</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">22/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">4h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế biểu mẫu Gửi yêu cầu báo giá và Đặt cọc thu mua trực tiếp từ HTX</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[4h] Cho phép doanh nghiệp chọn lịch giao hàng định kỳ hàng tuần, số lượng cam kết, kết nối thẳng về Ban Quản trị HTX</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Modal đặt đơn sỉ khẩn cấp: Chọn lịch xe tải giao, số lượng tạ/tấn, tính toán tiền cọc 30% minh bạch</strong><br><a class="output-img-link" href="/scratch/output_images/05_cong_b2b_dat_don_si.png" target="_blank">📸 Xem ảnh: 05_cong_b2b_dat_don_si.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">45</td>
+          <td class="col-date">2026/10/23</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">23/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng trang Công khai Truy xuất nguồn gốc QR Trace cho người tiêu dùng</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Người tiêu dùng quét mã QR trên bao bì xem toàn bộ lịch trình: Hộ canh tác, ngày bón phân, ngày thu hái, chứng chỉ OCOP</td>
+          <td class="col-output"><div class="output-box">Mô tả: Trang QR Trace công khai siêu nhẹ: Hiển thị vườn Bác Ba, ngày thu hoạch 22/10, chứng chỉ VietGAP số VG-9021</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">46</td>
+          <td class="col-date">2026/10/23</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">23/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Kiểm thử liên thông toàn bộ luồng dữ liệu 3 Layer của GreenVillageOS</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Kiểm tra chuỗi: Hộ đăng bán -> HTX duyệt bài -> Doanh nghiệp B2B đặt mua -> Thẻ tài nguyên điều xe giao hàng</td>
+          <td class="col-output"><div class="output-box">Mô tả: Kịch bản thử nghiệm 1 tấn bưởi: Bác Ba đăng -> HTX duyệt -> DN đặt sỉ -> Thẻ xe tải nhận cuốc thành công</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">47</td>
+          <td class="col-date">2026/10/23</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">23/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Báo cáo tổng kết tuần cùng A VINH & BLĐ về phân hệ Thẻ Tài Nguyên và Cổng B2B</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Đánh giá tính khả thi khi triển khai thí điểm tại địa phương, chốt danh sách tính năng chuẩn bị tối ưu giao diện</td>
+          <td class="col-output"><div class="output-box">Mô tả: Báo cáo PowerPoint và Demo trực tiếp cho lãnh đạo xã; được đánh giá giải quyết bài toán cốt lõi kinh tế hợp tác</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">48</td>
+          <td class="col-date">2026/10/26</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">26/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Rà soát và chuẩn hóa toàn bộ hệ thống Nút bấm (Buttons) theo tiêu chuẩn Shopee UI</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Áp dụng chống vỡ nút: white-space: nowrap !important, text-overflow: ellipsis trên 100% các nút bấm toàn hệ thống</td>
+          <td class="col-output"><div class="output-box">Mô tả: CSS utility .btn-shopee-ui: chống gãy rớt dòng, căn giữa flexbox, hiệu ứng bấm active scale 0.98</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">49</td>
+          <td class="col-date">2026/10/26</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">26/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Quy chuẩn kích thước và kiểu dáng các phân cấp nút bấm trong ứng dụng</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Nút CTA chính: cao 48px, bo góc 8px, font 15px bold; Nút phụ: cao 38px; Nút pill hành động nhanh: cao 30px bo tròn 999px</td>
+          <td class="col-output"><div class="output-box">Mô tả: Hệ thống 3 phân cấp nút: Primary 48px (xanh lá), Secondary 38px (xám viền xanh), Pill 30px (nút thuê tài nguyên)</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">50</td>
+          <td class="col-date">2026/10/26</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">26/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Kiểm thử giao diện nút bấm trên các thiết bị màn hình hẹp (iPhone SE 375px)</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Đảm bảo chữ không bị tràn, không rớt dòng làm méo mó bố cục thẻ sản phẩm</td>
+          <td class="col-output"><div class="output-box">Mô tả: Đã test trên màn hình 375px, 390px, 412px; không xuất hiện bất kỳ trường hợp vỡ chữ hay tràn nút nào</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">51</td>
+          <td class="col-date">2026/10/27</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">27/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Áp dụng tiêu chuẩn chống tràn thẻ (Cards & Grids) trên toàn bộ danh mục sản phẩm</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Bổ sung min-width: 0 !important và box-sizing: border-box cho mọi container flexbox, ngăn chặn vỡ layout khi tên nông sản dài</td>
+          <td class="col-output"><div class="output-box">Mô tả: 100% card nông sản có min-width: 0, box-sizing: border-box, khung viền bo cong 12px nhẹ nhàng</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">52</td>
+          <td class="col-date">2026/10/27</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">27/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Kẹp dòng thông minh cho tiêu đề và mô tả nông sản (-webkit-line-clamp)</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Tiêu đề card kẹp tối đa 2 dòng kèm dấu ba chấm; Dòng mô tả xuất xứ/quy cách kẹp đúng 1 dòng text-overflow: ellipsis</td>
+          <td class="col-output"><div class="output-box">Mô tả: Class .clamp-2-lines cho tên sản phẩm dài, .truncate cho xuất xứ thôn xã, giữ độ cao card đều tăm tắp</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">53</td>
+          <td class="col-date">2026/10/27</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">27/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tối ưu hóa các thanh tab và bộ lọc cuộn ngang không hiện thanh cuộn xấu</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Ẩn scrollbar mặc định (scrollbar-width: none), hỗ trợ vuốt cảm ứng đa điểm mượt mà (-webkit-overflow-scrolling: touch)</td>
+          <td class="col-output"><div class="output-box">Mô tả: Thanh cuộn danh mục nông sản vuốt mượt mà trên iPhone/Android, ẩn thanh trượt thô kệch</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">54</td>
+          <td class="col-date">2026/10/28</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">28/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Thiết kế và triển khai Chế độ Giao diện Tối (Dark Mode) cho Mobile App Portal Bác Ba</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Khắc phục lỗi chìm nền và mất chữ khi chuyển sang Dark Mode, điều chỉnh màu nền Slate Dark dịu mắt khi bà con dùng buổi tối</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Giao diện nền Slate 900 (#0F172A), chữ trắng ngà (#F8FAFC) bảo vệ mắt bà con buổi tối</strong><br><a class="output-img-link" href="/scratch/output_images/07_mobile_bac_ba_dark_mode.png" target="_blank">📸 Xem ảnh: 07_mobile_bac_ba_dark_mode.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">55</td>
+          <td class="col-date">2026/10/28</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">28/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tối ưu độ tương phản văn bản, icon và hình ảnh nông sản trong môi trường nền tối</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Tăng cường độ rực rỡ và sắc nét của ảnh trái cây trên nền tối, bảo toàn độ dễ đọc của các thông số giá và số lượng</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Tương phản đạt chuẩn WCAG AA (> 4.5:1), ảnh trái cây nổi bật rực rỡ trên nền tối</strong><br><a class="output-img-link" href="/scratch/output_images/07_mobile_bac_ba_dark_mode.png" target="_blank">📸 Xem ảnh: 07_mobile_bac_ba_dark_mode.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">56</td>
+          <td class="col-date">2026/10/28</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">28/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Đồng bộ Dark Mode cho Dashboard HTX & Lưu trạng thái người dùng trong LocalStorage</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Hệ thống tự động ghi nhớ tùy chọn Giao diện Sáng/Tối của người dùng cho các phiên làm việc tiếp theo</td>
+          <td class="col-output"><div class="output-box">Mô tả: Nút gạt Theme Mặt trời/Mặt trăng góc màn hình, lưu theme="dark" trong LocalStorage toàn cục</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">57</td>
+          <td class="col-date">2026/10/29</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">29/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Xây dựng Báo cáo Thống kê Tổng hợp dành cho Cán bộ Xã & Lãnh đạo Địa phương</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Dashboard chế độ Read-only: Biểu đồ xếp hạng sản lượng giữa các HTX, tiến độ chuyển đổi số nông nghiệp toàn xã</td>
+          <td class="col-output"><div class="output-box">Mô tả: Biểu đồ cột SVG sản lượng 4 thôn, bảng theo dõi 142 hộ đạt tiêu chuẩn OCOP và VietGAP</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">58</td>
+          <td class="col-date">2026/10/29</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">29/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Tối ưu tốc độ tải trang: Chuyển đổi toàn bộ ảnh sang chuẩn WebP dung lượng < 100KB</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[3h] Tối ưu tốc độ tải ngay cả khi bà con sử dụng mạng 3G/4G sóng yếu ở vùng đồi núi, đạt điểm PageSpeed > 90</td>
+          <td class="col-output"><div class="output-box">Mô tả: 45 file ảnh WebP dung lượng trung bình 58KB/ảnh, tốc độ load trang đầu dưới 1.2 giây</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">59</td>
+          <td class="col-date">2026/10/29</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">29/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Kiểm thử Cross-browser trên Chrome, Safari, Edge và Zalo In-App Browser</td>
+          <td class="col-prio"><span class="badge badge-week">Trong tuần</span></td>
+          <td class="col-note">[2h] Đảm bảo liên kết gửi qua Zalo mở trực tiếp trong Zalo WebView không bị lỗi hiển thị hay mất phiên đăng nhập</td>
+          <td class="col-output"><div class="output-box">Mô tả: Báo cáo test thành công 100% trên Zalo WebView Android & iOS, cookie và session duy trì liên tục</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">60</td>
+          <td class="col-date">2026/10/30</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">30/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Fix dứt điểm các lỗi giao diện cuối cùng: Căn chỉnh lại độ rộng cột bảng dữ liệu và modal audio</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Sửa lỗi lệch bảng thống kê trên màn hình tablet, hoàn thiện modal xem và nghe ghi âm của thành viên</td>
+          <td class="col-output"><div class="output-box"><strong>Mô tả: Khắc phục triệt để lỗi lệch bảng thống kê 1200px, modal phát audio hiển thị chuẩn xác</strong><br><a class="output-img-link" href="/scratch/output_images/03_modal_nghe_audio_nong_dan.png" target="_blank">📸 Xem ảnh: 03_modal_nghe_audio_nong_dan.png</a> </div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">61</td>
+          <td class="col-date">2026/10/30</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">30/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">3h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Đóng gói nghiệm thu toàn bộ mã nguồn tháng 10 & Đồng bộ Git repository (nhánh main)</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[3h] Kiểm tra tính toàn vẹn của mã nguồn, commit sạch toàn bộ tính năng và đẩy lên kho lưu trữ git an toàn</td>
+          <td class="col-output"><div class="output-box">Mô tả: Git commit sha hoàn tất gói tính năng Tháng 10, cấu trúc code module hóa sạch sẽ</div></td>
+        </tr>
+        <tr>
+          <td class="col-stt">62</td>
+          <td class="col-date">2026/10/30</td>
+          <td class="col-user">Hoàng</td>
+          <td class="col-due">30/10/2026</td>
+          <td class="col-hours"><span class="badge-hour">2h</span></td>
+          <td class="col-proj">Green Village</td>
+          <td class="col-status"><span class="badge badge-done">Done</span></td>
+          <td class="col-src">Vinh và BLĐ</td>
+          <td class="col-task">Triển khai bản Live Production chính thức lên Vercel và bàn giao nghiệm thu cho A VINH & BLĐ</td>
+          <td class="col-prio"><span class="badge badge-gap">Gấp</span></td>
+          <td class="col-note">[2h] Kích hoạt Vercel build thành công cho cả 3 phân hệ: Mobile Portal, Dashboard HTX và Cổng B2B, hoàn tất báo cáo tháng 10</td>
+          <td class="col-output"><div class="output-box">Mô tả: Deploy hoàn tất lên Production Vercel: https://cho-xanh.vercel.app (Hoạt động 100% ổn định)</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom Sheet Tabs -->
+  <div class="sheet-tabs">
+    <div class="tab-item">📄 Báo cáo T10 - Hoàng (Green OS) - 62 Đầu Việc</div>
+    <div style="color:#5F6368; font-size: 11px; margin-left: auto;">
+      🟢 Máy chủ nội bộ đang phát trực tiếp tại cổng 8080
+    </div>
+  </div>
+
+  <!-- Modal Copy Helper -->
+  <div id="copyModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>📋 Hộp Dữ Liệu Bảng Tính (62 Dòng Chuẩn Google Sheets)</h3>
+        <button class="modal-close" onclick="closeCopyModal()">&times;</button>
+      </div>
+      <p style="font-size: 13px; color: #475569;">
+        Dữ liệu đã được định dạng sẵn chuẩn tab-delimited. Bạn chỉ cần bấm <strong>"Bôi đen & Sao chép"</strong> hoặc nhấn <strong>Ctrl + C</strong>, sau đó mở Google Sheets nhấn <strong>Ctrl + V</strong>:
+      </p>
+      <textarea id="rawTsvArea" class="copy-textarea" readonly>STT	Ngày
+(yyyy/mm/dd)	Người làm	Dự kiến hoàn thành	Thời lượng (Giờ)	Nexs/ Greenfi	Tiến độ	Nguồn	Đầu việc	Thứ tự ưu tiên	Ghi chú	Output / Mô tả thực tế
+1	2026/10/01	Hoàng	01/10/2026	3	Green Village	Done	Vinh và BLĐ	Thiết lập cấu trúc khung giao diện Mobile App Green OS (chuẩn viewport 375px - 430px, CSS reset chống vỡ layout)	Gấp	[3h] Khởi tạo layout viewport di động, chống tràn ngang màn hình, thiết lập cấu trúc container thích ứng mọi dòng smartphone	Mô tả: Khung mobile chuẩn 390x844px, overflow-x: hidden, không vỡ layout khi xoay ngang | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.png | Link: https://cho-xanh.vercel.app/mobile
+2	2026/10/01	Hoàng	01/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng thanh điều hướng đáy (Bottom Navigation Bar) 5 tab chính	Gấp	[3h] Triển khai 5 tab: Trang chủ, Đăng bán, Nhật ký, Đơn hàng, Tài khoản; hiệu ứng active mượt mà và chống giật khi chuyển tab	Mô tả: Bottom bar cố định đáy cao 64px, đổ bóng mờ, icon Lucide SVG sắc nét kèm nhãn tiếng Việt | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.png
+3	2026/10/01	Hoàng	01/10/2026	2	Green Village	Done	Vinh và BLĐ	Thiết lập hệ thống màu sắc nhận diện GreenFi & font chữ chuẩn tiếng Việt	Trong tuần	[2h] Màu xanh lá chủ đạo (#1B7A43 / #22C55E), màu phụ cam vàng nông sản, cấu hình font chữ rõ ràng dễ đọc cho người lớn tuổi	Mô tả: Bảng token màu: Primary Green (#1B7A43), Accent Amber (#F59E0B), Neutral Slate, font Inter 15px tương phản cao
+4	2026/10/02	Hoàng	02/10/2026	3	Green Village	Done	Vinh và BLĐ	Thiết kế màn hình Chào mừng (Welcome Splash Screen) & Slider Onboarding 4 bước	Trong tuần	[3h] Xây dựng hình ảnh chú nông dân thời đại số 45-50 tuổi, thông điệp số hóa kinh tế xã, đăng bán nhanh, chợ xanh, tìm xe HTX	Mô tả: Bộ 4 ảnh dọc 9:16 chụp chú nông dân thật, gradient đen mờ 40% đáy, typography trắng nổi bật
+5	2026/10/02	Hoàng	02/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng hiệu ứng trượt mượt mà giữa các slide Onboarding và nút điều hướng	Trong tuần	[3h] Hỗ trợ vuốt chạm cảm ứng trên di động, hiển thị chấm tròn chỉ số trang (dots indicator), nút Bỏ qua và Bắt đầu ngay	Mô tả: Carousel cảm ứng swipe touch, chấm chỉ trang active mở rộng 24px, nút CTA xanh lá bo góc 8px
+6	2026/10/02	Hoàng	02/10/2026	2	Green Village	Done	Vinh và BLĐ	Lưu trạng thái đã xem Onboarding vào LocalStorage trình duyệt	Trong tuần	[2h] Tránh việc người dùng phải xem lại màn giới thiệu trong các phiên đăng nhập kế tiếp	Mô tả: Khóa gv_onboarding_seen=true, chuyển hướng tức thì vào Trang chủ từ lần truy cập thứ hai
+7	2026/10/05	Hoàng	05/10/2026	4	Green Village	Done	Vinh và BLĐ	Xây dựng màn hình Trang chủ Bác Ba: Widget lời chào cá nhân hóa & Thẻ tóm tắt doanh thu	Gấp	[4h] Hiển thị lời chào thân thiện theo buổi (Sáng/Chiều), thống kê doanh thu ngày, số đơn cần giao, lối tắt chụp ảnh đăng bán 1-chạm	Mô tả: Card lời chào Bác Ba, thẻ doanh thu 4.850.000đ, 3 đơn chờ giao, nút camera to 56px nổi bật | Ảnh: scratch/output_images/06_mobile_bac_ba_trang_chu.png
+8	2026/10/05	Hoàng	05/10/2026	4	Green Village	Done	Vinh và BLĐ	Thiết kế lưới hiển thị danh mục nông sản đang vào mùa vụ kèm giá tham khảo	Trong tuần	[4h] Hiển thị các loại trái cây, rau màu đang chính vụ kèm giá sàn thị trường giúp bà con không bị thương lái ép giá	Mô tả: Card cuộn ngang: Bưởi da xanh (45k/kg), Cam sành Hàm Yên (32k/kg), Gạo nếp Tú Lệ (38k/kg) kèm nhãn OCOP
+9	2026/10/06	Hoàng	06/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng luồng Đăng bán Bước 1: Chụp ảnh trực tiếp từ camera hoặc tải ảnh từ thư viện	Gấp	[3h] Tối ưu luồng truy cập camera mượt mà, hỗ trợ chụp nhiều góc của nông sản (toàn cảnh luống rau, cận cảnh quả)	Mô tả: Khung chụp ảnh tỉ lệ 1:1, hỗ trợ preview 4 góc chụp: bao bì, mặt cắt quả, cận cảnh cuống lá
+10	2026/10/06	Hoàng	06/10/2026	3	Green Village	Done	Vinh và BLĐ	Tích hợp module AI Image Processing: Tự động crop vuông 1:1 và tách nền sạch	Gấp	[3h] AI tự động loại bỏ hậu cảnh lộn xộn, chuyển nông sản về ảnh nền trắng sáng chuyên nghiệp chuẩn sàn thương mại điện tử	Mô tả: Ảnh nông sản tách nền trắng studio, giữ nguyên độ bóng và cuống lá tươi, dung lượng tối ưu 85KB
+11	2026/10/06	Hoàng	06/10/2026	2	Green Village	Done	Vinh và BLĐ	Thiết kế form nhập nhanh số lượng thu hoạch và giá bán mong muốn	Trong tuần	[2h] Giao diện bàn phím số to rõ ràng, cho phép chọn nhanh đơn vị tính: kg, tạ, tấn, sọt, thùng	Mô tả: Input số lớn font 24px, 4 nút pill chọn đơn vị (kg/tạ/tấn/thùng), tự động tính tổng tiền dự thu
+12	2026/10/07	Hoàng	07/10/2026	3	Green Village	Done	Vinh và BLĐ	Tích hợp Trợ lý AI Phi Phi: Tự động nhận diện chủng loại nông sản từ ảnh tải lên	Gấp	[3h] Nhận diện quả bưởi, cam, thanh long, gạo nếp, tự động điền tên giống cây và tiêu đề bài đăng hấp dẫn	Mô tả: Badge AI tự động nhận diện "Bưởi da xanh Bến Tre OCOP 4 sao", độ chính xác 98%
+13	2026/10/07	Hoàng	07/10/2026	3	Green Village	Done	Vinh và BLĐ	Tính năng AI tự động sinh bài viết bán lẻ và bài viết bán sỉ theo ngữ cảnh	Trong tuần	[3h] Tạo sẵn 3 phong cách văn phong: Chân chất nhà vườn, Chuẩn an toàn VietGAP, Thuyết phục tiểu thương gom sỉ	Mô tả: 3 thẻ bài viết mẫu kèm nút 1-chạm "Sao chép đăng Facebook/Zalo" có sẵn hashtag #ChoXanh #HTX
+14	2026/10/07	Hoàng	07/10/2026	2	Green Village	Done	Vinh và BLĐ	Tự động trích xuất bảng thông số dinh dưỡng cơ bản & Hướng dẫn bảo quản nông sản	Trong tuần	[2h] Cung cấp thông tin lượng calo, vitamin, cách bảo quản độ tươi ngon trong kho mát giúp gia tăng uy tín người bán	Mô tả: Bảng dinh dưỡng: Năng lượng 42kcal, Vitamin C 61mg, Độ đường Brix 11.5, Bảo quản mát 7-10 ngày
+15	2026/10/08	Hoàng	08/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng phân hệ Nhật ký canh tác số (Farming Log) chuẩn VietGAP	Trong tuần	[3h] Giao diện dòng thời gian trực quan: Ghi lại từng đợt gieo hạt, bón phân hữu cơ, tưới tiêu, ngày dự kiến thu hoạch	Mô tả: Timeline dọc hiển thị từng đợt bón phân trùn quế, tưới nhỏ giọt kèm ảnh chụp thực địa luống rau
+16	2026/10/08	Hoàng	08/10/2026	3	Green Village	Done	Vinh và BLĐ	Tích hợp tính năng ghi âm nhật ký bằng giọng nói (Voice-to-Text) cho bà con	Trong tuần	[3h] Bà con đang ở vườn chỉ cần bấm nút ghi âm nói vài câu, hệ thống tự chuyển đổi thành văn bản lưu vào sổ canh tác	Mô tả: Nút ghi âm micro tròn 50px viền sóng động, chuyển đổi câu nói tiếng Việt sang text chuẩn xác
+17	2026/10/08	Hoàng	08/10/2026	2	Green Village	Done	Vinh và BLĐ	Xây dựng cơ chế liên kết dữ liệu nhật ký canh tác với lô hàng chuẩn bị thu hoạch	Trong tháng	[2h] Đồng bộ toàn bộ lịch sử chăm sóc để tự động kích hoạt cấp tem mã QR truy xuất khi nông sản xuất kho	Mô tả: Mã định danh lô hàng #LOTE-2026-092 kèm đường link công khai tra cứu lịch sử chăm sóc
+18	2026/10/09	Hoàng	09/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng tab Quản lý đơn hàng của hộ nông dân (Đơn mới, Đang đóng gói, Đã giao xe HTX)	Gấp	[3h] Phân loại trạng thái rõ ràng bằng màu sắc, thông báo chuông khi có người mua hoặc thương lái đặt cọc	Mô tả: Danh sách đơn hàng chia 3 tab màu: Cam (Đơn mới), Xanh dương (Đóng gói), Xanh lá (Đã giao xe HTX)
+19	2026/10/09	Hoàng	09/10/2026	3	Green Village	Done	Vinh và BLĐ	Thiết kế modal chi tiết đơn hàng: Xem địa chỉ, số lượng đặt, nút bấm gọi điện thoại nhanh	Trong tuần	[3h] Hiển thị nút "Gọi người mua" (tel:), địa chỉ giao hàng và thời gian tài xế HTX sẽ đến bốc hàng tại vườn	Mô tả: Popup chi tiết đơn hàng: Tên khách, địa chỉ giao huyện, số lượng 50kg, nút xanh gọi điện trực tiếp
+20	2026/10/09	Hoàng	09/10/2026	2	Green Village	Done	Vinh và BLĐ	Review nội bộ cùng A VINH & BLĐ gói tính năng Layer 1 (Mobile Bác Ba)	Gấp	[2h] Nghiệm thu toàn bộ luồng đăng bán, nhật ký canh tác trên thiết bị di động thật, fix các lỗi giật lag	Mô tả: Biên bản nghiệm thu kiểm thử trên 3 dòng máy (Oppo, Samsung A-series, iPhone); cuộn đạt 60fps mượt mà
+21	2026/10/12	Hoàng	12/10/2026	4	Green Village	Done	Vinh và BLĐ	Dựng khung layout Dashboard Quản trị HTX (HTX Dashboard) trên giao diện Desktop & Tablet	Gấp	[4h] Sidebar điều hướng thông minh (Tổng quan, Duyệt sản phẩm, Sổ kho, Thẻ tài nguyên, Đơn hàng), Topbar thông báo	Mô tả: Layout 2 cột: Sidebar trái 250px bo góc, Header tìm kiếm & hồ sơ HTX, vùng làm việc 1200px | Ảnh: scratch/output_images/01_dashboard_htx_tong_quan.png | Link: https://cho-xanh.vercel.app/htx-dashboard
+22	2026/10/12	Hoàng	12/10/2026	4	Green Village	Done	Vinh và BLĐ	Xây dựng khối KPI Cards thống kê tổng quan toàn Hợp tác xã	Gấp	[4h] Hiển thị 4 chỉ số cốt lõi: Sản lượng tháng (tấn), Tổng doanh số (triệu VNĐ), Số xã viên tích cực (142 hộ), Đơn chờ xử lý	Mô tả: 4 Card số liệu: Sản lượng 38.5 Tấn (+12%), Doanh thu 920 Triệu, 142 Xã viên hoạt động, 9 Đơn chờ duyệt | Ảnh: scratch/output_images/01_dashboard_htx_tong_quan.png
+23	2026/10/13	Hoàng	13/10/2026	3	Green Village	Done	Vinh và BLĐ	Phát triển phân hệ Kiểm duyệt sản phẩm của xã viên gửi lên HTX	Gấp	[3h] Bảng danh sách nông sản các hộ gửi lên theo thời gian thực, có bộ lọc theo tổ đội (Rau, Trái cây, Lúa gạo, Dược liệu)	Mô tả: Bảng quản lý 12 sản phẩm chờ duyệt, hiển thị tên hộ, chủng loại, số lượng, ngày gửi, nhãn OCOP dự kiến | Ảnh: scratch/output_images/02_htx_duyet_san_pham.png
+24	2026/10/13	Hoàng	13/10/2026	3	Green Village	Done	Vinh và BLĐ	Thiết kế Modal xem xét toàn diện sản phẩm: Ảnh thật, bài đăng AI, nghe audio giọng nói bà con	Gấp	[3h] Tích hợp trình phát âm thanh (audio wave player) để cán bộ HTX nghe trực tiếp ghi chú lời dặn của nông dân	Mô tả: Modal duyệt đa phương tiện: Trình phát audio sóng âm xanh lá, xem ảnh gốc vs ảnh tách nền | Ảnh: scratch/output_images/03_modal_nghe_audio_nong_dan.png
+25	2026/10/13	Hoàng	13/10/2026	2	Green Village	Done	Vinh và BLĐ	Tính năng 1-chạm Duyệt phát hành, Gắn nhãn OCOP (3 sao, 4 sao) hoặc Yêu cầu sửa đổi	Trong tuần	[2h] Cán bộ HTX phê duyệt phát hành lên sàn Chợ Xanh công khai hoặc gửi phản hồi góp ý về điện thoại bà con	Mô tả: Nút xanh lá "Duyệt & Đăng sàn", nút vàng "Yêu cầu chụp lại", badge OCOP 3 sao vàng đính góc thẻ
+26	2026/10/14	Hoàng	14/10/2026	4	Green Village	Done	Vinh và BLĐ	Xây dựng Module Sổ Xuất Nhập Kho nông sản tập trung toàn HTX	Trong tuần	[4h] Quản trị danh mục kho: Kho bảo quản lạnh, Kho sơ chế đóng gói, Kho trung chuyển; theo dõi khối lượng nhập/xuất theo ngày	Mô tả: Bảng sổ kho điện tử: Mã phiếu XK/NK, tên nông sản, vị trí ô kệ kho lạnh, người giao/nhận, số lượng tồn thực tế | Ảnh: scratch/output_images/08_bang_doi_soat_kho.png
+27	2026/10/14	Hoàng	14/10/2026	4	Green Village	Done	Vinh và BLĐ	Thiết lập hệ thống cảnh báo tự động tồn kho & Hạn sử dụng nông sản	Trong tuần	[4h] Cảnh báo màu đỏ đối với mặt hàng tồn kho quá thời gian bảo quản an toàn, gợi ý hạ giá hoặc phân bổ cho chế biến sâu	Mô tả: Badge đỏ nhấp nháy "Sắp hết hạn bảo quản (&lt; 48h)" cho 350kg rau ăn lá, gợi ý đẩy đơn sỉ thanh lý
+28	2026/10/15	Hoàng	15/10/2026	3	Green Village	Done	Vinh và BLĐ	Phát triển phân hệ Bảng Kiểm đếm & Đối soát sản lượng nông sản	Trong tuần	[3h] Thiết lập bảng theo dõi 142 hộ xã viên: Sản lượng đăng ký đầu vụ, Sản lượng thực tế đã thu hoạch cân tại trạm	Mô tả: Bảng đối soát chi tiết: Cột đăng ký cam kết vs Cột thực thu tại trạm cân, tự tính chênh lệch thừa/thiếu | Ảnh: scratch/output_images/08_bang_doi_soat_kho.png
+29	2026/10/15	Hoàng	15/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng thuật toán tính toán tỷ lệ hao hụt & Đánh giá năng suất từng hộ dân	Trong tuần	[3h] Tự động tính độ chênh lệch giữa cam kết và thực tế, phân loại nhóm hộ sản xuất vượt chỉ tiêu để khen thưởng	Mô tả: Tỷ lệ hao hụt trung bình toàn xã 3.2%, gắn sao uy tín (Tier A, Tier B) cho từng hộ nông dân
+30	2026/10/15	Hoàng	15/10/2026	2	Green Village	Done	Vinh và BLĐ	Tính năng xuất file bảng biểu đối soát phục vụ cuộc họp Ban Quản trị định kỳ	Trong tháng	[2h] Cho phép tải bảng số liệu minh bạch dạng báo cáo để in ấn hoặc gửi Zalo nhóm ban giám đốc HTX	Mô tả: Nút 1-click "Tải file báo cáo đối soát", tự xuất bảng Excel định dạng chuẩn mẫu họp Hội đồng quản trị
+31	2026/10/16	Hoàng	16/10/2026	3	Green Village	Done	Vinh và BLĐ	Phát triển Trung tâm Điều phối Đơn hàng (Order Hub) cho Ban Quản trị HTX	Gấp	[3h] Tổng hợp các đơn đặt hàng từ thương lái, tự động gom hàng từ các hộ trong cùng tổ sản xuất để đủ chuyến xe tải	Mô tả: Màn hình Order Hub gom 18 đơn lẻ thành 2 chuyến xe tải lạnh 2.5T giao thẳng cho chuỗi siêu thị Hà Nội
+32	2026/10/16	Hoàng	16/10/2026	3	Green Village	Done	Vinh và BLĐ	Thiết kế bảng phân bổ khối lượng thu hoạch về từng vườn theo năng lực cung ứng	Trong tuần	[3h] Gửi thông báo phân bổ chỉ tiêu hái nông sản về app điện thoại của từng gia đình theo đúng lịch giao dịch	Mô tả: Lệnh điều phối: Hộ Bác Ba cắt 500kg bưởi, Hộ Chú Tư hái 300kg bưởi trước 14h00 chiều thứ Bảy
+33	2026/10/16	Hoàng	16/10/2026	2	Green Village	Done	Vinh và BLĐ	Review tiến độ phân hệ Dashboard HTX cùng A VINH & BLĐ	Gấp	[2h] Trình chiếu luồng duyệt sản phẩm, quản lý sổ kho và trung tâm điều phối đơn hàng, ghi nhận góp ý hoàn thiện	Mô tả: Đạt 100% tiêu chí phê duyệt của BLĐ, hoàn thiện luồng duyệt audio giọng nói và sổ kho số hóa
+34	2026/10/19	Hoàng	19/10/2026	3	Green Village	Done	Vinh và BLĐ	Lên ý tưởng, cấu trúc dữ liệu và khung thiết kế danh mục "Thẻ Tài Nguyên" (Resource Card)	Gấp	[3h] Định nghĩa thẻ điều phối điện tử dùng chung nguồn lực nhàn rỗi giữa 142 hộ: Máy móc, Xe tải, Kho bãi, Lao động	Mô tả: Khung layout Thẻ Tài Nguyên: 4 tab lọc, thẻ hiển thị chủ sở hữu, thông số kỹ thuật, giá thuê, nút pill đăng ký | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.png
+35	2026/10/19	Hoàng	19/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng Nhóm 1: Thẻ Tài nguyên Máy móc Nông nghiệp dùng chung	Gấp	[3h] Thẻ Máy cày đất đa năng, Máy gặt đập liên hợp, Hệ thống tưới phun sương; thông tin chủ máy, công suất và giá thuê	Mô tả: 12 thẻ máy móc: Máy cày Kubota 50HP (350k/sào), Máy gặt đập liên hợp Yanmar, Máy bay phun thuốc trừ sâu vi sinh | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.png
+36	2026/10/19	Hoàng	19/10/2026	2	Green Village	Done	Vinh và BLĐ	Xây dựng cơ chế hiển thị trạng thái máy móc (Sẵn sàng / Đang phục vụ / Bảo trì)	Trong tuần	[2h] Giúp các hộ trong thôn nhìn thấy ngay máy nào đang rảnh để bấm đăng ký dùng chung	Mô tả: Badge trạng thái xanh lá "Sẵn sàng phục vụ", badge cam "Đang làm tại Đội 2", badge xám "Đang bảo trì"
+37	2026/10/20	Hoàng	20/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng Nhóm 2: Thẻ Tài nguyên Vận chuyển & Xe tải HTX	Gấp	[3h] Thẻ Xe tải lạnh 2.5 tấn, Xe tải thùng bạt liên xã, Xe ba gác thu gom ngõ xóm; thông số tải trọng và biểu cước vận chuyển	Mô tả: 8 thẻ xe vận tải: 2 Xe tải lạnh 2.5 tấn, 3 Xe tải thùng mui bạt 1.5 tấn, 3 Xe ba gác điện trung chuyển thôn | Ảnh: scratch/output_images/04_danh_muc_the_tai_nguyen.png
+38	2026/10/20	Hoàng	20/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng Nhóm 3: Thẻ Tài nguyên Kho lạnh & Nhà sơ chế đóng gói	Trong tuần	[3h] Thẻ Kho lạnh bảo quản rau quả nhiệt độ 2-5°C, Dây chuyền sấy dẻo hoa quả, Trạm rửa và khử khuẩn nông sản đạt chuẩn	Mô tả: 3 thẻ kho bãi: Kho lạnh trung tâm 100 tấn, Trạm rửa & đóng khay màng co, Lò sấy lạnh dược liệu
+39	2026/10/20	Hoàng	20/10/2026	2	Green Village	Done	Vinh và BLĐ	Xây dựng Nhóm 4: Thẻ Tài nguyên Đội thợ thu hoạch mùa vụ	Trong tuần	[2h] Đội thợ hái cam, Đội cấy lúa thời vụ, Đội cắt tỉa cành tạo tán; kết nối lao động nông nhàn trong xã	Mô tả: 5 thẻ tổ đội lao động: Đội hái bưởi chuyên nghiệp 8 người, Đội tỉa cành cam 6 người, biểu phí 300k/ngày công
+40	2026/10/21	Hoàng	21/10/2026	3	Green Village	Done	Vinh và BLĐ	Thiết kế luồng Đăng ký & Ghép cặp tài nguyên nhàn rỗi giữa các hộ nông dân	Trong tuần	[3h] Hộ thừa thiết bị đăng lịch rảnh, hộ có nhu cầu bấm mượn hoặc thuê chung, HTX đóng vai trò xác nhận uy tín	Mô tả: Modal ghép cặp: Chọn ngày cần máy, diện tích vườn, hệ thống tự đề xuất máy cày gần nhất trong bán kính 2km
+41	2026/10/21	Hoàng	21/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng bảng điều phối lịch trình máy móc và xe tải tập trung trên Dashboard HTX	Trong tuần	[3h] Tránh tình trạng trùng lịch giữa các thôn, tối ưu cung đường vận chuyển nông sản không bị chạy xe rỗng	Mô tả: Lịch biểu Gantt-chart trực quan điều phối xe tải gom hàng tuần tự từ Thôn 1 sang Thôn 3 tránh quay đầu rỗng
+42	2026/10/21	Hoàng	21/10/2026	2	Green Village	Done	Vinh và BLĐ	Thiết lập bảng phí khấu hao máy móc & Xăng xe quy ước nội bộ HTX	Trong tháng	[2h] Đảm bảo công bằng minh bạch giữa hộ sở hữu máy và hộ sử dụng, tạo quỹ bảo dưỡng máy móc định kỳ	Mô tả: Biểu phí quy ước: Trích 10% phí thuê vào quỹ bảo dưỡng HTX, 90% trả trực tiếp cho chủ máy
+43	2026/10/22	Hoàng	22/10/2026	4	Green Village	Done	Vinh và BLĐ	Phát triển Cổng B2B Wholesale Portal dành cho Doanh nghiệp & Thương lái mua sỉ	Gấp	[4h] Hiển thị năng lực cung ứng theo mùa vụ của HTX, các dòng sản phẩm đạt chuẩn OCOP, bảng giá sỉ theo số lượng tạ/tấn	Mô tả: Giao diện B2B Portal: Báo giá sỉ theo bậc (1-3 tấn: 28k/kg; &gt; 5 tấn: 25k/kg), hợp đồng điện tử nguyên tắc | Ảnh: scratch/output_images/05_cong_b2b_dat_don_si.png
+44	2026/10/22	Hoàng	22/10/2026	4	Green Village	Done	Vinh và BLĐ	Thiết kế biểu mẫu Gửi yêu cầu báo giá và Đặt cọc thu mua trực tiếp từ HTX	Trong tuần	[4h] Cho phép doanh nghiệp chọn lịch giao hàng định kỳ hàng tuần, số lượng cam kết, kết nối thẳng về Ban Quản trị HTX	Mô tả: Modal đặt đơn sỉ khẩn cấp: Chọn lịch xe tải giao, số lượng tạ/tấn, tính toán tiền cọc 30% minh bạch | Ảnh: scratch/output_images/05_cong_b2b_dat_don_si.png
+45	2026/10/23	Hoàng	23/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng trang Công khai Truy xuất nguồn gốc QR Trace cho người tiêu dùng	Trong tuần	[3h] Người tiêu dùng quét mã QR trên bao bì xem toàn bộ lịch trình: Hộ canh tác, ngày bón phân, ngày thu hái, chứng chỉ OCOP	Mô tả: Trang QR Trace công khai siêu nhẹ: Hiển thị vườn Bác Ba, ngày thu hoạch 22/10, chứng chỉ VietGAP số VG-9021
+46	2026/10/23	Hoàng	23/10/2026	3	Green Village	Done	Vinh và BLĐ	Kiểm thử liên thông toàn bộ luồng dữ liệu 3 Layer của GreenVillageOS	Gấp	[3h] Kiểm tra chuỗi: Hộ đăng bán -&gt; HTX duyệt bài -&gt; Doanh nghiệp B2B đặt mua -&gt; Thẻ tài nguyên điều xe giao hàng	Mô tả: Kịch bản thử nghiệm 1 tấn bưởi: Bác Ba đăng -&gt; HTX duyệt -&gt; DN đặt sỉ -&gt; Thẻ xe tải nhận cuốc thành công
+47	2026/10/23	Hoàng	23/10/2026	2	Green Village	Done	Vinh và BLĐ	Báo cáo tổng kết tuần cùng A VINH & BLĐ về phân hệ Thẻ Tài Nguyên và Cổng B2B	Trong tuần	[2h] Đánh giá tính khả thi khi triển khai thí điểm tại địa phương, chốt danh sách tính năng chuẩn bị tối ưu giao diện	Mô tả: Báo cáo PowerPoint và Demo trực tiếp cho lãnh đạo xã; được đánh giá giải quyết bài toán cốt lõi kinh tế hợp tác
+48	2026/10/26	Hoàng	26/10/2026	3	Green Village	Done	Vinh và BLĐ	Rà soát và chuẩn hóa toàn bộ hệ thống Nút bấm (Buttons) theo tiêu chuẩn Shopee UI	Gấp	[3h] Áp dụng chống vỡ nút: white-space: nowrap !important, text-overflow: ellipsis trên 100% các nút bấm toàn hệ thống	Mô tả: CSS utility .btn-shopee-ui: chống gãy rớt dòng, căn giữa flexbox, hiệu ứng bấm active scale 0.98
+49	2026/10/26	Hoàng	26/10/2026	3	Green Village	Done	Vinh và BLĐ	Quy chuẩn kích thước và kiểu dáng các phân cấp nút bấm trong ứng dụng	Gấp	[3h] Nút CTA chính: cao 48px, bo góc 8px, font 15px bold; Nút phụ: cao 38px; Nút pill hành động nhanh: cao 30px bo tròn 999px	Mô tả: Hệ thống 3 phân cấp nút: Primary 48px (xanh lá), Secondary 38px (xám viền xanh), Pill 30px (nút thuê tài nguyên)
+50	2026/10/26	Hoàng	26/10/2026	2	Green Village	Done	Vinh và BLĐ	Kiểm thử giao diện nút bấm trên các thiết bị màn hình hẹp (iPhone SE 375px)	Trong tuần	[2h] Đảm bảo chữ không bị tràn, không rớt dòng làm méo mó bố cục thẻ sản phẩm	Mô tả: Đã test trên màn hình 375px, 390px, 412px; không xuất hiện bất kỳ trường hợp vỡ chữ hay tràn nút nào
+51	2026/10/27	Hoàng	27/10/2026	3	Green Village	Done	Vinh và BLĐ	Áp dụng tiêu chuẩn chống tràn thẻ (Cards & Grids) trên toàn bộ danh mục sản phẩm	Gấp	[3h] Bổ sung min-width: 0 !important và box-sizing: border-box cho mọi container flexbox, ngăn chặn vỡ layout khi tên nông sản dài	Mô tả: 100% card nông sản có min-width: 0, box-sizing: border-box, khung viền bo cong 12px nhẹ nhàng
+52	2026/10/27	Hoàng	27/10/2026	3	Green Village	Done	Vinh và BLĐ	Kẹp dòng thông minh cho tiêu đề và mô tả nông sản (-webkit-line-clamp)	Trong tuần	[3h] Tiêu đề card kẹp tối đa 2 dòng kèm dấu ba chấm; Dòng mô tả xuất xứ/quy cách kẹp đúng 1 dòng text-overflow: ellipsis	Mô tả: Class .clamp-2-lines cho tên sản phẩm dài, .truncate cho xuất xứ thôn xã, giữ độ cao card đều tăm tắp
+53	2026/10/27	Hoàng	27/10/2026	2	Green Village	Done	Vinh và BLĐ	Tối ưu hóa các thanh tab và bộ lọc cuộn ngang không hiện thanh cuộn xấu	Trong tuần	[2h] Ẩn scrollbar mặc định (scrollbar-width: none), hỗ trợ vuốt cảm ứng đa điểm mượt mà (-webkit-overflow-scrolling: touch)	Mô tả: Thanh cuộn danh mục nông sản vuốt mượt mà trên iPhone/Android, ẩn thanh trượt thô kệch
+54	2026/10/28	Hoàng	28/10/2026	3	Green Village	Done	Vinh và BLĐ	Thiết kế và triển khai Chế độ Giao diện Tối (Dark Mode) cho Mobile App Portal Bác Ba	Trong tuần	[3h] Khắc phục lỗi chìm nền và mất chữ khi chuyển sang Dark Mode, điều chỉnh màu nền Slate Dark dịu mắt khi bà con dùng buổi tối	Mô tả: Giao diện nền Slate 900 (#0F172A), chữ trắng ngà (#F8FAFC) bảo vệ mắt bà con buổi tối | Ảnh: scratch/output_images/07_mobile_bac_ba_dark_mode.png
+55	2026/10/28	Hoàng	28/10/2026	3	Green Village	Done	Vinh và BLĐ	Tối ưu độ tương phản văn bản, icon và hình ảnh nông sản trong môi trường nền tối	Trong tuần	[3h] Tăng cường độ rực rỡ và sắc nét của ảnh trái cây trên nền tối, bảo toàn độ dễ đọc của các thông số giá và số lượng	Mô tả: Tương phản đạt chuẩn WCAG AA (&gt; 4.5:1), ảnh trái cây nổi bật rực rỡ trên nền tối | Ảnh: scratch/output_images/07_mobile_bac_ba_dark_mode.png
+56	2026/10/28	Hoàng	28/10/2026	2	Green Village	Done	Vinh và BLĐ	Đồng bộ Dark Mode cho Dashboard HTX & Lưu trạng thái người dùng trong LocalStorage	Trong tuần	[2h] Hệ thống tự động ghi nhớ tùy chọn Giao diện Sáng/Tối của người dùng cho các phiên làm việc tiếp theo	Mô tả: Nút gạt Theme Mặt trời/Mặt trăng góc màn hình, lưu theme="dark" trong LocalStorage toàn cục
+57	2026/10/29	Hoàng	29/10/2026	3	Green Village	Done	Vinh và BLĐ	Xây dựng Báo cáo Thống kê Tổng hợp dành cho Cán bộ Xã & Lãnh đạo Địa phương	Trong tuần	[3h] Dashboard chế độ Read-only: Biểu đồ xếp hạng sản lượng giữa các HTX, tiến độ chuyển đổi số nông nghiệp toàn xã	Mô tả: Biểu đồ cột SVG sản lượng 4 thôn, bảng theo dõi 142 hộ đạt tiêu chuẩn OCOP và VietGAP
+58	2026/10/29	Hoàng	29/10/2026	3	Green Village	Done	Vinh và BLĐ	Tối ưu tốc độ tải trang: Chuyển đổi toàn bộ ảnh sang chuẩn WebP dung lượng &lt; 100KB	Trong tuần	[3h] Tối ưu tốc độ tải ngay cả khi bà con sử dụng mạng 3G/4G sóng yếu ở vùng đồi núi, đạt điểm PageSpeed &gt; 90	Mô tả: 45 file ảnh WebP dung lượng trung bình 58KB/ảnh, tốc độ load trang đầu dưới 1.2 giây
+59	2026/10/29	Hoàng	29/10/2026	2	Green Village	Done	Vinh và BLĐ	Kiểm thử Cross-browser trên Chrome, Safari, Edge và Zalo In-App Browser	Trong tuần	[2h] Đảm bảo liên kết gửi qua Zalo mở trực tiếp trong Zalo WebView không bị lỗi hiển thị hay mất phiên đăng nhập	Mô tả: Báo cáo test thành công 100% trên Zalo WebView Android & iOS, cookie và session duy trì liên tục
+60	2026/10/30	Hoàng	30/10/2026	3	Green Village	Done	Vinh và BLĐ	Fix dứt điểm các lỗi giao diện cuối cùng: Căn chỉnh lại độ rộng cột bảng dữ liệu và modal audio	Gấp	[3h] Sửa lỗi lệch bảng thống kê trên màn hình tablet, hoàn thiện modal xem và nghe ghi âm của thành viên	Mô tả: Khắc phục triệt để lỗi lệch bảng thống kê 1200px, modal phát audio hiển thị chuẩn xác | Ảnh: scratch/output_images/03_modal_nghe_audio_nong_dan.png
+61	2026/10/30	Hoàng	30/10/2026	3	Green Village	Done	Vinh và BLĐ	Đóng gói nghiệm thu toàn bộ mã nguồn tháng 10 & Đồng bộ Git repository (nhánh main)	Gấp	[3h] Kiểm tra tính toàn vẹn của mã nguồn, commit sạch toàn bộ tính năng và đẩy lên kho lưu trữ git an toàn	Mô tả: Git commit sha hoàn tất gói tính năng Tháng 10, cấu trúc code module hóa sạch sẽ
+62	2026/10/30	Hoàng	30/10/2026	2	Green Village	Done	Vinh và BLĐ	Triển khai bản Live Production chính thức lên Vercel và bàn giao nghiệm thu cho A VINH & BLĐ	Gấp	[2h] Kích hoạt Vercel build thành công cho cả 3 phân hệ: Mobile Portal, Dashboard HTX và Cổng B2B, hoàn tất báo cáo tháng 10	Mô tả: Deploy hoàn tất lên Production Vercel: https://cho-xanh.vercel.app (Hoạt động 100% ổn định)</textarea>
+      <div class="modal-footer">
+        <button class="btn-action btn-green" onclick="selectAndCopyArea()">
+          📋 Bôi đen & Sao chép dữ liệu
+        </button>
+        <button class="btn-action btn-blue" onclick="window.open('https://sheets.new', '_blank')">
+          🚀 Mở Google Sheets mới (sheets.new)
+        </button>
+        <button class="btn-action btn-outline" onclick="closeCopyModal()">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast">
+    <span>✅</span>
+    <span id="toastMsg">Đã sao chép 62 dòng vào bộ nhớ tạm!</span>
+  </div>
+
+  <script>
+    const fullTsvContent = document.getElementById('rawTsvArea').value;
+
+    function smartCopyAndOpen() {
+      let copySuccess = false;
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = fullTsvContent;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        textarea.style.top = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        copySuccess = document.execCommand('copy');
+        document.body.removeChild(textarea);
+      } catch (e) {
+        copySuccess = false;
+      }
+
+      if (!copySuccess && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fullTsvContent).then(() => {
+          copySuccess = true;
+        }).catch(() => {});
+      }
+
+      if (copySuccess) {
+        showToast("🎉 ĐÃ COPY THÀNH CÔNG 62 DÒNG! Đang chuyển đến Google Sheets...");
+        setTimeout(() => {
+          window.open('https://sheets.new', '_blank');
+        }, 1200);
+      } else {
+        openCopyModal();
+        showToast("⚠️ Vui lòng nhấn 'Bôi đen & Sao chép' trong hộp thoại.");
+      }
+    }
+
+    function openCopyModal() {
+      document.getElementById('copyModal').style.display = 'flex';
+      const area = document.getElementById('rawTsvArea');
+      area.focus();
+      area.select();
+    }
+
+    function closeCopyModal() {
+      document.getElementById('copyModal').style.display = 'none';
+    }
+
+    function selectAndCopyArea() {
+      const area = document.getElementById('rawTsvArea');
+      area.focus();
+      area.select();
+      try {
+        document.execCommand('copy');
+        showToast("🎉 Đã Copy thành công 62 dòng! Hãy dán (Ctrl + V) vào Google Sheets.");
+      } catch (err) {
+        showToast("Hãy nhấn tổ hợp phím Ctrl + C để copy!");
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.style.display = 'flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 5000);
+    }
+
+    function filterTable() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('#taskTable tbody tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -34,28 +34,28 @@ WEEK_1_TASKS = [
         '[Ver 1] Dựng khung giao diện Bảng điều khiển Kinh tế & Lao động Cấp Xã (Actor 3 - UBND Xã Đồng Lam)',
         'Gấp',
         'Thiết kế bố cục 2 cột đồng bộ hệ sinh thái Green Village Ver 1: menu điều hướng cấp xã bên trái, đỉnh trang hiển thị thông tin lãnh đạo UBND xã và 4 thẻ KPI kinh tế nông thôn.',
-        'Khung giao diện Dashboard Cán bộ Xã Ver 1 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/12_ver1_dashboard_xa_tong_quan.png | 🔗 Web: https://cho-xanh.vercel.app/commune-dashboard.html'
+        'Khung giao diện Dashboard Cán bộ Xã Ver 1 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/12_ver1_dashboard_xa_tong_quan.png | 🔗 Link web: https://cho-xanh.vercel.app/commune-dashboard'
     ],
     [
         '2', '2026/11/02', 'Hoàng', '02/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
         '[Ver 1] Tích hợp Cổng trình diễn 3 nền tảng (Portal) và bàn làm việc đối sánh Dual Studio Workbench',
         'Gấp',
         'Đấu nối liên thông đủ 3 phân hệ của Green Village Ver 1 (Mobile Bác Ba, Dashboard HTX Yên Bình, Dashboard Cán bộ Xã) trên cùng một cổng trình diễn phục vụ báo cáo.',
-        'Cổng trình diễn 3 nền tảng Green Village Ver 1 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/16_ver1_portal_3_nen_tang.png | 🔗 Portal: https://cho-xanh.vercel.app/portal.html'
+        'Cổng trình diễn 3 nền tảng Green Village Ver 1 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/16_ver1_portal_3_nen_tang.png | 🔗 Link web: https://cho-xanh.vercel.app/portal'
     ],
     [
         '3', '2026/11/02', 'Hoàng', '02/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
         '[Ver 1] Đồng bộ phông chữ Lexend & Inter kèm bảng màu Emerald chuẩn nhận diện giữa Dashboard Xã và HTX',
         'Trong tuần',
         'Chuẩn hóa bộ biến màu Emerald (#064E3B, #10B981) kết hợp phông chữ Lexend đậm rõ cho các con số thống kê sản lượng và ngân sách, đảm bảo đồng nhất toàn bản Ver 1.',
-        'Hệ thống Typography & Bảng màu đồng bộ | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp'
+        'Hệ thống Typography & Bảng màu đồng bộ | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp | 🔗 Link web: https://cho-xanh.vercel.app/htx-dashboard'
     ],
     [
         '4', '2026/11/03', 'Hoàng', '03/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
         '[Ver 1] Xây dựng phân hệ theo dõi hồ sơ OCOP (OCOP Pipeline) và Ma trận xếp hạng các HTX trong xã',
         'Gấp',
         'Hiển thị tiến độ thẩm định từng sản phẩm OCOP 3 sao - 4 sao của các thôn và bảng chấm điểm xếp hạng năng lực vận hành của các HTX nông nghiệp trên địa bàn.',
-        'Bảng OCOP Pipeline & Ma trận xếp hạng HTX | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/14_ver1_dashboard_xa_xep_hang_htx_ocop.png | 🔗 Web: https://cho-xanh.vercel.app/commune-dashboard.html'
+        'Bảng OCOP Pipeline & Ma trận xếp hạng HTX | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/14_ver1_dashboard_xa_xep_hang_htx_ocop.png | 🔗 Link web: https://cho-xanh.vercel.app/commune-dashboard'
     ],
     [
         '5', '2026/11/03', 'Hoàng', '03/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
@@ -166,7 +166,7 @@ WEEK_2_TASKS = [
         '[Ver 2 - G-Xanh] Dựng khung Mobile Viewport 430px, thanh chuyển nhanh 5 màn hình và Bottom Tab Bar chuẩn Shopee UI',
         'Gấp',
         'Khởi tạo kiến trúc giao diện App G-Xanh Ver 2 (consumer-prototype.html): bộ màu xanh lá - cam Shopee (#15803d / #ee4d2d), thanh điều hướng đáy 5 tab (Chợ, GF-Track, Giỏ hàng, Thẻ Zalo, Tôi) có bong bóng đếm giỏ hàng.',
-        'Khung App Sàn TMĐT G-Xanh Ver 2 chuẩn Shopee UI | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png | 🔗 Link web: https://cho-xanh.vercel.app/consumer-prototype.html'
+        'Khung App Sàn TMĐT G-Xanh Ver 2 chuẩn Shopee UI | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png | 🔗 Link web: https://cho-xanh.vercel.app/gxanh'
     ],
     [
         '5', '2026/11/10', 'Hoàng', '10/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
@@ -243,7 +243,7 @@ WEEK_2_TASKS = [
         '[Ver 2 - G-Xanh] Kiểm thử toàn diện 5 màn hình & 6 modal (2.374 dòng code) và đẩy toàn bộ bản Ver 2 lên nhánh hoang-dev',
         'Gấp',
         'Test kỹ toàn bộ thao tác CRUD giỏ hàng, áp voucher, nạp điểm, đặt đơn, chống tràn chữ trên màn hình 375px-430px và đẩy commit c875d503 (2.845 dòng) lên kho Git nhánh origin/hoang-dev.',
-        'Đồng bộ hoàn tất App Sàn TMĐT G-Xanh Ver 2 lên nhánh hoang-dev | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png | 🔗 Link web: https://cho-xanh.vercel.app/consumer-prototype.html'
+        'Đồng bộ hoàn tất App Sàn TMĐT G-Xanh Ver 2 lên nhánh hoang-dev | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png | 🔗 Link web: https://cho-xanh.vercel.app/gxanh'
     ]
 ]
 
@@ -282,7 +282,6 @@ def format_output_html(val):
     parts = val.split(' | ')
     title = parts[0].strip()
     links_html = []
-    thumbs_html = []
     for p in parts[1:]:
         p = p.strip()
         url_match = re.search(r'(https?://[^\s]+)', p)
@@ -290,25 +289,16 @@ def format_output_html(val):
             url = url_match.group(1)
             label = p.replace(url, '').strip() or '🔗 Xem chi tiết'
             is_img = ('output_images/' in url)
-            local_url = './output_images/' + url.split('output_images/')[1] if is_img else url
             bg = '#DEF7EC' if is_img else '#E0F2FE'
             color = '#03543F' if is_img else '#0369A1'
             links_html.append(
-                f'<a class="output-img-link" href="{html.escape(local_url)}" target="_blank" style="background:{bg}; color:{color};">{html.escape(label)}</a>'
+                f'<a class="output-img-link" href="{html.escape(url)}" target="_blank" style="background:{bg}; color:{color};">{html.escape(label)}</a>'
             )
-            if is_img:
-                thumbs_html.append(
-                    f'<a href="{html.escape(local_url)}" target="_blank" title="Bấm để phóng to ảnh thực tế">'
-                    f'<img src="{html.escape(local_url)}" alt="Ảnh minh chứng" style="height:64px; width:auto; border-radius:6px; border:1px solid #D1D5DB; margin-top:6px; margin-right:6px; object-fit:cover; box-shadow:0 1px 3px rgba(0,0,0,0.08);" />'
-                    f'</a>'
-                )
         else:
             links_html.append(f'<span>{html.escape(p)}</span>')
     res = f'<div class="output-box"><strong>{html.escape(title)}</strong>'
     if links_html:
         res += '<br>' + ' '.join(links_html)
-    if thumbs_html:
-        res += '<div style="display:flex; flex-wrap:wrap; align-items:center;">' + ''.join(thumbs_html) + '</div>'
     res += '</div>'
     return res
 

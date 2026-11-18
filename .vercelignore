@@ -12,6 +12,9 @@ node_modules/
 !vercel.json
 *.png
 !phiphi-chat.png
+!output_images/**
+!output_images/*.png
+!output_images/*.webp
 audit_screens/
 assets/
 GFKey/

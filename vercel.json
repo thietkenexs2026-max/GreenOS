@@ -74,6 +74,18 @@
     {
       "source": "/gfkey",
       "destination": "/mobile.html"
+    },
+    {
+      "source": "/commune-dashboard",
+      "destination": "/commune-dashboard.html"
+    },
+    {
+      "source": "/gxanh",
+      "destination": "/consumer-prototype.html"
+    },
+    {
+      "source": "/bao-cao-tuan",
+      "destination": "/SHEET_BAO_CAO_TUAN_HOANG.html"
     }
   ]
 }

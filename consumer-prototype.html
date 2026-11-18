@@ -1,0 +1,2374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>GXANH — Từ Làng Ra Phố · Hệ Thống Trải Nghiệm Khách Hàng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #15803d;
+      --primary-dark: #14532d;
+      --primary-light: #22c55e;
+      --primary-subtle: #f0fdf4;
+      --accent: #ee4d2d;
+      --accent-subtle: #fff1f0;
+      --gold: #ca8a04;
+      --gold-subtle: #fefce8;
+      --surface: #ffffff;
+      --bg-page: #f5f5f7;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+      --border-color: #e2e8f0;
+      --border-subtle: #f1f5f9;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 20px;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box !important;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: #0b132b;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 8px 32px;
+      overflow-x: hidden;
+    }
+
+    /* Top Showcase Controls */
+    .showcase-header {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .brand-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 6px;
+      color: #ffffff;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-badge {
+      background: #22c55e;
+      color: #052e16;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .screen-pills-bar {
+      display: flex;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .screen-pills-bar::-webkit-scrollbar { display: none; }
+
+    .screen-pill-btn {
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      height: 30px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: #cbd5e1;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .screen-pill-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(21, 128, 61, 0.4);
+    }
+
+    /* Device Viewport */
+    .device-viewport {
+      width: 100%;
+      max-width: 430px;
+      height: 870px;
+      background: var(--bg-page);
+      border-radius: 38px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6), 0 0 0 8px #1e293b, 0 0 0 10px #334155;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0;
+        background: var(--bg-page);
+      }
+      .showcase-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: #0f172a;
+        padding: 8px 12px 6px;
+        margin: 0;
+        max-width: 100%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+      .device-viewport {
+        max-width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        padding-top: 76px;
+      }
+    }
+
+    /* Scrollable Container */
+    .screen-scroll-body {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+    }
+    .screen-scroll-body::-webkit-scrollbar { display: none; }
+
+    .app-screen {
+      display: none;
+      flex-direction: column;
+      min-height: 100%;
+      padding-bottom: 120px;
+      animation: fadeIn 0.2s ease-out;
+    }
+    .app-screen.active { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Shopee Header */
+    .shopee-header {
+      background: var(--primary);
+      padding: 10px 14px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(20, 83, 45, 0.15);
+    }
+
+    .shopee-search-bar {
+      flex: 1;
+      height: 38px;
+      background: #ffffff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 8px;
+      min-width: 0 !important;
+    }
+
+    .shopee-search-input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 13px;
+      color: var(--text-main);
+      width: 100%;
+      font-family: inherit;
+    }
+    .shopee-search-input::placeholder { color: #94a3b8; }
+
+    .header-icon-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .header-cart-badge {
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 1px 5px;
+      border-radius: 999px;
+      border: 1.5px solid var(--primary);
+    }
+
+    /* Flash Sale Banner */
+    .flash-banner {
+      background: linear-gradient(135deg, #14532d 0%, #15803d 100%);
+      padding: 10px 14px;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #22c55e;
+    }
+
+    .flash-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flash-timer {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .timer-digit {
+      background: #052e16;
+      color: #ffffff;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-mono: monospace;
+    }
+
+    /* Trust Micro Bar */
+    .trust-micro-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: #ffffff;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-color);
+      gap: 6px;
+    }
+
+    .trust-micro-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      min-width: 0 !important;
+    }
+
+    /* Category Strip */
+    .cat-scroll-strip {
+      display: flex;
+      gap: 8px;
+      padding: 10px 12px;
+      background: #ffffff;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .cat-scroll-strip::-webkit-scrollbar { display: none; }
+
+    .shopee-tag-pill {
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      height: 30px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      background: #f8fafc;
+      color: var(--text-muted);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+
+    .shopee-tag-pill.active {
+      background: var(--primary-subtle);
+      border-color: var(--primary);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Product Grid */
+    .shopee-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding: 8px;
+    }
+
+    .shopee-card {
+      background: #ffffff;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #f1f5f9;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+      min-width: 0 !important;
+      position: relative;
+    }
+
+    .card-thumb-wrap {
+      width: 100%;
+      height: 140px;
+      position: relative;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+
+    .card-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge-top-left {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    .badge-top-right {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: #fef08a;
+      color: #854d0e;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    .card-details {
+      padding: 8px 9px 10px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      min-width: 0 !important;
+    }
+
+    .village-source {
+      font-size: 10.5px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin-bottom: 2px;
+    }
+
+    .shopee-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-word;
+      margin-bottom: 6px;
+    }
+
+    .shopee-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      min-width: 0 !important;
+    }
+
+    .price-main {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--accent);
+      white-space: nowrap !important;
+    }
+
+    .price-old {
+      font-size: 11px;
+      color: var(--text-subtle);
+      text-decoration: line-through;
+      white-space: nowrap !important;
+    }
+
+    .sold-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: var(--text-muted);
+      border-top: 1px dashed #f1f5f9;
+      padding-top: 6px;
+      min-width: 0 !important;
+    }
+
+    .sold-badge {
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .btn-quick-add {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Screen 2: Detail */
+    .detail-top-nav {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      border-bottom: 1px solid var(--border-color);
+      z-index: 40;
+    }
+
+    .detail-hero-img {
+      width: 100%;
+      height: 250px;
+      background: #e2e8f0;
+      position: relative;
+    }
+    .detail-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .detail-info-card {
+      background: #ffffff;
+      padding: 12px 14px;
+      border-bottom: 8px solid var(--bg-page);
+    }
+
+    .price-strip-big {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .price-huge {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .discount-pill {
+      background: var(--accent-subtle);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .spec-selector-box {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .spec-title-row {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .spec-chips-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .spec-btn {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: #f8fafc;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      white-space: nowrap !important;
+    }
+
+    .spec-btn.active {
+      border-color: var(--primary);
+      background: var(--primary-subtle);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .shopee-bullet-box {
+      background: #ffffff;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+    }
+
+    .bullet-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+    .bullet-row:last-child { border-bottom: none; }
+    .bullet-row strong { width: 85px; color: var(--text-muted); font-weight: 600; font-size: 11.5px; }
+
+    /* Screen 3: Cart */
+    .cart-shop-card {
+      background: #ffffff;
+      margin: 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .cart-shop-header {
+      padding: 8px 12px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .cart-item-row {
+      padding: 10px 12px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+    .cart-item-row:last-child { border-bottom: none; }
+
+    .cart-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #e2e8f0;
+      flex-shrink: 0;
+    }
+
+    .cart-mid {
+      flex: 1;
+      min-width: 0 !important;
+    }
+
+    .cart-item-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: var(--text-main);
+    }
+
+    .cart-variant-badge {
+      display: inline-block;
+      font-size: 10px;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin: 2px 0 4px;
+    }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+      width: 78px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+    .stepper-btn {
+      width: 25px;
+      height: 100%;
+      background: #f8fafc;
+      border: none;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stepper-val {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .btn-item-delete {
+      color: #94a3b8;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-item-delete:hover { color: var(--accent); }
+
+    /* Screen 4: Thẻ Zalo */
+    .zalo-container {
+      padding: 12px;
+    }
+
+    .pass-card-modern {
+      background: linear-gradient(135deg, #14532d 0%, #15803d 100%);
+      border-radius: 16px;
+      padding: 16px;
+      color: #ffffff;
+      box-shadow: 0 8px 20px -4px rgba(20, 83, 45, 0.35);
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .pass-top-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .pass-user {
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .pass-tag {
+      font-size: 10.5px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .pass-points-num {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin: 2px 0 10px;
+    }
+
+    .grid-3-plan {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 10px;
+    }
+
+    .plan-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 6px;
+      text-align: center;
+      min-width: 0 !important;
+    }
+
+    .plan-label {
+      font-size: 10px;
+      opacity: 0.85;
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .plan-val {
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap !important;
+    }
+
+    /* Pass Quick Action Buttons */
+    .pass-actions-bar {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .pass-btn-action {
+      flex: 1;
+      height: 34px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      white-space: nowrap !important;
+    }
+
+    .qr-card-white {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 16px 14px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .qr-box-inner {
+      width: 160px;
+      height: 160px;
+      margin: 8px auto;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .timer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      color: #854d0e;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Screen 5: GF-Track */
+    .gf-summary-card {
+      background: #ffffff;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .verified-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+
+    .gf-accordion {
+      background: #ffffff;
+      margin: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .acc-header {
+      padding: 10px 12px;
+      background: #f8fafc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .acc-body {
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+    }
+    .fact-row b { color: var(--text-main); font-weight: 600; }
+
+    /* Timeline 6 Chặng */
+    .step-item {
+      display: flex;
+      gap: 10px;
+      position: relative;
+      padding-bottom: 12px;
+    }
+    .step-item::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 22px;
+      bottom: 0;
+      width: 2px;
+      background: #bbf7d0;
+    }
+    .step-item:last-child::before { display: none; }
+
+    .step-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .step-box {
+      flex: 1;
+      background: #ffffff;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    .step-title { font-size: 12px; font-weight: 700; color: var(--text-main); }
+    .step-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+
+    /* Bottom App Nav */
+    .shopee-tab-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 50;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.03);
+    }
+
+    .tab-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      flex: 1;
+      height: 100%;
+      cursor: pointer;
+      color: #64748b;
+      font-size: 10px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      position: relative;
+    }
+    .tab-unit.active {
+      color: var(--primary);
+      font-weight: 800;
+    }
+    .tab-unit svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .tab-bubble {
+      position: absolute;
+      top: 4px;
+      right: calc(50% - 14px);
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 0 4px;
+      border-radius: 999px;
+    }
+
+    /* Fixed Sticky Bottom CTA Bars */
+    .shopee-sticky-cta {
+      position: absolute;
+      bottom: 56px;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      z-index: 45;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Mandatory Shopee Buttons from GEMINI.md */
+    .btn-cta-shopee {
+      height: 48px !important;
+      border-radius: 8px !important;
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      white-space: nowrap !important;
+      text-overflow: ellipsis !important;
+      overflow: hidden !important;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 16px;
+      flex: 1;
+    }
+    .btn-cta-shopee:active {
+      background: #d03d1e;
+    }
+
+    .btn-sub-green {
+      height: 38px !important;
+      border-radius: 8px !important;
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      white-space: nowrap !important;
+      text-overflow: ellipsis !important;
+      overflow: hidden !important;
+      background: var(--primary-subtle);
+      color: var(--primary);
+      border: 1px solid var(--border-color);
+      padding: 0 14px;
+      cursor: pointer;
+    }
+
+    /* Interactive Bottom Sheet Modals */
+    .modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 80;
+      display: none;
+      align-items: flex-end;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      backdrop-filter: blur(2px);
+    }
+    .modal-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      background: #ffffff;
+      border-radius: 20px 20px 0 0;
+      padding: 16px 16px 24px;
+      max-height: 85%;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .modal-overlay.open .modal-sheet {
+      transform: translateY(0);
+    }
+
+    .modal-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 10px;
+    }
+    .modal-title { font-size: 15px; font-weight: 800; color: var(--text-main); }
+    .modal-close-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+    }
+
+    /* Option Cards inside Modal */
+    .modal-option-card {
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .modal-option-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-subtle);
+    }
+
+    /* Toast */
+    .shopee-toast {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(15, 23, 42, 0.92);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap !important;
+    }
+    .shopee-toast.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Showcase Controls -->
+  <div class="showcase-header">
+    <div class="brand-bar">
+      <div class="brand-title">
+        <span>GXANH</span>
+        <span class="brand-badge">CRUD Đầy Đủ</span>
+      </div>
+      <div style="font-size: 12px; color: #94a3b8;">Từ Làng Ra Phố · Người Tiêu Dùng</div>
+    </div>
+
+    <!-- Quick Switcher Tabs -->
+    <div class="screen-pills-bar">
+      <button class="screen-pill-btn active" onclick="switchView('view-market')">1. Chợ GXANH</button>
+      <button class="screen-pill-btn" onclick="switchView('view-item')">2. Món Hàng</button>
+      <button class="screen-pill-btn" onclick="switchView('view-cart')">3. Giỏ Hàng</button>
+      <button class="screen-pill-btn" onclick="switchView('view-pass')">4. Thẻ Zalo</button>
+      <button class="screen-pill-btn" onclick="switchView('view-trace')">5. GF-Track</button>
+    </div>
+  </div>
+
+  <!-- Mobile Viewport Shell (iPhone 430px) -->
+  <div class="device-viewport">
+    
+    <div class="screen-scroll-body">
+
+      <!-- ============================================================ -->
+      <!-- MÀN 1: CHỢ GXANH (READ + CREATE CART + SEARCH + FILTER) -->
+      <!-- ============================================================ -->
+      <div id="view-market" class="app-screen active">
+        <!-- Top Search Header -->
+        <div class="shopee-header">
+          <div class="shopee-search-bar">
+            <svg width="16" height="16" fill="none" stroke="#64748b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="market-search-input" class="shopee-search-input" placeholder="Tìm kiếm nông sản, thôn làng..." oninput="handleSearch(this.value)">
+          </div>
+          <div class="header-icon-btn" onclick="switchView('view-cart')">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="header-cart-badge" id="badge-top-cart">3</span>
+          </div>
+        </div>
+
+        <!-- Flash Session Banner -->
+        <div class="flash-banner">
+          <div class="flash-title">
+            <span>⚡ PHIÊN CHỢ SỚM</span>
+          </div>
+          <div class="flash-timer">
+            <span>Kết thúc sau</span>
+            <span class="timer-digit">01</span>:
+            <span class="timer-digit" id="timer-min">42</span>:
+            <span class="timer-digit" id="timer-sec">18</span>
+          </div>
+        </div>
+
+        <!-- Trust Micro Bar -->
+        <div class="trust-micro-bar">
+          <div class="trust-micro-item">
+            <svg width="13" height="13" fill="#15803d" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            100% Nguồn Gốc
+          </div>
+          <div class="trust-micro-item">
+            <svg width="13" height="13" fill="#15803d" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            Đổi trả 24h
+          </div>
+          <div class="trust-micro-item">
+            <svg width="13" height="13" fill="#15803d" viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+            Chuỗi lạnh 2-4°C
+          </div>
+        </div>
+
+        <!-- Horizontal Category Filter Tags -->
+        <div class="cat-scroll-strip" id="cat-strip">
+          <button class="shopee-tag-pill active" onclick="filterCategory('all', this)">Tất cả</button>
+          <button class="shopee-tag-pill" onclick="filterCategory('rau', this)">Rau củ hữu cơ</button>
+          <button class="shopee-tag-pill" onclick="filterCategory('thit', this)">Thịt cá bản địa</button>
+          <button class="shopee-tag-pill" onclick="filterCategory('che', this)">Đặc sản đóng gói</button>
+        </div>
+
+        <!-- Product Grid (Dynamic Render) -->
+        <div class="shopee-grid" id="product-grid-container"></div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MÀN 2: CHI TIẾT MÓN HÀNG (READ + UPDATE VARIANT/QTY + ADD TO CART) -->
+      <!-- ============================================================ -->
+      <div id="view-item" class="app-screen">
+        <div class="detail-top-nav">
+          <div style="display: flex; align-items: center; gap: 8px; cursor: pointer;" onclick="switchView('view-market')">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <span style="font-size: 13.5px; font-weight: 700;">Chi tiết sản phẩm</span>
+          </div>
+          <div class="header-icon-btn" style="color: var(--text-main);" onclick="switchView('view-cart')">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+        </div>
+
+        <div class="detail-hero-img">
+          <img id="detail-img" src="" alt="Sản phẩm">
+        </div>
+
+        <div class="detail-info-card">
+          <div class="price-strip-big">
+            <span class="price-huge" id="detail-price">212.000₫</span>
+            <span class="price-old" id="detail-old-price">249.000₫</span>
+            <span class="discount-pill" id="detail-discount">-15%</span>
+          </div>
+          <h1 style="font-size: 15px; font-weight: 700; line-height: 1.35; margin-bottom: 6px;" id="detail-title">Mật ong hoa nhãn rừng</h1>
+          <div style="font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 10px;">
+            <span id="detail-rating">⭐ 5.0 (2 đánh giá)</span>
+            <span>·</span>
+            <span id="detail-sold">Đã bán 86</span>
+            <span>·</span>
+            <span style="color: #15803d; font-weight: 700;">Sẵn tại quầy</span>
+          </div>
+
+          <!-- Spec chips (UPDATE VARIANT) -->
+          <div class="spec-selector-box">
+            <div class="spec-title-row">Dung tích / Quy cách đóng gói:</div>
+            <div class="spec-chips-row" id="detail-spec-container"></div>
+          </div>
+        </div>
+
+        <!-- Facts List -->
+        <div class="shopee-bullet-box">
+          <div class="bullet-row">
+            <strong>Nguồn gốc</strong>
+            <span id="detail-origin">Thôn Gò Mít · Vườn ong chị Nguyễn Thị Hoa</span>
+          </div>
+          <div class="bullet-row">
+            <strong>Tiêu chuẩn</strong>
+            <span style="color: #15803d; font-weight: 600;">✓ Tem GF-Track xác thực nguồn gốc</span>
+          </div>
+          <div class="bullet-row">
+            <strong>Bảo quản</strong>
+            <span>Nơi thoáng mát, không pha đường, nguyên chất 100%</span>
+          </div>
+          <div class="bullet-row">
+            <strong>Giao hàng</strong>
+            <span>Giao hỏa tốc 2h từ cửa hàng gần nhất</span>
+          </div>
+        </div>
+
+        <!-- Sticky Bottom CTA (CREATE CART / BUY NOW) -->
+        <div class="shopee-sticky-cta">
+          <div class="stepper">
+            <button class="stepper-btn" onclick="adjustDetailQty(-1)">-</button>
+            <span class="stepper-val" id="detail-stepper">1</span>
+            <button class="stepper-btn" onclick="adjustDetailQty(1)">+</button>
+          </div>
+          <button class="btn-sub-green" onclick="addCurrentDetailToCart(false)">
+            Thêm vào giỏ
+          </button>
+          <button class="btn-cta-shopee" onclick="addCurrentDetailToCart(true)">
+            Mua Ngay
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MÀN 3: GIỎ HÀNG (READ CART + UPDATE QTY + DELETE + CHECKOUT) -->
+      <!-- ============================================================ -->
+      <div id="view-cart" class="app-screen">
+        <div class="detail-top-nav">
+          <span style="font-size: 15px; font-weight: 800;">Giỏ hàng (<span id="cart-item-count-label">0</span>)</span>
+          <span style="font-size: 12px; color: var(--accent); cursor: pointer;" onclick="clearAllCart()">Xóa tất cả</span>
+        </div>
+
+        <!-- Cart Groups Container -->
+        <div id="cart-list-container"></div>
+
+        <!-- Voucher Select Row -->
+        <div style="background: #ffffff; margin: 8px; padding: 10px 12px; border-radius: 6px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 12px; cursor: pointer;" onclick="openVoucherModal()">
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 700;">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/></svg>
+            GXANH Voucher
+          </div>
+          <span style="color: var(--primary); font-weight: 700;" id="applied-voucher-label">Giảm 25.000₫ ›</span>
+        </div>
+
+        <!-- Sticky Checkout Bar -->
+        <div class="shopee-sticky-cta">
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted);">Tổng thanh toán:</div>
+            <div style="font-size: 17px; font-weight: 800; color: var(--accent);" id="cart-total-price">0₫</div>
+          </div>
+          <button class="btn-cta-shopee" style="max-width: 170px;" onclick="openCheckoutModal()">
+            Mua Hàng (<span id="cart-btn-qty">0</span>)
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MÀN 4: THẺ THÀNH VIÊN ZALO MINI APP (TOP-UP + QR + HISTORY) -->
+      <!-- ============================================================ -->
+      <div id="view-pass" class="app-screen">
+        <div class="shopee-header" style="background: #0068ff;">
+          <div style="font-size: 14px; font-weight: 800; display: flex; align-items: center; gap: 6px;">
+            <span>Zalo Mini App</span>
+            <span style="opacity: 0.7;">·</span>
+            <span>Thẻ GXANH</span>
+          </div>
+          <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 999px;">Gốc Hà Đông</span>
+        </div>
+
+        <div class="zalo-container">
+          <!-- Digital Pass Card -->
+          <div class="pass-card-modern">
+            <div class="pass-top-line">
+              <div class="pass-user">Mai Ngọc Thắng</div>
+              <span class="pass-tag">● Hoạt động</span>
+            </div>
+            <div style="font-size: 11px; opacity: 0.85;">Số điểm dùng được:</div>
+            <div class="pass-points-num" id="user-total-points">565.000 <span style="font-size: 13px; font-weight: 600;">điểm</span></div>
+
+            <!-- 3-Card Balance Grid -->
+            <div class="grid-3-plan">
+              <div class="plan-card">
+                <div class="plan-label">Điểm nạp</div>
+                <div class="plan-val" id="points-nap">505.000</div>
+              </div>
+              <div class="plan-card">
+                <div class="plan-label">Điểm thưởng</div>
+                <div class="plan-val" id="points-thuong">0</div>
+              </div>
+              <div class="plan-card">
+                <div class="plan-label">Hoa hồng</div>
+                <div class="plan-val" id="points-hoahong">60.000</div>
+              </div>
+            </div>
+
+            <!-- Functional Action Buttons on Card -->
+            <div class="pass-actions-bar">
+              <button class="pass-btn-action" onclick="openTopUpModal()">
+                <span>+</span> Nạp Thêm Điểm
+              </button>
+              <button class="pass-btn-action" onclick="openHistoryModal()">
+                <span>📄</span> Lịch Sử Điểm
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic 60s Single-Use Payment QR -->
+          <div class="qr-card-white">
+            <div style="font-size: 14px; font-weight: 800; color: var(--text-main);">Mã QR Thanh Toán Dùng 1 Lần</div>
+            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">Đưa thu ngân quét để trừ điểm trực tiếp</div>
+
+            <div class="qr-box-inner" onclick="refreshQRCode(true)" title="Nhấn để đổi mã mới">
+              <svg id="qr-matrix-svg" width="145" height="145" viewBox="0 0 100 100" fill="none">
+                <rect width="100" height="100" fill="white"/>
+                <rect x="6" y="6" width="28" height="28" rx="3" fill="#15803d"/>
+                <rect x="11" y="11" width="18" height="18" rx="2" fill="white"/>
+                <rect x="15" y="15" width="10" height="10" rx="1" fill="#15803d"/>
+                <rect x="66" y="6" width="28" height="28" rx="3" fill="#15803d"/>
+                <rect x="71" y="11" width="18" height="18" rx="2" fill="white"/>
+                <rect x="75" y="15" width="10" height="10" rx="1" fill="#15803d"/>
+                <rect x="6" y="66" width="28" height="28" rx="3" fill="#15803d"/>
+                <rect x="11" y="71" width="18" height="18" rx="2" fill="white"/>
+                <rect x="15" y="75" width="10" height="10" rx="1" fill="#15803d"/>
+                <rect x="42" y="10" width="8" height="8" fill="#1e293b"/>
+                <rect x="52" y="20" width="8" height="8" fill="#15803d"/>
+                <rect x="16" y="44" width="8" height="8" fill="#15803d"/>
+                <rect x="28" y="44" width="8" height="8" fill="#1e293b"/>
+                <rect x="44" y="44" width="12" height="12" rx="2" fill="#ca8a04"/>
+                <rect x="64" y="44" width="8" height="8" fill="#15803d"/>
+                <rect x="78" y="44" width="8" height="8" fill="#1e293b"/>
+                <rect x="44" y="66" width="8" height="8" fill="#1e293b"/>
+                <rect x="64" y="66" width="14" height="8" fill="#15803d"/>
+                <rect x="52" y="78" width="8" height="14" fill="#1e293b"/>
+                <rect x="76" y="78" width="12" height="12" fill="#15803d"/>
+              </svg>
+            </div>
+
+            <div class="timer-pill" onclick="refreshQRCode(true)">
+              <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Đổi mã sau <strong id="qr-timer">42s</strong> (Bấm để đổi)</span>
+            </div>
+
+            <div style="font-size: 11px; color: var(--text-subtle); margin-top: 10px;">
+              Quầy từ chối ảnh chụp tĩnh. 1 điểm = 1 đồng.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MÀN 5: TRA CỨU GF-TRACK (READ + VERIFIED CERT + CREATE FEEDBACK) -->
+      <!-- ============================================================ -->
+      <div id="view-trace" class="app-screen">
+        <div class="shopee-header">
+          <div style="font-size: 14px; font-weight: 800;">Xác thực Tem GF-Track</div>
+          <span style="font-size: 11px; opacity: 0.9;">Mã lô: LO-QD-261103</span>
+        </div>
+
+        <div class="gf-summary-card">
+          <div class="verified-chip">
+            <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            Chính hãng GF-Track · Quét lần 1
+          </div>
+          <h2 style="font-size: 16px; font-weight: 800; color: var(--text-main);">Rau su su non Đà Bắc (Khay 500g)</h2>
+          <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">
+            Mã vỉ: #K018/080 · HSD khuyến nghị: <strong>06/11/2026</strong>
+          </div>
+        </div>
+
+        <!-- 3 Tầng Bằng Chứng -->
+        <div style="padding: 4px 8px;">
+          <div style="font-size: 12.5px; font-weight: 800; color: var(--primary-dark); margin: 8px 4px 4px;">
+            3 TẦNG BẰNG CHỨNG XÁC THỰC
+          </div>
+
+          <div class="gf-accordion">
+            <div class="acc-header">
+              <span>1. Nhật ký vùng trồng tự khai</span>
+              <span style="color: #15803d; font-size: 11px;">✓ Có GPS</span>
+            </div>
+            <div class="acc-body">
+              <div class="fact-row"><span>Hộ sản xuất:</span><b>Hộ #QĐ-04 (Xã Quy Đức)</b></div>
+              <div class="fact-row"><span>Chế phẩm sinh học:</span><b>Thảo mộc tỏi ớt gừng</b></div>
+              <div class="fact-row"><span>Cách ly thu hái:</span><b>14 ngày (Đạt chuẩn)</b></div>
+            </div>
+          </div>
+
+          <div class="gf-accordion">
+            <div class="acc-header">
+              <span>2. Đối chứng vận hành GXANH</span>
+              <span style="color: #15803d; font-size: 11px;">✓ 3.2°C Chuỗi lạnh</span>
+            </div>
+            <div class="acc-body">
+              <div class="fact-row"><span>Cân bằng khối lượng:</span><b>100% khớp điểm gom</b></div>
+              <div class="fact-row"><span>Xe chuyên dụng:</span><b>29C-612.08 (Nhiệt độ 3.2°C)</b></div>
+              <div class="fact-row"><span>Giao cửa hàng:</span><b>05:18 sáng (trước mở cửa)</b></div>
+            </div>
+          </div>
+
+          <div class="gf-accordion">
+            <div class="acc-header">
+              <span>3. Pháp lý & Kiểm nghiệm</span>
+              <span style="color: #15803d; font-size: 11px; cursor: pointer; text-decoration: underline;" onclick="openCertModal()">Xem chứng chỉ ›</span>
+            </div>
+            <div class="acc-body">
+              <div class="fact-row"><span>Mã vùng trồng:</span><b>VN-HB-QD-01 (còn hạn)</b></div>
+              <div class="fact-row"><span>Phiếu kiểm nghiệm:</span><b>PKN-2611-085 (ĐẠT 100%)</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hành trình 6 chặng -->
+        <div style="padding: 6px 12px 14px;">
+          <div style="font-size: 12.5px; font-weight: 800; color: var(--primary-dark); margin-bottom: 8px;">
+            HÀNH TRÌNH 6 CHẶNG KHÉP KÍN
+          </div>
+
+          <div class="step-item">
+            <div class="step-circle">1</div>
+            <div class="step-box">
+              <div class="step-title">Thu hoạch tại Xã Quy Đức</div>
+              <div class="step-sub">04:30 sáng · Hộ #QĐ-04 cắt ngọn tươi</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-circle">2</div>
+            <div class="step-box">
+              <div class="step-title">Sơ chế & Đóng khay 500g</div>
+              <div class="step-sub">09:00 · Rửa sục ozone tại Đà Bắc</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-circle">3</div>
+            <div class="step-box">
+              <div class="step-title">Vận chuyển xe lạnh 2-4°C</div>
+              <div class="step-sub">Lộ trình 85km về Hà Nội (Xe 29C-612.08)</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-circle">4</div>
+            <div class="step-box">
+              <div class="step-title">Tổng kho điều phối Làng Xanh</div>
+              <div class="step-sub">Kiểm soát cân bằng khối lượng</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-circle">5</div>
+            <div class="step-box">
+              <div class="step-title">Nhập kho GXANH Hà Đông</div>
+              <div class="step-sub">05:20 sáng · Dán tem kích hoạt</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-circle">6</div>
+            <div class="step-box">
+              <div class="step-title">Kệ hàng & Đến tay bạn</div>
+              <div class="step-sub">Bảo quản mát tại quầy cửa hàng</div>
+            </div>
+          </div>
+
+          <button class="btn-sub-green" style="width: 100%; margin-top: 10px;" onclick="openFeedbackModal()">
+            ✍️ Gửi Phản Hồi Chất Lượng Lô Này
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Fixed Bottom App Navigation (5 Tabs) -->
+    <div class="shopee-tab-bar">
+      <button class="tab-unit active" id="tab-nav-market" onclick="switchView('view-market')">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>Chợ</span>
+      </button>
+
+      <button class="tab-unit" id="tab-nav-trace" onclick="switchView('view-trace')">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span>GF-Track</span>
+      </button>
+
+      <button class="tab-unit" id="tab-nav-cart" onclick="switchView('view-cart')">
+        <span class="tab-bubble" id="badge-bottom-cart">3</span>
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span>Giỏ hàng</span>
+      </button>
+
+      <button class="tab-unit" id="tab-nav-pass" onclick="switchView('view-pass')">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+        <span>Thẻ Zalo</span>
+      </button>
+
+      <button class="tab-unit" onclick="openHistoryModal()">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        <span>Tôi</span>
+      </button>
+    </div>
+
+    <!-- Mini Floating Toast -->
+    <div id="shopee-toast" class="shopee-toast">
+      <svg width="15" height="15" fill="none" stroke="#4ade80" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+      <span id="shopee-toast-msg">Đã thêm vào giỏ hàng!</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- INTERACTIVE MODALS (CRUD) -->
+    <!-- ============================================================ -->
+
+    <!-- MODAL 1: CHECKOUT MODAL (CREATE ORDER) -->
+    <div id="modal-checkout" class="modal-overlay" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-header-line">
+          <span class="modal-title">Xác Nhận Đặt Hàng</span>
+          <button class="modal-close-btn" onclick="closeModal('modal-checkout')">✕</button>
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted);">
+          Giao hàng từ: <strong>Cửa hàng GXANH Hà Đông (Hỏa tốc 2h)</strong>
+        </div>
+
+        <div style="background: #f8fafc; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 12px;">
+          <div style="font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Người nhận & Địa chỉ:</div>
+          <div>Mai Ngọc Thắng · 0912.834.xxx</div>
+          <div style="color: var(--text-muted);">Số 18 Phố Quang Trung, Hà Đông, Hà Nội</div>
+        </div>
+
+        <div style="font-size: 12.5px; font-weight: 700; margin-top: 4px;">Phương thức thanh toán:</div>
+        <div class="modal-option-card selected" id="opt-pay-points" onclick="selectPaymentMethod('points')">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--primary);">Trừ thẻ thành viên GXANH</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Số dư: <strong id="checkout-balance-peek">565.000 điểm</strong> (Đủ thanh toán)</div>
+          </div>
+          <input type="radio" checked name="paymethod">
+        </div>
+        <div class="modal-option-card" id="opt-pay-vietqr" onclick="selectPaymentMethod('vietqr')">
+          <div>
+            <div style="font-size: 13px; font-weight: 700;">Chuyển khoản VietQR</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Quét mã chuyển khoản tức thời</div>
+          </div>
+          <input type="radio" name="paymethod">
+        </div>
+
+        <div style="border-top: 1px dashed var(--border-color); padding-top: 8px; display: flex; justify-content: space-between; font-size: 13px;">
+          <span>Cần thanh toán:</span>
+          <strong style="color: var(--accent); font-size: 16px;" id="modal-checkout-total">0₫</strong>
+        </div>
+
+        <button class="btn-cta-shopee" onclick="executeCreateOrder()">
+          Xác Nhận & Đặt Đơn Ngay
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL 2: TOP-UP POINTS MODAL (CREATE TOP-UP) -->
+    <div id="modal-topup" class="modal-overlay" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-header-line">
+          <span class="modal-title">Nạp Điểm Thẻ Thành Viên</span>
+          <button class="modal-close-btn" onclick="closeModal('modal-topup')">✕</button>
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted);">Tiền nạp vào tài khoản Tổng Làng Xanh, quy đổi 1 điểm = 1 đồng.</div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; margin: 4px 0;">
+          <div class="modal-option-card selected" onclick="selectTopupPackage(200000, this)">
+            <div>
+              <div style="font-weight: 800; font-size: 14px;">200.000₫</div>
+              <div style="font-size: 11px; color: var(--primary);">+200.000 điểm tiêu dùng</div>
+            </div>
+            <span style="font-size: 11px; color: var(--primary); font-weight: 700;">Gói cơ bản</span>
+          </div>
+
+          <div class="modal-option-card" onclick="selectTopupPackage(500000, this)">
+            <div>
+              <div style="font-weight: 800; font-size: 14px;">500.000₫</div>
+              <div style="font-size: 11px; color: var(--primary);">+500.000 điểm tiêu dùng</div>
+            </div>
+            <span style="font-size: 11px; background: #fef08a; color: #854d0e; padding: 2px 6px; border-radius: 4px; font-weight: 800;">Phổ biến</span>
+          </div>
+
+          <div class="modal-option-card" onclick="selectTopupPackage(1000000, this)">
+            <div>
+              <div style="font-weight: 800; font-size: 14px;">1.000.000₫</div>
+              <div style="font-size: 11px; color: var(--primary);">+1.000.000 điểm tiêu dùng</div>
+            </div>
+            <span style="font-size: 11px; color: var(--accent); font-weight: 700;">Hưởng OCOP</span>
+          </div>
+        </div>
+
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px; text-align: center;">
+          <div style="font-size: 11px; color: #166534;">Nội dung chuyển khoản (Tự sinh):</div>
+          <div style="font-family: monospace; font-size: 13px; font-weight: 800; color: #14532d; margin-top: 2px;">NAP CX-302401 500K</div>
+        </div>
+
+        <button class="btn-cta-shopee" style="background: #15803d;" onclick="executeTopUpAction()">
+          ⚡ Giả Lập Quét VietQR & Nạp Ngay
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL 3: POINT HISTORY (READ HISTORY) -->
+    <div id="modal-history" class="modal-overlay" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-header-line">
+          <span class="modal-title">Lịch Sử Biến Động Điểm</span>
+          <button class="modal-close-btn" onclick="closeModal('modal-history')">✕</button>
+        </div>
+        <div id="history-items-container" style="display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto;"></div>
+      </div>
+    </div>
+
+    <!-- MODAL 4: VOUCHER MODAL (UPDATE VOUCHER) -->
+    <div id="modal-voucher" class="modal-overlay" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-header-line">
+          <span class="modal-title">Chọn Mã Giảm Giá GXANH</span>
+          <button class="modal-close-btn" onclick="closeModal('modal-voucher')">✕</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="modal-option-card selected" onclick="applyVoucherAction(25000, 'Giảm 25.000₫')">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent);">VOUCHER25K</div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">Giảm 25.000₫ cho đơn từ 200.000₫</div>
+            </div>
+            <button class="btn-sub-green" style="height: 30px !important; font-size: 11.5px !important; padding: 0 10px;">Áp dụng</button>
+          </div>
+          <div class="modal-option-card" onclick="applyVoucherAction(50000, 'Giảm 50.000₫')">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent);">GXANHFREESHIP</div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">Miễn phí vận chuyển hỏa tốc 50.000₫</div>
+            </div>
+            <button class="btn-sub-green" style="height: 30px !important; font-size: 11.5px !important; padding: 0 10px;">Áp dụng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 5: CERTIFICATE MODAL (READ CERT) -->
+    <div id="modal-cert" class="modal-overlay" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-header-line">
+          <span class="modal-title">Hồ Sơ Pháp Lý & Kiểm Nghiệm</span>
+          <button class="modal-close-btn" onclick="closeModal('modal-cert')">✕</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px;">
+          <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px;">
+            <div style="font-weight: 700; color: var(--primary);">1. Mã số vùng trồng VN-HB-QD-01</div>
+            <div style="color: var(--text-muted); font-size: 11.5px; margin-top: 2px;">Cơ quan cấp: Chi cục Trồng trọt & BVTV Hòa Bình · Hiệu lực đến 2028</div>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px;">
+            <div style="font-weight: 700; color: var(--primary);">2. Chứng nhận VietGAP số 104/2024-VG</div>
+            <div style="color: var(--text-muted); font-size: 11.5px; margin-top: 2px;">Đạt chuẩn canh tác hữu cơ vi sinh, không thuốc trừ sâu hóa học</div>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px;">
+            <div style="font-weight: 700; color: var(--primary);">3. Phiếu thử nghiệm PKN-2611-085</div>
+            <div style="color: var(--text-muted); font-size: 11.5px; margin-top: 2px;">Kết quả: 0% dư lượng kim loại nặng và hóa chất bảo vệ thực vật</div>
+          </div>
+        </div>
+        <button class="btn-sub-green" style="width: 100%;" onclick="closeModal('modal-cert')">Đóng</button>
+      </div>
+    </div>
+
+    <!-- MODAL 6: FEEDBACK MODAL (CREATE FEEDBACK) -->
+    <div id="modal-feedback" class="modal-overlay" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-header-line">
+          <span class="modal-title">Gửi Phản Hồi Chất Lượng Lô</span>
+          <button class="modal-close-btn" onclick="closeModal('modal-feedback')">✕</button>
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted);">Đánh giá trực tiếp tới Giám đốc vùng trồng Xã Quy Đức</div>
+
+        <div style="display: flex; gap: 8px; justify-content: center; font-size: 24px; cursor: pointer; margin: 4px 0;">
+          <span onclick="setRating(1)">⭐</span>
+          <span onclick="setRating(2)">⭐</span>
+          <span onclick="setRating(3)">⭐</span>
+          <span onclick="setRating(4)">⭐</span>
+          <span onclick="setRating(5)">⭐</span>
+        </div>
+
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+          <button class="shopee-tag-pill active" onclick="toggleTag(this)">Rau rất tươi</button>
+          <button class="shopee-tag-pill" onclick="toggleTag(this)">Giao đúng giờ</button>
+          <button class="shopee-tag-pill" onclick="toggleTag(this)">Đóng gói cẩn thận</button>
+          <button class="shopee-tag-pill" onclick="toggleTag(this)">Ngọt tự nhiên</button>
+        </div>
+
+        <textarea id="feedback-text" placeholder="Nhập thêm nhận xét của bạn..." style="width: 100%; height: 70px; border-radius: 6px; border: 1px solid var(--border-color); padding: 8px; font-family: inherit; font-size: 12px; resize: none;"></textarea>
+
+        <button class="btn-cta-shopee" onclick="submitFeedbackAction()">
+          Gửi Phản Hồi Ngay
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ==========================================
+    // DATA STORE & STATE
+    // ==========================================
+    const PRODUCTS = [
+      {
+        id: 1,
+        title: "Mật ong hoa nhãn rừng nguyên chất",
+        village: "Thôn Gò Mít",
+        category: "che",
+        price: 212000,
+        oldPrice: 249000,
+        discount: "-15%",
+        sold: 86,
+        badge: "GF-Track",
+        image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=400&q=80",
+        rating: "⭐ 5.0 (2 đánh giá)",
+        specs: [
+          { name: "Hũ 500 ml", price: 212000 },
+          { name: "Hũ 1 Lít", price: 392000 }
+        ],
+        originDetail: "Thôn Gò Mít · Vườn ong chị Nguyễn Thị Hoa"
+      },
+      {
+        id: 2,
+        title: "Rau su su non Đà Bắc (Khay 500g)",
+        village: "Xã Quy Đức · Hòa Bình",
+        category: "rau",
+        price: 22000,
+        oldPrice: 28000,
+        discount: "-21%",
+        sold: 340,
+        badge: "Tem QR",
+        image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=400&q=80",
+        rating: "⭐ 4.9 (18 đánh giá)",
+        specs: [
+          { name: "Khay 500g", price: 22000 },
+          { name: "Khay 1kg", price: 42000 }
+        ],
+        originDetail: "Xã Quy Đức · Thửa A1 bản Dưới"
+      },
+      {
+        id: 3,
+        title: "Thịt lợn đen bản thả đồi (Khay 500g)",
+        village: "Bản Dưới · Quy Đức",
+        category: "thit",
+        price: 147000,
+        oldPrice: 170000,
+        discount: "-13%",
+        sold: 95,
+        badge: "Lô tươi",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80",
+        rating: "⭐ 4.8 (34 đánh giá)",
+        specs: [
+          { name: "Khay 500g", price: 147000 },
+          { name: "Khay 1kg", price: 290000 }
+        ],
+        originDetail: "Khu chăn thả Hộ #QĐ-12 · Thôn Bản Dưới"
+      },
+      {
+        id: 4,
+        title: "Trà hoa vàng túi lọc thượng hạng",
+        village: "Thôn Bãi Sen",
+        category: "che",
+        price: 110000,
+        oldPrice: 135000,
+        discount: "-18%",
+        sold: 52,
+        badge: "OCOP",
+        image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=400&q=80",
+        rating: "⭐ 5.0 (1 đánh giá)",
+        specs: [
+          { name: "Hộp 20 gói", price: 110000 },
+          { name: "Hộp 50 gói", price: 250000 }
+        ],
+        originDetail: "Thôn Bãi Sen · HTX Dược liệu bản địa"
+      }
+    ];
+
+    // Reactive Cart State (Initial 3 items)
+    let cart = [
+      { id: 101, productId: 4, name: "Chè búp khô túi 200g", shop: "Đặc sản nhà chị Hoa", variant: "Hút chân không", price: 116000, qty: 2, image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=150&q=80" },
+      { id: 102, productId: 1, name: "Mật ong hoa nhãn hũ 500ml", shop: "Mật ong nhà Khánh · Thôn Gò Mít", variant: "Hũ thuỷ tinh", price: 212000, qty: 1, image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=150&q=80" }
+    ];
+
+    // User Member State
+    let userPoints = {
+      nap: 505000,
+      thuong: 0,
+      hoahong: 60000
+    };
+
+    let appliedDiscount = 25000;
+    let selectedTopupAmount = 200000;
+    let selectedTopupElement = null;
+    let currentDetailProduct = PRODUCTS[0];
+    let currentDetailSpecIndex = 0;
+    let detailStepperQty = 1;
+
+    let pointHistory = [
+      { id: 'TX-901', title: 'Nạp tiền VietQR thành công', amount: '+500.000', time: '14/11 08:30', isPlus: true },
+      { id: 'TX-892', title: 'Thanh toán đơn #DH-1029', amount: '-147.000', time: '13/11 17:15', isPlus: false },
+      { id: 'TX-850', title: 'Hoa hồng thành viên F1 nạp', amount: '+60.000', time: '12/11 10:00', isPlus: true }
+    ];
+
+    // ==========================================
+    // RENDER FUNCTIONS (CRUD READ)
+    // ==========================================
+    function renderProductGrid(items) {
+      const container = document.getElementById('product-grid-container');
+      if (!container) return;
+      container.innerHTML = items.map(p => `
+        <div class="shopee-card" onclick="openProductDetail(${p.id})">
+          <div class="card-thumb-wrap">
+            <img src="${p.image}" alt="${p.title}">
+            <span class="badge-top-left">${p.badge}</span>
+            <span class="badge-top-right">${p.discount}</span>
+          </div>
+          <div class="card-details">
+            <div>
+              <div class="village-source">${p.village}</div>
+              <div class="shopee-title">${p.title}</div>
+            </div>
+            <div>
+              <div class="shopee-price-row">
+                <span class="price-main">${p.price.toLocaleString('vi-VN')}₫</span>
+                <span class="price-old">${p.oldPrice.toLocaleString('vi-VN')}₫</span>
+              </div>
+              <div class="sold-meta">
+                <span class="sold-badge">Đã bán ${p.sold}</span>
+                <button class="btn-quick-add" onclick="event.stopPropagation(); quickAddToCart(${p.id});">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-list-container');
+      const badgeTop = document.getElementById('badge-top-cart');
+      const badgeBottom = document.getElementById('badge-bottom-cart');
+      const countLabel = document.getElementById('cart-item-count-label');
+      const btnQtyLabel = document.getElementById('cart-btn-qty');
+      const totalPriceLabel = document.getElementById('cart-total-price');
+
+      const totalItemsCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      if (badgeTop) badgeTop.innerText = totalItemsCount;
+      if (badgeBottom) badgeBottom.innerText = totalItemsCount;
+      if (countLabel) countLabel.innerText = totalItemsCount;
+      if (btnQtyLabel) btnQtyLabel.innerText = totalItemsCount;
+
+      if (!container) return;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+            <div style="font-size: 38px; margin-bottom: 8px;">🛒</div>
+            <div style="font-size: 14px; font-weight: 700;">Giỏ hàng trống</div>
+            <div style="font-size: 12px; margin-top: 4px;">Hãy chọn các món nông sản tươi ngon tại Chợ GXANH!</div>
+            <button class="btn-sub-green" style="margin-top: 14px;" onclick="switchView('view-market')">Mua sắm ngay</button>
+          </div>
+        `;
+        if (totalPriceLabel) totalPriceLabel.innerText = '0₫';
+        return;
+      }
+
+      // Group cart items by shop
+      const shops = {};
+      cart.forEach(item => {
+        if (!shops[item.shop]) shops[item.shop] = [];
+        shops[item.shop].push(item);
+      });
+
+      let rawTotal = 0;
+      let html = '';
+
+      for (const [shopName, items] of Object.entries(shops)) {
+        html += `
+          <div class="cart-shop-card">
+            <div class="cart-shop-header">
+              <span>🏪 ${shopName}</span>
+              <span style="font-size: 11px; color: #15803d;">Đủ hàng tươi</span>
+            </div>
+            ${items.map(item => {
+              rawTotal += item.price * item.qty;
+              return `
+                <div class="cart-item-row">
+                  <img class="cart-thumb" src="${item.image}">
+                  <div class="cart-mid">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-variant-badge">${item.variant}</div>
+                    <div style="font-size: 13px; font-weight: 800; color: var(--accent);">${(item.price * item.qty).toLocaleString('vi-VN')}₫</div>
+                  </div>
+                  <div class="stepper">
+                    <button class="stepper-btn" onclick="updateCartItemQty(${item.id}, -1)">-</button>
+                    <span class="stepper-val">${item.qty}</span>
+                    <button class="stepper-btn" onclick="updateCartItemQty(${item.id}, 1)">+</button>
+                  </div>
+                  <button class="btn-item-delete" onclick="deleteCartItem(${item.id})" title="Xoá món này">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                  </button>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+      const finalTotal = Math.max(0, rawTotal - appliedDiscount);
+      if (totalPriceLabel) totalPriceLabel.innerText = finalTotal.toLocaleString('vi-VN') + '₫';
+    }
+
+    function renderPoints() {
+      const total = userPoints.nap + userPoints.thuong + userPoints.hoahong;
+      document.getElementById('user-total-points').innerHTML = `${total.toLocaleString('vi-VN')} <span style="font-size: 13px; font-weight: 600;">điểm</span>`;
+      document.getElementById('points-nap').innerText = userPoints.nap.toLocaleString('vi-VN');
+      document.getElementById('points-thuong').innerText = userPoints.thuong.toLocaleString('vi-VN');
+      document.getElementById('points-hoahong').innerText = userPoints.hoahong.toLocaleString('vi-VN');
+      const peek = document.getElementById('checkout-balance-peek');
+      if (peek) peek.innerText = total.toLocaleString('vi-VN') + ' điểm';
+    }
+
+    function renderHistory() {
+      const container = document.getElementById('history-items-container');
+      if (!container) return;
+      container.innerHTML = pointHistory.map(h => `
+        <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 12.5px; font-weight: 700; color: var(--text-main);">${h.title}</div>
+            <div style="font-size: 11px; color: var(--text-muted);">${h.time} · Mã ${h.id}</div>
+          </div>
+          <span style="font-size: 13.5px; font-weight: 800; color: ${h.isPlus ? '#15803d' : '#ee4d2d'};">${h.amount}</span>
+        </div>
+      `).join('');
+    }
+
+    // ==========================================
+    // CRUD OPERATIONS (CREATE, UPDATE, DELETE)
+    // ==========================================
+    // 1. CREATE: Quick Add to Cart from Grid
+    function quickAddToCart(productId) {
+      const p = PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      const existing = cart.find(item => item.productId === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: Date.now(),
+          productId: p.id,
+          name: p.title,
+          shop: p.village,
+          variant: p.specs[0].name,
+          price: p.specs[0].price,
+          qty: 1,
+          image: p.image
+        });
+      }
+      renderCart();
+      showToast(`Đã thêm "${p.title}" vào giỏ!`);
+    }
+
+    // 2. READ: Open Product Detail View
+    function openProductDetail(productId) {
+      const p = PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      currentDetailProduct = p;
+      currentDetailSpecIndex = 0;
+      detailStepperQty = 1;
+
+      document.getElementById('detail-img').src = p.image;
+      document.getElementById('detail-title').innerText = p.title;
+      document.getElementById('detail-price').innerText = p.specs[0].price.toLocaleString('vi-VN') + '₫';
+      document.getElementById('detail-old-price').innerText = p.oldPrice.toLocaleString('vi-VN') + '₫';
+      document.getElementById('detail-discount').innerText = p.discount;
+      document.getElementById('detail-sold').innerText = `Đã bán ${p.sold}`;
+      document.getElementById('detail-rating').innerText = p.rating;
+      document.getElementById('detail-origin').innerText = p.originDetail;
+      document.getElementById('detail-stepper').innerText = detailStepperQty;
+
+      // Render spec buttons
+      const specContainer = document.getElementById('detail-spec-container');
+      specContainer.innerHTML = p.specs.map((s, idx) => `
+        <button class="spec-btn ${idx === 0 ? 'active' : ''}" onclick="selectProductSpec(${idx}, this)">${s.name}</button>
+      `).join('');
+
+      switchView('view-item');
+    }
+
+    // 3. UPDATE: Change product spec variant in detail
+    function selectProductSpec(index, el) {
+      currentDetailSpecIndex = index;
+      document.querySelectorAll('#detail-spec-container .spec-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      const chosenPrice = currentDetailProduct.specs[index].price;
+      document.getElementById('detail-price').innerText = chosenPrice.toLocaleString('vi-VN') + '₫';
+    }
+
+    function adjustDetailQty(delta) {
+      detailStepperQty = Math.max(1, detailStepperQty + delta);
+      document.getElementById('detail-stepper').innerText = detailStepperQty;
+    }
+
+    // CREATE: Add from detail view to cart
+    function addCurrentDetailToCart(andCheckout = false) {
+      const p = currentDetailProduct;
+      const spec = p.specs[currentDetailSpecIndex];
+      const existing = cart.find(item => item.productId === p.id && item.variant === spec.name);
+      if (existing) {
+        existing.qty += detailStepperQty;
+      } else {
+        cart.push({
+          id: Date.now(),
+          productId: p.id,
+          name: p.title,
+          shop: p.village,
+          variant: spec.name,
+          price: spec.price,
+          qty: detailStepperQty,
+          image: p.image
+        });
+      }
+      renderCart();
+      if (andCheckout) {
+        switchView('view-cart');
+        openCheckoutModal();
+      } else {
+        showToast(`Đã thêm ${detailStepperQty} sản phẩm vào giỏ!`);
+      }
+    }
+
+    // 4. UPDATE: Cart item quantity
+    function updateCartItemQty(id, delta) {
+      const item = cart.find(x => x.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        deleteCartItem(id);
+      } else {
+        renderCart();
+      }
+    }
+
+    // 5. DELETE: Delete single cart item
+    function deleteCartItem(id) {
+      const idx = cart.findIndex(x => x.id === id);
+      if (idx !== -1) {
+        const deletedName = cart[idx].name;
+        cart.splice(idx, 1);
+        renderCart();
+        showToast(`Đã xóa món khỏi giỏ hàng.`);
+      }
+    }
+
+    // 6. DELETE ALL: Clear cart
+    function clearAllCart() {
+      if (cart.length === 0) return;
+      cart = [];
+      renderCart();
+      showToast('Đã xóa tất cả các món trong giỏ.');
+    }
+
+    // 7. CREATE: Execute Checkout Order
+    function executeCreateOrder() {
+      if (cart.length === 0) {
+        showToast('Giỏ hàng trống!');
+        closeModal('modal-checkout');
+        return;
+      }
+      const rawTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const finalTotal = Math.max(0, rawTotal - appliedDiscount);
+      const totalPoints = userPoints.nap + userPoints.thuong + userPoints.hoahong;
+
+      if (totalPoints < finalTotal) {
+        showToast('Số dư điểm không đủ! Hãy nạp thêm.');
+        closeModal('modal-checkout');
+        openTopUpModal();
+        return;
+      }
+
+      // Deduct points
+      userPoints.nap = Math.max(0, userPoints.nap - finalTotal);
+      renderPoints();
+
+      // Record in history
+      const orderCode = 'DH-' + Math.floor(1000 + Math.random() * 9000);
+      pointHistory.unshift({
+        id: orderCode,
+        title: `Thanh toán đơn hàng (${cart.length} món)`,
+        amount: `-${finalTotal.toLocaleString('vi-VN')}đ`,
+        time: 'Vừa xong',
+        isPlus: false
+      });
+      renderHistory();
+
+      // Clear cart
+      cart = [];
+      renderCart();
+      closeModal('modal-checkout');
+      showToast(`🎉 Đặt hàng thành công! Mã đơn: ${orderCode}`);
+    }
+
+    // 8. CREATE: Top-up points (simulate VietQR callback)
+    function selectTopupPackage(amount, el) {
+      selectedTopupAmount = amount;
+      document.querySelectorAll('#modal-topup .modal-option-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function executeTopUpAction() {
+      userPoints.nap += selectedTopupAmount;
+      renderPoints();
+      const txCode = 'NAP-' + Math.floor(1000 + Math.random() * 9000);
+      pointHistory.unshift({
+        id: txCode,
+        title: 'Nạp tiền VietQR tập trung Tổng',
+        amount: `+${selectedTopupAmount.toLocaleString('vi-VN')}đ`,
+        time: 'Vừa xong',
+        isPlus: true
+      });
+      renderHistory();
+      closeModal('modal-topup');
+      showToast(`✓ Đã nạp thành công +${selectedTopupAmount.toLocaleString('vi-VN')} điểm!`);
+    }
+
+    // 9. UPDATE: Refresh dynamic QR Code for payment
+    function refreshQRCode(showFeedback = false) {
+      qrTimerSeconds = 60;
+      document.getElementById('qr-timer').innerText = '60s';
+      // Change color fill in SVG to show live regeneration
+      const colors = ['#15803d', '#1e293b', '#0369a1', '#14532d'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      const matrix = document.getElementById('qr-matrix-svg');
+      if (matrix) {
+        matrix.style.transform = 'scale(0.95)';
+        setTimeout(() => matrix.style.transform = 'scale(1)', 150);
+      }
+      if (showFeedback) showToast('Mã QR dùng 1 lần đã làm mới!');
+    }
+
+    // 10. CREATE: Submit Feedback on GF-Track
+    function submitFeedbackAction() {
+      const text = document.getElementById('feedback-text').value;
+      closeModal('modal-feedback');
+      showToast('✓ Cảm ơn bạn! Đánh giá đã được gửi tới Quản trị chuỗi.');
+      document.getElementById('feedback-text').value = '';
+    }
+
+    function setRating(stars) {
+      showToast(`Đã chọn ${stars} sao`);
+    }
+
+    function toggleTag(el) {
+      el.classList.toggle('active');
+    }
+
+    // 11. UPDATE: Apply Voucher
+    function applyVoucherAction(amount, label) {
+      appliedDiscount = amount;
+      document.getElementById('applied-voucher-label').innerText = label + ' ›';
+      renderCart();
+      closeModal('modal-voucher');
+      showToast(`Đã áp dụng mã ${label}!`);
+    }
+
+    // Search and Filter (READ)
+    function handleSearch(keyword) {
+      const kw = keyword.toLowerCase().trim();
+      if (!kw) {
+        renderProductGrid(PRODUCTS);
+        return;
+      }
+      const filtered = PRODUCTS.filter(p => 
+        p.title.toLowerCase().includes(kw) || 
+        p.village.toLowerCase().includes(kw)
+      );
+      renderProductGrid(filtered);
+    }
+
+    function filterCategory(cat, el) {
+      document.querySelectorAll('#cat-strip .shopee-tag-pill').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      if (cat === 'all') {
+        renderProductGrid(PRODUCTS);
+      } else {
+        const filtered = PRODUCTS.filter(p => p.category === cat);
+        renderProductGrid(filtered);
+      }
+    }
+
+    // ==========================================
+    // MODAL HANDLERS
+    // ==========================================
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.classList.add('open');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.classList.remove('open');
+    }
+
+    function closeAllModals(e) {
+      if (e.target.classList.contains('modal-overlay')) {
+        document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
+      }
+    }
+
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        showToast('Giỏ hàng chưa có món nào!');
+        return;
+      }
+      const rawTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const finalTotal = Math.max(0, rawTotal - appliedDiscount);
+      document.getElementById('modal-checkout-total').innerText = finalTotal.toLocaleString('vi-VN') + '₫';
+      openModal('modal-checkout');
+    }
+
+    function openTopUpModal() { openModal('modal-topup'); }
+    function openHistoryModal() { openModal('modal-history'); }
+    function openVoucherModal() { openModal('modal-voucher'); }
+    function openCertModal() { openModal('modal-cert'); }
+    function openFeedbackModal() { openModal('modal-feedback'); }
+
+    // Screen Navigation
+    function switchView(viewId) {
+      document.querySelectorAll('.app-screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(viewId);
+      if (target) {
+        target.classList.add('active');
+        target.parentElement.scrollTop = 0;
+      }
+
+      // Top showcase buttons
+      document.querySelectorAll('.screen-pill-btn').forEach(btn => btn.classList.remove('active'));
+      const activePill = Array.from(document.querySelectorAll('.screen-pill-btn')).find(b => b.getAttribute('onclick')?.includes(viewId));
+      if (activePill) activePill.classList.add('active');
+
+      // Bottom tabs
+      document.querySelectorAll('.tab-unit').forEach(t => t.classList.remove('active'));
+      if (viewId === 'view-market') document.getElementById('tab-nav-market')?.classList.add('active');
+      if (viewId === 'view-trace') document.getElementById('tab-nav-trace')?.classList.add('active');
+      if (viewId === 'view-cart') document.getElementById('tab-nav-cart')?.classList.add('active');
+      if (viewId === 'view-pass') document.getElementById('tab-nav-pass')?.classList.add('active');
+    }
+
+    // Toast
+    function showToast(msg) {
+      const toast = document.getElementById('shopee-toast');
+      const text = document.getElementById('shopee-toast-msg');
+      if (toast && text) {
+        text.innerText = msg;
+        toast.classList.add('active');
+        setTimeout(() => toast.classList.remove('active'), 2000);
+      }
+    }
+
+    // Timers
+    let qrTimerSeconds = 42;
+    setInterval(() => {
+      qrTimerSeconds--;
+      if (qrTimerSeconds <= 0) {
+        refreshQRCode(false);
+      }
+      const el = document.getElementById('qr-timer');
+      if (el) el.innerText = qrTimerSeconds + 's';
+    }, 1000);
+
+    let sec = 18, min = 42;
+    setInterval(() => {
+      sec--;
+      if (sec < 0) { sec = 59; min--; }
+      document.getElementById('timer-sec').innerText = sec < 10 ? '0' + sec : sec;
+      document.getElementById('timer-min').innerText = min < 10 ? '0' + min : min;
+    }, 1000);
+
+    // Initial Boots
+    renderProductGrid(PRODUCTS);
+    renderCart();
+    renderPoints();
+    renderHistory();
+  </script>
+</body>
+</html>

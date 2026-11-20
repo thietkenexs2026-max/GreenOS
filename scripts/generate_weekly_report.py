@@ -25,225 +25,219 @@ HEADER_11 = [
     'Output/Tài liệu'
 ]
 
-# ==============================================================================
-# TUẦN 1: 02/11/2026 - 06/11/2026 (Thứ 2 -> Thứ 6) — GREEN VILLAGE VER 1
-# ==============================================================================
 WEEK_1_TASKS = [
     [
         '1', '2026/11/02', 'Hoàng', '02/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Dựng khung giao diện Bảng điều khiển Kinh tế & Lao động Cấp Xã (Actor 3 - UBND Xã Đồng Lam)',
+        'Dựng khung trang quản lý cho cán bộ xã Đồng Lam',
         'Gấp',
-        'Thiết kế bố cục 2 cột đồng bộ hệ sinh thái Green Village Ver 1: menu điều hướng cấp xã bên trái, đỉnh trang hiển thị thông tin lãnh đạo UBND xã và 4 thẻ KPI kinh tế nông thôn.',
-        'Khung giao diện Dashboard Cán bộ Xã Ver 1 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/12_ver1_dashboard_xa_tong_quan.png | 🔗 Link web: https://cho-xanh.vercel.app/commune-dashboard'
+        'Chia bố cục 2 cột giống bên HTX, cột trái là menu, bên trên để 4 thẻ thống kê số hộ với sản lượng trong xã.',
+        'https://cho-xanh.vercel.app/output_images/12_ver1_dashboard_xa_tong_quan.png | https://cho-xanh.vercel.app/commune-dashboard'
     ],
     [
         '2', '2026/11/02', 'Hoàng', '02/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Tích hợp Cổng trình diễn 3 nền tảng (Portal) và bàn làm việc đối sánh Dual Studio Workbench',
+        'Gộp 3 màn hình Bác Ba, HTX với Xã vào chung trang Portal',
         'Gấp',
-        'Đấu nối liên thông đủ 3 phân hệ của Green Village Ver 1 (Mobile Bác Ba, Dashboard HTX Yên Bình, Dashboard Cán bộ Xã) trên cùng một cổng trình diễn phục vụ báo cáo.',
-        'Cổng trình diễn 3 nền tảng Green Village Ver 1 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/16_ver1_portal_3_nen_tang.png | 🔗 Link web: https://cho-xanh.vercel.app/portal'
+        'Làm thanh chuyển qua lại giữa 3 màn hình để lúc mở demo cho sếp bấm chuyển tab luôn không phải mở nhiều link.',
+        'https://cho-xanh.vercel.app/output_images/16_ver1_portal_3_nen_tang.png | https://cho-xanh.vercel.app/portal'
     ],
     [
         '3', '2026/11/02', 'Hoàng', '02/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Đồng bộ phông chữ Lexend & Inter kèm bảng màu Emerald chuẩn nhận diện giữa Dashboard Xã và HTX',
+        'Chỉnh lại font chữ với màu xanh cho đồng bộ với trang HTX',
         'Trong tuần',
-        'Chuẩn hóa bộ biến màu Emerald (#064E3B, #10B981) kết hợp phông chữ Lexend đậm rõ cho các con số thống kê sản lượng và ngân sách, đảm bảo đồng nhất toàn bản Ver 1.',
-        'Hệ thống Typography & Bảng màu đồng bộ | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp | 🔗 Link web: https://cho-xanh.vercel.app/htx-dashboard'
+        'Đổi sang font Lexend cho mấy con số nhìn rõ hơn, chỉnh lại tông màu xanh lá đậm.',
+        'https://cho-xanh.vercel.app/output_images/01_dashboard_htx_tong_quan.webp'
     ],
     [
         '4', '2026/11/03', 'Hoàng', '03/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Xây dựng phân hệ theo dõi hồ sơ OCOP (OCOP Pipeline) và Ma trận xếp hạng các HTX trong xã',
+        'Làm bảng xếp hạng 3 HTX và theo dõi hồ sơ OCOP',
         'Gấp',
-        'Hiển thị tiến độ thẩm định từng sản phẩm OCOP 3 sao - 4 sao của các thôn và bảng chấm điểm xếp hạng năng lực vận hành của các HTX nông nghiệp trên địa bàn.',
-        'Bảng OCOP Pipeline & Ma trận xếp hạng HTX | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/14_ver1_dashboard_xa_xep_hang_htx_ocop.png | 🔗 Link web: https://cho-xanh.vercel.app/commune-dashboard'
+        'Liệt kê tiến độ làm hồ sơ OCOP 3-4 sao của từng thôn với bảng chấm điểm các HTX trong xã.',
+        'https://cho-xanh.vercel.app/output_images/14_ver1_dashboard_xa_xep_hang_htx_ocop.png'
     ],
     [
         '5', '2026/11/03', 'Hoàng', '03/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Lập trình tính năng Ký duyệt báo cáo điện tử và đóng dấu đỏ UBND Xã trực tiếp trên màn hình',
+        'Làm phần ký duyệt báo cáo tháng có đóng dấu đỏ của xã',
         'Gấp',
-        'Làm cửa sổ xem trước công văn báo cáo tổng hợp kinh tế xã, tích hợp nút bấm ký số hiển thị con dấu đỏ chính thức của UBND xã và xuất biên bản nghiệm thu.',
-        'Luồng ký duyệt điện tử đóng dấu đỏ cấp xã | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/15_ver1_dashboard_xa_ky_so_dong_dau_do.png'
+        'Bấm nút phê duyệt là hiện con dấu đỏ của UBND xã đóng lên góc văn bản để xuất file báo cáo.',
+        'https://cho-xanh.vercel.app/output_images/15_ver1_dashboard_xa_ky_so_dong_dau_do.png'
     ],
     [
         '6', '2026/11/03', 'Hoàng', '03/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Tích hợp thư viện Chart.js vẽ biểu đồ tăng trưởng sản lượng và cơ cấu lao động nông thôn',
+        'Vẽ biểu đồ mức số hoá với sản lượng mùa vụ bằng Chart.js',
         'Trong tuần',
-        'Vẽ biểu đồ cột và biểu đồ đường thể hiện sản lượng tiêu thụ nông sản qua các tháng của Green Village Ver 1, tự động co giãn mượt mà trên cả PC và iPad.',
-        'Biểu đồ Chart.js mức số hoá & sản lượng mùa vụ | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/13_ver1_dashboard_xa_bieu_do_chartjs.png'
+        'Vẽ 3 biểu đồ theo dõi số hộ lên sàn, lượt mượn máy nông nghiệp với sản lượng thu hoạch.',
+        'https://cho-xanh.vercel.app/output_images/13_ver1_dashboard_xa_bieu_do_chartjs.png'
     ],
     [
         '7', '2026/11/04', 'Hoàng', '04/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Thay thế toàn bộ ký tự Emoji rời rạc bằng hệ thống Icon SVG vector sắc nét trên toàn bộ Ver 1',
+        'Thay hết mấy cái icon emoji cũ sang icon SVG',
         'Gấp',
-        'Thiết kế và gắn mới bộ icon SVG đồng nhất độ dày nét vẽ cho toàn bộ thanh menu, thẻ KPI, nút hành động và bảng xếp hạng trên Dashboard Xã và Cổng Portal.',
-        '100% icon trên Dashboard Xã & Portal chuyển sang SVG | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/12_ver1_dashboard_xa_tong_quan.png'
+        'Mấy chỗ menu với thẻ số liệu trước để emoji nhìn hơi rối nên thay hết sang icon nét vẽ SVG cho gọn.',
+        'https://cho-xanh.vercel.app/output_images/12_ver1_dashboard_xa_tong_quan.png'
     ],
     [
         '8', '2026/11/04', 'Hoàng', '04/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Lập trình bộ lọc phạm vi Thôn/Bản và Tháng báo cáo tự động cập nhật lại biểu đồ thời gian thực',
+        'Làm bộ lọc theo thôn và tháng để biểu đồ tự nhảy số',
         'Trong tuần',
-        'Khi cán bộ xã chọn từng thôn hoặc đổi tháng báo cáo trên thanh công cụ, toàn bộ thẻ KPI và biểu đồ Chart.js tự động tính toán và vẽ lại số liệu ngay lập tức.',
-        'Bộ lọc Thôn/Tháng phản hồi tức thì (Reactive Charts) | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/13_ver1_dashboard_xa_bieu_do_chartjs.png'
+        'Chọn thôn hoặc đổi tháng báo cáo ở góc trên là số liệu với biểu đồ bên dưới tự đổi theo.',
+        'https://cho-xanh.vercel.app/output_images/13_ver1_dashboard_xa_bieu_do_chartjs.png'
     ],
     [
         '9', '2026/11/04', 'Hoàng', '04/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Làm cửa sổ Modal nhập số liệu thực tế tại cuộc họp cập nhật thẳng vào biểu đồ cấp xã',
+        'Thêm form nhập nhanh số liệu trực tiếp trên trang xã',
         'Trong tuần',
-        'Cho phép cán bộ nhập nhanh sản lượng thu hoạch mới hoặc số hộ tham gia ngay trong lúc họp giao ban, bấm lưu là biểu đồ trên màn hình chiếu nhảy số theo.',
-        'Modal nhập số liệu trực tiếp trên Dashboard Xã | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/14_ver1_dashboard_xa_xep_hang_htx_ocop.png'
+        'Làm popup để nhập thêm sản lượng mới ngay trên web, bấm lưu là biểu đồ cập nhật luôn.',
+        'https://cho-xanh.vercel.app/output_images/14_ver1_dashboard_xa_xep_hang_htx_ocop.png'
     ],
     [
         '10', '2026/11/05', 'Hoàng', '05/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Rà soát và kiểm thử chéo toàn bộ luồng liên thông 4 Actor của phiên bản Green Village Ver 1',
+        'Test lại luồng dữ liệu từ app Bác Ba sang HTX và Xã',
         'Gấp',
-        'Kiểm tra sự ăn khớp số liệu giữa Mobile Bác Ba đăng bán chuối sấy -> HTX Yên Bình duyệt đơn sỉ WinMart -> Cổng B2B -> Báo cáo tổng hợp tại UBND Xã.',
-        'Luồng dữ liệu 4 Actor của Ver 1 chạy thông suốt | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/05_cong_b2b_dat_don_si.webp'
+        'Kiểm tra từ lúc nông dân đăng bán chuối sấy đến lúc HTX duyệt đơn sỉ WinMart xem số liệu có khớp nhau không.',
+        'https://cho-xanh.vercel.app/output_images/05_cong_b2b_dat_don_si.webp'
     ],
     [
         '11', '2026/11/05', 'Hoàng', '05/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Tối ưu giao diện Dual Studio Workbench (studio-10.html) đặt song song Mobile và Desktop',
+        'Chỉnh lại màn hình Dual Studio để vừa xem điện thoại vừa xem web',
         'Trong tuần',
-        'Tinh chỉnh khung trình diễn song song giúp Ban Lãnh Đạo vừa bấm thao tác trên máy Bác Ba bên trái vừa xem kết quả nhảy tức thì trên màn hình HTX/Xã bên phải.',
-        'Bàn làm việc đối sánh Dual Studio Ver 1 mượt mà | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/16_ver1_portal_3_nen_tang.png'
+        'Đặt khung điện thoại Bác Ba cạnh màn hình HTX để lúc demo bấm bên này thì bên kia nhảy thông báo luôn.',
+        'https://cho-xanh.vercel.app/output_images/16_ver1_portal_3_nen_tang.png'
     ],
     [
         '12', '2026/11/05', 'Hoàng', '05/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Chụp và xử lý bộ 11 ảnh minh chứng giao diện thực tế (PNG & WebP) cho toàn bộ các màn hình Ver 1',
+        'Chụp lại toàn bộ màn hình Ver 1 và nén sang đuôi WebP',
         'Trong tuần',
-        'Chụp màn hình thực tế độ phân giải cao các phân hệ Dashboard HTX, duyệt sản phẩm, nghe audio nông dân, thẻ tài nguyên, cổng B2B, app Bác Ba và nén WebP dưới 100KB.',
-        'Bộ ảnh minh chứng Ver 1 chuẩn WebP | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp'
+        'Chụp lại 11 màn hình của bản Ver 1 rồi nén nhẹ xuống để mở trên mạng 4G không bị chậm.',
+        'https://cho-xanh.vercel.app/output_images/06_mobile_bac_ba_trang_chu.webp'
     ],
     [
         '13', '2026/11/06', 'Hoàng', '06/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Cấu hình định tuyến máy chủ Vercel (vercel.json) và đóng gói phát hành bản Green Village Ver 1',
+        'Cấu hình lại file vercel.json và đẩy bản Ver 1 lên host',
         'Gấp',
-        'Cập nhật đường dẫn tĩnh cho mobile.html, portal.html, htx-dashboard.html, commune-dashboard.html và thư mục ảnh minh chứng; kiểm tra mở link qua Zalo mượt 100%.',
-        'Bản Green Village Ver 1 vận hành trên Vercel | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp | 🔗 Link: https://cho-xanh.vercel.app/portal.html'
+        'Sửa lại đường dẫn ngắn cho các trang mobile, portal, htx-dashboard rồi đẩy code lên Vercel.',
+        'https://cho-xanh.vercel.app/output_images/07_mobile_bac_ba_dark_mode.webp | https://cho-xanh.vercel.app/portal'
     ],
     [
         '14', '2026/11/06', 'Hoàng', '06/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1] Tổng hợp hồ sơ nghiệm thu kết quả Green Village Ver 1 và chuẩn hóa công cụ báo cáo tự động',
+        'Rà soát nghiệm thu xong bản Green Village Ver 1',
         'Gấp',
-        'Đóng gói toàn bộ link sản phẩm, hình ảnh kết quả thực tế của giai đoạn Ver 1 vào hệ thống báo cáo chuẩn 11 cột để bàn giao hoàn tất giai đoạn 1.',
-        'Hoàn tất bàn giao gói giao diện Green Village Ver 1 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/02_htx_duyet_san_pham.webp'
+        'Kiểm tra lại toàn bộ link web và ảnh chụp màn hình bản Ver 1 để chốt giai đoạn 1.',
+        'https://cho-xanh.vercel.app/output_images/02_htx_duyet_san_pham.webp'
     ],
     [
         '15', '2026/11/06', 'Hoàng', '06/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 1 -> Ver 2] Họp tổng kết Ver 1 cùng Vinh & BLĐ, nhận đề bài phát triển Ver 2 (App G-Xanh Sàn TMĐT)',
+        'Họp với Vinh chốt hướng làm bản Ver 2 sang app G-Xanh',
         'Trong tuần',
-        'Đánh giá kết quả Ver 1 và chốt định hướng chuyển sang làm Ver 2 từ tuần kế tiếp: xây dựng App G-Xanh (Từ Làng Ra Phố) hoạt động như sàn thương mại điện tử khép kín.',
-        'Chốt định hướng phát triển Ver 2 — App G-Xanh | 📸 Xem ảnh mockup: https://cho-xanh.vercel.app/output_images/20_gxanh_mockup_quan_tri_chuoi_2_vong_tien.png'
+        'Thống nhất dừng kiểu nông dân tự đăng lẻ tẻ, chuyển sang làm app G-Xanh bán hàng như sàn thương mại điện tử.',
+        'https://cho-xanh.vercel.app/output_images/20_gxanh_mockup_quan_tri_chuoi_2_vong_tien.png'
     ]
 ]
 
-# ==============================================================================
-# TUẦN 2: 09/11/2026 - 13/11/2026 (Thứ 2 -> Thứ 6) — VER 2 APP G-XANH (SÀN TMĐT)
-# ==============================================================================
 WEEK_2_TASKS = [
     [
         '1', '2026/11/09', 'Hoàng', '09/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Xây dựng Kế hoạch Phát triển Sản phẩm G-Xanh — Từ Làng Ra Phố (Mô hình Sàn TMĐT & Chuỗi bán lẻ)',
+        'Viết tài liệu kế hoạch sản phẩm cho bản Ver 2 (App G-Xanh)',
         'Gấp',
-        'Lập tài liệu chiến lược Ver 2: chuyển từ mô hình đăng bán lẻ tẻ sang Sàn TMĐT & Chuỗi bán lẻ nông sản khép kín G-Xanh (Thu mua vùng trồng -> Tổng điều phối -> Cửa hàng & App Người mua).',
-        'Kế hoạch Sản phẩm G-Xanh Ver 2 (GXANH_PRODUCT_PLAN.md) | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/20_gxanh_mockup_quan_tri_chuoi_2_vong_tien.png'
+        'Lên khung mô hình chuỗi bán lẻ và sàn G-Xanh Từ Làng Ra Phố: gom hàng từ xã về tổng rồi bán qua cửa hàng và app.',
+        'https://cho-xanh.vercel.app/output_images/20_gxanh_mockup_quan_tri_chuoi_2_vong_tien.png'
     ],
     [
         '2', '2026/11/09', 'Hoàng', '09/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Thiết kế kiến trúc 3 tầng, tách biệt tuyệt đối 2 vòng tiền và lập ma trận 15 phân hệ (234 tính năng)',
+        'Vẽ sơ đồ tách 2 dòng tiền và chia 15 phân hệ chức năng',
         'Gấp',
-        'Thiết kế luồng tách bạch Vòng tiền thẻ thành viên mua sắm TMĐT (nạp VietQR về Tổng, đối soát bù trừ T+1 trước 06:00 sáng) và Vòng vốn góp cổ đông; phân bổ 234 tính năng vào 3 giai đoạn P0/P1/P2.',
-        'Sơ đồ 2 vòng tiền & Ma trận 15 phân hệ Ver 2 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/20_gxanh_mockup_quan_tri_chuoi_2_vong_tien.png'
+        'Tách riêng tiền khách nạp thẻ mua hàng với tiền cổ đông góp vốn mở điểm, chia 234 tính năng ra 3 giai đoạn làm dần.',
+        'https://cho-xanh.vercel.app/output_images/20_gxanh_mockup_quan_tri_chuoi_2_vong_tien.png'
     ],
     [
         '3', '2026/11/09', 'Hoàng', '09/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Đặc tả chi tiết User Flow & Kịch bản xử lý lỗi (Error Cases) cho Sàn TMĐT App G-Xanh',
+        'Viết kịch bản xử lý các lỗi hay gặp khi khách mua hàng trên app',
         'Trong tuần',
-        'Viết đặc tả kỹ thuật UX phục hồi sự cố cho Ver 2 (320 dòng): khóa giữ tồn kho tạm thời 10 phút chống hết hàng đột xuất (OOS), kiểm tra bán kính giao hỏa tốc 5km giữ chuỗi lạnh 2-4 độ C và chống trừ điểm trùng.',
-        'Tài liệu Kiến trúc Chức năng & UX/UI G-Xanh Ver 2 | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png'
+        'Tính trước mấy trường hợp hết hàng đột xuất tại quầy, khách ngoài bán kính giao lạnh 5km hoặc bấm thanh toán 2 lần.',
+        'https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png'
     ],
     [
         '4', '2026/11/10', 'Hoàng', '10/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Dựng khung Mobile Viewport 430px, thanh chuyển nhanh 5 màn hình và Bottom Tab Bar chuẩn Shopee UI',
+        'Dựng khung giao diện điện thoại cho app mua hàng G-Xanh',
         'Gấp',
-        'Khởi tạo kiến trúc giao diện App G-Xanh Ver 2 (consumer-prototype.html): bộ màu xanh lá - cam Shopee (#15803d / #ee4d2d), thanh điều hướng đáy 5 tab (Chợ, GF-Track, Giỏ hàng, Thẻ Zalo, Tôi) có bong bóng đếm giỏ hàng.',
-        'Khung App Sàn TMĐT G-Xanh Ver 2 chuẩn Shopee UI | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png | 🔗 Link web: https://cho-xanh.vercel.app/gxanh'
+        'Làm khung màn hình 430px kiểu Shopee, gắn thanh menu 5 tab dưới đáy (Chợ, GF-Track, Giỏ hàng, Thẻ Zalo, Tôi).',
+        'https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png | https://cho-xanh.vercel.app/gxanh'
     ],
     [
         '5', '2026/11/10', 'Hoàng', '10/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Lập trình Header tìm kiếm nông sản thời gian thực, thanh cam kết chất lượng và dải lọc danh mục',
+        'Làm thanh tìm kiếm nông sản và các nút lọc theo nhóm hàng',
         'Gấp',
-        'Làm ô tìm kiếm lọc tức thì theo tên nông sản hoặc tên thôn làng (handleSearch); dải cam kết 3 cột (100% Nguồn gốc, Đổi trả 24h, Chuỗi lạnh 2-4 độ C) và thanh tag lọc (Rau củ hữu cơ, Thịt cá bản địa, Đặc sản đóng gói).',
-        'Thanh tìm kiếm & Bộ lọc danh mục nông sản G-Xanh | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png'
+        'Gõ tên món hoặc tên thôn là lọc ra sản phẩm luôn; thêm các nút lọc Rau củ hữu cơ, Thịt cá bản địa, Đặc sản đóng gói.',
+        'https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png'
     ],
     [
         '6', '2026/11/10', 'Hoàng', '10/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Làm Banner Phiên Chợ Sớm (Flash Sale) đếm ngược từng giây và lưới sản phẩm 2 cột chuẩn sàn TMĐT',
+        'Làm khung Phiên Chợ Sớm đếm ngược giờ và danh sách sản phẩm 2 cột',
         'Trong tuần',
-        'Lập trình đồng hồ đếm ngược phiên chợ chạy thực tế; thiết kế thẻ sản phẩm 2 cột (shopee-card) có nhãn GF-Track/OCOP góc trái, tem giảm giá (-15%, -21%) góc phải, nguồn gốc thôn, giá gạch ngang, đã bán và nút (+) thêm nhanh vào giỏ.',
-        'Màn 1: Sàn TMĐT Chợ G-Xanh Flash Sale & Lưới 2 cột | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png'
+        'Thêm đồng hồ đếm ngược phiên chợ sáng, làm thẻ sản phẩm 2 cột có giá giảm, số lượng đã bán và nút dấu cộng thêm nhanh vào giỏ.',
+        'https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png'
     ],
     [
         '7', '2026/11/11', 'Hoàng', '11/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Phát triển màn hình Chi tiết món hàng TMĐT với bộ chọn phân loại quy cách đóng gói tự động nhảy giá',
+        'Làm màn hình xem chi tiết món hàng và chọn quy cách đóng gói',
         'Gấp',
-        'Hiển thị ảnh lớn sản phẩm, dải giá khuyến mãi nổi bật, điểm đánh giá sao, số lượng đã bán; làm bộ nút chọn quy cách (Hũ 500ml / Hũ 1 Lít, Khay 500g / Khay 1kg) bấm vào tự động cập nhật giá bán tương ứng.',
-        'Màn 2: Chi tiết sản phẩm TMĐT chọn quy cách động | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/22_gxanh_chi_tiet_san_pham.png'
+        'Bấm vào sản phẩm hiện ảnh to, đánh giá sao, chọn loại Hũ 500ml hay 1 Lít (hoặc Khay 500g / 1kg) thì giá tiền tự đổi theo.',
+        'https://cho-xanh.vercel.app/output_images/22_gxanh_chi_tiet_san_pham.png'
     ],
     [
         '8', '2026/11/11', 'Hoàng', '11/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Làm bảng thông số nguồn gốc hộ sản xuất và thanh công cụ mua hàng cố định đáy (Sticky Bottom CTA)',
+        'Làm phần thông tin nguồn gốc nhà vườn và cụm nút Mua Ngay dưới đáy',
         'Trong tuần',
-        'Hiển thị rõ nguồn gốc thôn/nhà vườn, tiêu chuẩn tem GF-Track, hướng dẫn bảo quản; gắn thanh cố định đáy gồm cụm tăng giảm số lượng (stepper), nút Thêm vào giỏ (38px) và nút Mua Ngay cam Shopee (48px).',
-        'Thanh Sticky Bottom CTA Thêm vào giỏ & Mua Ngay | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/22_gxanh_chi_tiet_san_pham.png'
+        'Ghi rõ hàng của hộ nào, thôn nào, bảo quản ra sao; dưới đáy gắn nút tăng giảm số lượng, Thêm vào giỏ và Mua Ngay.',
+        'https://cho-xanh.vercel.app/output_images/22_gxanh_chi_tiet_san_pham.png'
     ],
     [
         '9', '2026/11/11', 'Hoàng', '11/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Lập trình màn hình Giỏ hàng TMĐT tự động gom nhóm theo từng Gian hàng/Thôn làng (CRUD đầy đủ)',
+        'Làm màn hình Giỏ hàng gom các món theo từng nhà vườn',
         'Gấp',
-        'Tự động gom các món trong giỏ theo từng gian hàng/thôn (Đặc sản nhà chị Hoa, Mật ong nhà Khánh - Thôn Gò Mít); hỗ trợ tăng giảm số lượng từng món, xóa từng món, xóa toàn bộ giỏ và tự tính lại tổng tiền.',
-        'Màn 3: Giỏ hàng thông minh gom theo gian hàng/thôn | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/23_gxanh_gio_hang_gom_shop.png'
+        'Món nào cùng một nhà vườn thì gom chung vào 1 khung giống Shopee, chỉnh thêm bớt số lượng hoặc xóa món là tự tính lại tổng tiền.',
+        'https://cho-xanh.vercel.app/output_images/23_gxanh_gio_hang_gom_shop.png'
     ],
     [
         '10', '2026/11/12', 'Hoàng', '12/11/2026', '2.5', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Xây dựng cửa sổ chọn mã giảm giá G-Xanh Voucher tự động khấu trừ vào đơn hàng',
+        'Làm popup chọn mã giảm giá trừ tiền trực tiếp trong giỏ hàng',
         'Trong tuần',
-        'Làm Bottom Sheet chọn mã giảm giá (VOUCHER25K giảm 25.000đ cho đơn từ 200k, GXANHFREESHIP miễn phí vận chuyển hỏa tốc 50.000đ), bấm Áp dụng tự động trừ thẳng vào tổng thanh toán giỏ hàng.',
-        'Cửa sổ chọn và áp dụng mã giảm giá G-Xanh Voucher | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/24_gxanh_modal_voucher.png'
+        'Thêm 2 mã giảm 25k với mã miễn phí ship hỏa tốc 50k, bấm áp dụng là trừ thẳng vào số tiền cần thanh toán.',
+        'https://cho-xanh.vercel.app/output_images/24_gxanh_modal_voucher.png'
     ],
     [
         '11', '2026/11/12', 'Hoàng', '12/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Phát triển màn hình Thẻ thành viên Zalo Mini App và lưới 3 thẻ số dư điểm ngang song song',
+        'Dựng màn hình Thẻ thành viên Zalo hiển thị 3 loại điểm',
         'Gấp',
-        'Thiết kế thẻ thành viên điện tử (Digital Pass) hiển thị tổng điểm khả dụng (565.000 điểm) và lưới 3 cột ngang bằng nhau (Điểm nạp: 505.000, Điểm thưởng: 0, Hoa hồng: 60.000) kèm nút Nạp điểm & Lịch sử.',
-        'Màn 4: Ví & Thẻ thành viên Zalo Mini App 3 nguồn điểm | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/26_gxanh_the_thanh_vien_zalo_qr60s.png'
+        'Làm thẻ thành viên màu xanh hiện tổng điểm đang có, chia 3 ô: Điểm nạp, Điểm thưởng, Hoa hồng giới thiệu.',
+        'https://cho-xanh.vercel.app/output_images/26_gxanh_the_thanh_vien_zalo_qr60s.png'
     ],
     [
         '12', '2026/11/12', 'Hoàng', '12/11/2026', '2.5', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Lập trình khối Mã QR Thanh Toán Dùng 1 Lần tự động làm mới sau mỗi 60 giây chống gian lận',
+        'Làm mã QR thanh toán tự đổi mới sau mỗi 60 giây',
         'Gấp',
-        'Vẽ ma trận QR SVG sắc nét kèm đồng hồ đếm ngược 60s tự động tái tạo mã mới khi hết giờ hoặc khi khách bấm đổi mã trực tiếp, ngăn chặn hoàn toàn việc dùng ảnh chụp màn hình tĩnh tại quầy.',
-        'Bộ sinh mã QR thanh toán động 60s dùng 1 lần | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/26_gxanh_the_thanh_vien_zalo_qr60s.png'
+        'Khách đưa mã QR này cho thu ngân quét trừ điểm, cứ hết 60s hoặc bấm vào là tự đổi mã mới để tránh chụp ảnh màn hình dùng lại.',
+        'https://cho-xanh.vercel.app/output_images/26_gxanh_the_thanh_vien_zalo_qr60s.png'
     ],
     [
         '13', '2026/11/13', 'Hoàng', '13/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Lập trình luồng Xác nhận đặt hàng (Checkout trừ điểm thẻ), Nạp điểm VietQR và Sổ lịch sử điểm',
+        'Làm phần xác nhận đặt đơn, nạp thêm điểm VietQR và lịch sử điểm',
         'Gấp',
-        'Kiểm tra số dư điểm khi đặt đơn, tự động trừ điểm thẻ, sinh mã đơn DH-xxxx; làm modal nạp điểm 3 gói (200k/500k/1tr) tự sinh nội dung chuyển khoản NAP CX-302401 và tự động ghi vào lịch sử biến động điểm.',
-        '3 Modal Đặt đơn, Nạp VietQR & Lịch sử điểm | 📸 Xem ảnh đặt đơn: https://cho-xanh.vercel.app/output_images/25_gxanh_modal_xac_nhan_dat_don.png | 📸 Ảnh nạp điểm: https://cho-xanh.vercel.app/output_images/27_gxanh_modal_nap_diem_vietqr.png | 📸 Ảnh lịch sử: https://cho-xanh.vercel.app/output_images/28_gxanh_modal_lich_su_diem.png'
+        'Bấm đặt hàng thì trừ điểm trong thẻ và lưu mã đơn; nếu thiếu điểm thì mở form nạp 200k/500k/1tr qua VietQR và ghi lại lịch sử cộng trừ điểm.',
+        'https://cho-xanh.vercel.app/output_images/25_gxanh_modal_xac_nhan_dat_don.png | https://cho-xanh.vercel.app/output_images/27_gxanh_modal_nap_diem_vietqr.png | https://cho-xanh.vercel.app/output_images/28_gxanh_modal_lich_su_diem.png'
     ],
     [
         '14', '2026/11/13', 'Hoàng', '13/11/2026', '3', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Xây dựng màn hình Tra cứu Tem GF-Track (3 tầng bằng chứng, 6 chặng) và Form đánh giá chất lượng',
+        'Làm màn hình tra cứu tem GF-Track 6 chặng và gửi đánh giá sao',
         'Gấp',
-        'Hiển thị huy hiệu Chính hãng GF-Track, 3 tầng bằng chứng (Nhật ký vùng trồng GPS, Chuỗi lạnh 3.2 độ C, Hồ sơ VietGAP), hành trình 6 chặng từ Xã Quy Đức đến kệ hàng và modal chấm sao + gắn tag nhận xét nhanh.',
-        'Màn 5: Tra cứu GF-Track & Đánh giá 5 sao | 📸 Xem ảnh GF-Track: https://cho-xanh.vercel.app/output_images/29_gxanh_tra_cuu_tem_gf_track.png | 📸 Ảnh đánh giá: https://cho-xanh.vercel.app/output_images/30_gxanh_modal_danh_gia_5sao.png'
+        'Hiện thông tin nhật ký vùng trồng, nhiệt độ xe lạnh 3.2 độ C, giấy kiểm nghiệm VietGAP, hành trình 6 chặng từ ruộng lên kệ và form chấm 5 sao.',
+        'https://cho-xanh.vercel.app/output_images/29_gxanh_tra_cuu_tem_gf_track.png | https://cho-xanh.vercel.app/output_images/30_gxanh_modal_danh_gia_5sao.png'
     ],
     [
         '15', '2026/11/13', 'Hoàng', '13/11/2026', '2', 'Green Village', 'Done', 'Vinh và BLĐ',
-        '[Ver 2 - G-Xanh] Kiểm thử toàn diện 5 màn hình & 6 modal (2.374 dòng code) và đẩy toàn bộ bản Ver 2 lên nhánh hoang-dev',
+        'Test lại toàn bộ các màn hình app G-Xanh và đẩy code lên nhánh hoang-dev',
         'Gấp',
-        'Test kỹ toàn bộ thao tác CRUD giỏ hàng, áp voucher, nạp điểm, đặt đơn, chống tràn chữ trên màn hình 375px-430px và đẩy commit c875d503 (2.845 dòng) lên kho Git nhánh origin/hoang-dev.',
-        'Đồng bộ hoàn tất App Sàn TMĐT G-Xanh Ver 2 lên nhánh hoang-dev | 📸 Xem ảnh thực tế: https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png | 🔗 Link web: https://cho-xanh.vercel.app/gxanh'
+        'Kiểm tra lại hết các nút thêm giỏ, áp mã, nạp điểm, đặt hàng trên khung điện thoại rồi commit đẩy lên nhánh hoang-dev.',
+        'https://cho-xanh.vercel.app/output_images/21_gxanh_trang_chu_cho_phien.png | https://cho-xanh.vercel.app/gxanh'
     ]
 ]
 
@@ -253,10 +247,11 @@ def to_11_cols(rows_12):
     for idx, r in enumerate(rows_12, 1):
         clean_r = [x.replace('"', "'").strip() for x in r]
         clean_r[0] = str(idx)
+        out_val = clean_r[11].replace(' | ', '\n')
         r_11 = [
             clean_r[0], clean_r[1], clean_r[2], clean_r[3],
             clean_r[5], clean_r[6], clean_r[7], clean_r[8],
-            clean_r[9], clean_r[10], clean_r[11]
+            clean_r[9], clean_r[10], out_val
         ]
         res.append(r_11)
     return res
@@ -279,28 +274,13 @@ for path, rows in [
 
 
 def format_output_html(val):
-    parts = val.split(' | ')
-    title = parts[0].strip()
+    urls = [u.strip() for u in val.replace('\n', ' | ').split(' | ') if u.strip()]
     links_html = []
-    for p in parts[1:]:
-        p = p.strip()
-        url_match = re.search(r'(https?://[^\s]+)', p)
-        if url_match:
-            url = url_match.group(1)
-            label = p.replace(url, '').strip() or '🔗 Xem chi tiết'
-            is_img = ('output_images/' in url)
-            bg = '#DEF7EC' if is_img else '#E0F2FE'
-            color = '#03543F' if is_img else '#0369A1'
-            links_html.append(
-                f'<a class="output-img-link" href="{html.escape(url)}" target="_blank" style="background:{bg}; color:{color};">{html.escape(label)}</a>'
-            )
-        else:
-            links_html.append(f'<span>{html.escape(p)}</span>')
-    res = f'<div class="output-box"><strong>{html.escape(title)}</strong>'
-    if links_html:
-        res += '<br>' + ' '.join(links_html)
-    res += '</div>'
-    return res
+    for u in urls:
+        links_html.append(
+            f'<div><a href="{html.escape(u)}" target="_blank" style="color:#0284C7; text-decoration:underline; word-break:break-all;">{html.escape(u)}</a></div>'
+        )
+    return '\n'.join(links_html)
 
 
 def build_tbody_html(rows_12):
@@ -335,7 +315,8 @@ def make_tsv(rows_11, include_header=True):
     if include_header:
         lines.append('\t'.join(HEADER_11))
     for r in rows_11:
-        lines.append('\t'.join(r))
+        r_single_line = [col.replace('\n', ' | ') for col in r]
+        lines.append('\t'.join(r_single_line))
     return '\n'.join(lines)
 
 
@@ -345,7 +326,7 @@ with open(APPS_SCRIPT_PATH, 'r', encoding='utf-8') as f:
 WEEKS_META = {
     'w1': {
         'tab_title': 'Tuần 1 - 2/11 - 6/11',
-        'subtitle': 'Thứ 2 (02/11) → Thứ 6 (06/11) · Hoàn thiện & Nghiệm thu Green Village Ver 1 (Dashboard Xã Actor 3, Portal 3 nền tảng, Dual Studio)',
+        'subtitle': 'Thứ 2 (02/11) → Thứ 6 (06/11) · Hoàn thiện Green Village Ver 1',
         'date_range': '02/11/2026 - 06/11/2026 (5 buổi · 40 giờ)',
         'count': len(w1_11),
         'csv_file': CSV_W1_PATH,
@@ -355,7 +336,7 @@ WEEKS_META = {
     },
     'w2': {
         'tab_title': 'Tuần 2 - 9/11 - 13/11',
-        'subtitle': 'Thứ 2 (09/11) → Thứ 6 (13/11) · Phát triển Ver 2 App G-Xanh — Sàn Thương Mại Điện Tử Shopee UI & Master Plan 15 Phân hệ (nhánh hoang-dev)',
+        'subtitle': 'Thứ 2 (09/11) → Thứ 6 (13/11) · Phát triển Ver 2 App G-Xanh (nhánh hoang-dev)',
         'date_range': '09/11/2026 - 13/11/2026 (5 buổi · 40 giờ)',
         'count': len(w2_11),
         'csv_file': CSV_W2_PATH,
@@ -364,8 +345,8 @@ WEEKS_META = {
         'tsv_data_only': make_tsv(w2_11, False),
     },
     'all': {
-        'tab_title': 'Gộp cả 2 Tuần (Tuần 1 Ver 1 + Tuần 2 Ver 2 G-Xanh)',
-        'subtitle': 'Tổng hợp 30 đầu việc của 2 tuần đầu tháng 11 (02/11 - 13/11/2026) · Chuẩn 11 Cột Google Sheet',
+        'tab_title': 'Gộp cả 2 Tuần (Tuần 1 + Tuần 2)',
+        'subtitle': 'Tổng hợp 30 đầu việc của 2 tuần đầu tháng 11 (02/11 - 13/11/2026)',
         'date_range': '02/11/2026 - 13/11/2026 (10 buổi · 80 giờ)',
         'count': len(all_11),
         'csv_file': CSV_ALL_PATH,
@@ -382,7 +363,7 @@ html_content = f'''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[NEXS - GreenFi] Báo Cáo Tuần Tháng 11 (Ver 1 GreenVillage & Ver 2 App G-Xanh) - Hoàng</title>
+  <title>[NEXS - GreenFi] Báo Cáo Tuần Tháng 11 - Hoàng</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text y=%2226%22 font-size=%2224%22>📊</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -411,207 +392,71 @@ html_content = f'''<!DOCTYPE html>
       z-index: 100;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }}
-    .sheets-left {{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }}
+    .sheets-left {{ display: flex; align-items: center; gap: 12px; }}
     .sheets-icon {{
-      width: 38px;
-      height: 38px;
-      background: #E8F5E9;
-      color: #1B7A43;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: bold;
+      width: 38px; height: 38px; background: #E8F5E9; color: #1B7A43;
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: bold;
     }}
-    .sheets-title-box h1 {{
-      font-size: 16px;
-      font-weight: 700;
-      color: #111827;
-      margin: 0;
-    }}
-    .sheets-title-box div {{
-      font-size: 12px;
-      color: #6B7280;
-      margin-top: 2px;
-    }}
-    .sheets-actions {{
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }}
+    .sheets-title-box h1 {{ font-size: 16px; font-weight: 700; color: #111827; margin: 0; }}
+    .sheets-title-box div {{ font-size: 12px; color: #6B7280; margin-top: 2px; }}
+    .sheets-actions {{ display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }}
     .btn-action {{
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 12.5px;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid transparent;
-      text-decoration: none;
-      transition: all 0.15s ease;
+      display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+      border-radius: 6px; font-size: 12.5px; font-weight: 600; cursor: pointer;
+      border: 1px solid transparent; text-decoration: none; transition: all 0.15s ease;
       white-space: nowrap !important;
     }}
-    .btn-purple {{
-      background: #7C3AED;
-      color: #FFFFFF;
-      box-shadow: 0 2px 4px rgba(124,58,237,0.25);
-    }}
+    .btn-purple {{ background: #7C3AED; color: #FFFFFF; }}
     .btn-purple:hover {{ background: #6D28D9; }}
-    .btn-green {{
-      background: #1B7A43;
-      color: #FFFFFF;
-      box-shadow: 0 1px 2px rgba(27,122,67,0.2);
-    }}
+    .btn-green {{ background: #1B7A43; color: #FFFFFF; }}
     .btn-green:hover {{ background: #145E33; }}
-    .btn-outline {{
-      background: #FFFFFF;
-      color: #374151;
-      border-color: #D1D5DB;
-    }}
+    .btn-outline {{ background: #FFFFFF; color: #374151; border-color: #D1D5DB; }}
     .btn-outline:hover {{ background: #F3F4F6; }}
-    .btn-blue {{
-      background: #0284C7;
-      color: #FFFFFF;
-    }}
+    .btn-blue {{ background: #0284C7; color: #FFFFFF; }}
     .btn-blue:hover {{ background: #0369A1; }}
-    .btn-amber {{
-      background: #D97706;
-      color: #FFFFFF;
-    }}
+    .btn-amber {{ background: #D97706; color: #FFFFFF; }}
     .btn-amber:hover {{ background: #B45309; }}
 
     .week-switcher-banner {{
-      background: #ECFDF5;
-      border-bottom: 1px solid #A7F3D0;
-      padding: 10px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      background: #ECFDF5; border-bottom: 1px solid #A7F3D0; padding: 10px 20px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
     }}
-    .week-tabs-top {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }}
+    .week-tabs-top {{ display: flex; flex-wrap: wrap; gap: 8px; }}
     .week-tab-btn {{
-      padding: 7px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      cursor: pointer;
-      border: 1px solid #6EE7B7;
-      background: #FFFFFF;
-      color: #065F46;
-      transition: all 0.15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700;
+      cursor: pointer; border: 1px solid #6EE7B7; background: #FFFFFF; color: #065F46;
+      display: inline-flex; align-items: center; gap: 6px;
     }}
-    .week-tab-btn:hover {{ background: #D1FAE5; }}
-    .week-tab-btn.active {{
-      background: #1B7A43;
-      color: #FFFFFF;
-      border-color: #1B7A43;
-      box-shadow: 0 2px 5px rgba(27, 122, 67, 0.25);
-    }}
-    .guide-hint {{
-      font-size: 12px;
-      color: #065F46;
-      background: #D1FAE5;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-weight: 500;
-    }}
+    .week-tab-btn.active {{ background: #1B7A43; color: #FFFFFF; border-color: #1B7A43; }}
 
     .sheets-toolbar {{
-      background: #FFFFFF;
-      border-bottom: 1px solid #E5E7EB;
-      padding: 10px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      background: #FFFFFF; border-bottom: 1px solid #E5E7EB; padding: 10px 20px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
     }}
-    .toolbar-metrics {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }}
+    .toolbar-metrics {{ display: flex; flex-wrap: wrap; gap: 8px; }}
     .metric-pill {{
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 10px;
-      background: #F3F4F6;
-      border: 1px solid #E5E7EB;
-      border-radius: 999px;
-      font-size: 11.5px;
-      color: #374151;
+      display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px;
+      background: #F3F4F6; border: 1px solid #E5E7EB; border-radius: 999px;
+      font-size: 11.5px; color: #374151;
     }}
     .metric-pill strong {{ color: #111827; }}
     .metric-pill.success {{ background: #DEF7EC; border-color: #BCF0DA; color: #03543F; }}
 
     .search-box {{
-      display: flex;
-      align-items: center;
-      background: #F9FAFB;
-      border: 1px solid #D1D5DB;
-      border-radius: 6px;
-      padding: 5px 10px;
-      width: 280px;
+      display: flex; align-items: center; background: #F9FAFB; border: 1px solid #D1D5DB;
+      border-radius: 6px; padding: 5px 10px; width: 280px;
     }}
-    .search-box input {{
-      border: none;
-      background: transparent;
-      outline: none;
-      font-size: 12.5px;
-      width: 100%;
-      color: #111827;
-    }}
+    .search-box input {{ border: none; background: transparent; outline: none; font-size: 12.5px; width: 100%; }}
 
-    .grid-container {{
-      width: 100%;
-      overflow-x: auto;
-      background: #FFFFFF;
-      border-bottom: 1px solid #E5E7EB;
-    }}
-    table {{
-      width: 100%;
-      min-width: 1550px;
-      border-collapse: collapse;
-      text-align: left;
-    }}
+    .grid-container {{ width: 100%; overflow-x: auto; background: #FFFFFF; border-bottom: 1px solid #E5E7EB; }}
+    table {{ width: 100%; min-width: 1550px; border-collapse: collapse; text-align: left; }}
     th {{
-      background: #1B7A43;
-      color: #FFFFFF;
-      font-weight: 600;
-      font-size: 11.5px;
-      padding: 10px 12px;
-      border: 1px solid #145E33;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      position: sticky;
-      top: 63px;
-      z-index: 10;
+      background: #1B7A43; color: #FFFFFF; font-weight: 600; font-size: 11.5px;
+      padding: 10px 12px; border: 1px solid #145E33; text-transform: uppercase;
+      position: sticky; top: 63px; z-index: 10;
     }}
-    td {{
-      padding: 13px 15px;
-      border: 1px solid #E5E7EB;
-      vertical-align: middle;
-      font-size: 13px;
-      line-height: 1.55;
-    }}
+    td {{ padding: 12px 14px; border: 1px solid #E5E7EB; vertical-align: middle; font-size: 13px; line-height: 1.5; }}
     tr:hover td {{ background-color: #F8FAFC; }}
 
     .col-stt {{ width: 50px; text-align: center; font-weight: 600; color: #6B7280; }}
@@ -621,113 +466,39 @@ html_content = f'''<!DOCTYPE html>
     .col-proj {{ width: 130px; font-weight: 600; color: #1E3A8A; text-align: center; }}
     .col-status {{ width: 115px; text-align: center; }}
     .col-src {{ width: 125px; color: #4B5563; }}
-    .col-task {{ width: 380px; font-weight: 500; color: #111827; }}
+    .col-task {{ width: 350px; font-weight: 500; color: #111827; }}
     .col-prio {{ width: 115px; text-align: center; }}
-    .col-note {{ width: 400px; color: #374151; }}
-    .col-output {{ min-width: 420px; }}
+    .col-note {{ width: 390px; color: #374151; }}
+    .col-output {{ min-width: 420px; font-size: 12px; }}
 
     .badge {{
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 11.5px;
-      font-weight: 600;
-      text-align: center;
-      white-space: nowrap;
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 11.5px; font-weight: 600; text-align: center; white-space: nowrap;
     }}
     .badge-done {{ background: #DEF7EC; color: #03543F; border: 1px solid #BCF0DA; }}
-    .badge-inprogress {{ background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }}
     .badge-gap {{ background: #FDE8E8; color: #9B1C1C; border: 1px solid #F8B4B4; }}
-    .badge-cao {{ background: #FFEDD5; color: #9A3412; border: 1px solid #FDBA74; }}
     .badge-tb {{ background: #E0E7FF; color: #3730A3; border: 1px solid #C7D2FE; }}
     .badge-hour {{
-      display: inline-block;
-      padding: 1px 6px;
-      background: #E8F5E9;
-      color: #1B7A43;
-      border: 1px solid #C8E6C9;
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 11px;
+      display: inline-block; padding: 1px 6px; background: #E8F5E9; color: #1B7A43;
+      border: 1px solid #C8E6C9; border-radius: 4px; font-weight: 700; font-size: 11px;
     }}
-
-    .output-box {{
-      background: #F9FAFB;
-      border: 1px solid #E5E7EB;
-      border-radius: 6px;
-      padding: 6px 10px;
-      font-size: 12px;
-    }}
-    .output-img-link {{
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 5px;
-      margin-right: 5px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.15s ease;
-    }}
-    .output-img-link:hover {{ opacity: 0.85; }}
 
     .gsheet-bottom-bar {{
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 42px;
-      background: #F1F3F4;
-      border-top: 1px solid #DADCE0;
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
-      gap: 4px;
-      z-index: 200;
+      position: fixed; bottom: 0; left: 0; right: 0; height: 42px;
+      background: #F1F3F4; border-top: 1px solid #DADCE0; display: flex; align-items: center;
+      padding: 0 16px; gap: 4px; z-index: 200;
     }}
     .gsheet-tab {{
-      height: 100%;
-      padding: 0 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #5F6368;
-      background: transparent;
-      border: none;
-      border-right: 1px solid #DADCE0;
-      cursor: pointer;
-      transition: all 0.15s;
+      height: 100%; padding: 0 16px; display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12.5px; font-weight: 600; color: #5F6368; background: transparent;
+      border: none; border-right: 1px solid #DADCE0; cursor: pointer;
     }}
-    .gsheet-tab:hover {{ background: #E8EAED; color: #202124; }}
-    .gsheet-tab.active {{
-      background: #FFFFFF;
-      color: #1B7A43;
-      border-top: 3px solid #1B7A43;
-      font-weight: 700;
-    }}
+    .gsheet-tab.active {{ background: #FFFFFF; color: #1B7A43; border-top: 3px solid #1B7A43; font-weight: 700; }}
 
     .toast {{
-      position: fixed;
-      bottom: 56px;
-      right: 24px;
-      background: #111827;
-      color: #FFFFFF;
-      padding: 12px 20px;
-      border-radius: 8px;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-      font-size: 13px;
-      font-weight: 500;
-      display: none;
-      z-index: 10000;
-      animation: fadeIn 0.2s ease;
-    }}
-    @keyframes fadeIn {{
-      from {{ opacity: 0; transform: translateY(10px); }}
-      to {{ opacity: 1; transform: translateY(0); }}
+      position: fixed; bottom: 56px; right: 24px; background: #111827; color: #FFFFFF;
+      padding: 12px 20px; border-radius: 8px; font-size: 13px; font-weight: 500;
+      display: none; z-index: 10000;
     }}
   </style>
 </head>
@@ -736,13 +507,13 @@ html_content = f'''<!DOCTYPE html>
     <div class="sheets-left">
       <div class="sheets-icon">📊</div>
       <div class="sheets-title-box">
-        <h1 id="header-title">[NEXS - GreenFi] Báo Cáo Theo Tuần — Tuần 1 - 2/11 - 6/11 (Ver 1 Green Village)</h1>
-        <div id="header-subtitle">Thứ 2 (02/11) → Thứ 6 (06/11) · Hoàn thiện & Nghiệm thu Green Village Ver 1</div>
+        <h1 id="header-title">Báo Cáo Công Việc Theo Tuần — Tuần 2 - 9/11 - 13/11</h1>
+        <div id="header-subtitle">Văn phong ngắn gọn tự nhiên · Chỉ gắn link trực tiếp ở cột Output</div>
       </div>
     </div>
     <div class="sheets-actions">
       <button class="btn-action btn-purple" onclick="copyAppsScript()">
-        ⚡ Copy Mã Apps Script (Tự Động Điền Cả 2 Tuần + Link Ảnh)
+        ⚡ Copy Mã Apps Script (Tự Động Điền Cả 2 Tuần)
       </button>
       <button class="btn-action btn-green" onclick="copyWithHeader()">
         📋 Copy Kèm Tiêu Đề (Dán vào ô A1)
@@ -750,7 +521,7 @@ html_content = f'''<!DOCTYPE html>
       <button class="btn-action btn-outline" onclick="copyDataOnly()">
         📋 Copy Chỉ Dữ Liệu (Dán vào ô A2)
       </button>
-      <a class="btn-action btn-blue" id="btn-download-csv" href="./{CSV_W1_PATH}" download>
+      <a class="btn-action btn-blue" id="btn-download-csv" href="./{CSV_W2_PATH}" download>
         📥 Tải CSV Tuần Này
       </a>
       <a class="btn-action btn-amber" href="./{XLS_PATH}" download>
@@ -761,33 +532,29 @@ html_content = f'''<!DOCTYPE html>
 
   <div class="week-switcher-banner">
     <div class="week-tabs-top">
-      <button class="week-tab-btn active" id="top-btn-w1" onclick="selectWeek('w1')">
-        📅 Tuần 1 - 2/11 - 6/11 · Green Village Ver 1 (15 việc)
+      <button class="week-tab-btn" id="top-btn-w1" onclick="selectWeek('w1')">
+        📅 Tuần 1 - 2/11 - 6/11 (Ver 1 Green Village)
       </button>
-      <button class="week-tab-btn" id="top-btn-w2" onclick="selectWeek('w2')">
-        🛒 Tuần 2 - 9/11 - 13/11 · App G-Xanh Ver 2 Sàn TMĐT (15 việc)
+      <button class="week-tab-btn active" id="top-btn-w2" onclick="selectWeek('w2')">
+        🛒 Tuần 2 - 9/11 - 13/11 (Ver 2 App G-Xanh)
       </button>
       <button class="week-tab-btn" id="top-btn-all" onclick="selectWeek('all')">
         📚 Gộp Cả 2 Tuần (30 việc)
       </button>
-    </div>
-    <div class="guide-hint">
-      📸 <strong>Đã gắn đầy đủ ảnh chụp từng tính năng:</strong> Bấm vào ảnh thu nhỏ hoặc nút <code>📸 Xem ảnh thực tế</code> ở cột cuối để xem ảnh full HD!
     </div>
   </div>
 
   <div class="sheets-toolbar">
     <div class="toolbar-metrics">
       <div class="metric-pill">👤 Người làm: <strong>Hoàng</strong></div>
-      <div class="metric-pill">🎯 Dự án: <strong>Green Village (Ver 1 & Ver 2 G-Xanh)</strong></div>
-      <div class="metric-pill">📅 Lịch làm việc: <strong id="metric-date-range">02/11/2026 - 06/11/2026 (5 buổi · 40 giờ)</strong></div>
-      <div class="metric-pill success">⏱️ Định mức: <strong>8.0h/ngày · 100% Done</strong></div>
+      <div class="metric-pill">🎯 Dự án: <strong>Green Village</strong></div>
+      <div class="metric-pill">📅 Lịch làm việc: <strong id="metric-date-range">09/11/2026 - 13/11/2026 (5 buổi · 40 giờ)</strong></div>
+      <div class="metric-pill success">⏱️ Định mức: <strong>8.0h/ngày · Done</strong></div>
       <div class="metric-pill">📋 Số lượng: <strong id="metric-count">15 Đầu việc</strong></div>
-      <div class="metric-pill">📌 Nguồn: <strong>Vinh và BLĐ</strong></div>
     </div>
     <div class="search-box">
       <span style="color:#6B7280; margin-right: 6px;">🔍</span>
-      <input type="text" id="searchInput" placeholder="Tìm kiếm nhanh đầu việc, ngày, Ver 1, Ver 2..." onkeyup="filterTable()">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm nhanh..." onkeyup="filterTable()">
     </div>
   </div>
 
@@ -805,7 +572,7 @@ html_content = f'''<!DOCTYPE html>
           <th class="col-task">Đầu việc</th>
           <th class="col-prio">Thứ tự ưu tiên</th>
           <th class="col-note">Ghi chú</th>
-          <th class="col-output">Output / Tài liệu & Ảnh chụp tính năng</th>
+          <th class="col-output">Output/Tài liệu</th>
         </tr>
       </thead>
       <tbody id="table-body">
@@ -814,9 +581,9 @@ html_content = f'''<!DOCTYPE html>
   </div>
 
   <div class="gsheet-bottom-bar">
-    <span style="font-size: 12px; color: #5F6368; margin-right: 8px;">📑 Các trang tính (Tabs trên Google Sheet):</span>
-    <button class="gsheet-tab active" id="bot-btn-w1" onclick="selectWeek('w1')">Tuần 1 - 2/11 - 6/11 (Ver 1 Green Village)</button>
-    <button class="gsheet-tab" id="bot-btn-w2" onclick="selectWeek('w2')">Tuần 2 - 9/11 - 13/11 (Ver 2 App G-Xanh)</button>
+    <span style="font-size: 12px; color: #5F6368; margin-right: 8px;">📑 Tabs:</span>
+    <button class="gsheet-tab" id="bot-btn-w1" onclick="selectWeek('w1')">Tuần 1 - 2/11 - 6/11</button>
+    <button class="gsheet-tab active" id="bot-btn-w2" onclick="selectWeek('w2')">Tuần 2 - 9/11 - 13/11</button>
     <button class="gsheet-tab" id="bot-btn-all" onclick="selectWeek('all')">Tổng hợp 2 Tuần</button>
   </div>
 
@@ -825,7 +592,7 @@ html_content = f'''<!DOCTYPE html>
   <textarea id="hiddenAppsScript" style="position:fixed; left:-9999px; top:-9999px;">{html.escape(apps_script_code)}</textarea>
 
   <div id="toast" class="toast">
-    <span id="toastMsg">✅ Đã sao chép vào bộ nhớ tạm!</span>
+    <span id="toastMsg">✅ Đã sao chép!</span>
   </div>
 
   <script>
@@ -837,7 +604,7 @@ html_content = f'''<!DOCTYPE html>
       const info = WEEKS_DATA[weekKey];
       if (!info) return;
 
-      document.getElementById('header-title').innerText = '[NEXS - GreenFi] Báo Cáo Công Việc Theo Tuần — ' + info.tab_title;
+      document.getElementById('header-title').innerText = 'Báo Cáo Công Việc Theo Tuần — ' + info.tab_title;
       document.getElementById('header-subtitle').innerText = info.subtitle;
       document.getElementById('metric-date-range').innerText = info.date_range;
       document.getElementById('metric-count').innerText = info.count + ' Đầu việc';
@@ -859,7 +626,7 @@ html_content = f'''<!DOCTYPE html>
       const area = document.getElementById('hiddenAppsScript');
       area.select();
       document.execCommand('copy');
-      showToast('⚡ Đã copy toàn bộ mã Google Apps Script (kèm link ảnh)! Hãy dán vào Apps Script rồi bấm ▶️ Chạy (Run)!');
+      showToast('⚡ Đã copy mã Google Apps Script!');
     }}
 
     function copyWithHeader() {{
@@ -867,7 +634,7 @@ html_content = f'''<!DOCTYPE html>
       const area = document.getElementById('hiddenTsvHeader');
       area.select();
       document.execCommand('copy');
-      showToast('✅ Đã copy CẢ TIÊU ĐỀ + ' + info.count + ' dòng của [' + info.tab_title + ']! Hãy bấm vào ô A1 trên Google Sheet rồi dán (Ctrl+V).');
+      showToast('✅ Đã copy kèm tiêu đề (' + info.count + ' dòng)!');
     }}
 
     function copyDataOnly() {{
@@ -875,14 +642,14 @@ html_content = f'''<!DOCTYPE html>
       const area = document.getElementById('hiddenTsvData');
       area.select();
       document.execCommand('copy');
-      showToast('✅ Đã copy ' + info.count + ' dòng dữ liệu của [' + info.tab_title + ']! Hãy bấm vào ô A2 rồi dán (Ctrl+V).');
+      showToast('✅ Đã copy ' + info.count + ' dòng dữ liệu!');
     }}
 
     function showToast(msg) {{
       const toast = document.getElementById('toast');
       document.getElementById('toastMsg').innerText = msg;
       toast.style.display = 'block';
-      setTimeout(() => {{ toast.style.display = 'none'; }}, 5000);
+      setTimeout(() => {{ toast.style.display = 'none'; }}, 4000);
     }}
 
     function filterTable() {{
@@ -1045,4 +812,4 @@ ws2 = build_worksheet_xml("Tuan 2 - 9_11 - 13_11", w2_11)
 with open(XLS_PATH, 'w', encoding='utf-8') as f:
     f.write(xls_header + ws1 + '\n' + ws2 + '\n</Workbook>')
 
-print("Updated all files with screenshot links and thumbnails successfully!")
+print("Updated all files with short natural text and bare links!")

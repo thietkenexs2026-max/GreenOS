@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hồ Sơ Bản Vẽ Kỹ Thuật 2D CAD — 181 LACASTA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      background: #e2e8f0;
+      color: #0f172a;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.22);
+    }
+    .top-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .top-title span.badge {
+      background: #16a34a;
+      color: #ffffff;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+      padding: 7px 13px;
+      border-radius: 7px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn:hover {
+      background: #334155;
+      color: #ffffff;
+    }
+    .btn.active {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+    }
+    .btn.print-btn {
+      background: #15803d;
+      color: #ffffff;
+      border-color: #22c55e;
+    }
+    .btn.print-btn:hover {
+      background: #16a34a;
+    }
+    .sheets-container {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .sheet-card {
+      width: 100%;
+      max-width: 1680px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      padding: 12px;
+      overflow: hidden;
+    }
+    .sheet-card svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media print {
+      @page {
+        size: A3 landscape;
+        margin: 6mm;
+      }
+      body {
+        background: #ffffff !important;
+      }
+      .top-bar {
+        display: none !important;
+      }
+      .sheets-container {
+        padding: 0 !important;
+        gap: 0 !important;
+      }
+      .sheet-card {
+        max-width: none !important;
+        width: 408mm !important;
+        height: 285mm !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        page-break-after: always;
+        break-after: page;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .sheet-card:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+      .sheet-card svg {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-title">
+      <span>📐 HỒ SƠ BẢN VẼ KỸ THUẬT 2D CAD — 181 LACASTA</span>
+      <span class="badge">TỶ LỆ 1:100 • CHUẨN A3</span>
+    </div>
+    <div class="controls">
+      <button class="btn active" id="tab-both">📋 Xem Cả 2 Bản (01 + 02)</button>
+      <button class="btn" id="tab-furn">🛒 Chỉ Bản 01: Có Đồ Đạc</button>
+      <button class="btn" id="tab-empty">🏛️ Chỉ Bản 02: Không Đồ Đạc (Hiện Trạng)</button>
+      <button class="btn" id="btn-theme">📄 Nền Trắng Hồ Sơ</button>
+      <button class="btn print-btn" onclick="window.print()">🖨️ In / Xuất PDF (A3 Ngang)</button>
+    </div>
+  </header>
+
+  <main class="sheets-container" id="sheets-root"></main>
+
+  <svg id="svg-stage" style="display:none;"><g id="cad-pan-zoom"><g id="cad-content"></g></g></svg>
+
+  <script>
+    const S = {
+      frontW: 5.00,
+      frontL: 4.00,
+      height: 2.80,
+      uWcW: 0.90,
+      uOppW: 0.30,
+      uLen: 1.83,
+      stepH: 0.15,
+      rearL: 4.28,
+      storeToStair: 2.03,
+      stairW: 1.00,
+      stairL: 1.30,
+      rearW: 3.10
+    };
+
+    const SCALE = 88; // Generous scale (88px = 1.00m) so every label is spacious and crisp
+    let isVertical = true;
+    let show2DFurn = true;
+    let isWhitePaper2D = true; // Default to clean White Engineering Dossier theme for maximum readability!
+    const cadPanZoom = document.getElementById('cad-pan-zoom');
+    const cadContent = document.getElementById('cad-content');
+    const svgStage = document.getElementById('svg-stage');
+    let zoom = 0.68, panX = 185, panY = 76;
+
+    function applyTransform() {
+      cadPanZoom.setAttribute('transform', `translate(${panX}, ${panY}) scale(${zoom})`);
+    }
+
+    // Standard ISO/TCVN Dimension Line:
+    // Fixed signed normal so:
+    // - For horizontal lines: offset < 0 is ALWAYS ABOVE (-Y), offset > 0 is ALWAYS BELOW (+Y).
+    // - For vertical lines: offset < 0 is ALWAYS LEFT (-X, outside left wall), offset > 0 is ALWAYS RIGHT (+X, outside right wall).
+    function drawDim(x1, y1, x2, y2, offset, labelText, color = '#0284c7', markerId = 'dim-arrow', isBig = false) {
+      const dx = x2 - x1, dy = y2 - y1;
+      const len = Math.hypot(dx, dy);
+      if (len < 1) return '';
+      const isVertLine = Math.abs(dy) > Math.abs(dx);
+      const nx = isVertLine ? 1 : 0;
+      const ny = isVertLine ? 0 : 1;
+      const ox1 = x1 + nx * offset, oy1 = y1 + ny * offset;
+      const ox2 = x2 + nx * offset, oy2 = y2 + ny * offset;
+      const extOver = offset > 0 ? 6 : -6;
+      const signOffset = offset >= 0 ? 1 : -1;
+      const mx = (ox1 + ox2) / 2, my = (oy1 + oy2) / 2;
+      const fontSize = isBig ? 10.8 : 9.5;
+      const boxH = isBig ? 21 : 18;
+      const boxW = Math.min(len - 4, Math.max(38, labelText.length * (isBig ? 6.5 : 5.8) + 12));
+      const pillBg = isWhitePaper2D ? '#ffffff' : '#09101d';
+      const rotAttr = isVertLine ? `transform="rotate(-90, ${mx}, ${my})"` : '';
+      return `
+        <g>
+          <line x1="${x1 + nx * signOffset * 3}" y1="${y1 + ny * signOffset * 3}" x2="${ox1 + nx * extOver}" y2="${oy1 + ny * extOver}" stroke="${color}" stroke-width="1" stroke-opacity="0.55" />
+          <line x1="${x2 + nx * signOffset * 3}" y1="${y2 + ny * signOffset * 3}" x2="${ox2 + nx * extOver}" y2="${oy2 + ny * extOver}" stroke="${color}" stroke-width="1" stroke-opacity="0.55" />
+          <line x1="${ox1}" y1="${oy1}" x2="${ox2}" y2="${oy2}" stroke="${color}" stroke-width="${isBig ? 2.0 : 1.4}" marker-start="url(#${markerId})" marker-end="url(#${markerId})" />
+          <g ${rotAttr}>
+            <rect x="${mx - boxW / 2}" y="${my - boxH / 2}" width="${boxW}" height="${boxH}" rx="4" fill="${pillBg}" stroke="${color}" stroke-width="${isBig ? 1.5 : 1.1}" />
+            <text x="${mx}" y="${my + 3.5}" fill="${color}" font-family="'JetBrains Mono', monospace" font-size="${fontSize}" font-weight="800" text-anchor="middle">${labelText}</text>
+          </g>
+        </g>
+      `;
+    }
+
+    // Internal clearance / aisle dimension arrow inside the room:
+    // NOTE: Keeps pill HORIZONTAL by default so short vertical gaps (like 0.38m = 33px or 0.60m = 52px)
+    // hold a compact 15px-tall horizontal pill without EVER overflowing into shelves above/below!
+    // Pass rotateVert = true ONLY for long vertical dimension lines (> 1.8m).
+    function drawInlineClearance(x1, y1, x2, y2, labelText, color = '#c2410c', markerId = 'dim-arrow-amber', rotateVert = false) {
+      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+      const boxW = Math.max(38, labelText.length * 5.8 + 10);
+      const boxH = 15.5;
+      const pillBg = isWhitePaper2D ? '#fffbeb' : '#09101d';
+      const rotAttr = rotateVert ? `transform="rotate(-90, ${mx}, ${my})"` : '';
+      return `
+        <g>
+          <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="1.4" stroke-dasharray="3,2" marker-start="url(#${markerId})" marker-end="url(#${markerId})" />
+          <g ${rotAttr}>
+            <rect x="${mx - boxW / 2}" y="${my - boxH / 2}" width="${boxW}" height="${boxH}" rx="3.5" fill="${pillBg}" stroke="${color}" stroke-width="1.1" />
+            <text x="${mx}" y="${my + 3.1}" fill="${color}" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="800" text-anchor="middle">${labelText}</text>
+          </g>
+        </g>
+      `;
+    }
+
+    function renderCAD() {
+      const distFrontToStep = S.frontL + S.uLen;             // 5.83m
+      const distStepToBack = S.rearL;                        // 4.28m
+      const totalLengthM = distFrontToStep + distStepToBack; // 10.11m
+      const storeSegmentM = S.rearL - S.storeToStair - S.stairL; // 0.95m
+
+      const stairL_px = S.stairL * SCALE;
+      const storeToStair_px = S.storeToStair * SCALE;
+      const storeSeg_px = storeSegmentM * SCALE;
+      const uLen_px = S.uLen * SCALE;
+      const frontL_px = S.frontL * SCALE;
+
+      const yBack = 0;
+      const yStairBoxBot = stairL_px;                   // 1.30m from back (114.4px)
+      const yStoreBot = yStairBoxBot + storeToStair_px; // 3.33m from back (293.0px)
+      const yStep15 = yStoreBot + storeSeg_px;          // 4.28m from back (376.6px)
+      const yFirstU = yStep15 + uLen_px;                // 6.11m from back (537.7px)
+      const yFront = yFirstU + frontL_px;               // 10.11m from back (889.7px)
+
+      const xLeft0 = 0;
+      const xLeftWC = S.uWcW * SCALE;                   // 0.90m (79.2px)
+      const xLeftStairBox = (S.uWcW + S.stairW) * SCALE;// 1.90m (167.2px)
+      const xRightAfterU = (S.frontW - S.uOppW) * SCALE;// 4.70m (413.6px)
+      const xRight0 = S.frontW * SCALE;                 // 5.00m (440.0px)
+
+      const P = isWhitePaper2D ? {
+        canvasBg: '#f1f5f9',
+        sheetBg: '#ffffff',
+        sheetBorder: '#cbd5e1',
+        floorFill: '#fcfaf5',
+        wallStroke: '#0f172a',
+        textMain: '#0f172a',
+        textMuted: '#475569',
+        blue: '#0369a1',
+        gold: '#b45309',
+        green: '#15803d',
+        rose: '#be123c',
+        amber: '#c2410c',
+        wcFill: '#ffe4e6',
+        storeFill: '#dcfce7',
+        stairFill: '#e0f2fe',
+        uRightFill: '#fef3c7',
+        tableBg: '#ffffff',
+        tableHeaderBg: '#0f172a',
+        rowEven: '#f8fafc',
+        rowOdd: '#ffffff',
+        rowBorder: '#cbd5e1'
+      } : {
+        canvasBg: '#070b12',
+        sheetBg: '#0b1322',
+        sheetBorder: '#1e293b',
+        floorFill: '#141f31',
+        wallStroke: '#f8fafc',
+        textMain: '#f8fafc',
+        textMuted: '#94a3b8',
+        blue: '#38bdf8',
+        gold: '#facc15',
+        green: '#4ade80',
+        rose: '#fb7185',
+        amber: '#fb923c',
+        wcFill: 'rgba(251, 113, 133, 0.22)',
+        storeFill: 'rgba(74, 222, 128, 0.18)',
+        stairFill: 'rgba(56, 189, 248, 0.22)',
+        uRightFill: 'rgba(250, 204, 21, 0.18)',
+        tableBg: '#0b1322',
+        tableHeaderBg: '#1e293b',
+        rowEven: 'rgba(30, 41, 59, 0.75)',
+        rowOdd: 'rgba(15, 23, 42, 0.75)',
+        rowBorder: 'rgba(148, 163, 184, 0.2)'
+      };
+
+      svgStage.style.background = P.canvasBg;
+
+      let html = `
+        <rect x="-135" y="-158" width="1730" height="${yFront + 295}" rx="12" fill="${P.sheetBg}" stroke="${P.sheetBorder}" stroke-width="2.5" />
+        <!-- Top Sheet Banner Title (Cleanly above the top dimension chain with 35px breathing room) -->
+        <rect x="-115" y="-142" width="1690" height="44" rx="7" fill="${P.tableHeaderBg}" />
+        <text x="-95" y="-115" fill="#ffffff" font-size="14.5" font-weight="800">
+          ${show2DFurn
+            ? '📐 HỒ SƠ BẢN VẼ KỸ THUẬT 01/02: MẶT BẰNG BỐ TRÍ QUẦY KỆ, TỦ MÁT, TỦ ĐÁ & LỐI ĐI CHI TIẾT — 181 LACASTA'
+            : '🏛️ HỒ SƠ BẢN VẼ KỸ THUẬT 02/02: MẶT BẰNG KHẢO SÁT HIỆN TRẠNG PHÒNG TRỐNG (KHÔNG ĐỒ ĐẠC) — 181 LACASTA'}
+        </text>
+        <text x="1555" y="-115" fill="#fde047" font-family="'JetBrains Mono'" font-size="11.5" font-weight="800" text-anchor="end">
+          TỶ LỆ 1:100 • ĐƠN VỊ: MÉT (m) • CAO TRẦN: 2.80m
+        </text>
+
+        <!-- Outer Structural Lot Box (5.00m x 10.11m) -->
+        <rect x="${xLeft0}" y="${yBack}" width="${xRight0}" height="${yFront - yBack}" fill="url(#wall-hatch)" opacity="0.22" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,4" />
+      `;
+
+      const polyPts = [
+        `${xLeft0},${yFront}`, `${xLeft0},${yFirstU}`, `${xLeftWC},${yFirstU}`,
+        `${xLeftWC},${yStairBoxBot}`, `${xLeftStairBox},${yStairBoxBot}`, `${xLeftStairBox},${yBack}`,
+        `${xRight0},${yBack}`, `${xRight0},${yStep15}`, `${xRightAfterU},${yStep15}`,
+        `${xRightAfterU},${yFirstU}`, `${xRight0},${yFirstU}`, `${xRight0},${yFront}`
+      ].join(' ');
+
+      html += `<polygon points="${polyPts}" fill="${P.floorFill}" />`;
+      html += `<polygon points="${polyPts}" fill="url(#tile-grid-600)" />`;
+      html += `<polygon points="${polyPts}" fill="none" stroke="${P.wallStroke}" stroke-width="4.5" stroke-linejoin="round" />`;
+
+      // =====================================================================
+      // ARCHITECTURAL ZONES (STRICTLY CALIBRATED TO FIT INSIDE EACH BOX)
+      // =====================================================================
+      html += `
+        <!-- 1. Khối WC Gầm Cầu Thang (79px x 161px) -->
+        <rect x="${xLeft0}" y="${yStep15}" width="${xLeftWC}" height="${uLen_px}" fill="${P.wcFill}" stroke="${P.rose}" stroke-width="2.2" />
+        <text x="${xLeftWC / 2}" y="${(yFirstU + yStep15) / 2 - 14}" fill="${P.rose}" font-size="8.6" font-weight="800" text-anchor="middle">WC GẦM</text>
+        <text x="${xLeftWC / 2}" y="${(yFirstU + yStep15) / 2}" fill="${P.textMain}" font-family="'JetBrains Mono'" font-size="8" font-weight="800" text-anchor="middle">0.90×1.83m</text>
+        <text x="${xLeftWC / 2}" y="${(yFirstU + yStep15) / 2 + 14}" fill="${P.rose}" font-family="'JetBrains Mono'" font-size="7.4" font-weight="800" text-anchor="middle">Cửa 0.62m ▶</text>
+        <line x1="${xLeftWC}" y1="${yStep15 + 0.10 * SCALE}" x2="${xLeftWC}" y2="${yStep15 + 0.72 * SCALE}" stroke="${P.rose}" stroke-width="5.5" />
+
+        <!-- 2. Nhà Kho Gầm Cầu Thang (79px x 83.6px) -->
+        <rect x="${xLeft0}" y="${yStoreBot}" width="${xLeftWC}" height="${storeSeg_px}" fill="${P.storeFill}" stroke="${P.green}" stroke-width="2.2" />
+        <text x="${xLeftWC / 2}" y="${(yStep15 + yStoreBot) / 2 - 11}" fill="${P.green}" font-size="8.4" font-weight="800" text-anchor="middle">KHO GẦM</text>
+        <text x="${xLeftWC / 2}" y="${(yStep15 + yStoreBot) / 2 + 2}" fill="${P.textMain}" font-family="'JetBrains Mono'" font-size="8" font-weight="800" text-anchor="middle">0.90×0.95m</text>
+        <text x="${xLeftWC / 2}" y="${(yStep15 + yStoreBot) / 2 + 14}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="7.4" font-weight="800" text-anchor="middle">Cửa 0.78m ▶</text>
+        <line x1="${xLeftWC}" y1="${yStep15 - 0.12 * SCALE}" x2="${xLeftWC}" y2="${yStep15 - 0.90 * SCALE}" stroke="${P.green}" stroke-width="5.5" />
+
+        <!-- 3. Vách Kính Cầu Thang 4 Ô (79px x 178.6px) -->
+        <rect x="${xLeft0}" y="${yStairBoxBot}" width="${xLeftWC}" height="${storeToStair_px}" fill="${isWhitePaper2D ? '#f1f5f9' : 'rgba(148,163,184,0.14)'}" stroke="#64748b" stroke-width="2" stroke-dasharray="5,3" />
+        <text x="${xLeftWC / 2}" y="${(yStoreBot + yStairBoxBot) / 2 - 12}" fill="${P.textMain}" font-size="8.2" font-weight="800" text-anchor="middle">VÁCH KÍNH</text>
+        <text x="${xLeftWC / 2}" y="${(yStoreBot + yStairBoxBot) / 2 + 1}" fill="${P.textMain}" font-size="8.2" font-weight="800" text-anchor="middle">CẦU THANG</text>
+        <text x="${xLeftWC / 2}" y="${(yStoreBot + yStairBoxBot) / 2 + 14}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="8" font-weight="800" text-anchor="middle">0.90×2.03m</text>
+
+        <!-- 4. Hộp Kính Cầu Thang Cuối Nhà (167px x 114px) -->
+        <rect x="${xLeft0}" y="${yBack}" width="${xLeftStairBox}" height="${stairL_px}" fill="${P.stairFill}" stroke="${P.blue}" stroke-width="2.8" />
+        <text x="${xLeftStairBox / 2}" y="${stairL_px / 2 - 12}" fill="${P.blue}" font-size="9.2" font-weight="800" text-anchor="middle">HỘP KÍNH CẦU THANG</text>
+        <text x="${xLeftStairBox / 2}" y="${stairL_px / 2 + 2}" fill="${P.textMain}" font-family="'JetBrains Mono'" font-size="8.5" font-weight="800" text-anchor="middle">Hộp: 1.00m × 1.30m</text>
+        <text x="${xLeftStairBox / 2}" y="${stairL_px / 2 + 15}" fill="${P.textMuted}" font-family="'JetBrains Mono'" font-size="7.6" font-weight="700" text-anchor="middle">(Tổng ngang: 1.90m)</text>
+
+        <!-- 5. Khối U Tường Phải (CHỈ NẰM TRÊN BẬC: 0.30m x 1.83m = 26.4px x 161px; xuống bậc được +30cm mở ra sát tường phải 5.00m!) -->
+        <rect x="${xRightAfterU}" y="${yStep15}" width="${S.uOppW * SCALE}" height="${uLen_px}" fill="${P.uRightFill}" stroke="${P.gold}" stroke-width="2.2" stroke-dasharray="5,3" />
+        <text x="${xRightAfterU + 0.15 * SCALE}" y="${(yFirstU + yStep15) / 2}" fill="${P.gold}" font-family="'JetBrains Mono'" font-size="7.8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRightAfterU + 0.15 * SCALE}, ${(yFirstU + yStep15) / 2})">KHỐI U: 0.30×1.83m</text>
+
+        <!-- 6. Bậc Hạ Cốt Sàn -15cm (Tại mốc Z = 5.83m) + Hộp Ống Kỹ Thuật 10cm Dưới Bậc (Chạy suốt 4.10m từ vách WC tới tường phải 5.00m) -->
+        <line x1="${xLeftWC}" y1="${yStep15}" x2="${xRight0}" y2="${yStep15}" stroke="${P.gold}" stroke-width="3" stroke-dasharray="8,4" />
+        <rect x="${xLeftWC}" y="${yStep15 - 0.10 * SCALE}" width="${xRight0 - xLeftWC}" height="${0.10 * SCALE}" fill="${P.wcFill}" stroke="${P.rose}" stroke-width="1.2" stroke-dasharray="3,2" />
+
+        <!-- 7. Cửa Kính Chính Mặt Tiền (Rộng 3.40m) & Cửa Cuốn Cổng Sau (Rộng 3.10m / 2.80m) -->
+        <line x1="${0.80 * SCALE}" y1="${yFront}" x2="${4.20 * SCALE}" y2="${yFront}" stroke="${P.blue}" stroke-width="6.5" />
+        <line x1="${xLeftStairBox}" y1="${yBack}" x2="${xRight0}" y2="${yBack}" stroke="${P.green}" stroke-width="6.5" />
+      `;
+
+      // =====================================================================
+      // CONTENT INSIDE THE ROOM: VERSION 1 (FURNISHED) vs VERSION 2 (EMPTY ROOM)
+      // =====================================================================
+      if (show2DFurn) {
+        const is1X = 1.85 * SCALE; // X = 1.85m .. 3.35m (Rộng 1.50m -> Lối đi trái 0.95m & Lối đi phải 0.95m cân đối 100%!)
+        const is2X = 2.20 * SCALE; // X = 2.20m .. 3.35m (Rộng 1.15m -> Lối đi trái với Kệ WC 2B = 0.95m & Lối đi phải 0.95m!)
+        const is3X = 2.38 * SCALE; // X = 2.38m .. 3.48m (Rộng 1.10m nhờ xuống bậc +30cm -> Lối đi trái 0.98m & Lối đi phải 0.97m!)
+
+        const boxFillAmber = isWhitePaper2D ? '#fef3c7' : 'rgba(234, 179, 8, 0.32)';
+        const boxFillGreen = isWhitePaper2D ? '#dcfce7' : 'rgba(34, 197, 94, 0.30)';
+        const boxFillIce   = isWhitePaper2D ? '#e0f2fe' : 'rgba(2, 132, 199, 0.38)';
+        const boxFillMeat  = isWhitePaper2D ? '#ffe4e6' : 'rgba(239, 68, 68, 0.32)';
+        const boxFillWood  = isWhitePaper2D ? '#ffedd5' : 'rgba(217, 119, 6, 0.35)';
+
+        html += `
+          <!-- 1. QUẦY THU NGÂN CHỮ L ĐẶT GÓC PHẢI SẢNH TRƯỚC + GHẾ NV + KỆ 3 TẦNG MẶT NGOÀI (Mốc Z: 0.32m .. 1.52m, X: 3.62m .. 5.00m) -->
+          <!-- Khoảng ghế ngồi NV bên trong áp tường phải (57px x 70px) -->
+          <rect x="${xRight0 - 0.68 * SCALE}" y="${yFront - 1.52 * SCALE}" width="${0.65 * SCALE}" height="${0.80 * SCALE}" rx="3" fill="${boxFillIce}" stroke="${P.blue}" stroke-width="1.3" stroke-dasharray="3,2" />
+          <circle cx="${xRight0 - 0.35 * SCALE}" cy="${yFront - 1.24 * SCALE}" r="11" fill="${isWhitePaper2D ? '#bae6fd' : 'rgba(56,189,248,0.4)'}" stroke="${P.blue}" stroke-width="1.6" />
+          <text x="${xRight0 - 0.35 * SCALE}" y="${yFront - 1.24 * SCALE + 2.8}" fill="${P.textMain}" font-size="6.8" font-weight="800" text-anchor="middle">GHẾ</text>
+          <text x="${xRight0 - 0.35 * SCALE}" y="${yFront - 0.88 * SCALE}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="7.2" font-weight="800" text-anchor="middle">Ghế 0.68m</text>
+
+          <!-- Cánh chữ L đầu quầy bên phải (56px x 35px) -->
+          <rect x="${xRight0 - 0.68 * SCALE}" y="${yFront - 0.72 * SCALE}" width="${0.64 * SCALE}" height="${0.40 * SCALE}" rx="2" fill="${boxFillAmber}" stroke="${P.gold}" stroke-width="1.6" />
+          <text x="${xRight0 - 0.36 * SCALE}" y="${yFront - 0.50 * SCALE}" fill="${P.textMain}" font-family="'JetBrains Mono'" font-size="6.8" font-weight="800" text-anchor="middle">L:0.64×0.4m</text>
+
+          <!-- Bàn thu ngân chính bên phải (44px x 105.6px) -->
+          <rect x="${xRight0 - 1.18 * SCALE}" y="${yFront - 1.52 * SCALE}" width="${0.50 * SCALE}" height="${1.20 * SCALE}" rx="3" fill="${boxFillAmber}" stroke="${P.gold}" stroke-width="2" />
+          <text x="${xRight0 - 0.93 * SCALE - 5}" y="${yFront - 0.92 * SCALE}" fill="${P.textMain}" font-size="8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.93 * SCALE - 5}, ${yFront - 0.92 * SCALE})">1. THU NGÂN</text>
+          <text x="${xRight0 - 0.93 * SCALE + 7}" y="${yFront - 0.92 * SCALE}" fill="${P.gold}" font-family="'JetBrains Mono'" font-size="7.5" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.93 * SCALE + 7}, ${yFront - 0.92 * SCALE})">1.20×0.50m</text>
+
+          <!-- Kệ 3 tầng mặt ngoài quầy hướng vào giữa sảnh (17.6px x 105.6px) -->
+          <rect x="${xRight0 - 1.38 * SCALE}" y="${yFront - 1.52 * SCALE}" width="${0.20 * SCALE}" height="${1.20 * SCALE}" rx="2" fill="${boxFillGreen}" stroke="${P.green}" stroke-width="1.8" />
+          <text x="${xRight0 - 1.28 * SCALE}" y="${yFront - 0.92 * SCALE}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="7" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 1.28 * SCALE}, ${yFront - 0.92 * SCALE})">Kệ 1.2×0.2m</text>
+
+          <!-- 2A. KỆ GỖ OCOP 4 TẦNG TƯỜNG PHẢI — SÂU 0.70m BẰNG PHẲNG VỚI KỆ KHỐI U (0.30m + 0.40m = 0.70m) (61.6px x 180.4px) -->
+          <rect x="${xRight0 - 0.70 * SCALE}" y="${yFirstU + 0.05 * SCALE}" width="${0.70 * SCALE - 3}" height="${2.05 * SCALE}" rx="4" fill="${boxFillWood}" stroke="${P.amber}" stroke-width="2.4" />
+          <text x="${xRight0 - 0.43 * SCALE}" y="${yFirstU + 1.07 * SCALE}" fill="${P.textMain}" font-size="8.6" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.43 * SCALE}, ${yFirstU + 1.07 * SCALE})">2A. KỆ GỖ OCOP 4 TẦNG</text>
+          <text x="${xRight0 - 0.22 * SCALE}" y="${yFirstU + 1.07 * SCALE}" fill="${P.amber}" font-family="'JetBrains Mono'" font-size="8.0" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.22 * SCALE}, ${yFirstU + 1.07 * SCALE})">2.05m × 0.70m (C:2.05m)</text>
+
+          <!-- 2B. KỆ ĐỒ KHÔ ỐP ĐOẠN TƯỜNG TRỐNG CHỖ WC (Trước Cửa WC theo Ảnh 3: 1.02m x 0.35m = 30.8px x 89.8px) -->
+          <rect x="${xLeftWC + 3}" y="${yFirstU - 1.05 * SCALE}" width="${0.35 * SCALE}" height="${1.02 * SCALE}" rx="3" fill="${boxFillWood}" stroke="${P.amber}" stroke-width="2.2" />
+          <text x="${xLeftWC + 3 + 0.13 * SCALE}" y="${yFirstU - 0.54 * SCALE}" fill="${P.textMain}" font-size="7.3" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftWC + 3 + 0.13 * SCALE}, ${yFirstU - 0.54 * SCALE})">2B. KỆ TƯỜNG WC</text>
+          <text x="${xLeftWC + 3 + 0.27 * SCALE}" y="${yFirstU - 0.54 * SCALE}" fill="${P.amber}" font-family="'JetBrains Mono'" font-size="7.0" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftWC + 3 + 0.27 * SCALE}, ${yFirstU - 0.54 * SCALE})">1.02×0.35m</text>
+
+          <!-- 3. ĐẢO GIỮA #1: TRÁI CÂY & CỦ QUẢ KÉO DÀI GẦN CỬA CHÍNH (132px x 255.2px, Z = 0.60m .. 3.50m) -->
+          <rect x="${is1X}" y="${yFront - 3.50 * SCALE}" width="${1.50 * SCALE}" height="${2.90 * SCALE}" rx="6" fill="${boxFillGreen}" stroke="${P.green}" stroke-width="2.4" />
+          <text x="${is1X + 0.75 * SCALE}" y="${yFront - 2.05 * SCALE - 16}" fill="${P.green}" font-size="9.4" font-weight="800" text-anchor="middle">3. ĐẢO GIỮA #1</text>
+          <text x="${is1X + 0.75 * SCALE}" y="${yFront - 2.05 * SCALE - 2}" fill="${P.textMain}" font-size="8.8" font-weight="800" text-anchor="middle">TRÁI CÂY &amp; CỦ QUẢ</text>
+          <text x="${is1X + 0.75 * SCALE}" y="${yFront - 2.05 * SCALE + 12}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="8.6" font-weight="800" text-anchor="middle">2.90m × 1.50m</text>
+          <text x="${is1X + 0.75 * SCALE}" y="${yFront - 2.05 * SCALE + 25}" fill="${P.textMuted}" font-family="'JetBrains Mono'" font-size="7.4" font-weight="700" text-anchor="middle">(Cao 1.15m • 3 dãy rổ)</text>
+
+          <!-- 4. ĐẢO GIỮA #2: TỦ ĐÁ ĐÔNG LẠNH NẰM MẶT KÍNH MỞ RỘNG (101.2px x 136.4px) -->
+          <rect x="${is2X}" y="${yStep15 + 0.18 * SCALE}" width="${1.15 * SCALE}" height="${1.55 * SCALE}" rx="5" fill="${boxFillIce}" stroke="${P.blue}" stroke-width="2.4" />
+          <text x="${is2X + 0.575 * SCALE}" y="${yStep15 + 0.95 * SCALE - 15}" fill="${P.blue}" font-size="8.8" font-weight="800" text-anchor="middle">4. ĐẢO GIỮA #2</text>
+          <text x="${is2X + 0.575 * SCALE}" y="${yStep15 + 0.95 * SCALE - 2}" fill="${P.textMain}" font-size="8.2" font-weight="800" text-anchor="middle">TỦ ĐÁ (-18°C)</text>
+          <text x="${is2X + 0.575 * SCALE}" y="${yStep15 + 0.95 * SCALE + 11}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="8.2" font-weight="800" text-anchor="middle">1.55×1.15m</text>
+          <text x="${is2X + 0.575 * SCALE}" y="${yStep15 + 0.95 * SCALE + 23}" fill="${P.textMuted}" font-family="'JetBrains Mono'" font-size="7.2" font-weight="700" text-anchor="middle">(Cao 0.86m)</text>
+
+          <!-- 5. ĐẢO GIỮA #3: KỆ ĐẢO 2 MẶT ĐỒ KHÔ & GẠO OCOP (Rộng 1.10m x Dài 2.20m = 96.8px x 193.6px, Mốc Z = 6.25m .. 8.45m) -->
+          <rect x="${is3X}" y="${yBack + 1.66 * SCALE}" width="${1.10 * SCALE}" height="${2.20 * SCALE}" rx="5" fill="${boxFillGreen}" stroke="${P.green}" stroke-width="2.4" />
+          <text x="${is3X + 0.55 * SCALE - 9}" y="${yBack + 2.76 * SCALE}" fill="${P.textMain}" font-size="8.8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${is3X + 0.55 * SCALE - 9}, ${yBack + 2.76 * SCALE})">5. ĐẢO ĐỒ KHÔ OCOP (#3)</text>
+          <text x="${is3X + 0.55 * SCALE + 8}" y="${yBack + 2.76 * SCALE}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="8.2" font-weight="800" text-anchor="middle" transform="rotate(-90, ${is3X + 0.55 * SCALE + 8}, ${yBack + 2.76 * SCALE})">2.20m × 1.10m (C:1.32m)</text>
+
+          <!-- 6. TỦ MÁT RAU SẠCH MỞ TƯỜNG TRÁI — RỘNG 0.90m BẰNG PHẲNG VÁCH WC (79.2px x 193.6px) -->
+          <rect x="${xLeft0 + 3}" y="${yFront - 2.50 * SCALE}" width="${xLeftWC - 3}" height="${2.20 * SCALE}" rx="3" fill="${boxFillGreen}" stroke="${P.green}" stroke-width="2.2" />
+          <text x="${xLeftWC / 2 - 14}" y="${yFront - 1.40 * SCALE}" fill="${P.textMain}" font-size="8.8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftWC / 2 - 14}, ${yFront - 1.40 * SCALE})">6. TỦ MÁT RAU (3–8°C)</text>
+          <text x="${xLeftWC / 2 + 2}" y="${yFront - 1.40 * SCALE}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftWC / 2 + 2}, ${yFront - 1.40 * SCALE})">2.20m × 0.90m (C:2.05m)</text>
+          <text x="${xLeftWC / 2 + 17}" y="${yFront - 1.40 * SCALE}" fill="${P.textMuted}" font-family="'JetBrains Mono'" font-size="7.2" font-weight="700" text-anchor="middle" transform="rotate(-90, ${xLeftWC / 2 + 17}, ${yFront - 1.40 * SCALE})">(Bằng phẳng vách WC 0.90m)</text>
+
+          <!-- 7. TỦ MÁT THỊT SẠCH CÁNH KÍNH TƯỜNG TRÁI — RỘNG 0.90m BẰNG PHẲNG VÁCH WC (79.2px x 128.5px) -->
+          <rect x="${xLeft0 + 3}" y="${yFirstU + 0.02 * SCALE}" width="${xLeftWC - 3}" height="${1.46 * SCALE}" rx="3" fill="${boxFillMeat}" stroke="${P.rose}" stroke-width="2.2" />
+          <text x="${xLeftWC / 2 - 14}" y="${yFirstU + 0.75 * SCALE}" fill="${P.textMain}" font-size="8.4" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftWC / 2 - 14}, ${yFirstU + 0.75 * SCALE})">7. TỦ MÁT THỊT (0–4°C)</text>
+          <text x="${xLeftWC / 2 + 2}" y="${yFirstU + 0.75 * SCALE}" fill="${P.rose}" font-family="'JetBrains Mono'" font-size="7.8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftWC / 2 + 2}, ${yFirstU + 0.75 * SCALE})">1.46m × 0.90m</text>
+          <text x="${xLeftWC / 2 + 17}" y="${yFirstU + 0.75 * SCALE}" fill="${P.textMuted}" font-family="'JetBrains Mono'" font-size="7.1" font-weight="700" text-anchor="middle" transform="rotate(-90, ${xLeftWC / 2 + 17}, ${yFirstU + 0.75 * SCALE})">(Phẳng vách WC 0.90m)</text>
+
+          <!-- 8. KỆ GẠO & GIA VỊ KHỐI U (35.2px x 154.9px) -->
+          <rect x="${xRightAfterU - 0.40 * SCALE}" y="${yStep15 + 0.04 * SCALE}" width="${0.40 * SCALE}" height="${1.76 * SCALE}" rx="2" fill="${boxFillAmber}" stroke="${P.gold}" stroke-width="2" />
+          <text x="${xRightAfterU - 0.20 * SCALE}" y="${(yFirstU + yStep15) / 2}" fill="${P.textMain}" font-family="'JetBrains Mono'" font-size="7.8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRightAfterU - 0.20 * SCALE}, ${(yFirstU + yStep15) / 2})">8. KỆ GẠO: 1.76×0.40m</text>
+
+          <!-- 9A. KỆ ĐỒ KHÔ, MÌ TÔM, BÚN PHỞ 6 TẦNG CAO CHE KÍNH CẦU THANG (Sâu 0.50m x Dài 2.00m x Cao 2.38m) -->
+          <rect x="${xLeftWC + 3}" y="${yStairBoxBot + 0.01 * SCALE}" width="${0.50 * SCALE}" height="${2.00 * SCALE}" rx="3" fill="${boxFillWood}" stroke="${P.amber}" stroke-width="2.2" />
+          <text x="${xLeftWC + 3 + 0.18 * SCALE}" y="${yStairBoxBot + 1.01 * SCALE}" fill="${P.textMain}" font-size="8.2" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftWC + 3 + 0.18 * SCALE}, ${yStairBoxBot + 1.01 * SCALE})">9A. KỆ ĐỒ KHÔ &amp; MÌ TÔM</text>
+          <text x="${xLeftWC + 3 + 0.35 * SCALE}" y="${yStairBoxBot + 1.01 * SCALE}" fill="${P.amber}" font-family="'JetBrains Mono'" font-size="7.6" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftWC + 3 + 0.35 * SCALE}, ${yStairBoxBot + 1.01 * SCALE})">2.00m × 0.50m (C:2.38m)</text>
+
+          <!-- 9B. KỆ ĐỒ KHÔ GẦN CỔNG PHỤ 6 TẦNG CAO CHE KÍN HỘP KÍNH CẦU THANG (Dài 0.78m x Sâu 0.38m x Cao 2.38m) -->
+          <rect x="${xLeftStairBox + 3}" y="${yBack + 0.06 * SCALE}" width="${0.38 * SCALE}" height="${0.78 * SCALE}" rx="3" fill="${boxFillWood}" stroke="${P.amber}" stroke-width="2.2" />
+          <text x="${xLeftStairBox + 3 + 0.14 * SCALE}" y="${yBack + 0.45 * SCALE}" fill="${P.textMain}" font-size="7.1" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftStairBox + 3 + 0.14 * SCALE}, ${yBack + 0.45 * SCALE})">9B. KỆ CAO</text>
+          <text x="${xLeftStairBox + 3 + 0.28 * SCALE}" y="${yBack + 0.45 * SCALE}" fill="${P.amber}" font-family="'JetBrains Mono'" font-size="6.7" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xLeftStairBox + 3 + 0.28 * SCALE}, ${yBack + 0.45 * SCALE})">0.78×0.38 C:2.38</text>
+
+          <!-- 10A. TỦ ĐÁ BẢO QUẢN ĐÔNG LẠNH SÂU (-25°C) — KÊ LÙI HẲN SÁT TƯỜNG PHẢI 5.00m (61.6px x 127.6px) -->
+          <rect x="${xRight0 - 0.70 * SCALE - 3}" y="${yStep15 - 1.58 * SCALE}" width="${0.70 * SCALE}" height="${1.45 * SCALE}" rx="3" fill="${boxFillIce}" stroke="${P.blue}" stroke-width="2.4" />
+          <text x="${xRight0 - 0.43 * SCALE}" y="${yStep15 - 0.85 * SCALE}" fill="${P.textMain}" font-size="8.4" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.43 * SCALE}, ${yStep15 - 0.85 * SCALE})">10A. TỦ ĐÁ (-25°C)</text>
+          <text x="${xRight0 - 0.22 * SCALE}" y="${yStep15 - 0.85 * SCALE}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="7.8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.22 * SCALE}, ${yStep15 - 0.85 * SCALE})">1.45×0.70m</text>
+
+          <!-- 10B. HỆ KỆ GỖ & 3 THÙNG GẠO ĐẶC SẢN OCOP — KÊ LÙI HẲN SÁT TƯỜNG PHẢI 5.00m (48.4px x 132px) -->
+          <rect x="${xRight0 - 0.55 * SCALE - 3}" y="${yBack + 1.17 * SCALE}" width="${0.55 * SCALE}" height="${1.50 * SCALE}" rx="3" fill="${boxFillWood}" stroke="${P.amber}" stroke-width="2.2" />
+          <text x="${xRight0 - 0.36 * SCALE}" y="${yBack + 1.92 * SCALE}" fill="${P.textMain}" font-size="8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.36 * SCALE}, ${yBack + 1.92 * SCALE})">10B. KỆ &amp; THÙNG GẠO</text>
+          <text x="${xRight0 - 0.17 * SCALE}" y="${yBack + 1.92 * SCALE}" fill="${P.amber}" font-family="'JetBrains Mono'" font-size="7.5" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.17 * SCALE}, ${yBack + 1.92 * SCALE})">1.50×0.55m</text>
+
+          <!-- 10C. BỒN RỬA RAU & BÀN SƠ CHẾ GỌN — KÊ LÙI HẲN SÁT TƯỜNG PHẢI 5.00m (48.4px x 96.8px) -->
+          <rect x="${xRight0 - 0.55 * SCALE - 3}" y="${yBack + 0.04 * SCALE}" width="${0.55 * SCALE}" height="${1.10 * SCALE}" rx="4" fill="${boxFillIce}" stroke="${P.blue}" stroke-width="2.2" />
+          <circle cx="${xRight0 - 0.28 * SCALE - 3}" cy="${yBack + 0.84 * SCALE}" r="8.5" fill="rgba(14, 165, 233, 0.32)" stroke="${P.blue}" stroke-width="1.3" />
+          <text x="${xRight0 - 0.38 * SCALE - 3}" y="${yBack + 0.44 * SCALE}" fill="${P.textMain}" font-size="7.6" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.38 * SCALE - 3}, ${yBack + 0.44 * SCALE})">10C. BỒN RỬA</text>
+          <text x="${xRight0 - 0.17 * SCALE - 3}" y="${yBack + 0.44 * SCALE}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="7.2" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.17 * SCALE - 3}, ${yBack + 0.44 * SCALE})">1.10×0.55m</text>
+
+          <!-- 11. TUYẾN ỐNG CẤP (PPR Φ20) & THOÁT NƯỚC (PVC Φ48 DỐC 2%) CHỮ L: BỒN RỬA 10C → CHÂN TƯỜNG PHẢI 5.00m → HỘP ỐNG 10CM DƯỚI BẬC → WC -->
+          <polyline
+            points="${xRight0 - 0.28 * SCALE - 3},${yBack + 0.84 * SCALE} ${xRight0 - 3},${yBack + 0.84 * SCALE} ${xRight0 - 3},${yStep15 - 0.05 * SCALE} ${xLeftWC - 12},${yStep15 - 0.05 * SCALE} ${xLeftWC - 12},${yStep15 + 0.20 * SCALE}"
+            fill="none"
+            stroke="#0284c7"
+            stroke-width="3.2"
+            stroke-dasharray="7,3.5"
+            stroke-linejoin="round"
+            marker-end="url(#dim-arrow)"
+          />
+          <rect x="${(xLeftWC + xRight0) / 2 - 108}" y="${yStep15 - 0.05 * SCALE - 8}" width="216" height="15.5" rx="3.5" fill="${isWhitePaper2D ? '#e0f2fe' : '#09101d'}" stroke="#0284c7" stroke-width="1.2" />
+          <text x="${(xLeftWC + xRight0) / 2}" y="${yStep15 - 0.05 * SCALE + 3}" fill="#0284c7" font-family="'JetBrains Mono'" font-size="7.8" font-weight="800" text-anchor="middle">◀ ỐNG NƯỚC Φ48 TRONG HỘP 10CM DƯỚI BẬC</text>
+
+          <!-- ================================================================= -->
+          <!-- COMPACT, NON-OVERLAPPING AISLE & GAP CLEARANCE BADGES INSIDE ROOM -->
+          <!-- (Horizontal pills for vertical gaps -> 15.5px tall, never touches shelves!) -->
+          <!-- ================================================================= -->
+          <!-- 1. Lối vào nhân viên thu ngân bên phải: 0.38m -->
+          ${drawInlineClearance(xRight0 - 1.02 * SCALE, yFront - 1.53 * SCALE, xRight0 - 1.02 * SCALE, yFront - 1.89 * SCALE, '↕ Lối NV 0.38m', P.rose, 'dim-arrow-rose', false)}
+          <!-- 2. Khoảng cách Đảo #1 cách cửa chính: 0.60m (Kéo dài đảo lên 2.90m, vẫn chừa lối đi ngang 0.60m!) -->
+          ${drawInlineClearance(is1X + 0.75 * SCALE, yFront - 4, is1X + 0.75 * SCALE, yFront - 0.59 * SCALE, '↕ Cách cửa 0.60m', P.blue, 'dim-arrow', false)}
+          <!-- 3. Lối đi trái sảnh trước (Giữa Tủ mát 0.90m và Đảo #1): Chuẩn 0.95m! -->
+          ${drawInlineClearance(xLeftWC + 4, yFront - 1.55 * SCALE, is1X - 3, yFront - 1.55 * SCALE, '0.95m', P.amber, 'dim-arrow-amber', false)}
+          <!-- 4. Lối đi phải sảnh trước (Giữa Đảo #1 1.50m và Kệ OCOP 2A 0.70m): Chuẩn 0.95m! -->
+          ${drawInlineClearance(is1X + 1.50 * SCALE + 3, yFront - 2.95 * SCALE, xRight0 - 0.70 * SCALE - 5, yFront - 2.95 * SCALE, '0.95m', P.amber, 'dim-arrow-amber', false)}
+          <!-- 5. Khoảng cách giữa Đảo #1 và Tủ đá Đảo #2: 0.60m -->
+          ${drawInlineClearance(is2X + 0.575 * SCALE, yFront - 3.51 * SCALE, is2X + 0.575 * SCALE, yStep15 + 1.74 * SCALE, '↕ 0.60m', P.blue, 'dim-arrow', false)}
+          <!-- 6. Lối đi trái khu giữa (Giữa Kệ Đồ Khô Tường WC 2B 0.35m và Tủ đá Đảo #2): Chuẩn 0.95m! -->
+          ${drawInlineClearance(xLeftWC + 0.35 * SCALE + 4, yFirstU - 0.54 * SCALE, is2X - 3, yFirstU - 0.54 * SCALE, '0.95m', P.amber, 'dim-arrow-amber', false)}
+          <!-- 7. Khoảng trống trước Cửa WC (0.62m): 1.30m -->
+          ${drawInlineClearance(xLeftWC + 4, yStep15 + 0.35 * SCALE, is2X - 3, yStep15 + 0.35 * SCALE, 'Trước WC 1.30m', P.rose, 'dim-arrow-rose', false)}
+          <!-- 8. Lối đi phải khu giữa (Giữa Tủ đá Đảo #2 1.15m và Kệ gạo khối U 0.40m): Chuẩn 0.95m! -->
+          ${drawInlineClearance(is2X + 1.15 * SCALE + 3, yStep15 + 0.85 * SCALE, xRightAfterU - 0.40 * SCALE - 3, yStep15 + 0.85 * SCALE, '0.95m', P.amber, 'dim-arrow-amber', false)}
+          <!-- 9. Khoảng trống trước Cửa Kho Gầm Thang: 1.48m -->
+          ${drawInlineClearance(xLeftWC + 5, yStep15 - 0.50 * SCALE, is3X - 3, yStep15 - 0.50 * SCALE, 'Trước Kho 1.48m', P.green, 'dim-arrow-green', false)}
+          <!-- 10. Lối đi trái khu sau (Giữa Kệ Đồ Khô 9A 0.50m và Đảo #3 1.10m): Chuẩn 0.98m! -->
+          ${drawInlineClearance(xLeftWC + 0.50 * SCALE + 5, yBack + 2.35 * SCALE, is3X - 3, yBack + 2.35 * SCALE, '0.98m', P.amber, 'dim-arrow-amber', false)}
+          <!-- 11. Lối đi phải khu sau (Giữa Đảo #3 1.10m và Kệ gạo 10B 0.55m sát tường 5.00m): Chuẩn 0.97m! -->
+          ${drawInlineClearance(is3X + 1.10 * SCALE + 3, yBack + 2.00 * SCALE, xRight0 - 0.55 * SCALE - 5, yBack + 2.00 * SCALE, '0.97m', P.amber, 'dim-arrow-amber', false)}
+          <!-- 12. Khoảng mở chéo giữa Kệ Đồ Khô 9B (0.78m) và Đảo Đồ Khô #3: Mở rộng lên 0.90m thông thoáng! -->
+          ${drawInlineClearance(xLeftStairBox + 0.25 * SCALE, yBack + 0.85 * SCALE, is3X + 0.05 * SCALE, yBack + 1.65 * SCALE, '↕ Mở chéo 0.90m', P.green, 'dim-arrow-green', false)}
+          <!-- 13. Khoảng trống giữa Kệ Đồ Khô 9B (0.38m) và Bồn Rửa 10C (0.55m sát tường phải 5.00m): 2.17m -->
+          ${drawInlineClearance(xLeftStairBox + 0.38 * SCALE + 5, yBack + 0.38 * SCALE, xRight0 - 0.55 * SCALE - 5, yBack + 0.38 * SCALE, 'Lối Cửa Sau 2.17m', P.green, 'dim-arrow-green', false)}
+          <!-- 14. Khoảng cách dọc từ Đảo #3 đến Cổng sau: 1.66m -->
+          ${drawInlineClearance(is3X + 0.55 * SCALE, yBack + 1.65 * SCALE, is3X + 0.55 * SCALE, yBack + 6, '↕ 1.66m', P.green, 'dim-arrow-green', false)}
+        `;
+      } else {
+        // ===================================================================
+        // PHIÊN BẢN 2D KHÔNG CÓ ĐỒ ĐẠC (HIỆN TRẠNG PHÒNG TRỐNG - KHÔNG ĐƯỜNG NÀO CẮT QUA CHỮ!)
+        // ===================================================================
+        html += `
+          <!-- KHU 1: SẢNH TRƯỚC (5.00m x 4.00m = 20.00 m2) -->
+          <rect x="${xLeft0 + 16}" y="${yFirstU + 16}" width="${xRight0 - 32}" height="${frontL_px - 32}" rx="8" fill="rgba(2, 132, 199, 0.05)" stroke="${P.blue}" stroke-width="1.4" stroke-dasharray="6,4" />
+          <text x="${xRight0 / 2}" y="${yFront - 2.35 * SCALE}" fill="${P.textMain}" font-size="12.5" font-weight="800" text-anchor="middle">KHU 1: SẢNH TRƯỚC (PHÒNG TRỐNG)</text>
+          <text x="${xRight0 / 2}" y="${yFront - 2.35 * SCALE + 19}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="11" font-weight="800" text-anchor="middle">Rộng 5.00m × Dài 4.00m = 20.00 m²</text>
+          <text x="${xRight0 / 2}" y="${yFront - 2.35 * SCALE + 35}" fill="${P.textMuted}" font-family="'JetBrains Mono'" font-size="9.5" font-weight="700" text-anchor="middle">Cốt sàn cao (+0.15m) • Cao trần 2.80m</text>
+          ${drawInlineClearance(xLeft0 + 8, yFront - 1.15 * SCALE, xRight0 - 8, yFront - 1.15 * SCALE, 'Rộng lọt lòng Sảnh trước: 5.00m', P.gold, 'dim-arrow-gold', false)}
+
+          <!-- KHU 2: ĐOẠN CHỮ U GIỮA NHÀ TRÊN BẬC (3.80m x 1.83m = 6.95 m2) -->
+          <rect x="${xLeftWC + 12}" y="${yStep15 + 12}" width="${xRightAfterU - xLeftWC - 24}" height="${uLen_px - 24}" rx="6" fill="rgba(217, 119, 6, 0.05)" stroke="${P.gold}" stroke-width="1.4" stroke-dasharray="6,4" />
+          <text x="${(xLeftWC + xRightAfterU) / 2}" y="${(yFirstU + yStep15) / 2 - 20}" fill="${P.textMain}" font-size="11.5" font-weight="800" text-anchor="middle">KHU 2: ĐOẠN CHỮ U TRÊN BẬC</text>
+          <text x="${(xLeftWC + xRightAfterU) / 2}" y="${(yFirstU + yStep15) / 2 - 3}" fill="${P.gold}" font-family="'JetBrains Mono'" font-size="10.2" font-weight="800" text-anchor="middle">3.80m × 1.83m = 6.95 m² • Cốt (+0.15m)</text>
+          ${drawInlineClearance(xLeftWC + 6, yStep15 + 0.40 * SCALE, xRightAfterU - 6, yStep15 + 0.40 * SCALE, 'Lọt lòng Khu giữa (Trên bậc): 3.80m', P.gold, 'dim-arrow-gold', false)}
+
+          <!-- Ghi chú Bậc Hạ Cốt -15cm & Ống 10cm đặt gọn dưới vạch bậc -->
+          <text x="${(xLeftWC + xRight0) / 2}" y="${yStep15 - 0.22 * SCALE}" fill="${P.rose}" font-family="'JetBrains Mono'" font-size="8.6" font-weight="800" text-anchor="middle">▲ BẬC HẠ CỐT -15cm (Mốc 5.83m) + ỐNG DƯỚI BẬC 0.10m (XUỐNG BẬC MỞ RỘNG +0.30m = 4.10m)</text>
+
+          <!-- KHU 3: KHU SAU HẠ CỐT -15CM (Xuống bậc mở rộng +30cm -> Lọt lòng 4.10m x Dài 4.28m, Sử dụng 4.18m) -->
+          <text x="${(xLeftWC + xRight0) / 2}" y="${yBack + 2.25 * SCALE - 12}" fill="${P.textMain}" font-size="11.5" font-weight="800" text-anchor="middle">KHU 3: SẢNH SAU HẠ CỐT (MỞ RỘNG +0.30m = 4.10m)</text>
+          <text x="${(xLeftWC + xRight0) / 2}" y="${yBack + 2.25 * SCALE + 5}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="10" font-weight="800" text-anchor="middle">Rộng 4.10m × Dài 4.28m (Trừ 0.10m ống = 4.18m sử dụng)</text>
+          <text x="${(xLeftWC + xRight0) / 2}" y="${yBack + 2.25 * SCALE + 21}" fill="${P.textMuted}" font-family="'JetBrains Mono'" font-size="9.2" font-weight="700" text-anchor="middle">Diện tích thông thủy Khu sau: 16.24 m²</text>
+          ${drawInlineClearance(xLeftWC + 6, yBack + 3.10 * SCALE, xRight0 - 6, yBack + 3.10 * SCALE, 'Lọt lòng Khu sau (+30cm): 4.10m', P.green, 'dim-arrow-green', false)}
+          ${drawInlineClearance(xLeftStairBox + 6, yBack + 0.65 * SCALE, xRight0 - 6, yBack + 0.65 * SCALE, 'Lọt lòng Cửa sau (+30cm): 3.10m', P.green, 'dim-arrow-green', false)}
+        `;
+      }
+
+      // =====================================================================
+      // MULTI-TIER OUTER ARCHITECTURAL DIMENSION CHAINS (ZERO OVERLAP!)
+      // =====================================================================
+      html += `
+        <!-- TOP HORIZONTAL DIMENSIONS (MẶT TIỀN CHÍNH - Ở CẠNH DƯỚI Y = yFront) -->
+        ${drawDim(xLeft0, yFront, 0.80 * SCALE, yFront, 34, '0.80m', P.blue, 'dim-arrow', false)}
+        ${drawDim(0.80 * SCALE, yFront, 4.20 * SCALE, yFront, 34, 'Cửa kính 4 cánh: 3.40m', P.blue, 'dim-arrow', false)}
+        ${drawDim(4.20 * SCALE, yFront, xRight0, yFront, 34, '0.80m', P.blue, 'dim-arrow', false)}
+        ${drawDim(xLeft0, yFront, xRight0, yFront, 68, `MẶT TIỀN & LỌT LÒNG SẢNH TRƯỚC: ${S.frontW.toFixed(2)}m`, P.gold, 'dim-arrow-gold', true)}
+
+        <!-- BOTTOM HORIZONTAL DIMENSIONS (CỔNG SAU & HỘP THANG - Ở CẠNH TRÊN Y = yBack = 0) -->
+        ${drawDim(xLeft0, yBack, xLeftWC, yBack, -34, '0.90m', P.rose, 'dim-arrow-rose', false)}
+        ${drawDim(xLeftWC, yBack, xLeftStairBox, yBack, -34, '1.00m', P.blue, 'dim-arrow', false)}
+        ${drawDim(xLeftStairBox, yBack, xRight0, yBack, -34, `CỔNG SAU MỞ RỘNG (+30cm): 3.10m`, P.green, 'dim-arrow-green', true)}
+        ${drawDim(xLeft0, yBack, xRight0, yBack, -68, 'TỔNG NGANG CUỐI NHÀ: 5.00m (0.90m + 1.00m + 3.10m)', P.gold, 'dim-arrow-gold', true)}
+
+        <!-- LEFT SIDE ARCHITECTURAL SEGMENT CHAIN (Xoay dọc -90 độ theo tường trái, vừa khít từng đoạn!) -->
+        ${drawDim(xLeft0, yFirstU, xLeft0, yFront, -40, `Sảnh trước: ${S.frontL.toFixed(2)}m`, P.blue, 'dim-arrow', false)}
+        ${drawDim(xLeft0, yStep15, xLeft0, yFirstU, -40, `Khối WC: ${S.uLen.toFixed(2)}m`, P.rose, 'dim-arrow-rose', false)}
+        ${drawDim(xLeft0, yStoreBot, xLeft0, yStep15, -40, `Kho ${storeSegmentM.toFixed(2)}m`, P.green, 'dim-arrow-green', false)}
+        ${drawDim(xLeft0, yStairBoxBot, xLeft0, yStoreBot, -40, `Vách thang: ${S.storeToStair.toFixed(2)}m`, P.blue, 'dim-arrow', false)}
+        ${drawDim(xLeft0, yBack, xLeft0, yStairBoxBot, -40, `Thang ${S.stairL.toFixed(2)}m`, P.gold, 'dim-arrow-gold', false)}
+
+        ${drawDim(xLeft0, yStep15, xLeft0, yFront, -78, `CỬA CHÍNH → HẠ CỐT 15CM: ${distFrontToStep.toFixed(2)}m`, P.blue, 'dim-arrow', true)}
+        ${drawDim(xLeft0, yBack, xLeft0, yStep15, -78, `HẠ CỐT 15CM → CỔNG SAU: ${distStepToBack.toFixed(2)}m`, P.green, 'dim-arrow-green', true)}
+
+        <!-- RIGHT SIDE ARCHITECTURAL SEGMENT CHAIN (Xoay dọc -90 độ theo tường phải!) -->
+        ${drawDim(xRight0, yFirstU, xRight0, yFront, 40, `Sảnh trước phải: ${S.frontL.toFixed(2)}m`, P.blue, 'dim-arrow', false)}
+        ${drawDim(xRight0, yStep15, xRight0, yFirstU, 40, `Khối U phải: ${S.uLen.toFixed(2)}m`, P.gold, 'dim-arrow-gold', false)}
+        ${drawDim(xRight0, yBack, xRight0, yStep15 - 0.10 * SCALE, 40, `Khu sau sử dụng: 4.18m (Trừ 0.10m ống)`, P.green, 'dim-arrow-green', false)}
+        ${drawDim(xRight0, yBack, xRight0, yFront, 78, `TỔNG CHIỀU DÀI NHÀ: ${totalLengthM.toFixed(2)}m (5.83m + 4.28m) • CAO TRẦN 2.80m`, P.gold, 'dim-arrow-gold', true)}
+      `;
+
+      // =====================================================================
+      // RIGHT-SIDE DOSSIER SPECIFICATION TABLES (RỘNG 985PX, VỪA KHÍT 100% KHÔNG TRÀN CHỮ!)
+      // =====================================================================
+      const tblX = xRight0 + 130;
+      const tblW = 985;
+
+      // BẢNG A (LUÔN HIỂN THỊ TRÊN CẢ 2 BẢN): KÍCH THƯỚC CHI TIẾT CÁC VỊ TRÍ KIẾN TRÚC TRONG PHÒNG
+      const rowsRoom = [
+        ['A1. Mặt Tiền Chính & Sảnh Trước (Khu 1)', 'Rộng 5.00m × Dài 4.00m', 'Mốc Z: 0.00m → 4.00m • Cửa kính 4 cánh rộng 3.40m • Diện tích 20.00 m² (+0.15m)'],
+        ['A2. Khối WC Gầm Cầu Thang & Cửa WC', 'Nhô 0.90m × Dài 1.83m', 'Mốc Z: 4.00m → 5.83m • Cửa WC rộng 0.62m × cao 2.02m (Cách bậc hạ cốt 0.10m)'],
+        ['A3. Khối Chữ U Phải (Chỉ Trên Bậc)', 'Nhô 0.30m × Dài 1.83m', 'Mốc Z: 4.00m → 5.83m (Chỉ nằm trên bậc) • Lọt lòng khu giữa trên bậc = 3.80m'],
+        ['A4. Bậc Hạ Cốt Sàn (-15cm) & Khu Sau (+30cm)', 'Rộng 4.10m × Dài 4.28m', 'Tại mốc Z = 5.83m: Xuống bậc mở rộng thêm +0.30m bên phải → Lọt lòng khu sau = 4.10m'],
+        ['A5. Nhà Kho Gầm Cầu Thang & Cửa Kho Vát', 'Sâu 0.90m × Dài 0.95m', 'Mốc Z: 5.83m → 6.78m • Cửa kho kính mờ khung đen vát chéo đỉnh rộng 0.78m'],
+        ['A6. Vách Kính Cầu Thang 4 Ô & Hộp Thang', 'Vách 2.03m + Hộp 1.0×1.3m', 'Mốc Z: 6.78m → 8.81m (Vách kính 4 ô) & Z: 8.81m → 10.11m (Hộp thang 1.0×1.3m)'],
+        ['A7. Cổng Sau Nhập Hàng & Tổng Dài Nhà', 'Cổng 3.10m • Dài 10.11m', 'Xuống bậc tường phải phẳng ra mốc 5.00m → Tổng diện tích thông thủy ~43.19 m²']
+      ];
+
+      let roomRowsSvg = '';
+      rowsRoom.forEach((r, idx) => {
+        const ry = yBack + 64 + idx * 30;
+        const bg = idx % 2 === 0 ? P.rowEven : P.rowOdd;
+        roomRowsSvg += `
+          <rect x="${tblX + 12}" y="${ry}" width="${tblW - 24}" height="27" rx="4" fill="${bg}" stroke="${P.rowBorder}" stroke-width="1" />
+          <text x="${tblX + 20}" y="${ry + 18}" fill="${P.textMain}" font-size="10.5" font-weight="800">${r[0]}</text>
+          <text x="${tblX + 295}" y="${ry + 18}" fill="${P.gold}" font-family="'JetBrains Mono'" font-size="10.5" font-weight="800">${r[1]}</text>
+          <text x="${tblX + 485}" y="${ry + 18}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="9.6" font-weight="700">${r[2]}</text>
+        `;
+      });
+
+      const boxAHeight = 76 + rowsRoom.length * 30;
+
+      // BẢNG B: KÍCH THƯỚC CỤ THỂ ĐỒ ĐẠC, KỆ TỦ & VỊ TRÍ LẮP ĐẶT (BẢN 1) HOẶC THÔNG SỐ KỸ THUẬT PHÒNG TRỐNG (BẢN 2)
+      const tblBY = yBack + boxAHeight + 18;
+      const rowsFurnished = [
+        ['1. Quầy Thu Ngân Chữ L Góc Phải + Ghế + Kệ Ngoài', '1.20m × 1.38m × C:0.88m', 'Mốc Z: 0.32m → 1.52m (Đặt góc phải sảnh trước) • Lối ra vào nhân viên 0.38m'],
+        ['   ├─ Chỗ ngồi NV + Bàn chính + Cánh chữ L', 'Ghế 0.68m + Bàn 1.20×0.50m', 'Ghế ngồi trong áp tường phải 0.68m • Cánh L đầu quầy 0.64×0.40m • Máy POS'],
+        ['   └─ Kệ gỗ 3 tầng gắn mặt ngoài quầy', '1.20m × 0.20m × C:0.82m', 'Mặt ngoài quầy hướng vào giữa sảnh + thẻ tag giá QR: Trái cây sấy, Hạt điều'],
+        ['2A. Kệ Gỗ OCOP 4 Tầng (Tường phải sảnh trước)', '2.05m × 0.70m × C:2.05m', 'Mốc Z: 1.90m → 3.95m (Áp tường phải sau Thu ngân, sâu 0.70m phẳng Kệ Khối U)'],
+        ['2B. Kệ Đồ Khô Ốp Tường Trống Chỗ WC (Ảnh 3)', '1.02m × 0.35m × C:1.85m', 'Mốc Z: 4.03m → 5.05m (Đặt trên khoảng tường trống 1.10m trước cửa WC, lối đi 0.95m)'],
+        ['3. Đảo Giữa #1: Trái Cây & Củ Quả (Kéo dài)', '2.90m × 1.50m × C:1.15m', 'Mốc Z: 0.60m → 3.50m (Kéo dài gần cửa chính, chừa lối đi 0.60m) • Lối đi 2 bên 0.95m'],
+        ['4. Đảo Giữa #2: Tủ Đá Kính Lùa (-18°C)', '1.55m × 1.15m × C:0.86m', 'Mốc Z: 4.10m → 5.65m (Rộng 1.15m) • Lối đi 2 bên với Kệ 2B & Kệ 8 chuẩn 0.95m'],
+        ['5. Đảo Giữa #3: Kệ Đảo 2 Mặt Đồ Khô & Gạo', '2.20m × 1.10m × C:1.32m', 'Mốc Z: 6.25m → 8.45m (Rộng 1.10m nhờ khu sau +30cm) • Lối đi 2 bên chuẩn 0.97m'],
+        ['6. Tủ Mát Rau Sạch Mở Tường Trái (3°C – 8°C)', '2.20m × 0.90m × C:2.05m', 'Mốc Z: 0.30m → 2.50m (Đổi sang tường trái sảnh trước, sâu 0.90m phẳng vách WC)'],
+        ['7. Tủ Mát Thịt Sạch Cánh Kính Trái (0°C – 4°C)', '1.46m × 0.90m × C:2.05m', 'Mốc Z: 2.52m → 3.98m (Nối tiếp Tủ mát rau bên trái, sâu 0.90m phẳng vách WC)'],
+        ['8. Kệ Gia Vị & Gạo ST25 (Ốp Khối U 30cm)', '1.76m × 0.40m × C:1.85m', 'Mốc Z: 4.04m → 5.80m (Sâu 0.40m ốp khối U phải = 0.70m phẳng mặt với Kệ 2A)'],
+        ['9A. Kệ Đồ Khô, Mì Tôm, Bún Phở (6 Tầng Cao)', '2.00m × 0.50m × C:2.38m', 'Mốc Z: 6.80m → 8.80m (Cao 2.38m + biển 2.59m che gần hết vách kính cầu thang, lối đi 0.98m)'],
+        ['9B. Kệ Đồ Khô Gần Cổng Phụ (6 Tầng Cao)', '0.78m × 0.38m × C:2.38m', 'Mốc Z: 9.27m → 10.05m (Cao 2.38m + biển 2.59m che gần hết hộp kính cầu thang • Mở chéo 0.90m)'],
+        ['10A. Tủ Đá Bảo Quản Đông Lạnh Sâu (-25°C)', '1.45m × 0.70m × C:0.90m', 'Mốc Z: 5.95m → 7.40m (Kê lùi hẳn +30cm sát tường phải 5.00m dưới bậc hạ cốt)'],
+        ['10B. Hệ Kệ Gỗ Sồi & 3 Thùng Gạo Đặc Sản', '1.50m × 0.55m × C:2.05m', 'Mốc Z: 7.44m → 8.94m (Kê lùi hẳn +30cm sát tường phải 5.00m, lối đi phải 0.97m)'],
+        ['10C. Bồn Rửa Rau & Bàn Sơ Chế Gọn (Inox)', '1.10m × 0.55m × C:0.85m', 'Mốc Z: 8.98m → 10.08m (Kê lùi hẳn +30cm sát góc tường phải 5.00m cạnh cửa sau)'],
+        ['11. Tuyến Ống Cấp & Thoát Nước Chữ L (10C→WC)', 'Cấp Φ20 + Thoát Φ48 (Dốc 2%)', 'Đi sát chân tường phải 5.00m (sau lưng 10B & 10A) → Luồn hộp 10cm dưới bậc vào WC']
+      ];
+
+      const rowsEmptyZones = [
+        ['Khu 1: Sảnh Trước Mặt Tiền (Cốt +0.15m)', '5.00m × 4.00m = 20.00 m²', 'Mặt bằng vuông vức, không vướng cột • Gạch 600×600mm kem bóng • Trần 2.80m'],
+        ['Khu 2: Đoạn Chữ U Giữa Trên Bậc (+0.15m)', '3.80m × 1.83m = 6.95 m²', 'Trái là khối WC (nhô 0.90m), phải là khối U trên bậc (nhô 0.30m) • Lọt lòng 3.80m'],
+        ['Khu 3A: Sảnh Sau Dưới Bậc Mở Rộng (+30cm)', '4.10m × 2.98m = 12.22 m²', 'Xuống bậc hạ cốt được +0.30m bên phải (Lọt lòng 4.10m) từ Mốc 5.83m đến 8.81m'],
+        ['Khu 3B: Sảnh Cửa Sau Cạnh Hộp Thang (±0.00m)', '3.10m × 1.30m = 4.03 m²', 'Từ mặt hộp thang (Mốc 8.81m) đến cổng sau (Mốc 10.11m) • Thông thủy 3.10m'],
+        ['Phụ Trợ 1: Phòng WC Dưới Gầm Cầu Thang', '0.90m × 1.83m = 1.65 m²', 'Cửa nhôm kính mờ khung đen (0.62m × 2.02m) tại Z = 5.11m..5.73m • Có cấp nước'],
+        ['Phụ Trợ 2: Nhà Kho Dưới Gầm Cầu Thang', '0.90m × 0.95m = 0.86 m²', 'Cửa nhôm kính mờ vát chéo đỉnh (rộng 0.78m) mở tại mốc Z = 5.95m..6.73m'],
+        ['Hệ Thống Điều Hòa & Chiếu Sáng Hiện Trạng', '2 Điều hòa + Đèn LED trần', '2 dàn lạnh lắp trên tường phải (Z ≈ 2.1m & 6.6m) • Đèn tuýp LED + Downlight'],
+        ['Tổng Diện Tích Sàn Kinh Doanh Thông Thủy', 'Tổng cộng: 43.20 m²', 'Gồm 26.95 m² sàn cốt cao (+0.15m) + 16.25 m² sàn cốt thấp (±0.00m đã +30cm)']
+      ];
+
+      const activeRowsB = show2DFurn ? rowsFurnished : rowsEmptyZones;
+      const titleB = show2DFurn
+        ? '🛒 BẢNG B — KÍCH THƯỚC CỤ THỂ ĐỒ ĐẠC, KỆ TỦ (DÀI × RỘNG × CAO) & TỌA ĐỘ ĐỊNH VỊ TRONG PHÒNG'
+        : '📐 BẢNG B — THỐNG KÊ DIỆN TÍCH THÔNG THỦY, CỐT SÀN & HẠ TẦNG KỸ THUẬT HIỆN TRẠNG PHÒNG TRỐNG';
+
+      let rowsBSvg = '';
+      activeRowsB.forEach((r, idx) => {
+        const ry = tblBY + 64 + idx * 30;
+        const bg = idx % 2 === 0 ? P.rowEven : P.rowOdd;
+        rowsBSvg += `
+          <rect x="${tblX + 12}" y="${ry}" width="${tblW - 24}" height="27" rx="4" fill="${bg}" stroke="${P.rowBorder}" stroke-width="1" />
+          <text x="${tblX + 20}" y="${ry + 18}" fill="${P.textMain}" font-size="10.5" font-weight="800">${r[0]}</text>
+          <text x="${tblX + 295}" y="${ry + 18}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="10.5" font-weight="800">${r[1]}</text>
+          <text x="${tblX + 485}" y="${ry + 18}" fill="${P.textMain}" font-family="'JetBrains Mono'" font-size="9.6" font-weight="600">${r[2]}</text>
+        `;
+      });
+
+      const boxBHeight = 76 + activeRowsB.length * 30;
+
+      html += `
+        <!-- TABLE A: ROOM ARCHITECTURAL DIMENSIONS -->
+        <g>
+          <rect x="${tblX}" y="${yBack}" width="${tblW}" height="${boxAHeight}" rx="8" fill="${P.tableBg}" stroke="${P.blue}" stroke-width="2" />
+          <rect x="${tblX}" y="${yBack}" width="${tblW}" height="38" rx="8" fill="${P.tableHeaderBg}" />
+          <text x="${tblX + 18}" y="${yBack + 24}" fill="#ffffff" font-size="12.5" font-weight="800">🏛️ BẢNG A — KÍCH THƯỚC CHI TIẾT CÁC VỊ TRÍ KIẾN TRÚC, CỬA &amp; LỌT LÒNG TRONG PHÒNG (181 LACASTA)</text>
+          <text x="${tblX + 20}" y="${yBack + 55}" fill="${P.textMuted}" font-size="10" font-weight="800">VỊ TRÍ KIẾN TRÚC / KHU VỰC TRONG PHÒNG</text>
+          <text x="${tblX + 295}" y="${yBack + 55}" fill="${P.textMuted}" font-size="10" font-weight="800">KÍCH THƯỚC CHUẨN</text>
+          <text x="${tblX + 485}" y="${yBack + 55}" fill="${P.textMuted}" font-size="10" font-weight="800">TỌA ĐỘ MỐC Z (TỪ CỬA CHÍNH) &amp; THÔNG SỐ CHI TIẾT</text>
+          ${roomRowsSvg}
+        </g>
+
+        <!-- TABLE B: EQUIPMENT DIMENSIONS (VERSION 1) OR EMPTY ROOM AREA BREAKDOWN (VERSION 2) -->
+        <g>
+          <rect x="${tblX}" y="${tblBY}" width="${tblW}" height="${boxBHeight}" rx="8" fill="${P.tableBg}" stroke="${P.green}" stroke-width="2" />
+          <rect x="${tblX}" y="${tblBY}" width="${tblW}" height="38" rx="8" fill="${P.tableHeaderBg}" />
+          <text x="${tblX + 18}" y="${tblBY + 24}" fill="#fde047" font-size="12.5" font-weight="800">${titleB}</text>
+          <text x="${tblX + 20}" y="${tblBY + 55}" fill="${P.textMuted}" font-size="10" font-weight="800">${show2DFurn ? 'STT &amp; TÊN ĐỒ ĐẠC / QUẦY KỆ / TỦ LẠNH' : 'PHÂN KHU KHÔNG GIAN &amp; HẠ TẦNG'}</text>
+          <text x="${tblX + 295}" y="${tblBY + 55}" fill="${P.textMuted}" font-size="10" font-weight="800">${show2DFurn ? 'KÍCH THƯỚC (DÀI × RỘNG × CAO)' : 'KÍCH THƯỚC &amp; DIỆN TÍCH'}</text>
+          <text x="${tblX + 485}" y="${tblBY + 55}" fill="${P.textMuted}" font-size="10" font-weight="800">${show2DFurn ? 'VỊ TRÍ ĐẶT TRONG PHÒNG &amp; KHOẢNG CÁCH LỐI ĐI' : 'ĐẶC ĐIỂM KỸ THUẬT HIỆN TRẠNG'}</text>
+          ${rowsBSvg}
+        </g>
+      `;
+
+      cadContent.setAttribute('transform', isVertical ? '' : `rotate(90, ${xRight0 / 2}, ${yFront / 2})`);
+      cadContent.innerHTML = html;
+      applyTransform();
+    }
+
+    
+
+    let currentMode = 'both';
+    const sheetsRoot = document.getElementById('sheets-root');
+
+    function renderSheets() {
+      sheetsRoot.innerHTML = '';
+      const list = currentMode === 'both' ? [true, false] : (currentMode === 'furn' ? [true] : [false]);
+      list.forEach((furn) => {
+        show2DFurn = furn;
+        renderCAD();
+        const card = document.createElement('div');
+        card.className = 'sheet-card';
+        card.style.background = isWhitePaper2D ? '#ffffff' : '#0b1322';
+        card.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-145 -168 1750 1195" preserveAspectRatio="xMidYMid meet"><defs>
+          <marker id="dim-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#0284c7" />
+          </marker>
+          <marker id="dim-arrow-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#b45309" />
+          </marker>
+          <marker id="dim-arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#15803d" />
+          </marker>
+          <marker id="dim-arrow-rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#be123c" />
+          </marker>
+          <marker id="dim-arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#c2410c" />
+          </marker>
+          <pattern id="tile-grid-600" width="52.8" height="52.8" patternUnits="userSpaceOnUse">
+            <path d="M 52.8 0 L 0 0 0 52.8" fill="none" stroke="rgba(100, 116, 139, 0.22)" stroke-width="1" />
+          </pattern>
+          <pattern id="wall-hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="8" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+          <pattern id="wc-hatch" width="10" height="10" patternTransform="rotate(-45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(225, 29, 72, 0.25)" stroke-width="2" />
+          </pattern>
+        </defs><g>${cadContent.innerHTML}</g></svg>`;
+        sheetsRoot.appendChild(card);
+      });
+    }
+
+    function setTab(mode, btnId) {
+      currentMode = mode;
+      ['tab-both', 'tab-furn', 'tab-empty'].forEach((id) => {
+        document.getElementById(id).classList.toggle('active', id === btnId);
+      });
+      renderSheets();
+    }
+
+    document.getElementById('tab-both').addEventListener('click', () => setTab('both', 'tab-both'));
+    document.getElementById('tab-furn').addEventListener('click', () => setTab('furn', 'tab-furn'));
+    document.getElementById('tab-empty').addEventListener('click', () => setTab('empty', 'tab-empty'));
+
+    document.getElementById('btn-theme').addEventListener('click', (e) => {
+      isWhitePaper2D = !isWhitePaper2D;
+      e.currentTarget.textContent = isWhitePaper2D ? '📄 Nền Trắng Hồ Sơ' : '🌙 Nền Tối Blueprint';
+      document.body.style.background = isWhitePaper2D ? '#e2e8f0' : '#050811';
+      renderSheets();
+    });
+
+    renderSheets();
+  </script>
+</body>
+</html>

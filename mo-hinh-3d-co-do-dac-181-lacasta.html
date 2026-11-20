@@ -523,8 +523,8 @@
           </div>
           <div class="equip-list">
             <div class="equip-item" data-cam="cashier_left_corner">
-              <span class="eq-name">💳 1. Quầy Thu Ngân Chữ L Góc Phải + Ghế (0.68m) + Kệ Ngoài</span>
-              <span class="eq-dim">1.20×0.50×0.88m</span>
+              <span class="eq-name">💳 1. Quầy Thu Ngân Chữ L Góc Phải Kéo Dài Sát Cửa + Ghế + Kệ Ngoài</span>
+              <span class="eq-dim">1.50×0.50×0.88m</span>
             </div>
             <div class="equip-item" data-cam="cashier_left_corner">
               <span class="eq-name">🍯 2A. Kệ Gỗ OCOP 4 Tầng Tường Phải (Phẳng Kệ Khối U 0.70m)</span>
@@ -1316,6 +1316,21 @@
       rearShutter.position.set(rearGateXCenter, (H - 0.25) / 2, zBack);
       room3DGroup.add(rearShutter);
 
+      // Front Storefront Wall Piers (0.80m left & 0.80m right at Z = 0.00m) + 4-Panel Black Glass Door Frame (3.40m)
+      const frontLeftPier = new THREE.Mesh(new THREE.BoxGeometry(0.80, H, 0.10), whitePlasterMat);
+      frontLeftPier.position.set(xL0 + 0.40, H / 2, 0.03);
+      const frontRightPier = new THREE.Mesh(new THREE.BoxGeometry(0.80, H, 0.10), whitePlasterMat);
+      frontRightPier.position.set(xR0 - 0.40, H / 2, 0.03);
+      const frontHeader = new THREE.Mesh(new THREE.BoxGeometry(3.40, 0.35, 0.08), whitePlasterMat);
+      frontHeader.position.set(0, H - 0.175, 0.02);
+      const frontJambL = new THREE.Mesh(new THREE.BoxGeometry(0.06, H - 0.35, 0.08), blackAlumMat);
+      frontJambL.position.set(xL0 + 0.80, (H - 0.35) / 2, 0.02);
+      const frontJambR = frontJambL.clone();
+      frontJambR.position.set(xR0 - 0.80, (H - 0.35) / 2, 0.02);
+      const frontTransom = new THREE.Mesh(new THREE.BoxGeometry(3.40, 0.055, 0.07), blackAlumMat);
+      frontTransom.position.set(0, H - 0.35, 0.02);
+      room3DGroup.add(frontLeftPier, frontRightPier, frontHeader, frontJambL, frontJambR, frontTransom);
+
       // Ceiling & Lights
       const ceilSlab = new THREE.Mesh(new THREE.BoxGeometry(S.frontW + 0.2, 0.08, totalL + 0.2), whitePlasterMat);
       ceilSlab.position.set(0, H + 0.04, -totalL / 2);
@@ -1344,9 +1359,9 @@
       // 10 OPTIMIZED EQUIPMENT ITEMS (MAXIMIZING AREA + ICE FREEZERS)
       // =======================================================================
 
-      // 1. QUẦY THU NGÂN CHỮ L ĐẶT BÊN PHẢI SẢNH TRƯỚC + GHẾ XOAY NHÂN VIÊN BÊN TRONG + KỆ 3 TẦNG MẶT NGOÀI (Z = -0.32m .. -1.52m)
+      // 1. QUẦY THU NGÂN CHỮ L KÉO DÀI SÁT CỬA CHÍNH + GHẾ XOAY NHÂN VIÊN BÊN TRONG + KỆ 3 TẦNG MẶT NGOÀI (Z = -0.04m .. -1.54m, Dài 1.50m)
       const posGroup = new THREE.Group();
-      const posL = 1.20, posW = 0.50, posH = 0.88;
+      const posL = 1.50, posW = 0.50, posH = 0.88;
       const innerClearance = 0.68; // 68cm seating space behind the counter against the right wall!
 
       // Main Front Counter Desk (placed 68cm away from right wall so cashier sits comfortably inside!)
@@ -1399,20 +1414,20 @@
         lip.position.set(outerX - outerRackW / 2, ry + 0.015, 0);
         posGroup.add(shelfPlank, lip);
 
-        // Impulse products on the 3 outer counter shelves
-        for (let k = -2; k <= 2; k++) {
-          const mat = loadedProdMats[(k + 3 + rIdx) % loadedProdMats.length];
+        // Impulse products on the 3 outer counter shelves (7 columns across 1.50m length!)
+        for (let k = -3; k <= 3; k++) {
+          const mat = loadedProdMats[(k + 4 + rIdx) % loadedProdMats.length];
           const item = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.16, 0.15), mat);
-          item.position.set(outerX, ry + 0.09, k * 0.21);
+          item.position.set(outerX, ry + 0.09, k * 0.20);
           posGroup.add(item);
         }
         // Individual Price Tag Cards clipped along each of the 3 outer counter shelves facing -X!
-        addShelfPriceTags(posGroup, outerX - outerRackW / 2, ry + 0.016, [-0.42, -0.21, 0, 0.21, 0.42], -1, posImpulseTags, 0.11, 0.052);
+        addShelfPriceTags(posGroup, outerX - outerRackW / 2, ry + 0.016, [-0.60, -0.40, -0.20, 0, 0.20, 0.40, 0.60], -1, posImpulseTags, 0.11, 0.052);
       });
 
       // Clean Brand Backdrop Sign on Right Wall behind Cashier Chair
       const posWallSign = createCleanSignBoard(
-        1.18,
+        1.44,
         0.52,
         'QUẦY THU NGÂN & ĐẶC SẢN OCOP',
         '★ Trái Cây Sấy • Hạt Dinh Dưỡng • Gia Vị Đặc Sản',
@@ -1421,15 +1436,15 @@
       posWallSign.position.set(-0.02, 1.82, 0);
 
       posGroup.add(posBody, posTop, sideWing, sideTop, chairGroup, posScreen, posScale, posWallSign);
-      posGroup.position.set(xR0 - 0.02, stepH, -0.92);
+      posGroup.position.set(xR0 - 0.02, stepH, -0.79);
       tagEquipment(
         posGroup,
-        '1. Quầy Thu Ngân Chữ L Góc Phải (Có Ghế Ngồi Trong + Kệ 3 Tầng Mặt Ngoài Quầy + Tag Giá)',
-        'Đặt tại góc phải sảnh trước: Trong quầy có ghế xoay nhân viên • Ngoài quầy có kệ 3 tầng kèm thẻ tag giá QR'
+        '1. Quầy Thu Ngân Chữ L Góc Phải Kéo Dài Sát Cửa (1.50m × 1.38m • Ghế Trong + Kệ 3 Tầng Mặt Ngoài)',
+        'Kéo dài gần sát cửa chính (cách cửa 4cm, mốc Z: 0.04m → 1.54m) • Trong có ghế xoay • Ngoài có kệ 3 tầng kèm thẻ tag giá QR'
       );
       furniture3DGroup.add(posGroup);
 
-      // 2A. KỆ GỖ OCOP 4 TẦNG TƯỜNG PHẢI (Z = -1.90m .. -3.95m, Sâu 0.70m BẰNG PHẲNG 100% VỚI KHỐI U 0.30m + KỆ KHỐI U 0.40m = 0.70m!)
+      // 2A. KỆ GỖ OCOP 4 TẦNG TƯỜNG PHẢI (Z = -1.92m .. -3.97m, Sâu 0.70m BẰNG PHẲNG 100% VỚI KHỐI U 0.30m + KỆ KHỐI U 0.40m = 0.70m!)
       const ocopShelfGroup = new THREE.Group();
       const shL = 2.05, shD = 0.68, shH = 2.05;
 
@@ -1497,7 +1512,7 @@
       );
       ocopHeader.position.set(-shD / 2 + 0.01, shH + 0.12, 0);
       ocopShelfGroup.add(ocopHeader);
-      ocopShelfGroup.position.set(xR0 - shD / 2 - 0.02, stepH, -2.925);
+      ocopShelfGroup.position.set(xR0 - shD / 2 - 0.02, stepH, -2.945);
       tagEquipment(
         ocopShelfGroup,
         '2A. Kệ Gỗ OCOP 4 Tầng Tường Phải (2.05m × 0.70m × Cao 2.05m • Phẳng Mặt Với Kệ Khối U)',
@@ -2207,8 +2222,8 @@
       sink_prep_zone: { pos: new THREE.Vector3(0.45, 1.55, -6.2), yaw: 0.95, pitch: -0.14, ceil: true },
       rear_ice_gate: { pos: new THREE.Vector3(-0.25, 1.55, -9.6), yaw: -2.35, pitch: -0.12, ceil: true },
       dollhouse: { pos: new THREE.Vector3(0.0, 9.6, 2.0), yaw: 0.0, pitch: -0.92, ceil: false },
-      shot_01: { pos: new THREE.Vector3(0.05, 1.68, 0.42), yaw: 0.0, pitch: -0.07, ceil: true, fov: 76 },
-      shot_02: { pos: new THREE.Vector3(-1.18, 1.62, 0.08), yaw: -0.78, pitch: -0.10, ceil: true, fov: 74 },
+      shot_01: { pos: new THREE.Vector3(0.05, 1.68, -0.06), yaw: 0.0, pitch: -0.07, ceil: true, fov: 76 },
+      shot_02: { pos: new THREE.Vector3(-1.05, 1.90, -0.18), yaw: -0.80, pitch: -0.22, ceil: true, fov: 74 },
       shot_03: { pos: new THREE.Vector3(1.05, 1.62, -0.25), yaw: 0.68, pitch: -0.09, ceil: true, fov: 72 },
       shot_04: { pos: new THREE.Vector3(1.35, 1.65, -3.35), yaw: 0.58, pitch: -0.11, ceil: true, fov: 72 },
       shot_05: { pos: new THREE.Vector3(1.35, 1.68, -5.15), yaw: 0.16, pitch: -0.11, ceil: true, fov: 74 },
@@ -2609,30 +2624,30 @@
         const boxFillWood  = isWhitePaper2D ? '#ffedd5' : 'rgba(217, 119, 6, 0.35)';
 
         html += `
-          <!-- 1. QUẦY THU NGÂN CHỮ L ĐẶT GÓC PHẢI SẢNH TRƯỚC + GHẾ NV + KỆ 3 TẦNG MẶT NGOÀI (Mốc Z: 0.32m .. 1.52m, X: 3.62m .. 5.00m) -->
-          <!-- Khoảng ghế ngồi NV bên trong áp tường phải (57px x 70px) -->
-          <rect x="${xRight0 - 0.68 * SCALE}" y="${yFront - 1.52 * SCALE}" width="${0.65 * SCALE}" height="${0.80 * SCALE}" rx="3" fill="${boxFillIce}" stroke="${P.blue}" stroke-width="1.3" stroke-dasharray="3,2" />
-          <circle cx="${xRight0 - 0.35 * SCALE}" cy="${yFront - 1.24 * SCALE}" r="11" fill="${isWhitePaper2D ? '#bae6fd' : 'rgba(56,189,248,0.4)'}" stroke="${P.blue}" stroke-width="1.6" />
-          <text x="${xRight0 - 0.35 * SCALE}" y="${yFront - 1.24 * SCALE + 2.8}" fill="${P.textMain}" font-size="6.8" font-weight="800" text-anchor="middle">GHẾ</text>
-          <text x="${xRight0 - 0.35 * SCALE}" y="${yFront - 0.88 * SCALE}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="7.2" font-weight="800" text-anchor="middle">Ghế 0.68m</text>
+          <!-- 1. QUẦY THU NGÂN CHỮ L KÉO DÀI SÁT CỬA CHÍNH + GHẾ NV + KỆ 3 TẦNG MẶT NGOÀI (Mốc Z: 0.04m .. 1.54m, Dài 1.50m, X: 3.62m .. 5.00m) -->
+          <!-- Khoảng ghế ngồi NV bên trong áp tường phải (57px x 96.8px) -->
+          <rect x="${xRight0 - 0.68 * SCALE}" y="${yFront - 1.54 * SCALE}" width="${0.65 * SCALE}" height="${1.10 * SCALE}" rx="3" fill="${boxFillIce}" stroke="${P.blue}" stroke-width="1.3" stroke-dasharray="3,2" />
+          <circle cx="${xRight0 - 0.35 * SCALE}" cy="${yFront - 1.12 * SCALE}" r="11" fill="${isWhitePaper2D ? '#bae6fd' : 'rgba(56,189,248,0.4)'}" stroke="${P.blue}" stroke-width="1.6" />
+          <text x="${xRight0 - 0.35 * SCALE}" y="${yFront - 1.12 * SCALE + 2.8}" fill="${P.textMain}" font-size="6.8" font-weight="800" text-anchor="middle">GHẾ</text>
+          <text x="${xRight0 - 0.35 * SCALE}" y="${yFront - 0.68 * SCALE}" fill="${P.blue}" font-family="'JetBrains Mono'" font-size="7.2" font-weight="800" text-anchor="middle">Ghế 0.68m</text>
 
-          <!-- Cánh chữ L đầu quầy bên phải (56px x 35px) -->
-          <rect x="${xRight0 - 0.68 * SCALE}" y="${yFront - 0.72 * SCALE}" width="${0.64 * SCALE}" height="${0.40 * SCALE}" rx="2" fill="${boxFillAmber}" stroke="${P.gold}" stroke-width="1.6" />
-          <text x="${xRight0 - 0.36 * SCALE}" y="${yFront - 0.50 * SCALE}" fill="${P.textMain}" font-family="'JetBrains Mono'" font-size="6.8" font-weight="800" text-anchor="middle">L:0.64×0.4m</text>
+          <!-- Cánh chữ L đầu quầy sát cửa chính (56px x 35px, Z: 0.04m .. 0.44m) -->
+          <rect x="${xRight0 - 0.68 * SCALE}" y="${yFront - 0.44 * SCALE}" width="${0.64 * SCALE}" height="${0.40 * SCALE}" rx="2" fill="${boxFillAmber}" stroke="${P.gold}" stroke-width="1.6" />
+          <text x="${xRight0 - 0.36 * SCALE}" y="${yFront - 0.22 * SCALE}" fill="${P.textMain}" font-family="'JetBrains Mono'" font-size="6.8" font-weight="800" text-anchor="middle">L:0.64×0.4m</text>
 
-          <!-- Bàn thu ngân chính bên phải (44px x 105.6px) -->
-          <rect x="${xRight0 - 1.18 * SCALE}" y="${yFront - 1.52 * SCALE}" width="${0.50 * SCALE}" height="${1.20 * SCALE}" rx="3" fill="${boxFillAmber}" stroke="${P.gold}" stroke-width="2" />
-          <text x="${xRight0 - 0.93 * SCALE - 5}" y="${yFront - 0.92 * SCALE}" fill="${P.textMain}" font-size="8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.93 * SCALE - 5}, ${yFront - 0.92 * SCALE})">1. THU NGÂN</text>
-          <text x="${xRight0 - 0.93 * SCALE + 7}" y="${yFront - 0.92 * SCALE}" fill="${P.gold}" font-family="'JetBrains Mono'" font-size="7.5" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.93 * SCALE + 7}, ${yFront - 0.92 * SCALE})">1.20×0.50m</text>
+          <!-- Bàn thu ngân chính kéo dài sát cửa chính (44px x 132px, Dài 1.50m) -->
+          <rect x="${xRight0 - 1.18 * SCALE}" y="${yFront - 1.54 * SCALE}" width="${0.50 * SCALE}" height="${1.50 * SCALE}" rx="3" fill="${boxFillAmber}" stroke="${P.gold}" stroke-width="2" />
+          <text x="${xRight0 - 0.93 * SCALE - 5}" y="${yFront - 0.79 * SCALE}" fill="${P.textMain}" font-size="8" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.93 * SCALE - 5}, ${yFront - 0.79 * SCALE})">1. THU NGÂN</text>
+          <text x="${xRight0 - 0.93 * SCALE + 7}" y="${yFront - 0.79 * SCALE}" fill="${P.gold}" font-family="'JetBrains Mono'" font-size="7.5" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.93 * SCALE + 7}, ${yFront - 0.79 * SCALE})">1.50×0.50m</text>
 
-          <!-- Kệ 3 tầng mặt ngoài quầy hướng vào giữa sảnh (17.6px x 105.6px) -->
-          <rect x="${xRight0 - 1.38 * SCALE}" y="${yFront - 1.52 * SCALE}" width="${0.20 * SCALE}" height="${1.20 * SCALE}" rx="2" fill="${boxFillGreen}" stroke="${P.green}" stroke-width="1.8" />
-          <text x="${xRight0 - 1.28 * SCALE}" y="${yFront - 0.92 * SCALE}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="7" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 1.28 * SCALE}, ${yFront - 0.92 * SCALE})">Kệ 1.2×0.2m</text>
+          <!-- Kệ 3 tầng mặt ngoài quầy kéo dài sát cửa hướng vào giữa sảnh (17.6px x 132px) -->
+          <rect x="${xRight0 - 1.38 * SCALE}" y="${yFront - 1.54 * SCALE}" width="${0.20 * SCALE}" height="${1.50 * SCALE}" rx="2" fill="${boxFillGreen}" stroke="${P.green}" stroke-width="1.8" />
+          <text x="${xRight0 - 1.28 * SCALE}" y="${yFront - 0.79 * SCALE}" fill="${P.green}" font-family="'JetBrains Mono'" font-size="7" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 1.28 * SCALE}, ${yFront - 0.79 * SCALE})">Kệ 1.5×0.2m</text>
 
-          <!-- 2A. KỆ GỖ OCOP 4 TẦNG TƯỜNG PHẢI — SÂU 0.70m BẰNG PHẲNG VỚI KỆ KHỐI U (0.30m + 0.40m = 0.70m) (61.6px x 180.4px) -->
-          <rect x="${xRight0 - 0.70 * SCALE}" y="${yFirstU + 0.05 * SCALE}" width="${0.70 * SCALE - 3}" height="${2.05 * SCALE}" rx="4" fill="${boxFillWood}" stroke="${P.amber}" stroke-width="2.4" />
-          <text x="${xRight0 - 0.43 * SCALE}" y="${yFirstU + 1.07 * SCALE}" fill="${P.textMain}" font-size="8.6" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.43 * SCALE}, ${yFirstU + 1.07 * SCALE})">2A. KỆ GỖ OCOP 4 TẦNG</text>
-          <text x="${xRight0 - 0.22 * SCALE}" y="${yFirstU + 1.07 * SCALE}" fill="${P.amber}" font-family="'JetBrains Mono'" font-size="8.0" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.22 * SCALE}, ${yFirstU + 1.07 * SCALE})">2.05m × 0.70m (C:2.05m)</text>
+          <!-- 2A. KỆ GỖ OCOP 4 TẦNG TƯỜNG PHẢI — SÂU 0.70m BẰNG PHẲNG VỚI KỆ KHỐI U (0.30m + 0.40m = 0.70m) (Z = 1.92m .. 3.97m) -->
+          <rect x="${xRight0 - 0.70 * SCALE}" y="${yFirstU + 0.03 * SCALE}" width="${0.70 * SCALE - 3}" height="${2.05 * SCALE}" rx="4" fill="${boxFillWood}" stroke="${P.amber}" stroke-width="2.4" />
+          <text x="${xRight0 - 0.43 * SCALE}" y="${yFirstU + 1.05 * SCALE}" fill="${P.textMain}" font-size="8.6" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.43 * SCALE}, ${yFirstU + 1.05 * SCALE})">2A. KỆ GỖ OCOP 4 TẦNG</text>
+          <text x="${xRight0 - 0.22 * SCALE}" y="${yFirstU + 1.05 * SCALE}" fill="${P.amber}" font-family="'JetBrains Mono'" font-size="8.0" font-weight="800" text-anchor="middle" transform="rotate(-90, ${xRight0 - 0.22 * SCALE}, ${yFirstU + 1.05 * SCALE})">2.05m × 0.70m (C:2.05m)</text>
 
           <!-- 2B. KỆ ĐỒ KHÔ ỐP ĐOẠN TƯỜNG TRỐNG CHỖ WC (Trước Cửa WC theo Ảnh 3: 1.02m x 0.35m = 30.8px x 89.8px) -->
           <rect x="${xLeftWC + 3}" y="${yFirstU - 1.05 * SCALE}" width="${0.35 * SCALE}" height="${1.02 * SCALE}" rx="3" fill="${boxFillWood}" stroke="${P.amber}" stroke-width="2.2" />
@@ -2718,7 +2733,7 @@
           <!-- (Horizontal pills for vertical gaps -> 15.5px tall, never touches shelves!) -->
           <!-- ================================================================= -->
           <!-- 1. Lối vào nhân viên thu ngân bên phải: 0.38m -->
-          ${drawInlineClearance(xRight0 - 1.02 * SCALE, yFront - 1.53 * SCALE, xRight0 - 1.02 * SCALE, yFront - 1.89 * SCALE, '↕ Lối NV 0.38m', P.rose, 'dim-arrow-rose', false)}
+          ${drawInlineClearance(xRight0 - 1.02 * SCALE, yFront - 1.55 * SCALE, xRight0 - 1.02 * SCALE, yFront - 1.91 * SCALE, '↕ Lối NV 0.38m', P.rose, 'dim-arrow-rose', false)}
           <!-- 2. Khoảng cách Đảo #1 cách cửa chính: 0.60m (Kéo dài đảo lên 2.90m, vẫn chừa lối đi ngang 0.60m!) -->
           ${drawInlineClearance(is1X + 0.75 * SCALE, yFront - 4, is1X + 0.75 * SCALE, yFront - 0.59 * SCALE, '↕ Cách cửa 0.60m', P.blue, 'dim-arrow', false)}
           <!-- 3. Lối đi trái sảnh trước (Giữa Tủ mát 0.90m và Đảo #1): Chuẩn 0.95m! -->
@@ -2843,10 +2858,10 @@
       // BẢNG B: KÍCH THƯỚC CỤ THỂ ĐỒ ĐẠC, KỆ TỦ & VỊ TRÍ LẮP ĐẶT (BẢN 1) HOẶC THÔNG SỐ KỸ THUẬT PHÒNG TRỐNG (BẢN 2)
       const tblBY = yBack + boxAHeight + 18;
       const rowsFurnished = [
-        ['1. Quầy Thu Ngân Chữ L Góc Phải + Ghế + Kệ Ngoài', '1.20m × 1.38m × C:0.88m', 'Mốc Z: 0.32m → 1.52m (Đặt góc phải sảnh trước) • Lối ra vào nhân viên 0.38m'],
-        ['   ├─ Chỗ ngồi NV + Bàn chính + Cánh chữ L', 'Ghế 0.68m + Bàn 1.20×0.50m', 'Ghế ngồi trong áp tường phải 0.68m • Cánh L đầu quầy 0.64×0.40m • Máy POS'],
-        ['   └─ Kệ gỗ 3 tầng gắn mặt ngoài quầy', '1.20m × 0.20m × C:0.82m', 'Mặt ngoài quầy hướng vào giữa sảnh + thẻ tag giá QR: Trái cây sấy, Hạt điều'],
-        ['2A. Kệ Gỗ OCOP 4 Tầng (Tường phải sảnh trước)', '2.05m × 0.70m × C:2.05m', 'Mốc Z: 1.90m → 3.95m (Áp tường phải sau Thu ngân, sâu 0.70m phẳng Kệ Khối U)'],
+        ['1. Quầy Thu Ngân Chữ L Góc Phải Kéo Dài Sát Cửa', '1.50m × 1.38m × C:0.88m', 'Mốc Z: 0.04m → 1.54m (Kéo dài gần sát cửa chính 4cm) • Lối ra vào nhân viên 0.38m'],
+        ['   ├─ Chỗ ngồi NV + Bàn chính + Cánh chữ L', 'Ghế 0.68m + Bàn 1.50×0.50m', 'Ghế ngồi trong áp tường phải 0.68×1.10m • Cánh L sát cửa 0.64×0.40m • Máy POS'],
+        ['   └─ Kệ gỗ 3 tầng gắn mặt ngoài quầy', '1.50m × 0.20m × C:0.82m', 'Mặt ngoài kéo dài 1.50m hướng vào sảnh + tag giá QR: Trái cây sấy, Hạt điều'],
+        ['2A. Kệ Gỗ OCOP 4 Tầng (Tường phải sảnh trước)', '2.05m × 0.70m × C:2.05m', 'Mốc Z: 1.92m → 3.97m (Áp tường phải sau Thu ngân, sâu 0.70m phẳng Kệ Khối U)'],
         ['2B. Kệ Đồ Khô Ốp Tường Trống Chỗ WC (Ảnh 3)', '1.02m × 0.35m × C:1.85m', 'Mốc Z: 4.03m → 5.05m (Đặt trên khoảng tường trống 1.10m trước cửa WC, lối đi 0.95m)'],
         ['3. Đảo Giữa #1: Trái Cây & Củ Quả (Kéo dài)', '2.90m × 1.50m × C:1.15m', 'Mốc Z: 0.60m → 3.50m (Kéo dài gần cửa chính, chừa lối đi 0.60m) • Lối đi 2 bên 0.95m'],
         ['4. Đảo Giữa #2: Tủ Đá Kính Lùa (-18°C)', '1.55m × 1.15m × C:0.86m', 'Mốc Z: 4.10m → 5.65m (Rộng 1.15m) • Lối đi 2 bên với Kệ 2B & Kệ 8 chuẩn 0.95m'],
@@ -2854,8 +2869,8 @@
         ['6. Tủ Mát Rau Sạch Mở Tường Trái (3°C – 8°C)', '2.20m × 0.90m × C:2.05m', 'Mốc Z: 0.30m → 2.50m (Đổi sang tường trái sảnh trước, sâu 0.90m phẳng vách WC)'],
         ['7. Tủ Mát Thịt Sạch Cánh Kính Trái (0°C – 4°C)', '1.46m × 0.90m × C:2.05m', 'Mốc Z: 2.52m → 3.98m (Nối tiếp Tủ mát rau bên trái, sâu 0.90m phẳng vách WC)'],
         ['8. Kệ Gia Vị & Gạo ST25 (Ốp Khối U 30cm)', '1.76m × 0.40m × C:1.85m', 'Mốc Z: 4.04m → 5.80m (Sâu 0.40m ốp khối U phải = 0.70m phẳng mặt với Kệ 2A)'],
-        ['9A. Kệ Đồ Khô, Mì Tôm, Bún Phở (6 Tầng Cao)', '2.00m × 0.50m × C:2.38m', 'Mốc Z: 6.80m → 8.80m (Cao 2.38m + biển 2.59m che gần hết vách kính cầu thang, lối đi 0.98m)'],
-        ['9B. Kệ Đồ Khô Gần Cổng Phụ (6 Tầng Cao)', '0.78m × 0.38m × C:2.38m', 'Mốc Z: 9.27m → 10.05m (Cao 2.38m + biển 2.59m che gần hết hộp kính cầu thang • Mở chéo 0.90m)'],
+        ['9A. Kệ Đồ Khô, Mì Tôm, Bún Phở (6 Tầng Cao)', '2.00m × 0.50m × C:2.38m', 'Mốc Z: 6.80m → 8.80m (Cao 2.38m che kín vách kính cầu thang, lối đi trái 0.98m)'],
+        ['9B. Kệ Đồ Khô Gần Cổng Phụ (6 Tầng Cao)', '0.78m × 0.38m × C:2.38m', 'Mốc Z: 9.27m → 10.05m (Cao 2.38m che kín hộp kính cầu thang • Mở chéo 0.90m)'],
         ['10A. Tủ Đá Bảo Quản Đông Lạnh Sâu (-25°C)', '1.45m × 0.70m × C:0.90m', 'Mốc Z: 5.95m → 7.40m (Kê lùi hẳn +30cm sát tường phải 5.00m dưới bậc hạ cốt)'],
         ['10B. Hệ Kệ Gỗ Sồi & 3 Thùng Gạo Đặc Sản', '1.50m × 0.55m × C:2.05m', 'Mốc Z: 7.44m → 8.94m (Kê lùi hẳn +30cm sát tường phải 5.00m, lối đi phải 0.97m)'],
         ['10C. Bồn Rửa Rau & Bàn Sơ Chế Gọn (Inox)', '1.10m × 0.55m × C:0.85m', 'Mốc Z: 8.98m → 10.08m (Kê lùi hẳn +30cm sát góc tường phải 5.00m cạnh cửa sau)'],
